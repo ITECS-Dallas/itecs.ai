@@ -1,0 +1,49 @@
+# ITECS AI — LLMs.txt
+
+> ITECS is a Dallas-based managed IT services provider (est. 2002) offering
+> enterprise AI consulting, managed intelligence, chatbot development, AI
+> security compliance, and AI-optimized SEO services.
+
+## Company
+
+- Name: ITECS, LLC
+- Founded: 2002
+- Location: Plano, TX (serving Dallas-Fort Worth)
+- Website: https://itecs.ai
+- Main website: https://itecsonline.com
+- Phone: (972) 408-2020
+- Specialization: AI Consulting, Managed IT, Cybersecurity, Cloud
+
+## AI Services
+
+### AI Consulting & Strategy
+URL: https://itecs.ai/services/ai-consulting
+Vendor-neutral AI readiness assessments, ROI modeling, and governance frameworks.
+Industries: Healthcare, Financial Services, Manufacturing, Legal.
+Engagement models: Two-week Insight Sprints, 4-6 week POCs, 8-12 week implementations.
+
+### Managed AI Operations
+URL: https://itecs.ai/services/managed-ai
+24/7 managed AI infrastructure including model monitoring, drift detection,
+retraining pipelines, and incident response. 99.9% uptime SLA.
+
+### AI Chatbot Development
+URL: https://itecs.ai/services/ai-chatbot-development
+Custom RAG-powered knowledge assistants grounded in client data. Multi-channel
+deployment (web, Teams, Slack). HIPAA and SOC 2 compliant architectures.
+
+### AI Security & Compliance
+URL: https://itecs.ai/services/ai-security-compliance
+HIPAA, SOX, FINRA, and CMMC-aligned AI security. PHI/PII redaction, audit
+logging, Azure OpenAI private networking, and data governance frameworks.
+
+### AI-Optimized SEO & GEO
+URL: https://itecs.ai/services/ai-seo
+Generative Engine Optimization for AI-powered search. LLMs.txt implementation,
+structured data optimization, AI citation tracking across ChatGPT and Perplexity.
+
+## Technology Partners
+Microsoft Azure, Cisco, SentinelOne, Sophos
+
+## Clients
+PepsiCo, Pizza Hut, OpenText, Miller, BE Farms

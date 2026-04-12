@@ -34,11 +34,22 @@ npx tsc --noEmit     # Type check without emitting
 - **`infra/docker/web.Dockerfile`** — Multi-stage build using Next.js standalone output mode.
 - **`docker-compose.yml`** — Services: `web` (Next.js), `nginx` (TLS termination), `certbot` (ops profile for cert management).
 
+## Design
+
+Full design schematic is in `DESIGN.md`. Key points:
+
+- **Dark mode only** — `#030712` void background, no light theme.
+- **Brand accent**: Cyan `#06b6d4` primary, Violet `#8b5cf6` secondary. ITECS navy `#081821`.
+- **Typography**: Extralight/light headlines (weight 200–300), never bold walls of text.
+- **Motion**: Framer Motion for scroll reveals and parallax. CSS for ambient glows. SVG path animations for circuit traces.
+- **Style references**: Palantir, SentinelOne, Apple — futuristic, aggressive, sparse.
+
 ## Key Conventions
 
 - **Icons**: Use `lucide-react` for all icons.
-- **Styling**: Tailwind CSS v4 via `@tailwindcss/postcss`. Global styles in `src/app/globals.css`.
-- **Fonts**: Geist Sans and Geist Mono loaded via `next/font/google`.
+- **Styling**: Tailwind CSS v4 via `@tailwindcss/postcss`. Global styles in `src/app/globals.css`. CSS custom properties define the color system.
+- **Animations**: Use `framer-motion` for scroll-triggered and layout animations. Use CSS for ambient/looping effects.
+- **Fonts**: Geist Sans (display + body) and Geist Mono (code/data) loaded via `next/font/google`.
 - **Output mode**: `next.config.ts` uses `output: "standalone"` for Docker builds.
 - **SSL**: Cloudflare DNS API token in `.env` (`CLOUDFLARE_DNS_API_TOKEN`). Cert lives in `infra/certbot/letsencrypt/`. Renewal runs via systemd timer twice daily.
 
