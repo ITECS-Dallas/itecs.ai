@@ -1,0 +1,38 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: infra/docker/web.Dockerfile
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+    expose:
+      - "3000"
+
+  nginx:
+    image: nginx:stable-alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./infra/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./infra/nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./infra/certbot/letsencrypt:/etc/letsencrypt:ro
+    depends_on:
+      - web
+
+  certbot:
+    image: certbot/dns-cloudflare:latest
+    profiles: ["ops"]
+    environment:
+      APP_FQDN: ${APP_FQDN:-itecs.ai}
+      LETSENCRYPT_EMAIL: ${LETSENCRYPT_EMAIL:-}
+      CLOUDFLARE_DNS_API_TOKEN: ${CLOUDFLARE_DNS_API_TOKEN:-}
+      LE_DNS_PROPAGATION_SECONDS: ${LE_DNS_PROPAGATION_SECONDS:-60}
+    entrypoint: ["/bin/sh", "/opt/certbot/certbot-dns.sh"]
+    command: ["help"]
+    volumes:
+      - ./infra/certbot/scripts/certbot-dns.sh:/opt/certbot/certbot-dns.sh:ro
+      - ./infra/certbot/letsencrypt:/etc/letsencrypt
+      - ./infra/certbot/lib:/var/lib/letsencrypt

@@ -1,0 +1,7 @@
+node_modules
+.next
+.git
+.env
+.env.local
+infra/certbot/letsencrypt
+infra/certbot/lib
