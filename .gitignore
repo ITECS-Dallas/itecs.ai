@@ -39,6 +39,8 @@ yarn-error.log*
 # SSL certs
 /infra/ssl/certs/
 /infra/ssl/cloudflare.ini
+/infra/certbot/letsencrypt/
+/infra/certbot/lib/
 
 # Serena
 .serena/cache/

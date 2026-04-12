@@ -29,10 +29,20 @@ npx tsc --noEmit     # Type check without emitting
 ## Architecture
 
 - **`src/app/`** — Next.js App Router pages and layouts. `@/*` path alias maps to `./src/*`.
+- **`src/components/`** — Organized by role: `layout/` (Header, Footer), `sections/` (page-level composites like Hero, ServicesGrid, CTASection), `ui/` (Button, Card, SectionHeading, StatCounter), `effects/` (animations: ScrollReveal, ParallaxWrapper, GradientOrb, CircuitTrace, GridBackground, CursorGlow), `seo/` (Breadcrumbs, JsonLd).
+- **`src/lib/`** — `constants.ts` is the single source of truth for all structured content (site config, nav links, services array, stats). `metadata.ts` generates per-page Next.js Metadata. `seo.ts` generates JSON-LD schemas (Organization, LocalBusiness, Service, FAQPage, BreadcrumbList).
 - **`infra/nginx/`** — nginx reverse proxy config. Terminates TLS, proxies to Next.js on port 3000. `conf.d/default.conf` has the server blocks for `itecs.ai` and `www.itecs.ai`.
 - **`infra/certbot/`** — Cloudflare DNS-01 certbot setup. `scripts/certbot-dns.sh` is the entrypoint used by the docker certbot service.
-- **`infra/docker/web.Dockerfile`** — Multi-stage build using Next.js standalone output mode.
+- **`infra/docker/web.Dockerfile`** — Multi-stage build (deps → build → runner) using Next.js standalone output mode.
 - **`docker-compose.yml`** — Services: `web` (Next.js), `nginx` (TLS termination), `certbot` (ops profile for cert management).
+
+### Service Pages
+
+Service pages live at `src/app/services/[slug]/page.tsx`. Slugs are defined in `src/lib/constants.ts` in the `SERVICES` array. Current slugs: `ai-consulting`, `managed-ai`, `ai-chatbot-development`, `ai-security-compliance`, `ai-seo`. Each service page uses `generateStaticParams()` for static generation and renders shared section components (ServiceHero, ServiceFeatures, ServiceStats, FAQ, CTASection) driven by the data in `constants.ts`.
+
+### SEO Strategy
+
+Every page uses `generatePageMetadata()` from `src/lib/metadata.ts` for OpenGraph/Twitter/robots metadata. The root layout injects Organization and LocalBusiness JSON-LD globally. Service pages add per-service JSON-LD, FAQ schema, and breadcrumbs. `robots.ts` and `sitemap.ts` at the app root handle crawl directives and XML sitemap generation.
 
 ## Design
 
@@ -47,9 +57,10 @@ Full design schematic is in `DESIGN.md`. Key points:
 ## Key Conventions
 
 - **Icons**: Use `lucide-react` for all icons.
-- **Styling**: Tailwind CSS v4 via `@tailwindcss/postcss`. Global styles in `src/app/globals.css`. CSS custom properties define the color system.
-- **Animations**: Use `framer-motion` for scroll-triggered and layout animations. Use CSS for ambient/looping effects.
+- **Styling**: Tailwind CSS v4 via `@tailwindcss/postcss`. Global styles in `src/app/globals.css`. CSS custom properties define the color system, bridged to Tailwind via `@theme inline` block (e.g., `bg-bg-void`, `text-brand-accent`).
+- **Animations**: Use `framer-motion` for scroll-triggered and layout animations. Use CSS for ambient/looping effects (keyframes defined in `globals.css`). Respect `prefers-reduced-motion`.
 - **Fonts**: Geist Sans (display + body) and Geist Mono (code/data) loaded via `next/font/google`.
+- **Content data**: All structured content (services, stats, nav links, site config) lives in `src/lib/constants.ts`. Pages and components import from there — never hardcode content in components.
 - **Output mode**: `next.config.ts` uses `output: "standalone"` for Docker builds.
 - **SSL**: Cloudflare DNS API token in `.env` (`CLOUDFLARE_DNS_API_TOKEN`). Cert lives in `infra/certbot/letsencrypt/`. Renewal runs via systemd timer twice daily.
 
