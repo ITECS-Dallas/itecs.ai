@@ -19,7 +19,7 @@ export function PartnerLogos() {
         <div className="mt-12 flex flex-wrap items-center justify-center gap-12 md:gap-20">
           {PARTNER_LOGOS.map((logo, i) => (
             <ScrollReveal key={logo.name} delay={i * 0.08}>
-              <div className="transition-all duration-500 grayscale brightness-50 hover:grayscale-0 hover:brightness-100">
+              <div className="transition-all duration-500 brightness-0 invert opacity-50 hover:opacity-100">
                 <Image
                   src={logo.src}
                   alt={`${logo.name} partner logo`}

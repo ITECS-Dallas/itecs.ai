@@ -16,7 +16,7 @@ export function TrustBar() {
             {CLIENT_LOGOS.map((logo) => (
               <div
                 key={logo.name}
-                className="transition-all duration-500 grayscale brightness-50 hover:grayscale-0 hover:brightness-100"
+                className="transition-all duration-500 brightness-0 invert opacity-50 hover:opacity-100"
               >
                 <Image
                   src={logo.src}
