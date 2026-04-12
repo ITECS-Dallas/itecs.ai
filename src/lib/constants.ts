@@ -32,13 +32,17 @@ export const SITE_CONFIG = {
 // ---------------------------------------------------------------------------
 
 export const NAV_LINKS = [
-  { label: "Services", href: "/services" },
+  { label: "Consulting", href: "/consulting" },
+  { label: "Custom ChatGPT", href: "/custom-chatgpt" },
+  { label: "Automation", href: "/automation" },
+  { label: "Training", href: "/training" },
+  { label: "Insights", href: "/insights" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ] as const;
 
 // ---------------------------------------------------------------------------
-// Services
+// Hub Pages (Services)
 // ---------------------------------------------------------------------------
 
 export interface ServiceItem {
@@ -47,30 +51,31 @@ export interface ServiceItem {
   shortTitle: string;
   description: string;
   longDescription: string;
-  heroMetric: string;
+  heroSummary: string;
   href: string;
   icon: string;
   keywords: string[];
   h1: string;
   features: string[];
   howItWorks: { step: string; description: string }[];
-  toolsMentioned: string[];
+  howItWorksHeading: string;
+  integrations: string[];
   stats: { value: number; suffix: string; label: string }[];
   faq: { question: string; answer: string }[];
 }
 
 export const SERVICES: ServiceItem[] = [
   {
-    slug: "ai-consulting",
+    slug: "consulting",
     title: "Small Business AI Consulting in Dallas",
     shortTitle: "AI Consulting",
     description:
       "We help Dallas businesses with 10–300 employees find the right AI tools to save time, cut costs, and automate manual work — without the enterprise price tag.",
     longDescription:
       "Most small businesses know AI could help, but don't know where to start. We sit down with your team, identify the tasks eating up the most time, and build a practical plan to automate them. No jargon, no year-long roadmaps — just clear steps to save your team 20+ hours a week.",
-    heroMetric:
-      "Our Dallas clients save an average of 20+ hours per week after implementing our AI recommendations.",
-    href: "/services/ai-consulting",
+    heroSummary:
+      "We audit your team's manual workflows, identify the biggest time-wasters, and build a practical AI adoption plan that saves Dallas businesses an average of 20+ hours per week — with clear ROI projections and no vendor lock-in.",
+    href: "/consulting",
     icon: "Brain",
     keywords: [
       "AI consulting for small business",
@@ -88,29 +93,32 @@ export const SERVICES: ServiceItem[] = [
       "Measure ROI with clear before-and-after KPIs",
       "Industry-specific guidance for healthcare, legal, finance, and manufacturing",
     ],
+    howItWorksHeading: "How to get started with AI consulting for your business",
     howItWorks: [
       {
-        step: "We audit your manual tasks",
+        step: "We audit your manual tasks and workflows",
         description:
-          "We spend time with your team to find the repetitive, time-consuming workflows that are ripe for AI automation.",
+          "We spend time with your team to find the repetitive, time-consuming workflows that are ripe for AI automation — data entry, report generation, customer follow-ups, and more.",
       },
       {
-        step: "We build a practical AI plan",
+        step: "We build a practical AI adoption plan",
         description:
-          "You get a prioritized roadmap with cost estimates, timelines, and the specific tools that fit your business and budget.",
+          "You get a prioritized roadmap with cost estimates, timelines, and the specific tools that fit your business and budget. No 50-page decks — just actionable steps.",
       },
       {
-        step: "We implement and train your team",
+        step: "We implement the tools and train your team",
         description:
-          "We set up the AI tools, integrate them with your existing systems, and train your staff until they're self-sufficient.",
+          "We set up the AI tools, integrate them with your existing systems, and train your staff until they're self-sufficient. Most clients are up and running within 2–4 weeks.",
       },
     ],
-    toolsMentioned: [
+    integrations: [
       "Microsoft Copilot",
       "OpenAI API",
       "Azure OpenAI",
       "Google Vertex AI",
-      "Custom GPT",
+      "CustomGPT",
+      "Zapier",
+      "Make.com",
     ],
     stats: [
       { value: 20, suffix: "+", label: "Hours Saved per Week" },
@@ -141,16 +149,106 @@ export const SERVICES: ServiceItem[] = [
     ],
   },
   {
-    slug: "managed-ai",
-    title: "AI Automation & Workflow Management in Dallas",
+    slug: "custom-chatgpt",
+    title: "Custom ChatGPT & AI Chatbot Development in Dallas",
+    shortTitle: "Custom ChatGPT",
+    description:
+      "We build custom ChatGPT-style chatbots for Dallas businesses — trained on your data, connected to your systems, and handling customer questions 24/7.",
+    longDescription:
+      "Imagine a ChatGPT that only knows your business — your products, your policies, your pricing. We build secure, private AI chatbots that connect to your company data and answer customer questions, handle HR inquiries, and support your team around the clock. No hallucinations, no off-topic answers, just reliable AI that knows your business inside and out.",
+    heroSummary:
+      "We build Custom ChatGPTs for your business that connect securely to your proprietary data, reducing customer support response times by up to 40% and eliminating manual data entry for your Dallas team.",
+    href: "/custom-chatgpt",
+    icon: "MessageSquareCode",
+    keywords: [
+      "custom ChatGPT for business data",
+      "AI customer service bot for SMB",
+      "custom chatbot development Dallas",
+      "AI receptionist Dallas",
+      "business chatbot Dallas",
+      "how to build a custom ChatGPT",
+    ],
+    h1: "Custom ChatGPT for Your Dallas Business",
+    features: [
+      "A private ChatGPT trained exclusively on your business data",
+      "Handles customer questions, HR inquiries, and internal support 24/7",
+      "Connects securely to your knowledge base, CRM, and helpdesk",
+      "Deploys on your website, Slack, Teams, SMS, or all of the above",
+      "Escalates to a human when it can't answer — with full conversation context",
+      "HIPAA and SOC 2 compliant options for regulated industries",
+    ],
+    howItWorksHeading: "How to build a Custom ChatGPT for your business",
+    howItWorks: [
+      {
+        step: "Audit current manual processes and data sources",
+        description:
+          "We identify which customer questions, HR inquiries, and support requests can be handled by AI, and map the data sources your chatbot needs access to.",
+      },
+      {
+        step: "Connect your secure data via API and build your ChatGPT",
+        description:
+          "We ingest your documentation, knowledge base, and policies into a private AI system. Your data never leaves your control. The chatbot only answers based on your data — no hallucinations.",
+      },
+      {
+        step: "Deploy across your channels and train your staff",
+        description:
+          "We launch the chatbot on your website, Slack, Teams, or SMS. We train your team to manage it and continuously optimize based on real conversation data.",
+      },
+    ],
+    integrations: [
+      "OpenAI API",
+      "CustomGPT",
+      "Microsoft Copilot",
+      "Slack",
+      "Microsoft Teams",
+      "HubSpot",
+      "Salesforce",
+      "HaloPSA",
+    ],
+    stats: [
+      { value: 40, suffix: "%", label: "Fewer Support Tickets" },
+      { value: 85, suffix: "%", label: "Query Resolution Rate" },
+      { value: 3, suffix: "sec", label: "Avg. Response Time" },
+    ],
+    faq: [
+      {
+        question: "How much does a custom AI chatbot cost for a small business?",
+        answer:
+          "Custom ChatGPT development for Dallas businesses typically ranges from $5,000–$15,000 for initial setup, depending on the number of data sources and channels. Ongoing hosting and management starts at $300/month. We provide transparent pricing upfront — no surprise invoices.",
+      },
+      {
+        question: "How do I build a custom ChatGPT for my customer service team?",
+        answer:
+          "That's exactly what we do. We connect your company documentation, FAQs, product guides, and support history to a private AI model. The result is a chatbot that answers customer questions accurately using only your data — deployed on your website, Slack, Teams, or SMS within 2–4 weeks.",
+      },
+      {
+        question: "How do I secure my business data from ChatGPT?",
+        answer:
+          "The biggest risk is employees pasting sensitive data into public ChatGPT. We solve this by deploying private AI instances (Azure OpenAI, on-premise models) that keep your data within your control, implementing DLP policies, and training your staff on safe AI usage. Your data never trains public models.",
+      },
+      {
+        question: "Will the chatbot make up answers or go off-topic?",
+        answer:
+          "No. We implement strict data boundaries and confidence scoring. When the chatbot can't find an answer in your data, it says so and escalates to a human team member with full conversation context — rather than making something up.",
+      },
+      {
+        question: "Can the chatbot connect to our CRM and helpdesk?",
+        answer:
+          "Yes. We build integrations with HubSpot, Salesforce, HaloPSA, ConnectWise, Hudu, ServiceNow, and custom APIs. Your chatbot pulls live data from the tools your team already uses.",
+      },
+    ],
+  },
+  {
+    slug: "automation",
+    title: "AI Workflow Automation for Dallas Businesses",
     shortTitle: "AI Automation",
     description:
       "We build and manage AI-powered workflow automations for Dallas businesses — from lead follow-up to data entry to customer onboarding. Set it and forget it.",
     longDescription:
       "Your team shouldn't waste hours on tasks a machine can handle. We map your repetitive workflows — lead follow-ups, invoice processing, data entry, appointment scheduling — and automate them with AI tools like Zapier, Make, Microsoft Power Automate, and custom integrations. Then we monitor everything so it keeps running smoothly.",
-    heroMetric:
-      "Dallas businesses using our AI automation save an average of 40% on operational costs.",
-    href: "/services/managed-ai",
+    heroSummary:
+      "We automate your most time-consuming workflows — lead follow-ups, data entry, invoice processing, scheduling — saving Dallas businesses an average of 40% on operational costs and freeing your team to focus on growth.",
+    href: "/automation",
     icon: "Activity",
     keywords: [
       "AI workflow automation for small business",
@@ -168,29 +266,33 @@ export const SERVICES: ServiceItem[] = [
       "Monthly reporting on time saved and cost reduction",
       "Scale up without hiring — handle 2x the workload with the same team",
     ],
+    howItWorksHeading: "How to automate your business workflows with AI",
     howItWorks: [
       {
-        step: "We map your repetitive workflows",
+        step: "Map your repetitive workflows and rank by time wasted",
         description:
-          "We identify the manual tasks your team does every day — lead follow-ups, data entry, scheduling, report generation — and rank them by time wasted.",
+          "We identify the manual tasks your team does every day — lead follow-ups, data entry, scheduling, report generation — and calculate how much time and money each one costs.",
       },
       {
-        step: "We build automated AI pipelines",
+        step: "Build automated AI pipelines connecting your existing tools",
         description:
-          "Using tools like Zapier, Make, Power Automate, and custom AI, we connect your existing systems and automate the workflows that eat up the most hours.",
+          "Using Zapier, Make.com, Power Automate, and custom AI, we connect your CRM, email, invoicing, and helpdesk systems into automated workflows that run without human intervention.",
       },
       {
-        step: "We monitor and optimize continuously",
+        step: "Monitor, optimize, and scale your automations",
         description:
-          "We don't just set it and leave. Our team monitors your automations 24/7, fixes issues before you notice, and optimizes for even more time savings.",
+          "We monitor your automations 24/7, fix issues before you notice, and optimize for even more time savings. When you're ready, we add more automations without disrupting what's already working.",
       },
     ],
-    toolsMentioned: [
+    integrations: [
       "Zapier",
-      "Make",
+      "Make.com",
       "Microsoft Power Automate",
       "HubSpot AI",
       "OpenAI API",
+      "QuickBooks",
+      "Slack",
+      "Microsoft Teams",
     ],
     stats: [
       { value: 40, suffix: "%", label: "Avg. Cost Reduction" },
@@ -209,256 +311,226 @@ export const SERVICES: ServiceItem[] = [
           "The most common automations we build for Dallas SMBs: lead follow-up emails and texts, appointment scheduling and reminders, invoice processing and data entry, customer onboarding sequences, report generation, and helpdesk ticket routing. If your team does it repeatedly, we can probably automate it.",
       },
       {
+        question: "Can you automate lead follow-up with AI?",
+        answer:
+          "Yes — this is one of our most popular automations. We build AI-powered sequences that follow up with leads via email and text within minutes of form submission, qualify them based on your criteria, and route hot leads directly to your sales team. Most clients see a 30–50% improvement in lead response time.",
+      },
+      {
         question: "Do I need to change my existing software to use AI automation?",
         answer:
           "No. We integrate with the tools you already use — HubSpot, QuickBooks, Outlook, Teams, Slack, your CRM, your helpdesk. The whole point is connecting your existing stack, not replacing it.",
       },
-      {
-        question: "Can you automate lead follow-up with AI?",
-        answer:
-          "Yes — this is one of our most popular automations for Dallas businesses. We build AI-powered sequences that follow up with leads via email and text within minutes of form submission, qualify them based on your criteria, and route hot leads directly to your sales team. Most clients see a 30–50% improvement in lead response time.",
-      },
     ],
   },
   {
-    slug: "ai-chatbot-development",
-    title: "Custom ChatGPT & AI Chatbot Development in Dallas",
-    shortTitle: "Custom ChatGPT",
+    slug: "training",
+    title: "AI Training for Employees in Dallas",
+    shortTitle: "AI Training",
     description:
-      "We build custom ChatGPT-style chatbots for Dallas businesses — trained on your data, connected to your systems, and handling customer questions 24/7.",
+      "Hands-on AI training for your Dallas team — teach employees to use ChatGPT, Copilot, and automation tools safely and productively. No technical background required.",
     longDescription:
-      "Imagine a ChatGPT that only knows your business — your products, your policies, your pricing. We build secure, private AI chatbots that connect to your company data and answer customer questions, handle HR inquiries, and support your team around the clock. No hallucinations, no off-topic answers, just reliable AI that knows your business inside and out.",
-    heroMetric:
-      "Our custom business chatbots reduce customer support tickets by up to 40% for Dallas companies.",
-    href: "/services/ai-chatbot-development",
-    icon: "MessageSquareCode",
+      "Your employees are already using AI — the question is whether they're using it safely and effectively. We train your team on the AI tools that matter: ChatGPT, Microsoft Copilot, automation platforms, and custom tools. Hands-on workshops, not boring slide decks. Your staff walks away knowing exactly how to use AI to do their job faster without putting company data at risk.",
+    heroSummary:
+      "We train your Dallas team to use AI tools like ChatGPT and Microsoft Copilot safely and productively — with hands-on workshops that cut task completion time by 30% while keeping sensitive company data secure.",
+    href: "/training",
+    icon: "GraduationCap",
     keywords: [
-      "custom ChatGPT for business data",
-      "AI customer service bot for SMB",
-      "custom chatbot development Dallas",
-      "AI receptionist Dallas",
-      "business chatbot Dallas",
+      "AI training for employees",
+      "AI training Dallas",
+      "ChatGPT training for business",
+      "Microsoft Copilot training Dallas",
+      "employee AI training small business",
     ],
-    h1: "Custom ChatGPT for Your Dallas Business",
+    h1: "AI Training for Your Dallas Team",
     features: [
-      "A private ChatGPT trained exclusively on your business data",
-      "Handles customer questions, HR inquiries, and internal support 24/7",
-      "Connects securely to your knowledge base, CRM, and helpdesk",
-      "Deploys on your website, Slack, Teams, SMS, or all of the above",
-      "Escalates to a human when it can't answer — with full conversation context",
-      "HIPAA and SOC 2 compliant options for regulated industries",
+      "Hands-on workshops — your team practices with real work scenarios, not slides",
+      "ChatGPT, Microsoft Copilot, and automation tool training",
+      "Safe AI usage policies — keep company data out of public models",
+      "Role-specific training for sales, support, HR, finance, and ops",
+      "Prompt engineering basics so your team gets better AI outputs",
+      "Ongoing office hours and refresher sessions as tools evolve",
     ],
+    howItWorksHeading: "How to get your team trained on AI",
     howItWorks: [
       {
-        step: "We connect to your business data securely",
+        step: "Assess your team's current AI skills and daily workflows",
         description:
-          "We ingest your documentation, knowledge base, product info, and policies into a secure, private AI system. Your data never leaves your control.",
+          "We survey your staff, identify which roles benefit most from AI, and map the specific tasks where AI tools will have the biggest impact on productivity.",
       },
       {
-        step: "We build your custom ChatGPT",
+        step: "Deliver hands-on workshops customized to your business",
         description:
-          "We train an AI chatbot that only answers based on your data — no hallucinations, no off-topic responses. It knows your business and nothing else.",
+          "Your team practices with real work scenarios using ChatGPT, Copilot, and automation tools. We cover prompt engineering, data safety, and role-specific use cases — not generic demos.",
       },
       {
-        step: "We deploy and train your team",
+        step: "Provide ongoing support and refresher training",
         description:
-          "We launch the chatbot on your website, Slack, Teams, or SMS. We train your team to manage it, and we keep optimizing based on real conversation data.",
+          "AI tools evolve fast. We provide monthly office hours, updated training materials, and refresher sessions so your team stays current and keeps getting value from AI.",
       },
     ],
-    toolsMentioned: [
-      "OpenAI API",
-      "CustomGPT",
+    integrations: [
       "Microsoft Copilot",
+      "ChatGPT / OpenAI",
+      "Microsoft 365",
+      "Google Workspace",
+      "Zapier",
+      "Make.com",
       "Slack",
-      "Microsoft Teams",
     ],
     stats: [
-      { value: 40, suffix: "%", label: "Fewer Support Tickets" },
-      { value: 85, suffix: "%", label: "Query Resolution Rate" },
-      { value: 3, suffix: "sec", label: "Avg. Response Time" },
+      { value: 30, suffix: "%", label: "Faster Task Completion" },
+      { value: 95, suffix: "%", label: "Participant Satisfaction" },
+      { value: 4, suffix: "hrs", label: "Avg. Weekly Time Saved per Employee" },
     ],
     faq: [
       {
-        question:
-          "How much does a custom AI chatbot cost for a small business?",
+        question: "How much does AI training cost for employees?",
         answer:
-          "Custom ChatGPT development for Dallas businesses typically ranges from $5,000–$15,000 for initial setup, depending on the number of data sources and channels. Ongoing hosting and management starts at $300/month. We provide transparent pricing upfront.",
+          "Group workshops for Dallas businesses start at $2,000 for a half-day session covering up to 20 employees. Full-day deep dives and multi-session programs range from $4,000–$10,000. We also offer ongoing monthly training retainers starting at $500/month.",
       },
       {
-        question: "How do I build a custom ChatGPT for my customer service team?",
+        question: "Do my employees need a technical background for AI training?",
         answer:
-          "That's exactly what we do. We connect your company documentation, FAQs, product guides, and support history to a private AI model. The result is a chatbot that answers customer questions accurately using only your data — deployed on your website, Slack, Teams, or SMS within 2–4 weeks.",
+          "No. Our training is designed for non-technical staff — sales reps, customer support agents, HR managers, accountants, and office admins. If they can use email, they can learn to use AI effectively.",
       },
       {
-        question:
-          "Will the chatbot make up answers or go off-topic?",
+        question: "What AI tools do you train on?",
         answer:
-          "No. We implement strict data boundaries and confidence scoring. When the chatbot can't find an answer in your data, it says so and escalates to a human team member with full conversation context — rather than making something up.",
+          "We cover ChatGPT (free and Plus), Microsoft Copilot (Word, Excel, Outlook, Teams), automation platforms (Zapier, Make.com, Power Automate), and any custom AI tools your business uses. Training is customized to the tools your team will actually use.",
       },
       {
-        question: "Can the chatbot connect to our CRM and helpdesk?",
+        question: "How do you handle AI data safety in training?",
         answer:
-          "Yes. We build integrations with HubSpot, Salesforce, HaloPSA, ConnectWise, Hudu, ServiceNow, and custom APIs. Your chatbot pulls live data from the tools your team already uses.",
+          "Data safety is built into every session. We teach employees exactly what they can and can't share with AI tools, set up company-wide AI usage policies, and show them how to use private AI instances for sensitive work. This is especially critical for healthcare, legal, and financial services teams in Dallas.",
+      },
+    ],
+  },
+];
+
+// ---------------------------------------------------------------------------
+// Insight / Spoke Pages
+// ---------------------------------------------------------------------------
+
+export interface InsightItem {
+  slug: string;
+  title: string;
+  description: string;
+  href: string;
+  hubSlug: string;
+  hubLabel: string;
+  hubHref: string;
+  keywords: string[];
+  h1: string;
+  content: string[];
+  faq: { question: string; answer: string }[];
+}
+
+export const INSIGHTS: InsightItem[] = [
+  {
+    slug: "how-to-use-ai-small-business",
+    title: "How to Use AI in a Small Business (2026 Guide)",
+    description:
+      "A practical guide for Dallas small business owners on using AI to automate tasks, reduce costs, and grow without hiring. From ChatGPT to workflow automation.",
+    href: "/insights/how-to-use-ai-small-business",
+    hubSlug: "consulting",
+    hubLabel: "AI Consulting for Small Businesses",
+    hubHref: "/consulting",
+    keywords: [
+      "how to use AI in small business",
+      "AI for small business owners",
+      "small business AI guide 2026",
+      "AI tools for small companies",
+    ],
+    h1: "How to Use AI in Your Small Business",
+    content: [
+      "If you're running a Dallas business with 10–300 employees, AI isn't a luxury anymore — it's the difference between growing efficiently and drowning in manual work. The good news: you don't need a data science team or a six-figure budget to get started.",
+      "**The first step is working with an experienced [AI consulting partner](/consulting) who understands small business operations.** At ITECS, we've helped dozens of Dallas businesses identify the manual tasks that cost them the most time — and automate them with practical AI tools.",
+      "Here's the reality: most small businesses waste 15–25 hours per week on tasks that AI can handle. Data entry, customer follow-up emails, report generation, appointment scheduling, answering the same customer questions over and over. These aren't complex AI problems — they're workflow problems that modern tools like Microsoft Copilot, ChatGPT, Zapier, and Make.com solve today.",
+      "The key is starting with the right tasks. Don't try to build a self-driving car — start by automating the three tasks your team complains about most. A good AI consultant will audit your workflows, estimate time savings, and have your first automation running within weeks, not months.",
+      "For Dallas businesses in healthcare, legal, or financial services, data safety is critical. Public AI tools like ChatGPT shouldn't be used for sensitive data without proper guardrails. Private AI deployments and employee training ensure your team gets the productivity benefits without the security risks.",
+    ],
+    faq: [
+      {
+        question: "What's the easiest way to start using AI in a small business?",
+        answer:
+          "Start by identifying your team's top 3 most repetitive tasks. Then evaluate whether existing tools (Microsoft Copilot, ChatGPT) can automate them, or whether you need custom automation. A free AI assessment from a consultant like ITECS can identify quick wins in under an hour.",
+      },
+      {
+        question: "How much does AI cost for a small business?",
+        answer:
+          "AI tools range from free (ChatGPT free tier) to a few hundred dollars per month (Microsoft Copilot, Zapier). Custom implementations like private chatbots or workflow automations typically cost $2,500–$15,000 to set up. Most Dallas businesses see ROI within the first month.",
       },
     ],
   },
   {
-    slug: "ai-security-compliance",
-    title: "AI Security & Data Protection for Dallas Businesses",
-    shortTitle: "AI Security",
+    slug: "secure-business-data-chatgpt",
+    title: "How to Secure Your Business Data from ChatGPT",
     description:
-      "We help Dallas businesses use AI safely — protecting sensitive data, meeting HIPAA/SOX/FINRA requirements, and keeping your company data out of public AI models.",
-    longDescription:
-      "Worried about employees pasting company data into ChatGPT? You should be. We help Dallas businesses set up AI tools the right way — with proper data boundaries, compliance controls, and security monitoring. Whether you need HIPAA compliance for healthcare or SOX alignment for finance, we make sure your AI usage doesn't create liability.",
-    heroMetric:
-      "100% compliance pass rate across every HIPAA, SOX, and FINRA audit we've supported.",
-    href: "/services/ai-security-compliance",
-    icon: "ShieldCheck",
+      "Your employees are using ChatGPT at work. Here's how to protect sensitive company data, set up safe AI policies, and deploy private AI alternatives for your Dallas business.",
+    href: "/insights/secure-business-data-chatgpt",
+    hubSlug: "custom-chatgpt",
+    hubLabel: "Custom ChatGPT for Business",
+    hubHref: "/custom-chatgpt",
     keywords: [
       "how to secure business data from ChatGPT",
-      "AI cybersecurity Dallas",
-      "HIPAA AI compliance Dallas",
+      "ChatGPT data security for business",
       "AI data protection small business",
-      "AI security Dallas",
+      "private ChatGPT for business",
     ],
-    h1: "AI Security & Data Protection in Dallas",
-    features: [
-      "Prevent sensitive company data from leaking into public AI models",
-      "HIPAA, SOX, FINRA, and CMMC compliance for AI systems",
-      "Private AI deployments that keep your data under your control",
-      "Employee AI usage policies and training",
-      "Automated PHI/PII redaction before data enters any AI model",
-      "Security assessments and penetration testing for AI applications",
-    ],
-    howItWorks: [
-      {
-        step: "We assess your current AI security posture",
-        description:
-          "We audit how your team is using AI today — ChatGPT, Copilot, other tools — and identify where sensitive data is at risk of leaking.",
-      },
-      {
-        step: "We implement secure AI data handling",
-        description:
-          "We set up private AI environments, data boundaries, automatic PII redaction, and compliance controls tailored to your industry's regulations.",
-      },
-      {
-        step: "We monitor and maintain compliance",
-        description:
-          "We provide ongoing monitoring, employee training updates, and audit-ready documentation so you stay compliant as regulations evolve.",
-      },
-    ],
-    toolsMentioned: [
-      "Azure OpenAI",
-      "Microsoft Purview",
-      "SentinelOne",
-      "Microsoft Copilot",
-      "OpenAI API",
-    ],
-    stats: [
-      { value: 100, suffix: "%", label: "Compliance Pass Rate" },
-      { value: 0, suffix: "", label: "Data Breaches" },
-      { value: 50, suffix: "+", label: "Audits Supported" },
+    h1: "How to Secure Your Business Data from ChatGPT",
+    content: [
+      "Your employees are almost certainly using ChatGPT at work — even if you haven't approved it. And every time they paste a customer email, financial report, or internal document into the public ChatGPT, that data potentially becomes training data for OpenAI's models.",
+      "**The safest approach is deploying a [private Custom ChatGPT](/custom-chatgpt) that keeps your business data completely under your control.** At ITECS, we build secure, private AI chatbots for Dallas businesses that give your team all the productivity benefits of ChatGPT without the data leakage risks.",
+      "Here's what you need to know: the free version of ChatGPT uses your conversations to train its models. That means customer PII, financial data, legal documents, and trade secrets can end up in OpenAI's training data. For Dallas businesses in healthcare (HIPAA), finance (SOX), or legal services, this isn't just risky — it's potentially a compliance violation.",
+      "The fix isn't banning AI — it's channeling it safely. Deploy Azure OpenAI or private API instances where your data stays in your own environment. Set up DLP (data loss prevention) policies that block sensitive data from reaching public AI endpoints. Train your employees on what they can and can't share. And build custom AI tools that access your data securely through APIs, not copy-paste.",
+      "At ITECS, we've deployed private ChatGPT solutions for dozens of Dallas businesses with a 100% compliance pass rate. Your employees get an AI assistant that knows your business inside and out — and your data never leaves your infrastructure.",
     ],
     faq: [
       {
-        question: "How do I secure my business data from ChatGPT?",
+        question: "Does ChatGPT store my business data?",
         answer:
-          "The biggest risk is employees pasting sensitive information — customer records, financial data, proprietary documents — into public ChatGPT. We solve this by deploying private AI instances (Azure OpenAI, on-premise models) that keep your data within your control, implementing DLP (data loss prevention) policies, and training your staff on safe AI usage.",
+          "The free version of ChatGPT may use your conversations for model training. ChatGPT Enterprise and API access offer data privacy guarantees, but the safest option for sensitive business data is a private deployment (Azure OpenAI, on-premise) where you control the infrastructure.",
       },
       {
-        question: "How much does AI security compliance cost for a small business?",
+        question: "Can I use ChatGPT and still be HIPAA compliant?",
         answer:
-          "AI security assessments for Dallas businesses start at $2,500. Full compliance implementation (HIPAA, SOX, etc.) ranges from $5,000–$20,000 depending on the scope. Ongoing compliance monitoring starts at $500/month. Most businesses find it far cheaper than the cost of a data breach or failed audit.",
-      },
-      {
-        question: "Can AI be HIPAA compliant?",
-        answer:
-          "Yes, when properly set up. We deploy AI on HIPAA-compliant infrastructure like Azure OpenAI with private endpoints, implement automatic PHI redaction before data enters the model, maintain audit logs, and ensure BAA coverage across all processing components. We've maintained a 100% compliance pass rate for all HIPAA AI deployments.",
-      },
-      {
-        question: "Do you help with employee AI usage policies?",
-        answer:
-          "Yes. We draft and implement clear AI acceptable-use policies for your organization, train staff on what can and can't be shared with AI tools, and set up technical guardrails to enforce those policies automatically.",
+          "Not the public version. For HIPAA compliance, you need a private AI deployment with a signed BAA, PHI redaction, audit logging, and proper access controls. Azure OpenAI with private endpoints is the most common solution we deploy for Dallas healthcare businesses.",
       },
     ],
   },
   {
-    slug: "ai-seo",
-    title: "AI-Powered SEO & Generative Engine Optimization in Dallas",
-    shortTitle: "AI SEO",
+    slug: "automate-lead-follow-up",
+    title: "How to Automate Lead Follow-Up with AI",
     description:
-      "We help Dallas businesses rank in Google and AI search results like ChatGPT, Perplexity, and Google AI Overviews. Traditional SEO + the new rules of AI-powered search.",
-    longDescription:
-      "Google isn't the only search engine anymore. When your customers ask ChatGPT or Perplexity for recommendations, does your business show up? We optimize your online presence for both traditional search engines and AI assistants — so you get found no matter how people search.",
-    heroMetric:
-      "Our Dallas clients see an average 340% increase in organic traffic within 6 months.",
-    href: "/services/ai-seo",
-    icon: "Search",
+      "Stop losing leads to slow follow-up. Learn how Dallas businesses automate lead response with AI — from instant email/text replies to smart lead qualification.",
+    href: "/insights/automate-lead-follow-up",
+    hubSlug: "automation",
+    hubLabel: "AI Workflow Automation",
+    hubHref: "/automation",
     keywords: [
-      "AI SEO Dallas",
-      "generative engine optimization Dallas",
-      "GEO services Dallas",
-      "AI search optimization",
-      "small business SEO Dallas",
+      "automate lead follow up with AI",
+      "AI lead follow up",
+      "automated lead response",
+      "lead automation small business",
     ],
-    h1: "AI-Powered SEO & GEO for Dallas Businesses",
-    features: [
-      "Rank in ChatGPT, Perplexity, and Google AI Overviews — not just traditional search",
-      "Structured data and schema markup that AI search engines love",
-      "Content strategy built around the questions your customers actually ask",
-      "LLMs.txt and AI.txt implementation for crawler accessibility",
-      "Citation tracking across ChatGPT, Perplexity, and Google AI",
-      "Technical SEO automation and monthly performance reporting",
-    ],
-    howItWorks: [
-      {
-        step: "We audit your visibility across Google and AI search",
-        description:
-          "We check how your business shows up in Google, ChatGPT, Perplexity, and other AI search tools. We identify gaps and missed opportunities.",
-      },
-      {
-        step: "We optimize for both traditional and AI search",
-        description:
-          "We restructure your content, add schema markup, and implement GEO best practices so AI systems can understand and cite your business.",
-      },
-      {
-        step: "We track and grow your citations",
-        description:
-          "We monitor how often AI assistants mention your business and continually optimize to increase your visibility across all search channels.",
-      },
-    ],
-    toolsMentioned: [
-      "Google Search Console",
-      "Ahrefs",
-      "ChatGPT",
-      "Perplexity",
-      "Google AI Overviews",
-    ],
-    stats: [
-      { value: 340, suffix: "%", label: "Avg. Organic Traffic Increase" },
-      { value: 12, suffix: "x", label: "AI Citation Growth" },
-      { value: 90, suffix: "+", label: "Lighthouse SEO Score" },
+    h1: "How to Automate Lead Follow-Up with AI",
+    content: [
+      "The average small business takes over 24 hours to respond to a new lead. By that point, 78% of buyers have already gone with whoever responded first. If you're not following up within minutes, you're losing deals — and the fix is simpler than you think.",
+      "**[AI-powered workflow automation](/automation) can follow up with new leads within seconds of form submission — via email, text, or both.** At ITECS, we build these automated lead follow-up systems for Dallas businesses using tools like Zapier, Make.com, HubSpot AI, and custom integrations.",
+      "Here's how it works: a lead fills out your website form. Within 60 seconds, they receive a personalized email and text acknowledging their inquiry. The AI qualifies the lead based on your criteria (company size, budget, service interest) and routes hot leads directly to your sales team with a notification. Warm leads enter a nurture sequence. Everything is tracked in your CRM automatically.",
+      "The results speak for themselves. Our Dallas clients who implement AI lead follow-up see a 30–50% improvement in lead response time and a 25% increase in conversion rates. The automation runs 24/7 — nights, weekends, holidays — so you never miss a lead again.",
+      "The best part: you don't need to change your existing tools. We connect Zapier or Make.com to your website forms, CRM (HubSpot, Salesforce), email platform, and SMS provider. Setup takes 1–2 weeks, and you start seeing results immediately.",
     ],
     faq: [
       {
-        question: "How much does AI SEO cost for a small business in Dallas?",
+        question: "What tools do you use to automate lead follow-up?",
         answer:
-          "Our Dallas AI SEO packages start at $1,500/month for small businesses, which includes both traditional SEO and generative engine optimization. One-time audits and setup projects range from $3,000–$8,000. We provide clear monthly reporting so you can see exactly what you're getting.",
+          "We typically use Zapier or Make.com as the automation backbone, connected to your CRM (HubSpot, Salesforce), email platform, and SMS provider (Twilio). For more advanced lead qualification, we add OpenAI API for AI-powered lead scoring and personalized responses.",
       },
       {
-        question: "What is Generative Engine Optimization (GEO)?",
+        question: "How fast can AI follow up with a new lead?",
         answer:
-          "GEO is the practice of optimizing your website to appear in AI-generated search results — ChatGPT responses, Google AI Overviews, Perplexity answers. When someone asks an AI assistant 'What's the best AI consultant in Dallas?', GEO helps make sure your business gets cited in the answer.",
-      },
-      {
-        question: "Is traditional SEO still relevant with AI search?",
-        answer:
-          "Absolutely. Traditional SEO is the foundation. AI search engines still rely on the same signals — quality content, domain authority, and structured data. GEO builds on top of strong traditional SEO. You need both to dominate search in 2026.",
-      },
-      {
-        question: "How do you track whether AI search engines are recommending my business?",
-        answer:
-          "We monitor your brand mentions and citations across ChatGPT, Google AI Overviews, Perplexity, and Claude. We track how often your business is recommended, what queries trigger mentions, and how that changes month-over-month.",
+          "Under 60 seconds from form submission to personalized email and text message. This is one of the highest-ROI automations we build for Dallas businesses — speed to lead is the single biggest factor in conversion rates.",
       },
     ],
   },
@@ -498,7 +570,7 @@ export const FAQ_ITEMS = [
   {
     question: "Which AI tools do you work with?",
     answer:
-      "We're vendor-neutral and work with Microsoft Copilot, OpenAI (ChatGPT), Azure OpenAI, Google Vertex AI, Zapier, Make, Power Automate, and custom-built solutions. We recommend what fits your business and budget — not what pays us the highest margin.",
+      "We're vendor-neutral and work with Microsoft Copilot, OpenAI (ChatGPT), Azure OpenAI, Google Vertex AI, Zapier, Make.com, Power Automate, HubSpot AI, and custom-built solutions. We recommend what fits your business and budget — not what pays us the highest margin.",
   },
   {
     question: "How do I keep my company data safe when using AI?",
@@ -577,7 +649,7 @@ export const HOMEPAGE_FEATURES = [
       "Integrations with HubSpot, Salesforce, QuickBooks, and 100+ tools",
       "Microsoft Copilot, Teams, and Outlook AI setup",
       "Custom chatbots that pull live data from your existing systems",
-      "Zapier and Make automations connecting everything together",
+      "Zapier and Make.com automations connecting everything together",
     ],
   },
 ] as const;

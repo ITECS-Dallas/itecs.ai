@@ -4,14 +4,15 @@ import { SERVICES, SITE_CONFIG } from "@/lib/constants";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { ServiceHero } from "@/components/sections/ServiceHero";
-import { ServiceFeatures } from "@/components/sections/ServiceFeatures";
 import { HowItWorks } from "@/components/sections/HowItWorks";
+import { ServiceFeatures } from "@/components/sections/ServiceFeatures";
+import { Integrations } from "@/components/sections/Integrations";
 import { ServiceStats } from "@/components/sections/ServiceStats";
 import { FAQ } from "@/components/sections/FAQ";
 import { CTASection } from "@/components/sections/CTASection";
 import Link from "next/link";
 
-const service = SERVICES.find((s) => s.slug === "ai-chatbot-development")!;
+const service = SERVICES.find((s) => s.slug === "consulting")!;
 
 export const metadata = generatePageMetadata({
   title: service.title,
@@ -20,38 +21,39 @@ export const metadata = generatePageMetadata({
   keywords: service.keywords,
 });
 
-export default function AIChatbotPage() {
+export default function ConsultingPage() {
   return (
     <>
       <div className="mx-auto max-w-7xl px-6 md:px-8 pt-24">
         <Breadcrumbs items={[
           { label: "Home", href: "/" },
-          { label: "Services", href: "/services" },
           { label: service.shortTitle, href: service.href },
         ]} />
       </div>
       <ServiceHero service={service} />
-      <HowItWorks steps={service.howItWorks} heading="How We Build Your Custom ChatGPT" />
+      <HowItWorks steps={service.howItWorks} heading={service.howItWorksHeading} />
       <ServiceFeatures features={service.features} />
+      <Integrations tools={service.integrations} />
       <ServiceStats stats={service.stats} />
 
       <section className="py-12 mx-auto max-w-7xl px-6 md:px-8">
-        <h2 className="text-2xl font-light text-text-primary mb-4">Related Services</h2>
+        <h2 className="text-2xl font-light text-text-primary mb-4">Related</h2>
         <div className="flex flex-wrap gap-4">
-          <Link href="/services/ai-consulting" className="text-brand-accent hover:text-brand-accent-bright transition-colors text-sm">AI Consulting &rarr;</Link>
-          <Link href="/services/ai-security-compliance" className="text-brand-accent hover:text-brand-accent-bright transition-colors text-sm">AI Security &rarr;</Link>
-          <Link href="/services/managed-ai" className="text-brand-accent hover:text-brand-accent-bright transition-colors text-sm">AI Automation &rarr;</Link>
+          <Link href="/custom-chatgpt" className="text-brand-accent hover:text-brand-accent-bright transition-colors text-sm">Custom ChatGPT &rarr;</Link>
+          <Link href="/automation" className="text-brand-accent hover:text-brand-accent-bright transition-colors text-sm">AI Automation &rarr;</Link>
+          <Link href="/training" className="text-brand-accent hover:text-brand-accent-bright transition-colors text-sm">AI Training &rarr;</Link>
+          <Link href="/insights/how-to-use-ai-small-business" className="text-brand-accent hover:text-brand-accent-bright transition-colors text-sm">Guide: How to Use AI in Small Business &rarr;</Link>
         </div>
       </section>
 
-      <FAQ items={service.faq} heading="Custom ChatGPT FAQ" />
+      <FAQ items={service.faq} heading="AI Consulting FAQ" />
       <CTASection />
+
       <JsonLd data={generateServiceSchema(service)} />
       <JsonLd data={generateFAQSchema(service.faq)} />
       <JsonLd data={generateHowToSchema(service)} />
       <JsonLd data={generateBreadcrumbSchema([
         { name: "Home", url: SITE_CONFIG.url },
-        { name: "Services", url: `${SITE_CONFIG.url}/services` },
         { name: service.shortTitle, url: `${SITE_CONFIG.url}${service.href}` },
       ])} />
     </>

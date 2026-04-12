@@ -23,15 +23,16 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://itecs.ai"),
   title: {
     template: "%s | ITECS AI",
-    default: "Dallas AI Consulting & Strategy | ITECS AI",
+    default: "Dallas AI Consulting & Automation for Small Business | ITECS AI",
   },
   description:
-    "ITECS provides enterprise AI consulting, managed intelligence, chatbot development, and AI security compliance services in Dallas, TX. 22+ years of IT operations expertise.",
+    "ITECS helps Dallas businesses with 10–300 employees save time and cut costs with AI automation, custom ChatGPT development, and hands-on AI consulting. 22+ years of IT expertise.",
   keywords: [
-    "AI Consulting Dallas",
-    "AI Strategy Dallas",
-    "Managed AI Dallas",
-    "Enterprise AI",
+    "small business AI Dallas",
+    "AI consulting Dallas",
+    "custom ChatGPT Dallas",
+    "AI automation Dallas",
+    "AI training Dallas",
     "ITECS",
   ],
   openGraph: {

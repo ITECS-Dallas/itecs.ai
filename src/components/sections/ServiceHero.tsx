@@ -25,17 +25,15 @@ export function ServiceHero({ service }: { service: ServiceItem }) {
           <h1 className="text-4xl md:text-6xl font-extralight tracking-[-0.03em] leading-[1.1] max-w-3xl">
             {service.h1}
           </h1>
-          <p className="mt-6 text-lg md:text-xl text-text-secondary font-light max-w-2xl leading-relaxed">
-            {service.longDescription}
+
+          {/* Above-the-fold ROI summary — bold, 40-60 words, GEO-extractable */}
+          <p className="mt-6 text-lg md:text-xl text-text-primary font-medium max-w-2xl leading-relaxed">
+            <strong>{service.heroSummary}</strong>
           </p>
 
-          {/* ROI metric — above the fold */}
-          <div className="mt-8 inline-flex items-center gap-3 px-5 py-3 rounded-lg border border-[var(--border-active)] bg-brand-accent/5">
-            <div className="w-2 h-2 rounded-full bg-brand-accent animate-pulse-node" />
-            <p className="text-sm text-brand-accent font-medium">
-              {service.heroMetric}
-            </p>
-          </div>
+          <p className="mt-4 text-base text-text-secondary font-light max-w-2xl leading-relaxed">
+            {service.longDescription}
+          </p>
         </motion.div>
       </div>
     </section>

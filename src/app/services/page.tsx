@@ -9,15 +9,14 @@ import { CTASection } from "@/components/sections/CTASection";
 export const metadata = generatePageMetadata({
   title: "AI Services for Dallas Small Businesses | ITECS",
   description:
-    "AI consulting, workflow automation, custom ChatGPT development, AI security, and SEO for Dallas businesses with 10–300 employees. Practical AI that saves time and money.",
+    "AI consulting, workflow automation, custom ChatGPT development, and employee AI training for Dallas businesses with 10–300 employees. Practical AI that saves time and money.",
   path: "/services",
   keywords: [
     "small business AI services Dallas",
     "AI automation Dallas",
     "custom ChatGPT Dallas",
     "AI consulting Dallas",
-    "AI security compliance Dallas",
-    "workflow automation small business",
+    "AI training Dallas",
   ],
 });
 

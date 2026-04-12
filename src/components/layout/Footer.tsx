@@ -113,8 +113,24 @@ export function Footer() {
           </div>
         </div>
 
+        {/* Trust badge — child-to-parent authority link (Ticket 3) */}
+        <div className="mt-12 pt-6 border-t border-[var(--border-subtle)]">
+          <p className="text-sm text-text-dim text-center">
+            ITECS AI is a division of{" "}
+            <a
+              href={SITE_CONFIG.mainSiteUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-brand-accent hover:text-brand-accent-bright transition-colors"
+            >
+              ITECS
+            </a>
+            , providing trusted Dallas IT services since 2002.
+          </p>
+        </div>
+
         {/* Bottom bar */}
-        <div className="mt-12 pt-6 border-t border-[var(--border-subtle)] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-text-dim">
+        <div className="mt-6 pt-6 border-t border-[var(--border-subtle)] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-text-dim">
           <p>
             &copy; {new Date().getFullYear()} {SITE_CONFIG.legalName}. All
             rights reserved.
