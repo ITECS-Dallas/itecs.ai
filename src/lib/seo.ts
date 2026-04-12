@@ -1,4 +1,4 @@
-import { SITE_CONFIG, type ServiceItem } from "./constants";
+import { SITE_CONFIG, SERVICES, type ServiceItem } from "./constants";
 
 // ---------------------------------------------------------------------------
 // Organization (global — injected in root layout)
@@ -34,6 +34,8 @@ export function generateOrganizationSchema() {
 
 // ---------------------------------------------------------------------------
 // LocalBusiness (global — injected in root layout)
+// Per Google SEO report: use LocalBusiness (not Corporation) for SMB proximity
+// citations, with parentOrganization tie to itecsonline.com for authority transfer
 // ---------------------------------------------------------------------------
 
 export function generateLocalBusinessSchema() {
@@ -41,13 +43,29 @@ export function generateLocalBusinessSchema() {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "@id": `${SITE_CONFIG.url}/#localbusiness`,
-    name: `${SITE_CONFIG.name} - AI Consulting Dallas`,
+    name: "ITECS AI",
     url: SITE_CONFIG.url,
+    description:
+      "Practical AI automation, custom ChatGPT development, and AI consulting for small to medium businesses (SMBs) in Dallas, TX.",
     telephone: SITE_CONFIG.phone,
     email: SITE_CONFIG.email,
     image: `${SITE_CONFIG.url}/images/logos/itecs-horizontal.svg`,
-    description: SITE_CONFIG.description,
     priceRange: "$$",
+    parentOrganization: {
+      "@type": "LocalBusiness",
+      name: "ITECS",
+      url: SITE_CONFIG.mainSiteUrl,
+      foundingDate: String(SITE_CONFIG.foundingYear),
+    },
+    knowsAbout: [
+      "Small Business AI Consulting",
+      "Custom ChatGPT for Business",
+      "AI Workflow Automation",
+      "Employee AI Training",
+      "AI CRM Integration",
+      "AI Security and Compliance",
+      "Generative Engine Optimization",
+    ],
     address: {
       "@type": "PostalAddress",
       streetAddress: SITE_CONFIG.address.street,
@@ -83,6 +101,15 @@ export function generateLocalBusinessSchema() {
         name: "Texas",
       },
     ],
+    offers: {
+      "@type": "AggregateOffer",
+      itemOffered: SERVICES.map((s) => ({
+        "@type": "Service",
+        name: s.title,
+        description: s.description,
+        url: `${SITE_CONFIG.url}${s.href}`,
+      })),
+    },
   };
 }
 
@@ -98,15 +125,20 @@ export function generateServiceSchema(service: ServiceItem) {
     description: service.description,
     url: `${SITE_CONFIG.url}${service.href}`,
     provider: {
-      "@type": "Organization",
-      name: SITE_CONFIG.name,
+      "@type": "LocalBusiness",
+      name: "ITECS AI",
       url: SITE_CONFIG.url,
+      parentOrganization: {
+        "@type": "LocalBusiness",
+        name: "ITECS",
+        url: SITE_CONFIG.mainSiteUrl,
+      },
     },
     areaServed: {
       "@type": "City",
       name: "Dallas",
     },
-    serviceType: service.title,
+    serviceType: service.shortTitle,
   };
 }
 
@@ -146,6 +178,27 @@ export function generateBreadcrumbSchema(
       position: index + 1,
       name: crumb.name,
       item: crumb.url,
+    })),
+  };
+}
+
+// ---------------------------------------------------------------------------
+// HowTo (per service page — GEO strategy for numbered process extraction)
+// ---------------------------------------------------------------------------
+
+export function generateHowToSchema(
+  service: ServiceItem
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: `How ${service.shortTitle} Works at ITECS`,
+    description: service.description,
+    step: service.howItWorks.map((item, i) => ({
+      "@type": "HowToStep",
+      position: i + 1,
+      name: item.step,
+      text: item.description,
     })),
   };
 }

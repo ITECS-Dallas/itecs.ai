@@ -7,9 +7,9 @@ export const SITE_CONFIG = {
   legalName: "ITECS, LLC",
   url: "https://itecs.ai",
   mainSiteUrl: "https://itecsonline.com",
-  tagline: "Intelligent Systems. Autonomous Operations.",
+  tagline: "Practical AI for Dallas Businesses.",
   description:
-    "ITECS provides enterprise AI consulting, managed intelligence, chatbot development, and AI security compliance services in Dallas, TX. 22+ years of IT operations expertise.",
+    "ITECS helps small and mid-sized Dallas businesses save time and cut costs with practical AI automation, custom ChatGPT development, and hands-on AI consulting. 22+ years of IT operations expertise.",
   phone: "(972) 408-2020",
   email: "info@itecsonline.com",
   foundingYear: 2002,
@@ -47,11 +47,14 @@ export interface ServiceItem {
   shortTitle: string;
   description: string;
   longDescription: string;
+  heroMetric: string;
   href: string;
   icon: string;
   keywords: string[];
   h1: string;
   features: string[];
+  howItWorks: { step: string; description: string }[];
+  toolsMentioned: string[];
   stats: { value: number; suffix: string; label: string }[];
   faq: { question: string; answer: string }[];
 }
@@ -59,225 +62,377 @@ export interface ServiceItem {
 export const SERVICES: ServiceItem[] = [
   {
     slug: "ai-consulting",
-    title: "AI Consulting & Strategy",
+    title: "Small Business AI Consulting in Dallas",
     shortTitle: "AI Consulting",
     description:
-      "Vendor-neutral AI readiness assessments, ROI modeling, and governance frameworks for Dallas enterprises across healthcare, finance, manufacturing, and legal.",
+      "We help Dallas businesses with 10–300 employees find the right AI tools to save time, cut costs, and automate manual work — without the enterprise price tag.",
     longDescription:
-      "We evaluate your operational landscape, identify high-impact AI opportunities, and build a phased adoption roadmap — without locking you into a single platform. From two-week insight sprints to full governance frameworks, every engagement is anchored in measurable business outcomes.",
+      "Most small businesses know AI could help, but don't know where to start. We sit down with your team, identify the tasks eating up the most time, and build a practical plan to automate them. No jargon, no year-long roadmaps — just clear steps to save your team 20+ hours a week.",
+    heroMetric:
+      "Our Dallas clients save an average of 20+ hours per week after implementing our AI recommendations.",
     href: "/services/ai-consulting",
     icon: "Brain",
     keywords: [
-      "AI Consulting Dallas",
-      "AI Strategy Dallas",
-      "AI Readiness Assessment",
-      "AI ROI Modeling",
-      "AI Governance Framework",
+      "AI consulting for small business",
+      "small business AI Dallas",
+      "how to use AI in small business",
+      "AI consultant Dallas",
+      "AI readiness assessment Dallas",
     ],
-    h1: "AI Consulting & Strategy for Dallas Enterprises",
+    h1: "AI Consulting for Small Businesses in Dallas",
     features: [
-      "AI readiness assessments tied to business KPIs",
-      "Two-week Insight Sprints for rapid opportunity identification",
-      "ROI modeling with 3.2x average return projections",
-      "Governance and ethical AI framework development",
-      "Vendor-neutral platform evaluation and selection",
-      "Industry-specific use case mapping (healthcare, finance, legal, manufacturing)",
+      "Identify which manual tasks are costing you the most time and money",
+      "Get a plain-English AI adoption plan tailored to your budget",
+      "Evaluate tools like Microsoft Copilot, OpenAI, and custom AI options",
+      "Train your staff to use AI tools safely and effectively",
+      "Measure ROI with clear before-and-after KPIs",
+      "Industry-specific guidance for healthcare, legal, finance, and manufacturing",
+    ],
+    howItWorks: [
+      {
+        step: "We audit your manual tasks",
+        description:
+          "We spend time with your team to find the repetitive, time-consuming workflows that are ripe for AI automation.",
+      },
+      {
+        step: "We build a practical AI plan",
+        description:
+          "You get a prioritized roadmap with cost estimates, timelines, and the specific tools that fit your business and budget.",
+      },
+      {
+        step: "We implement and train your team",
+        description:
+          "We set up the AI tools, integrate them with your existing systems, and train your staff until they're self-sufficient.",
+      },
+    ],
+    toolsMentioned: [
+      "Microsoft Copilot",
+      "OpenAI API",
+      "Azure OpenAI",
+      "Google Vertex AI",
+      "Custom GPT",
     ],
     stats: [
+      { value: 20, suffix: "+", label: "Hours Saved per Week" },
       { value: 3.2, suffix: "x", label: "Average Client ROI" },
-      { value: 92, suffix: "%", label: "Security Compliance Rate" },
-      { value: 45, suffix: "%", label: "Faster Implementation" },
+      { value: 45, suffix: "%", label: "Faster Than DIY Implementation" },
     ],
     faq: [
       {
-        question: "What does an AI consulting engagement look like?",
+        question: "How much does AI consulting cost for a small business?",
         answer:
-          "Every engagement starts with a two-week Insight Sprint where we audit your data landscape, interview stakeholders, and identify the highest-ROI AI use cases for your industry. From there we deliver a prioritized roadmap with cost projections, timeline, and compliance considerations.",
+          "Our engagements start with a two-week AI Insight Sprint for Dallas businesses, typically ranging from $3,000–$8,000 depending on complexity. Full implementation projects vary based on scope. We always provide a clear quote upfront with no hidden costs — and most clients see ROI within the first month.",
       },
       {
-        question: "Do you sell or recommend specific AI platforms?",
+        question: "How do I know if my business is ready for AI?",
         answer:
-          "No. ITECS is vendor-neutral — we evaluate Azure OpenAI, AWS Bedrock, Google Vertex, and open-source options against your requirements. Our recommendations are driven by fit, not vendor margins.",
+          "If your team spends time on repetitive tasks like data entry, report generation, customer follow-ups, or document processing, you're ready. We start with a free assessment to identify exactly where AI will save you the most time and money.",
       },
       {
-        question: "How long until we see measurable results from AI?",
+        question: "Do you sell or lock us into specific AI platforms?",
         answer:
-          "Most clients see initial results within 4-6 weeks of a proof-of-concept deployment. Full production implementations typically run 8-12 weeks, with measurable KPI improvements tracked from day one.",
+          "No. ITECS is vendor-neutral — we evaluate Microsoft Copilot, OpenAI, Google Vertex, and open-source options against your needs. Our recommendations are driven by what fits your business, not vendor margins.",
+      },
+      {
+        question: "How long until we see results from AI?",
+        answer:
+          "Most Dallas businesses see measurable time savings within 2–4 weeks of implementation. Our Insight Sprint takes just two weeks, and we can have your first AI tools running the same month.",
       },
     ],
   },
   {
     slug: "managed-ai",
-    title: "Managed AI Operations",
-    shortTitle: "Managed AI",
+    title: "AI Automation & Workflow Management in Dallas",
+    shortTitle: "AI Automation",
     description:
-      "24/7 managed AI infrastructure, model monitoring, drift detection, and MLOps for Dallas businesses that need continuous, reliable AI operations.",
+      "We build and manage AI-powered workflow automations for Dallas businesses — from lead follow-up to data entry to customer onboarding. Set it and forget it.",
     longDescription:
-      "Once your AI systems are in production, they need the same operational rigor as your core infrastructure. Our managed AI service provides 24/7 monitoring, automated drift detection, model retraining pipelines, and incident response — so your AI keeps delivering value without becoming a liability.",
+      "Your team shouldn't waste hours on tasks a machine can handle. We map your repetitive workflows — lead follow-ups, invoice processing, data entry, appointment scheduling — and automate them with AI tools like Zapier, Make, Microsoft Power Automate, and custom integrations. Then we monitor everything so it keeps running smoothly.",
+    heroMetric:
+      "Dallas businesses using our AI automation save an average of 40% on operational costs.",
     href: "/services/managed-ai",
     icon: "Activity",
     keywords: [
-      "Managed AI Dallas",
-      "AI Operations Dallas",
-      "MLOps Dallas",
-      "AI Monitoring",
-      "Managed Intelligence Provider",
+      "AI workflow automation for small business",
+      "automate lead follow up with AI",
+      "AI automation Dallas",
+      "workflow automation Dallas",
+      "small business automation",
     ],
-    h1: "Managed AI Operations for Dallas Businesses",
+    h1: "AI Workflow Automation for Dallas Businesses",
     features: [
-      "24/7 model performance monitoring and alerting",
-      "Automated drift detection and retraining triggers",
-      "MLOps pipeline management (CI/CD for models)",
-      "GPU and inference infrastructure optimization",
-      "Cost monitoring and compute right-sizing",
-      "Incident response and model rollback procedures",
+      "Automate lead follow-up, appointment scheduling, and customer onboarding",
+      "Connect your existing tools — CRM, email, invoicing, helpdesk",
+      "AI-powered data entry and document processing",
+      "24/7 monitoring so automations never break silently",
+      "Monthly reporting on time saved and cost reduction",
+      "Scale up without hiring — handle 2x the workload with the same team",
+    ],
+    howItWorks: [
+      {
+        step: "We map your repetitive workflows",
+        description:
+          "We identify the manual tasks your team does every day — lead follow-ups, data entry, scheduling, report generation — and rank them by time wasted.",
+      },
+      {
+        step: "We build automated AI pipelines",
+        description:
+          "Using tools like Zapier, Make, Power Automate, and custom AI, we connect your existing systems and automate the workflows that eat up the most hours.",
+      },
+      {
+        step: "We monitor and optimize continuously",
+        description:
+          "We don't just set it and leave. Our team monitors your automations 24/7, fixes issues before you notice, and optimizes for even more time savings.",
+      },
+    ],
+    toolsMentioned: [
+      "Zapier",
+      "Make",
+      "Microsoft Power Automate",
+      "HubSpot AI",
+      "OpenAI API",
     ],
     stats: [
-      { value: 99.9, suffix: "%", label: "Uptime SLA" },
-      { value: 24, suffix: "/7", label: "Operations Coverage" },
       { value: 40, suffix: "%", label: "Avg. Cost Reduction" },
+      { value: 99.9, suffix: "%", label: "Automation Uptime" },
+      { value: 2, suffix: "x", label: "Workload Without New Hires" },
     ],
     faq: [
       {
-        question: "What is a managed intelligence provider?",
+        question: "How much does AI workflow automation cost for a small business?",
         answer:
-          "A managed intelligence provider operates and maintains your AI systems post-deployment — handling monitoring, retraining, infrastructure, and incident response so your team can focus on business outcomes rather than model operations.",
+          "Setup costs for Dallas businesses typically range from $2,500–$10,000 depending on the number of workflows, with ongoing management starting at $500/month. Most clients break even within the first month through time savings alone.",
       },
       {
-        question: "Can you manage AI systems we built with another vendor?",
+        question: "What tasks can you automate with AI?",
         answer:
-          "Yes. We manage AI deployments across Azure OpenAI, AWS, Google Cloud, and custom on-premise installations regardless of who built the initial system.",
+          "The most common automations we build for Dallas SMBs: lead follow-up emails and texts, appointment scheduling and reminders, invoice processing and data entry, customer onboarding sequences, report generation, and helpdesk ticket routing. If your team does it repeatedly, we can probably automate it.",
       },
       {
-        question: "How do you handle model drift?",
+        question: "Do I need to change my existing software to use AI automation?",
         answer:
-          "We deploy automated monitoring that tracks prediction accuracy, data distribution shifts, and feature importance changes. When drift is detected, our pipeline triggers retraining with fresh data and validates the new model before promotion to production.",
+          "No. We integrate with the tools you already use — HubSpot, QuickBooks, Outlook, Teams, Slack, your CRM, your helpdesk. The whole point is connecting your existing stack, not replacing it.",
+      },
+      {
+        question: "Can you automate lead follow-up with AI?",
+        answer:
+          "Yes — this is one of our most popular automations for Dallas businesses. We build AI-powered sequences that follow up with leads via email and text within minutes of form submission, qualify them based on your criteria, and route hot leads directly to your sales team. Most clients see a 30–50% improvement in lead response time.",
       },
     ],
   },
   {
     slug: "ai-chatbot-development",
-    title: "AI Chatbot Development",
-    shortTitle: "AI Chatbots",
+    title: "Custom ChatGPT & AI Chatbot Development in Dallas",
+    shortTitle: "Custom ChatGPT",
     description:
-      "Custom enterprise chatbot and RAG-powered knowledge assistant development for Dallas businesses. Multi-channel deployment with compliance-aware architecture.",
+      "We build custom ChatGPT-style chatbots for Dallas businesses — trained on your data, connected to your systems, and handling customer questions 24/7.",
     longDescription:
-      "We build intelligent conversational AI that actually knows your business. Using retrieval-augmented generation (RAG), your chatbot draws from your internal documentation, knowledge bases, and live data sources to deliver accurate, contextual responses — not generic AI hallucinations.",
+      "Imagine a ChatGPT that only knows your business — your products, your policies, your pricing. We build secure, private AI chatbots that connect to your company data and answer customer questions, handle HR inquiries, and support your team around the clock. No hallucinations, no off-topic answers, just reliable AI that knows your business inside and out.",
+    heroMetric:
+      "Our custom business chatbots reduce customer support tickets by up to 40% for Dallas companies.",
     href: "/services/ai-chatbot-development",
     icon: "MessageSquareCode",
     keywords: [
-      "AI Chatbot Development Dallas",
-      "Enterprise Chatbot Dallas",
-      "RAG Chatbot",
-      "Knowledge Assistant AI",
-      "Conversational AI Dallas",
+      "custom ChatGPT for business data",
+      "AI customer service bot for SMB",
+      "custom chatbot development Dallas",
+      "AI receptionist Dallas",
+      "business chatbot Dallas",
     ],
-    h1: "Custom AI Chatbot Development in Dallas",
+    h1: "Custom ChatGPT for Your Dallas Business",
     features: [
-      "RAG-powered knowledge assistants grounded in your data",
-      "Multi-channel deployment (web, Teams, Slack, SMS)",
-      "HIPAA and SOC 2 compliant conversation handling",
-      "Integration with Hudu, HaloPSA, ServiceNow, and custom APIs",
-      "Conversation analytics and continuous improvement loops",
-      "Fallback-to-human escalation with full context transfer",
+      "A private ChatGPT trained exclusively on your business data",
+      "Handles customer questions, HR inquiries, and internal support 24/7",
+      "Connects securely to your knowledge base, CRM, and helpdesk",
+      "Deploys on your website, Slack, Teams, SMS, or all of the above",
+      "Escalates to a human when it can't answer — with full conversation context",
+      "HIPAA and SOC 2 compliant options for regulated industries",
+    ],
+    howItWorks: [
+      {
+        step: "We connect to your business data securely",
+        description:
+          "We ingest your documentation, knowledge base, product info, and policies into a secure, private AI system. Your data never leaves your control.",
+      },
+      {
+        step: "We build your custom ChatGPT",
+        description:
+          "We train an AI chatbot that only answers based on your data — no hallucinations, no off-topic responses. It knows your business and nothing else.",
+      },
+      {
+        step: "We deploy and train your team",
+        description:
+          "We launch the chatbot on your website, Slack, Teams, or SMS. We train your team to manage it, and we keep optimizing based on real conversation data.",
+      },
+    ],
+    toolsMentioned: [
+      "OpenAI API",
+      "CustomGPT",
+      "Microsoft Copilot",
+      "Slack",
+      "Microsoft Teams",
     ],
     stats: [
+      { value: 40, suffix: "%", label: "Fewer Support Tickets" },
       { value: 85, suffix: "%", label: "Query Resolution Rate" },
-      { value: 60, suffix: "%", label: "Support Cost Reduction" },
       { value: 3, suffix: "sec", label: "Avg. Response Time" },
     ],
     faq: [
       {
-        question: "What is a RAG-powered chatbot?",
+        question:
+          "How much does a custom AI chatbot cost for a small business?",
         answer:
-          "RAG (Retrieval-Augmented Generation) means the chatbot retrieves relevant information from your internal documents, databases, and knowledge bases before generating a response. This grounds answers in your actual data rather than relying solely on the AI model's training data.",
+          "Custom ChatGPT development for Dallas businesses typically ranges from $5,000–$15,000 for initial setup, depending on the number of data sources and channels. Ongoing hosting and management starts at $300/month. We provide transparent pricing upfront.",
       },
       {
-        question: "Can the chatbot integrate with our existing tools?",
+        question: "How do I build a custom ChatGPT for my customer service team?",
         answer:
-          "Yes. We build integrations with PSA platforms (HaloPSA, ConnectWise), documentation systems (Hudu, IT Glue), CRMs, ticketing systems, and custom APIs. The chatbot pulls live data from your existing stack.",
+          "That's exactly what we do. We connect your company documentation, FAQs, product guides, and support history to a private AI model. The result is a chatbot that answers customer questions accurately using only your data — deployed on your website, Slack, Teams, or SMS within 2–4 weeks.",
       },
       {
-        question: "How do you ensure the chatbot doesn't hallucinate?",
+        question:
+          "Will the chatbot make up answers or go off-topic?",
         answer:
-          "We implement strict retrieval boundaries, confidence scoring, and citation tracking. When the chatbot can't find a grounded answer in your data, it acknowledges the limitation and escalates to a human agent rather than generating unreliable information.",
+          "No. We implement strict data boundaries and confidence scoring. When the chatbot can't find an answer in your data, it says so and escalates to a human team member with full conversation context — rather than making something up.",
+      },
+      {
+        question: "Can the chatbot connect to our CRM and helpdesk?",
+        answer:
+          "Yes. We build integrations with HubSpot, Salesforce, HaloPSA, ConnectWise, Hudu, ServiceNow, and custom APIs. Your chatbot pulls live data from the tools your team already uses.",
       },
     ],
   },
   {
     slug: "ai-security-compliance",
-    title: "AI Security & Compliance",
+    title: "AI Security & Data Protection for Dallas Businesses",
     shortTitle: "AI Security",
     description:
-      "HIPAA, SOX, FINRA, and CMMC-aligned AI security assessments, PHI/PII redaction, data governance, and compliance frameworks for regulated Dallas industries.",
+      "We help Dallas businesses use AI safely — protecting sensitive data, meeting HIPAA/SOX/FINRA requirements, and keeping your company data out of public AI models.",
     longDescription:
-      "AI systems handling sensitive data need security architectures that satisfy regulators, not just auditors. We design and implement compliance-first AI deployments with PHI/PII redaction, audit logging, access controls, and data governance frameworks built for healthcare, financial services, and government contractors.",
+      "Worried about employees pasting company data into ChatGPT? You should be. We help Dallas businesses set up AI tools the right way — with proper data boundaries, compliance controls, and security monitoring. Whether you need HIPAA compliance for healthcare or SOX alignment for finance, we make sure your AI usage doesn't create liability.",
+    heroMetric:
+      "100% compliance pass rate across every HIPAA, SOX, and FINRA audit we've supported.",
     href: "/services/ai-security-compliance",
     icon: "ShieldCheck",
     keywords: [
-      "AI Security Compliance Dallas",
-      "HIPAA AI Dallas",
-      "AI Data Governance",
-      "AI Compliance Framework",
-      "PHI PII Redaction AI",
+      "how to secure business data from ChatGPT",
+      "AI cybersecurity Dallas",
+      "HIPAA AI compliance Dallas",
+      "AI data protection small business",
+      "AI security Dallas",
     ],
-    h1: "AI Security & Compliance for Regulated Industries",
+    h1: "AI Security & Data Protection in Dallas",
     features: [
-      "HIPAA, SOX, FINRA, and CMMC compliance alignment",
-      "PHI/PII automatic redaction and audit logging",
-      "Azure OpenAI private networking and data residency",
-      "Pre-deployment security assessments and penetration testing",
-      "Data governance frameworks for AI training data",
-      "Compliance documentation and regulator-ready reporting",
+      "Prevent sensitive company data from leaking into public AI models",
+      "HIPAA, SOX, FINRA, and CMMC compliance for AI systems",
+      "Private AI deployments that keep your data under your control",
+      "Employee AI usage policies and training",
+      "Automated PHI/PII redaction before data enters any AI model",
+      "Security assessments and penetration testing for AI applications",
+    ],
+    howItWorks: [
+      {
+        step: "We assess your current AI security posture",
+        description:
+          "We audit how your team is using AI today — ChatGPT, Copilot, other tools — and identify where sensitive data is at risk of leaking.",
+      },
+      {
+        step: "We implement secure AI data handling",
+        description:
+          "We set up private AI environments, data boundaries, automatic PII redaction, and compliance controls tailored to your industry's regulations.",
+      },
+      {
+        step: "We monitor and maintain compliance",
+        description:
+          "We provide ongoing monitoring, employee training updates, and audit-ready documentation so you stay compliant as regulations evolve.",
+      },
+    ],
+    toolsMentioned: [
+      "Azure OpenAI",
+      "Microsoft Purview",
+      "SentinelOne",
+      "Microsoft Copilot",
+      "OpenAI API",
     ],
     stats: [
       { value: 100, suffix: "%", label: "Compliance Pass Rate" },
       { value: 0, suffix: "", label: "Data Breaches" },
-      { value: 50, suffix: "+", label: "Compliance Audits Supported" },
+      { value: 50, suffix: "+", label: "Audits Supported" },
     ],
     faq: [
       {
+        question: "How do I secure my business data from ChatGPT?",
+        answer:
+          "The biggest risk is employees pasting sensitive information — customer records, financial data, proprietary documents — into public ChatGPT. We solve this by deploying private AI instances (Azure OpenAI, on-premise models) that keep your data within your control, implementing DLP (data loss prevention) policies, and training your staff on safe AI usage.",
+      },
+      {
+        question: "How much does AI security compliance cost for a small business?",
+        answer:
+          "AI security assessments for Dallas businesses start at $2,500. Full compliance implementation (HIPAA, SOX, etc.) ranges from $5,000–$20,000 depending on the scope. Ongoing compliance monitoring starts at $500/month. Most businesses find it far cheaper than the cost of a data breach or failed audit.",
+      },
+      {
         question: "Can AI be HIPAA compliant?",
         answer:
-          "Yes, when properly architected. We deploy AI systems on HIPAA-compliant infrastructure (Azure OpenAI with private endpoints), implement PHI redaction before data enters the model, maintain comprehensive audit logs, and ensure BAA coverage across all processing components.",
+          "Yes, when properly set up. We deploy AI on HIPAA-compliant infrastructure like Azure OpenAI with private endpoints, implement automatic PHI redaction before data enters the model, maintain audit logs, and ensure BAA coverage across all processing components. We've maintained a 100% compliance pass rate for all HIPAA AI deployments.",
       },
       {
-        question: "How do you handle AI training data governance?",
+        question: "Do you help with employee AI usage policies?",
         answer:
-          "We implement data lineage tracking, consent management, retention policies, and access controls for all training data. Every piece of data used to train or fine-tune models is documented, classified, and subject to your organization's data governance policies.",
-      },
-      {
-        question: "What regulations do you cover?",
-        answer:
-          "We align AI deployments with HIPAA, SOX, FINRA, CMMC, GDPR, PCI DSS, and SOC 2 requirements. For industries with overlapping regulations, we build unified compliance frameworks that satisfy multiple standards simultaneously.",
+          "Yes. We draft and implement clear AI acceptable-use policies for your organization, train staff on what can and can't be shared with AI tools, and set up technical guardrails to enforce those policies automatically.",
       },
     ],
   },
   {
     slug: "ai-seo",
-    title: "AI-Optimized SEO & GEO",
+    title: "AI-Powered SEO & Generative Engine Optimization in Dallas",
     shortTitle: "AI SEO",
     description:
-      "Generative engine optimization (GEO), AI-driven content strategy, and technical SEO automation for Dallas businesses looking to dominate AI-powered search.",
+      "We help Dallas businesses rank in Google and AI search results like ChatGPT, Perplexity, and Google AI Overviews. Traditional SEO + the new rules of AI-powered search.",
     longDescription:
-      "Search is evolving. AI-generated answers, knowledge panels, and conversational search are replacing traditional blue links. Our GEO service optimizes your digital presence for both traditional search engines and AI assistants — ensuring your business appears in ChatGPT responses, Google AI Overviews, and Perplexity citations.",
+      "Google isn't the only search engine anymore. When your customers ask ChatGPT or Perplexity for recommendations, does your business show up? We optimize your online presence for both traditional search engines and AI assistants — so you get found no matter how people search.",
+    heroMetric:
+      "Our Dallas clients see an average 340% increase in organic traffic within 6 months.",
     href: "/services/ai-seo",
     icon: "Search",
     keywords: [
       "AI SEO Dallas",
-      "Generative Engine Optimization",
-      "GEO Services Dallas",
-      "AI Content Strategy",
-      "AI Search Optimization",
+      "generative engine optimization Dallas",
+      "GEO services Dallas",
+      "AI search optimization",
+      "small business SEO Dallas",
     ],
-    h1: "AI-Optimized SEO & Generative Engine Optimization",
+    h1: "AI-Powered SEO & GEO for Dallas Businesses",
     features: [
-      "Generative Engine Optimization (GEO) for AI-powered search",
+      "Rank in ChatGPT, Perplexity, and Google AI Overviews — not just traditional search",
+      "Structured data and schema markup that AI search engines love",
+      "Content strategy built around the questions your customers actually ask",
       "LLMs.txt and AI.txt implementation for crawler accessibility",
-      "Structured data and schema markup optimization",
-      "AI-driven content strategy and topical authority mapping",
-      "Technical SEO automation and site health monitoring",
-      "Citation tracking across ChatGPT, Perplexity, and Google AI Overviews",
+      "Citation tracking across ChatGPT, Perplexity, and Google AI",
+      "Technical SEO automation and monthly performance reporting",
+    ],
+    howItWorks: [
+      {
+        step: "We audit your visibility across Google and AI search",
+        description:
+          "We check how your business shows up in Google, ChatGPT, Perplexity, and other AI search tools. We identify gaps and missed opportunities.",
+      },
+      {
+        step: "We optimize for both traditional and AI search",
+        description:
+          "We restructure your content, add schema markup, and implement GEO best practices so AI systems can understand and cite your business.",
+      },
+      {
+        step: "We track and grow your citations",
+        description:
+          "We monitor how often AI assistants mention your business and continually optimize to increase your visibility across all search channels.",
+      },
+    ],
+    toolsMentioned: [
+      "Google Search Console",
+      "Ahrefs",
+      "ChatGPT",
+      "Perplexity",
+      "Google AI Overviews",
     ],
     stats: [
       { value: 340, suffix: "%", label: "Avg. Organic Traffic Increase" },
@@ -286,19 +441,24 @@ export const SERVICES: ServiceItem[] = [
     ],
     faq: [
       {
+        question: "How much does AI SEO cost for a small business in Dallas?",
+        answer:
+          "Our Dallas AI SEO packages start at $1,500/month for small businesses, which includes both traditional SEO and generative engine optimization. One-time audits and setup projects range from $3,000–$8,000. We provide clear monthly reporting so you can see exactly what you're getting.",
+      },
+      {
         question: "What is Generative Engine Optimization (GEO)?",
         answer:
-          "GEO is the practice of optimizing your website and content to appear in AI-generated search results — including ChatGPT responses, Google AI Overviews, Perplexity answers, and other AI assistants that synthesize information from the web.",
+          "GEO is the practice of optimizing your website to appear in AI-generated search results — ChatGPT responses, Google AI Overviews, Perplexity answers. When someone asks an AI assistant 'What's the best AI consultant in Dallas?', GEO helps make sure your business gets cited in the answer.",
       },
       {
-        question: "Is traditional SEO still relevant?",
+        question: "Is traditional SEO still relevant with AI search?",
         answer:
-          "Absolutely. Traditional SEO remains the foundation. GEO builds on top of strong technical SEO, quality content, and structured data. AI search engines still rely heavily on the same signals — domain authority, content relevance, and structured markup.",
+          "Absolutely. Traditional SEO is the foundation. AI search engines still rely on the same signals — quality content, domain authority, and structured data. GEO builds on top of strong traditional SEO. You need both to dominate search in 2026.",
       },
       {
-        question: "How do you track AI search citations?",
+        question: "How do you track whether AI search engines are recommending my business?",
         answer:
-          "We monitor your brand mentions and content citations across major AI platforms including ChatGPT, Google AI Overviews, Perplexity, and Claude. This gives you visibility into how AI assistants reference your business when answering user queries.",
+          "We monitor your brand mentions and citations across ChatGPT, Google AI Overviews, Perplexity, and Claude. We track how often your business is recommended, what queries trigger mentions, and how that changes month-over-month.",
       },
     ],
   },
@@ -311,8 +471,8 @@ export const SERVICES: ServiceItem[] = [
 export const STATS = [
   { value: 22, suffix: "+", label: "Years of IT Operations" },
   { value: 92, suffix: "%", label: "Client Retention Rate" },
-  { value: 500, suffix: "+", label: "Endpoints Managed" },
-  { value: 3.2, suffix: "x", label: "Average AI ROI" },
+  { value: 500, suffix: "+", label: "Dallas Endpoints Managed" },
+  { value: 20, suffix: "+", label: "Hours Saved per Client Weekly" },
 ] as const;
 
 // ---------------------------------------------------------------------------
@@ -321,39 +481,39 @@ export const STATS = [
 
 export const FAQ_ITEMS = [
   {
-    question: "What makes ITECS different from other AI consulting firms in Dallas?",
+    question: "How much does AI cost for a small business?",
     answer:
-      "ITECS isn't a pure-play AI startup — we're a 22-year managed services provider that added AI capabilities on top of deep operational expertise. That means your AI strategy is built by people who understand enterprise infrastructure, security, compliance, and the realities of production IT environments.",
+      "It depends on what you need. AI consulting engagements start at $3,000, workflow automations at $2,500, and custom chatbots at $5,000. Most of our Dallas clients see ROI within the first month. We provide transparent pricing upfront and never push unnecessary services.",
   },
   {
-    question: "Do you only work with large enterprises?",
+    question: "What makes ITECS different from other AI companies in Dallas?",
     answer:
-      "No. While we serve enterprise clients, our AI consulting engagements are structured to meet businesses where they are — from two-week Insight Sprints for organizations exploring AI for the first time to full-scale managed AI operations for mature deployments.",
+      "We're not a startup that discovered AI last year. ITECS has been managing IT infrastructure for Dallas businesses since 2002. That means your AI tools are built by people who already understand networks, security, compliance, and the realities of running a business with 10–300 employees.",
   },
   {
-    question: "Which AI platforms do you work with?",
+    question: "How do I know if AI is right for my small business?",
     answer:
-      "We are vendor-neutral and work across Azure OpenAI, AWS Bedrock, Google Vertex AI, and open-source models. Our recommendations are driven by your requirements, compliance needs, and existing infrastructure — not vendor partnerships.",
+      "If your team spends time on repetitive tasks — data entry, report generation, customer follow-ups, answering the same questions, scheduling — AI can help. We offer a free initial assessment where we identify the tasks that are costing you the most time and show you exactly what AI can automate.",
   },
   {
-    question: "How do you ensure AI security and compliance?",
+    question: "Which AI tools do you work with?",
     answer:
-      "Security is embedded in every engagement. We deploy AI on compliant infrastructure, implement PHI/PII redaction, maintain audit logs, and align with HIPAA, SOX, FINRA, and CMMC frameworks. Every AI system undergoes a security assessment before production deployment.",
+      "We're vendor-neutral and work with Microsoft Copilot, OpenAI (ChatGPT), Azure OpenAI, Google Vertex AI, Zapier, Make, Power Automate, and custom-built solutions. We recommend what fits your business and budget — not what pays us the highest margin.",
   },
   {
-    question: "What industries do you specialize in for AI consulting?",
+    question: "How do I keep my company data safe when using AI?",
     answer:
-      "We have deep expertise in healthcare (Dallas Medical District), financial services (Legacy West, Uptown), manufacturing and telecom (Richardson Corridor), and legal services. Each industry vertical has specific compliance requirements and AI use cases that we tailor our approach to.",
+      "This is one of the most common concerns for Dallas businesses adopting AI. The short answer: don't paste sensitive data into public ChatGPT. We deploy private AI instances, set up data loss prevention policies, train your staff, and ensure compliance with HIPAA, SOX, or whatever regulations apply to your industry.",
   },
   {
-    question: "Can you help with AI if we don't have a data strategy yet?",
+    question: "Can you build a custom ChatGPT for my business?",
     answer:
-      "Yes — that's often where we start. Our Insight Sprint includes a data landscape audit that identifies what data you have, where it lives, its quality, and how it can fuel AI initiatives. We help you build the data foundation before layering on AI capabilities.",
+      "Yes — this is one of our most popular services. We build private AI chatbots trained exclusively on your company data that handle customer questions, internal HR inquiries, and support requests 24/7. They connect to your CRM, helpdesk, and knowledge base, and escalate to a human when they can't answer.",
   },
   {
-    question: "What is your pricing model for AI consulting?",
+    question: "Do you work with businesses outside of Dallas?",
     answer:
-      "We offer project-based engagements (Insight Sprints, POCs, implementations) and ongoing managed AI retainers. Pricing depends on scope and complexity. Contact us for a free initial assessment and custom quote.",
+      "Yes. While our office is in Plano and most of our clients are in the Dallas-Fort Worth area, we work with businesses across Texas and the US. Our consulting, automation, and chatbot services can be delivered remotely.",
   },
 ] as const;
 
@@ -385,7 +545,7 @@ export const TEAM_MEMBERS = [
     name: "Brian Desmot",
     title: "Founder & CEO",
     image: "/images/team/brian-desmot.webp",
-    bio: "Brian founded ITECS in 2002 with a mission to deliver enterprise-grade IT to Dallas businesses. With over two decades of operational experience, he now leads the firm's expansion into AI consulting and managed intelligence services.",
+    bio: "Brian founded ITECS in 2002 with a mission to deliver enterprise-grade IT to Dallas businesses without the enterprise price tag. With over two decades of hands-on operations experience, he now leads the firm's expansion into practical AI solutions for small and mid-sized businesses.",
   },
 ] as const;
 
@@ -396,28 +556,28 @@ export const TEAM_MEMBERS = [
 export const HOMEPAGE_FEATURES = [
   {
     eyebrow: "Security-First AI",
-    title: "Built on 22 Years of Operational Rigor",
+    title: "Your Data Stays Yours",
     description:
-      "Every AI system we deploy inherits the same security posture, monitoring, and incident response we've refined across two decades of managed IT operations. Your AI isn't an experiment — it's production infrastructure.",
+      "We never deploy AI that puts your sensitive data at risk. Every tool we build uses private, secure AI environments — not public ChatGPT. Your customer records, financial data, and proprietary information stay under your control, always.",
     image: "/images/services/cybersecurity.webp",
     bullets: [
-      "Pre-deployment security assessments",
-      "HIPAA, SOX, and FINRA compliance alignment",
-      "24/7 monitoring with automated drift detection",
-      "Incident response and model rollback procedures",
+      "Private AI instances — your data never trains public models",
+      "HIPAA, SOX, and FINRA compliance built in from day one",
+      "Employee AI usage policies and automatic data safeguards",
+      "Ongoing monitoring so nothing slips through the cracks",
     ],
   },
   {
-    eyebrow: "Enterprise Integration",
-    title: "AI That Connects to Your Existing Stack",
+    eyebrow: "Works With Your Existing Tools",
+    title: "AI That Connects to the Software You Already Use",
     description:
-      "We don't build AI in a vacuum. Our integrations connect with your PSA, documentation, CRM, and ticketing systems — so AI delivers value through the tools your team already uses.",
+      "We don't ask you to rip and replace. Our AI integrations plug into your CRM, helpdesk, invoicing, and communication tools — Zapier, HubSpot, Microsoft 365, QuickBooks, Slack, Teams, and more. AI saves you time without changing how your team works.",
     image: "/images/services/technology-desks.webp",
     bullets: [
-      "Azure OpenAI, AWS Bedrock, Google Vertex integrations",
-      "HaloPSA, Hudu, ServiceNow connectors",
-      "RAG pipelines grounded in your knowledge base",
-      "API development for legacy system modernization",
+      "Integrations with HubSpot, Salesforce, QuickBooks, and 100+ tools",
+      "Microsoft Copilot, Teams, and Outlook AI setup",
+      "Custom chatbots that pull live data from your existing systems",
+      "Zapier and Make automations connecting everything together",
     ],
   },
 ] as const;

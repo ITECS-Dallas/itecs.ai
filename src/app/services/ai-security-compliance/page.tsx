@@ -1,10 +1,11 @@
 import { generatePageMetadata } from "@/lib/metadata";
-import { generateServiceSchema, generateFAQSchema, generateBreadcrumbSchema } from "@/lib/seo";
+import { generateServiceSchema, generateFAQSchema, generateBreadcrumbSchema, generateHowToSchema } from "@/lib/seo";
 import { SERVICES, SITE_CONFIG } from "@/lib/constants";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { ServiceHero } from "@/components/sections/ServiceHero";
 import { ServiceFeatures } from "@/components/sections/ServiceFeatures";
+import { HowItWorks } from "@/components/sections/HowItWorks";
 import { ServiceStats } from "@/components/sections/ServiceStats";
 import { FAQ } from "@/components/sections/FAQ";
 import { CTASection } from "@/components/sections/CTASection";
@@ -30,15 +31,16 @@ export default function AISecurityPage() {
         ]} />
       </div>
       <ServiceHero service={service} />
+      <HowItWorks steps={service.howItWorks} heading="How AI Security Works" />
       <ServiceFeatures features={service.features} />
       <ServiceStats stats={service.stats} />
 
       <section className="py-12 mx-auto max-w-7xl px-6 md:px-8">
         <h2 className="text-2xl font-light text-text-primary mb-4">Related Services</h2>
         <div className="flex flex-wrap gap-4">
-          <Link href="/services/ai-consulting" className="text-brand-accent hover:text-brand-accent-bright transition-colors text-sm">AI Consulting & Strategy &rarr;</Link>
-          <Link href="/services/managed-ai" className="text-brand-accent hover:text-brand-accent-bright transition-colors text-sm">Managed AI Operations &rarr;</Link>
-          <Link href="/services/ai-chatbot-development" className="text-brand-accent hover:text-brand-accent-bright transition-colors text-sm">AI Chatbot Development &rarr;</Link>
+          <Link href="/services/ai-consulting" className="text-brand-accent hover:text-brand-accent-bright transition-colors text-sm">AI Consulting &rarr;</Link>
+          <Link href="/services/ai-chatbot-development" className="text-brand-accent hover:text-brand-accent-bright transition-colors text-sm">Custom ChatGPT &rarr;</Link>
+          <Link href="/services/managed-ai" className="text-brand-accent hover:text-brand-accent-bright transition-colors text-sm">AI Automation &rarr;</Link>
         </div>
       </section>
 
@@ -46,6 +48,7 @@ export default function AISecurityPage() {
       <CTASection />
       <JsonLd data={generateServiceSchema(service)} />
       <JsonLd data={generateFAQSchema(service.faq)} />
+      <JsonLd data={generateHowToSchema(service)} />
       <JsonLd data={generateBreadcrumbSchema([
         { name: "Home", url: SITE_CONFIG.url },
         { name: "Services", url: `${SITE_CONFIG.url}/services` },

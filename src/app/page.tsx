@@ -12,17 +12,19 @@ import { FAQ } from "@/components/sections/FAQ";
 import { CTASection } from "@/components/sections/CTASection";
 
 export const metadata = generatePageMetadata({
-  title: "Dallas AI Consulting & Strategy",
+  title: "Dallas AI Consulting & Automation for Small Business | ITECS",
   description:
-    "ITECS provides enterprise AI consulting, managed intelligence, chatbot development, and AI security compliance services in Dallas, TX. 22+ years of IT operations expertise.",
+    "ITECS helps Dallas businesses with 10–300 employees save time and cut costs with AI automation, custom ChatGPT development, and hands-on AI consulting. 22+ years of IT expertise.",
   path: "/",
   keywords: [
-    "Dallas AI Consulting",
-    "AI Strategy Dallas",
-    "Enterprise AI Dallas",
-    "Managed AI Dallas",
-    "AI Chatbot Development Dallas",
-    "AI Security Compliance Dallas",
+    "small business AI Dallas",
+    "AI consulting for small business",
+    "AI automation Dallas",
+    "custom ChatGPT for business",
+    "AI consultant Dallas",
+    "workflow automation Dallas",
+    "how to use AI in small business",
+    "AI customer service bot for SMB",
   ],
 });
 

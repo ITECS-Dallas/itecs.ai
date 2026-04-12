@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { generatePageMetadata } from "@/lib/metadata";
 import { generateBreadcrumbSchema } from "@/lib/seo";
-import { SITE_CONFIG, TEAM_MEMBERS, PARTNER_LOGOS } from "@/lib/constants";
+import { SITE_CONFIG, TEAM_MEMBERS } from "@/lib/constants";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { PartnerLogos } from "@/components/sections/PartnerLogos";
@@ -12,15 +12,16 @@ import { GridBackground } from "@/components/effects/GridBackground";
 import Link from "next/link";
 
 export const metadata = generatePageMetadata({
-  title: "About ITECS — 22 Years of IT Operations, Now Powering AI",
+  title: "About ITECS — Dallas IT & AI Consulting Since 2002",
   description:
-    "ITECS is a Dallas-based managed IT services provider founded in 2002. Now expanding into enterprise AI consulting, managed intelligence, and AI security compliance.",
+    "ITECS is a Dallas-based IT services company founded in 2002, now helping small and mid-sized businesses save time and money with practical AI consulting, automation, and custom ChatGPT development.",
   path: "/about",
   keywords: [
-    "About ITECS",
-    "ITECS Dallas",
-    "IT Services Company Dallas",
-    "AI Consulting Company",
+    "About ITECS Dallas",
+    "ITECS AI consulting",
+    "Dallas IT company",
+    "small business AI Dallas",
+    "managed IT services Dallas",
   ],
 });
 
@@ -43,16 +44,16 @@ export default function AboutPage() {
 
         <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-8">
           <h1 className="text-4xl md:text-6xl font-extralight tracking-[-0.03em] leading-[1.1] max-w-3xl">
-            22 Years of IT Operations.
+            22 Years Serving Dallas Businesses.
             <br />
             <span className="bg-gradient-to-r from-brand-accent to-brand-purple bg-clip-text text-transparent">
-              Now Powering AI.
+              Now Bringing Them AI.
             </span>
           </h1>
           <p className="mt-6 text-lg text-text-secondary max-w-2xl leading-relaxed">
-            ITECS was founded in 2002 with a simple promise: treat every
-            client&apos;s infrastructure like our own. Two decades later, that
-            operational rigor is the foundation of our AI practice.
+            ITECS was founded in 2002 with a simple promise: give Dallas small
+            businesses the same IT power that Fortune 500 companies have — without
+            the Fortune 500 price tag. Now we&apos;re doing the same thing with AI.
           </p>
         </div>
       </section>
@@ -73,28 +74,28 @@ export default function AboutPage() {
           </ScrollReveal>
           <ScrollReveal direction="right" delay={0.1}>
             <h2 className="text-3xl font-light tracking-[-0.02em] text-text-primary">
-              Not Just a Vendor. Your IT Department.
+              Not a Startup. Your Dallas IT Partner Since 2002.
             </h2>
             <p className="mt-4 text-text-secondary leading-relaxed">
-              Since 2002, ITECS has operated as a true extension of our
-              clients&apos; teams. We manage over 500 endpoints, maintain a 92%
-              client retention rate, and provide 24/7 monitoring across
-              healthcare, financial services, manufacturing, and legal sectors
-              in the Dallas-Fort Worth area.
+              Most AI companies popped up in the last two years. We&apos;ve been
+              managing IT infrastructure for Dallas businesses for over two
+              decades — 500+ endpoints, a 92% client retention rate, and 24/7
+              monitoring across healthcare, financial services, manufacturing,
+              and legal sectors in the Dallas-Fort Worth area.
             </p>
             <p className="mt-4 text-text-secondary leading-relaxed">
-              Our expansion into AI consulting is a natural evolution — we
-              already understand our clients&apos; infrastructure, security
-              requirements, and compliance obligations. AI isn&apos;t an add-on;
-              it&apos;s the next layer of operational intelligence built on a
-              foundation we&apos;ve spent two decades refining.
+              That means when we build AI tools for your business, we already
+              understand your infrastructure, security requirements, and
+              compliance needs. AI isn&apos;t a side project for us — it&apos;s
+              the next layer of practical technology built on a foundation
+              we&apos;ve spent 22 years refining.
             </p>
             <div className="mt-6">
               <Link
                 href="/services"
                 className="text-brand-accent hover:text-brand-accent-bright transition-colors text-sm"
               >
-                Explore our AI services &rarr;
+                See how we help Dallas businesses with AI &rarr;
               </Link>
             </div>
           </ScrollReveal>

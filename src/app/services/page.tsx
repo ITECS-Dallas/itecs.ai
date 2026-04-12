@@ -1,22 +1,23 @@
 import { generatePageMetadata } from "@/lib/metadata";
 import { generateBreadcrumbSchema } from "@/lib/seo";
-import { SERVICES, SITE_CONFIG } from "@/lib/constants";
+import { SITE_CONFIG } from "@/lib/constants";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { ServicesGrid } from "@/components/sections/ServicesGrid";
 import { CTASection } from "@/components/sections/CTASection";
 
 export const metadata = generatePageMetadata({
-  title: "AI Services for Dallas Enterprises",
+  title: "AI Services for Dallas Small Businesses | ITECS",
   description:
-    "Explore ITECS AI services: consulting & strategy, managed AI operations, chatbot development, security compliance, and AI-optimized SEO for Dallas businesses.",
+    "AI consulting, workflow automation, custom ChatGPT development, AI security, and SEO for Dallas businesses with 10–300 employees. Practical AI that saves time and money.",
   path: "/services",
   keywords: [
-    "AI Services Dallas",
-    "AI Consulting Dallas",
-    "Managed AI Dallas",
-    "AI Chatbot Development",
-    "AI Security Compliance",
+    "small business AI services Dallas",
+    "AI automation Dallas",
+    "custom ChatGPT Dallas",
+    "AI consulting Dallas",
+    "AI security compliance Dallas",
+    "workflow automation small business",
   ],
 });
 
@@ -31,12 +32,12 @@ export default function ServicesPage() {
           ]}
         />
         <h1 className="text-4xl md:text-6xl font-extralight tracking-[-0.03em] mt-4">
-          AI Services for Dallas Enterprises
+          AI Services for Dallas Businesses
         </h1>
         <p className="mt-4 text-lg text-text-secondary max-w-2xl">
-          From strategy to managed operations, every service is backed by 22
-          years of production IT experience. Vendor-neutral, security-first, and
-          built for regulated industries.
+          Practical AI tools that save your team time and cut operational costs.
+          Every service is backed by 22 years of IT operations experience —
+          built for businesses with 10–300 employees.
         </p>
       </div>
 

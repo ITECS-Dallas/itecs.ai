@@ -26,19 +26,19 @@ export function CTASection() {
 
         <ScrollReveal>
           <h2 className="text-3xl md:text-5xl font-light tracking-[-0.02em] text-text-primary">
-            Ready to Transform Your
+            Ready to See What AI
             <br />
             <span className="bg-gradient-to-r from-brand-accent to-brand-purple bg-clip-text text-transparent">
-              Operations with AI?
+              Can Do for Your Business?
             </span>
           </h2>
         </ScrollReveal>
 
         <ScrollReveal delay={0.1}>
           <p className="mt-6 text-lg text-text-secondary max-w-xl mx-auto">
-            Start with a free AI readiness assessment. No commitments, no vendor
-            lock-in — just an honest evaluation of where AI can drive measurable
-            value for your business.
+            Get a free AI assessment from a Dallas team with 22 years of IT
+            experience. We&apos;ll show you exactly where AI can save your
+            business time and money — no jargon, no pressure.
           </p>
         </ScrollReveal>
 

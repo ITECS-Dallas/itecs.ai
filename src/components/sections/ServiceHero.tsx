@@ -28,6 +28,14 @@ export function ServiceHero({ service }: { service: ServiceItem }) {
           <p className="mt-6 text-lg md:text-xl text-text-secondary font-light max-w-2xl leading-relaxed">
             {service.longDescription}
           </p>
+
+          {/* ROI metric — above the fold */}
+          <div className="mt-8 inline-flex items-center gap-3 px-5 py-3 rounded-lg border border-[var(--border-active)] bg-brand-accent/5">
+            <div className="w-2 h-2 rounded-full bg-brand-accent animate-pulse-node" />
+            <p className="text-sm text-brand-accent font-medium">
+              {service.heroMetric}
+            </p>
+          </div>
         </motion.div>
       </div>
     </section>

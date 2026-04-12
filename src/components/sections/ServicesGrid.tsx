@@ -16,9 +16,9 @@ export function ServicesGrid() {
       <div className="mx-auto max-w-7xl px-6 md:px-8">
         <ScrollReveal>
           <SectionHeading
-            eyebrow="Our Capabilities"
-            title="AI Services Built on Operational Expertise"
-            description="From strategy to managed operations, every service is backed by 22 years of production IT experience."
+            eyebrow="What We Do"
+            title="Practical AI Services for Dallas Businesses"
+            description="We help businesses with 10–300 employees save time and cut costs with AI tools that actually work. No jargon, no hype — just results."
           />
         </ScrollReveal>
 

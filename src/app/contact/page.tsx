@@ -10,14 +10,15 @@ import { Phone, Mail, MapPin } from "lucide-react";
 import Link from "next/link";
 
 export const metadata = generatePageMetadata({
-  title: "Contact ITECS AI — Schedule Your Free Consultation",
+  title: "Contact ITECS — Free AI Assessment for Dallas Businesses",
   description:
-    "Contact ITECS for a free AI readiness assessment. Dallas-based AI consulting, managed intelligence, and cybersecurity services. Call (972) 408-2020.",
+    "Contact ITECS for a free AI assessment. We help Dallas businesses with 10–300 employees save time with AI automation, custom ChatGPT, and workflow tools. Call (972) 408-2020.",
   path: "/contact",
   keywords: [
-    "Contact ITECS",
-    "AI Consulting Dallas Contact",
-    "Free AI Assessment Dallas",
+    "contact AI consultant Dallas",
+    "free AI assessment Dallas",
+    "small business AI help Dallas",
+    "AI automation consultation Dallas",
   ],
 });
 
@@ -39,15 +40,15 @@ export default function ContactPage() {
 
         <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-8">
           <h1 className="text-4xl md:text-6xl font-extralight tracking-[-0.03em] leading-[1.1] max-w-3xl">
-            Let&apos;s Talk About{" "}
+            Let&apos;s Find Where AI Can{" "}
             <span className="bg-gradient-to-r from-brand-accent to-brand-purple bg-clip-text text-transparent">
-              Your AI Strategy
+              Save You Time & Money
             </span>
           </h1>
           <p className="mt-6 text-lg text-text-secondary max-w-xl">
-            Start with a free AI readiness assessment. No commitments, no vendor
-            lock-in — just an honest evaluation of where AI can drive measurable
-            value for your business.
+            Start with a free AI assessment for your Dallas business. We&apos;ll
+            show you exactly which tasks AI can automate and how much time
+            you&apos;ll save — no commitments, no vendor lock-in.
           </p>
         </div>
       </section>

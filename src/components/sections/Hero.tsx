@@ -71,7 +71,7 @@ export function Hero() {
               className="text-sm font-medium tracking-[0.05em] uppercase text-brand-accent mb-6 flex items-center gap-2"
             >
               <span className="inline-block w-8 h-px bg-brand-accent" />
-              AI Consulting for Dallas Enterprises
+              Practical AI for Dallas Businesses
             </motion.p>
 
             {/* H1 */}
@@ -79,21 +79,21 @@ export function Hero() {
               variants={fadeUp()}
               className="text-5xl md:text-7xl font-extralight tracking-[-0.03em] leading-[1.1]"
             >
-              Intelligent Systems.
+              Save Time. Cut Costs.
               <br />
               <span className="bg-gradient-to-r from-brand-accent to-brand-purple bg-clip-text text-transparent">
-                Autonomous Operations.
+                Automate with AI.
               </span>
             </motion.h1>
 
-            {/* Subline */}
+            {/* ROI metric */}
             <motion.p
               variants={fadeUp(0.1)}
               className="mt-6 text-lg md:text-xl text-text-secondary font-light max-w-xl leading-relaxed"
             >
-              ITECS brings 22 years of IT operations expertise to enterprise AI
-              strategy, integration, and security — from consulting to managed
-              intelligence.
+              We help Dallas businesses with 10–300 employees automate repetitive
+              work, build custom ChatGPTs, and deploy AI tools that pay for
+              themselves — backed by 22 years of IT operations expertise.
             </motion.p>
 
             {/* CTAs */}
