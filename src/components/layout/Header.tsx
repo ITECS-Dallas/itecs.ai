@@ -26,7 +26,7 @@ export function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 h-16 transition-all duration-500 ${
+      className={`fixed top-0 left-0 right-0 z-50 h-[72px] transition-all duration-500 ${
         scrolled
           ? "bg-bg-elevated/80 backdrop-blur-xl border-b border-[var(--border-subtle)]"
           : "bg-transparent"
@@ -34,14 +34,22 @@ export function Header() {
     >
       <div className="mx-auto flex h-full max-w-7xl items-center justify-between px-6 md:px-8">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2">
+        <Link href="/" className="flex items-center gap-3">
+          <Image
+            src="/images/logos/itecs-icon-darkblue.svg"
+            alt=""
+            width={36}
+            height={36}
+            priority
+            className="h-9 w-9 brightness-0 invert"
+          />
           <Image
             src="/images/logos/itecs-horizontal.svg"
             alt="ITECS"
-            width={100}
-            height={28}
+            width={140}
+            height={36}
             priority
-            className="h-7 w-auto brightness-0 invert"
+            className="h-8 w-auto brightness-0 invert hidden sm:block"
           />
         </Link>
 
@@ -95,7 +103,7 @@ export function Header() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 top-16 bg-bg-void/95 backdrop-blur-xl md:hidden"
+            className="fixed inset-0 top-[72px] bg-bg-void/95 backdrop-blur-xl md:hidden"
           >
             <nav className="flex flex-col items-center justify-center gap-8 pt-24">
               {NAV_LINKS.map((link, i) => (
