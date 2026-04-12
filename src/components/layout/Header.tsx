@@ -34,22 +34,14 @@ export function Header() {
     >
       <div className="mx-auto flex h-full max-w-7xl items-center justify-between px-6 md:px-8">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-3">
-          <Image
-            src="/images/logos/itecs-icon-darkblue.svg"
-            alt=""
-            width={36}
-            height={36}
-            priority
-            className="h-9 w-9 brightness-0 invert"
-          />
+        <Link href="/" className="flex items-center">
           <Image
             src="/images/logos/itecs-horizontal.svg"
             alt="ITECS"
-            width={140}
-            height={36}
+            width={160}
+            height={44}
             priority
-            className="h-8 w-auto brightness-0 invert hidden sm:block"
+            className="h-11 w-auto brightness-0 invert"
           />
         </Link>
 
