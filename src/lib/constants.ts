@@ -576,14 +576,14 @@ export const SERVICES: ServiceItem[] = [
   },
   {
     slug: "ai-knowledge-base",
-    title: "Internal AI Knowledge Bases & SOP Automation",
+    title: "Internal AI Knowledge Bases & SOP Automation for Dallas Businesses",
     shortTitle: "AI Knowledge Base",
     description:
-      "We turn your scattered company files into a secure AI search engine — cutting employee onboarding time by 50% and eliminating repeated questions for Dallas businesses.",
+      "Turn scattered company files into a private AI search engine. Employees ask questions in plain English and get cited answers in 5 seconds — cutting onboarding time by 50%.",
     longDescription:
-      "Your company knowledge is trapped in SharePoint folders, Google Drives, Notion pages, and people's heads. New hires take months to get up to speed. Employees ask the same questions over and over. We build internal AI knowledge bases that let your team search across all your documentation with natural language — like having a ChatGPT that only knows your company's SOPs, policies, and institutional knowledge.",
+      "Your company knowledge is trapped in SharePoint folders, Google Drives, Notion pages, and people's heads. New hires take months to get up to speed. Employees ask the same questions over and over. ITECS builds private, RAG-powered AI knowledge bases that connect all your documentation into a single natural-language search interface — like having a ChatGPT that only knows your company's SOPs, policies, and institutional knowledge, and cites the source document for every answer.",
     heroSummary:
-      "Stop answering the same questions twice. We turn your scattered company files into a secure AI search engine, cutting employee onboarding time by 50%.",
+      "ITECS builds private AI knowledge bases for Dallas businesses with 50–500 employees. We connect SharePoint, Google Drive, Notion, and Confluence into one RAG-powered search engine. Employees ask questions in plain English and get cited answers in 5 seconds. Average result: 50% faster onboarding, 70% fewer repeated questions, full setup in 4–6 weeks.",
     href: "/ai-knowledge-base",
     icon: "BookOpen",
     keywords: [
@@ -593,32 +593,40 @@ export const SERVICES: ServiceItem[] = [
       "AI onboarding tool",
       "enterprise AI knowledge management",
       "internal RAG system",
+      "AI knowledge management Dallas",
+      "private AI search company documents",
+      "RAG knowledge base SMB",
     ],
     h1: "Internal AI Knowledge Bases & SOP Automation",
     features: [
-      "Natural-language search across all your company documents and SOPs",
-      "Connects to SharePoint, Google Drive, Notion, Confluence, and file servers",
-      "Answers employee questions with citations back to source documents",
-      "Secure and private — your data never leaves your infrastructure",
-      "Role-based access control so teams only see what they're authorized to",
-      "Auto-updates as documents change — no manual re-indexing needed",
+      "Natural-language search across all company documents, SOPs, and wikis",
+      "Connects to SharePoint, Google Drive, Notion, Confluence, and file servers via API",
+      "Cited answers — every response links to the source document and paragraph",
+      "Confidence scoring rejects low-certainty answers instead of hallucinating",
+      "Role-based access control so departments only see authorized knowledge",
+      "Auto-sync indexes new and updated documents without manual re-ingestion",
     ],
     howItWorksHeading: "How to build an AI knowledge base for your company",
     howItWorks: [
       {
         step: "Audit your documentation landscape and identify knowledge gaps",
         description:
-          "We map where your company knowledge lives — SharePoint, Google Drive, Notion, wikis, file servers, and undocumented tribal knowledge. We identify the most frequently asked questions and the biggest onboarding bottlenecks.",
+          "We map where your company knowledge lives — SharePoint, Google Drive, Notion, Confluence, wikis, file servers, and undocumented tribal knowledge. We interview department leads to identify the 20 most frequently asked questions and the biggest onboarding bottlenecks.",
       },
       {
-        step: "Build and connect your internal RAG-powered AI search engine",
+        step: "Ingest, chunk, and embed your documents into a private vector database",
         description:
-          "We ingest your documents into a secure, private AI system using RAG (Retrieval-Augmented Generation). Your team searches in natural language and gets accurate answers with citations — no hallucinations, no access to data they shouldn't see.",
+          "We connect to your data sources via read-only API, split documents into semantic chunks, and generate vector embeddings stored in a private database on your infrastructure. No data leaves your environment. Role-based permissions mirror your existing access controls.",
       },
       {
-        step: "Deploy, train your team, and keep the knowledge base current",
+        step: "Build the RAG pipeline with confidence scoring and citation logic",
         description:
-          "We launch the AI knowledge base on your intranet, Slack, or Teams. We train your team to use it effectively and set up auto-sync so new and updated documents are indexed automatically — no manual maintenance required.",
+          "We configure the retrieval-augmented generation pipeline — query parsing, semantic search, re-ranking, and answer synthesis via OpenAI API or Azure OpenAI. Every answer includes source citations. Confidence scoring rejects uncertain responses instead of hallucinating.",
+      },
+      {
+        step: "Deploy to Slack, Teams, or intranet and train your team",
+        description:
+          "We launch the AI knowledge base where your team already works — Slack, Microsoft Teams, or a branded intranet portal. We run hands-on training sessions and configure auto-sync so new documents are indexed within minutes of being saved.",
       },
     ],
     integrations: [
@@ -629,32 +637,51 @@ export const SERVICES: ServiceItem[] = [
       "Slack",
       "Microsoft Teams",
       "OpenAI API",
+      "Azure OpenAI",
+      "Pinecone",
+      "Microsoft 365",
     ],
     stats: [
       { value: 50, suffix: "%", label: "Faster Employee Onboarding" },
       { value: 70, suffix: "%", label: "Fewer Repeated Questions" },
       { value: 5, suffix: "sec", label: "Avg. Answer Time" },
+      { value: 600, suffix: "+", label: "Queries Handled Weekly" },
     ],
     faq: [
       {
         question: "How much does an internal AI knowledge base cost?",
         answer:
-          "Setup typically ranges from $8,000–$20,000 depending on the number of data sources, document volume, and security requirements. Ongoing hosting and maintenance starts at $500/month. For Dallas businesses with 50+ employees, the ROI from reduced onboarding time and fewer repeated questions typically pays for the system within 3 months.",
+          "Setup ranges from $8,000–$20,000 depending on the number of data sources, document volume, and compliance requirements. Ongoing hosting and management starts at $500/month including auto-indexing and performance monitoring. Most Dallas businesses with 50+ employees recover the full cost within 3 months through reduced onboarding time and fewer repeated questions.",
       },
       {
         question: "Is my company data safe in an AI knowledge base?",
         answer:
-          "Yes. We deploy on your infrastructure or in a private cloud environment — your data never touches public AI services. We implement role-based access control, encryption at rest and in transit, and audit logging. For regulated industries (HIPAA, FINRA), we build compliance-ready deployments.",
+          "Yes. We deploy on your infrastructure or a private cloud — your data never touches public AI services or trains third-party models. We implement AES-256 encryption at rest and in transit, role-based access control, and full audit logging. For regulated industries we build HIPAA, SOC 2, FINRA, and CMMC compliant deployments.",
       },
       {
-        question: "What's the difference between this and just using SharePoint search?",
+        question: "What is the difference between an AI knowledge base and SharePoint search?",
         answer:
-          "SharePoint search matches keywords. An AI knowledge base understands meaning. You can ask 'What's our PTO policy for employees in their first year?' and get the exact answer with a citation — instead of a list of 50 documents that mention 'PTO'. It searches across all your platforms, not just SharePoint.",
+          "SharePoint search matches keywords. An AI knowledge base understands meaning. Ask 'What is our PTO policy for first-year employees?' and get the exact answer with a citation — instead of 50 documents that mention 'PTO'. It also searches across all your platforms simultaneously, not just SharePoint.",
       },
       {
-        question: "How does Internal RAG work?",
+        question: "How does RAG work for internal knowledge bases?",
         answer:
-          "RAG (Retrieval-Augmented Generation) is the technology behind your AI knowledge base. When an employee asks a question, the system searches your documents for the most relevant passages, then uses AI to synthesize a clear answer with citations. Unlike plain ChatGPT, it only answers based on your data — no hallucinations or made-up information.",
+          "RAG (Retrieval-Augmented Generation) splits your documents into chunks, converts them into vector embeddings, and stores them in a searchable database. When an employee asks a question, the system retrieves the most relevant passages, then uses AI to synthesize a clear answer with citations. It only answers from your data — no hallucinations.",
+      },
+      {
+        question: "How long does it take to deploy an AI knowledge base?",
+        answer:
+          "Most deployments take 4–6 weeks from kickoff to production. Week 1 covers the documentation audit and data source mapping. Weeks 2–4 handle ingestion, pipeline configuration, and accuracy testing. Weeks 5–6 cover deployment, team training, and auto-sync configuration. Companies with clean, centralized documentation can go faster.",
+      },
+      {
+        question: "Can the AI knowledge base connect to multiple platforms at once?",
+        answer:
+          "Yes. A single knowledge base can pull from SharePoint, Google Drive, Notion, Confluence, file servers, and wikis simultaneously. Multi-source connectivity is included at no additional per-platform fee. Employees search one interface and get answers sourced from any connected platform.",
+      },
+      {
+        question: "What happens when we update or add new documents?",
+        answer:
+          "Auto-sync monitors your connected data sources and re-indexes new or updated documents within minutes. No manual re-ingestion required. Deleted documents are automatically removed from search results. We also run quarterly reviews to tune retrieval accuracy as your knowledge base grows.",
       },
     ],
   },
