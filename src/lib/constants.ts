@@ -1028,6 +1028,113 @@ export const TEAM_MEMBERS = [
     title: "Founder & CEO",
     image: "/images/team/brian-desmot.webp",
     bio: "Brian founded ITECS in 2002 with a mission to deliver enterprise-grade IT to Dallas businesses without the enterprise price tag. With over two decades of hands-on operations experience, he now leads the firm's expansion into practical AI solutions for small and mid-sized businesses.",
+    quote: "AI should save your team 10 hours a week — not create 10 new problems. We build tools that work on day one.",
+  },
+] as const;
+
+// ---------------------------------------------------------------------------
+// About — Milestones (timeline)
+// ---------------------------------------------------------------------------
+
+export const ABOUT_MILESTONES = [
+  {
+    year: "2002",
+    title: "ITECS Founded in Dallas",
+    description:
+      "Brian Desmot launches ITECS to deliver enterprise-grade managed IT to small Dallas businesses — helpdesk, networking, and security at a price point that makes sense for 10–50 person teams.",
+  },
+  {
+    year: "2008",
+    title: "500+ Endpoints Under Management",
+    description:
+      "ITECS scales to manage infrastructure across healthcare, legal, financial services, and manufacturing sectors in Dallas-Fort Worth. 24/7 monitoring and on-site support become standard.",
+  },
+  {
+    year: "2015",
+    title: "Cloud Migration & Cybersecurity Expansion",
+    description:
+      "Full Microsoft 365 and Azure migration practice. Partnership with SentinelOne and Sophos for endpoint detection and response. HIPAA and SOX compliance services launch for regulated clients.",
+  },
+  {
+    year: "2020",
+    title: "Remote Workforce Enablement",
+    description:
+      "COVID-19 hits. ITECS transitions 40+ client organizations to secure remote operations in under 3 weeks — VPN, Teams, MFA, and zero-trust access policies deployed at scale.",
+  },
+  {
+    year: "2023",
+    title: "AI Division Launches",
+    description:
+      "ITECS AI is born. First engagements: custom ChatGPT deployments for internal knowledge bases, workflow automation with Zapier and Make, and AI consulting for businesses exploring GPT-4.",
+  },
+  {
+    year: "2024",
+    title: "Full AI Service Portfolio",
+    description:
+      "AI Receptionist, CRM & Sales AI, Data Readiness Audits, and employee AI training programs go live. Clients report 20+ hours saved per week within the first month of deployment.",
+  },
+] as const;
+
+// ---------------------------------------------------------------------------
+// About — Core Values / Differentiators
+// ---------------------------------------------------------------------------
+
+export const ABOUT_VALUES = [
+  {
+    icon: "Shield",
+    title: "Security-First AI",
+    description:
+      "Every AI tool runs in a private environment. Your data never trains public models. We enforce HIPAA, SOX, and FINRA compliance from day one — not as an afterthought.",
+  },
+  {
+    icon: "Eye",
+    title: "No Black Boxes",
+    description:
+      "You own every prompt, every workflow, every integration. We document what we build and train your team to operate it. If you fire us tomorrow, everything still works.",
+  },
+  {
+    icon: "Building2",
+    title: "Dallas Roots, Enterprise Grade",
+    description:
+      "22 years of on-the-ground IT operations in Dallas-Fort Worth. We know your compliance landscape, your vendor ecosystem, and the realities of running a 10–300 person company.",
+  },
+  {
+    icon: "Target",
+    title: "Practical Over Hype",
+    description:
+      "We deploy AI that saves hours this week — not prototypes that impress in a demo and collect dust. Every engagement starts with ROI math, not a pitch deck.",
+  },
+] as const;
+
+// ---------------------------------------------------------------------------
+// About — FAQ
+// ---------------------------------------------------------------------------
+
+export const ABOUT_FAQ = [
+  {
+    question: "How long has ITECS been in business?",
+    answer:
+      "ITECS was founded in 2002 in Dallas, Texas. We have over 22 years of managed IT operations experience serving small and mid-sized businesses across healthcare, legal, financial services, and manufacturing sectors in the Dallas-Fort Worth area.",
+  },
+  {
+    question: "What makes ITECS different from AI startups?",
+    answer:
+      "Most AI companies launched in 2023. ITECS has 22 years of IT infrastructure experience — we already understand your network, security requirements, and compliance needs before we build a single AI tool. AI is our next layer, not our first product.",
+  },
+  {
+    question: "Does ITECS still provide managed IT services?",
+    answer:
+      "Yes. ITECS continues to deliver full managed IT services including helpdesk, cybersecurity, cloud management, and infrastructure support through itecsonline.com. ITECS AI is the dedicated AI consulting and automation division.",
+  },
+  {
+    question: "What industries does ITECS serve?",
+    answer:
+      "We serve small and mid-sized businesses across healthcare, legal, financial services, manufacturing, real estate, and professional services in the Dallas-Fort Worth metroplex. Our AI solutions are built with industry-specific compliance requirements in mind.",
+  },
+  {
+    question: "Where is ITECS located?",
+    answer:
+      "ITECS is headquartered at 500 N Central Expy, Suite 500, Plano, TX 75074 — serving the entire Dallas-Fort Worth area including Dallas, Plano, Frisco, Richardson, and surrounding cities.",
   },
 ] as const;
 
