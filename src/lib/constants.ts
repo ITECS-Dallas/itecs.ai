@@ -37,6 +37,7 @@ export const SITE_CONFIG = {
 
 export const NAV_LINKS = [
   { label: "Services", href: "/services" },
+  { label: "Managed Intelligence", href: "/managed-intelligence-provider" },
   { label: "AI Receptionist", href: "/ai-receptionist" },
   { label: "CRM & Sales AI", href: "/crm-sales-ai" },
   { label: "Data Audit", href: "/data-audit" },

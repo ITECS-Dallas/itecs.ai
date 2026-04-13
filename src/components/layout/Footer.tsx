@@ -12,6 +12,7 @@ import {
 const companyLinks = [
   { label: "About", href: "/about" },
   { label: "Services", href: "/services" },
+  { label: "Managed Intelligence", href: "/managed-intelligence-provider" },
   { label: "Insights", href: "/insights" },
   { label: "Contact", href: "/contact" },
   { label: "ITECS Main Site", href: SITE_CONFIG.mainSiteUrl, external: true },
