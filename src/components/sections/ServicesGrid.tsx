@@ -8,7 +8,7 @@ import { ScrollReveal } from "@/components/effects/ScrollReveal";
 import { ArrowRight } from "lucide-react";
 
 // Organic stagger delays (non-uniform for anti-template feel)
-const staggers = [0, 0.08, 0.18, 0.12, 0.22];
+const staggers = [0, 0.08, 0.18, 0.12, 0.22, 0.1, 0.2, 0.14];
 
 export function ServicesGrid() {
   return (

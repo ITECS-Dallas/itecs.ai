@@ -32,10 +32,10 @@ export const SITE_CONFIG = {
 // ---------------------------------------------------------------------------
 
 export const NAV_LINKS = [
-  { label: "Consulting", href: "/consulting" },
-  { label: "Custom ChatGPT", href: "/custom-chatgpt" },
-  { label: "Automation", href: "/automation" },
-  { label: "Training", href: "/training" },
+  { label: "Services", href: "/services" },
+  { label: "AI Receptionist", href: "/ai-receptionist" },
+  { label: "CRM & Sales AI", href: "/crm-sales-ai" },
+  { label: "Data Audit", href: "/data-audit" },
   { label: "Insights", href: "/insights" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
@@ -405,7 +405,395 @@ export const SERVICES: ServiceItem[] = [
       },
     ],
   },
+  {
+    slug: "ai-receptionist",
+    title: "AI Receptionists & Voice Agents for Small Businesses",
+    shortTitle: "AI Receptionist",
+    description:
+      "Human-sounding AI voice agents that answer your phones 24/7, book appointments, and route calls — saving Dallas businesses $3,000+ a month over traditional answering services.",
+    longDescription:
+      "Your phones ring after hours, during lunch, and when your team is slammed. Every missed call is a missed opportunity. We deploy AI voice agents that sound natural, answer your business line 24/7, book appointments directly into your calendar, qualify leads, and route urgent calls to the right person. No hold music, no voicemail — just a professional AI receptionist that never takes a day off.",
+    heroSummary:
+      "Never miss a lead again. We deploy AI Voice Agents that answer your phones 24/7, book appointments securely, and save you $3,000+ a month on traditional answering services.",
+    href: "/ai-receptionist",
+    icon: "Phone",
+    keywords: [
+      "AI receptionist for small business",
+      "AI phone answering service",
+      "AI voice agent Dallas",
+      "virtual receptionist AI",
+      "automated phone answering small business",
+      "AI appointment booking",
+    ],
+    h1: "Human-Sounding AI Receptionists for Small Businesses",
+    features: [
+      "24/7 phone answering — nights, weekends, holidays, no voicemail",
+      "Natural-sounding AI voices powered by ElevenLabs and Twilio",
+      "Books appointments directly into your calendar via Calendar API",
+      "Qualifies leads and routes urgent calls to the right team member",
+      "Handles FAQs — hours, pricing, directions, service availability",
+      "Bilingual support (English/Spanish) for Dallas-area businesses",
+    ],
+    howItWorksHeading: "How to set up an AI receptionist for your business",
+    howItWorks: [
+      {
+        step: "Map your call flows and common caller questions",
+        description:
+          "We audit your incoming calls — what callers ask, which calls need a human, and which can be fully automated. We build a conversation script that sounds natural and matches your brand voice.",
+      },
+      {
+        step: "Deploy your AI voice agent with ElevenLabs and Twilio",
+        description:
+          "We configure a human-sounding AI voice agent on your existing business number. The agent connects to your calendar for real-time appointment booking, your CRM for lead capture, and your team's phones for live transfers when needed.",
+      },
+      {
+        step: "Monitor call quality and optimize continuously",
+        description:
+          "We review call transcripts, track booking rates and caller satisfaction, and refine the AI's responses weekly. You get a monthly report showing calls handled, appointments booked, and estimated cost savings.",
+      },
+    ],
+    integrations: [
+      "ElevenLabs",
+      "Twilio",
+      "Google Calendar",
+      "Microsoft Outlook",
+      "HubSpot",
+      "Salesforce",
+      "Calendly",
+    ],
+    stats: [
+      { value: 3000, suffix: "+", label: "Monthly Savings vs. Answering Service" },
+      { value: 98, suffix: "%", label: "Call Answer Rate" },
+      { value: 24, suffix: "/7", label: "Always Available" },
+    ],
+    faq: [
+      {
+        question: "How much does an AI receptionist cost for a small business?",
+        answer:
+          "Setup starts at $3,000–$6,000 depending on call complexity and integrations. Monthly service runs $300–$800/month — compared to $1,500–$4,000/month for a human receptionist or traditional answering service. Most Dallas businesses save $3,000+ per month from day one.",
+      },
+      {
+        question: "Does the AI receptionist sound robotic?",
+        answer:
+          "No. We use ElevenLabs voice synthesis technology to create natural-sounding, conversational AI voices. Callers frequently can't tell they're speaking to an AI. We customize the voice, tone, and speaking style to match your brand — professional, friendly, or whatever fits your business.",
+      },
+      {
+        question: "Can the AI receptionist book appointments on my calendar?",
+        answer:
+          "Yes. The AI connects to Google Calendar, Microsoft Outlook, or Calendly via API and books appointments in real time based on your availability rules. It handles time zone conversions, double-booking prevention, and sends confirmation texts/emails to callers automatically.",
+      },
+      {
+        question: "What happens when the AI can't handle a call?",
+        answer:
+          "The AI transfers to a live team member with full call context — who the caller is, what they asked, and why they need a human. If no one is available, it takes a detailed message and sends it via text, email, or Slack immediately. No caller ever hits a dead end.",
+      },
+    ],
+  },
+  {
+    slug: "crm-sales-ai",
+    title: "AI CRM Integration & Sales Automation for Dallas Businesses",
+    shortTitle: "AI CRM & Sales",
+    description:
+      "We integrate AI into your CRM to automatically research leads, draft personalized outreach, log data, and score prospects — giving your Dallas sales team 15+ hours back every week.",
+    longDescription:
+      "Your sales team is spending more time updating your CRM than actually selling. We fix that. We integrate AI directly into HubSpot, Salesforce, or your existing CRM to automate lead research, draft personalized outreach emails, score leads based on real buying signals, and keep your pipeline data clean — automatically. Your reps focus on closing deals, not data entry.",
+    heroSummary:
+      "Turn your CRM into an autonomous assistant. We integrate AI to automatically research leads, draft personalized outreach, and log data — giving your sales team 15+ hours back every week.",
+    href: "/crm-sales-ai",
+    icon: "TrendingUp",
+    keywords: [
+      "AI CRM integration",
+      "AI sales automation",
+      "HubSpot AI integration Dallas",
+      "Salesforce Einstein setup",
+      "AI lead scoring small business",
+      "CRM automation Dallas",
+    ],
+    h1: "AI CRM Integration & Sales Automation",
+    features: [
+      "AI-powered lead research — company info, decision-makers, and buying signals pulled automatically",
+      "Personalized outreach drafts generated from CRM data and prospect history",
+      "Automated lead scoring based on engagement, firmographics, and intent signals",
+      "CRM hygiene automation — deduplication, field enrichment, and data validation",
+      "Pipeline forecasting with AI-driven deal probability analysis",
+      "Activity logging — calls, emails, and meetings captured without rep input",
+    ],
+    howItWorksHeading: "How to add AI to your CRM and sales workflow",
+    howItWorks: [
+      {
+        step: "Audit your CRM data quality and sales workflow gaps",
+        description:
+          "We review your current CRM setup — data hygiene, pipeline stages, manual bottlenecks, and where your reps spend the most non-selling time. We identify the highest-ROI automation opportunities.",
+      },
+      {
+        step: "Integrate AI for lead scoring, outreach, and data enrichment",
+        description:
+          "We connect HubSpot AI, Salesforce Einstein, Apollo, and custom AI tools to your CRM. Leads get auto-scored, outreach gets drafted, and prospect data gets enriched — all flowing into your existing pipeline without changing how your team works.",
+      },
+      {
+        step: "Train your sales team and optimize the AI models",
+        description:
+          "We train your reps on the new AI-powered workflows, fine-tune lead scoring models based on your actual close data, and optimize outreach templates based on response rates. Monthly reporting shows time saved and pipeline impact.",
+      },
+    ],
+    integrations: [
+      "HubSpot AI",
+      "Salesforce Einstein",
+      "Apollo",
+      "Zapier",
+      "OpenAI API",
+      "Microsoft Dynamics",
+      "Outreach.io",
+      "LinkedIn Sales Navigator",
+    ],
+    stats: [
+      { value: 15, suffix: "+", label: "Hours Saved per Rep Weekly" },
+      { value: 35, suffix: "%", label: "Increase in Lead Conversion" },
+      { value: 3, suffix: "x", label: "Faster Lead Response Time" },
+    ],
+    faq: [
+      {
+        question: "How much does AI CRM integration cost for a small business?",
+        answer:
+          "Setup ranges from $5,000–$15,000 depending on your CRM platform, number of integrations, and team size. Ongoing optimization and support starts at $500/month. Most Dallas businesses see the investment pay for itself within 60 days through increased close rates and time savings.",
+      },
+      {
+        question: "Does this work with HubSpot Free or do I need a paid plan?",
+        answer:
+          "We work with all HubSpot tiers, including Free. However, HubSpot Professional or Enterprise unlocks more automation triggers and AI features. We'll recommend the right tier based on your team size and workflow needs — we never push upgrades you don't need.",
+      },
+      {
+        question: "How does AI lead scoring work?",
+        answer:
+          "AI analyzes your historical deals — which leads converted, what they had in common, how they engaged — and builds a scoring model that ranks new leads by likelihood to close. The model improves over time as it learns from your actual sales outcomes. No more guessing which leads to prioritize.",
+      },
+      {
+        question: "Will this replace my sales team?",
+        answer:
+          "No — it makes them more effective. AI handles the manual work your reps hate (data entry, research, CRM updates) so they can spend more time actually selling. Our Dallas clients typically see reps recover 15+ hours per week that was previously spent on administrative tasks.",
+      },
+    ],
+  },
+  {
+    slug: "ai-knowledge-base",
+    title: "Internal AI Knowledge Bases & SOP Automation",
+    shortTitle: "AI Knowledge Base",
+    description:
+      "We turn your scattered company files into a secure AI search engine — cutting employee onboarding time by 50% and eliminating repeated questions for Dallas businesses.",
+    longDescription:
+      "Your company knowledge is trapped in SharePoint folders, Google Drives, Notion pages, and people's heads. New hires take months to get up to speed. Employees ask the same questions over and over. We build internal AI knowledge bases that let your team search across all your documentation with natural language — like having a ChatGPT that only knows your company's SOPs, policies, and institutional knowledge.",
+    heroSummary:
+      "Stop answering the same questions twice. We turn your scattered company files into a secure AI search engine, cutting employee onboarding time by 50%.",
+    href: "/ai-knowledge-base",
+    icon: "BookOpen",
+    keywords: [
+      "AI knowledge base for business",
+      "internal AI search engine",
+      "SOP automation AI",
+      "AI onboarding tool",
+      "enterprise AI knowledge management",
+      "internal RAG system",
+    ],
+    h1: "Internal AI Knowledge Bases & SOP Automation",
+    features: [
+      "Natural-language search across all your company documents and SOPs",
+      "Connects to SharePoint, Google Drive, Notion, Confluence, and file servers",
+      "Answers employee questions with citations back to source documents",
+      "Secure and private — your data never leaves your infrastructure",
+      "Role-based access control so teams only see what they're authorized to",
+      "Auto-updates as documents change — no manual re-indexing needed",
+    ],
+    howItWorksHeading: "How to build an AI knowledge base for your company",
+    howItWorks: [
+      {
+        step: "Audit your documentation landscape and identify knowledge gaps",
+        description:
+          "We map where your company knowledge lives — SharePoint, Google Drive, Notion, wikis, file servers, and undocumented tribal knowledge. We identify the most frequently asked questions and the biggest onboarding bottlenecks.",
+      },
+      {
+        step: "Build and connect your internal RAG-powered AI search engine",
+        description:
+          "We ingest your documents into a secure, private AI system using RAG (Retrieval-Augmented Generation). Your team searches in natural language and gets accurate answers with citations — no hallucinations, no access to data they shouldn't see.",
+      },
+      {
+        step: "Deploy, train your team, and keep the knowledge base current",
+        description:
+          "We launch the AI knowledge base on your intranet, Slack, or Teams. We train your team to use it effectively and set up auto-sync so new and updated documents are indexed automatically — no manual maintenance required.",
+      },
+    ],
+    integrations: [
+      "Microsoft SharePoint",
+      "Google Drive",
+      "Notion",
+      "Confluence",
+      "Slack",
+      "Microsoft Teams",
+      "OpenAI API",
+    ],
+    stats: [
+      { value: 50, suffix: "%", label: "Faster Employee Onboarding" },
+      { value: 70, suffix: "%", label: "Fewer Repeated Questions" },
+      { value: 5, suffix: "sec", label: "Avg. Answer Time" },
+    ],
+    faq: [
+      {
+        question: "How much does an internal AI knowledge base cost?",
+        answer:
+          "Setup typically ranges from $8,000–$20,000 depending on the number of data sources, document volume, and security requirements. Ongoing hosting and maintenance starts at $500/month. For Dallas businesses with 50+ employees, the ROI from reduced onboarding time and fewer repeated questions typically pays for the system within 3 months.",
+      },
+      {
+        question: "Is my company data safe in an AI knowledge base?",
+        answer:
+          "Yes. We deploy on your infrastructure or in a private cloud environment — your data never touches public AI services. We implement role-based access control, encryption at rest and in transit, and audit logging. For regulated industries (HIPAA, FINRA), we build compliance-ready deployments.",
+      },
+      {
+        question: "What's the difference between this and just using SharePoint search?",
+        answer:
+          "SharePoint search matches keywords. An AI knowledge base understands meaning. You can ask 'What's our PTO policy for employees in their first year?' and get the exact answer with a citation — instead of a list of 50 documents that mention 'PTO'. It searches across all your platforms, not just SharePoint.",
+      },
+      {
+        question: "How does Internal RAG work?",
+        answer:
+          "RAG (Retrieval-Augmented Generation) is the technology behind your AI knowledge base. When an employee asks a question, the system searches your documents for the most relevant passages, then uses AI to synthesize a clear answer with citations. Unlike plain ChatGPT, it only answers based on your data — no hallucinations or made-up information.",
+      },
+    ],
+  },
+  {
+    slug: "data-audit",
+    title: "The Small Business AI Data Readiness Audit",
+    shortTitle: "AI Data Audit",
+    description:
+      "Is your data secure enough for AI? Get a comprehensive, flat-fee audit of your Microsoft 365 or Google Workspace environment — security risks and automation opportunities identified in 7 days.",
+    longDescription:
+      "Before you can use AI safely, you need to know what shape your data is in. Our AI Data Readiness Audit gives Dallas businesses a clear picture of their security posture, data organization, and automation opportunities in exactly 7 days. We assess your Microsoft 365 or Google Workspace environment, identify exposed sensitive data, and deliver a prioritized action plan — so you can adopt AI with confidence, not anxiety.",
+    heroSummary:
+      "Is your data secure enough for AI? Get a comprehensive, flat-fee audit of your Microsoft 365 or Google Workspace environment to identify security risks and automation opportunities in exactly 7 days.",
+    href: "/data-audit",
+    icon: "ShieldCheck",
+    keywords: [
+      "AI data readiness audit",
+      "Microsoft 365 security audit",
+      "Google Workspace security audit",
+      "small business data audit Dallas",
+      "AI readiness assessment",
+      "data security audit for AI",
+    ],
+    h1: "The Small Business AI Data Readiness Audit",
+    features: [
+      "Complete security assessment of your Microsoft 365 or Google Workspace",
+      "Identify exposed sensitive data — PII, financial records, credentials",
+      "Map automation opportunities ranked by time savings and ROI",
+      "Compliance gap analysis for HIPAA, SOX, FINRA, and CMMC",
+      "Detailed report with prioritized action items delivered in 7 days",
+      "Flat-fee pricing — no hourly billing surprises",
+    ],
+    howItWorksHeading: "How the AI Data Readiness Audit works",
+    howItWorks: [
+      {
+        step: "Connect your environment and run the automated security scan",
+        description:
+          "We connect read-only to your Microsoft 365 or Google Workspace using secure admin APIs. Our automated tools scan permissions, sharing settings, data exposure, and security configurations — no agents installed, no disruption to your team.",
+      },
+      {
+        step: "Analyze findings and identify AI automation opportunities",
+        description:
+          "Our team reviews the scan results, identifies security risks and compliance gaps, and maps the workflows in your environment that are ripe for AI automation. We prioritize by risk severity and potential time savings.",
+      },
+      {
+        step: "Deliver your action plan and roadmap in 7 days",
+        description:
+          "You receive a comprehensive report with: security risks ranked by severity, compliance gaps, AI automation opportunities ranked by ROI, and a clear implementation roadmap. We walk you through every finding in a live review session.",
+      },
+    ],
+    integrations: [
+      "Microsoft 365",
+      "Google Workspace",
+      "Azure Active Directory",
+      "Microsoft Defender",
+      "Google Admin Console",
+      "Microsoft Purview",
+    ],
+    stats: [
+      { value: 7, suffix: " days", label: "Audit Turnaround Time" },
+      { value: 100, suffix: "%", label: "Flat-Fee Pricing" },
+      { value: 15, suffix: "+", label: "Security Checkpoints Assessed" },
+    ],
+    faq: [
+      {
+        question: "How much does the AI Data Readiness Audit cost?",
+        answer:
+          "We offer three flat-fee tiers: Essentials ($2,500) covers core security assessment for teams under 25 users, Professional ($5,000) adds compliance analysis and AI opportunity mapping for teams of 25–100, and Enterprise ($8,500) includes full compliance audit, executive briefing, and implementation roadmap for 100+ users. No hourly billing, no surprise invoices.",
+      },
+      {
+        question: "What do you need access to for the audit?",
+        answer:
+          "Read-only admin access to your Microsoft 365 or Google Workspace environment. We use secure API connections — no agents installed on your machines, no passwords stored, no disruption to your team's work. Access is revoked immediately after the audit completes.",
+      },
+      {
+        question: "Is my business data safe during the audit?",
+        answer:
+          "Yes. We use read-only API access — we can see configurations and metadata but cannot modify, copy, or download your actual files or emails. All findings are encrypted in transit and at rest, and we delete all scan data within 30 days of delivering your report.",
+      },
+      {
+        question: "What if we're not ready for AI after the audit?",
+        answer:
+          "That's valuable information too. The audit gives you a clear, prioritized list of what to fix before adopting AI — and many of those fixes (permission cleanup, MFA enforcement, data organization) improve your security regardless of AI. Most businesses can address the critical items within 30–60 days.",
+      },
+    ],
+  },
 ];
+
+// ---------------------------------------------------------------------------
+// Data Audit pricing tiers (for PricingTable component)
+// ---------------------------------------------------------------------------
+
+export const DATA_AUDIT_PRICING = [
+  {
+    tier: "Essentials",
+    price: "$2,500",
+    description: "Core security assessment for small teams",
+    users: "Up to 25 users",
+    features: [
+      "Microsoft 365 or Google Workspace security scan",
+      "Permission and sharing audit",
+      "Sensitive data exposure report",
+      "Top 10 risk findings with remediation steps",
+      "30-minute results walkthrough call",
+    ],
+    highlighted: false,
+  },
+  {
+    tier: "Professional",
+    price: "$5,000",
+    description: "Full audit with compliance and AI opportunity mapping",
+    users: "25–100 users",
+    features: [
+      "Everything in Essentials, plus:",
+      "HIPAA / SOX / FINRA compliance gap analysis",
+      "AI automation opportunity mapping ranked by ROI",
+      "MFA and identity security review",
+      "Detailed 40+ page report with executive summary",
+      "60-minute live review session with your leadership team",
+    ],
+    highlighted: true,
+  },
+  {
+    tier: "Enterprise",
+    price: "$8,500",
+    description: "Comprehensive audit for larger organizations",
+    users: "100+ users",
+    features: [
+      "Everything in Professional, plus:",
+      "CMMC / NIST compliance assessment",
+      "Third-party app and OAuth permission audit",
+      "Data classification and retention analysis",
+      "Custom AI implementation roadmap",
+      "Executive briefing presentation for stakeholders",
+      "90-day follow-up check-in included",
+    ],
+    highlighted: false,
+  },
+] as const;
 
 // ---------------------------------------------------------------------------
 // Insight / Spoke Pages
