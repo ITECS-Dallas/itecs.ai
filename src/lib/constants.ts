@@ -1300,3 +1300,115 @@ export const HOMEPAGE_FEATURES = [
     ],
   },
 ] as const;
+
+// ---------------------------------------------------------------------------
+// Homepage: Service blurbs with intent-driven anchor text for the authority grid
+// Each blurb contains an anchor phrase + the href it should link to
+// ---------------------------------------------------------------------------
+
+export const HOMEPAGE_SERVICE_BLURBS = [
+  {
+    slug: "consulting",
+    blurb:
+      "Not sure where AI fits? We identify your biggest time-wasters and build a ",
+    anchorText: "practical AI adoption plan tailored to your team",
+    anchorHref: "/consulting",
+    afterAnchor: ".",
+  },
+  {
+    slug: "custom-chatgpt",
+    blurb:
+      "Stop leaking data to public LLMs. We build ",
+    anchorText: "secure, private AI chatbots trained on your company data",
+    anchorHref: "/custom-chatgpt",
+    afterAnchor: ".",
+  },
+  {
+    slug: "automation",
+    blurb:
+      "Your team wastes hours on data entry and follow-ups. We ",
+    anchorText: "automate repetitive workflows with Zapier, Power Automate, and custom AI",
+    anchorHref: "/automation",
+    afterAnchor: ".",
+  },
+  {
+    slug: "training",
+    blurb:
+      "Your employees already use AI — the question is whether they use it safely. We deliver ",
+    anchorText: "hands-on AI training for Microsoft Copilot, ChatGPT, and automation tools",
+    anchorHref: "/training",
+    afterAnchor: ".",
+  },
+  {
+    slug: "ai-receptionist",
+    blurb:
+      "Every missed call is lost revenue. We deploy ",
+    anchorText: "AI voice agents that answer your phones 24/7 and book appointments",
+    anchorHref: "/ai-receptionist",
+    afterAnchor: ".",
+  },
+  {
+    slug: "crm-sales-ai",
+    blurb:
+      "Your sales team updates the CRM more than they sell. We ",
+    anchorText: "integrate AI into HubSpot and Salesforce to automate lead scoring and outreach",
+    anchorHref: "/crm-sales-ai",
+    afterAnchor: ".",
+  },
+  {
+    slug: "ai-knowledge-base",
+    blurb:
+      "Company knowledge is trapped in SharePoint and Google Drive. We build ",
+    anchorText: "RAG-powered AI knowledge bases that answer employee questions instantly",
+    anchorHref: "/ai-knowledge-base",
+    afterAnchor: ".",
+  },
+  {
+    slug: "data-audit",
+    blurb:
+      "Before you deploy AI, know where your data stands. Our ",
+    anchorText: "AI data readiness audit maps security gaps and automation opportunities in 7 days",
+    anchorHref: "/data-audit",
+    afterAnchor: ".",
+  },
+] as const;
+
+// ---------------------------------------------------------------------------
+// Homepage: E-E-A-T Heritage section — ITECS founding story + parent company
+// ---------------------------------------------------------------------------
+
+export const HOMEPAGE_HERITAGE = {
+  eyebrow: "Est. 2002",
+  title: "22 Years of IT Operations Behind Every AI Deployment",
+  description:
+    "ITECS started as a managed IT and cybersecurity firm in Dallas in 2002. We launched itecs.ai as the AI division of that same company — not a startup that discovered AI last year. Every automation we build sits on top of two decades of network security, compliance, and infrastructure experience.",
+  stats: [
+    { value: "2002", label: "Founded in Dallas" },
+    { value: "92%", label: "Client Retention Rate" },
+    { value: "500+", label: "Endpoints Managed" },
+    { value: "SOX/HIPAA", label: "Compliance Expertise" },
+  ],
+  parentLink: {
+    text: "Learn more about ITECS managed IT services",
+    href: "https://itecsonline.com",
+  },
+} as const;
+
+// ---------------------------------------------------------------------------
+// Homepage: Local Dallas footprint — DFW metro cities for local SEO
+// ---------------------------------------------------------------------------
+
+export const DFW_SERVICE_AREAS = [
+  "Dallas",
+  "Plano",
+  "Frisco",
+  "Richardson",
+  "McKinney",
+  "Allen",
+  "Irving",
+  "Arlington",
+  "Fort Worth",
+  "Garland",
+  "Carrollton",
+  "Addison",
+] as const;

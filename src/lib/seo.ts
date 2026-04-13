@@ -127,6 +127,19 @@ export function generateLocalBusinessSchema() {
         url: `${SITE_CONFIG.url}${s.href}`,
       })),
     },
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Small Business AI Services",
+      itemListElement: SERVICES.map((s) => ({
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: s.shortTitle,
+          description: s.description,
+          url: `${SITE_CONFIG.url}${s.href}`,
+        },
+      })),
+    },
   };
 }
 

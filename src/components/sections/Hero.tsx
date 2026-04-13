@@ -79,21 +79,22 @@ export function Hero() {
               variants={fadeUp()}
               className="text-5xl md:text-7xl font-extralight tracking-[-0.03em] leading-[1.1]"
             >
-              Save Time. Cut Costs.
+              AI Automation &amp;
               <br />
               <span className="bg-gradient-to-r from-brand-accent to-brand-purple bg-clip-text text-transparent">
-                Automate with AI.
+                Consulting for Dallas
               </span>
+              <br />
+              Small Businesses
             </motion.h1>
 
-            {/* ROI metric */}
+            {/* Zero-click block */}
             <motion.p
               variants={fadeUp(0.1)}
               className="mt-6 text-lg md:text-xl text-text-secondary font-light max-w-xl leading-relaxed"
             >
-              We help Dallas businesses with 10–300 employees automate repetitive
-              work, build custom ChatGPTs, and deploy AI tools that pay for
-              themselves — backed by 22 years of IT operations expertise.
+              <strong className="text-text-primary font-normal">ITECS helps Dallas businesses with 10–300 employees save 20+ hours per week</strong>{" "}
+              by automating repetitive work, building secure custom ChatGPTs, and deploying AI tools that pay for themselves — backed by 22 years of IT operations expertise.
             </motion.p>
 
             {/* CTAs */}

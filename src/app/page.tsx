@@ -6,25 +6,29 @@ import { Hero } from "@/components/sections/Hero";
 import { TrustBar } from "@/components/sections/TrustBar";
 import { ServicesGrid } from "@/components/sections/ServicesGrid";
 import { FeatureShowcase } from "@/components/sections/FeatureShowcase";
+import { Heritage } from "@/components/sections/Heritage";
 import { StatsBar } from "@/components/sections/StatsBar";
 import { PartnerLogos } from "@/components/sections/PartnerLogos";
+import { LocalFootprint } from "@/components/sections/LocalFootprint";
 import { FAQ } from "@/components/sections/FAQ";
 import { CTASection } from "@/components/sections/CTASection";
 
 export const metadata = generatePageMetadata({
-  title: "Dallas AI Consulting & Automation for Small Business | ITECS",
+  title: "Small Business AI Consulting & Automation in Dallas | ITECS",
   description:
-    "ITECS helps Dallas businesses with 10–300 employees save time and cut costs with AI automation, custom ChatGPT development, and hands-on AI consulting. 22+ years of IT expertise.",
+    "ITECS helps Dallas SMBs with 10–300 employees save 20+ hours per week with AI automation, custom ChatGPT, and hands-on consulting. 22 years of IT operations expertise.",
   path: "/",
   keywords: [
-    "small business AI Dallas",
+    "small business AI consulting",
+    "Dallas AI consultants",
+    "SMB AI automation",
+    "AI IT services",
     "AI consulting for small business",
     "AI automation Dallas",
     "custom ChatGPT for business",
-    "AI consultant Dallas",
-    "workflow automation Dallas",
-    "how to use AI in small business",
-    "AI customer service bot for SMB",
+    "AI consultant Dallas TX",
+    "how to automate small business with AI",
+    "secure AI companies for SMBs",
   ],
 });
 
@@ -35,8 +39,10 @@ export default function HomePage() {
       <TrustBar />
       <ServicesGrid />
       <FeatureShowcase features={HOMEPAGE_FEATURES} />
+      <Heritage />
       <StatsBar />
       <PartnerLogos />
+      <LocalFootprint />
       <FAQ items={FAQ_ITEMS} />
       <CTASection />
       <JsonLd data={generateFAQSchema(FAQ_ITEMS)} />
