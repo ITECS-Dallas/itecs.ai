@@ -385,10 +385,10 @@ export function Header() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 h-[72px] transition-all duration-500 ${
+        className={`fixed top-0 left-0 right-0 z-50 h-[72px] border-b transition-[background-color,backdrop-filter,border-color] duration-500 ${
           scrolled || mobileOpen
-            ? "bg-bg-elevated/80 backdrop-blur-xl border-b border-[var(--border-subtle)]"
-            : "bg-transparent"
+            ? "bg-bg-elevated/80 backdrop-blur-xl border-[var(--border-subtle)]"
+            : "bg-transparent border-transparent"
         }`}
       >
         <div className="mx-auto flex h-full max-w-7xl items-center justify-between px-6 md:px-8">
