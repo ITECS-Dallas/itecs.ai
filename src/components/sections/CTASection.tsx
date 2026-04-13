@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/Button";
 import { GradientOrb } from "@/components/effects/GradientOrb";
 import { ScrollReveal } from "@/components/effects/ScrollReveal";
 import { CircuitTrace } from "@/components/effects/CircuitTrace";
+import { SITE_CONFIG } from "@/lib/constants";
 
 export function CTASection() {
   return (
@@ -47,8 +48,8 @@ export function CTASection() {
             <Button href="/contact" size="lg" icon={<ArrowRight className="h-4 w-4" />}>
               Schedule Your Free Assessment
             </Button>
-            <Button href="tel:(972) 408-2020" variant="ghost" size="lg">
-              Call (972) 408-2020
+            <Button href={`tel:${SITE_CONFIG.phone}`} variant="ghost" size="lg">
+              Call {SITE_CONFIG.phone}
             </Button>
           </div>
         </ScrollReveal>

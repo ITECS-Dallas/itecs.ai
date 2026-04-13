@@ -6,6 +6,7 @@ import { GridBackground } from "@/components/effects/GridBackground";
 import { CircuitTrace } from "@/components/effects/CircuitTrace";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import { SITE_CONFIG } from "@/lib/constants";
 
 const stats = [
   { value: "8", label: "AI Services" },
@@ -94,8 +95,8 @@ export function ServicesHero() {
           >
             Get Your Free AI Assessment
           </Button>
-          <Button href="tel:(972) 408-2020" variant="ghost" size="lg">
-            Call (972) 408-2020
+          <Button href={`tel:${SITE_CONFIG.phone}`} variant="ghost" size="lg">
+            Call {SITE_CONFIG.phone}
           </Button>
         </motion.div>
 

@@ -20,7 +20,13 @@ export function generateOrganizationSchema() {
       areaServed: "US",
       availableLanguage: "English",
     },
-    sameAs: [SITE_CONFIG.social.linkedin, SITE_CONFIG.social.facebook],
+    sameAs: [
+      SITE_CONFIG.social.linkedin,
+      SITE_CONFIG.social.facebook,
+      SITE_CONFIG.social.x,
+      SITE_CONFIG.social.youtube,
+      SITE_CONFIG.social.github,
+    ],
     address: {
       "@type": "PostalAddress",
       streetAddress: SITE_CONFIG.address.street,
@@ -82,12 +88,20 @@ export function generateLocalBusinessSchema() {
       latitude: SITE_CONFIG.geo.lat,
       longitude: SITE_CONFIG.geo.lng,
     },
-    openingHoursSpecification: {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-      opens: "08:00",
-      closes: "18:00",
-    },
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        opens: "08:00",
+        closes: "18:00",
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Saturday"],
+        opens: "09:00",
+        closes: "17:00",
+      },
+    ],
     areaServed: [
       {
         "@type": "City",

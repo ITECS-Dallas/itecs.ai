@@ -10,11 +10,12 @@ export const SITE_CONFIG = {
   tagline: "Practical AI for Dallas Businesses.",
   description:
     "ITECS helps small and mid-sized Dallas businesses save time and cut costs with practical AI automation, custom ChatGPT development, and hands-on AI consulting. 22+ years of IT operations expertise.",
-  phone: "(972) 408-2020",
-  email: "info@itecsonline.com",
+  phone: "(214) 444-7884",
+  supportPhone: "(877) 483-2710",
+  email: "sales-inquiry@itecsonline.com",
   foundingYear: 2002,
   address: {
-    street: "500 N Central Expy, Suite 500",
+    street: "500 N Central Expy, Suite 455",
     city: "Plano",
     state: "TX",
     zip: "75074",
@@ -23,7 +24,10 @@ export const SITE_CONFIG = {
   geo: { lat: 33.0198, lng: -96.6989 },
   social: {
     linkedin: "https://www.linkedin.com/company/itecsonline",
-    facebook: "https://www.facebook.com/itecsonline",
+    facebook: "https://www.facebook.com/itecscorp",
+    x: "https://x.com/ITECS_Dallas",
+    youtube: "https://www.youtube.com/@itecsoutsourcingandsupport2028",
+    github: "https://github.com/ITECS-Dallas",
   },
 } as const;
 

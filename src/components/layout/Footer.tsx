@@ -1,13 +1,56 @@
 import Link from "next/link";
 import Image from "next/image";
-import { SITE_CONFIG, NAV_LINKS, SERVICES } from "@/lib/constants";
+import { SITE_CONFIG, SERVICES } from "@/lib/constants";
+import {
+  LinkedInIcon,
+  XIcon,
+  FacebookIcon,
+  YouTubeIcon,
+  GitHubIcon,
+} from "@/components/ui/SocialIcons";
+
+const companyLinks = [
+  { label: "About", href: "/about" },
+  { label: "Services", href: "/services" },
+  { label: "Insights", href: "/insights" },
+  { label: "Contact", href: "/contact" },
+  { label: "ITECS Main Site", href: SITE_CONFIG.mainSiteUrl, external: true },
+];
+
+const socialLinks = [
+  {
+    label: "LinkedIn",
+    href: SITE_CONFIG.social.linkedin,
+    icon: LinkedInIcon,
+  },
+  {
+    label: "X (Twitter)",
+    href: SITE_CONFIG.social.x,
+    icon: XIcon,
+  },
+  {
+    label: "Facebook",
+    href: SITE_CONFIG.social.facebook,
+    icon: FacebookIcon,
+  },
+  {
+    label: "YouTube",
+    href: SITE_CONFIG.social.youtube,
+    icon: YouTubeIcon,
+  },
+  {
+    label: "GitHub",
+    href: SITE_CONFIG.social.github,
+    icon: GitHubIcon,
+  },
+];
 
 export function Footer() {
   return (
     <footer className="bg-bg-surface border-t border-[var(--border-subtle)]">
       <div className="mx-auto max-w-7xl px-6 md:px-8 py-16">
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
-          {/* Company */}
+          {/* Brand + Address */}
           <div>
             <Link href="/" className="inline-block mb-4">
               <Image
@@ -29,36 +72,37 @@ export function Footer() {
             </address>
           </div>
 
-          {/* Quick Links */}
+          {/* Company */}
           <div>
             <h4 className="text-sm font-medium tracking-[0.05em] uppercase text-text-primary mb-4">
               Company
             </h4>
             <ul className="space-y-3">
-              {NAV_LINKS.map((link) => (
+              {companyLinks.map((link) => (
                 <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-text-dim hover:text-brand-accent transition-colors"
-                  >
-                    {link.label}
-                  </Link>
+                  {"external" in link && link.external ? (
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm text-text-dim hover:text-brand-accent transition-colors"
+                    >
+                      {link.label}
+                    </a>
+                  ) : (
+                    <Link
+                      href={link.href}
+                      className="text-sm text-text-dim hover:text-brand-accent transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  )}
                 </li>
               ))}
-              <li>
-                <a
-                  href={SITE_CONFIG.mainSiteUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-text-dim hover:text-brand-accent transition-colors"
-                >
-                  ITECS Main Site
-                </a>
-              </li>
             </ul>
           </div>
 
-          {/* Services */}
+          {/* AI Services */}
           <div>
             <h4 className="text-sm font-medium tracking-[0.05em] uppercase text-text-primary mb-4">
               AI Services
@@ -77,18 +121,32 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Contact */}
+          {/* Contact + Social */}
           <div>
             <h4 className="text-sm font-medium tracking-[0.05em] uppercase text-text-primary mb-4">
               Contact
             </h4>
             <ul className="space-y-3 text-sm text-text-dim">
               <li>
+                <span className="block text-text-secondary text-xs uppercase tracking-wider mb-0.5">
+                  Sales
+                </span>
                 <a
                   href={`tel:${SITE_CONFIG.phone}`}
                   className="hover:text-brand-accent transition-colors"
                 >
                   {SITE_CONFIG.phone}
+                </a>
+              </li>
+              <li>
+                <span className="block text-text-secondary text-xs uppercase tracking-wider mb-0.5">
+                  24/7 Support
+                </span>
+                <a
+                  href={`tel:${SITE_CONFIG.supportPhone}`}
+                  className="hover:text-brand-accent transition-colors"
+                >
+                  {SITE_CONFIG.supportPhone}
                 </a>
               </li>
               <li>
@@ -99,21 +157,30 @@ export function Footer() {
                   {SITE_CONFIG.email}
                 </a>
               </li>
-              <li>
-                <a
-                  href={SITE_CONFIG.social.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-brand-accent transition-colors"
-                >
-                  LinkedIn
-                </a>
-              </li>
             </ul>
+
+            {/* Social icons */}
+            <div className="mt-6 flex items-center gap-3">
+              {socialLinks.map((social) => {
+                const Icon = social.icon;
+                return (
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={social.label}
+                    className="flex items-center justify-center w-8 h-8 rounded-lg bg-bg-void/50 border border-[var(--border-subtle)] text-text-dim hover:text-brand-accent hover:border-[var(--border-active)] transition-colors"
+                  >
+                    <Icon className="h-4 w-4" />
+                  </a>
+                );
+              })}
+            </div>
           </div>
         </div>
 
-        {/* Trust badge — child-to-parent authority link (Ticket 3) */}
+        {/* Trust badge */}
         <div className="mt-12 pt-6 border-t border-[var(--border-subtle)]">
           <p className="text-sm text-text-dim text-center">
             ITECS AI is a division of{" "}

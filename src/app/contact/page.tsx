@@ -5,12 +5,19 @@ import { GradientOrb } from "@/components/effects/GradientOrb";
 import { GridBackground } from "@/components/effects/GridBackground";
 import { ScrollReveal } from "@/components/effects/ScrollReveal";
 import { Phone, Mail, MapPin } from "lucide-react";
+import {
+  LinkedInIcon,
+  XIcon,
+  FacebookIcon,
+  YouTubeIcon,
+  GitHubIcon,
+} from "@/components/ui/SocialIcons";
 import Link from "next/link";
 
 export const metadata = generatePageMetadata({
   title: "Contact ITECS — Free AI Assessment in Dallas",
   description:
-    "Contact ITECS for a free AI assessment. We help Dallas businesses with 10–300 employees save time with AI automation, custom ChatGPT, and workflow tools. Call (972) 408-2020.",
+    "Contact ITECS for a free AI assessment. We help Dallas businesses with 10–300 employees save time with AI automation, custom ChatGPT, and workflow tools. Call (214) 444-7884.",
   path: "/contact",
   keywords: [
     "contact AI consultant Dallas",
@@ -64,9 +71,19 @@ export default function ContactPage() {
                   <h3 className="text-text-primary font-medium">Phone</h3>
                   <a
                     href={`tel:${SITE_CONFIG.phone}`}
-                    className="text-text-secondary hover:text-brand-accent transition-colors"
+                    className="text-text-secondary hover:text-brand-accent transition-colors block"
                   >
                     {SITE_CONFIG.phone}
+                    <span className="text-text-dim text-xs ml-2">Sales</span>
+                  </a>
+                  <a
+                    href={`tel:${SITE_CONFIG.supportPhone}`}
+                    className="text-text-secondary hover:text-brand-accent transition-colors block mt-1"
+                  >
+                    {SITE_CONFIG.supportPhone}
+                    <span className="text-text-dim text-xs ml-2">
+                      24/7 Support
+                    </span>
                   </a>
                 </div>
               </div>
@@ -99,6 +116,31 @@ export default function ContactPage() {
                     {SITE_CONFIG.address.zip}
                   </address>
                 </div>
+              </div>
+
+              {/* Social links */}
+              <div className="flex items-center gap-3 pt-2">
+                {[
+                  { label: "LinkedIn", href: SITE_CONFIG.social.linkedin, icon: LinkedInIcon },
+                  { label: "X (Twitter)", href: SITE_CONFIG.social.x, icon: XIcon },
+                  { label: "Facebook", href: SITE_CONFIG.social.facebook, icon: FacebookIcon },
+                  { label: "YouTube", href: SITE_CONFIG.social.youtube, icon: YouTubeIcon },
+                  { label: "GitHub", href: SITE_CONFIG.social.github, icon: GitHubIcon },
+                ].map((social) => {
+                  const Icon = social.icon;
+                  return (
+                    <a
+                      key={social.label}
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={social.label}
+                      className="flex items-center justify-center w-9 h-9 rounded-lg bg-bg-surface border border-[var(--border-subtle)] text-text-dim hover:text-brand-accent hover:border-[var(--border-active)] transition-colors"
+                    >
+                      <Icon className="h-4 w-4" />
+                    </a>
+                  );
+                })}
               </div>
 
               <div className="pt-4 border-t border-[var(--border-subtle)]">
