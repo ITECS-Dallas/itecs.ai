@@ -1,10 +1,9 @@
-<svg width="320" height="96" viewBox="0 0 320 96" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
-  <title id="title">Azure Site Recovery</title>
-  <desc id="desc">Compatibility badge for Azure Site Recovery technology references.</desc>
-  <rect width="320" height="96" rx="18" fill="#F8FAFC"/>
-  <rect x="1.5" y="1.5" width="317" height="93" rx="16.5" stroke="#CBD5E1" stroke-width="3"/>
-  <path d="M63 68L97 23H130L93 68H63Z" fill="#0078D4"/>
-  <path d="M97 68L129 23L161 68H97Z" fill="#50E6FF"/>
-  <text x="221" y="44" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="700" fill="#0F172A">Azure</text>
-  <text x="221" y="68" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="500" fill="#475569">Site Recovery</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 38" fill="none">
+  <!-- Microsoft logo mark -->
+  <rect x="0" y="2" width="16" height="16" fill="#030303"/>
+  <rect x="18" y="2" width="16" height="16" fill="#030303"/>
+  <rect x="0" y="20" width="16" height="16" fill="#030303"/>
+  <rect x="18" y="20" width="16" height="16" fill="#030303"/>
+  <!-- "Azure" wordmark -->
+  <text x="44" y="27" font-family="Segoe UI, system-ui, -apple-system, sans-serif" font-size="26" font-weight="400" fill="#030303">Azure</text>
 </svg>
