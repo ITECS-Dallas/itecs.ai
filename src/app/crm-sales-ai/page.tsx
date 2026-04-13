@@ -2,10 +2,9 @@ import { generatePageMetadata } from "@/lib/metadata";
 import {
   generateServiceSchema,
   generateFAQSchema,
-  generateBreadcrumbSchema,
   generateHowToSchema,
 } from "@/lib/seo";
-import { SERVICES, SITE_CONFIG } from "@/lib/constants";
+import { SERVICES } from "@/lib/constants";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { ServiceHero } from "@/components/sections/ServiceHero";
@@ -161,15 +160,6 @@ export default function CRMSalesAIPage() {
       <JsonLd data={generateServiceSchema(service)} />
       <JsonLd data={generateFAQSchema(service.faq)} />
       <JsonLd data={generateHowToSchema(service)} />
-      <JsonLd
-        data={generateBreadcrumbSchema([
-          { name: "Home", url: SITE_CONFIG.url },
-          {
-            name: service.shortTitle,
-            url: `${SITE_CONFIG.url}${service.href}`,
-          },
-        ])}
-      />
     </>
   );
 }

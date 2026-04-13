@@ -1,6 +1,6 @@
 import { generatePageMetadata } from "@/lib/metadata";
-import { generateFAQSchema, generateBreadcrumbSchema } from "@/lib/seo";
-import { INSIGHTS, SITE_CONFIG } from "@/lib/constants";
+import { generateFAQSchema } from "@/lib/seo";
+import { INSIGHTS } from "@/lib/constants";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { ScrollReveal } from "@/components/effects/ScrollReveal";
@@ -79,11 +79,6 @@ export default function AutomateLeadPage() {
       <CTASection />
 
       <JsonLd data={generateFAQSchema(insight.faq)} />
-      <JsonLd data={generateBreadcrumbSchema([
-        { name: "Home", url: SITE_CONFIG.url },
-        { name: "Insights", url: `${SITE_CONFIG.url}/insights` },
-        { name: "Automate Lead Follow-Up", url: `${SITE_CONFIG.url}${insight.href}` },
-      ])} />
     </>
   );
 }

@@ -1,7 +1,4 @@
 import { generatePageMetadata } from "@/lib/metadata";
-import { generateBreadcrumbSchema } from "@/lib/seo";
-import { SITE_CONFIG } from "@/lib/constants";
-import { JsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { ServicesGrid } from "@/components/sections/ServicesGrid";
 import { CTASection } from "@/components/sections/CTASection";
@@ -43,12 +40,6 @@ export default function ServicesPage() {
       <ServicesGrid />
       <CTASection />
 
-      <JsonLd
-        data={generateBreadcrumbSchema([
-          { name: "Home", url: SITE_CONFIG.url },
-          { name: "Services", url: `${SITE_CONFIG.url}/services` },
-        ])}
-      />
     </>
   );
 }

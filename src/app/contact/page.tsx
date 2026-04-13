@@ -1,5 +1,5 @@
 import { generatePageMetadata } from "@/lib/metadata";
-import { generateBreadcrumbSchema, generateLocalBusinessSchema } from "@/lib/seo";
+import { generateLocalBusinessSchema } from "@/lib/seo";
 import { SITE_CONFIG } from "@/lib/constants";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
@@ -203,12 +203,6 @@ export default function ContactPage() {
       </section>
 
       <JsonLd data={generateLocalBusinessSchema()} />
-      <JsonLd
-        data={generateBreadcrumbSchema([
-          { name: "Home", url: SITE_CONFIG.url },
-          { name: "Contact", url: `${SITE_CONFIG.url}/contact` },
-        ])}
-      />
     </>
   );
 }

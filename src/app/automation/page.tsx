@@ -2,10 +2,9 @@ import { generatePageMetadata } from "@/lib/metadata";
 import {
   generateServiceSchema,
   generateFAQSchema,
-  generateBreadcrumbSchema,
   generateHowToSchema,
 } from "@/lib/seo";
-import { SERVICES, SITE_CONFIG } from "@/lib/constants";
+import { SERVICES } from "@/lib/constants";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { ServiceHero } from "@/components/sections/ServiceHero";
@@ -23,7 +22,7 @@ import { CTASection } from "@/components/sections/CTASection";
 const service = SERVICES.find((s) => s.slug === "automation")!;
 
 export const metadata = generatePageMetadata({
-  title: "AI Workflow Automation for Small Business | ITECS AI Dallas",
+  title: "AI Workflow Automation for Small Business in Dallas",
   description:
     "Automate lead follow-ups, data entry, and scheduling for your Dallas business. 40% cost reduction, 99.9% uptime. Managed by a 22-year MSP. From $2,500.",
   path: service.href,
@@ -163,15 +162,6 @@ export default function AutomationPage() {
       <JsonLd data={generateServiceSchema(service)} />
       <JsonLd data={generateFAQSchema(service.faq)} />
       <JsonLd data={generateHowToSchema(service)} />
-      <JsonLd
-        data={generateBreadcrumbSchema([
-          { name: "Home", url: SITE_CONFIG.url },
-          {
-            name: service.shortTitle,
-            url: `${SITE_CONFIG.url}${service.href}`,
-          },
-        ])}
-      />
     </>
   );
 }

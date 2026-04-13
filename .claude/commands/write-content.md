@@ -29,7 +29,13 @@ Then apply the V2.0 Page Generation Protocol to the page specified by the user: 
    - How It Works must use semantic `<ol><li>` with `list-decimal` and `value={N}` on each `<li>`. H3s go inside `<li>`, never replace the list structure.
    - Diagrams/visuals must be wrapped in `<figure role="img" aria-label="...">` with `<figcaption>` for captions. Decorative icons need `aria-hidden="true"`.
 
-6. **Ship it** — Always finish by deploying changes live:
+6. **Validate at Googlebot Smartphone viewport** — Use Playwright to test the page at the exact viewport Google uses for mobile-first indexing. This is mandatory before shipping:
+   - Configure: `viewport: { width: 412, height: 915 }`, `isMobile: true`, `hasTouch: true`, `deviceScaleFactor: 2.625`
+   - User-Agent: `Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.6723.69 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)`
+   - Check: layout renders without horizontal overflow, tap targets are accessible, text is legible, sections stack vertically, no CLS-causing elements
+   - Never test at desktop resolution — Google indexes mobile, so that's what we validate
+
+7. **Ship it** — Always finish by deploying changes live:
    - Commit all changes with a descriptive message
    - Push to the remote repository
    - Run `npm run build` to generate the production build

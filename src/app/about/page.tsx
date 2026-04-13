@@ -1,9 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { generatePageMetadata } from "@/lib/metadata";
-import { generateBreadcrumbSchema, generateFAQSchema } from "@/lib/seo";
+import { generateFAQSchema } from "@/lib/seo";
 import {
-  SITE_CONFIG,
   STATS,
   TEAM_MEMBERS,
   ABOUT_VALUES,
@@ -102,12 +101,6 @@ export default function AboutPage() {
       <CTASection />
 
       {/* JSON-LD Schemas */}
-      <JsonLd
-        data={generateBreadcrumbSchema([
-          { name: "Home", url: SITE_CONFIG.url },
-          { name: "About", url: `${SITE_CONFIG.url}/about` },
-        ])}
-      />
       <JsonLd data={generateFAQSchema(ABOUT_FAQ)} />
     </>
   );

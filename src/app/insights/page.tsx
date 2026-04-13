@@ -1,6 +1,6 @@
 import { generatePageMetadata } from "@/lib/metadata";
-import { generateBreadcrumbSchema, generateFAQSchema } from "@/lib/seo";
-import { INSIGHTS_FAQ, SITE_CONFIG } from "@/lib/constants";
+import { generateFAQSchema } from "@/lib/seo";
+import { INSIGHTS_FAQ } from "@/lib/constants";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { InsightsHero } from "@/components/sections/InsightsHero";
 import { InsightCards } from "@/components/sections/InsightCards";
@@ -43,12 +43,6 @@ export default function InsightsPage() {
 
       {/* JSON-LD Schemas */}
       <JsonLd data={generateFAQSchema(INSIGHTS_FAQ)} />
-      <JsonLd
-        data={generateBreadcrumbSchema([
-          { name: "Home", url: SITE_CONFIG.url },
-          { name: "Insights", url: `${SITE_CONFIG.url}/insights` },
-        ])}
-      />
     </>
   );
 }

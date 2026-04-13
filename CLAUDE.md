@@ -107,6 +107,23 @@ This project is configured with three MCP servers in `.mcp.json`:
 - **Context7** — Library/code reference lookups. Use for checking current API docs of dependencies.
 - **Playwright** — Browser automation and testing. Use for visual testing and end-to-end validation.
 
+## Playwright Testing — Mobile-First (Googlebot Smartphone)
+
+**All Playwright browser testing and validation MUST simulate the Googlebot Smartphone crawler viewport.** Google uses mobile-first indexing — their crawler renders pages as a Chrome smartphone. If the site doesn't look right at mobile resolution, it doesn't look right to Google.
+
+**Required Playwright configuration for every session:**
+```
+viewport: { width: 412, height: 915 }
+userAgent: "Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.6723.69 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)"
+deviceScaleFactor: 2.625
+isMobile: true
+hasTouch: true
+```
+
+**When to apply:** Every time you use Playwright to navigate, screenshot, snapshot, or validate any page on this site. This applies to visual QA, SEO validation, content verification, layout checks, and any form of browser testing. No exceptions — never use a desktop viewport unless explicitly asked to compare desktop vs mobile.
+
+**Why:** Google Search uses the Googlebot Smartphone user-agent and a mobile Chrome viewport for indexing and ranking. Testing at desktop resolution masks mobile layout issues (overflow, font sizing, tap targets, CLS) that directly impact search rankings and Core Web Vitals scores.
+
 ## Environment
 
 Copy `.env.example` to `.env` and fill in:

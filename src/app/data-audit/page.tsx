@@ -2,10 +2,9 @@ import { generatePageMetadata } from "@/lib/metadata";
 import {
   generateServiceSchema,
   generateFAQSchema,
-  generateBreadcrumbSchema,
   generateHowToSchema,
 } from "@/lib/seo";
-import { SERVICES, SITE_CONFIG } from "@/lib/constants";
+import { SERVICES } from "@/lib/constants";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { ServiceHero } from "@/components/sections/ServiceHero";
@@ -24,7 +23,7 @@ import { CTASection } from "@/components/sections/CTASection";
 const service = SERVICES.find((s) => s.slug === "data-audit")!;
 
 export const metadata = generatePageMetadata({
-  title: "AI Data Readiness Audit for Small Business | ITECS AI",
+  title: "AI Data Readiness Audit for Small Business",
   description:
     "Flat-fee Microsoft 365 and Google Workspace security audit delivered in 7 days. Identify data risks, compliance gaps, and AI opportunities — from $2,500.",
   path: service.href,
@@ -167,15 +166,6 @@ export default function DataAuditPage() {
       <JsonLd data={generateServiceSchema(service)} />
       <JsonLd data={generateFAQSchema(service.faq)} />
       <JsonLd data={generateHowToSchema(service)} />
-      <JsonLd
-        data={generateBreadcrumbSchema([
-          { name: "Home", url: SITE_CONFIG.url },
-          {
-            name: service.shortTitle,
-            url: `${SITE_CONFIG.url}${service.href}`,
-          },
-        ])}
-      />
     </>
   );
 }

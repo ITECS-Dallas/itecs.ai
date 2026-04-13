@@ -2,10 +2,9 @@ import { generatePageMetadata } from "@/lib/metadata";
 import {
   generateServiceSchema,
   generateFAQSchema,
-  generateBreadcrumbSchema,
   generateHowToSchema,
 } from "@/lib/seo";
-import { SERVICES, SITE_CONFIG } from "@/lib/constants";
+import { SERVICES } from "@/lib/constants";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { ServiceHero } from "@/components/sections/ServiceHero";
@@ -23,7 +22,7 @@ import { CTASection } from "@/components/sections/CTASection";
 const service = SERVICES.find((s) => s.slug === "training")!;
 
 export const metadata = generatePageMetadata({
-  title: "AI Training for Employees in Dallas | ITECS AI",
+  title: "AI Training for Employees in Dallas",
   description:
     "Hands-on AI training for your Dallas team — ChatGPT, Microsoft Copilot, and automation tools. 30% faster task completion. From $2,000 per session.",
   path: service.href,
@@ -163,15 +162,6 @@ export default function TrainingPage() {
       <JsonLd data={generateServiceSchema(service)} />
       <JsonLd data={generateFAQSchema(service.faq)} />
       <JsonLd data={generateHowToSchema(service)} />
-      <JsonLd
-        data={generateBreadcrumbSchema([
-          { name: "Home", url: SITE_CONFIG.url },
-          {
-            name: service.shortTitle,
-            url: `${SITE_CONFIG.url}${service.href}`,
-          },
-        ])}
-      />
     </>
   );
 }

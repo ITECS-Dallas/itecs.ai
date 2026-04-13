@@ -36,7 +36,7 @@ export function generatePageMetadata({
       locale: "en_US",
       url,
       siteName: "ITECS AI",
-      title: `${title} | ITECS AI`,
+      title,
       description,
       images: [
         {
@@ -49,7 +49,7 @@ export function generatePageMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: `${title} | ITECS AI`,
+      title,
       description,
       images: [ogImage],
     },

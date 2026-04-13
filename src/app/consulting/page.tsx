@@ -2,10 +2,9 @@ import { generatePageMetadata } from "@/lib/metadata";
 import {
   generateServiceSchema,
   generateFAQSchema,
-  generateBreadcrumbSchema,
   generateHowToSchema,
 } from "@/lib/seo";
-import { SERVICES, SITE_CONFIG } from "@/lib/constants";
+import { SERVICES } from "@/lib/constants";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { ServiceHero } from "@/components/sections/ServiceHero";
@@ -23,7 +22,7 @@ import { CTASection } from "@/components/sections/CTASection";
 const service = SERVICES.find((s) => s.slug === "consulting")!;
 
 export const metadata = generatePageMetadata({
-  title: "AI Consulting for Small Business in Dallas | ITECS AI",
+  title: "AI Consulting for Small Business in Dallas",
   description:
     "Practical AI adoption plans for Dallas businesses with 10–300 employees. Save 20+ hours/week with vendor-neutral guidance from a 22-year MSP. From $3,000.",
   path: service.href,
@@ -163,15 +162,6 @@ export default function ConsultingPage() {
       <JsonLd data={generateServiceSchema(service)} />
       <JsonLd data={generateFAQSchema(service.faq)} />
       <JsonLd data={generateHowToSchema(service)} />
-      <JsonLd
-        data={generateBreadcrumbSchema([
-          { name: "Home", url: SITE_CONFIG.url },
-          {
-            name: service.shortTitle,
-            url: `${SITE_CONFIG.url}${service.href}`,
-          },
-        ])}
-      />
     </>
   );
 }
