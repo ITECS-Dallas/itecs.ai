@@ -26,6 +26,8 @@ npx tsc --noEmit     # Type check without emitting
 ./scripts/install-systemd-services.sh # Install systemd units for auto-start + cert renewal timer
 ```
 
+**Multi-site server:** This server runs multiple Docker Compose stacks simultaneously. The `itecsai-*` stack (this project) shares the host with a separate `website-*` stack (itecsonline.com with postgres, redis, workers, etc.). When deploying, be aware that stopping one stack's nginx may affect the other. The `itecsai-nginx` container binds ports 80/443 — if it fails to start, check for port conflicts with the other stack's nginx (`website-nginx-1`). Stop the conflicting container first, then restart.
+
 ## Architecture
 
 - **`src/app/`** — Next.js App Router pages and layouts. `@/*` path alias maps to `./src/*`.
