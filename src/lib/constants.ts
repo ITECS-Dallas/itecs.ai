@@ -925,6 +925,28 @@ export const INSIGHTS: InsightItem[] = [
 ];
 
 // ---------------------------------------------------------------------------
+// Insights listing page FAQ
+// ---------------------------------------------------------------------------
+
+export const INSIGHTS_FAQ = [
+  {
+    question: "Who are these AI guides written for?",
+    answer:
+      "Dallas business owners and managers running companies with 10–300 employees. Each guide assumes zero technical background and focuses on practical steps you can take this week.",
+  },
+  {
+    question: "How often do you publish new AI guides?",
+    answer:
+      "We publish new guides monthly. Each one targets a specific AI use case that our Dallas clients ask about most — from ChatGPT security to lead automation and CRM integration.",
+  },
+  {
+    question: "Can I implement these AI strategies without hiring a developer?",
+    answer:
+      "Most guides cover tools like Zapier, Make.com, and Microsoft Copilot that require no coding. For custom deployments like private ChatGPT or voice agents, ITECS handles the technical build.",
+  },
+] as const;
+
+// ---------------------------------------------------------------------------
 // Homepage stats
 // ---------------------------------------------------------------------------
 
