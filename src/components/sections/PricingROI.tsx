@@ -21,6 +21,10 @@ interface PricingROIProps {
   roiStatement: string;
   /** Optional pricing tiers or notes */
   pricingNotes?: string[];
+  /** Column header for the "traditional" column (default: "Traditional") */
+  traditionalLabel?: string;
+  /** Column header for the "AI" column (default: "AI Solution") */
+  aiLabel?: string;
 }
 
 export function PricingROI({
@@ -29,6 +33,8 @@ export function PricingROI({
   comparison,
   roiStatement,
   pricingNotes,
+  traditionalLabel = "Traditional",
+  aiLabel = "AI Solution",
 }: PricingROIProps) {
   return (
     <section className="py-24 md:py-32">
@@ -50,10 +56,10 @@ export function PricingROI({
             <div className="grid grid-cols-3 bg-bg-surface">
               <div className="p-4 text-sm font-medium text-text-dim" />
               <div className="p-4 text-center text-sm font-medium text-text-secondary border-l border-[var(--border-subtle)]">
-                Traditional Receptionist
+                {traditionalLabel}
               </div>
               <div className="p-4 text-center text-sm font-medium text-brand-accent border-l border-[var(--border-subtle)]">
-                AI Receptionist
+                {aiLabel}
               </div>
             </div>
 
