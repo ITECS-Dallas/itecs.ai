@@ -4,7 +4,7 @@ import { ServicesGrid } from "@/components/sections/ServicesGrid";
 import { CTASection } from "@/components/sections/CTASection";
 
 export const metadata = generatePageMetadata({
-  title: "AI Services for Dallas Small Businesses | ITECS",
+  title: "AI Services for Dallas Small Businesses",
   description:
     "AI consulting, workflow automation, custom ChatGPT development, and employee AI training for Dallas businesses with 10–300 employees. Practical AI that saves time and money.",
   path: "/services",

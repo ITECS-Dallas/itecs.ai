@@ -15,7 +15,7 @@ interface Feature {
 
 export function FeatureShowcase({ features }: { features: readonly Feature[] }) {
   return (
-    <section className="py-24 md:py-32">
+    <section className="py-24 md:py-32 overflow-x-hidden">
       <div className="mx-auto max-w-7xl px-6 md:px-8 space-y-24 md:space-y-32">
         {features.map((feature, i) => {
           const reversed = i % 2 === 1;

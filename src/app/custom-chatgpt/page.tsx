@@ -22,7 +22,7 @@ import { CTASection } from "@/components/sections/CTASection";
 const service = SERVICES.find((s) => s.slug === "custom-chatgpt")!;
 
 export const metadata = generatePageMetadata({
-  title: "Custom ChatGPT for Business | Private AI Chatbot Development",
+  title: "Custom ChatGPT for Business in Dallas",
   description:
     "Build a private ChatGPT trained on your business data. Deploy on website, Slack, or Teams in 2–4 weeks. 85% query resolution, 40% fewer support tickets.",
   path: service.href,

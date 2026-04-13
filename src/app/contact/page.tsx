@@ -1,7 +1,5 @@
 import { generatePageMetadata } from "@/lib/metadata";
-import { generateLocalBusinessSchema } from "@/lib/seo";
 import { SITE_CONFIG } from "@/lib/constants";
-import { JsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { GradientOrb } from "@/components/effects/GradientOrb";
 import { GridBackground } from "@/components/effects/GridBackground";
@@ -10,7 +8,7 @@ import { Phone, Mail, MapPin } from "lucide-react";
 import Link from "next/link";
 
 export const metadata = generatePageMetadata({
-  title: "Contact ITECS — Free AI Assessment for Dallas Businesses",
+  title: "Contact ITECS — Free AI Assessment in Dallas",
   description:
     "Contact ITECS for a free AI assessment. We help Dallas businesses with 10–300 employees save time with AI automation, custom ChatGPT, and workflow tools. Call (972) 408-2020.",
   path: "/contact",
@@ -202,7 +200,6 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <JsonLd data={generateLocalBusinessSchema()} />
     </>
   );
 }
