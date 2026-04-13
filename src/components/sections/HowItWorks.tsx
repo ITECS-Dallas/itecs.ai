@@ -25,10 +25,11 @@ export function HowItWorks({
 
         {/* Strict <ol> for GEO extraction — AI models extract numbered workflows */}
         <ScrollReveal delay={0.1}>
-          <ol className="space-y-8 list-none counter-reset-steps">
+          <ol className="space-y-8 list-decimal [&>li::marker]:text-transparent">
             {steps.map((item, i) => (
               <li
                 key={i}
+                value={i + 1}
                 className="flex items-start gap-6 p-6 rounded-xl border border-[var(--border-subtle)] bg-bg-void/50"
               >
                 <span className="flex items-center justify-center shrink-0 w-12 h-12 rounded-full border border-[var(--border-active)] bg-brand-accent/10 text-2xl font-thin text-brand-accent">

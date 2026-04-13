@@ -132,78 +132,86 @@ export function CallFlowDiagram() {
           </div>
         </ScrollReveal>
 
-        {/* Desktop: horizontal flow */}
-        <div ref={ref} className="hidden md:flex items-start justify-center">
-          {steps.map((step, i) => (
-            <div key={i} className="contents">
-              <motion.div
-                className="flex flex-col items-center text-center max-w-[140px]"
-                initial={{ opacity: 0, y: 20 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: 0.2 + i * 0.15, duration: 0.5 }}
-              >
+        {/* figure + aria-label for multimodal AI / image SEO */}
+        <figure
+          role="img"
+          aria-label="AI receptionist call flow diagram showing five stages: incoming call answered by Twilio, AI voice agent responds via ElevenLabs, handles FAQs and qualification, books appointments via Calendar API or routes to staff, and captures lead data in HubSpot CRM"
+        >
+          {/* Desktop: horizontal flow */}
+          <div ref={ref} className="hidden md:flex items-start justify-center">
+            {steps.map((step, i) => (
+              <div key={i} className="contents">
                 <motion.div
-                  className="flex items-center justify-center w-16 h-16 rounded-2xl border border-[var(--border-subtle)] bg-bg-surface/80"
-                  whileHover={{
-                    scale: 1.08,
-                    borderColor: step.color,
-                    transition: { duration: 0.2 },
-                  }}
+                  className="flex flex-col items-center text-center max-w-[140px]"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={inView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ delay: 0.2 + i * 0.15, duration: 0.5 }}
                 >
-                  <step.icon
-                    className="h-7 w-7"
-                    style={{ color: step.color }}
-                  />
+                  <motion.div
+                    className="flex items-center justify-center w-16 h-16 rounded-2xl border border-[var(--border-subtle)] bg-bg-surface/80"
+                    whileHover={{
+                      scale: 1.08,
+                      borderColor: step.color,
+                      transition: { duration: 0.2 },
+                    }}
+                  >
+                    <step.icon
+                      className="h-7 w-7"
+                      style={{ color: step.color }}
+                      aria-hidden="true"
+                    />
+                  </motion.div>
+                  <p className="mt-3 text-sm font-medium text-text-primary">
+                    {step.label}
+                  </p>
+                  <p className="mt-1 text-xs text-text-dim leading-snug">
+                    {step.detail}
+                  </p>
                 </motion.div>
-                <p className="mt-3 text-sm font-medium text-text-primary">
-                  {step.label}
-                </p>
-                <p className="mt-1 text-xs text-text-dim leading-snug">
-                  {step.detail}
-                </p>
-              </motion.div>
-              {i < steps.length - 1 && (
-                <FlowConnector delay={0.4 + i * 0.15} />
-              )}
-            </div>
-          ))}
-        </div>
+                {i < steps.length - 1 && (
+                  <FlowConnector delay={0.4 + i * 0.15} />
+                )}
+              </div>
+            ))}
+          </div>
 
-        {/* Mobile: vertical flow */}
-        <div className="flex md:hidden flex-col items-center">
-          {steps.map((step, i) => (
-            <div key={i} className="contents">
-              <motion.div
-                className="flex flex-col items-center text-center"
-                initial={{ opacity: 0, y: 20 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: 0.2 + i * 0.12, duration: 0.5 }}
-              >
-                <div className="flex items-center justify-center w-14 h-14 rounded-2xl border border-[var(--border-subtle)] bg-bg-surface/80">
-                  <step.icon
-                    className="h-6 w-6"
-                    style={{ color: step.color }}
-                  />
-                </div>
-                <p className="mt-2 text-sm font-medium text-text-primary">
-                  {step.label}
-                </p>
-                <p className="mt-1 text-xs text-text-dim">{step.detail}</p>
-              </motion.div>
-              {i < steps.length - 1 && (
-                <VerticalConnector delay={0.3 + i * 0.12} />
-              )}
-            </div>
-          ))}
-        </div>
+          {/* Mobile: vertical flow */}
+          <div className="flex md:hidden flex-col items-center">
+            {steps.map((step, i) => (
+              <div key={i} className="contents">
+                <motion.div
+                  className="flex flex-col items-center text-center"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={inView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ delay: 0.2 + i * 0.12, duration: 0.5 }}
+                >
+                  <div className="flex items-center justify-center w-14 h-14 rounded-2xl border border-[var(--border-subtle)] bg-bg-surface/80">
+                    <step.icon
+                      className="h-6 w-6"
+                      style={{ color: step.color }}
+                      aria-hidden="true"
+                    />
+                  </div>
+                  <p className="mt-2 text-sm font-medium text-text-primary">
+                    {step.label}
+                  </p>
+                  <p className="mt-1 text-xs text-text-dim">{step.detail}</p>
+                </motion.div>
+                {i < steps.length - 1 && (
+                  <VerticalConnector delay={0.3 + i * 0.12} />
+                )}
+              </div>
+            ))}
+          </div>
 
-        {/* Caption — secondary keyword */}
-        <ScrollReveal delay={0.5}>
-          <p className="mt-10 text-center text-sm text-text-dim italic">
-            AI voice agents handle the entire call lifecycle — from greeting to
-            CRM entry — without human intervention.
-          </p>
-        </ScrollReveal>
+          {/* figcaption — visible caption with secondary keyword for SEO */}
+          <ScrollReveal delay={0.5}>
+            <figcaption className="mt-10 text-center text-sm text-text-dim italic">
+              AI voice agents handle the entire call lifecycle — from greeting to
+              CRM entry — without human intervention.
+            </figcaption>
+          </ScrollReveal>
+        </figure>
       </div>
     </section>
   );

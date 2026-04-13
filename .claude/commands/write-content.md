@@ -24,7 +24,10 @@ Then apply the V2.0 Page Generation Protocol to the page specified by the user: 
 
 4. **Implement changes** — Update constants.ts data, page components, section components, metadata, and JSON-LD schemas. Add Framer Motion animations and visual elements where appropriate.
 
-5. **Verify** — Ensure heading hierarchy, schema parity, internal/external links, and all protocol requirements are met.
+5. **Verify** — Ensure heading hierarchy, schema parity, internal/external links, and all protocol requirements are met. Specifically check these audit-critical items:
+   - FAQ answers must be **always in the DOM** (never conditionally rendered with `{isOpen && ...}`). Use CSS height/opacity animation to show/hide, not mount/unmount.
+   - How It Works must use semantic `<ol><li>` with `list-decimal` and `value={N}` on each `<li>`. H3s go inside `<li>`, never replace the list structure.
+   - Diagrams/visuals must be wrapped in `<figure role="img" aria-label="...">` with `<figcaption>` for captions. Decorative icons need `aria-hidden="true"`.
 
 6. **Ship it** — Always finish by deploying changes live:
    - Commit all changes with a descriptive message
