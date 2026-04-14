@@ -2,52 +2,78 @@
 
 import { ServiceCircuit } from "@/components/effects/ServiceCircuit";
 
-// Search and retrieval tree: document sources on the left feed into a
-// central vector store, and a query path enters from the right.
-// The store retrieves and ranks, producing a cited answer at the bottom.
+// Retrieval tree with AI brain at center: document sources feed in from the
+// left, a query enters from the right, both converge on a brain-shaped
+// vector store hub. The brain processes and retrieves, producing cited
+// answers at the bottom.
 
 const paths = [
-  // Document sources feeding in from upper-left
-  { d: "M 60 80 L 120 140 L 180 200" },
-  { d: "M 60 180 L 120 200 L 180 220" },
-  { d: "M 60 280 L 120 260 L 180 240" },
-  // Vector store hub (merge zone)
-  { d: "M 180 200 L 200 220" },
-  { d: "M 180 220 L 200 220" },
-  { d: "M 180 240 L 200 220" },
-  // Query enters from upper-right
-  { d: "M 340 100 L 280 160 L 240 220 L 200 220" },
-  // Retrieval and ranking descends
-  { d: "M 200 220 L 200 300 L 200 360" },
-  // Answer branches out
-  { d: "M 200 360 L 140 420 L 140 460" },
-  { d: "M 200 360 L 260 420 L 260 460" },
-  // Citation links back to sources
-  { d: "M 140 460 L 80 470" },
+  // ── Brain at center (draws first — indices 0–4) ──
+  // Left hemisphere
+  { d: "M 197 195 L 178 192 L 168 210 L 172 232 L 186 245 L 198 248" },
+  // Right hemisphere
+  { d: "M 203 195 L 222 192 L 232 210 L 228 232 L 214 245 L 202 248" },
+  // Central fissure
+  { d: "M 200 193 L 200 220 L 200 250" },
+  // Cross-connections
+  { d: "M 178 210 L 200 220 L 222 210" },
+  { d: "M 172 232 L 200 235 L 228 232" },
+
+  // ── Document sources feeding in from left ──
+  { d: "M 50 80 L 110 140 L 170 195" },
+  { d: "M 50 220 L 110 220 L 168 220" },
+  { d: "M 50 360 L 110 300 L 170 248" },
+
+  // ── Query enters from upper-right ──
+  { d: "M 350 100 L 290 150 L 235 195" },
+
+  // ── Retrieval descends from brain base ──
+  { d: "M 200 250 L 200 310 L 200 370" },
+
+  // ── Answer branches out ──
+  { d: "M 200 370 L 130 430 L 130 470" },
+  { d: "M 200 370 L 270 430 L 270 470" },
+
+  // ── Citation links back to sources ──
+  { d: "M 130 470 L 70 480" },
 ];
 
 const nodes = [
-  // Document sources
-  { cx: 60, cy: 80, pulse: false },
-  { cx: 60, cy: 180, pulse: false },
-  { cx: 60, cy: 280, pulse: false },
-  // Ingest midpoints
-  { cx: 120, cy: 140, pulse: false },
-  { cx: 120, cy: 200, pulse: false },
-  { cx: 120, cy: 260, pulse: false },
-  // Vector store hub
+  // ── Brain nodes ──
+  { cx: 200, cy: 193, pulse: true },
+  { cx: 178, cy: 192, pulse: false },
+  { cx: 168, cy: 210, pulse: true },
+  { cx: 172, cy: 232, pulse: false },
+  { cx: 222, cy: 192, pulse: false },
+  { cx: 232, cy: 210, pulse: true },
+  { cx: 228, cy: 232, pulse: false },
   { cx: 200, cy: 220, pulse: true },
-  // Query path
-  { cx: 340, cy: 100, pulse: true },
-  { cx: 280, cy: 160, pulse: false },
-  // Retrieval
-  { cx: 200, cy: 300, pulse: false },
-  { cx: 200, cy: 360, pulse: true },
-  // Answer outputs
-  { cx: 140, cy: 460, pulse: true },
-  { cx: 260, cy: 460, pulse: true },
-  // Citation
-  { cx: 80, cy: 470, pulse: false },
+  { cx: 200, cy: 250, pulse: true },
+
+  // ── Document sources ──
+  { cx: 50, cy: 80, pulse: false },
+  { cx: 50, cy: 220, pulse: false },
+  { cx: 50, cy: 360, pulse: false },
+
+  // ── Ingest midpoints ──
+  { cx: 110, cy: 140, pulse: false },
+  { cx: 110, cy: 220, pulse: false },
+  { cx: 110, cy: 300, pulse: false },
+
+  // ── Query path ──
+  { cx: 350, cy: 100, pulse: true },
+  { cx: 290, cy: 150, pulse: false },
+
+  // ── Retrieval ──
+  { cx: 200, cy: 310, pulse: false },
+  { cx: 200, cy: 370, pulse: true },
+
+  // ── Answer outputs ──
+  { cx: 130, cy: 470, pulse: true },
+  { cx: 270, cy: 470, pulse: true },
+
+  // ── Citation ──
+  { cx: 70, cy: 480, pulse: false },
 ];
 
 export function KnowledgeBaseCircuit() {
