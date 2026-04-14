@@ -2,47 +2,79 @@
 
 import { ServiceCircuit } from "@/components/effects/ServiceCircuit";
 
-// Network hub radiating to endpoints: one central knowledge hub with paths
-// reaching out to multiple learner nodes. Represents a trainer distributing
-// skills to a team — star topology with reinforcement feedback paths.
+// Brain: two hemispheres traced with angular circuit paths, internal neural
+// cross-connections, a brain stem at the bottom, and pulsing nodes at
+// activity centers. Represents knowledge flowing through a trained mind.
 
 const paths = [
-  // Central hub to top-left learner
-  { d: "M 200 260 L 140 180 L 90 120" },
-  // Central hub to top-right learner
-  { d: "M 200 260 L 260 180 L 310 120" },
-  // Central hub to left learner
-  { d: "M 200 260 L 100 260 L 60 240" },
-  // Central hub to right learner
-  { d: "M 200 260 L 300 260 L 340 240" },
-  // Central hub to bottom-left learner
-  { d: "M 200 260 L 130 340 L 90 400" },
-  // Central hub to bottom-right learner
-  { d: "M 200 260 L 270 340 L 310 400" },
-  // Knowledge source feeding hub from top
-  { d: "M 200 60 L 200 140 L 200 260" },
-  // Reinforcement feedback: two learners loop back
-  { d: "M 90 120 L 130 80 L 200 60" },
-  { d: "M 310 120 L 270 80 L 200 60" },
+  // ── Brain stem ──
+  { d: "M 200 460 L 200 390" },
+
+  // ── Left hemisphere outline (bottom → top) ──
+  { d: "M 200 390 L 150 350 L 100 290 L 80 220 L 85 150 L 120 95 L 170 70 L 195 65" },
+
+  // ── Right hemisphere outline (bottom → top) ──
+  { d: "M 200 390 L 250 350 L 300 290 L 320 220 L 315 150 L 280 95 L 230 70 L 205 65" },
+
+  // ── Crown bridge ──
+  { d: "M 195 65 L 200 55 L 205 65" },
+
+  // ── Central fissure (vertical midline) ──
+  { d: "M 200 390 L 200 280 L 200 170 L 200 55" },
+
+  // ── Left internal neural pathways ──
+  { d: "M 150 350 L 155 270 L 135 190" },
+  { d: "M 135 190 L 120 130" },
+
+  // ── Right internal neural pathways ──
+  { d: "M 250 350 L 245 270 L 265 190" },
+  { d: "M 265 190 L 280 130" },
+
+  // ── Cross-hemisphere connections (synapses) ──
+  { d: "M 155 270 L 200 280 L 245 270" },
+  { d: "M 135 190 L 200 170 L 265 190" },
+  { d: "M 120 130 L 200 120 L 280 130" },
 ];
 
 const nodes = [
-  // Knowledge source
-  { cx: 200, cy: 60, pulse: true },
-  // Intermediate
-  { cx: 200, cy: 140, pulse: false },
-  // Central hub (trainer)
-  { cx: 200, cy: 260, pulse: true },
-  // Learner nodes
-  { cx: 90, cy: 120, pulse: true },
-  { cx: 310, cy: 120, pulse: true },
-  { cx: 60, cy: 240, pulse: false },
-  { cx: 340, cy: 240, pulse: false },
-  { cx: 90, cy: 400, pulse: false },
-  { cx: 310, cy: 400, pulse: false },
-  // Branch midpoints
-  { cx: 140, cy: 180, pulse: false },
-  { cx: 260, cy: 180, pulse: false },
+  // Brain stem base
+  { cx: 200, cy: 460, pulse: false },
+  // Brain stem / medulla junction
+  { cx: 200, cy: 390, pulse: false },
+
+  // Left hemisphere outline
+  { cx: 150, cy: 350, pulse: false },
+  { cx: 100, cy: 290, pulse: false },
+  { cx: 80, cy: 220, pulse: false },
+  { cx: 85, cy: 150, pulse: false },
+  { cx: 120, cy: 95, pulse: false },
+  { cx: 170, cy: 70, pulse: false },
+
+  // Right hemisphere outline
+  { cx: 250, cy: 350, pulse: false },
+  { cx: 300, cy: 290, pulse: false },
+  { cx: 320, cy: 220, pulse: false },
+  { cx: 315, cy: 150, pulse: false },
+  { cx: 280, cy: 95, pulse: false },
+  { cx: 230, cy: 70, pulse: false },
+
+  // Crown
+  { cx: 200, cy: 55, pulse: true },
+
+  // Left internal activity centers
+  { cx: 155, cy: 270, pulse: true },
+  { cx: 135, cy: 190, pulse: true },
+  { cx: 120, cy: 130, pulse: true },
+
+  // Right internal activity centers
+  { cx: 245, cy: 270, pulse: true },
+  { cx: 265, cy: 190, pulse: true },
+  { cx: 280, cy: 130, pulse: true },
+
+  // Central fissure midpoints (synaptic hubs)
+  { cx: 200, cy: 280, pulse: true },
+  { cx: 200, cy: 170, pulse: true },
+  { cx: 200, cy: 120, pulse: false },
 ];
 
 export function TrainingCircuit() {

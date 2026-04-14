@@ -2,53 +2,97 @@
 
 import { ServiceCircuit } from "@/components/effects/ServiceCircuit";
 
-// Sales funnel: wide entry at top narrowing through scoring and qualification
-// nodes to a close point at the bottom. Represents leads entering a CRM,
-// being researched, scored, and converted.
+// Pipeline through an AI brain: leads enter from the top as raw data streams,
+// flow into a brain-shaped AI processing zone in the center (research, score,
+// draft), then exit the bottom as qualified, closed deals.
 
 const paths = [
-  // Wide lead entry — three sources at top
-  { d: "M 80 60 L 120 130" },
-  { d: "M 200 50 L 200 130" },
-  { d: "M 320 60 L 280 130" },
-  // First convergence: research
-  { d: "M 120 130 L 160 200" },
-  { d: "M 200 130 L 200 200" },
-  { d: "M 280 130 L 240 200" },
-  // Second convergence: scoring
-  { d: "M 160 200 L 180 270" },
-  { d: "M 200 200 L 200 270" },
-  { d: "M 240 200 L 220 270" },
-  // Narrow to outreach
-  { d: "M 180 270 L 200 340" },
-  { d: "M 220 270 L 200 340" },
-  // Final: close
-  { d: "M 200 340 L 200 420 L 200 470" },
-  // Side spur: disqualified leads exit
-  { d: "M 220 270 L 300 290 L 340 310" },
+  // ── Lead input streams (top) ──
+  { d: "M 120 40 L 160 90 L 190 120" },
+  { d: "M 200 30 L 200 120" },
+  { d: "M 280 40 L 240 90 L 210 120" },
+
+  // ── Brain outline: left hemisphere ──
+  { d: "M 190 120 L 130 140 L 90 180 L 80 230 L 90 280 L 130 310 L 180 330" },
+
+  // ── Brain outline: right hemisphere ──
+  { d: "M 210 120 L 270 140 L 310 180 L 320 230 L 310 280 L 270 310 L 220 330" },
+
+  // ── Central fissure through brain ──
+  { d: "M 200 120 L 200 180 L 200 250 L 200 330" },
+
+  // ── Left internal processing (research → score) ──
+  { d: "M 130 140 L 150 190 L 140 250" },
+  { d: "M 140 250 L 160 290" },
+
+  // ── Right internal processing (draft → outreach) ──
+  { d: "M 270 140 L 250 190 L 260 250" },
+  { d: "M 260 250 L 240 290" },
+
+  // ── Cross-hemisphere synapses ──
+  { d: "M 150 190 L 200 180 L 250 190" },
+  { d: "M 140 250 L 200 250 L 260 250" },
+
+  // ── Brain bottom merges to pipeline exit ──
+  { d: "M 180 330 L 200 340 L 220 330" },
+
+  // ── Output pipeline: qualified deals ──
+  { d: "M 200 340 L 200 400 L 200 460" },
+
+  // ── Side exit: disqualified leads ──
+  { d: "M 260 250 L 330 260 L 360 280" },
 ];
 
 const nodes = [
-  // Lead sources
-  { cx: 80, cy: 60, pulse: false },
-  { cx: 200, cy: 50, pulse: false },
-  { cx: 320, cy: 60, pulse: false },
-  // Research stage
-  { cx: 120, cy: 130, pulse: false },
-  { cx: 200, cy: 130, pulse: true },
-  { cx: 280, cy: 130, pulse: false },
-  // Scoring stage
-  { cx: 160, cy: 200, pulse: false },
-  { cx: 200, cy: 200, pulse: true },
-  { cx: 240, cy: 200, pulse: false },
-  // Outreach
-  { cx: 180, cy: 270, pulse: false },
-  { cx: 220, cy: 270, pulse: false },
-  // Close
+  // Lead sources (raw input)
+  { cx: 120, cy: 40, pulse: false },
+  { cx: 200, cy: 30, pulse: false },
+  { cx: 280, cy: 40, pulse: false },
+
+  // Entry funnel
+  { cx: 160, cy: 90, pulse: false },
+  { cx: 240, cy: 90, pulse: false },
+
+  // Brain top (entry gates)
+  { cx: 190, cy: 120, pulse: false },
+  { cx: 200, cy: 120, pulse: false },
+  { cx: 210, cy: 120, pulse: false },
+
+  // Left hemisphere outline
+  { cx: 130, cy: 140, pulse: false },
+  { cx: 90, cy: 180, pulse: false },
+  { cx: 80, cy: 230, pulse: false },
+  { cx: 90, cy: 280, pulse: false },
+  { cx: 130, cy: 310, pulse: false },
+
+  // Right hemisphere outline
+  { cx: 270, cy: 140, pulse: false },
+  { cx: 310, cy: 180, pulse: false },
+  { cx: 320, cy: 230, pulse: false },
+  { cx: 310, cy: 280, pulse: false },
+  { cx: 270, cy: 310, pulse: false },
+
+  // Left internal activity (research, score)
+  { cx: 150, cy: 190, pulse: true },
+  { cx: 140, cy: 250, pulse: true },
+
+  // Right internal activity (draft, outreach)
+  { cx: 250, cy: 190, pulse: true },
+  { cx: 260, cy: 250, pulse: true },
+
+  // Central fissure hubs
+  { cx: 200, cy: 180, pulse: true },
+  { cx: 200, cy: 250, pulse: true },
+
+  // Brain bottom merge
   { cx: 200, cy: 340, pulse: true },
-  { cx: 200, cy: 470, pulse: true },
+
+  // Pipeline output (closed deals)
+  { cx: 200, cy: 400, pulse: false },
+  { cx: 200, cy: 460, pulse: true },
+
   // Disqualified exit
-  { cx: 340, cy: 310, pulse: false },
+  { cx: 360, cy: 280, pulse: false },
 ];
 
 export function CRMCircuit() {
