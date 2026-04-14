@@ -8,6 +8,7 @@ import { SERVICES } from "@/lib/constants";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { ServiceHero } from "@/components/sections/ServiceHero";
+import { AutomationCircuit } from "@/components/effects/circuits/AutomationCircuit";
 import { PainPoint } from "@/components/sections/PainPoint";
 import { ServiceFeatures } from "@/components/sections/ServiceFeatures";
 import { HowItWorks } from "@/components/sections/HowItWorks";
@@ -42,7 +43,7 @@ export default function AutomationPage() {
       </div>
 
       {/* 1. Hero — H1 + Zero-Click Answer Block */}
-      <ServiceHero service={service} />
+      <ServiceHero service={service} circuit={<AutomationCircuit />} />
 
       {/* 2. SMB Pain Point — validate the manual workflow drain */}
       <PainPoint

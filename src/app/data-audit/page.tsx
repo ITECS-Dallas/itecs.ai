@@ -8,6 +8,7 @@ import { SERVICES } from "@/lib/constants";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { ServiceHero } from "@/components/sections/ServiceHero";
+import { DataAuditCircuit } from "@/components/effects/circuits/DataAuditCircuit";
 import { PainPoint } from "@/components/sections/PainPoint";
 import { ServiceFeatures } from "@/components/sections/ServiceFeatures";
 import { HowItWorks } from "@/components/sections/HowItWorks";
@@ -43,7 +44,7 @@ export default function DataAuditPage() {
       </div>
 
       {/* 1. Hero — H1 + Zero-Click Answer Block */}
-      <ServiceHero service={service} />
+      <ServiceHero service={service} circuit={<DataAuditCircuit />} />
 
       {/* 2. SMB Pain Point — validate the bleeding neck */}
       <PainPoint
