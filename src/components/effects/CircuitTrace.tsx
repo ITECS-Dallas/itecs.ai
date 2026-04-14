@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 
 interface CircuitTraceProps {
   className?: string;
@@ -29,9 +29,34 @@ const nodeVariants = {
   }),
 };
 
+const heroPaths = [
+  "M 200 500 L 200 300 L 180 250 L 180 150 L 180 80",
+  "M 200 300 L 220 250 L 220 180 L 240 140 L 240 60",
+  "M 200 350 L 160 300 L 160 200 L 150 150",
+  "M 220 250 L 280 220 L 300 180",
+  "M 160 300 L 120 270 L 100 220",
+];
+
+const heroNodes = [
+  { cx: 180, cy: 80, pulse: true },
+  { cx: 240, cy: 60, pulse: true },
+  { cx: 150, cy: 150, pulse: true },
+  { cx: 300, cy: 180, pulse: false },
+  { cx: 100, cy: 220, pulse: false },
+  { cx: 200, cy: 300, pulse: false },
+];
+
 function HeroCircuit() {
   const ref = useRef<SVGSVGElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.2 });
+
+  const maxDrawTime = heroPaths.length * 0.2 + 2;
+  const [showFlow, setShowFlow] = useState(false);
+  useEffect(() => {
+    if (!inView) return;
+    const timer = setTimeout(() => setShowFlow(true), maxDrawTime * 1000);
+    return () => clearTimeout(timer);
+  }, [inView, maxDrawTime]);
 
   return (
     <svg
@@ -41,18 +66,44 @@ function HeroCircuit() {
       className="w-full h-full"
       xmlns="http://www.w3.org/2000/svg"
     >
-      {/* Main vertical traces */}
-      {[
-        "M 200 500 L 200 300 L 180 250 L 180 150 L 180 80",
-        "M 200 300 L 220 250 L 220 180 L 240 140 L 240 60",
-        "M 200 350 L 160 300 L 160 200 L 150 150",
-        "M 220 250 L 280 220 L 300 180",
-        "M 160 300 L 120 270 L 100 220",
-      ].map((d, i) => (
+      <defs>
+        <filter id="hero-glow" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur" />
+          <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
+        <linearGradient id="hero-gradient" x1="0%" y1="100%" x2="100%" y2="0%">
+          <stop offset="0%" stopColor="var(--brand-accent)" />
+          <stop offset="100%" stopColor="var(--brand-purple)" />
+        </linearGradient>
+        <radialGradient id="hero-halo-grad">
+          <stop offset="0%" stopColor="var(--brand-accent)" stopOpacity="0.4" />
+          <stop offset="100%" stopColor="var(--brand-accent)" stopOpacity="0" />
+        </radialGradient>
+      </defs>
+
+      {/* Glow underlayer */}
+      <g filter="url(#hero-glow)" opacity="0.5">
+        {heroPaths.map((d, i) => (
+          <motion.path
+            key={`glow-${i}`}
+            d={d}
+            stroke="var(--brand-accent)"
+            strokeWidth="3"
+            strokeLinecap="round"
+            custom={i}
+            variants={pathVariants}
+            initial="hidden"
+            animate={inView ? "visible" : "hidden"}
+          />
+        ))}
+      </g>
+
+      {/* Crisp gradient traces */}
+      {heroPaths.map((d, i) => (
         <motion.path
-          key={i}
+          key={`trace-${i}`}
           d={d}
-          stroke="var(--brand-accent)"
+          stroke="url(#hero-gradient)"
           strokeWidth="1.5"
           strokeLinecap="round"
           custom={i}
@@ -62,22 +113,55 @@ function HeroCircuit() {
         />
       ))}
 
-      {/* Circuit nodes */}
-      {[
-        { cx: 180, cy: 80 },
-        { cx: 240, cy: 60 },
-        { cx: 150, cy: 150 },
-        { cx: 300, cy: 180 },
-        { cx: 100, cy: 220 },
-        { cx: 200, cy: 300 },
-      ].map((node, i) => (
+      {/* Flowing particles */}
+      {showFlow && (
+        <g opacity="0.7">
+          {heroPaths.map((d, i) => (
+            <path
+              key={`flow-${i}`}
+              d={d}
+              stroke="var(--brand-accent)"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeDasharray="4 20"
+              className="animate-circuit-flow"
+              style={{ animationDelay: `${i * 0.12}s` }}
+            />
+          ))}
+        </g>
+      )}
+
+      {/* Node halos */}
+      {heroNodes
+        .filter((n) => n.pulse)
+        .map((node, i) => (
+          <motion.circle
+            key={`halo-${i}`}
+            cx={node.cx}
+            cy={node.cy}
+            r="14"
+            fill="url(#hero-halo-grad)"
+            custom={i}
+            variants={nodeVariants}
+            initial="hidden"
+            animate={inView ? "visible" : "hidden"}
+            style={{
+              animation: inView
+                ? `node-halo 3s ease-in-out ${i * 0.2}s infinite`
+                : "none",
+            }}
+          />
+        ))}
+
+      {/* Hollow nodes */}
+      {heroNodes.map((node, i) => (
         <motion.circle
-          key={i}
+          key={`node-${i}`}
           cx={node.cx}
           cy={node.cy}
           r="5"
           fill="var(--bg-void)"
-          stroke="var(--brand-accent)"
+          stroke="url(#hero-gradient)"
           strokeWidth="1.5"
           custom={i}
           variants={nodeVariants}
@@ -87,24 +171,22 @@ function HeroCircuit() {
       ))}
 
       {/* Pulsing inner dots */}
-      {[
-        { cx: 180, cy: 80 },
-        { cx: 240, cy: 60 },
-        { cx: 150, cy: 150 },
-      ].map((node, i) => (
-        <motion.circle
-          key={`pulse-${i}`}
-          cx={node.cx}
-          cy={node.cy}
-          r="2"
-          fill="var(--brand-accent)"
-          custom={i}
-          variants={nodeVariants}
-          initial="hidden"
-          animate={inView ? "visible" : "hidden"}
-          className="animate-pulse-node"
-        />
-      ))}
+      {heroNodes
+        .filter((n) => n.pulse)
+        .map((node, i) => (
+          <motion.circle
+            key={`pulse-${i}`}
+            cx={node.cx}
+            cy={node.cy}
+            r="2"
+            fill="var(--brand-accent)"
+            custom={i}
+            variants={nodeVariants}
+            initial="hidden"
+            animate={inView ? "visible" : "hidden"}
+            className="animate-pulse-node"
+          />
+        ))}
     </svg>
   );
 }
@@ -112,6 +194,22 @@ function HeroCircuit() {
 function SectionDivider() {
   const ref = useRef<SVGSVGElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.5 });
+
+  const dividerPath =
+    "M 0 20 L 400 20 L 420 10 L 500 10 L 520 20 L 680 20 L 700 30 L 780 30 L 800 20 L 1200 20";
+  const dividerNodes = [
+    { cx: 420, cy: 10 },
+    { cx: 500, cy: 10 },
+    { cx: 700, cy: 30 },
+    { cx: 780, cy: 30 },
+  ];
+
+  const [showFlow, setShowFlow] = useState(false);
+  useEffect(() => {
+    if (!inView) return;
+    const timer = setTimeout(() => setShowFlow(true), 2200);
+    return () => clearTimeout(timer);
+  }, [inView]);
 
   return (
     <svg
@@ -122,9 +220,35 @@ function SectionDivider() {
       preserveAspectRatio="none"
       xmlns="http://www.w3.org/2000/svg"
     >
+      <defs>
+        <filter id="divider-glow" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur" />
+          <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
+        <linearGradient id="divider-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stopColor="var(--brand-accent)" />
+          <stop offset="100%" stopColor="var(--brand-purple)" />
+        </linearGradient>
+      </defs>
+
+      {/* Glow */}
+      <g filter="url(#divider-glow)" opacity="0.5">
+        <motion.path
+          d={dividerPath}
+          stroke="var(--brand-accent)"
+          strokeWidth="2"
+          strokeLinecap="round"
+          variants={pathVariants}
+          custom={0}
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+        />
+      </g>
+
+      {/* Crisp trace */}
       <motion.path
-        d="M 0 20 L 400 20 L 420 10 L 500 10 L 520 20 L 680 20 L 700 30 L 780 30 L 800 20 L 1200 20"
-        stroke="var(--brand-accent)"
+        d={dividerPath}
+        stroke="url(#divider-gradient)"
         strokeWidth="1"
         strokeLinecap="round"
         variants={pathVariants}
@@ -132,14 +256,29 @@ function SectionDivider() {
         initial="hidden"
         animate={inView ? "visible" : "hidden"}
       />
-      {[420, 500, 700, 780].map((cx, i) => (
+
+      {/* Flowing particles */}
+      {showFlow && (
+        <path
+          d={dividerPath}
+          stroke="var(--brand-accent)"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeDasharray="4 20"
+          opacity="0.7"
+          className="animate-circuit-flow"
+        />
+      )}
+
+      {/* Nodes */}
+      {dividerNodes.map((node, i) => (
         <motion.circle
           key={i}
-          cx={cx}
-          cy={cx === 420 || cx === 500 ? 10 : 30}
+          cx={node.cx}
+          cy={node.cy}
           r="3"
           fill="var(--bg-void)"
-          stroke="var(--brand-accent)"
+          stroke="url(#divider-gradient)"
           strokeWidth="1"
           custom={i}
           variants={nodeVariants}
