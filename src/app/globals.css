@@ -126,6 +126,22 @@ body::before {
   animation: bounce-subtle 2s ease-in-out infinite;
 }
 
+/* Circuit trace: flowing particle dashes along paths */
+@keyframes circuit-flow {
+  0% { stroke-dashoffset: 24; }
+  100% { stroke-dashoffset: 0; }
+}
+
+.animate-circuit-flow {
+  animation: circuit-flow 1.5s linear infinite;
+}
+
+/* Circuit trace: node halo breathing */
+@keyframes node-halo {
+  0%, 100% { opacity: 0.15; r: 12; }
+  50% { opacity: 0.35; r: 16; }
+}
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
