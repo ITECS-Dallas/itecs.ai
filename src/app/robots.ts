@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: "/api/",
+        disallow: ["/api/", "/p/"],
       },
     ],
     sitemap: "https://itecs.ai/sitemap.xml",

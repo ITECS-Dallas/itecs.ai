@@ -1,0 +1,120 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "ITECS" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - img "ITECS" [ref=e6]
+      - navigation [ref=e7]:
+        - button "Solutions" [ref=e9]
+        - link "Insights" [ref=e12] [cursor=pointer]:
+          - /url: /insights
+        - link "About" [ref=e13] [cursor=pointer]:
+          - /url: /about
+      - link "Get Started" [ref=e16] [cursor=pointer]:
+        - /url: /contact
+  - main [ref=e17]:
+    - generic [ref=e18]:
+      - generic [ref=e19]:
+        - generic
+      - generic [ref=e22]:
+        - generic [ref=e23]
+        - generic [ref=e36]
+      - img [ref=e38]
+    - generic [ref=e42]:
+      - paragraph [ref=e43]: Trusted by industry leaders
+      - generic [ref=e44]:
+        - img "PepsiCo logo" [ref=e46]
+        - img "Pizza Hut logo" [ref=e48]
+        - img "OpenText logo" [ref=e50]
+        - img "Miller logo" [ref=e52]
+        - img "BE Farms logo" [ref=e54]
+    - generic [ref=e56]:
+      - generic [ref=e58]:
+        - paragraph [ref=e59]: What We Do
+        - heading "Practical AI Services for Dallas Businesses" [level=2] [ref=e60]
+        - paragraph [ref=e61]: We help businesses with 10–300 employees save time and cut costs with AI tools that actually work. No jargon, no hype — just results.
+      - generic [ref=e62]:
+        - link "AI Consulting Most small businesses know AI could help, but don't know where to start. We sit down with your team, identify the tasks eating up the most time, and b... Learn more" [ref=e64] [cursor=pointer]:
+          - /url: /consulting
+        - link "Custom ChatGPT Imagine a ChatGPT that only knows your business — your products, your policies, your pricing. We build secure, private AI chatbots that connect to you... Learn more" [ref=e80] [cursor=pointer]:
+          - /url: /custom-chatgpt
+        - link "AI Automation Your team shouldn't waste hours on tasks a machine can handle. We map your repetitive workflows — lead follow-ups, invoice processing, data entry, app... Learn more" [ref=e92] [cursor=pointer]:
+          - /url: /automation
+        - link "AI Training Your employees are already using AI — the question is whether they're using it safely and effectively. We train your team on the AI tools that matter:... Learn more" [ref=e102] [cursor=pointer]:
+          - /url: /training
+        - link "AI Receptionist Your phones ring after hours, during lunch, and when your team is slammed. Every missed call is a missed opportunity. We deploy AI voice agents that s... Learn more" [ref=e113] [cursor=pointer]:
+          - /url: /ai-receptionist
+        - link "AI CRM & Sales Your sales team is spending more time updating your CRM than actually selling. We fix that. We integrate AI directly into HubSpot, Salesforce, or your... Learn more" [ref=e123] [cursor=pointer]:
+          - /url: /crm-sales-ai
+        - link "AI Knowledge Base Your company knowledge is trapped in SharePoint folders, Google Drives, Notion pages, and people's heads. New hires take months to get up to speed. Em... Learn more" [ref=e134] [cursor=pointer]:
+          - /url: /ai-knowledge-base
+        - link "AI Data Audit Before you can use AI safely, you need to know what shape your data is in. Our AI Data Readiness Audit gives Dallas businesses a clear picture of thei... Learn more" [ref=e144] [cursor=pointer]:
+          - /url: /data-audit
+    - generic [ref=e155]:
+      - generic [ref=e156]:
+        - img "Your Data Stays Yours" [ref=e161]
+        - generic [ref=e163]
+      - generic [ref=e180]:
+        - img "AI That Connects to the Software You Already Use" [ref=e185]
+        - generic [ref=e187]
+    - generic [ref=e204]:
+      - generic:
+        - img
+      - generic [ref=e206]:
+        - generic [ref=e209]
+        - generic [ref=e214]
+        - generic [ref=e219]
+        - generic [ref=e224]
+    - generic [ref=e228]:
+      - generic [ref=e230]:
+        - paragraph [ref=e231]: Technology Partners
+        - heading "Backed by Leading Platforms" [level=2] [ref=e232]
+      - generic [ref=e233]:
+        - img "Microsoft Azure partner logo" [ref=e236]
+        - img "Cisco partner logo" [ref=e239]
+        - img "SentinelOne partner logo" [ref=e242]
+        - img "Sophos partner logo" [ref=e245]
+    - generic [ref=e247]:
+      - generic [ref=e249]:
+        - paragraph [ref=e250]: FAQ
+        - heading "Frequently Asked Questions" [level=2] [ref=e251]
+      - generic [ref=e252]:
+        - generic [ref=e254]
+        - generic [ref=e262]
+        - generic [ref=e270]
+        - generic [ref=e278]
+        - generic [ref=e286]
+        - generic [ref=e294]
+        - generic [ref=e302]
+    - generic [ref=e310]:
+      - generic:
+        - img
+      - heading "Ready to See What AI Can Do for Your Business?" [level=2] [ref=e312]:
+        - text: Ready to See What AI
+        - text: Can Do for Your Business?
+      - paragraph [ref=e314]: Get a free AI assessment from a Dallas team with 22 years of IT experience. We'll show you exactly where AI can save your business time and money — no jargon, no pressure.
+      - generic [ref=e316]:
+        - link "Schedule Your Free Assessment" [ref=e318] [cursor=pointer]:
+          - /url: /contact
+        - link "Call (214) 444-7884" [ref=e323] [cursor=pointer]:
+          - /url: tel:(214) 444-7884
+  - contentinfo [ref=e324]:
+    - generic [ref=e325]:
+      - generic [ref=e326]:
+        - generic [ref=e327]
+        - generic [ref=e332]
+        - generic [ref=e347]
+        - generic [ref=e366]
+      - paragraph [ref=e394]:
+        - text: ITECS AI is a division of
+        - link "ITECS" [ref=e395] [cursor=pointer]:
+          - /url: https://itecsonline.com
+        - text: ", providing trusted Dallas IT services since 2002."
+      - generic [ref=e396]:
+        - paragraph [ref=e397]: © 2026 ITECS, LLC. All rights reserved.
+        - generic [ref=e398]
+  - button "Open Next.js Dev Tools" [ref=e406] [cursor=pointer]:
+    - img [ref=e407]
+  - alert [ref=e410]
