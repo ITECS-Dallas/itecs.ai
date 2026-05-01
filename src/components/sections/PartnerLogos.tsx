@@ -16,7 +16,7 @@ export function PartnerLogos() {
           />
         </ScrollReveal>
 
-        <div className="mt-12 flex flex-wrap items-center justify-center gap-12 md:gap-20">
+        <div className="mt-12 flex flex-wrap items-center justify-center gap-x-12 gap-y-12 md:gap-x-16 md:gap-y-14">
           {PARTNER_LOGOS.map((logo, i) => (
             <ScrollReveal key={logo.name} delay={i * 0.08}>
               <div className="transition-all duration-500 brightness-0 invert opacity-50 hover:opacity-100">
@@ -26,6 +26,7 @@ export function PartnerLogos() {
                   width={logo.width}
                   height={logo.height}
                   className="h-8 w-auto object-contain"
+                  style={{ width: "auto" }}
                 />
               </div>
             </ScrollReveal>

@@ -1256,10 +1256,12 @@ export const CLIENT_LOGOS = [
 ] as const;
 
 export const PARTNER_LOGOS = [
-  { name: "Microsoft Azure", src: "/images/partners/azure.svg", width: 100, height: 32 },
-  { name: "Cisco", src: "/images/partners/cisco.svg", width: 100, height: 32 },
-  { name: "SentinelOne", src: "/images/partners/sentinelone.svg", width: 120, height: 32 },
-  { name: "Sophos", src: "/images/partners/sophos.svg", width: 100, height: 32 },
+  { name: "Microsoft Azure", src: "/images/partners/azure.svg", width: 168, height: 32 },
+  { name: "Microsoft", src: "/images/partners/microsoft.svg", width: 153, height: 32 },
+  { name: "Claude", src: "/images/partners/claude.svg", width: 129, height: 32 },
+  { name: "OpenAI", src: "/images/partners/openai.svg", width: 132, height: 32 },
+  { name: "Microsoft Copilot", src: "/images/partners/copilot.svg", width: 103, height: 32 },
+  { name: "Sophos", src: "/images/partners/sophos.svg", width: 101, height: 32 },
 ] as const;
 
 // ---------------------------------------------------------------------------
