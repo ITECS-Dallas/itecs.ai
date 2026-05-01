@@ -32,7 +32,7 @@ export function AboutHero() {
           transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
         >
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-extralight tracking-[-0.03em] leading-[1.08] max-w-4xl">
-            22 Years Serving Dallas Businesses.
+            24 Years Serving Dallas Businesses.
             <br />
             <span className="bg-gradient-to-r from-brand-accent to-brand-purple bg-clip-text text-transparent">
               Now Bringing Them AI.
@@ -49,10 +49,10 @@ export function AboutHero() {
         >
           <strong className="text-text-primary font-normal">
             ITECS is a Dallas-based IT services company founded in 2002 that
-            now delivers practical AI consulting, automation, and custom ChatGPT
+            now delivers practical AI consulting, automation, and custom AI agent
             development for small and mid-sized businesses.
           </strong>{" "}
-          With 22+ years of managed IT operations, 500+ endpoints under
+          With 24+ years of managed IT operations, 500+ endpoints under
           management, and a 92% client retention rate, ITECS AI builds on a
           security-first infrastructure foundation that most AI startups
           cannot match.
@@ -69,7 +69,7 @@ export function AboutHero() {
             href="#timeline"
             className="text-brand-accent hover:text-brand-accent-bright transition-colors"
           >
-            See our 22-year journey &darr;
+            See our 24-year journey &darr;
           </a>
           <a
             href="/services"

@@ -9,6 +9,7 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { ServiceHero } from "@/components/sections/ServiceHero";
 import { AutomationCircuit } from "@/components/effects/circuits/AutomationCircuit";
+import { AIAdoptionUnderstanding } from "@/components/sections/AIAdoptionUnderstanding";
 import { PainPoint } from "@/components/sections/PainPoint";
 import { ServiceFeatures } from "@/components/sections/ServiceFeatures";
 import { HowItWorks } from "@/components/sections/HowItWorks";
@@ -25,7 +26,7 @@ const service = SERVICES.find((s) => s.slug === "automation")!;
 export const metadata = generatePageMetadata({
   title: "AI Workflow Automation for Small Business in Dallas",
   description:
-    "Automate lead follow-ups, data entry, and scheduling for your Dallas business. 40% cost reduction, 99.9% uptime. Managed by a 22-year MSP. From $2,500.",
+    "Automate lead follow-ups, data entry, and scheduling for your Dallas business. 40% cost reduction, 99.9% uptime. Managed by a 24-year MSP. From $2,500.",
   path: service.href,
   keywords: service.keywords,
 });
@@ -44,6 +45,8 @@ export default function AutomationPage() {
 
       {/* 1. Hero — H1 + Zero-Click Answer Block */}
       <ServiceHero service={service} circuit={<AutomationCircuit />} />
+
+      <AIAdoptionUnderstanding />
 
       {/* 2. SMB Pain Point — validate the manual workflow drain */}
       <PainPoint
@@ -86,7 +89,7 @@ export default function AutomationPage() {
 
       {/* 7. Enterprise-Grade Security */}
       <SecurityGuarantee
-        description="Your workflow data, customer records, and internal processes stay protected at every step. ITECS AI is backed by ITECS — a Dallas-based cybersecurity MSP operating since 2002 with 22 years of enterprise security experience."
+        description="Your workflow data, customer records, and internal processes stay protected at every step. ITECS AI is backed by ITECS — a Dallas-based cybersecurity MSP operating since 2002 with 24 years of enterprise security experience."
         points={[
           "Tool-agnostic architecture — we build on Zapier, Make.com, Power Automate, or custom APIs based on your needs, not vendor margins",
           "Encrypted data pipelines — all workflow data in transit and at rest uses AES-256 encryption with no data stored on third-party servers beyond what your connected tools require",

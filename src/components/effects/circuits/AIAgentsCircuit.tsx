@@ -2,10 +2,9 @@
 
 import { ServiceCircuit } from "@/components/effects/ServiceCircuit";
 
-// Brain processing data into a chat response. Data sources feed into the
-// bottom of a brain, internal pathways process, and a chat bubble emerges
-// from the top — representing a private ChatGPT turning company data into
-// answers. Brain draws first, then data inputs, then the chat output.
+// Brain processing business data into an agent action. Data sources feed into
+// the bottom of a brain, internal pathways process, and an output bubble
+// emerges from the top.
 
 const paths = [
   // ── Brain (draws first) ──
@@ -94,6 +93,6 @@ const nodes = [
   { cx: 295, cy: 158, pulse: false },
 ];
 
-export function ChatGPTCircuit() {
+export function AIAgentsCircuit() {
   return <ServiceCircuit paths={paths} nodes={nodes} />;
 }

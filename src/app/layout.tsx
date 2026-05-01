@@ -27,11 +27,11 @@ export const metadata: Metadata = {
     default: "Dallas AI Consulting & Automation for Small Business | ITECS AI",
   },
   description:
-    "ITECS helps Dallas businesses with 10–300 employees save time and cut costs with AI automation, custom ChatGPT development, and hands-on AI consulting. 22+ years of IT expertise.",
+    "ITECS helps Dallas businesses with 10–300 employees save time and cut costs with AI automation, custom AI agents, and hands-on AI consulting. 24+ years of IT expertise.",
   keywords: [
     "small business AI Dallas",
     "AI consulting Dallas",
-    "custom ChatGPT Dallas",
+    "custom AI agents Dallas",
     "AI automation Dallas",
     "AI training Dallas",
     "ITECS",

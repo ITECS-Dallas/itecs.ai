@@ -1,9 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/Button";
-import { GradientOrb } from "@/components/effects/GradientOrb";
 import { GridBackground } from "@/components/effects/GridBackground";
 import { CircuitTrace } from "@/components/effects/CircuitTrace";
 import { CursorGlow } from "@/components/effects/CursorGlow";
@@ -37,21 +37,7 @@ export function Hero() {
       {/* Background layers */}
       <div className="absolute inset-0">
         <GridBackground opacity={0.04} />
-        <GradientOrb
-          color="cyan"
-          size="lg"
-          position={{ top: "15%", right: "5%" }}
-        />
-        <GradientOrb
-          color="purple"
-          size="md"
-          position={{ bottom: "25%", left: "3%" }}
-        />
-        <GradientOrb
-          color="mixed"
-          size="sm"
-          position={{ top: "60%", right: "30%" }}
-        />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_30%,rgba(6,182,212,0.10),transparent_32%),radial-gradient(circle_at_15%_80%,rgba(16,185,129,0.08),transparent_28%)]" />
         <CursorGlow />
       </div>
 
@@ -71,21 +57,21 @@ export function Hero() {
               className="text-sm font-medium tracking-[0.05em] uppercase text-brand-accent mb-6 flex items-center gap-2"
             >
               <span className="inline-block w-8 h-px bg-brand-accent" />
-              Practical AI for Dallas Businesses
+              AI Consulting, Training, Security &amp; DevOps
             </motion.p>
 
             {/* H1 */}
             <motion.h1
               variants={fadeUp()}
-              className="text-5xl md:text-7xl font-extralight tracking-[-0.03em] leading-[1.1]"
+              className="text-5xl md:text-7xl font-extralight tracking-normal leading-[1.05]"
             >
-              AI Automation &amp;
+              Secure AI
               <br />
               <span className="bg-gradient-to-r from-brand-accent to-brand-purple bg-clip-text text-transparent">
-                Consulting for Dallas
+                Strategy, Training
               </span>
               <br />
-              Small Businesses
+              &amp; DevOps
             </motion.h1>
 
             {/* Zero-click block */}
@@ -93,8 +79,8 @@ export function Hero() {
               variants={fadeUp(0.1)}
               className="mt-6 text-lg md:text-xl text-text-secondary font-light max-w-xl leading-relaxed"
             >
-              <strong className="text-text-primary font-normal">ITECS helps Dallas businesses with 10–300 employees save 20+ hours per week</strong>{" "}
-              by automating repetitive work, building secure custom ChatGPTs, and deploying AI tools that pay for themselves — backed by 22 years of IT operations expertise.
+              <strong className="text-text-primary font-normal">ITECS helps Dallas businesses turn AI ideas into secure, managed systems</strong>{" "}
+              with consulting, employee training, data protection, workflow automation, and production AI DevOps backed by 24 years of IT operations expertise.
             </motion.p>
 
             {/* CTAs */}
@@ -111,10 +97,44 @@ export function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* Circuit trace — 2/5 width on desktop */}
-          <div className="hidden lg:block lg:col-span-2">
-            <CircuitTrace variant="hero" className="h-[500px]" />
-          </div>
+          {/* Image-backed operations visual — 2/5 width on desktop */}
+          <motion.div
+            className="lg:col-span-2"
+            initial={{ opacity: 0, x: 28 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, delay: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
+          >
+            <div className="relative h-[320px] overflow-hidden rounded-lg border border-[var(--border-subtle)] bg-bg-surface shadow-2xl shadow-black/40 md:h-[420px] lg:h-[540px]">
+              <Image
+                src="/images/services/technology-desks.webp"
+                alt="ITECS AI operations workstation with monitored deployment pipelines"
+                fill
+                priority
+                className="object-cover object-center opacity-80"
+                sizes="(min-width: 1024px) 40vw, 100vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-bg-void via-bg-void/45 to-transparent" />
+              <CircuitTrace variant="hero" className="absolute inset-0 opacity-45" />
+
+              <div className="absolute inset-x-6 bottom-6 rounded-lg border border-white/10 bg-bg-void/80 p-5 backdrop-blur-xl">
+                <p className="text-xs font-medium uppercase tracking-[0.08em] text-emerald-300">
+                  Managed AI Operations
+                </p>
+                <div className="mt-4 grid grid-cols-3 gap-3">
+                  {[
+                    ["Assess", "roadmap"],
+                    ["Protect", "data"],
+                    ["Operate", "AI stack"],
+                  ].map(([label, value]) => (
+                    <div key={label} className="border-l border-brand-accent/40 pl-3">
+                      <p className="text-sm text-text-primary">{label}</p>
+                      <p className="mt-0.5 text-xs text-text-dim">{value}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </div>
 

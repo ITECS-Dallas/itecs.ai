@@ -9,6 +9,7 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { ServiceHero } from "@/components/sections/ServiceHero";
 import { DataAuditCircuit } from "@/components/effects/circuits/DataAuditCircuit";
+import { AIAdoptionUnderstanding } from "@/components/sections/AIAdoptionUnderstanding";
 import { PainPoint } from "@/components/sections/PainPoint";
 import { ServiceFeatures } from "@/components/sections/ServiceFeatures";
 import { HowItWorks } from "@/components/sections/HowItWorks";
@@ -45,6 +46,8 @@ export default function DataAuditPage() {
 
       {/* 1. Hero — H1 + Zero-Click Answer Block */}
       <ServiceHero service={service} circuit={<DataAuditCircuit />} />
+
+      <AIAdoptionUnderstanding />
 
       {/* 2. SMB Pain Point — validate the bleeding neck */}
       <PainPoint
@@ -87,7 +90,7 @@ export default function DataAuditPage() {
 
       {/* 7. Enterprise-Grade Security */}
       <SecurityGuarantee
-        description="Your audit data stays protected throughout the entire engagement. ITECS AI is backed by ITECS — a Dallas-based cybersecurity MSP operating since 2002 with 22 years of enterprise security experience."
+        description="Your audit data stays protected throughout the entire engagement. ITECS AI is backed by ITECS — a Dallas-based cybersecurity MSP operating since 2002 with 24 years of enterprise security experience."
         points={[
           "Read-only API access — we scan configurations and metadata but cannot modify, copy, or download your files, emails, or documents",
           "Zero data retention — all scan findings are encrypted in transit and at rest, and deleted within 30 days of report delivery",

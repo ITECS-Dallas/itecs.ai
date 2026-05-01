@@ -105,7 +105,7 @@ export function InsightsHero() {
           >
             <div>
               <span className="block text-3xl md:text-4xl font-extralight tracking-tight text-brand-accent">
-                22+
+                24+
               </span>
               <span className="text-sm text-text-dim">Years IT Experience</span>
             </div>

@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
 import * as LucideIcons from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import { SERVICES, HOMEPAGE_SERVICE_BLURBS } from "@/lib/constants";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Card } from "@/components/ui/Card";
@@ -9,7 +9,8 @@ import { ScrollReveal } from "@/components/effects/ScrollReveal";
 import { ArrowRight } from "lucide-react";
 
 // Organic stagger delays (non-uniform for anti-template feel)
-const staggers = [0, 0.08, 0.18, 0.12, 0.22, 0.1, 0.2, 0.14];
+const staggers = [0, 0.08, 0.18, 0.12, 0.22, 0.1, 0.2, 0.14, 0.24];
+const iconMap = LucideIcons as unknown as Record<string, LucideIcon>;
 
 // Index blurbs by slug for O(1) lookup
 const blurbsBySlug = Object.fromEntries(
@@ -23,16 +24,14 @@ export function ServicesGrid() {
         <ScrollReveal>
           <SectionHeading
             eyebrow="What We Do"
-            title="Practical AI Services for Dallas Businesses"
-            description="We help businesses with 10–300 employees save time and cut costs with AI tools that actually work. No jargon, no hype — just results."
+            title="9 AI Services That Move From Strategy to Operations"
+            description="Consulting, training, security, DevOps, automation, and custom AI systems for businesses that need useful AI without losing control of data or uptime."
           />
         </ScrollReveal>
 
         <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {SERVICES.map((service, i) => {
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            const IconComponent =
-              (LucideIcons as any)[service.icon] ?? LucideIcons.Cpu;
+            const IconComponent = iconMap[service.icon] ?? LucideIcons.Cpu;
             const blurb = blurbsBySlug[service.slug];
 
             return (

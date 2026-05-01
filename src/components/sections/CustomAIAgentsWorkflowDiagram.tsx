@@ -15,32 +15,32 @@ import { GradientOrb } from "@/components/effects/GradientOrb";
 const stages = [
   {
     icon: DatabaseZap,
-    label: "Ingest Data",
-    detail: "Docs, FAQs, knowledge base",
+    label: "Map Workflows",
+    detail: "Tasks, folders, tools, data",
     color: "var(--brand-accent)",
   },
   {
     icon: BrainCircuit,
-    label: "Train Model",
-    detail: "Private embeddings, RAG pipeline",
+    label: "Build Agent",
+    detail: "Prompts, tools, RAG, CLI logic",
     color: "var(--brand-accent)",
   },
   {
     icon: FlaskConical,
     label: "Test & Tune",
-    detail: "Accuracy checks, guardrails",
+    detail: "Approvals, guardrails, evals",
     color: "var(--brand-purple)",
   },
   {
     icon: Rocket,
     label: "Deploy",
-    detail: "Website, Slack, Teams, SMS",
+    detail: "Claude, Codex, Slack, web",
     color: "var(--brand-purple)",
   },
   {
     icon: Activity,
     label: "Monitor",
-    detail: "Conversation analytics, tuning",
+    detail: "Logs, costs, actions, quality",
     color: "var(--brand-accent)",
   },
 ];
@@ -108,7 +108,7 @@ function VerticalConnector({ delay }: { delay: number }) {
   );
 }
 
-export function ChatGPTWorkflowDiagram() {
+export function CustomAIAgentsWorkflowDiagram() {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.3 });
 
@@ -129,17 +129,17 @@ export function ChatGPTWorkflowDiagram() {
         <ScrollReveal>
           <div className="text-center mb-12">
             <p className="text-sm font-medium tracking-[0.05em] uppercase text-brand-accent mb-3">
-              Custom ChatGPT Pipeline
+              Custom AI Agent Pipeline
             </p>
             <h2 className="text-3xl md:text-4xl font-light tracking-[-0.02em] text-text-primary">
-              From Your Data to a Production Chatbot in 2–4 Weeks
+              From Workflow Design to a Governed Agent in Production
             </h2>
           </div>
         </ScrollReveal>
 
         <figure
           role="img"
-          aria-label="Custom ChatGPT development pipeline diagram showing five stages: ingest business documents and FAQs into a private knowledge base, train the AI model using embeddings and a RAG retrieval pipeline via OpenAI API, test accuracy with guardrails and confidence scoring, deploy the chatbot across website, Slack, Microsoft Teams, and SMS channels, and monitor conversation analytics with continuous tuning"
+          aria-label="Custom AI agent development pipeline diagram showing five stages: map workflows, tools, folders, and data sources; build the agent with prompts, tool calls, RAG, and CLI logic; test behavior with approvals, guardrails, and evaluations; deploy across apps such as Claude, Codex, Slack, and web interfaces; and monitor logs, costs, actions, and answer quality"
         >
           {/* Desktop: horizontal flow */}
           <div ref={ref} className="hidden md:flex items-start justify-center">
@@ -210,9 +210,9 @@ export function ChatGPTWorkflowDiagram() {
 
           <ScrollReveal delay={0.5}>
             <figcaption className="mt-10 text-center text-sm text-text-dim italic">
-              Your business data feeds a private AI model — deployed across
-              every channel your customers use. Most chatbots reach production
-              within 2–4 weeks.
+              Your business workflows become governed AI agents that can
+              retrieve context, call tools, request approval, and complete tasks
+              across the systems your team already uses.
             </figcaption>
           </ScrollReveal>
         </figure>

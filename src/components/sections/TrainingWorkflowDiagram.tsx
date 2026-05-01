@@ -139,7 +139,7 @@ export function TrainingWorkflowDiagram() {
 
         <figure
           role="img"
-          aria-label="AI employee training program workflow diagram showing five stages: assess current skills and map high-impact roles across sales, support, HR, and finance teams, customize role-specific curriculum covering ChatGPT, Microsoft Copilot, and automation tools, deliver hands-on workshops with real work scenarios and prompt engineering practice, establish AI usage policies and data safety protocols for sensitive company information, and reinforce learning with monthly office hours and refresher sessions as tools evolve"
+          aria-label="AI employee training program workflow diagram showing five stages: assess current skills and map high-impact roles across sales, support, HR, and finance teams, customize role-specific curriculum covering ChatGPT, Claude, Gemini, Microsoft Copilot, and automation tools, deliver hands-on workshops with real work scenarios and prompt engineering practice, establish AI usage policies and data safety protocols for sensitive company information, and reinforce learning with office hours and refresher sessions as tools evolve"
         >
           {/* Desktop: horizontal flow */}
           <div ref={ref} className="hidden md:flex items-start justify-center">
@@ -211,9 +211,9 @@ export function TrainingWorkflowDiagram() {
           <ScrollReveal delay={0.5}>
             <figcaption className="mt-10 text-center text-sm text-text-dim italic">
               We assess your team, build custom curriculum around ChatGPT,
-              Microsoft Copilot, and your existing tools, then reinforce with
-              ongoing sessions. Most Dallas teams reach proficiency within two
-              weeks.
+              Claude, Gemini, Microsoft Copilot, and your existing tools, then
+              reinforce with ongoing sessions. Most Dallas teams reach
+              proficiency within two weeks.
             </figcaption>
           </ScrollReveal>
         </figure>

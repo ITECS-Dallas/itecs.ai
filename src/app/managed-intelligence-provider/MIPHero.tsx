@@ -44,7 +44,7 @@ export function MIPHero() {
               automation, custom AI agents, and data intelligence for your
               business — the same way an MSP manages your IT infrastructure.
               ITECS is Dallas&apos;s MIP for businesses with 10–300 employees,
-              backed by 22 years of managed IT and cybersecurity operations.
+              backed by 24 years of managed IT and cybersecurity operations.
             </strong>
           </p>
 

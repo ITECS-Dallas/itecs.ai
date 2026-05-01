@@ -177,7 +177,7 @@ export function AboutTimeline() {
             Our Journey
           </p>
           <h2 className="text-3xl md:text-5xl font-light tracking-[-0.02em] text-text-primary">
-            22 Years of Building Trust
+            24 Years of Building Trust
           </h2>
           <p className="mt-4 text-lg text-text-secondary max-w-2xl mx-auto">
             From a two-person helpdesk to a full-service AI consultancy — every milestone built on the one before it.

@@ -9,6 +9,7 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { ServiceHero } from "@/components/sections/ServiceHero";
 import { CRMCircuit } from "@/components/effects/circuits/CRMCircuit";
+import { AIAdoptionUnderstanding } from "@/components/sections/AIAdoptionUnderstanding";
 import { PainPoint } from "@/components/sections/PainPoint";
 import { ServiceFeatures } from "@/components/sections/ServiceFeatures";
 import { HowItWorks } from "@/components/sections/HowItWorks";
@@ -25,7 +26,7 @@ const service = SERVICES.find((s) => s.slug === "crm-sales-ai")!;
 export const metadata = generatePageMetadata({
   title: "AI CRM & Sales Automation for Small Business",
   description:
-    "Integrate AI into HubSpot or Salesforce to automate lead scoring, outreach, and data entry — saving reps 15+ hours/week. 22 years IT expertise.",
+    "Integrate AI into HubSpot or Salesforce to automate lead scoring, outreach, and data entry — saving reps 15+ hours/week. 24 years IT expertise.",
   path: service.href,
   keywords: service.keywords,
 });
@@ -44,6 +45,8 @@ export default function CRMSalesAIPage() {
 
       {/* 1. Hero — H1 + Zero-Click Answer Block */}
       <ServiceHero service={service} circuit={<CRMCircuit />} />
+
+      <AIAdoptionUnderstanding />
 
       {/* 2. SMB Pain Point — validate the bleeding neck */}
       <PainPoint

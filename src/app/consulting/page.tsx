@@ -9,6 +9,7 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { ServiceHero } from "@/components/sections/ServiceHero";
 import { ConsultingCircuit } from "@/components/effects/circuits/ConsultingCircuit";
+import { AIAdoptionUnderstanding } from "@/components/sections/AIAdoptionUnderstanding";
 import { PainPoint } from "@/components/sections/PainPoint";
 import { ServiceFeatures } from "@/components/sections/ServiceFeatures";
 import { HowItWorks } from "@/components/sections/HowItWorks";
@@ -25,7 +26,7 @@ const service = SERVICES.find((s) => s.slug === "consulting")!;
 export const metadata = generatePageMetadata({
   title: "AI Consulting for Small Business in Dallas",
   description:
-    "Practical AI adoption plans for Dallas businesses with 10–300 employees. Save 20+ hours/week with vendor-neutral guidance from a 22-year MSP. From $3,000.",
+    "Practical AI adoption plans for Dallas businesses with 10–300 employees. ITECS helps you configure AI apps, train teams, secure data, and scope custom builds only when needed.",
   path: service.href,
   keywords: service.keywords,
 });
@@ -45,6 +46,8 @@ export default function ConsultingPage() {
       {/* 1. Hero — H1 + Zero-Click Answer Block */}
       <ServiceHero service={service} circuit={<ConsultingCircuit />} />
 
+      <AIAdoptionUnderstanding />
+
       {/* 2. SMB Pain Point — validate the analysis paralysis */}
       <PainPoint
         stat="40+"
@@ -57,9 +60,9 @@ export default function ConsultingPage() {
         scenario={{
           business: "A 40-person accounting firm in Plano",
           problem:
-            "spent 6 months evaluating AI tools for tax document processing. Three partners each championed different platforms — Microsoft Copilot, a custom ChatGPT solution, and a niche accounting AI product. After $12,000 in trial subscriptions and 200+ hours of internal meetings, zero AI ran in production.",
+            "spent 6 months evaluating AI tools for tax document processing. Three partners each championed different platforms — Microsoft Copilot, a custom AI agent, and a niche accounting AI product. After $12,000 in trial subscriptions and 200+ hours of internal meetings, zero AI ran in production.",
           result:
-            "ITECS completed a two-week AI Insight Sprint, identified document processing as the highest-ROI automation target, and integrated Microsoft Copilot with their SharePoint-based workflow within 30 days. The firm now saves 25 hours per week on document review.",
+            "ITECS created a focused AI adoption agenda, identified document processing as the highest-ROI automation target, and integrated Microsoft Copilot with their SharePoint-based workflow within 30 days. The firm now saves 25 hours per week on document review.",
         }}
       />
 
@@ -86,10 +89,10 @@ export default function ConsultingPage() {
 
       {/* 7. Enterprise-Grade Security */}
       <SecurityGuarantee
-        description="Your workflow data, financial records, and internal processes stay protected throughout the engagement. ITECS AI is backed by ITECS — a Dallas-based cybersecurity MSP operating since 2002 with 22 years of enterprise security experience."
+        description="Your workflow data, financial records, and internal processes stay protected throughout the engagement. ITECS AI is backed by ITECS — a Dallas-based cybersecurity MSP operating since 2002 with 24 years of enterprise security experience."
         points={[
-          "Vendor-neutral recommendations — we evaluate Microsoft Copilot, OpenAI, Google Vertex AI, and open-source options based on your needs, not vendor margins",
-          "NDA-protected engagements — every AI Insight Sprint and implementation project operates under a signed NDA before we access any internal data",
+          "Vendor-neutral recommendations — we evaluate ChatGPT, Claude, Gemini, Microsoft Copilot, private AI platforms, and open-source options based on your needs, not vendor margins",
+          "NDA-protected engagements — consulting, training, and implementation work operates under a signed NDA before we access any internal data",
           "Zero data retention — workflow documentation and audit findings are encrypted in transit and at rest, then deleted within 30 days of project completion",
           "Compliance-aware guidance — our recommendations account for HIPAA, SOC 2, PCI-DSS, and industry-specific regulatory requirements from day one",
         ]}
@@ -105,48 +108,48 @@ export default function ConsultingPage() {
 
       {/* 8. Pricing Transparency & ROI */}
       <PricingROI
-        heading="How Much Does AI Consulting Actually Cost?"
-        description="Most businesses try DIY first, then hire a generalist. Here is how ITECS compares for a team of 10–50 employees."
-        traditionalLabel="DIY / In-House"
-        aiLabel="ITECS Consulting"
+        heading="How Is AI Consulting Priced?"
+        description="AI adoption can start as advisory time, tool configuration, and team training before anyone commits to a custom build. Here is how ITECS keeps the path practical for a team of 10–50 employees."
+        traditionalLabel="Unstructured AI Adoption"
+        aiLabel="ITECS Guided Adoption"
         comparison={[
           {
-            label: "Time to first AI in production",
-            traditional: "6–12 months",
-            ai: "2–4 weeks",
+            label: "Billing model",
+            traditional: "Trials, subscriptions, and unclear vendor quotes",
+            ai: "Hourly consulting or prepaid retainer time",
           },
           {
-            label: "Upfront cost",
-            traditional: "$10,000–$30,000 in wasted trials",
-            ai: "$3,000–$8,000 flat fee",
+            label: "Minimum usage",
+            traditional: "Monthly commitments before value is proven",
+            ai: "No monthly minimum and no expiration on retainer hours",
           },
           {
-            label: "Tool evaluation",
-            traditional: "YouTube, free trials, guesswork",
-            ai: "Structured vendor-neutral assessment",
+            label: "Cost visibility",
+            traditional: "Hard to tell what changed or why it cost more",
+            ai: "Documented time entries and clear scope notes",
           },
           {
-            label: "Implementation support",
-            traditional: "None — figure it out internally",
-            ai: "Hands-on setup + staff training",
+            label: "First recommendation",
+            traditional: "Buy another platform or build an agent",
+            ai: "Use ChatGPT, Claude, Gemini, Copilot, or automation first when enough",
           },
           {
-            label: "Security review",
-            traditional: "Skipped or afterthought",
-            ai: "Built into every recommendation",
+            label: "Custom builds",
+            traditional: "Scoped before the workflow is understood",
+            ai: "Quoted flat only after requirements, data, and integrations are known",
           },
           {
-            label: "Ongoing optimization",
-            traditional: "Stalls after initial setup",
-            ai: "Monthly tuning and KPI tracking",
+            label: "Adoption support",
+            traditional: "Tool demo with limited follow-through",
+            ai: "Agenda, setup, training, testing, and rollout guidance",
           },
         ]}
-        roiStatement="Average client ROI: 3.2x within 90 days. Most teams recover the full engagement cost through time savings in the first month."
+        roiStatement="The goal is to spend consulting time where it reduces risk and accelerates adoption, then quote scoped projects only when a build is actually justified."
         pricingNotes={[
-          "AI Insight Sprint: $3,000–$8,000 — two-week discovery, assessment, and prioritized roadmap",
-          "Full implementation: scoped and quoted after the Sprint, typically $8,000–$25,000 depending on integrations",
-          "Monthly optimization retainer from $500/month — includes KPI tracking, model tuning, and quarterly reviews",
-          "No per-seat fees, no platform commissions — you own everything we build",
+          "Hourly consulting is available for discovery, advisory calls, and focused problem solving",
+          "Prepaid retainer blocks are recommended for most clients and carry no minimum monthly usage or expiration date",
+          "Retainer hours can cover workflow design, AI app setup, training, testing, vendor coordination, and optimization",
+          "Flat-rate proposals are reserved for scoped projects such as AI agents, secure integrations, and custom automations",
         ]}
       />
 

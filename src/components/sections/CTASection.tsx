@@ -37,7 +37,7 @@ export function CTASection() {
 
         <ScrollReveal delay={0.1}>
           <p className="mt-6 text-lg text-text-secondary max-w-xl mx-auto">
-            Get a free AI assessment from a Dallas team with 22 years of IT
+            Get a free AI assessment from a Dallas team with 24 years of IT
             experience. We&apos;ll show you exactly where AI can save your
             business time and money — no jargon, no pressure.
           </p>

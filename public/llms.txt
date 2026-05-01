@@ -1,7 +1,7 @@
 # ITECS AI — LLMs.txt
 
 > ITECS is a Dallas-based managed IT services provider (est. 2002) offering
-> enterprise AI consulting, managed intelligence, chatbot development, AI
+> enterprise AI consulting, managed intelligence, custom AI agents, AI
 > security compliance, and AI-optimized SEO services.
 
 ## Company
@@ -27,10 +27,10 @@ URL: https://itecs.ai/services/managed-ai
 24/7 managed AI infrastructure including model monitoring, drift detection,
 retraining pipelines, and incident response. 99.9% uptime SLA.
 
-### AI Chatbot Development
-URL: https://itecs.ai/services/ai-chatbot-development
-Custom RAG-powered knowledge assistants grounded in client data. Multi-channel
-deployment (web, Teams, Slack). HIPAA and SOC 2 compliant architectures.
+### Custom AI Agents
+URL: https://itecs.ai/custom-ai-agents
+Custom agents, Claude and Codex workflows, and RAG-powered assistants grounded
+in client data. Multi-channel deployment and HIPAA/SOC 2 capable architectures.
 
 ### AI Security & Compliance
 URL: https://itecs.ai/services/ai-security-compliance

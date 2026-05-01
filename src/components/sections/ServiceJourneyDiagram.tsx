@@ -11,6 +11,7 @@ import {
   BarChart3,
   BookOpen,
   ShieldCheck,
+  ServerCog,
   ArrowRight,
 } from "lucide-react";
 import { ScrollReveal } from "@/components/effects/ScrollReveal";
@@ -46,15 +47,21 @@ const phases = [
     services: [
       {
         icon: Bot,
-        name: "Custom ChatGPT",
-        href: "/custom-chatgpt",
-        desc: "Private AI agents trained on your data",
+        name: "Custom AI Agents",
+        href: "/custom-ai-agents",
+        desc: "Claude, Codex, RAG, and app workflows",
       },
       {
         icon: Zap,
         name: "Automation",
         href: "/automation",
         desc: "Connect tools and eliminate manual handoffs",
+      },
+      {
+        icon: ServerCog,
+        name: "AI DevOps",
+        href: "/ai-devops",
+        desc: "Deploy, monitor, and operate AI systems",
       },
       {
         icon: Phone,
@@ -210,7 +217,7 @@ export function ServiceJourneyDiagram() {
 
         <figure
           role="img"
-          aria-label="Three-phase AI adoption journey: Phase 1 Assess covers AI Consulting and Data Audit; Phase 2 Build covers Custom ChatGPT, Automation, AI Receptionist, CRM and Sales AI, and Knowledge Base; Phase 3 Scale covers AI Training for team enablement"
+          aria-label="Three-phase AI adoption journey: Phase 1 Assess covers AI Consulting and Data Audit; Phase 2 Build covers Custom AI Agents, Automation, AI DevOps, AI Receptionist, CRM and Sales AI, and Knowledge Base; Phase 3 Scale covers AI Training for team enablement"
           className="mt-16"
         >
           {/* Desktop: 3 columns with connectors */}
@@ -237,7 +244,7 @@ export function ServiceJourneyDiagram() {
           </div>
 
           <figcaption className="mt-8 text-center text-sm text-text-dim">
-            ITECS AI adoption framework — 8 managed services across assessment,
+            ITECS AI adoption framework — 9 managed services across assessment,
             deployment, and team enablement phases
           </figcaption>
         </figure>

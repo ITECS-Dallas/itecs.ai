@@ -17,7 +17,7 @@ import Link from "next/link";
 export const metadata = generatePageMetadata({
   title: "Contact ITECS — Free AI Assessment in Dallas",
   description:
-    "Contact ITECS for a free AI assessment. We help Dallas businesses with 10–300 employees save time with AI automation, custom ChatGPT, and workflow tools. Call (214) 444-7884.",
+    "Contact ITECS for a free AI assessment. We help Dallas businesses with 10–300 employees save time with AI automation, custom AI agents, and workflow tools. Call (214) 444-7884.",
   path: "/contact",
   keywords: [
     "contact AI consultant Dallas",

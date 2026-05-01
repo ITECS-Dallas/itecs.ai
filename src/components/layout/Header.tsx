@@ -17,6 +17,7 @@ import {
   BarChart3,
   BookOpen,
   ShieldCheck,
+  ServerCog,
   Sparkles,
   ArrowRight,
 } from "lucide-react";
@@ -35,16 +36,22 @@ const serviceItems = [
     desc: "Workflow audit and AI roadmap",
   },
   {
-    label: "Custom ChatGPT",
-    href: "/custom-chatgpt",
+    label: "Custom AI Agents",
+    href: "/custom-ai-agents",
     icon: Bot,
-    desc: "Private AI agents on your data",
+    desc: "Claude, Codex, RAG, and app workflows",
   },
   {
     label: "Automation",
     href: "/automation",
     icon: Zap,
     desc: "Connect tools, eliminate handoffs",
+  },
+  {
+    label: "AI DevOps",
+    href: "/ai-devops",
+    icon: ServerCog,
+    desc: "Deploy, monitor, and operate AI",
   },
   {
     label: "AI Training",
@@ -353,8 +360,12 @@ export function Header() {
 
   // Close everything on route change
   useEffect(() => {
-    setMobileOpen(false);
-    setSolutionsOpen(false);
+    const frame = requestAnimationFrame(() => {
+      setMobileOpen(false);
+      setSolutionsOpen(false);
+    });
+
+    return () => cancelAnimationFrame(frame);
   }, [pathname]);
 
   // Lock body scroll when mobile menu is open
@@ -368,8 +379,10 @@ export function Header() {
   const isServicePage =
     pathname.startsWith("/services") ||
     pathname.startsWith("/consulting") ||
+    pathname.startsWith("/custom-ai-agents") ||
     pathname.startsWith("/custom-chatgpt") ||
     pathname.startsWith("/automation") ||
+    pathname.startsWith("/ai-devops") ||
     pathname.startsWith("/training") ||
     pathname.startsWith("/ai-receptionist") ||
     pathname.startsWith("/crm-sales-ai") ||

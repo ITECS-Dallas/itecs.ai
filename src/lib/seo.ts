@@ -52,7 +52,7 @@ export function generateLocalBusinessSchema() {
     name: "ITECS AI",
     url: SITE_CONFIG.url,
     description:
-      "Practical AI automation, custom ChatGPT development, and AI consulting for small to medium businesses (SMBs) in Dallas, TX.",
+      "Practical AI automation, custom AI agent development, and AI consulting for small to medium businesses (SMBs) in Dallas, TX.",
     telephone: SITE_CONFIG.phone,
     email: SITE_CONFIG.email,
     image: `${SITE_CONFIG.url}/images/logos/itecs-horizontal.svg`,
@@ -65,7 +65,7 @@ export function generateLocalBusinessSchema() {
     },
     knowsAbout: [
       "Small Business AI Consulting",
-      "Custom ChatGPT for Business",
+      "Custom AI Agents for Business",
       "AI Workflow Automation",
       "Employee AI Training",
       "AI CRM Integration",

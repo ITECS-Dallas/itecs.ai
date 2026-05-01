@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import { generatePageMetadata } from "@/lib/metadata";
 import { generateFAQSchema } from "@/lib/seo";
 import {
@@ -23,7 +22,7 @@ import { AboutLeadership } from "./AboutLeadership";
 export const metadata = generatePageMetadata({
   title: "About ITECS — Dallas IT & AI Consulting Since 2002",
   description:
-    "ITECS is a Dallas IT company founded in 2002 — 22 years of managed IT, cybersecurity, and now practical AI consulting for small businesses. Meet the team.",
+    "ITECS is a Dallas IT company founded in 2002 — 24 years of managed IT, cybersecurity, and now practical AI consulting for small businesses. Meet the team.",
   path: "/about",
   keywords: [
     "About ITECS Dallas",
@@ -57,7 +56,7 @@ export default function AboutPage() {
       {/* 3. Origin Story — Client logos trust signal */}
       <TrustBar />
 
-      {/* 4. Timeline — 22 years of milestones */}
+      {/* 4. Timeline — 24 years of milestones */}
       <AboutTimeline />
 
       {/* 5. Company Photo — Multimedia directive */}

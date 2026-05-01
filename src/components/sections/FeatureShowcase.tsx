@@ -31,13 +31,13 @@ export function FeatureShowcase({ features }: { features: readonly Feature[] }) 
                 className={reversed ? "lg:order-2" : ""}
               >
                 <ParallaxWrapper speed={0.15}>
-                  <div className="relative rounded-xl overflow-hidden border border-[var(--border-subtle)]">
+                  <div className="relative aspect-[16/10] rounded-lg overflow-hidden border border-[var(--border-subtle)]">
                     <Image
                       src={feature.image}
                       alt={feature.title}
-                      width={640}
-                      height={420}
-                      className="w-full h-auto object-cover"
+                      fill
+                      sizes="(min-width: 1024px) 50vw, 100vw"
+                      className="object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-bg-void/60 to-transparent" />
                   </div>

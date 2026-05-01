@@ -4,6 +4,8 @@ import { FAQ_ITEMS, HOMEPAGE_FEATURES } from "@/lib/constants";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Hero } from "@/components/sections/Hero";
 import { TrustBar } from "@/components/sections/TrustBar";
+import { AIAdoptionUnderstanding } from "@/components/sections/AIAdoptionUnderstanding";
+import { AIPracticeAreas } from "@/components/sections/AIPracticeAreas";
 import { ServicesGrid } from "@/components/sections/ServicesGrid";
 import { FeatureShowcase } from "@/components/sections/FeatureShowcase";
 import { Heritage } from "@/components/sections/Heritage";
@@ -16,7 +18,7 @@ import { CTASection } from "@/components/sections/CTASection";
 export const metadata = generatePageMetadata({
   title: "Small Business AI Consulting & Automation in Dallas | ITECS",
   description:
-    "ITECS helps Dallas SMBs with 10–300 employees save 20+ hours per week with AI automation, custom ChatGPT, and hands-on consulting. 22 years of IT operations expertise.",
+    "ITECS helps Dallas SMBs with 10–300 employees deploy secure AI consulting, training, automation, DevOps, and custom AI agents backed by 24 years of IT operations expertise.",
   path: "/",
   keywords: [
     "small business AI consulting",
@@ -25,7 +27,7 @@ export const metadata = generatePageMetadata({
     "AI IT services",
     "AI consulting for small business",
     "AI automation Dallas",
-    "custom ChatGPT for business",
+    "custom AI agents for business",
     "AI consultant Dallas TX",
     "how to automate small business with AI",
     "secure AI companies for SMBs",
@@ -37,6 +39,8 @@ export default function HomePage() {
     <>
       <Hero />
       <TrustBar />
+      <AIAdoptionUnderstanding />
+      <AIPracticeAreas />
       <ServicesGrid />
       <FeatureShowcase features={HOMEPAGE_FEATURES} />
       <Heritage />

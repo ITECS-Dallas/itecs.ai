@@ -61,7 +61,7 @@ export default function SecureDataPage() {
           <ScrollReveal>
             <div className="mt-8 p-6 rounded-xl border border-[var(--border-active)] bg-brand-accent/5">
               <p className="text-text-primary font-medium">
-                Want a private ChatGPT for your business?{" "}
+                Want a private, governed AI workflow for your business?{" "}
                 <Link href={insight.hubHref} className="text-brand-accent hover:text-brand-accent-bright underline">
                   Learn about our {insight.hubLabel} service
                 </Link>{" "}

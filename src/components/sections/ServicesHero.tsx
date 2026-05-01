@@ -9,8 +9,8 @@ import { Button } from "@/components/ui/Button";
 import { SITE_CONFIG } from "@/lib/constants";
 
 const stats = [
-  { value: "8", label: "AI Services" },
-  { value: "22+", label: "Years IT Experience" },
+  { value: "9", label: "AI Services" },
+  { value: "24+", label: "Years IT Experience" },
   { value: "10–300", label: "Employee Sweet Spot" },
 ];
 
@@ -46,16 +46,16 @@ export function ServicesHero() {
           {/* GEO zero-click answer block */}
           <p className="mt-6 text-lg md:text-xl text-text-primary font-medium max-w-2xl leading-relaxed">
             <strong>
-              ITECS delivers 8 managed AI services — from consulting and
-              workflow automation to custom ChatGPT agents, employee training,
-              and AI-powered CRM — built for Dallas businesses that need
+              ITECS delivers 9 managed AI services — from consulting and
+              workflow automation to custom AI agents, employee training,
+              AI DevOps, and AI-powered CRM — built for Dallas businesses that need
               practical results without enterprise budgets or vendor lock-in.
             </strong>
           </p>
 
           <p className="mt-4 text-base text-text-secondary font-light max-w-2xl leading-relaxed">
             Every service is backed by ITECS — a Dallas-based IT operations firm
-            with 22 years of experience managing infrastructure, security, and
+            with 24 years of experience managing infrastructure, security, and
             compliance for small and mid-sized businesses. We build AI that fits
             your team, your tools, and your budget.
           </p>

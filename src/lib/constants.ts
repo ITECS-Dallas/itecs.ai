@@ -9,7 +9,7 @@ export const SITE_CONFIG = {
   mainSiteUrl: "https://itecsonline.com",
   tagline: "Practical AI for Dallas Businesses.",
   description:
-    "ITECS helps small and mid-sized Dallas businesses save time and cut costs with practical AI automation, custom ChatGPT development, and hands-on AI consulting. 22+ years of IT operations expertise.",
+    "ITECS helps small and mid-sized Dallas businesses save time and cut costs with practical AI automation, custom AI agents, and hands-on AI consulting. 24+ years of IT operations expertise.",
   phone: "(214) 444-7884",
   supportPhone: "(877) 483-2710",
   email: "sales-inquiry@itecsonline.com",
@@ -38,6 +38,7 @@ export const SITE_CONFIG = {
 export const NAV_LINKS = [
   { label: "Services", href: "/services" },
   { label: "Managed Intelligence", href: "/managed-intelligence-provider" },
+  { label: "AI DevOps", href: "/ai-devops" },
   { label: "AI Receptionist", href: "/ai-receptionist" },
   { label: "CRM & Sales AI", href: "/crm-sales-ai" },
   { label: "Data Audit", href: "/data-audit" },
@@ -75,11 +76,11 @@ export const SERVICES: ServiceItem[] = [
     title: "Small Business AI Consulting in Dallas",
     shortTitle: "AI Consulting",
     description:
-      "We help Dallas businesses with 10–300 employees find the right AI tools to save time, cut costs, and automate manual work — without the enterprise price tag.",
+      "We help Dallas businesses with 10–300 employees adopt AI without confusion: understand the opportunity, configure the right tools, train the team, and only build custom AI when it is justified.",
     longDescription:
-      "Most small businesses know AI could help, but don't know where to start. We sit down with your team, identify the tasks eating up the most time, and build a practical plan to automate them. No jargon, no year-long roadmaps — just clear steps to save your team 20+ hours a week.",
+      "Most small businesses know AI could help, but don't know where to start or what it should cost. We sit down with your team, identify the tasks eating up the most time, and build a practical adoption plan. Often that starts with properly setting up tools like ChatGPT, Claude, Gemini, or Microsoft Copilot before anyone pays for a custom agent.",
     heroSummary:
-      "We audit your team's manual workflows, identify the biggest time-wasters, and build a practical AI adoption plan that saves Dallas businesses an average of 20+ hours per week — with clear ROI projections and no vendor lock-in.",
+      "We guide Dallas businesses through AI adoption from workflow discovery to tool setup, security guardrails, employee training, and testing. Consulting can be hourly or through a prepaid retainer, with flat project pricing reserved for scoped AI builds.",
     href: "/consulting",
     icon: "Brain",
     keywords: [
@@ -92,9 +93,10 @@ export const SERVICES: ServiceItem[] = [
     h1: "AI Consulting for Small Businesses in Dallas",
     features: [
       "Identify which manual tasks are costing you the most time and money",
-      "Get a plain-English AI adoption plan tailored to your budget",
-      "Evaluate tools like Microsoft Copilot, OpenAI, and custom AI options",
+      "Get a plain-English AI adoption agenda tailored to your budget",
+      "Evaluate tools like ChatGPT, Claude, Gemini, Microsoft Copilot, and custom AI options",
       "Train your staff to use AI tools safely and effectively",
+      "Use prepaid retainer hours for consulting, setup, training, testing, and advisory work",
       "Measure ROI with clear before-and-after KPIs",
       "Industry-specific guidance for healthcare, legal, finance, and manufacturing",
     ],
@@ -108,16 +110,19 @@ export const SERVICES: ServiceItem[] = [
       {
         step: "We build a practical AI adoption plan",
         description:
-          "You get a prioritized roadmap with cost estimates, timelines, and the specific tools that fit your business and budget. No 50-page decks — just actionable steps.",
+          "You get a prioritized AI agenda with cost expectations, timelines, and the specific tools that fit your business and budget. No 50-page decks — just actionable steps.",
       },
       {
         step: "We implement the tools and train your team",
         description:
-          "We set up the AI tools, integrate them with your existing systems, and train your staff until they're self-sufficient. Most clients are up and running within 2–4 weeks.",
+          "We configure off-the-shelf AI applications when they are enough, integrate systems when needed, and train your staff until they are self-sufficient. Most clients are up and running within 2–4 weeks.",
       },
     ],
     integrations: [
       "Microsoft Copilot",
+      "ChatGPT",
+      "Claude",
+      "Gemini",
       "OpenAI API",
       "Azure OpenAI",
       "Google Vertex AI",
@@ -134,7 +139,7 @@ export const SERVICES: ServiceItem[] = [
       {
         question: "How much does AI consulting cost for a small business?",
         answer:
-          "Our engagements start with a two-week AI Insight Sprint for Dallas businesses, typically ranging from $3,000–$8,000 depending on complexity. Full implementation projects vary based on scope. We always provide a clear quote upfront with no hidden costs — and most clients see ROI within the first month.",
+          "AI consulting can be billed hourly, but most clients prefer a prepaid retainer block of time. Retainer hours can be used at your discretion for discovery, tool configuration, training, testing, workflow design, and advisory work. There is no minimum monthly usage and no expiration date. Flat-rate fees are used only for scoped projects such as building AI agents or securely connecting them to your platforms.",
       },
       {
         question: "How do I know if my business is ready for AI?",
@@ -154,56 +159,63 @@ export const SERVICES: ServiceItem[] = [
     ],
   },
   {
-    slug: "custom-chatgpt",
-    title: "Custom ChatGPT & AI Chatbot Development in Dallas",
-    shortTitle: "Custom ChatGPT",
+    slug: "custom-ai-agents",
+    title: "Custom AI Agent Development in Dallas",
+    shortTitle: "Custom AI Agents",
     description:
-      "We build custom ChatGPT-style chatbots for Dallas businesses — trained on your data, connected to your systems, and handling customer questions 24/7.",
+      "We build custom AI agents for Dallas businesses — from Claude and Codex workflows to agentic RAG systems that connect securely to your tools and data.",
     longDescription:
-      "Imagine a ChatGPT that only knows your business — your products, your policies, your pricing. We build secure, private AI chatbots that connect to your company data and answer customer questions, handle HR inquiries, and support your team around the clock. No hallucinations, no off-topic answers, just reliable AI that knows your business inside and out.",
+      "Custom AI does not mean one chatbot on one model. ITECS designs secure agents, project folders, CLI workflows, and retrieval systems around the way your team actually works. We can configure Claude projects, Codex workflows, ChatGPT workspaces, agentic RAG, human approval queues, and API-connected automations that retrieve the right context, take approved actions, and keep sensitive data controlled.",
     heroSummary:
-      "We build Custom ChatGPTs for your business that connect securely to your proprietary data, reducing customer support response times by up to 40% and eliminating manual data entry for your Dallas team.",
-    href: "/custom-chatgpt",
+      "ITECS builds custom AI agents that connect securely to your proprietary data, tools, folders, codebases, and business systems — with human-in-the-loop controls, audit trails, and production support.",
+    href: "/custom-ai-agents",
     icon: "MessageSquareCode",
     keywords: [
-      "custom ChatGPT for business data",
-      "AI customer service bot for SMB",
+      "custom AI agents Dallas",
+      "AI agent development for business",
+      "agentic RAG development Dallas",
+      "Claude project setup for business",
+      "Codex workflow automation",
+      "human in the loop AI agents",
       "custom chatbot development Dallas",
-      "AI receptionist Dallas",
-      "business chatbot Dallas",
-      "how to build a custom ChatGPT",
     ],
-    h1: "Custom ChatGPT for Your Dallas Business",
+    h1: "Custom AI Agents for Your Dallas Business",
     features: [
-      "A private ChatGPT trained exclusively on your business data",
-      "Handles customer questions, HR inquiries, and internal support 24/7",
-      "Connects securely to your knowledge base, CRM, and helpdesk",
-      "Deploys on your website, Slack, Teams, SMS, or all of the above",
-      "Escalates to a human when it can't answer — with full conversation context",
+      "Claude, ChatGPT, Gemini, Copilot, Codex, CLI, and open-source agent workflows",
+      "Agentic RAG systems that retrieve approved context before answering or acting",
+      "Secure connections to CRMs, helpdesks, file stores, databases, codebases, and APIs",
+      "Human-in-the-loop approvals for sensitive messages, records, transactions, and production changes",
+      "Project folders, prompt systems, tool schemas, evaluation sets, and operating documentation",
       "HIPAA and SOC 2 compliant options for regulated industries",
     ],
-    howItWorksHeading: "How to build a Custom ChatGPT for your business",
+    howItWorksHeading: "How to build custom AI agents for your business",
     howItWorks: [
       {
-        step: "Audit current manual processes and data sources",
+        step: "Map the workflow, tools, data, and approval points",
         description:
-          "We identify which customer questions, HR inquiries, and support requests can be handled by AI, and map the data sources your chatbot needs access to.",
+          "We identify which tasks should be assisted, automated, or left human-owned. Then we map the folders, apps, APIs, databases, prompts, approvals, and security controls the agent needs.",
       },
       {
-        step: "Connect your secure data via API and build your ChatGPT",
+        step: "Build the agent with the right AI tools",
         description:
-          "We ingest your documentation, knowledge base, and policies into a private AI system. Your data never leaves your control. The chatbot only answers based on your data — no hallucinations.",
+          "We use the right mix of AI applications, APIs, RAG pipelines, CLI tooling, prompt systems, tool calls, and workflow automation. That can include Claude projects, Codex workflows, ChatGPT, Gemini, Microsoft Copilot, or custom-built agent services.",
       },
       {
-        step: "Deploy across your channels and train your staff",
+        step: "Test, deploy, train, and monitor",
         description:
-          "We launch the chatbot on your website, Slack, Teams, or SMS. We train your team to manage it and continuously optimize based on real conversation data.",
+          "We validate accuracy, permissions, guardrails, logs, costs, and escalation paths before launch. Then we train your staff and monitor the agent so it keeps improving safely.",
       },
     ],
     integrations: [
+      "Claude",
+      "Anthropic API",
+      "ChatGPT",
       "OpenAI API",
-      "CustomGPT",
+      "Codex",
+      "Gemini",
       "Microsoft Copilot",
+      "Azure OpenAI",
+      "GitHub",
       "Slack",
       "Microsoft Teams",
       "HubSpot",
@@ -211,35 +223,40 @@ export const SERVICES: ServiceItem[] = [
       "HaloPSA",
     ],
     stats: [
-      { value: 40, suffix: "%", label: "Fewer Support Tickets" },
-      { value: 85, suffix: "%", label: "Query Resolution Rate" },
-      { value: 3, suffix: "sec", label: "Avg. Response Time" },
+      { value: 40, suffix: "%", label: "Fewer Manual Handoffs" },
+      { value: 85, suffix: "%", label: "Target Task Resolution Rate" },
+      { value: 3, suffix: "sec", label: "Avg. Retrieval Time" },
     ],
     faq: [
       {
-        question: "How much does a custom AI chatbot cost for a small business?",
+        question: "How much does a custom AI agent cost for a small business?",
         answer:
-          "Custom ChatGPT development for Dallas businesses typically ranges from $5,000–$15,000 for initial setup, depending on the number of data sources and channels. Ongoing hosting and management starts at $300/month. We provide transparent pricing upfront — no surprise invoices.",
+          "Custom AI agents are quoted as scoped projects after we understand the workflow, data sources, security requirements, approval points, and external systems involved. Discovery, project-folder setup, prompt systems, testing, training, and tuning can also use prepaid retainer hours with no minimum monthly usage or expiration date.",
       },
       {
-        question: "How do I build a custom ChatGPT for my customer service team?",
+        question: "Can you build workflows for Claude, Codex, ChatGPT, Gemini, and other AI tools?",
         answer:
-          "That's exactly what we do. We connect your company documentation, FAQs, product guides, and support history to a private AI model. The result is a chatbot that answers customer questions accurately using only your data — deployed on your website, Slack, Teams, or SMS within 2–4 weeks.",
+          "Yes. ITECS is not tied to one AI vendor. We build custom workflows for AI applications, APIs, CLIs, project folders, and agent frameworks, including Claude, Codex, ChatGPT, Gemini, Microsoft Copilot, Azure OpenAI, and other business AI platforms when they fit the use case.",
       },
       {
-        question: "How do I secure my business data from ChatGPT?",
+        question: "What is an agentic RAG agent?",
         answer:
-          "The biggest risk is employees pasting sensitive data into public ChatGPT. We solve this by deploying private AI instances (Azure OpenAI, on-premise models) that keep your data within your control, implementing DLP policies, and training your staff on safe AI usage. Your data never trains public models.",
+          "An agentic RAG agent retrieves approved context from your documents, databases, tickets, or systems before it answers or acts. Unlike a basic chatbot, it can use tools, follow multi-step instructions, request human approval, cite sources, and update external systems when permitted.",
       },
       {
-        question: "Will the chatbot make up answers or go off-topic?",
+        question: "How do I secure my business data when using AI agents?",
         answer:
-          "No. We implement strict data boundaries and confidence scoring. When the chatbot can't find an answer in your data, it says so and escalates to a human team member with full conversation context — rather than making something up.",
+          "The biggest risk is connecting AI to sensitive data without access controls, logging, or approved workflows. We solve this with private or enterprise AI environments, scoped permissions, DLP policies, credential isolation, audit logs, and employee training. Your data never trains public models.",
       },
       {
-        question: "Can the chatbot connect to our CRM and helpdesk?",
+        question: "Can a custom agent perform tasks, not just answer questions?",
         answer:
-          "Yes. We build integrations with HubSpot, Salesforce, HaloPSA, ConnectWise, Hudu, ServiceNow, and custom APIs. Your chatbot pulls live data from the tools your team already uses.",
+          "Yes. Agents can draft messages, summarize records, create tickets, update CRM fields, prepare reports, run approved CLI workflows, trigger automations, or route work to the right person. Sensitive actions can require human approval before anything is sent, changed, or executed.",
+      },
+      {
+        question: "Can the agent connect to our CRM, helpdesk, files, and internal systems?",
+        answer:
+          "Yes. We build integrations with HubSpot, Salesforce, HaloPSA, ConnectWise, Hudu, ServiceNow, Microsoft 365, Google Workspace, GitHub, databases, file stores, and custom APIs. The agent pulls only the data it is allowed to use.",
       },
     ],
   },
@@ -328,15 +345,110 @@ export const SERVICES: ServiceItem[] = [
     ],
   },
   {
+    slug: "ai-devops",
+    title: "AI DevOps & MLOps for Dallas Businesses",
+    shortTitle: "AI DevOps",
+    description:
+      "We turn AI prototypes into secure production systems with CI/CD, prompt and model versioning, RAG pipeline monitoring, cost controls, and managed AI operations.",
+    longDescription:
+      "Most AI projects stall after the demo because no one owns deployment, monitoring, rollback, data refreshes, or cost control. ITECS builds the operating layer around your AI stack: secure CI/CD pipelines, environment separation, prompt and model versioning, retrieval monitoring, observability, and incident response. Your AI systems keep improving after launch instead of becoming another fragile internal tool.",
+    heroSummary:
+      "ITECS operationalizes AI systems for Dallas businesses with secure CI/CD, model and prompt version control, RAG pipeline monitoring, cost controls, rollback plans, and managed production support.",
+    href: "/ai-devops",
+    icon: "ServerCog",
+    keywords: [
+      "AI DevOps Dallas",
+      "MLOps for small business",
+      "AI deployment services",
+      "RAG pipeline monitoring",
+      "LLM operations",
+      "AI application DevOps",
+      "model monitoring Dallas",
+    ],
+    h1: "AI DevOps & MLOps for Production AI Systems",
+    features: [
+      "Production deployment pipelines for AI apps, agents, and automations",
+      "Prompt, model, and retrieval configuration version control",
+      "Development, staging, and production environment separation",
+      "RAG pipeline observability — retrieval quality, citation coverage, and drift detection",
+      "Cost monitoring for OpenAI, Azure OpenAI, vector databases, and automation platforms",
+      "Rollback, incident response, and 24/7 managed operations for business-critical AI",
+    ],
+    howItWorksHeading: "How AI DevOps moves your AI system from demo to production",
+    howItWorks: [
+      {
+        step: "Audit your AI prototype and deployment risks",
+        description:
+          "We review your AI app, chatbot, automation, or RAG system for weak points: unmanaged prompts, hardcoded API keys, missing environments, no monitoring, stale data, unclear ownership, and runaway token costs.",
+      },
+      {
+        step: "Build the secure release and operations pipeline",
+        description:
+          "We set up version control, CI/CD, secrets management, staging validation, automated tests, deployment approvals, retrieval health checks, and rollback paths so changes ship predictably.",
+      },
+      {
+        step: "Monitor performance, security, and cost after launch",
+        description:
+          "We track model latency, error rates, retrieval quality, usage spikes, budget thresholds, and security alerts. Monthly reviews show what changed, what improved, and where the next optimization belongs.",
+      },
+    ],
+    integrations: [
+      "GitHub Actions",
+      "Azure DevOps",
+      "Azure OpenAI",
+      "OpenAI API",
+      "Docker",
+      "Kubernetes",
+      "Terraform",
+      "Vercel",
+      "Supabase",
+      "Pinecone",
+      "Datadog",
+      "Microsoft 365",
+    ],
+    stats: [
+      { value: 60, suffix: "%", label: "Faster AI Release Cycles" },
+      { value: 99.9, suffix: "%", label: "Target Pipeline Uptime" },
+      { value: 30, suffix: "%", label: "Lower AI Run Costs" },
+    ],
+    faq: [
+      {
+        question: "What is AI DevOps?",
+        answer:
+          "AI DevOps is the operating discipline that moves AI systems from prototype to production. It covers CI/CD, model and prompt versioning, data pipeline monitoring, secrets management, testing, observability, rollback plans, and cost controls for AI apps, RAG systems, agents, and automations.",
+      },
+      {
+        question: "Do small businesses need MLOps or AI DevOps?",
+        answer:
+          "If an AI system touches customers, employees, regulated data, revenue workflows, or operational decisions, yes. You do not need an enterprise platform, but you do need a repeatable way to deploy changes, monitor accuracy, secure credentials, and recover when something breaks.",
+      },
+      {
+        question: "Can you take over an AI prototype someone else built?",
+        answer:
+          "Yes. We start with a code, data, and infrastructure review, then stabilize the deployment. Common first fixes include moving secrets into a vault, separating staging from production, adding logging, testing retrieval quality, and documenting rollback steps.",
+      },
+      {
+        question: "How much does AI DevOps cost?",
+        answer:
+          "Production stabilization is quoted after we review the codebase, data sources, integrations, and deployment environments. Ongoing monitoring reviews, maintenance, release support, testing, cost reviews, and advisory work can use prepaid retainer hours with no minimum monthly usage and no expiration date.",
+      },
+      {
+        question: "Which AI platforms do you support?",
+        answer:
+          "We support OpenAI, Azure OpenAI, Microsoft Copilot extensions, vector databases, RAG frameworks, automation platforms, and standard cloud/dev tools including GitHub Actions, Azure DevOps, Docker, Kubernetes, Terraform, Vercel, and Microsoft 365.",
+      },
+    ],
+  },
+  {
     slug: "training",
     title: "AI Training for Employees in Dallas",
     shortTitle: "AI Training",
     description:
-      "Hands-on AI training for your Dallas team — teach employees to use ChatGPT, Copilot, and automation tools safely and productively. No technical background required.",
+      "Hands-on AI training for your Dallas team — teach employees to use ChatGPT, Claude, Gemini, Copilot, and automation tools safely and productively. No technical background required.",
     longDescription:
-      "Your employees are already using AI — the question is whether they're using it safely and effectively. We train your team on the AI tools that matter: ChatGPT, Microsoft Copilot, automation platforms, and custom tools. Hands-on workshops, not boring slide decks. Your staff walks away knowing exactly how to use AI to do their job faster without putting company data at risk.",
+      "Your employees are already using AI — the question is whether they're using it safely and effectively. We train your team on the AI tools that matter: ChatGPT, Claude, Gemini, Microsoft Copilot, automation platforms, and custom tools. Hands-on workshops, not boring slide decks. Your staff walks away knowing exactly how to use AI to do their job faster without putting company data at risk.",
     heroSummary:
-      "We train your Dallas team to use AI tools like ChatGPT and Microsoft Copilot safely and productively — with hands-on workshops that cut task completion time by 30% while keeping sensitive company data secure.",
+      "We train your Dallas team to use AI tools like ChatGPT, Claude, Gemini, and Microsoft Copilot safely and productively — with hands-on workshops that cut task completion time by 30% while keeping sensitive company data secure.",
     href: "/training",
     icon: "GraduationCap",
     keywords: [
@@ -349,7 +461,7 @@ export const SERVICES: ServiceItem[] = [
     h1: "AI Training for Your Dallas Team",
     features: [
       "Hands-on workshops — your team practices with real work scenarios, not slides",
-      "ChatGPT, Microsoft Copilot, and automation tool training",
+      "ChatGPT, Claude, Gemini, Microsoft Copilot, and automation tool training",
       "Safe AI usage policies — keep company data out of public models",
       "Role-specific training for sales, support, HR, finance, and ops",
       "Prompt engineering basics so your team gets better AI outputs",
@@ -365,17 +477,19 @@ export const SERVICES: ServiceItem[] = [
       {
         step: "Deliver hands-on workshops customized to your business",
         description:
-          "Your team practices with real work scenarios using ChatGPT, Copilot, and automation tools. We cover prompt engineering, data safety, and role-specific use cases — not generic demos.",
+          "Your team practices with real work scenarios using ChatGPT, Claude, Gemini, Copilot, and automation tools. We cover prompt engineering, data safety, and role-specific use cases — not generic demos.",
       },
       {
         step: "Provide ongoing support and refresher training",
         description:
-          "AI tools evolve fast. We provide monthly office hours, updated training materials, and refresher sessions so your team stays current and keeps getting value from AI.",
+          "AI tools evolve fast. Retainer hours can be used for office hours, updated training materials, and refresher sessions so your team stays current and keeps getting value from AI.",
       },
     ],
     integrations: [
       "Microsoft Copilot",
       "ChatGPT / OpenAI",
+      "Claude",
+      "Gemini",
       "Microsoft 365",
       "Google Workspace",
       "Zapier",
@@ -391,7 +505,7 @@ export const SERVICES: ServiceItem[] = [
       {
         question: "How much does AI training cost for employees?",
         answer:
-          "Group workshops for Dallas businesses start at $2,000 for a half-day session covering up to 20 employees. Full-day deep dives and multi-session programs range from $4,000–$10,000. We also offer ongoing monthly training retainers starting at $500/month.",
+          "Workshops and multi-session training programs are quoted based on team size, tools, and curriculum depth. Ongoing office hours, refresher sessions, and new-tool onboarding can use prepaid retainer hours with no minimum monthly usage and no expiration date.",
       },
       {
         question: "Do my employees need a technical background for AI training?",
@@ -401,7 +515,7 @@ export const SERVICES: ServiceItem[] = [
       {
         question: "What AI tools do you train on?",
         answer:
-          "We cover ChatGPT (free and Plus), Microsoft Copilot (Word, Excel, Outlook, Teams), automation platforms (Zapier, Make.com, Power Automate), and any custom AI tools your business uses. Training is customized to the tools your team will actually use.",
+          "We cover ChatGPT, Claude, Gemini, Microsoft Copilot (Word, Excel, Outlook, Teams), automation platforms (Zapier, Make.com, Power Automate), and any custom AI tools your business uses. Training is customized to the tools your team will actually use.",
       },
       {
         question: "How do you handle AI data safety in training?",
@@ -586,7 +700,7 @@ export const SERVICES: ServiceItem[] = [
     description:
       "Turn scattered company files into a private AI search engine. Employees ask questions in plain English and get cited answers in 5 seconds — cutting onboarding time by 50%.",
     longDescription:
-      "Your company knowledge is trapped in SharePoint folders, Google Drives, Notion pages, and people's heads. New hires take months to get up to speed. Employees ask the same questions over and over. ITECS builds private, RAG-powered AI knowledge bases that connect all your documentation into a single natural-language search interface — like having a ChatGPT that only knows your company's SOPs, policies, and institutional knowledge, and cites the source document for every answer.",
+      "Your company knowledge is trapped in SharePoint folders, Google Drives, Notion pages, and people's heads. New hires take months to get up to speed. Employees ask the same questions over and over. ITECS builds private, RAG-powered AI knowledge bases that connect all your documentation into a single natural-language search interface — like having a secure AI assistant that only knows your company's SOPs, policies, and institutional knowledge, and cites the source document for every answer.",
     heroSummary:
       "ITECS builds private AI knowledge bases for Dallas businesses with 50–500 employees. We connect SharePoint, Google Drive, Notion, and Confluence into one RAG-powered search engine. Employees ask questions in plain English and get cited answers in 5 seconds. Average result: 50% faster onboarding, 70% fewer repeated questions, full setup in 4–6 weeks.",
     href: "/ai-knowledge-base",
@@ -873,13 +987,13 @@ export const INSIGHTS: InsightItem[] = [
       "**Microsoft Copilot** works best if your team already runs on Microsoft 365. It drafts emails, summarizes Teams meetings, generates Excel formulas, and searches SharePoint documents using natural language. At $30 per user per month, it's the fastest way to add AI to daily workflows without changing tools.",
       "**ChatGPT (Team or Enterprise)** gives your team a general-purpose AI assistant for writing, research, brainstorming, and code generation. The Team plan at $25 per user per month includes workspace features and a data privacy guarantee — conversations are not used for model training.",
       "**Zapier and Make.com** connect your existing tools into automated workflows without code. When a lead fills out your website form, Zapier can create a CRM contact, send a follow-up email, notify your sales team on Slack, and log the interaction — all within 60 seconds. Plans start at $20 per month.",
-      "**Custom AI solutions** — like a [private ChatGPT trained on your company data](/custom-chatgpt), an [AI receptionist that answers your phones 24/7](/ai-receptionist), or [AI-powered CRM automation](/crm-sales-ai) — require a managed AI partner like ITECS to build and maintain. Setup runs $2,500–$15,000 depending on complexity, with monthly management from $500.",
+      "**Custom AI solutions** — like a [custom AI agent connected to your business data](/custom-ai-agents), an [AI receptionist that answers your phones 24/7](/ai-receptionist), or [AI-powered CRM automation](/crm-sales-ai) — require a managed AI partner like ITECS to build and maintain. Scoped builds are quoted after the workflow, data, and integration requirements are clear.",
       "**Start Small, Measure Everything, Then Scale**",
       "The businesses that succeed with AI don't try to automate everything at once. They pick one high-impact workflow, measure the before-and-after, and expand from there. A good [AI consultant](/consulting) will audit your workflows, estimate time savings per automation, and have your first solution running within 2–4 weeks.",
-      "A 40-person home services company in Plano started with one automation: routing inbound web leads to their sales team via text within 60 seconds instead of waiting for the office manager to check email. That single change increased their lead conversion rate by 35%. Within three months, they added [AI-powered appointment scheduling](/automation), a [custom ChatGPT for internal SOPs](/ai-knowledge-base), and [employee AI training](/training) for their technicians.",
+      "A 40-person home services company in Plano started with one automation: routing inbound web leads to their sales team via text within 60 seconds instead of waiting for the office manager to check email. That single change increased their lead conversion rate by 35%. Within three months, they added [AI-powered appointment scheduling](/automation), an [AI knowledge base for internal SOPs](/ai-knowledge-base), and [employee AI training](/training) for their technicians.",
       "**Protect Your Data from Day One**",
       "For Dallas businesses in healthcare, legal, or financial services, data safety is not optional. Public AI tools like the free version of ChatGPT should never be used for sensitive client data. Your employees are likely already pasting customer emails, financial reports, and internal documents into public AI tools — creating compliance risks you might not discover until an audit.",
-      "The solution is not banning AI. It's deploying private AI environments where your data stays under your control. [ITECS builds secure, private ChatGPT agents](/custom-chatgpt) that give your team full AI productivity without data leakage. For businesses handling PHI, PCI, or privileged legal documents, we configure Azure OpenAI with private endpoints and DLP policies that block sensitive data from ever reaching public AI services.",
+      "The solution is not banning AI. It's deploying private AI environments where your data stays under your control. [ITECS builds secure custom AI agents](/custom-ai-agents) that give your team AI productivity without data leakage. For businesses handling PHI, PCI, or privileged legal documents, we configure private endpoints and DLP policies that block sensitive data from ever reaching public AI services.",
       "**Train Your Team to Use AI Safely and Effectively**",
       "Buying AI tools without training is like buying a truck fleet and handing employees the keys without a driving test. Your team needs to know what AI can and cannot do, which data is safe to share, how to write effective prompts, and when to trust (or override) AI output.",
       "ITECS runs [hands-on AI training workshops](/training) for non-technical staff — sales reps, customer support agents, HR managers, accountants, and office admins. Workshops cover prompt engineering for business tasks, data safety rules for your specific industry, and practical exercises using the AI tools you've already deployed. Most teams go from skeptical to productive within a single half-day session.",
@@ -893,12 +1007,12 @@ export const INSIGHTS: InsightItem[] = [
       {
         question: "How much does AI cost for a small business?",
         answer:
-          "Off-the-shelf tools range from free (ChatGPT free tier) to $30/user/month (Microsoft Copilot). Custom AI solutions like private chatbots or workflow automations cost $2,500–$15,000 to build, with monthly management from $500. Most Dallas businesses recover setup costs within 30–60 days.",
+          "Off-the-shelf AI tools can start with existing subscriptions or per-user plans. ITECS consulting can be hourly or handled through prepaid retainer hours with no minimum monthly usage or expiration date. Scoped custom builds such as AI agents, automations, and secure integrations are quoted after requirements are clear.",
       },
       {
         question: "Do I need technical staff to implement AI in my business?",
         answer:
-          "No. Tools like Zapier, Make.com, and Microsoft Copilot require no coding. For custom solutions — private ChatGPT agents, AI receptionists, CRM automation — a managed AI partner like ITECS handles the technical build, deployment, and ongoing maintenance.",
+          "No. Tools like Zapier, Make.com, and Microsoft Copilot require no coding. For custom solutions — AI agents, AI receptionists, CRM automation, and secure integrations — a managed AI partner like ITECS handles the technical build, deployment, and ongoing maintenance.",
       },
       {
         question: "Is AI safe to use with customer data?",
@@ -918,19 +1032,19 @@ export const INSIGHTS: InsightItem[] = [
     description:
       "Your employees are using ChatGPT at work. Here's how to protect sensitive company data, set up safe AI policies, and deploy private AI alternatives for your Dallas business.",
     href: "/insights/secure-business-data-chatgpt",
-    hubSlug: "custom-chatgpt",
-    hubLabel: "Custom ChatGPT for Business",
-    hubHref: "/custom-chatgpt",
+    hubSlug: "custom-ai-agents",
+    hubLabel: "Custom AI Agents",
+    hubHref: "/custom-ai-agents",
     keywords: [
       "how to secure business data from ChatGPT",
       "ChatGPT data security for business",
       "AI data protection small business",
-      "private ChatGPT for business",
+      "private AI workspace for business",
     ],
     h1: "How to Secure Your Business Data from ChatGPT",
     content: [
       "Your employees are almost certainly using ChatGPT at work — even if you have not approved it. A 2025 Cisco survey found that 80% of employees use unsanctioned AI tools at work. Every time someone pastes a customer email, financial report, or internal document into public ChatGPT, that data potentially becomes training data for OpenAI's models.",
-      "**The safest approach is deploying a [private Custom ChatGPT](/custom-chatgpt) that keeps your business data completely under your control.** At ITECS, we build secure, private AI agents for Dallas businesses that give your team all the productivity benefits of ChatGPT without the data leakage risks.",
+      "**The safest approach is deploying a [private custom AI workflow](/custom-ai-agents) that keeps your business data completely under your control.** At ITECS, we build secure AI agents and approved workspaces for Dallas businesses that give your team the productivity benefits of tools like ChatGPT, Claude, Gemini, and Copilot without data leakage risks.",
       "**The Real Risk: What Happens to Your Data in Public ChatGPT**",
       "When your employees use the free version of ChatGPT (or any consumer AI tool), their conversations may be used to train future AI models. That means customer PII, financial projections, legal documents, trade secrets, and internal strategy discussions can end up in OpenAI's training corpus — accessible to anyone who asks the right question later.",
       "For Dallas businesses in healthcare (HIPAA), finance (SOX/PCI-DSS), or legal services, this is not just a data hygiene issue. It is a compliance violation that can trigger audits, fines, and client lawsuits. A single employee pasting patient records into ChatGPT to draft a referral letter violates HIPAA. An accountant summarizing a client's financial statements violates SOX data handling requirements.",
@@ -944,14 +1058,14 @@ export const INSIGHTS: InsightItem[] = [
       "**How to Lock Down AI Use in Your Organization**",
       "The fix is not banning AI — your employees will use it anyway, and you lose the productivity gains. The fix is channeling AI use through secure, managed channels. Here is the playbook ITECS follows for Dallas businesses:",
       "**Step 1: Audit current AI usage.** Survey your team. Ask what AI tools they use, what data they share, and what tasks they use AI for. You will find shadow AI use in every department. This audit takes one day and reveals the full scope of your exposure.",
-      "**Step 2: Deploy a private AI environment.** Replace public ChatGPT with a [private ChatGPT instance](/custom-chatgpt) that runs on Azure OpenAI or a private API. Your employees get the same AI capabilities — drafting, summarizing, researching, coding — but your data stays in your infrastructure. ITECS configures private endpoints, encryption, and access controls during deployment.",
+      "**Step 2: Deploy a private AI environment.** Replace public AI usage with [approved private AI workflows](/custom-ai-agents) that run on enterprise AI applications, Azure OpenAI, private APIs, or controlled agent systems. Your employees get drafting, summarizing, researching, and coding support while your data stays governed. ITECS configures private endpoints, encryption, and access controls during deployment.",
       "**Step 3: Implement DLP (Data Loss Prevention) policies.** Configure Microsoft Purview or your existing DLP tool to detect and block sensitive data from being pasted into public AI endpoints. This catches employees who forget to use the approved tool. For Microsoft 365 environments, Purview DLP policies can be deployed within a few hours.",
       "**Step 4: Set up an AI acceptable use policy.** Write a clear, one-page policy that tells employees: which AI tools are approved, what data categories are off-limits (PII, PHI, financial data, legal documents), and what the consequences are for violations. ITECS provides templates tailored to your industry.",
       "**Step 5: Train your team.** Run a 2-hour [AI training workshop](/training) covering safe AI use, approved tools, data classification basics, and practical prompt engineering for their daily tasks. Employees who understand why the rules exist follow them. Employees who get a policy PDF without context ignore it.",
       "**Build Custom AI That Knows Your Business**",
-      "The ultimate solution is not just securing ChatGPT — it is replacing it with something better. A [private Custom ChatGPT agent](/custom-chatgpt) trained on your company's documents, SOPs, and knowledge base gives employees faster, more accurate answers than public ChatGPT ever could. It knows your product catalog. It knows your internal processes. It knows your client history. And it never shares that knowledge with anyone outside your organization.",
+      "The ultimate solution is not just securing ChatGPT — it is giving employees an approved AI workflow that fits the business. A [custom AI agent](/custom-ai-agents) grounded in your company's documents, SOPs, and knowledge base gives employees faster, more accurate answers than public AI tools can provide. It knows your product catalog. It knows your internal processes. It knows your client history. And it never shares that knowledge with anyone outside your organization.",
       "A 35-person Dallas law firm we work with deployed a private AI agent trained on 8,000 case files and internal legal research. Associates now find relevant precedents in 15 seconds instead of 45 minutes. The managing partner estimates the tool saves the firm 60 billable hours per month — and not a single client document has ever touched a public AI service.",
-      "At ITECS, we have deployed private ChatGPT solutions for dozens of Dallas businesses with a 100% compliance pass rate. Your employees get an AI assistant that knows your business inside and out — and your data never leaves your infrastructure.",
+      "At ITECS, we deploy private AI environments and governed agent workflows for Dallas businesses. Your employees get an AI assistant that knows your business inside and out — and your data never leaves approved systems.",
     ],
     faq: [
       {
@@ -975,9 +1089,9 @@ export const INSIGHTS: InsightItem[] = [
           "ChatGPT Enterprise is a managed OpenAI product with workspace features and SOC 2 compliance. Azure OpenAI runs on your own Azure tenant with full network isolation, VNet integration, and support for HIPAA, PCI-DSS, and FedRAMP. Azure OpenAI gives you more control over data residency and security policies.",
       },
       {
-        question: "How long does it take to deploy a private ChatGPT for my business?",
+        question: "How long does it take to deploy a private AI workspace or agent?",
         answer:
-          "A basic private ChatGPT deployment on Azure OpenAI takes 1–2 weeks. Training the AI on your company documents, SOPs, and knowledge base adds another 1–2 weeks depending on data volume. ITECS handles the entire deployment, training, and ongoing management.",
+          "A basic approved AI workspace can often be configured in 1–2 weeks. A custom AI agent or RAG workflow connected to company documents, SOPs, and business systems usually adds another 1–3 weeks depending on data volume, approvals, and integrations. ITECS handles deployment, training, and ongoing management.",
       },
     ],
   },
@@ -1072,7 +1186,7 @@ export const INSIGHTS_FAQ = [
   {
     question: "Can I implement these AI strategies without hiring a developer?",
     answer:
-      "Most guides cover tools like Zapier, Make.com, and Microsoft Copilot that require no coding. For custom deployments like private ChatGPT or voice agents, ITECS handles the technical build.",
+      "Most guides cover tools like Zapier, Make.com, Microsoft Copilot, ChatGPT, Claude, and Gemini that require no coding. For custom deployments like AI agents, private AI environments, or voice agents, ITECS handles the technical build.",
   },
 ] as const;
 
@@ -1081,7 +1195,7 @@ export const INSIGHTS_FAQ = [
 // ---------------------------------------------------------------------------
 
 export const STATS = [
-  { value: 22, suffix: "+", label: "Years of IT Operations" },
+  { value: 24, suffix: "+", label: "Years of IT Operations" },
   { value: 92, suffix: "%", label: "Client Retention Rate" },
   { value: 500, suffix: "+", label: "Dallas Endpoints Managed" },
   { value: 20, suffix: "+", label: "Hours Saved per Client Weekly" },
@@ -1095,7 +1209,7 @@ export const FAQ_ITEMS = [
   {
     question: "How much does AI cost for a small business?",
     answer:
-      "It depends on what you need. AI consulting engagements start at $3,000, workflow automations at $2,500, and custom chatbots at $5,000. Most of our Dallas clients see ROI within the first month. We provide transparent pricing upfront and never push unnecessary services.",
+      "AI adoption does not need to start as a large fixed project. ITECS can consult hourly, but most clients prefer a prepaid retainer block of time they can use at their discretion with no minimum monthly usage and no expiration date. Every hour consumed is documented clearly. Flat project pricing is used only when the scope is defined, such as building an AI agent, automation, or secure platform integration.",
   },
   {
     question: "What makes ITECS different from other AI companies in Dallas?",
@@ -1110,7 +1224,7 @@ export const FAQ_ITEMS = [
   {
     question: "Which AI tools do you work with?",
     answer:
-      "We're vendor-neutral and work with Microsoft Copilot, OpenAI (ChatGPT), Azure OpenAI, Google Vertex AI, Zapier, Make.com, Power Automate, HubSpot AI, and custom-built solutions. We recommend what fits your business and budget — not what pays us the highest margin.",
+      "We're vendor-neutral and work with ChatGPT, Claude, Gemini, Microsoft Copilot, Azure OpenAI, Google Vertex AI, Zapier, Make.com, Power Automate, HubSpot AI, and custom-built solutions. We start with practical tools your team can adopt safely, then recommend automation or custom agents only when they fit the workflow and budget.",
   },
   {
     question: "How do I keep my company data safe when using AI?",
@@ -1118,9 +1232,9 @@ export const FAQ_ITEMS = [
       "This is one of the most common concerns for Dallas businesses adopting AI. The short answer: don't paste sensitive data into public ChatGPT. We deploy private AI instances, set up data loss prevention policies, train your staff, and ensure compliance with HIPAA, SOX, or whatever regulations apply to your industry.",
   },
   {
-    question: "Can you build a custom ChatGPT for my business?",
+    question: "Can you build custom AI agents for my business?",
     answer:
-      "Yes — this is one of our most popular services. We build private AI chatbots trained exclusively on your company data that handle customer questions, internal HR inquiries, and support requests 24/7. They connect to your CRM, helpdesk, and knowledge base, and escalate to a human when they can't answer.",
+      "Yes. We build custom AI agents and governed workflows using the right tools for the job, including Claude, ChatGPT, Gemini, Copilot, Codex, RAG pipelines, APIs, and CLI workflows. Agents can answer questions, retrieve company context, update approved systems, and escalate to a human with full context when judgment is required.",
   },
   {
     question: "Do you work with businesses outside of Dallas?",
@@ -1195,7 +1309,7 @@ export const ABOUT_MILESTONES = [
     year: "2023",
     title: "AI Division Launches",
     description:
-      "ITECS AI is born. First engagements: custom ChatGPT deployments for internal knowledge bases, workflow automation with Zapier and Make, and AI consulting for businesses exploring GPT-4.",
+      "ITECS AI is born. First engagements: custom AI agents for internal knowledge bases, workflow automation with Zapier and Make, and AI consulting for businesses exploring GPT-4.",
   },
   {
     year: "2024",
@@ -1226,7 +1340,7 @@ export const ABOUT_VALUES = [
     icon: "Building2",
     title: "Dallas Roots, Enterprise Grade",
     description:
-      "22 years of on-the-ground IT operations in Dallas-Fort Worth. We know your compliance landscape, your vendor ecosystem, and the realities of running a 10–300 person company.",
+      "24 years of on-the-ground IT operations in Dallas-Fort Worth. We know your compliance landscape, your vendor ecosystem, and the realities of running a 10–300 person company.",
   },
   {
     icon: "Target",
@@ -1244,12 +1358,12 @@ export const ABOUT_FAQ = [
   {
     question: "How long has ITECS been in business?",
     answer:
-      "ITECS was founded in 2002 in Dallas, Texas. We have over 22 years of managed IT operations experience serving small and mid-sized businesses across healthcare, legal, financial services, and manufacturing sectors in the Dallas-Fort Worth area.",
+      "ITECS was founded in 2002 in Dallas, Texas. We have over 24 years of managed IT operations experience serving small and mid-sized businesses across healthcare, legal, financial services, and manufacturing sectors in the Dallas-Fort Worth area.",
   },
   {
     question: "What makes ITECS different from AI startups?",
     answer:
-      "Most AI companies launched in 2023. ITECS has 22 years of IT infrastructure experience — we already understand your network, security requirements, and compliance needs before we build a single AI tool. AI is our next layer, not our first product.",
+      "Most AI companies launched in 2023. ITECS has 24 years of IT infrastructure experience — we already understand your network, security requirements, and compliance needs before we build a single AI tool. AI is our next layer, not our first product.",
   },
   {
     question: "Does ITECS still provide managed IT services?",
@@ -1264,7 +1378,7 @@ export const ABOUT_FAQ = [
   {
     question: "Where is ITECS located?",
     answer:
-      "ITECS is headquartered at 500 N Central Expy, Suite 500, Plano, TX 75074 — serving the entire Dallas-Fort Worth area including Dallas, Plano, Frisco, Richardson, and surrounding cities.",
+      "ITECS is headquartered at 500 N Central Expy, Suite 455, Plano, TX 75074 — serving the entire Dallas-Fort Worth area including Dallas, Plano, Frisco, Richardson, and surrounding cities.",
   },
 ] as const;
 
@@ -1277,7 +1391,7 @@ export const HOMEPAGE_FEATURES = [
     eyebrow: "Security-First AI",
     title: "Your Data Stays Yours",
     description:
-      "We never deploy AI that puts your sensitive data at risk. Every tool we build uses private, secure AI environments — not public ChatGPT. Your customer records, financial data, and proprietary information stay under your control, always.",
+      "We never deploy AI that puts your sensitive data at risk. Every tool we build uses private, secure AI environments — not public consumer AI accounts. Your customer records, financial data, and proprietary information stay under your control, always.",
     image: "/images/services/cybersecurity.webp",
     bullets: [
       "Private AI instances — your data never trains public models",
@@ -1295,8 +1409,21 @@ export const HOMEPAGE_FEATURES = [
     bullets: [
       "Integrations with HubSpot, Salesforce, QuickBooks, and 100+ tools",
       "Microsoft Copilot, Teams, and Outlook AI setup",
-      "Custom chatbots that pull live data from your existing systems",
+      "Custom AI agents that pull approved data from your existing systems",
       "Zapier and Make.com automations connecting everything together",
+    ],
+  },
+  {
+    eyebrow: "Production AI DevOps",
+    title: "AI Systems That Stay Monitored After Launch",
+    description:
+      "A working demo is not the finish line. We operate AI like infrastructure — with release control, prompt and model versioning, cost monitoring, rollback plans, and support paths when business-critical automations need attention.",
+    image: "/images/services/helpdesk.webp",
+    bullets: [
+      "CI/CD pipelines for AI apps, agents, prompts, and RAG configurations",
+      "Live monitoring for latency, errors, retrieval quality, and usage cost",
+      "Rollback plans and incident response for customer-facing AI systems",
+      "Monthly optimization reviews so AI keeps improving after launch",
     ],
   },
 ] as const;
@@ -1316,11 +1443,11 @@ export const HOMEPAGE_SERVICE_BLURBS = [
     afterAnchor: ".",
   },
   {
-    slug: "custom-chatgpt",
+    slug: "custom-ai-agents",
     blurb:
-      "Stop leaking data to public LLMs. We build ",
-    anchorText: "secure, private AI chatbots trained on your company data",
-    anchorHref: "/custom-chatgpt",
+      "When an off-the-shelf app is not enough, we build ",
+    anchorText: "custom AI agents, Claude and Codex workflows, and RAG systems",
+    anchorHref: "/custom-ai-agents",
     afterAnchor: ".",
   },
   {
@@ -1329,6 +1456,14 @@ export const HOMEPAGE_SERVICE_BLURBS = [
       "Your team wastes hours on data entry and follow-ups. We ",
     anchorText: "automate repetitive workflows with Zapier, Power Automate, and custom AI",
     anchorHref: "/automation",
+    afterAnchor: ".",
+  },
+  {
+    slug: "ai-devops",
+    blurb:
+      "AI demos break when nobody owns production. We provide ",
+    anchorText: "AI DevOps for CI/CD, monitoring, rollback, and cost control",
+    anchorHref: "/ai-devops",
     afterAnchor: ".",
   },
   {
@@ -1379,7 +1514,7 @@ export const HOMEPAGE_SERVICE_BLURBS = [
 
 export const HOMEPAGE_HERITAGE = {
   eyebrow: "Est. 2002",
-  title: "22 Years of IT Operations Behind Every AI Deployment",
+  title: "24 Years of IT Operations Behind Every AI Deployment",
   description:
     "ITECS started as a managed IT and cybersecurity firm in Dallas in 2002. We launched itecs.ai as the AI division of that same company — not a startup that discovered AI last year. Every automation we build sits on top of two decades of network security, compliance, and infrastructure experience.",
   stats: [

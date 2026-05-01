@@ -9,6 +9,7 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { ServiceHero } from "@/components/sections/ServiceHero";
 import { ReceptionistCircuit } from "@/components/effects/circuits/ReceptionistCircuit";
+import { AIAdoptionUnderstanding } from "@/components/sections/AIAdoptionUnderstanding";
 import { PainPoint } from "@/components/sections/PainPoint";
 import { ServiceFeatures } from "@/components/sections/ServiceFeatures";
 import { HowItWorks } from "@/components/sections/HowItWorks";
@@ -25,7 +26,7 @@ const service = SERVICES.find((s) => s.slug === "ai-receptionist")!;
 export const metadata = generatePageMetadata({
   title: "AI Receptionist for Small Business",
   description:
-    "Deploy AI voice agents that answer calls 24/7, book appointments, and save $3,000+/month. Backed by 22 years of IT security expertise.",
+    "Deploy AI voice agents that answer calls 24/7, book appointments, and save $3,000+/month. Backed by 24 years of IT security expertise.",
   path: service.href,
   keywords: service.keywords,
 });
@@ -44,6 +45,8 @@ export default function AIReceptionistPage() {
 
       {/* 1. Hero — H1 + Zero-Click Answer Block */}
       <ServiceHero service={service} circuit={<ReceptionistCircuit />} />
+
+      <AIAdoptionUnderstanding />
 
       {/* 2. SMB Pain Point — validate the bleeding neck */}
       <PainPoint

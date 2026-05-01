@@ -25,7 +25,7 @@ const TOPIC_META: Record<
     color: "text-brand-accent",
     bgColor: "bg-brand-accent/10",
   },
-  "custom-chatgpt": {
+  "custom-ai-agents": {
     icon: Shield,
     color: "text-brand-purple",
     bgColor: "bg-brand-purple/10",

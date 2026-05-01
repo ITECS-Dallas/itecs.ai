@@ -1,9 +1,9 @@
 import { generatePageMetadata } from "@/lib/metadata";
 import { generateFAQSchema } from "@/lib/seo";
-import { SITE_CONFIG } from "@/lib/constants";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { MIPHero } from "./MIPHero";
+import { AIAdoptionUnderstanding } from "@/components/sections/AIAdoptionUnderstanding";
 import { PainPoint } from "@/components/sections/PainPoint";
 import { MIPEvolutionDiagram } from "@/components/sections/MIPEvolutionDiagram";
 import { ServiceJourneyDiagram } from "@/components/sections/ServiceJourneyDiagram";
@@ -17,7 +17,7 @@ import { CTASection } from "@/components/sections/CTASection";
 export const metadata = generatePageMetadata({
   title: "Dallas Managed Intelligence Provider — Managed AI Services",
   description:
-    "ITECS is Dallas's Managed Intelligence Provider (MIP). We deploy AI automation, custom ChatGPT agents, and managed AI services for businesses with 10–300 employees. 22+ years IT expertise.",
+    "ITECS is Dallas's Managed Intelligence Provider (MIP). We deploy AI automation, custom AI agents, and managed AI services for businesses with 10–300 employees. 24+ years IT expertise.",
   path: "/managed-intelligence-provider",
   keywords: [
     "managed intelligence provider",
@@ -39,7 +39,7 @@ const MIP_HOW_IT_WORKS = [
   {
     step: "Deploy AI solutions on your existing tools",
     description:
-      "We build and deploy AI agents, automations, and integrations on the platforms your team already uses. No rip-and-replace. Custom ChatGPT agents connect to your internal data, workflow automations link your CRM to your invoicing, and AI voice agents answer your phones 24/7.",
+      "We build and deploy AI agents, automations, and integrations on the platforms your team already uses. No rip-and-replace. Custom AI agents connect to your internal data, workflow automations link your CRM to your invoicing, and AI voice agents answer your phones 24/7.",
   },
   {
     step: "Manage, monitor, and optimize continuously",
@@ -62,7 +62,7 @@ const MIP_FAQ = [
   {
     question: "How is a MIP different from an MSP?",
     answer:
-      "An MSP keeps your systems running. A MIP makes your business smarter. MSPs handle helpdesk tickets, server patches, and backups. A MIP adds AI workflow automation, custom ChatGPT agents, AI-powered CRM, and employee AI training — all managed as a service with one provider and one bill.",
+      "An MSP keeps your systems running. A MIP makes your business smarter. MSPs handle helpdesk tickets, server patches, and backups. A MIP adds AI workflow automation, custom AI agents, AI-powered CRM, and employee AI training — all managed as a service with one provider and one bill.",
   },
   {
     question: "Do I need to replace my current MSP to work with ITECS?",
@@ -78,7 +78,7 @@ const MIP_FAQ = [
   {
     question: "How much do managed AI services cost?",
     answer:
-      "Most engagements start at $2,500–$5,000 for initial setup and deployment, with monthly management from $500. Pricing depends on the number of AI services, workflow complexity, and integrations required. The average client recovers setup costs within 60 days through time savings.",
+      "ITECS separates advisory work from scoped implementation. Consulting, optimization, training, and planning can run hourly or through a prepaid retainer block with no minimum monthly usage and no expiration date. Custom AI agents, automations, and secure platform integrations are quoted as flat projects after scope, data access, and security requirements are clear.",
   },
 ] as const;
 
@@ -100,6 +100,8 @@ export default function ManagedIntelligenceProviderPage() {
       {/* 1. Hero — H1 + Zero-Click Answer Block */}
       <MIPHero />
 
+      <AIAdoptionUnderstanding />
+
       {/* 2. SMB Pain Point — your MSP keeps lights on, who makes you smarter? */}
       <PainPoint
         stat="87%"
@@ -114,7 +116,7 @@ export default function ManagedIntelligenceProviderPage() {
           problem:
             "paid $4,500/month for a traditional MSP that handled server monitoring, email migrations, and helpdesk tickets. Their team still manually processed 200+ client tax documents per week, copied data between Drake Software and QuickBooks by hand, and lost 3–5 hours daily to client phone calls their front desk couldn't handle during tax season. Their MSP had no AI capabilities and no plan to add them.",
           result:
-            "ITECS deployed three AI services in parallel: a custom ChatGPT agent trained on their internal tax prep SOPs, workflow automation connecting Drake to QuickBooks for data sync, and an AI receptionist handling overflow calls. The firm saved 42 hours per week during peak season and reduced document processing time by 65%.",
+            "ITECS deployed three AI services in parallel: a custom AI agent grounded in their internal tax prep SOPs, workflow automation connecting Drake to QuickBooks for data sync, and an AI receptionist handling overflow calls. The firm saved 42 hours per week during peak season and reduced document processing time by 65%.",
         }}
       />
 
@@ -135,7 +137,7 @@ export default function ManagedIntelligenceProviderPage() {
 
       {/* 7. Enterprise-Grade Security */}
       <SecurityGuarantee
-        description="A managed intelligence provider handles your most sensitive business data — customer records, financial documents, internal SOPs. ITECS treats AI security with the same rigor we apply to network security, backed by 22 years of cybersecurity operations as a Dallas MSSP."
+        description="A managed intelligence provider handles your most sensitive business data — customer records, financial documents, internal SOPs. ITECS treats AI security with the same rigor we apply to network security, backed by 24 years of cybersecurity operations as a Dallas MSSP."
         points={[
           "Private AI environments — every AI agent and automation runs in tenant-isolated deployments with no cross-client data sharing",
           "Zero third-party training — your business data never trains OpenAI, Anthropic, or any public AI model",
@@ -155,7 +157,7 @@ export default function ManagedIntelligenceProviderPage() {
       {/* 8. Pricing — MIP vs. MSP + separate AI vendor */}
       <PricingROI
         heading="How Much Does a Managed Intelligence Provider Cost?"
-        description="Most businesses hire a traditional MSP for IT, then pay a separate AI consultant or SaaS vendor for automation. Here's how a single MIP compares."
+        description="Most businesses hire a traditional MSP for IT, then pay separate AI vendors for tools, training, and automation. ITECS keeps advisory time flexible and quotes build work only after the requirements are known."
         traditionalLabel="MSP + Separate AI Vendor"
         aiLabel="ITECS MIP (One Provider)"
         comparison={[
@@ -172,12 +174,12 @@ export default function ManagedIntelligenceProviderPage() {
           {
             label: "AI automation",
             traditional: "DIY or freelance integrator",
-            ai: "8 managed AI services included",
+            ai: "9 managed AI services included",
           },
           {
             label: "AI agent deployment",
             traditional: "Not offered by most MSPs",
-            ai: "Custom ChatGPT, voice agents, CRM AI",
+            ai: "Custom agents, voice agents, CRM AI",
           },
           {
             label: "Ongoing AI maintenance",
@@ -192,10 +194,10 @@ export default function ManagedIntelligenceProviderPage() {
         ]}
         roiStatement="Average MIP client ROI: 35% reduction in operational costs within 90 days. Most businesses eliminate 1–2 separate vendor contracts in the first month."
         pricingNotes={[
-          "AI setup: $2,500–$10,000 depending on services deployed and integration complexity",
-          "Monthly MIP management from $500/month — includes AI monitoring, optimization, and support",
+          "Consulting and optimization can be handled hourly or through prepaid retainer hours with no minimum monthly usage or expiration",
+          "Retainer time can cover AI planning, employee enablement, vendor coordination, monitoring reviews, and workflow tuning",
+          "AI agents, automations, and secure integrations are quoted as scoped flat projects after discovery",
           "Bundle with ITECS MSP/MSSP services for consolidated IT + security + AI management",
-          "No per-agent or per-automation fees — scale AI across your organization without per-unit pricing",
         ]}
       />
 

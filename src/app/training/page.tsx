@@ -9,6 +9,7 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { ServiceHero } from "@/components/sections/ServiceHero";
 import { TrainingCircuit } from "@/components/effects/circuits/TrainingCircuit";
+import { AIAdoptionUnderstanding } from "@/components/sections/AIAdoptionUnderstanding";
 import { PainPoint } from "@/components/sections/PainPoint";
 import { ServiceFeatures } from "@/components/sections/ServiceFeatures";
 import { HowItWorks } from "@/components/sections/HowItWorks";
@@ -25,7 +26,7 @@ const service = SERVICES.find((s) => s.slug === "training")!;
 export const metadata = generatePageMetadata({
   title: "AI Training for Employees in Dallas",
   description:
-    "Hands-on AI training for your Dallas team — ChatGPT, Microsoft Copilot, and automation tools. 30% faster task completion. From $2,000 per session.",
+    "Hands-on AI training for your Dallas team — ChatGPT, Claude, Gemini, Microsoft Copilot, and automation tools. Build safe usage habits with ITECS.",
   path: service.href,
   keywords: service.keywords,
 });
@@ -45,6 +46,8 @@ export default function TrainingPage() {
       {/* 1. Hero — H1 + Zero-Click Answer Block */}
       <ServiceHero service={service} circuit={<TrainingCircuit />} />
 
+      <AIAdoptionUnderstanding />
+
       {/* 2. SMB Pain Point — validate the unsupervised AI chaos */}
       <PainPoint
         stat="72%"
@@ -59,7 +62,7 @@ export default function TrainingPage() {
           problem:
             "discovered that 18 employees had been pasting policyholder PII into free-tier ChatGPT for six months to draft correspondence. No AI usage policy existed. The compliance team flagged it during an internal audit — one month before their E&O carrier renewal. Leadership had no visibility into which tools staff used or what data left the building.",
           result:
-            "ITECS delivered a two-day AI training program covering ChatGPT, Microsoft Copilot, and data safety protocols. We established an AI usage policy, migrated sensitive workflows to a private ChatGPT Enterprise instance, and trained all 55 employees on safe prompting. The agency passed their E&O review and now saves 22 hours per week on correspondence drafting.",
+            "ITECS delivered a two-day AI training program covering ChatGPT, Claude, Gemini, Microsoft Copilot, and data safety protocols. We established an AI usage policy, moved sensitive workflows into approved enterprise AI workspaces, and trained all 55 employees on safe prompting. The agency passed their E&O review and now saves 22 hours per week on correspondence drafting.",
         }}
       />
 
@@ -86,9 +89,9 @@ export default function TrainingPage() {
 
       {/* 7. Enterprise-Grade Security */}
       <SecurityGuarantee
-        description="Your employee data, training materials, and internal workflows stay protected throughout the engagement. ITECS AI is backed by ITECS — a Dallas-based cybersecurity MSP operating since 2002 with 22 years of enterprise security experience."
+        description="Your employee data, training materials, and internal workflows stay protected throughout the engagement. ITECS AI is backed by ITECS — a Dallas-based cybersecurity MSP operating since 2002 with 24 years of enterprise security experience."
         points={[
-          "Private AI environments — we configure ChatGPT Enterprise, Microsoft Copilot for Microsoft 365, and Azure OpenAI so employee prompts never train public models",
+          "Private AI environments — we configure ChatGPT, Claude, Gemini, Microsoft Copilot, and Azure OpenAI options so employee prompts never train public models",
           "AI usage policies — every training program includes a written policy defining what data employees can and cannot share with AI tools, tailored to your industry",
           "Role-based access controls — we segment AI tool permissions by department so finance teams, HR, and customer support each access only the data they need",
           "Compliance-aligned training — programs account for HIPAA, SOC 2, PCI-DSS, and industry-specific requirements from day one, with documented proof of completion",
@@ -128,12 +131,12 @@ export default function TrainingPage() {
           {
             label: "Retention rate",
             traditional: "Low — no reinforcement",
-            ai: "Monthly office hours + refresher sessions",
+            ai: "Retainer-supported office hours + refreshers",
           },
           {
             label: "Tool coverage",
             traditional: "One tool at a time, surface-level",
-            ai: "ChatGPT, Copilot, Zapier, Make.com in one program",
+            ai: "ChatGPT, Claude, Gemini, Copilot, and automation tools",
           },
           {
             label: "Compliance documentation",
@@ -146,7 +149,7 @@ export default function TrainingPage() {
           "Half-day workshop (up to 20 employees): $2,000 — covers one core tool (ChatGPT or Copilot) plus safe AI usage fundamentals",
           "Full-day deep dive: $4,000–$6,000 — multi-tool training with role-specific breakout sessions and hands-on exercises",
           "Multi-session program: $6,000–$10,000 — comprehensive curriculum across all AI tools your team uses, spread over 2–4 weeks",
-          "Monthly training retainer from $500/month — ongoing office hours, new-tool onboarding, and quarterly refresher workshops",
+          "Prepaid retainer hours can cover office hours, new-tool onboarding, refresher workshops, and safe-use policy updates with no monthly minimum or expiration",
         ]}
       />
 

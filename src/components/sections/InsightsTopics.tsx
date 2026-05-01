@@ -19,11 +19,11 @@ const TOPICS = [
   },
   {
     icon: Shield,
-    title: "Data Security",
+    title: "Secure AI Agents",
     description:
-      "Protect sensitive business data from public AI tools. Deploy private ChatGPT instances and enforce DLP policies.",
-    hubLabel: "Explore Custom ChatGPT",
-    hubHref: "/custom-chatgpt",
+      "Protect sensitive business data from public AI tools. Build private AI workflows, agent guardrails, and DLP policies.",
+    hubLabel: "Explore Custom AI Agents",
+    hubHref: "/custom-ai-agents",
     color: "text-brand-purple" as const,
     bgColor: "bg-brand-purple/10" as const,
   },

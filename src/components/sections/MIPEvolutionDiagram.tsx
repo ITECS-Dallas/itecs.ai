@@ -48,7 +48,7 @@ const stages = [
     capabilities: [
       "Everything in MSSP",
       "AI workflow automation",
-      "Custom ChatGPT agents",
+      "Custom AI agents",
       "AI-powered CRM & sales",
       "Employee AI training",
     ],
@@ -112,7 +112,7 @@ export function MIPEvolutionDiagram() {
 
         <figure
           role="img"
-          aria-label="Three-stage evolution of managed IT services: MSP handles infrastructure and helpdesk, MSSP adds cybersecurity and compliance, MIP adds AI automation, custom ChatGPT agents, AI-powered CRM, and employee AI training"
+          aria-label="Three-stage evolution of managed IT services: MSP handles infrastructure and helpdesk, MSSP adds cybersecurity and compliance, MIP adds AI automation, custom AI agents, AI-powered CRM, and employee AI training"
           className="mt-16"
         >
           {/* Desktop: horizontal flow */}

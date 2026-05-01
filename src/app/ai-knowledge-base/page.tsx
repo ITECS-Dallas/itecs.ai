@@ -9,6 +9,7 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { ServiceHero } from "@/components/sections/ServiceHero";
 import { KnowledgeBaseCircuit } from "@/components/effects/circuits/KnowledgeBaseCircuit";
+import { AIAdoptionUnderstanding } from "@/components/sections/AIAdoptionUnderstanding";
 import { PainPoint } from "@/components/sections/PainPoint";
 import { ServiceFeatures } from "@/components/sections/ServiceFeatures";
 import { HowItWorks } from "@/components/sections/HowItWorks";
@@ -44,6 +45,8 @@ export default function AIKnowledgeBasePage() {
 
       {/* 1. Hero — H1 + Zero-Click Answer Block */}
       <ServiceHero service={service} circuit={<KnowledgeBaseCircuit />} />
+
+      <AIAdoptionUnderstanding />
 
       {/* 2. SMB Pain Point — validate the scattered knowledge problem */}
       <PainPoint
@@ -86,7 +89,7 @@ export default function AIKnowledgeBasePage() {
 
       {/* 7. Enterprise-Grade Security */}
       <SecurityGuarantee
-        description="Your knowledge base contains SOPs, client data, HR policies, and proprietary processes. ITECS AI is backed by ITECS — a Dallas-based cybersecurity MSP operating since 2002 with 22 years of enterprise security experience."
+        description="Your knowledge base contains SOPs, client data, HR policies, and proprietary processes. ITECS AI is backed by ITECS — a Dallas-based cybersecurity MSP operating since 2002 with 24 years of enterprise security experience."
         points={[
           "Private deployment — your knowledge base runs on your infrastructure or private cloud, never on public servers. Your data never trains third-party models.",
           "Role-based access control mirrors your existing permissions. Employees only see knowledge their department and clearance level authorizes.",
