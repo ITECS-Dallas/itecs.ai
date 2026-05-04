@@ -6,7 +6,7 @@ import { GradientOrb } from "@/components/effects/GradientOrb";
 import { GridBackground } from "@/components/effects/GridBackground";
 import { ScrollReveal } from "@/components/effects/ScrollReveal";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { Building2, ExternalLink, Mail, MapPin, Navigation, Phone } from "lucide-react";
+import { Building2, ExternalLink, Mail, MapPin, Phone } from "lucide-react";
 import {
   LinkedInIcon,
   XIcon,
@@ -349,13 +349,6 @@ export default function ContactPage() {
                 referrerPolicy="no-referrer-when-downgrade"
                 allowFullScreen
               />
-              <div className="pointer-events-none absolute left-4 top-4 rounded-lg border border-[var(--border-subtle)] bg-bg-void/90 px-4 py-3 backdrop-blur">
-                <div className="flex items-center gap-2 text-sm font-medium text-text-primary">
-                  <Navigation className="h-4 w-4 text-brand-accent" aria-hidden="true" />
-                  Plano corporate office
-                </div>
-                <p className="mt-1 text-xs text-text-dim">Dallas-Fort Worth AI services</p>
-              </div>
             </div>
           </ScrollReveal>
         </div>
