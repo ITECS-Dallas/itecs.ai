@@ -6,6 +6,12 @@ services:
     restart: unless-stopped
     environment:
       NODE_ENV: production
+      MICROSOFT_GRAPH_TENANT_ID: ${MICROSOFT_GRAPH_TENANT_ID:-}
+      MICROSOFT_GRAPH_CLIENT_ID: ${MICROSOFT_GRAPH_CLIENT_ID:-}
+      MICROSOFT_GRAPH_CLIENT_SECRET: ${MICROSOFT_GRAPH_CLIENT_SECRET:-}
+      MICROSOFT_GRAPH_MAIL_FROM: ${MICROSOFT_GRAPH_MAIL_FROM:-noreply@itecsonline.com}
+      CONTACT_EMAIL_TO: ${CONTACT_EMAIL_TO:-sales@itecsonline.com}
+      CONTACT_EMAIL_CC: ${CONTACT_EMAIL_CC:-bdesmot@itecsonline.com}
     expose:
       - "3000"
 

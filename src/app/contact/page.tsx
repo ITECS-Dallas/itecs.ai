@@ -6,6 +6,7 @@ import { GradientOrb } from "@/components/effects/GradientOrb";
 import { GridBackground } from "@/components/effects/GridBackground";
 import { ScrollReveal } from "@/components/effects/ScrollReveal";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { ContactForm } from "@/components/forms/ContactForm";
 import { Building2, ExternalLink, Mail, MapPin, Phone } from "lucide-react";
 import {
   LinkedInIcon,
@@ -98,12 +99,9 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h3 className="text-text-primary font-medium">Email</h3>
-                  <a
-                    href={`mailto:${SITE_CONFIG.email}`}
-                    className="text-text-secondary hover:text-brand-accent transition-colors"
-                  >
+                  <span className="text-text-secondary">
                     {SITE_CONFIG.email}
-                  </a>
+                  </span>
                 </div>
               </div>
 
@@ -176,71 +174,7 @@ export default function ContactPage() {
               <h2 className="text-2xl font-light text-text-primary mb-6">
                 Request a Free Assessment
               </h2>
-              <form
-                action={`mailto:${SITE_CONFIG.email}`}
-                method="POST"
-                encType="text/plain"
-                className="space-y-5"
-              >
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label htmlFor="name" className="block text-sm text-text-dim mb-1.5">
-                      Name
-                    </label>
-                    <input
-                      id="name"
-                      name="name"
-                      type="text"
-                      required
-                      className="w-full px-4 py-3 rounded-lg bg-bg-void border border-[var(--border-subtle)] text-text-primary placeholder:text-text-dim/50 focus:border-brand-accent focus:outline-none transition-colors"
-                      placeholder="Your name"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="company" className="block text-sm text-text-dim mb-1.5">
-                      Company
-                    </label>
-                    <input
-                      id="company"
-                      name="company"
-                      type="text"
-                      className="w-full px-4 py-3 rounded-lg bg-bg-void border border-[var(--border-subtle)] text-text-primary placeholder:text-text-dim/50 focus:border-brand-accent focus:outline-none transition-colors"
-                      placeholder="Company name"
-                    />
-                  </div>
-                </div>
-                <div>
-                  <label htmlFor="email" className="block text-sm text-text-dim mb-1.5">
-                    Email
-                  </label>
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    required
-                    className="w-full px-4 py-3 rounded-lg bg-bg-void border border-[var(--border-subtle)] text-text-primary placeholder:text-text-dim/50 focus:border-brand-accent focus:outline-none transition-colors"
-                    placeholder="you@company.com"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="message" className="block text-sm text-text-dim mb-1.5">
-                    How can we help?
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={4}
-                    className="w-full px-4 py-3 rounded-lg bg-bg-void border border-[var(--border-subtle)] text-text-primary placeholder:text-text-dim/50 focus:border-brand-accent focus:outline-none transition-colors resize-none"
-                    placeholder="Tell us about your AI goals..."
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="w-full py-3 rounded-lg bg-brand-accent text-bg-void font-medium text-sm tracking-wide uppercase hover:shadow-[0_0_30px_var(--glow-cyan)] transition-all"
-                >
-                  Send Message
-                </button>
-              </form>
+              <ContactForm />
             </div>
           </ScrollReveal>
         </div>

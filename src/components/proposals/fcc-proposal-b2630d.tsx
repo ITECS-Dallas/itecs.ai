@@ -1114,7 +1114,7 @@ export default function FCCProposal() {
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <a
-                href="mailto:bdesmot@itecsonline.com?subject=FCC%20Website%20Approval%20Status%20Green"
+                href="/contact"
                 className="inline-flex items-center gap-2 px-8 py-4 bg-brand-accent hover:bg-brand-accent-bright text-bg-void font-medium text-sm rounded-lg transition-colors"
               >
                 APPROVE PROPOSAL <ArrowRight className="w-4 h-4" />

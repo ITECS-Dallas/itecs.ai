@@ -152,12 +152,12 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <a
-                  href={`mailto:${SITE_CONFIG.email}`}
+                <Link
+                  href="/contact"
                   className="hover:text-brand-accent transition-colors"
                 >
                   {SITE_CONFIG.email}
-                </a>
+                </Link>
               </li>
             </ul>
 
