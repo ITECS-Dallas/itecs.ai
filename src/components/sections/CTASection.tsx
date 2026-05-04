@@ -48,7 +48,7 @@ export function CTASection() {
             <Button href="/contact" size="lg" icon={<ArrowRight className="h-4 w-4" />}>
               Schedule Your Free Assessment
             </Button>
-            <Button href={`tel:${SITE_CONFIG.phone}`} variant="ghost" size="lg">
+            <Button href={`tel:${SITE_CONFIG.phoneE164}`} variant="ghost" size="lg">
               Call {SITE_CONFIG.phone}
             </Button>
           </div>

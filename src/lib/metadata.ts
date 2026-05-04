@@ -17,6 +17,9 @@ export function generatePageMetadata({
   ogImage = "/images/logos/itecs-horizontal.svg",
 }: PageMetaInput): Metadata {
   const url = `${SITE_CONFIG.url}${path}`;
+  const imageUrl = ogImage.startsWith("http")
+    ? ogImage
+    : `${SITE_CONFIG.url}${ogImage}`;
 
   return {
     title,
@@ -35,12 +38,12 @@ export function generatePageMetadata({
       type: "website",
       locale: "en_US",
       url,
-      siteName: "ITECS AI",
+      siteName: SITE_CONFIG.name,
       title,
       description,
       images: [
         {
-          url: ogImage,
+          url: imageUrl,
           width: 1200,
           height: 630,
           alt: `${title} - ITECS AI`,
@@ -51,7 +54,7 @@ export function generatePageMetadata({
       card: "summary_large_image",
       title,
       description,
-      images: [ogImage],
+      images: [imageUrl],
     },
     robots: {
       index: true,

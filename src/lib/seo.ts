@@ -1,5 +1,27 @@
 import { SITE_CONFIG, SERVICES, type ServiceItem } from "./constants";
 
+function generateContactPoints() {
+  return [
+    {
+      "@type": "ContactPoint",
+      name: "International Line",
+      telephone: SITE_CONFIG.phoneE164,
+      contactType: "customer service",
+      areaServed: "International",
+      availableLanguage: "English",
+    },
+    {
+      "@type": "ContactPoint",
+      name: "Toll-Free Line",
+      telephone: SITE_CONFIG.supportPhoneE164,
+      contactType: "customer service",
+      contactOption: "TollFree",
+      areaServed: "US",
+      availableLanguage: "English",
+    },
+  ];
+}
+
 // ---------------------------------------------------------------------------
 // Organization (global — injected in root layout)
 // ---------------------------------------------------------------------------
@@ -10,17 +32,19 @@ export function generateOrganizationSchema() {
     "@type": "Organization",
     name: SITE_CONFIG.name,
     legalName: SITE_CONFIG.legalName,
+    alternateName: ["ITECS", "iTecs"],
     url: SITE_CONFIG.url,
     logo: `${SITE_CONFIG.url}/images/logos/itecs-horizontal.svg`,
     foundingDate: String(SITE_CONFIG.foundingYear),
-    contactPoint: {
-      "@type": "ContactPoint",
-      telephone: SITE_CONFIG.phone,
-      contactType: "sales",
-      areaServed: "US",
-      availableLanguage: "English",
+    contactPoint: generateContactPoints(),
+    parentOrganization: {
+      "@type": "Organization",
+      name: "ITECS",
+      url: SITE_CONFIG.mainSiteUrl,
     },
     sameAs: [
+      SITE_CONFIG.mainSiteUrl,
+      SITE_CONFIG.googleMapsUrl,
       SITE_CONFIG.social.linkedin,
       SITE_CONFIG.social.facebook,
       SITE_CONFIG.social.x,
@@ -50,13 +74,26 @@ export function generateLocalBusinessSchema() {
     "@type": "LocalBusiness",
     "@id": `${SITE_CONFIG.url}/#localbusiness`,
     name: "ITECS AI",
+    legalName: SITE_CONFIG.legalName,
+    alternateName: ["ITECS", "iTecs"],
     url: SITE_CONFIG.url,
     description:
       "Practical AI automation, custom AI agent development, and AI consulting for small to medium businesses (SMBs) in Dallas, TX.",
-    telephone: SITE_CONFIG.phone,
+    telephone: SITE_CONFIG.phoneE164,
     email: SITE_CONFIG.email,
     image: `${SITE_CONFIG.url}/images/logos/itecs-horizontal.svg`,
     priceRange: "$$",
+    hasMap: SITE_CONFIG.googleMapsUrl,
+    contactPoint: generateContactPoints(),
+    sameAs: [
+      SITE_CONFIG.mainSiteUrl,
+      SITE_CONFIG.googleMapsUrl,
+      SITE_CONFIG.social.linkedin,
+      SITE_CONFIG.social.facebook,
+      SITE_CONFIG.social.x,
+      SITE_CONFIG.social.youtube,
+      SITE_CONFIG.social.github,
+    ],
     parentOrganization: {
       "@type": "LocalBusiness",
       name: "ITECS",
@@ -139,6 +176,81 @@ export function generateLocalBusinessSchema() {
           url: `${SITE_CONFIG.url}${s.href}`,
         },
       })),
+    },
+  };
+}
+
+// ---------------------------------------------------------------------------
+// ContactPage (page-specific — reinforces office, map, and phone details)
+// ---------------------------------------------------------------------------
+
+export function generateContactPageSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "@id": `${SITE_CONFIG.url}/contact#contactpage`,
+    url: `${SITE_CONFIG.url}/contact`,
+    name: "Contact ITECS AI",
+    description:
+      "Contact ITECS AI at the ITECS corporate office in Plano, Texas for AI consulting, training, security, and DevOps services for Dallas-Fort Worth businesses.",
+    about: {
+      "@id": `${SITE_CONFIG.url}/#localbusiness`,
+    },
+    mainEntity: {
+      "@type": "LocalBusiness",
+      "@id": `${SITE_CONFIG.url}/#localbusiness`,
+      name: "ITECS AI",
+      legalName: SITE_CONFIG.legalName,
+      alternateName: ["ITECS", "iTecs"],
+      url: SITE_CONFIG.url,
+      telephone: SITE_CONFIG.phoneE164,
+      email: SITE_CONFIG.email,
+      image: `${SITE_CONFIG.url}/images/logos/itecs-horizontal.svg`,
+      priceRange: "$$",
+      hasMap: SITE_CONFIG.googleMapsUrl,
+      sameAs: [
+        SITE_CONFIG.mainSiteUrl,
+        SITE_CONFIG.googleMapsUrl,
+        SITE_CONFIG.social.linkedin,
+        SITE_CONFIG.social.facebook,
+        SITE_CONFIG.social.x,
+        SITE_CONFIG.social.youtube,
+        SITE_CONFIG.social.github,
+      ],
+      parentOrganization: {
+        "@type": "LocalBusiness",
+        name: "ITECS",
+        url: SITE_CONFIG.mainSiteUrl,
+        foundingDate: String(SITE_CONFIG.foundingYear),
+      },
+      contactPoint: generateContactPoints(),
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: SITE_CONFIG.address.street,
+        addressLocality: SITE_CONFIG.address.city,
+        addressRegion: SITE_CONFIG.address.state,
+        postalCode: SITE_CONFIG.address.zip,
+        addressCountry: SITE_CONFIG.address.country,
+      },
+      geo: {
+        "@type": "GeoCoordinates",
+        latitude: SITE_CONFIG.geo.lat,
+        longitude: SITE_CONFIG.geo.lng,
+      },
+      areaServed: [
+        {
+          "@type": "City",
+          name: "Dallas",
+        },
+        {
+          "@type": "City",
+          name: "Plano",
+        },
+        {
+          "@type": "State",
+          name: "Texas",
+        },
+      ],
     },
   };
 }

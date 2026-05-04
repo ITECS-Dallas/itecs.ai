@@ -57,9 +57,10 @@ export function Footer() {
               <Image
                 src="/images/logos/itecs-horizontal.svg"
                 alt="ITECS"
-                width={100}
+                width={94}
                 height={28}
-                className="h-7 w-auto brightness-0 invert"
+                className="brightness-0 invert"
+                style={{ height: "28px", width: "auto" }}
               />
             </Link>
             <p className="text-sm text-text-dim leading-relaxed">
@@ -130,10 +131,10 @@ export function Footer() {
             <ul className="space-y-3 text-sm text-text-dim">
               <li>
                 <span className="block text-text-secondary text-xs uppercase tracking-wider mb-0.5">
-                  Sales
+                  International
                 </span>
                 <a
-                  href={`tel:${SITE_CONFIG.phone}`}
+                  href={`tel:${SITE_CONFIG.phoneE164}`}
                   className="hover:text-brand-accent transition-colors"
                 >
                   {SITE_CONFIG.phone}
@@ -141,10 +142,10 @@ export function Footer() {
               </li>
               <li>
                 <span className="block text-text-secondary text-xs uppercase tracking-wider mb-0.5">
-                  24/7 Support
+                  Toll Free
                 </span>
                 <a
-                  href={`tel:${SITE_CONFIG.supportPhone}`}
+                  href={`tel:${SITE_CONFIG.supportPhoneE164}`}
                   className="hover:text-brand-accent transition-colors"
                 >
                   {SITE_CONFIG.supportPhone}

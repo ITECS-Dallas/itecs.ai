@@ -11,19 +11,22 @@
 - Location: Plano, TX (serving Dallas-Fort Worth)
 - Website: https://itecs.ai
 - Main website: https://itecsonline.com
-- Phone: (972) 408-2020
+- International phone: (214) 444-7884
+- Toll-free phone: (877) 483-2710
+- Address: 500 N Central Expy, Suite 455, Plano, TX 75074
+- Google Maps: https://g.page/r/CQoNZt8x7nlmEBM
 - Specialization: AI Consulting, Managed IT, Cybersecurity, Cloud
 
 ## AI Services
 
 ### AI Consulting & Strategy
-URL: https://itecs.ai/services/ai-consulting
+URL: https://itecs.ai/consulting
 Vendor-neutral AI readiness assessments, ROI modeling, and governance frameworks.
 Industries: Healthcare, Financial Services, Manufacturing, Legal.
 Engagement models: Two-week Insight Sprints, 4-6 week POCs, 8-12 week implementations.
 
 ### Managed AI Operations
-URL: https://itecs.ai/services/managed-ai
+URL: https://itecs.ai/managed-intelligence-provider
 24/7 managed AI infrastructure including model monitoring, drift detection,
 retraining pipelines, and incident response. 99.9% uptime SLA.
 
@@ -33,17 +36,17 @@ Custom agents, Claude and Codex workflows, and RAG-powered assistants grounded
 in client data. Multi-channel deployment and HIPAA/SOC 2 capable architectures.
 
 ### AI Security & Compliance
-URL: https://itecs.ai/services/ai-security-compliance
+URL: https://itecs.ai/data-audit
 HIPAA, SOX, FINRA, and CMMC-aligned AI security. PHI/PII redaction, audit
 logging, Azure OpenAI private networking, and data governance frameworks.
 
 ### AI-Optimized SEO & GEO
-URL: https://itecs.ai/services/ai-seo
+URL: https://itecs.ai/insights
 Generative Engine Optimization for AI-powered search. LLMs.txt implementation,
 structured data optimization, AI citation tracking across ChatGPT and Perplexity.
 
 ## Technology Partners
-Microsoft Azure, Cisco, SentinelOne, Sophos
+Microsoft Azure, Microsoft, Claude, OpenAI, Copilot, Sophos
 
 ## Clients
 PepsiCo, Pizza Hut, OpenText, Miller, BE Farms

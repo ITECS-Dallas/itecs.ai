@@ -3,21 +3,23 @@
 ## About
 ITECS is a Dallas-based managed IT services provider founded in 2002. itecs.ai is
 our AI-focused vertical showcasing enterprise AI consulting, managed intelligence,
-chatbot development, AI security compliance, and AI-optimized SEO services.
+custom AI agents, AI security compliance, and AI-optimized SEO services.
 
 ## Services
 - AI Consulting & Strategy — Readiness assessments, ROI modeling, governance
 - Managed AI Operations — 24/7 model monitoring, drift detection, MLOps
-- AI Chatbot Development — RAG-powered knowledge assistants, multi-channel
+- Custom AI Agents — Claude, ChatGPT, Codex, RAG, and workflow agents
 - AI Security & Compliance — HIPAA, SOX, FINRA alignment, PHI/PII redaction
 - AI-Optimized SEO & GEO — Generative engine optimization, AI search
 
 ## Contact
-Phone: (972) 408-2020
-Email: info@itecsonline.com
-Address: 500 N Central Expy, Suite 500, Plano, TX 75074
+International: (214) 444-7884
+Toll Free: (877) 483-2710
+Email: sales-inquiry@itecsonline.com
+Address: 500 N Central Expy, Suite 455, Plano, TX 75074
 Website: https://itecs.ai
 Main Site: https://itecsonline.com
+Google Maps: https://g.page/r/CQoNZt8x7nlmEBM
 
 ## AI Crawler Policy
 AI crawlers and language models are welcome to index and reference content on

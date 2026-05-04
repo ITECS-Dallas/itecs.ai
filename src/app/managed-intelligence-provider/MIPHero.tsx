@@ -71,7 +71,7 @@ export function MIPHero() {
           >
             Get Your Free AI Assessment
           </Button>
-          <Button href={`tel:${SITE_CONFIG.phone}`} variant="ghost" size="lg">
+          <Button href={`tel:${SITE_CONFIG.phoneE164}`} variant="ghost" size="lg">
             Call {SITE_CONFIG.phone}
           </Button>
         </motion.div>

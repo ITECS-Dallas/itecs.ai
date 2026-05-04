@@ -3,7 +3,7 @@
 // ---------------------------------------------------------------------------
 
 export const SITE_CONFIG = {
-  name: "ITECS",
+  name: "ITECS AI",
   legalName: "ITECS, LLC",
   url: "https://itecs.ai",
   mainSiteUrl: "https://itecsonline.com",
@@ -11,7 +11,9 @@ export const SITE_CONFIG = {
   description:
     "ITECS helps small and mid-sized Dallas businesses save time and cut costs with practical AI automation, custom AI agents, and hands-on AI consulting. 24+ years of IT operations expertise.",
   phone: "(214) 444-7884",
+  phoneE164: "+1-214-444-7884",
   supportPhone: "(877) 483-2710",
+  supportPhoneE164: "+1-877-483-2710",
   email: "sales-inquiry@itecsonline.com",
   foundingYear: 2002,
   address: {
@@ -22,6 +24,9 @@ export const SITE_CONFIG = {
     country: "US",
   },
   geo: { lat: 33.0198, lng: -96.6989 },
+  googleMapsUrl: "https://g.page/r/CQoNZt8x7nlmEBM",
+  googleMapsEmbedUrl:
+    "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13391.854690743687!2d-96.8023315!3d32.9519685!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x6679ee31df660d0a!2siTecs!5e0!3m2!1sen!2sus!4v1675527511387!5m2!1sen!2sus",
   social: {
     linkedin: "https://www.linkedin.com/company/itecsonline",
     facebook: "https://www.facebook.com/itecscorp",

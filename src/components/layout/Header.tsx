@@ -328,7 +328,7 @@ function MobileNav({
                 Get Your Free Assessment
               </Button>
               <a
-                href={`tel:${SITE_CONFIG.phone}`}
+                href={`tel:${SITE_CONFIG.phoneE164}`}
                 className="flex items-center justify-center gap-2 py-3 text-sm text-text-secondary hover:text-brand-accent transition-colors"
               >
                 <Phone className="h-4 w-4" aria-hidden="true" />
@@ -410,10 +410,11 @@ export function Header() {
             <Image
               src="/images/logos/itecs-horizontal.svg"
               alt="ITECS"
-              width={160}
+              width={148}
               height={44}
               priority
-              className="h-11 w-auto brightness-0 invert"
+              className="brightness-0 invert"
+              style={{ height: "44px", width: "auto" }}
             />
           </Link>
 
