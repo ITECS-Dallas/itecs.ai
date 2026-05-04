@@ -1,74 +1,20 @@
 "use client";
 
-import Script from "next/script";
-import { FormEvent, useCallback, useEffect, useRef, useState } from "react";
-import { TURNSTILE_SITE_KEY } from "@/lib/turnstileConfig";
+import { FormEvent, useCallback, useState } from "react";
+import { TurnstileWidget } from "@/components/forms/TurnstileWidget";
 
 type SubmissionState = "idle" | "submitting" | "success" | "error";
-
-type TurnstileRenderOptions = {
-  sitekey: string;
-  theme?: "light" | "dark" | "auto";
-  callback?: (token: string) => void;
-  "expired-callback"?: () => void;
-  "error-callback"?: () => void;
-};
-
-declare global {
-  interface Window {
-    turnstile?: {
-      render: (
-        container: HTMLElement,
-        options: TurnstileRenderOptions,
-      ) => string;
-      reset: (widgetId?: string) => void;
-    };
-  }
-}
 
 export function ContactForm() {
   const [state, setState] = useState<SubmissionState>("idle");
   const [message, setMessage] = useState("");
-  const [scriptReady, setScriptReady] = useState(false);
   const [turnstileToken, setTurnstileToken] = useState("");
-  const turnstileRef = useRef<HTMLDivElement>(null);
-  const turnstileWidgetId = useRef<string | null>(null);
+  const [turnstileResetSignal, setTurnstileResetSignal] = useState(0);
 
   const resetTurnstile = useCallback(() => {
     setTurnstileToken("");
-
-    if (turnstileWidgetId.current && window.turnstile) {
-      window.turnstile.reset(turnstileWidgetId.current);
-    }
+    setTurnstileResetSignal((current) => current + 1);
   }, []);
-
-  useEffect(() => {
-    if (!scriptReady || !window.turnstile || !turnstileRef.current) {
-      return;
-    }
-
-    if (turnstileWidgetId.current) {
-      return;
-    }
-
-    turnstileWidgetId.current = window.turnstile.render(turnstileRef.current, {
-      sitekey: TURNSTILE_SITE_KEY,
-      theme: "dark",
-      callback: (token) => {
-        setTurnstileToken(token);
-        setMessage("");
-        setState("idle");
-      },
-      "expired-callback": () => {
-        setTurnstileToken("");
-      },
-      "error-callback": () => {
-        setTurnstileToken("");
-        setState("error");
-        setMessage("Verification could not load. Please refresh and try again.");
-      },
-    });
-  }, [scriptReady]);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -123,11 +69,6 @@ export function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
-      <Script
-        src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"
-        strategy="afterInteractive"
-        onLoad={() => setScriptReady(true)}
-      />
       <input
         type="text"
         name="website"
@@ -201,9 +142,21 @@ export function ContactForm() {
           placeholder="Tell us about your AI goals..."
         />
       </div>
-      <div className="rounded-lg border border-[var(--border-subtle)] bg-bg-void px-4 py-3">
-        <div ref={turnstileRef} className="min-h-[65px]" />
-      </div>
+      <TurnstileWidget
+        resetSignal={turnstileResetSignal}
+        onTokenChange={(token) => {
+          setTurnstileToken(token);
+          if (token) {
+            setMessage("");
+            setState("idle");
+          }
+        }}
+        onError={() => {
+          setState("error");
+          setMessage("Verification could not load. Please refresh and try again.");
+        }}
+        className="rounded-lg border border-[var(--border-subtle)] bg-bg-void px-4 py-3"
+      />
       {message ? (
         <p
           className={

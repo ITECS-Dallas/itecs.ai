@@ -1,11 +1,12 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { FormEvent, useState, useRef } from "react";
 import Image from "next/image";
-import { motion, useInView } from "framer-motion";
+import { AnimatePresence, motion, useInView } from "framer-motion";
 import { CircuitTrace } from "@/components/effects/CircuitTrace";
 import { GradientOrb } from "@/components/effects/GradientOrb";
 import { GridBackground } from "@/components/effects/GridBackground";
+import { TurnstileWidget } from "@/components/forms/TurnstileWidget";
 import {
   Globe,
   Server,
@@ -35,6 +36,7 @@ import {
   AlertTriangle,
   X,
   Check,
+  ExternalLink,
 } from "lucide-react";
 
 /* ───────────────────────── helpers ───────────────────────── */
@@ -113,10 +115,260 @@ function SlideIn({
   );
 }
 
+type ProposalDecision = "approve" | "decline";
+type ProposalSubmitState = "idle" | "submitting" | "success" | "error";
+
+function ProposalDecisionForm({ decision }: { decision: ProposalDecision }) {
+  const isApproval = decision === "approve";
+  const [submitState, setSubmitState] = useState<ProposalSubmitState>("idle");
+  const [feedback, setFeedback] = useState("");
+  const [turnstileToken, setTurnstileToken] = useState("");
+  const [turnstileResetSignal, setTurnstileResetSignal] = useState(0);
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    if (!turnstileToken) {
+      setSubmitState("error");
+      setFeedback("Please complete the verification check before sending.");
+      return;
+    }
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    const rawFields = Object.fromEntries(formData.entries());
+    const message = String(rawFields.message || "").trim();
+
+    const fields = {
+      proposal: "First Choice Containers Web Application Proposal",
+      response: isApproval ? "Approved" : "Declined",
+      ...rawFields,
+      message:
+        message ||
+        (isApproval
+          ? "Proposal approved. No additional notes provided."
+          : "Proposal declined."),
+    };
+
+    setSubmitState("submitting");
+    setFeedback("");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          formName: isApproval
+            ? "FCC Proposal Approval"
+            : "FCC Proposal Decline",
+          sourcePath: window.location.pathname,
+          turnstileToken,
+          fields,
+        }),
+      });
+
+      const payload = (await response.json()) as { message?: string };
+
+      if (!response.ok) {
+        throw new Error(payload.message || "Unable to send response.");
+      }
+
+      form.reset();
+      setSubmitState("success");
+      setFeedback(
+        isApproval
+          ? "Approval received. ITECS will follow up to schedule kickoff."
+          : "Response received. ITECS will review your notes and follow up.",
+      );
+    } catch (error) {
+      setSubmitState("error");
+      setFeedback(
+        error instanceof Error
+          ? error.message
+          : "Unable to send your response. Please call ITECS directly.",
+      );
+    } finally {
+      setTurnstileToken("");
+      setTurnstileResetSignal((current) => current + 1);
+    }
+  }
+
+  return (
+    <motion.form
+      key={decision}
+      onSubmit={handleSubmit}
+      initial={{ opacity: 0, height: 0, y: -16, scale: 0.98 }}
+      animate={{ opacity: 1, height: "auto", y: 0, scale: 1 }}
+      exit={{ opacity: 0, height: 0, y: -12, scale: 0.98 }}
+      transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+      className={`mt-6 overflow-hidden rounded-2xl border ${
+        isApproval
+          ? "border-brand-accent/35 bg-brand-accent/5"
+          : "border-red-400/30 bg-red-400/5"
+      } p-5 text-left shadow-[0_0_45px_rgba(6,182,212,0.08)] md:p-6`}
+    >
+      <input type="hidden" name="proposalAction" value={fieldsValue(decision)} />
+
+      <div className="mb-5 flex items-start gap-3">
+        <div
+          className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-lg ${
+            isApproval ? "bg-brand-accent/10" : "bg-red-400/10"
+          }`}
+        >
+          {isApproval ? (
+            <CheckCircle2 className="h-5 w-5 text-brand-accent-bright" />
+          ) : (
+            <X className="h-5 w-5 text-red-300" />
+          )}
+        </div>
+        <div>
+          <h3 className="text-lg font-light text-text-primary">
+            {isApproval ? "Approve This Proposal" : "Decline This Proposal"}
+          </h3>
+          <p className="mt-1 text-sm leading-relaxed text-text-secondary">
+            {isApproval
+              ? "Confirm the approval details below and ITECS will schedule the project kickoff."
+              : "Share what changed or what needs to be adjusted so ITECS can respond appropriately."}
+          </p>
+        </div>
+      </div>
+
+      <div className="grid gap-4 md:grid-cols-3">
+        <div>
+          <label htmlFor={`${decision}-name`} className="mb-1.5 block text-sm text-text-dim">
+            Full Name
+          </label>
+          <input
+            id={`${decision}-name`}
+            name="name"
+            type="text"
+            required
+            className="w-full rounded-lg border border-[var(--border-subtle)] bg-bg-void px-4 py-3 text-text-primary placeholder:text-text-dim/50 transition-colors focus:border-brand-accent focus:outline-none"
+            placeholder="Your full name"
+          />
+        </div>
+        <div>
+          <label htmlFor={`${decision}-email`} className="mb-1.5 block text-sm text-text-dim">
+            Email
+          </label>
+          <input
+            id={`${decision}-email`}
+            name="email"
+            type="email"
+            required
+            className="w-full rounded-lg border border-[var(--border-subtle)] bg-bg-void px-4 py-3 text-text-primary placeholder:text-text-dim/50 transition-colors focus:border-brand-accent focus:outline-none"
+            placeholder="you@company.com"
+          />
+        </div>
+        <div>
+          <label htmlFor={`${decision}-phone`} className="mb-1.5 block text-sm text-text-dim">
+            Phone
+          </label>
+          <input
+            id={`${decision}-phone`}
+            name="phone"
+            type="tel"
+            className="w-full rounded-lg border border-[var(--border-subtle)] bg-bg-void px-4 py-3 text-text-primary placeholder:text-text-dim/50 transition-colors focus:border-brand-accent focus:outline-none"
+            placeholder="(555) 555-5555"
+          />
+        </div>
+      </div>
+
+      <div className="mt-4">
+        <label htmlFor={`${decision}-message`} className="mb-1.5 block text-sm text-text-dim">
+          {isApproval ? "Notes or Kickoff Details" : "Reason for Declining"}
+        </label>
+        <textarea
+          id={`${decision}-message`}
+          name="message"
+          rows={4}
+          required={!isApproval}
+          className="w-full resize-none rounded-lg border border-[var(--border-subtle)] bg-bg-void px-4 py-3 text-text-primary placeholder:text-text-dim/50 transition-colors focus:border-brand-accent focus:outline-none"
+          placeholder={
+            isApproval
+              ? "Optional notes, schedule preferences, or kickoff questions..."
+              : "Please share why you are declining or what would need to change..."
+          }
+        />
+      </div>
+
+      {isApproval ? (
+        <label className="mt-4 flex items-start gap-3 rounded-lg border border-brand-accent/20 bg-brand-accent/5 p-4 text-sm text-text-secondary">
+          <input
+            name="approvalConfirmation"
+            type="checkbox"
+            value="Confirmed"
+            required
+            className="mt-1 h-4 w-4 rounded border-brand-accent/40 bg-bg-void accent-brand-accent"
+          />
+          <span>
+            I confirm approval of the First Choice Containers proposal and
+            authorize ITECS to schedule the kickoff conversation.
+          </span>
+        </label>
+      ) : null}
+
+      <TurnstileWidget
+        resetSignal={turnstileResetSignal}
+        onTokenChange={(token) => {
+          setTurnstileToken(token);
+          if (token && submitState === "error") {
+            setSubmitState("idle");
+            setFeedback("");
+          }
+        }}
+        onError={() => {
+          setSubmitState("error");
+          setFeedback("Verification could not load. Please refresh and try again.");
+        }}
+        className="mt-4 rounded-lg border border-[var(--border-subtle)] bg-bg-void px-4 py-3"
+      />
+
+      {feedback ? (
+        <p
+          role="status"
+          className={`mt-4 rounded-lg border px-4 py-3 text-sm ${
+            submitState === "success"
+              ? "border-emerald-400/30 bg-emerald-400/10 text-emerald-200"
+              : "border-red-400/30 bg-red-400/10 text-red-200"
+          }`}
+        >
+          {feedback}
+        </p>
+      ) : null}
+
+      <button
+        type="submit"
+        disabled={submitState === "submitting"}
+        className={`mt-5 inline-flex w-full items-center justify-center gap-2 rounded-lg px-6 py-3 text-sm font-medium uppercase tracking-wide transition-all disabled:cursor-not-allowed disabled:opacity-60 md:w-auto ${
+          isApproval
+            ? "bg-brand-accent text-bg-void hover:bg-brand-accent-bright hover:shadow-[0_0_30px_var(--glow-cyan)]"
+            : "border border-red-400/40 text-red-200 hover:border-red-300/70 hover:bg-red-400/10"
+        }`}
+      >
+        {submitState === "submitting"
+          ? "Sending..."
+          : isApproval
+            ? "Confirm Approval"
+            : "Send Decline Notice"}
+        <ArrowRight className="h-4 w-4" />
+      </button>
+    </motion.form>
+  );
+}
+
+function fieldsValue(decision: ProposalDecision) {
+  return decision === "approve" ? "Approved" : "Declined";
+}
+
 /* ───────────────────────── main page ───────────────────────── */
 
 export default function FCCProposal() {
   const [activePhase, setActivePhase] = useState(0);
+  const [proposalDecision, setProposalDecision] =
+    useState<ProposalDecision | null>(null);
 
   const phases = [
     {
@@ -201,7 +453,7 @@ export default function FCCProposal() {
   ];
 
   return (
-    <div className="min-h-screen bg-bg-surface text-text-primary font-sans">
+    <div className="min-h-screen overflow-x-hidden bg-bg-surface text-text-primary font-sans">
       {/* ─── HERO ─── */}
       <div className="relative overflow-hidden">
         {/* Gradient orbs */}
@@ -294,7 +546,7 @@ export default function FCCProposal() {
       <CircuitTrace variant="section-divider" />
 
       {/* ─── CURRENT ISSUES ─── */}
-      <Section className="border-t border-gray-800/50">
+      <Section className="border-t border-gray-800/50 overflow-hidden">
         <FadeIn>
           <div className="text-center mb-16">
             <SectionLabel>Site Audit Findings</SectionLabel>
@@ -649,7 +901,7 @@ export default function FCCProposal() {
       <CircuitTrace variant="section-divider" />
 
       {/* ─── SEO STRATEGY ─── */}
-      <Section className="border-t border-gray-800/50">
+      <Section className="border-t border-gray-800/50 overflow-hidden">
         <div className="grid md:grid-cols-2 gap-16 items-center">
           <SlideIn direction="left">
             <SectionLabel>SEO & AI Search Strategy</SectionLabel>
@@ -1068,6 +1320,30 @@ export default function FCCProposal() {
               Containers won&apos;t just get a new website — you&apos;ll get a platform
               that grows your business.
             </p>
+            <div className="mt-8 rounded-xl border border-gray-800/50 bg-gray-900/25 p-5">
+              <div className="mb-3 flex items-center gap-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-brand-accent/10 text-brand-accent-bright">
+                  <Globe className="h-5 w-5" />
+                </div>
+                <h3 className="font-medium text-text-primary">
+                  ITECS Main Website
+                </h3>
+              </div>
+              <p className="text-sm leading-relaxed text-text-secondary">
+                For managed IT services, cybersecurity, cloud hosting,
+                compliance support, and the broader ITECS technology practice,
+                visit the company&apos;s primary website.
+              </p>
+              <a
+                href="https://itecsonline.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-brand-accent transition-colors hover:text-brand-accent-bright"
+              >
+                Visit itecsonline.com
+                <ExternalLink className="h-4 w-4" />
+              </a>
+            </div>
           </SlideIn>
 
           <SlideIn direction="right" delay={0.2}>
@@ -1102,7 +1378,7 @@ export default function FCCProposal() {
         <GradientOrb color="cyan" size="md" position={{ top: "-100px", left: "-100px" }} />
         <GradientOrb color="purple" size="sm" position={{ bottom: "-80px", right: "-60px" }} />
         <FadeIn>
-          <div className="text-center max-w-2xl mx-auto">
+          <div className="text-center max-w-3xl mx-auto">
             <SectionLabel>Next Steps</SectionLabel>
             <h2 className="text-3xl md:text-4xl font-light text-text-primary mb-6">
               Ready to Get Started?
@@ -1113,19 +1389,64 @@ export default function FCCProposal() {
               platform can be live within 2–3 weeks.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <a
-                href="/contact"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-brand-accent hover:bg-brand-accent-bright text-bg-void font-medium text-sm rounded-lg transition-colors"
+              <motion.button
+                type="button"
+                layout
+                whileHover={{ y: -2, scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={() =>
+                  setProposalDecision((current) =>
+                    current === "approve" ? null : "approve",
+                  )
+                }
+                className={`inline-flex items-center gap-2 px-8 py-4 bg-brand-accent hover:bg-brand-accent-bright text-bg-void font-medium text-sm rounded-lg transition-all ${
+                  proposalDecision === "approve"
+                    ? "shadow-[0_0_35px_var(--glow-cyan)]"
+                    : ""
+                }`}
               >
-                APPROVE PROPOSAL <ArrowRight className="w-4 h-4" />
-              </a>
+                APPROVE PROPOSAL
+                <motion.span
+                  animate={{ rotate: proposalDecision === "approve" ? 90 : 0 }}
+                  transition={{ duration: 0.25 }}
+                >
+                  <ArrowRight className="w-4 h-4" />
+                </motion.span>
+              </motion.button>
+              <motion.button
+                type="button"
+                layout
+                whileHover={{ y: -2, scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={() =>
+                  setProposalDecision((current) =>
+                    current === "decline" ? null : "decline",
+                  )
+                }
+                className={`inline-flex items-center gap-2 rounded-lg border px-8 py-4 text-sm font-medium text-text-secondary transition-all ${
+                  proposalDecision === "decline"
+                    ? "border-red-300/70 bg-red-400/10 text-red-100"
+                    : "border-gray-700 hover:border-red-300/50 hover:text-red-100"
+                }`}
+              >
+                DECLINE
+                <X className="w-4 h-4" />
+              </motion.button>
               <a
-                href="tel:+12149194324"
+                href="tel:+12144447884"
                 className="inline-flex items-center gap-2 px-8 py-4 border border-gray-700 hover:border-brand-accent/50 text-text-secondary font-medium text-sm rounded-lg transition-colors"
               >
-                CALL TO DISCUSS
+                CALL (214) 444-7884
               </a>
             </div>
+            <AnimatePresence mode="wait">
+              {proposalDecision ? (
+                <ProposalDecisionForm
+                  key={proposalDecision}
+                  decision={proposalDecision}
+                />
+              ) : null}
+            </AnimatePresence>
           </div>
         </FadeIn>
       </Section>
