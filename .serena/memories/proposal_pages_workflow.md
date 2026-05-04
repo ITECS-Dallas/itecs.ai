@@ -1,32 +1,22 @@
 # Hidden Proposal Pages Workflow
 
-ITECS uses hidden web proposal pages under `/p/<slug>` to email clients branded, browser-based proposals. These pages are shared manually by full URL and are not linked from public navigation.
+ITECS uses hidden web proposal pages under `/p/<slug>` to email clients branded, browser-based proposals. They are shared manually by full URL and are not linked from public navigation.
 
-Current known proposal:
+Current known proposal/template:
 - URL path: `/p/fcc-proposal-b2630d`
-- Route file: `src/app/p/fcc-proposal-b2630d/page.tsx`
-- Component file: `src/components/proposals/fcc-proposal-b2630d.tsx`
+- Route: `src/app/p/fcc-proposal-b2630d/page.tsx`
+- Component: `src/components/proposals/fcc-proposal-b2630d.tsx`
+- Treat this page as the current structural and styling template for future proposal pages: page rhythm, dark technical visual language, section density, pricing/timeline layout, About ITECS placement, and animated approve/decline CTA behavior.
 
-Implementation pattern:
+Pattern:
 - Page routes live in `src/app/p/<slug>/page.tsx`.
-- Proposal UI components live in `src/components/proposals/<slug>.tsx`.
-- Use unguessable slugs with a random suffix, e.g. `client-project-a1b2c3`.
+- Proposal UI lives in `src/components/proposals/<slug>.tsx`.
+- Use unguessable slugs with a random suffix.
 - `/p/` is disallowed in `src/app/robots.ts` and excluded from `src/app/sitemap.ts`.
-- Proposal metadata should use `index: false`, `follow: false`, `noarchive: true`, `nosnippet: true`, and `noimageindex: true`.
-- Proposal pages are hidden/unlisted, not authenticated. Do not treat them as a secure client portal.
+- Proposal metadata should be noindex, nofollow, noarchive, nosnippet, and noimageindex.
+- Hidden/unlisted does not mean authenticated. Do not treat proposal URLs as secure client portals.
 - Keep proposal pages out of nav, footer, sitemap, and public marketing links.
 
-Creation workflow:
-1. Gather client brief, scope, pricing, timeline, screenshots/assets, and CTA intent.
-2. Draft/adapt a TSX proposal component to the itecs.ai design system.
-3. Use Tailwind/project tokens, `lucide-react`, and `next/image`; localize fragile screenshots into `public/images/proposals/`.
-4. Remove internal proposal chrome that duplicates global Header/Footer.
-5. Add tasteful ambient effects from `src/components/effects/` where useful.
-6. Create `src/components/proposals/<slug>.tsx` and `src/app/p/<slug>/page.tsx`.
-7. Run `npm run build`.
-8. Deploy with `docker compose up -d --build --remove-orphans web` when approved.
-9. Verify the live URL with Playwright before sharing.
+Workflow: gather brief/scope/pricing/assets, adapt TSX to the itecs.ai design system, use Tailwind tokens/lucide/next-image, localize fragile screenshots to `public/images/proposals/`, remove duplicate internal chrome, add restrained effects, create route/component, run `npm run build`, deploy with `docker compose up -d --build --remove-orphans web`, then verify live URL with Playwright.
 
-Detailed repo documentation:
-- `docs/proposals.md`
-- `.claude/commands/add-proposal.md`
+Docs: `docs/proposals.md` and `.claude/commands/add-proposal.md`.

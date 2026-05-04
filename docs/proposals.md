@@ -10,6 +10,11 @@ The first proposal page is:
 - Route: `src/app/p/fcc-proposal-b2630d/page.tsx`
 - Component: `src/components/proposals/fcc-proposal-b2630d.tsx`
 
+Use the FCC proposal as the current structural and styling template for future
+proposal pages. It demonstrates the desired page rhythm, dark technical visual
+language, section density, pricing/timeline presentation, About ITECS placement,
+and animated approve/decline CTA pattern.
+
 ## Purpose
 
 Proposal pages let ITECS send client-specific scopes, pricing, timelines,
@@ -55,6 +60,8 @@ The shared `/p` layout already applies conservative robots metadata:
    - Remove internal headers, footers, logos, or chrome that duplicates the
      global site layout.
    - Keep proposal content intact unless the user asks for wording changes.
+   - Use `/p/fcc-proposal-b2630d` as the reference for structure, visual
+     density, section styling, and proposal response CTA behavior.
 4. Add tasteful visual effects from `src/components/effects/`, especially
    `CircuitTrace`, `GradientOrb`, `GridBackground`, and `ScrollReveal`.
 5. Create:
@@ -94,4 +101,3 @@ To remove a proposal:
    needed.
 4. Run `npm run build`.
 5. Redeploy the web container.
-

@@ -12,6 +12,11 @@ Example: `/add-proposal /home/itecs/acme-corp-proposal.tsx`
 
 You are adding a private, unlisted proposal page to itecs.ai. Follow these steps exactly:
 
+Reference `/p/fcc-proposal-b2630d` as the current structural and styling
+template for future proposals. It demonstrates the preferred page rhythm, visual
+density, dark technical styling, section sequencing, pricing/timeline treatment,
+About ITECS placement, and animated approve/decline CTA pattern.
+
 ### 1. Locate and validate the input file
 
 - If the argument is an absolute path, read it directly.

@@ -72,7 +72,7 @@ ITECS uses `/p/<slug>` pages for client web proposals that are shared manually b
 
 Proposal pages are hidden and unlisted, not authenticated. They should stay out of navigation and sitemap output, and `/p/` should remain disallowed in `robots.ts`. Each proposal page should set robots metadata to `noindex`, `nofollow`, `noarchive`, `nosnippet`, and `noimageindex`.
 
-When creating a new proposal, follow `docs/proposals.md` and the detailed `.claude/commands/add-proposal.md` workflow. Use an unguessable slug with a random suffix, keep the UI native to the itecs.ai design system, localize fragile client screenshots under `public/images/proposals/`, run `npm run build`, deploy the web container, and verify the live URL with Playwright before sharing it.
+When creating a new proposal, follow `docs/proposals.md` and the detailed `.claude/commands/add-proposal.md` workflow. Use `/p/fcc-proposal-b2630d` as the current structural and styling template for page rhythm, section density, pricing/timeline treatment, About ITECS placement, and the animated approve/decline CTA pattern. Use an unguessable slug with a random suffix, keep the UI native to the itecs.ai design system, localize fragile client screenshots under `public/images/proposals/`, run `npm run build`, deploy the web container, and verify the live URL with Playwright before sharing it.
 
 ### Data Model in constants.ts
 
