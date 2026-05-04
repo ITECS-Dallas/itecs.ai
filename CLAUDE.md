@@ -33,6 +33,7 @@ npx tsc --noEmit     # Type check without emitting
 - **`src/app/`** — Next.js App Router pages and layouts. `@/*` path alias maps to `./src/*`.
 - **`src/components/`** — Organized by role: `layout/` (Header, Footer), `sections/` (page-level composites), `ui/` (Button, Card, SectionHeading, StatCounter), `effects/` (animations: ScrollReveal, ParallaxWrapper, GradientOrb, CircuitTrace, GridBackground, CursorGlow), `seo/` (Breadcrumbs, JsonLd).
 - **`src/lib/`** — `constants.ts` is the single source of truth for all structured content (site config, nav links, services, insights, stats, homepage features). `metadata.ts` generates per-page Next.js Metadata. `seo.ts` generates JSON-LD schemas (Organization, LocalBusiness, Service, FAQPage, BreadcrumbList, HowTo).
+- **`src/app/p/` + `src/components/proposals/`** — Hidden, unlisted web proposal pages used to email client-specific proposals. See `docs/proposals.md` and `.claude/commands/add-proposal.md`.
 - **`infra/nginx/`** — nginx reverse proxy config. Terminates TLS, proxies to Next.js on port 3000. `conf.d/default.conf` has the server blocks for `itecs.ai` and `www.itecs.ai`.
 - **`infra/certbot/`** — Cloudflare DNS-01 certbot setup. `scripts/certbot-dns.sh` is the entrypoint used by the docker certbot service.
 - **`infra/docker/web.Dockerfile`** — Multi-stage build (deps → build → runner) using Next.js standalone output mode.
@@ -64,6 +65,14 @@ The site uses a hub & spoke model for SEO. Pages live at **top-level URLs**, not
 **Other pages:** `/services` (listing index), `/about`, `/contact`, `/insights` (listing index).
 
 Each hub page renders shared section components (ServiceHero, ServiceFeatures, ServiceStats, HowItWorks, FAQ, CTASection) driven by the `SERVICES` array in `constants.ts`. Spoke pages render long-form content from the `INSIGHTS` array with FAQ and breadcrumb back-links to their parent hub.
+
+### Hidden Proposal Pages
+
+ITECS uses `/p/<slug>` pages for client web proposals that are shared manually by email. The first and currently known proposal is `/p/fcc-proposal-b2630d`, implemented by `src/app/p/fcc-proposal-b2630d/page.tsx` and `src/components/proposals/fcc-proposal-b2630d.tsx`.
+
+Proposal pages are hidden and unlisted, not authenticated. They should stay out of navigation and sitemap output, and `/p/` should remain disallowed in `robots.ts`. Each proposal page should set robots metadata to `noindex`, `nofollow`, `noarchive`, `nosnippet`, and `noimageindex`.
+
+When creating a new proposal, follow `docs/proposals.md` and the detailed `.claude/commands/add-proposal.md` workflow. Use an unguessable slug with a random suffix, keep the UI native to the itecs.ai design system, localize fragile client screenshots under `public/images/proposals/`, run `npm run build`, deploy the web container, and verify the live URL with Playwright before sharing it.
 
 ### Data Model in constants.ts
 
