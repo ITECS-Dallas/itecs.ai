@@ -1252,7 +1252,7 @@ export const CLIENT_LOGOS = [
   { name: "Phoenix Capital", src: "/images/clients/phoenix-capital.webp", width: 129, height: 35 },
   { name: "Sterling Family Partners", src: "/images/clients/sterling-family-partners.webp", width: 154, height: 34 },
   { name: "First Choice Containers", src: "/images/clients/first-choice-containers.webp", width: 100, height: 44 },
-  { name: "BURNCO", src: "/images/clients/burnco.webp", width: 160, height: 32 },
+  { name: "BURNCO", src: "/images/clients/burnco-logo.webp", width: 197, height: 32 },
 ] as const;
 
 export const PARTNER_LOGOS = [
@@ -1522,8 +1522,8 @@ export const HOMEPAGE_HERITAGE = {
   stats: [
     { value: "2002", label: "Founded in Dallas" },
     { value: "92%", label: "Client Retention Rate" },
-    { value: "500+", label: "Endpoints Managed" },
-    { value: "SOX/HIPAA", label: "Compliance Expertise" },
+    { value: "200+", label: "Client Engagements" },
+    { value: "CMMC", label: "Compliance Expertise" },
   ],
   parentLink: {
     text: "Learn more about ITECS managed IT services",
