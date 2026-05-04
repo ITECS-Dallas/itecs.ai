@@ -133,8 +133,12 @@ function buildEmailHtml(input: SendContactEmailInput) {
 }
 
 function buildSubject(input: SendContactEmailInput) {
-  const name = input.fields.find((field) => field.label === "name")?.value;
-  const company = input.fields.find((field) => field.label === "company")?.value;
+  const name = input.fields.find(
+    (field) => field.label.toLowerCase() === "name",
+  )?.value;
+  const company = input.fields.find(
+    (field) => field.label.toLowerCase() === "company",
+  )?.value;
   const suffix = [name, company].filter(Boolean).join(" - ");
 
   return suffix
@@ -230,4 +234,3 @@ export async function sendContactEmail(input: SendContactEmailInput) {
     );
   }
 }
-

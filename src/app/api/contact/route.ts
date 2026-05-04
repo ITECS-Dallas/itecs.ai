@@ -1,11 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import { sendContactEmail } from "@/lib/email/graphMailer";
+import { validateTurnstileToken } from "@/lib/turnstile";
 
 export const runtime = "nodejs";
 
 type ContactPayload = {
   formName?: unknown;
   sourcePath?: unknown;
+  turnstileToken?: unknown;
   website?: unknown;
   fields?: unknown;
   [key: string]: unknown;
@@ -54,7 +56,14 @@ function getIpAddress(request: NextRequest) {
 
 function collectFields(payload: ContactPayload) {
   const source = isRecord(payload.fields) ? payload.fields : payload;
-  const ignored = new Set(["fields", "formName", "sourcePath", "website"]);
+  const ignored = new Set([
+    "fields",
+    "formName",
+    "sourcePath",
+    "turnstileToken",
+    "cf-turnstile-response",
+    "website",
+  ]);
 
   return Object.entries(source)
     .filter(([key]) => !ignored.has(key))
@@ -77,7 +86,12 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  if (normalizeValue(payload.website)) {
+  const sourceFields = isRecord(payload.fields) ? payload.fields : {};
+
+  if (
+    normalizeValue(payload.website) ||
+    normalizeValue(sourceFields.website)
+  ) {
     return NextResponse.json({ message: "Message received." });
   }
 
@@ -85,6 +99,10 @@ export async function POST(request: NextRequest) {
   const email = fields.find((field) => field.label === "Email")?.value || "";
   const name = fields.find((field) => field.label === "Name")?.value || "";
   const message = fields.find((field) => field.label === "Message")?.value || "";
+  const turnstileToken =
+    normalizeValue(payload.turnstileToken) ||
+    normalizeValue(sourceFields["cf-turnstile-response"]);
+  const ipAddress = getIpAddress(request);
 
   if (!name || !isValidEmail(email) || !message) {
     return NextResponse.json(
@@ -93,7 +111,28 @@ export async function POST(request: NextRequest) {
     );
   }
 
+  if (!turnstileToken) {
+    return NextResponse.json(
+      { message: "Please complete the verification check before sending." },
+      { status: 400 },
+    );
+  }
+
   try {
+    const turnstile = await validateTurnstileToken(turnstileToken, ipAddress);
+
+    if (!turnstile.success) {
+      console.warn("Turnstile validation rejected contact form submission", {
+        sourcePath: normalizeValue(payload.sourcePath) || "/contact",
+        errorCodes: turnstile.errorCodes,
+      });
+
+      return NextResponse.json(
+        { message: "Verification failed. Please refresh and try again." },
+        { status: 400 },
+      );
+    }
+
     await sendContactEmail({
       formName: normalizeValue(payload.formName) || "Website Contact Form",
       sourcePath: normalizeValue(payload.sourcePath) || "/contact",
@@ -101,7 +140,7 @@ export async function POST(request: NextRequest) {
       fields,
       replyToEmail: email,
       metadata: {
-        ipAddress: getIpAddress(request),
+        ipAddress,
         userAgent: request.headers.get("user-agent") || "Unavailable",
       },
     });
@@ -116,4 +155,3 @@ export async function POST(request: NextRequest) {
     );
   }
 }
-
