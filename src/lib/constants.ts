@@ -1248,11 +1248,11 @@ export const FAQ_ITEMS = [
 // ---------------------------------------------------------------------------
 
 export const CLIENT_LOGOS = [
-  { name: "PepsiCo", src: "/images/clients/pepsico.webp", width: 120, height: 40 },
-  { name: "Pizza Hut", src: "/images/clients/pizzahut.webp", width: 120, height: 40 },
-  { name: "OpenText", src: "/images/clients/opentext.webp", width: 120, height: 40 },
-  { name: "Miller", src: "/images/clients/miller.webp", width: 120, height: 40 },
-  { name: "BE Farms", src: "/images/clients/befarms.webp", width: 120, height: 40 },
+  { name: "Ad Pages", src: "/images/clients/adpages.webp", width: 162, height: 28 },
+  { name: "Phoenix Capital", src: "/images/clients/phoenix-capital.webp", width: 129, height: 35 },
+  { name: "Sterling Family Partners", src: "/images/clients/sterling-family-partners.webp", width: 154, height: 34 },
+  { name: "First Choice Containers", src: "/images/clients/first-choice-containers.webp", width: 100, height: 44 },
+  { name: "BURNCO", src: "/images/clients/burnco.webp", width: 160, height: 32 },
 ] as const;
 
 export const PARTNER_LOGOS = [

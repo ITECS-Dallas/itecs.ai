@@ -10,7 +10,7 @@ export function TrustBar() {
       <ScrollReveal>
         <div className="mx-auto max-w-7xl px-6 md:px-8">
           <p className="text-center text-sm tracking-[0.05em] uppercase text-text-dim mb-8">
-            Trusted by industry leaders
+            Trusted by Dallas-Area Businesses
           </p>
           <div className="flex flex-wrap items-center justify-center gap-10 md:gap-16">
             {CLIENT_LOGOS.map((logo) => (
@@ -23,7 +23,7 @@ export function TrustBar() {
                   alt={`${logo.name} logo`}
                   width={logo.width}
                   height={logo.height}
-                  className="h-8 w-auto object-contain"
+                  className="object-contain"
                 />
               </div>
             ))}
