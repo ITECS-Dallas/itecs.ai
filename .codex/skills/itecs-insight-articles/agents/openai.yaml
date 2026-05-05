@@ -1,0 +1,4 @@
+interface:
+  display_name: "ITECS Insight Articles"
+  short_description: "Write SEO-ready ITECS AI Insight articles"
+  default_prompt: "Create an SEO-ready ITECS AI Insights article with metadata, schema, internal links, generated imagery, share bar, and author block."

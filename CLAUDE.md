@@ -47,7 +47,7 @@ The site uses a hub & spoke model for SEO. Pages live at **top-level URLs**, not
 | Route | Slug | Component data |
 |---|---|---|
 | `/consulting` | `consulting` | `SERVICES[0]` |
-| `/custom-chatgpt` | `custom-chatgpt` | `SERVICES[1]` |
+| `/custom-ai-agents` | `custom-ai-agents` | `SERVICES[1]` |
 | `/automation` | `automation` | `SERVICES[2]` |
 | `/training` | `training` | `SERVICES[3]` |
 | `/ai-receptionist` | `ai-receptionist` | `SERVICES[4]` |
@@ -59,12 +59,16 @@ The site uses a hub & spoke model for SEO. Pages live at **top-level URLs**, not
 | Route | Hub link |
 |---|---|
 | `/insights/how-to-use-ai-small-business` | → `/consulting` |
-| `/insights/secure-business-data-chatgpt` | → `/custom-chatgpt` |
+| `/insights/secure-business-data-chatgpt` | → `/custom-ai-agents` |
 | `/insights/automate-lead-follow-up` | → `/automation` |
 
 **Other pages:** `/services` (listing index), `/about`, `/contact`, `/insights` (listing index).
 
 Each hub page renders shared section components (ServiceHero, ServiceFeatures, ServiceStats, HowItWorks, FAQ, CTASection) driven by the `SERVICES` array in `constants.ts`. Spoke pages render long-form content from the `INSIGHTS` array with FAQ and breadcrumb back-links to their parent hub.
+
+### Insight Article Skill
+
+Use the project-specific Codex skill at `.codex/skills/itecs-insight-articles/SKILL.md` when creating or updating Insights blog articles. The skill documents the current code-managed article workflow, overview card preview requirements, executive business writing style, SEO metadata, Article schema, OpenGraph imagery, internal-linking from `sitemap.xml`, Google-generated non-people article images, share bars, and default `The ITECS Team` author block.
 
 ### Hidden Proposal Pages
 
