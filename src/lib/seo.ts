@@ -306,6 +306,63 @@ export function generateFAQSchema(
 }
 
 // ---------------------------------------------------------------------------
+// Article / BlogPosting
+// ---------------------------------------------------------------------------
+
+interface ArticleSchemaInput {
+  headline: string;
+  description: string;
+  url: string;
+  image?: string;
+  datePublished: string;
+  dateModified?: string;
+  keywords?: readonly string[];
+  citations?: readonly string[];
+}
+
+export function generateArticleSchema({
+  headline,
+  description,
+  url,
+  image,
+  datePublished,
+  dateModified,
+  keywords = [],
+  citations = [],
+}: ArticleSchemaInput) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "@id": `${url}#article`,
+    headline,
+    description,
+    url,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": url,
+    },
+    image: image ? [image] : [`${SITE_CONFIG.url}/images/logos/itecs-horizontal.svg`],
+    datePublished,
+    dateModified: dateModified ?? datePublished,
+    author: {
+      "@type": "Organization",
+      name: "The ITECS Team",
+      url: `${SITE_CONFIG.url}/about`,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: SITE_CONFIG.name,
+      logo: {
+        "@type": "ImageObject",
+        url: `${SITE_CONFIG.url}/images/logos/itecs-horizontal.svg`,
+      },
+    },
+    keywords,
+    citation: citations,
+  };
+}
+
+// ---------------------------------------------------------------------------
 // BreadcrumbList
 // ---------------------------------------------------------------------------
 

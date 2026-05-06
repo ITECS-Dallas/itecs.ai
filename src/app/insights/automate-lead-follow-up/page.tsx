@@ -1,14 +1,6 @@
+import { InsightArticleLayout, type ArticleSource } from "@/components/insights/InsightArticleLayout";
 import { generatePageMetadata } from "@/lib/metadata";
-import { generateFAQSchema } from "@/lib/seo";
 import { INSIGHTS } from "@/lib/constants";
-import { JsonLd } from "@/components/seo/JsonLd";
-import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
-import { ScrollReveal } from "@/components/effects/ScrollReveal";
-import { FAQ } from "@/components/sections/FAQ";
-import { CTASection } from "@/components/sections/CTASection";
-import { GradientOrb } from "@/components/effects/GradientOrb";
-import { GridBackground } from "@/components/effects/GridBackground";
-import Link from "next/link";
 
 const insight = INSIGHTS.find((i) => i.slug === "automate-lead-follow-up")!;
 
@@ -19,66 +11,48 @@ export const metadata = generatePageMetadata({
   keywords: insight.keywords,
 });
 
+const sources: ArticleSource[] = [
+  {
+    label: "ITECS AI Workflow Automation",
+    href: "/automation",
+    description:
+      "ITECS service page for automating repetitive workflows, lead routing, notifications, and business process handoffs.",
+  },
+  {
+    label: "ITECS CRM And Sales AI",
+    href: "/crm-sales-ai",
+    description:
+      "ITECS guidance for using AI in sales workflows, CRM updates, lead qualification, and customer follow-up.",
+  },
+  {
+    label: "Harvard Business Review",
+    href: "https://hbr.org/2011/03/the-short-life-of-online-sales-leads",
+    description:
+      "Research-backed context on why fast response time matters for web leads.",
+  },
+  {
+    label: "HubSpot CRM",
+    href: "https://www.hubspot.com/products/crm",
+    description:
+      "CRM platform information for businesses evaluating lead capture, routing, and sales workflow tools.",
+  },
+  {
+    label: "Twilio SMS",
+    href: "https://www.twilio.com/en-us/messaging/channels/sms",
+    description:
+      "SMS messaging platform documentation for automated customer notifications and lead response workflows.",
+  },
+];
+
 export default function AutomateLeadPage() {
   return (
-    <>
-      <div className="mx-auto max-w-7xl px-6 md:px-8 pt-24">
-        <Breadcrumbs items={[
-          { label: "Home", href: "/" },
-          { label: "Insights", href: "/insights" },
-          { label: "Automate Lead Follow-Up", href: insight.href },
-        ]} />
-      </div>
-
-      <section className="relative pt-8 pb-16 overflow-hidden">
-        <GridBackground opacity={0.03} />
-        <GradientOrb color="cyan" size="md" position={{ top: "10%", right: "10%" }} />
-        <div className="relative z-10 mx-auto max-w-3xl px-6 md:px-8">
-          <h1 className="text-3xl md:text-5xl font-extralight tracking-[-0.03em] leading-[1.1]">
-            {insight.h1}
-          </h1>
-          <p className="mt-4 text-text-secondary">
-            {insight.description}
-          </p>
-        </div>
-      </section>
-
-      <article className="pb-24">
-        <div className="mx-auto max-w-3xl px-6 md:px-8 space-y-6">
-          {insight.content.map((paragraph, i) => (
-            <ScrollReveal key={i} delay={i * 0.05}>
-              <p
-                className="text-text-secondary leading-relaxed"
-                dangerouslySetInnerHTML={{
-                  __html: paragraph
-                    .replace(/\*\*(.*?)\*\*/g, "<strong class='text-text-primary font-medium'>$1</strong>")
-                    .replace(/\[(.*?)\]\((.*?)\)/g, "<a href='$2' class='text-brand-accent hover:text-brand-accent-bright transition-colors underline'>$1</a>"),
-                }}
-              />
-            </ScrollReveal>
-          ))}
-
-          <ScrollReveal>
-            <div className="mt-8 p-6 rounded-xl border border-[var(--border-active)] bg-brand-accent/5">
-              <p className="text-text-primary font-medium">
-                Ready to automate your lead follow-up?{" "}
-                <Link href={insight.hubHref} className="text-brand-accent hover:text-brand-accent-bright underline">
-                  Learn about our {insight.hubLabel} service
-                </Link>{" "}
-                or{" "}
-                <Link href="/contact" className="text-brand-accent hover:text-brand-accent-bright underline">
-                  schedule a free AI assessment
-                </Link>.
-              </p>
-            </div>
-          </ScrollReveal>
-        </div>
-      </article>
-
-      <FAQ items={insight.faq} heading="Lead Automation FAQ" />
-      <CTASection />
-
-      <JsonLd data={generateFAQSchema(insight.faq)} />
-    </>
+    <InsightArticleLayout
+      insight={insight}
+      breadcrumbLabel="Automate Lead Follow-Up"
+      faqHeading="Lead Automation FAQ"
+      sources={sources}
+      ctaText="Ready to automate your lead follow-up?"
+      publishedDate="2026-05-06"
+    />
   );
 }

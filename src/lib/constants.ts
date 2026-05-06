@@ -1171,6 +1171,81 @@ export const INSIGHTS: InsightItem[] = [
       },
     ],
   },
+  {
+    slug: "enterprise-agentic-skills-repo",
+    title: "ITECS Releases Public Enterprise Agentic Skills Repo",
+    description:
+      "ITECS released its enterprise agentic skills repo to help teams standardize safer Codex, Claude, and AI coding agent workflows.",
+    href: "/insights/enterprise-agentic-skills-repo",
+    hubSlug: "ai-devops",
+    hubLabel: "AI DevOps",
+    hubHref: "/ai-devops",
+    keywords: [
+      "enterprise agentic skills",
+      "AI agent skills repo",
+      "coding agent workflows",
+      "Codex skills",
+      "Claude agent skills",
+      "enterprise AI governance",
+      "AI DevOps Dallas",
+    ],
+    h1: "ITECS Releases Public Enterprise Agentic Skills Repo",
+    content: [
+      "ITECS has released an enterprise agentic skills repository for teams that want AI coding agents to work with more structure, documentation, and repeatability. The repo is designed to help organizations move past one-off prompting and toward reusable operating practices for tools like Codex, Claude, and other coding agents.",
+      "An agentic skill is a reusable set of instructions, guardrails, and workflow steps that tells an AI agent how to handle a specific kind of work. Instead of asking an agent to \"be careful\" or \"follow best practices,\" a skill gives it a defined process for tasks such as frontend changes, backend API work, dependency decisions, testing gates, documentation parity, and branch discipline.",
+      "**Why This Matters For Business Leaders**",
+      "Many companies are excited about AI-assisted development, but they are also right to worry about inconsistency, security, and cost. AI tools can move quickly, but speed without a shared workflow can create rework, missed tests, unclear documentation, and changes that are hard for teams to review.",
+      "The skills repo addresses that problem by giving AI agents a more predictable way to work. It helps teams define how an agent should inspect a codebase, choose a practical implementation path, keep changes scoped, document what changed, and verify the work before anyone treats it as ready.",
+      "**What The Repository Includes**",
+      "The first public package is the Portable Development Workflow plugin. It includes project-neutral skills for frontend app development, backend API development, boundary testing, branch and pull request discipline, dependency reuse, documentation parity, practical delivery, repository boundaries, and testing gates.",
+      "The repository also includes validation and installation scripts so teams can treat the skills catalog as a source of truth. The validation flow checks skill frontmatter, plugin metadata, export manifests, and portability rules before changes are committed.",
+      "A key design choice is that the public repo is intentionally project-neutral. It does not contain client names, private paths, secrets, environment details, or company-specific implementation rules. Private business rules belong in each client's own project documentation, where they can be governed and reviewed separately.",
+      "**Not Just One AI Tool**",
+      "ITECS does not treat agentic workflows as a single-vendor strategy. The repo is written for Codex, Claude, and other coding agents because businesses rarely want their AI operating model locked to one interface or model provider.",
+      "That same idea applies outside software development. ITECS can build structured project folders, approved workflows, prompt libraries, CLI procedures, and human-in-the-loop review steps for tools such as Claude, ChatGPT, Gemini, Microsoft Copilot, Codex, and custom agent systems. The goal is not to force every business into custom software. The goal is to make the AI tools they already use safer and more useful before recommending deeper automation.",
+      "**How ITECS Uses Skills In AI DevOps**",
+      "In [AI DevOps](/ai-devops), skills help turn AI-assisted work into an operating process. They define when an agent should inspect existing patterns, when it should update documentation, what tests are expected for a type of change, and how to avoid changes that widen risk without a clear business reason.",
+      "For more advanced engagements, the same structure can support [custom AI agents](/custom-ai-agents) and agentic RAG workflows. A business might need an agent that searches internal knowledge, drafts a response, routes a task, updates a system, and pauses for human approval before taking action. Skills and workflow documentation help define those boundaries before implementation starts.",
+      "**Governance Comes Before Automation**",
+      "The lesson for business leaders is simple: adopting AI does not have to start with a large custom build. In many cases, the best first step is a documented way for employees and AI tools to work together safely. That can mean approved tool settings, reusable prompts, secure project folders, data rules, review checklists, and training that makes the workflow clear to non-technical staff.",
+      "ITECS uses this same approach with clients. We start by understanding the business process, defining the agenda, choosing the right tools, implementing only what is justified, training the team, and testing the workflow before expanding it.",
+      "**What To Do Next**",
+      "Business owners and managers do not need to read every skill file to benefit from this release. The important takeaway is that AI work can be standardized. If your team is already experimenting with AI coding tools, AI assistants, or internal automation, the next step is to create a repeatable operating model that protects the business while preserving the productivity gains.",
+      "ITECS can help translate that operating model into the right level of implementation: practical AI tool setup, employee training, secure project workflows, DevOps procedures, or full human-in-the-loop agents connected to approved business systems.",
+    ],
+    faq: [
+      {
+        question: "What is an enterprise agentic skills repo?",
+        answer:
+          "It is a reusable catalog of instructions, workflows, and guardrails that helps AI agents perform specific work in a more consistent and reviewable way. Instead of relying on one-off prompts, teams can give agents documented procedures for common tasks.",
+      },
+      {
+        question: "Is the ITECS agentic skills repo only for Codex?",
+        answer:
+          "No. The repo is designed for Codex, Claude, and other coding agents. ITECS focuses on practical AI workflows across multiple tools and platforms, not a single vendor.",
+      },
+      {
+        question: "Why would a business leader care about AI agent skills?",
+        answer:
+          "AI agent skills help reduce inconsistency, rework, missed documentation, and unclear testing expectations. For managers and owners, that means AI-assisted work can become easier to review, govern, and budget.",
+      },
+      {
+        question: "Can ITECS adapt these skills for our company?",
+        answer:
+          "Yes. ITECS can adapt the public workflow model into private project documentation, approved tool procedures, prompt libraries, training materials, and human-in-the-loop workflows tailored to your business.",
+      },
+      {
+        question: "Does this replace custom AI agents?",
+        answer:
+          "No. Skills are often a starting point for safer AI adoption. Some businesses only need better use of tools like Claude, ChatGPT, Gemini, Copilot, or Codex. Others need custom agents, RAG workflows, or secure integrations once the workflow is clearly defined.",
+      },
+      {
+        question: "How does ITECS keep client information out of public skills?",
+        answer:
+          "The public repo is intentionally project-neutral. Client-specific rules, paths, data details, credentials, and operational procedures belong in private project documentation and are not published in the shared skills catalog.",
+      },
+    ],
+  },
 ];
 
 // ---------------------------------------------------------------------------

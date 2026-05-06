@@ -35,6 +35,11 @@ const TOPIC_META: Record<
     color: "text-brand-accent",
     bgColor: "bg-brand-accent/10",
   },
+  "ai-devops": {
+    icon: Zap,
+    color: "text-brand-purple",
+    bgColor: "bg-brand-purple/10",
+  },
 };
 
 export function InsightCards() {

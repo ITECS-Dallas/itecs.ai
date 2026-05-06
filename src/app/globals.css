@@ -48,6 +48,11 @@
 body {
   background: var(--bg-void);
   color: var(--text-primary);
+  overflow-x: hidden;
+}
+
+html {
+  overflow-x: hidden;
 }
 
 /* Ambient grain overlay */

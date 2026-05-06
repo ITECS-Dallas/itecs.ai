@@ -1,14 +1,6 @@
+import { InsightArticleLayout, type ArticleSource } from "@/components/insights/InsightArticleLayout";
 import { generatePageMetadata } from "@/lib/metadata";
-import { generateFAQSchema } from "@/lib/seo";
 import { INSIGHTS } from "@/lib/constants";
-import { JsonLd } from "@/components/seo/JsonLd";
-import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
-import { ScrollReveal } from "@/components/effects/ScrollReveal";
-import { FAQ } from "@/components/sections/FAQ";
-import { CTASection } from "@/components/sections/CTASection";
-import { GradientOrb } from "@/components/effects/GradientOrb";
-import { GridBackground } from "@/components/effects/GridBackground";
-import Link from "next/link";
 
 const insight = INSIGHTS.find((i) => i.slug === "how-to-use-ai-small-business")!;
 
@@ -19,66 +11,48 @@ export const metadata = generatePageMetadata({
   keywords: insight.keywords,
 });
 
+const sources: ArticleSource[] = [
+  {
+    label: "ITECS AI Consulting",
+    href: "/consulting",
+    description:
+      "ITECS guidance for planning AI adoption, tool selection, cost control, and workflow discovery for small and mid-sized businesses.",
+  },
+  {
+    label: "ITECS AI Training",
+    href: "/training",
+    description:
+      "Hands-on training approach for helping non-technical employees use AI tools safely and productively.",
+  },
+  {
+    label: "Microsoft Copilot For Business",
+    href: "https://www.microsoft.com/en-us/microsoft-365/copilot/business",
+    description:
+      "Microsoft's business Copilot offering for Microsoft 365 productivity workflows.",
+  },
+  {
+    label: "OpenAI ChatGPT Business",
+    href: "https://openai.com/chatgpt/business/",
+    description:
+      "OpenAI's business workspace information for teams evaluating ChatGPT at work.",
+  },
+  {
+    label: "Zapier Automation Platform",
+    href: "https://zapier.com/",
+    description:
+      "No-code workflow automation platform commonly used to connect business applications.",
+  },
+];
+
 export default function HowToUseAIPage() {
   return (
-    <>
-      <div className="mx-auto max-w-7xl px-6 md:px-8 pt-24">
-        <Breadcrumbs items={[
-          { label: "Home", href: "/" },
-          { label: "Insights", href: "/insights" },
-          { label: "How to Use AI", href: insight.href },
-        ]} />
-      </div>
-
-      <section className="relative pt-8 pb-16 overflow-hidden">
-        <GridBackground opacity={0.03} />
-        <GradientOrb color="cyan" size="md" position={{ top: "10%", right: "10%" }} />
-        <div className="relative z-10 mx-auto max-w-3xl px-6 md:px-8">
-          <h1 className="text-3xl md:text-5xl font-extralight tracking-[-0.03em] leading-[1.1]">
-            {insight.h1}
-          </h1>
-          <p className="mt-4 text-text-secondary">
-            {insight.description}
-          </p>
-        </div>
-      </section>
-
-      <article className="pb-24">
-        <div className="mx-auto max-w-3xl px-6 md:px-8 space-y-6">
-          {insight.content.map((paragraph, i) => (
-            <ScrollReveal key={i} delay={i * 0.05}>
-              <p
-                className="text-text-secondary leading-relaxed"
-                dangerouslySetInnerHTML={{
-                  __html: paragraph
-                    .replace(/\*\*(.*?)\*\*/g, "<strong class='text-text-primary font-medium'>$1</strong>")
-                    .replace(/\[(.*?)\]\((.*?)\)/g, "<a href='$2' class='text-brand-accent hover:text-brand-accent-bright transition-colors underline'>$1</a>"),
-                }}
-              />
-            </ScrollReveal>
-          ))}
-
-          <ScrollReveal>
-            <div className="mt-8 p-6 rounded-xl border border-[var(--border-active)] bg-brand-accent/5">
-              <p className="text-text-primary font-medium">
-                Ready to see what AI can do for your business?{" "}
-                <Link href={insight.hubHref} className="text-brand-accent hover:text-brand-accent-bright underline">
-                  Learn about our {insight.hubLabel} service
-                </Link>{" "}
-                or{" "}
-                <Link href="/contact" className="text-brand-accent hover:text-brand-accent-bright underline">
-                  schedule a free AI assessment
-                </Link>.
-              </p>
-            </div>
-          </ScrollReveal>
-        </div>
-      </article>
-
-      <FAQ items={insight.faq} heading="AI for Small Business FAQ" />
-      <CTASection />
-
-      <JsonLd data={generateFAQSchema(insight.faq)} />
-    </>
+    <InsightArticleLayout
+      insight={insight}
+      breadcrumbLabel="How to Use AI"
+      faqHeading="AI for Small Business FAQ"
+      sources={sources}
+      ctaText="Ready to see what AI can do for your business?"
+      publishedDate="2026-05-06"
+    />
   );
 }
