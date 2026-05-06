@@ -147,7 +147,7 @@ export function InsightArticleLayout({
               </span>
               <span className="inline-flex items-center gap-1.5">
                 <Calendar className="h-3.5 w-3.5" aria-hidden="true" />
-                {formatDate(modifiedDate ?? publishedDate)}
+                {formatDate(publishedDate)}
               </span>
               <span className="inline-flex items-center gap-1.5">
                 <Clock className="h-3.5 w-3.5" aria-hidden="true" />

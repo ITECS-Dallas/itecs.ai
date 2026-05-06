@@ -56,7 +56,8 @@ export default function EnterpriseAgenticSkillsRepoPage() {
       ctaText="Want a safer operating model for AI-assisted development?"
       heroImage={heroImage}
       heroImageAlt="Empty enterprise AI operations room with abstract secure workflow displays"
-      publishedDate="2026-05-06"
+      publishedDate={insight.publishedDate}
+      modifiedDate={insight.modifiedDate}
       readTime="7 min read"
     />
   );

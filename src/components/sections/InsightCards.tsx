@@ -43,8 +43,12 @@ const TOPIC_META: Record<
 };
 
 export function InsightCards() {
-  const featured = INSIGHTS[0];
-  const rest = INSIGHTS.slice(1);
+  const orderedInsights = [...INSIGHTS].sort(
+    (a, b) =>
+      new Date(b.publishedDate).getTime() - new Date(a.publishedDate).getTime()
+  );
+  const featured = orderedInsights[0];
+  const rest = orderedInsights.slice(1);
   const featuredMeta = TOPIC_META[featured.hubSlug] ?? TOPIC_META.consulting;
   const FeaturedIcon = featuredMeta.icon;
 

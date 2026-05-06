@@ -15,7 +15,7 @@ The goal is to produce executive-ready AI business content for Dallas business o
 
 - Insight content lives in `src/lib/constants.ts` in the `INSIGHTS` array.
 - The overview page is `src/app/insights/page.tsx`.
-- Overview cards render from `src/components/sections/InsightCards.tsx`.
+- Overview cards render from `src/components/sections/InsightCards.tsx` and sort by `publishedDate` from newest to oldest.
 - Each article has its own route at `src/app/insights/<slug>/page.tsx`.
 - Shared SEO utilities live in `src/lib/metadata.ts` and `src/lib/seo.ts`.
 - JSON-LD is rendered through `src/components/seo/JsonLd.tsx`.
@@ -27,8 +27,8 @@ The goal is to produce executive-ready AI business content for Dallas business o
 2. Read `src/lib/constants.ts`, `src/components/sections/InsightCards.tsx`, one existing article page, and `https://itecs.ai/sitemap.xml` before drafting.
 3. Choose the hub page the article should support, such as `/consulting`, `/custom-ai-agents`, `/automation`, `/training`, `/ai-receptionist`, `/crm-sales-ai`, `/ai-knowledge-base`, `/data-audit`, `/managed-intelligence-provider`, or `/ai-devops`.
 4. Generate a short, readable slug and create `src/app/insights/<slug>/page.tsx`.
-5. Add one `INSIGHTS` item with a concise overview-card preview in `description`; the Insights overview page uses this as the card preview.
-6. Place the article in `INSIGHTS` intentionally. `INSIGHTS[0]` becomes the large featured card; append new articles unless the user asks to feature it.
+5. Add one `INSIGHTS` item with `publishedDate`, optional `modifiedDate`, and a concise overview-card preview in `description`; the Insights overview page uses this as the card preview.
+6. Set `publishedDate` in `YYYY-MM-DD` format. `/insights` sorts articles newest to oldest by this field, so the latest article becomes the large featured card automatically.
 7. Add or reuse article support UI: share bar, source/trust signal section, author box, hero/OG image, and article schema. Prefer shared components if multiple article pages need the same treatment.
 8. Run `npm run lint` and `npm run build`. Verify `/insights` and the article page with the Googlebot Smartphone Playwright viewport from `CLAUDE.md`.
 9. Unless the user explicitly asks for draft-only work or says not to deploy, Insights article work is preapproved for CPBA: commit, push, build, and activate after verification. Do not stop to ask for CPBA permission on article jobs.

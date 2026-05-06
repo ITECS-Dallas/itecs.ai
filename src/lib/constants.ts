@@ -955,6 +955,8 @@ export interface InsightItem {
   title: string;
   description: string;
   href: string;
+  publishedDate: string;
+  modifiedDate?: string;
   hubSlug: string;
   hubLabel: string;
   hubHref: string;
@@ -971,6 +973,8 @@ export const INSIGHTS: InsightItem[] = [
     description:
       "A practical guide for Dallas small business owners on using AI to automate tasks, reduce costs, and grow without hiring. From ChatGPT to workflow automation.",
     href: "/insights/how-to-use-ai-small-business",
+    publishedDate: "2026-04-12",
+    modifiedDate: "2026-05-06",
     hubSlug: "consulting",
     hubLabel: "AI Consulting for Small Businesses",
     hubHref: "/consulting",
@@ -1037,6 +1041,8 @@ export const INSIGHTS: InsightItem[] = [
     description:
       "Your employees are using ChatGPT at work. Here's how to protect sensitive company data, set up safe AI policies, and deploy private AI alternatives for your Dallas business.",
     href: "/insights/secure-business-data-chatgpt",
+    publishedDate: "2026-04-12",
+    modifiedDate: "2026-05-06",
     hubSlug: "custom-ai-agents",
     hubLabel: "Custom AI Agents",
     hubHref: "/custom-ai-agents",
@@ -1106,6 +1112,8 @@ export const INSIGHTS: InsightItem[] = [
     description:
       "Stop losing leads to slow follow-up. Learn how Dallas businesses automate lead response with AI — from instant email/text replies to smart lead qualification.",
     href: "/insights/automate-lead-follow-up",
+    publishedDate: "2026-04-12",
+    modifiedDate: "2026-05-06",
     hubSlug: "automation",
     hubLabel: "AI Workflow Automation",
     hubHref: "/automation",
@@ -1177,6 +1185,8 @@ export const INSIGHTS: InsightItem[] = [
     description:
       "ITECS released its enterprise agentic skills repo to help teams standardize safer Codex, Claude, and AI coding agent workflows.",
     href: "/insights/enterprise-agentic-skills-repo",
+    publishedDate: "2026-05-06",
+    modifiedDate: "2026-05-06",
     hubSlug: "ai-devops",
     hubLabel: "AI DevOps",
     hubHref: "/ai-devops",

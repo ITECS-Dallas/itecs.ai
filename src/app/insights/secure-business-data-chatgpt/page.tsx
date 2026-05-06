@@ -52,7 +52,8 @@ export default function SecureDataPage() {
       faqHeading="ChatGPT Data Security FAQ"
       sources={sources}
       ctaText="Want a private, governed AI workflow for your business?"
-      publishedDate="2026-05-06"
+      publishedDate={insight.publishedDate}
+      modifiedDate={insight.modifiedDate}
     />
   );
 }

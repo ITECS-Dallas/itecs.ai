@@ -52,7 +52,8 @@ export default function HowToUseAIPage() {
       faqHeading="AI for Small Business FAQ"
       sources={sources}
       ctaText="Ready to see what AI can do for your business?"
-      publishedDate="2026-05-06"
+      publishedDate={insight.publishedDate}
+      modifiedDate={insight.modifiedDate}
     />
   );
 }

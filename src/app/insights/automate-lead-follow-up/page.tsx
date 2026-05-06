@@ -52,7 +52,8 @@ export default function AutomateLeadPage() {
       faqHeading="Lead Automation FAQ"
       sources={sources}
       ctaText="Ready to automate your lead follow-up?"
-      publishedDate="2026-05-06"
+      publishedDate={insight.publishedDate}
+      modifiedDate={insight.modifiedDate}
     />
   );
 }
