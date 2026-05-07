@@ -4,7 +4,7 @@
 
 export const SITE_CONFIG = {
   name: "ITECS AI",
-  legalName: "ITECS, LLC",
+  legalName: "Itecs Outsourcing, LLC",
   url: "https://itecs.ai",
   mainSiteUrl: "https://itecsonline.com",
   tagline: "Practical AI for Dallas Businesses.",
