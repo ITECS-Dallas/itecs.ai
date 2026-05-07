@@ -77,9 +77,12 @@ When enabling a proposal for magic-link access:
    the allowlist.
 3. Change the proposal component's PDF download button to use
    `/api/proposals/<slug>/pdf`.
-4. Update the proposal page route to call `hasProposalAccess(<slug>)` and
+4. Store downloadable PDFs for gated proposals under `private/proposals/`, set
+   `pdfFileName` to the filename, and let the API route serve the file only
+   after the access cookie is present.
+5. Update the proposal page route to call `hasProposalAccess(<slug>)` and
    redirect visitors without a valid proposal cookie to `/p/<slug>/access`.
-5. Confirm `PROPOSAL_MAGIC_LINK_SECRET` is set in `.env` and Docker Compose.
+6. Confirm `PROPOSAL_MAGIC_LINK_SECRET` is set in `.env` and Docker Compose.
 
 The public email should avoid pricing and use the access-page URL as the primary
 CTA. This keeps the email short and makes the proposal feel private without

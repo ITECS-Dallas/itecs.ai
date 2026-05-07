@@ -25,8 +25,9 @@ export async function GET(
 
   const filePath = join(
     process.cwd(),
-    "public",
-    proposal.pdfPublicPath.replace(/^\/+/, ""),
+    "private",
+    "proposals",
+    proposal.pdfFileName,
   );
   const file = await readFile(filePath);
 

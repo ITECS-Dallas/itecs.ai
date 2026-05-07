@@ -27,7 +27,7 @@ export type ProposalAccessConfig = {
   allowedDomains: readonly string[];
   fromEmail: string;
   heroImageUrl: string;
-  pdfPublicPath: string;
+  pdfFileName: string;
 };
 
 export const PROPOSAL_ACCESS: Record<string, ProposalAccessConfig> = {
@@ -49,7 +49,7 @@ export const PROPOSAL_ACCESS: Record<string, ProposalAccessConfig> = {
     fromEmail: "bdesmot@itecsonline.com",
     heroImageUrl:
       "https://itecs.ai/images/proposals/hasen-claude-work-order-hero.png",
-    pdfPublicPath: "/proposals/hasen-phase-1-claude-work-order-proposal-v3.pdf",
+    pdfFileName: "hasen-phase-1-claude-work-order-proposal-v3.pdf",
   },
 };
 

@@ -148,16 +148,18 @@ hardened portal.
 2. Include internal test emails and the client's approved emails or email domain
    in `allowedEmails` / `allowedDomains`.
 3. Set `fromEmail` to the ITECS sender requested for the proposal email.
-4. Set `heroImageUrl` and `pdfPublicPath` to the proposal's assets.
-5. Change the proposal component's PDF button to:
+4. Set `heroImageUrl` to the public proposal image asset.
+5. Store gated proposal PDFs under `private/proposals/` and set `pdfFileName`
+   to that filename so downloads go through the access-cookie API route.
+6. Change the proposal component's PDF button to:
 
 ```ts
 const pdfHref = "/api/proposals/<slug>/pdf";
 ```
 
-6. Send client-facing emails to `https://itecs.ai/p/<slug>/access`, not directly
+7. Send client-facing emails to `https://itecs.ai/p/<slug>/access`, not directly
    to `/p/<slug>`.
-7. Confirm `PROPOSAL_MAGIC_LINK_SECRET` exists in `.env`, `.env.example`, and
+8. Confirm `PROPOSAL_MAGIC_LINK_SECRET` exists in `.env`, `.env.example`, and
    `docker-compose.yml`.
 
 ### 7. Build and verify

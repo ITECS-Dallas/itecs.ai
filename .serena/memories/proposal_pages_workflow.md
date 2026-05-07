@@ -17,6 +17,7 @@ Pattern:
 - Hidden/unlisted and magic-link access do not make these secure client portals. Treat the access flow as a client comfort and presentation layer.
 - Keep proposal pages out of nav, footer, sitemap, and public marketing links.
 - Magic-link proposals are registered in `src/lib/proposals/access.ts`, use `src/app/p/[slug]/access/page.tsx`, send access links through `src/app/api/proposals/access/request/route.ts`, verify links through `src/app/api/proposals/access/verify/route.ts`, and should use `/api/proposals/<slug>/pdf` for PDF downloads.
+- Gated proposal PDFs should live under `private/proposals/` and be referenced by `pdfFileName` so the API route serves them only after the access cookie is present.
 - `PROPOSAL_MAGIC_LINK_SECRET` must exist in `.env`, `.env.example`, and `docker-compose.yml`.
 
 Workflow: gather brief/scope/pricing/assets, adapt TSX to the itecs.ai design system, use Tailwind tokens/lucide/next-image, localize fragile screenshots to `public/images/proposals/`, remove duplicate internal chrome, add restrained effects, create route/component, register magic-link access when enabled, run `npm run build`, deploy with `docker compose up -d --build --remove-orphans web`, then verify the access URL and gated proposal URL with Playwright.
