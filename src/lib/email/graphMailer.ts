@@ -20,6 +20,16 @@ type SendContactEmailInput = {
   };
 };
 
+type SendGraphEmailInput = {
+  from?: string;
+  to: string | string[];
+  cc?: string | string[];
+  subject: string;
+  html: string;
+  replyToEmail?: string;
+  saveToSentItems?: boolean;
+};
+
 type GraphTokenResponse = {
   access_token?: string;
   expires_in?: number;
@@ -49,6 +59,15 @@ function getGraphConfig() {
     to: requiredEnv("CONTACT_EMAIL_TO"),
     cc: requiredEnv("CONTACT_EMAIL_CC"),
   };
+}
+
+function normalizeRecipients(recipients?: string | string[]) {
+  const list = Array.isArray(recipients) ? recipients : recipients ? [recipients] : [];
+
+  return list
+    .map((email) => email.trim())
+    .filter(Boolean)
+    .map((email) => ({ emailAddress: { address: email } }));
 }
 
 function escapeHtml(value: string) {
@@ -190,18 +209,33 @@ async function getAccessToken() {
 
 export async function sendContactEmail(input: SendContactEmailInput) {
   const config = getGraphConfig();
-  const accessToken = await getAccessToken();
   const emailHtml = buildEmailHtml(input);
   const subject = buildSubject(input);
-  const ccRecipients = config.cc
-    .split(",")
-    .map((email) => email.trim())
-    .filter(Boolean)
-    .map((email) => ({ emailAddress: { address: email } }));
+
+  await sendGraphEmail({
+    subject,
+    html: emailHtml,
+    to: config.to,
+    cc: config.cc,
+    replyToEmail: input.replyToEmail,
+    saveToSentItems: false,
+  });
+}
+
+export async function sendGraphEmail(input: SendGraphEmailInput) {
+  const config = getGraphConfig();
+  const accessToken = await getAccessToken();
+  const mailFrom = input.from?.trim() || config.mailFrom;
+  const toRecipients = normalizeRecipients(input.to);
+  const ccRecipients = normalizeRecipients(input.cc);
+
+  if (!toRecipients.length) {
+    throw new Error("At least one email recipient is required.");
+  }
 
   const response = await fetch(
     `https://graph.microsoft.com/${GRAPH_SEND_MAIL_VERSION}/users/${encodeURIComponent(
-      config.mailFrom,
+      mailFrom,
     )}/sendMail`,
     {
       method: "POST",
@@ -211,18 +245,18 @@ export async function sendContactEmail(input: SendContactEmailInput) {
       },
       body: JSON.stringify({
         message: {
-          subject,
+          subject: input.subject,
           body: {
             contentType: "HTML",
-            content: emailHtml,
+            content: input.html,
           },
-          toRecipients: [{ emailAddress: { address: config.to } }],
+          toRecipients,
           ccRecipients,
           replyTo: input.replyToEmail
             ? [{ emailAddress: { address: input.replyToEmail } }]
             : [],
         },
-        saveToSentItems: false,
+        saveToSentItems: input.saveToSentItems ?? false,
       }),
     },
   );

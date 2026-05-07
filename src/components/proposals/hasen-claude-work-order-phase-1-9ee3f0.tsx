@@ -34,7 +34,7 @@ import { GradientOrb } from "@/components/effects/GradientOrb";
 import { GridBackground } from "@/components/effects/GridBackground";
 import { TurnstileWidget } from "@/components/forms/TurnstileWidget";
 
-const pdfHref = "/proposals/hasen-phase-1-claude-work-order-proposal-v3.pdf";
+const pdfHref = "/api/proposals/hasen-claude-work-order-phase-1-9ee3f0/pdf";
 
 type ProposalDecision = "approve" | "decline";
 type ProposalSubmitState = "idle" | "submitting" | "success" | "error";

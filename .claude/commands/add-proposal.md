@@ -106,7 +106,11 @@ All imports from `@/components/effects/`.
 
 ```tsx
 import type { Metadata } from "next";
+import { redirect } from "next/navigation";
 import ProposalContent from "@/components/proposals/<slug>";
+import { hasProposalAccess } from "@/lib/proposals/access";
+
+const proposalSlug = "<slug>";
 
 export const metadata: Metadata = {
   title: "<Company/Project Name> Proposal | ITECS",
@@ -119,7 +123,11 @@ export const metadata: Metadata = {
   },
 };
 
-export default function ProposalPage() {
+export default async function ProposalPage() {
+  if (!(await hasProposalAccess(proposalSlug))) {
+    redirect(`/p/${proposalSlug}/access`);
+  }
+
   return (
     <div className="min-h-screen">
       <ProposalContent />
@@ -129,6 +137,28 @@ export default function ProposalPage() {
 ```
 
 - Extract a human-readable company/project name from the filename or component content for the `<title>`.
+
+### 6a. Register magic-link proposal access
+
+Proposal pages should use the lightweight magic-link access flow unless the user
+explicitly asks for a plain unlisted URL. This is a client-comfort layer, not a
+hardened portal.
+
+1. Add the proposal to `PROPOSAL_ACCESS` in `src/lib/proposals/access.ts`.
+2. Include internal test emails and the client's approved emails or email domain
+   in `allowedEmails` / `allowedDomains`.
+3. Set `fromEmail` to the ITECS sender requested for the proposal email.
+4. Set `heroImageUrl` and `pdfPublicPath` to the proposal's assets.
+5. Change the proposal component's PDF button to:
+
+```ts
+const pdfHref = "/api/proposals/<slug>/pdf";
+```
+
+6. Send client-facing emails to `https://itecs.ai/p/<slug>/access`, not directly
+   to `/p/<slug>`.
+7. Confirm `PROPOSAL_MAGIC_LINK_SECRET` exists in `.env`, `.env.example`, and
+   `docker-compose.yml`.
 
 ### 7. Build and verify
 
