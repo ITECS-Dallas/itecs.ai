@@ -42,6 +42,7 @@ export const PROPOSAL_ACCESS: Record<string, ProposalAccessConfig> = {
       "Enter your business email and we will send a private access link for the Phase 1 Claude AI Work Order Drafting Workflow proposal.",
     allowedEmails: [
       "bdesmot@itecsonline.com",
+      "bdesmot@gmail.com",
       "mdunbar@itecsmsp.com",
       "jemerle@itecsmsp.com",
     ],
