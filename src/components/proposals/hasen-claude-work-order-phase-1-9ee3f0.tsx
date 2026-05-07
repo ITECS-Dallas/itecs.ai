@@ -34,7 +34,7 @@ import { GradientOrb } from "@/components/effects/GradientOrb";
 import { GridBackground } from "@/components/effects/GridBackground";
 import { TurnstileWidget } from "@/components/forms/TurnstileWidget";
 
-const pdfHref = "/proposals/hasen-phase-1-claude-work-order-proposal.pdf";
+const pdfHref = "/proposals/hasen-phase-1-claude-work-order-proposal-v3.pdf";
 
 type ProposalDecision = "approve" | "decline";
 type ProposalSubmitState = "idle" | "submitting" | "success" | "error";
@@ -141,7 +141,7 @@ function ProposalDecisionForm({ decision }: { decision: ProposalDecision }) {
     const message = String(rawFields.message || "").trim();
 
     const fields = {
-      proposal: "Hasen Phase 1 Claude Work Order Drafting Workflow",
+      proposal: "Hasen Phase 1 Claude Work Order Drafting Workflow - Version 3.0",
       response: isApproval ? "Approved" : "Declined",
       ...rawFields,
       message:
@@ -180,7 +180,7 @@ function ProposalDecisionForm({ decision }: { decision: ProposalDecision }) {
       setSubmitState("success");
       setFeedback(
         isApproval
-          ? "Approval received. ITECS will follow up to schedule kickoff and document exchange."
+          ? "Approval received. ITECS will follow up with DocuSign next steps and kickoff coordination."
           : "Response received. ITECS will review your notes and follow up.",
       );
     } catch (error) {
@@ -345,17 +345,45 @@ const metadataRows = [
   ["Prepared for", "Brenda F. Hasenzahl, Esq., General Counsel, Hasen Holdings"],
   ["Prepared by", "ITECS Outsourcing, LLC"],
   ["Date", "May 2026"],
+  ["Version", "3.0"],
   ["Project", "Claude AI Work Order Drafting Workflow"],
   [
     "Confidentiality",
-    "Subject to mutual NDA review and execution before document exchange",
+    "Governed by the executed Mutual Non-Disclosure Agreement between ITECS Outsourcing, LLC and Hasen Holdings",
   ],
 ] as const;
 
+const glanceRows = [
+  ["Investment", "$18,500 fixed-fee, all-inclusive ITECS services"],
+  [
+    "Payment terms",
+    "50% on engagement letter execution; 50% on Phase 1 handoff; Net 30",
+  ],
+  ["Implementation duration", "10-15 business days"],
+  ["Optimization window", "60 days post-launch, included"],
+  ["Initial users", "3-5 pilot users, scaling to 10-20 in production"],
+  ["AI platform", "Anthropic Claude Team, purchased directly by Hasen"],
+  [
+    "Kickoff format",
+    "Onsite at Hasen's Fort Worth office or virtual via Microsoft Teams, at Hasen's choice",
+  ],
+  [
+    "Training format",
+    "Two virtual Microsoft Teams sessions, recorded for ongoing internal use",
+  ],
+] as const;
+
+const engagementTeam = [
+  ["Engagement Sponsor and Lead AI Strategist", "Brian Desmot, CIO and CISO"],
+  ["Technical Account Manager", "Jordan Emerle"],
+  ["AI Specialist", "TBD, assigned at engagement letter execution"],
+] as const;
+
 const confirmedInputs = [
+  "The Mutual Non-Disclosure Agreement between ITECS and Hasen Holdings has been executed and is in effect.",
   "Hasen does not currently have active Prime Contract clauses restricting where project documents may be stored or processed for this use case.",
   "Hasen does not currently have a written internal AI policy. Outside counsel is separately drafting one.",
-  "David and Paul Witt will review Work Orders before they are issued to subcontractors.",
+  "David Hasenzahl and Paul Witt will review Work Orders before they are issued to subcontractors.",
   "Hasen would like an audit record of AI-generated drafts.",
   "Current project volume is approximately 1-2 projects every six months, with 20-40 Work Orders per project.",
   "Two projects are expected to start within the next 30-45 days.",
@@ -368,12 +396,13 @@ const scopeItems = [
   {
     icon: ClipboardCheck,
     title: "Kickoff and access planning",
-    text: "Confirm Phase 1 boundaries, pilot users, reviewer roles, sample projects, source categories, and the first Work Order scenarios to test.",
+    text: "Conduct a Phase 1 kickoff workshop onsite at Hasen's Fort Worth office or virtually via Microsoft Teams, at Hasen's choice, to align objectives, pilot users, reviewer roles, access needs, and source-document handling.",
     deliverables: [
       "Phase 1 kickoff checklist",
       "Source-document intake checklist",
       "Pilot user and reviewer role confirmation",
       "Access and confidentiality handling notes",
+      "Confirmed kickoff format at engagement letter execution",
     ],
   },
   {
@@ -434,10 +463,10 @@ const scopeItems = [
   {
     icon: UserCheck,
     title: "Training and handoff",
-    text: "Train initial users on document preparation, prompt execution, output review, confidentiality, audit logging, and handoff to reviewers.",
+    text: "Train initial users on document preparation, prompt execution, output review, confidentiality, audit logging, and reviewer handoff through virtual Microsoft Teams sessions that are recorded for Hasen.",
     deliverables: [
-      "Pilot kickoff training session",
-      "Follow-up or expansion training session",
+      "Virtual pilot kickoff training session, recorded",
+      "Virtual follow-up or expansion training session, recorded",
       "Reviewer-focused handoff",
       "Quick-reference workflow guide",
       "Final Phase 1 handoff notes",
@@ -470,7 +499,8 @@ const auditFields = [
 const timeline = [
   {
     week: "Week 1",
-    milestone: "Kickoff, access planning, Claude Team setup, source-document workflow",
+    milestone:
+      "Kickoff workshop (onsite or virtual), access planning, Claude Team setup, source-document workflow",
     outcome:
       "Hasen has the workspace structure and intake process needed to begin controlled testing.",
   },
@@ -482,7 +512,7 @@ const timeline = [
   },
   {
     week: "Week 3",
-    milestone: "Final pilot validation, training, documentation, handoff",
+    milestone: "Final pilot validation, virtual training, documentation, handoff",
     outcome:
       "Pilot users are trained and Hasen has a repeatable Phase 1 workflow for upcoming projects.",
   },
@@ -495,18 +525,32 @@ const timeline = [
 ] as const;
 
 const investmentRows = [
-  ["Kickoff, NDA coordination, and access planning", "Included", "Included"],
+  ["Kickoff workshop and access planning (onsite or virtual)", "Included", "Included"],
   ["Claude Team setup and governance guidance", "Included", "Included"],
   ["Document intake and source packaging workflow", "Included", "Included"],
   ["Work Order template mapping and prompt playbook", "Included", "Included"],
   ["Pilot testing and draft-quality refinement", "Included", "Included"],
   ["Audit record process and reviewer workflow", "Included", "Included"],
-  ["Two training sessions and handoff materials", "Included", "Included"],
+  ["Two virtual training sessions and handoff materials", "Included", "Included"],
   ["60-day post-launch optimization window", "Included", "Included"],
   ["Total Phase 1 Fixed Fee", "AI Pilot Implementation - Production", "$18,500"],
 ] as const;
 
+const paymentTerms = [
+  "50% ($9,250) invoiced upon execution of the Master Services Agreement and Exhibit A (Statement of Work) via DocuSign.",
+  "Remaining 50% ($9,250) invoiced upon Phase 1 handoff, typically the conclusion of Week 3, as defined by the Phase 1 acceptance criteria.",
+  "Both installments are Net 30. The included 60-day optimization window does not generate additional invoices.",
+] as const;
+
+const acceptanceCriteria = [
+  "Prompt playbook validated against at least three representative Work Order scenarios with documented outputs.",
+  "Audit log template operational and used by the pilot team for at least one test cycle.",
+  "Both virtual training sessions delivered and recorded, with the quick-reference workflow guide accepted by Hasen.",
+  "Phase 1 handoff notes delivered to Hasen, including next-step recommendations.",
+] as const;
+
 const assumptions = [
+  "The Mutual Non-Disclosure Agreement between ITECS and Hasen remains in effect throughout Phase 1.",
   "Hasen's statement that current Prime Contracts do not restrict this Phase 1 AI processing path remains accurate for the initial projects.",
   "Hasen's outside counsel will handle the legal AI policy; ITECS will provide technical and workflow input as requested.",
   "Hasen retains final legal, commercial, and operational approval of all Work Orders.",
@@ -516,6 +560,19 @@ const assumptions = [
   "Large plan/spec packages may need to be split or summarized before Claude review due to vendor file, page, and context limits.",
   "Audit logging will be implemented as a practical workflow and template, not as a custom immutable compliance platform.",
   "The Phase 1 fixed fee is based on ITECS's AI Pilot Implementation - Production service offering, adapted to Hasen's Work Order drafting use case.",
+  "The kickoff workshop is delivered onsite at Hasen's Fort Worth office or virtually via Microsoft Teams, at Hasen's choice, with no additional travel charge.",
+  "Training sessions are delivered virtually via Microsoft Teams and recorded for Hasen's ongoing internal use.",
+] as const;
+
+const clientResponsibilities = [
+  "Designate a single point of contact for the Phase 1 engagement, defaulting to Brenda F. Hasenzahl.",
+  "Confirm whether the kickoff workshop will be hosted onsite at Hasen's Fort Worth office or virtually via Microsoft Teams at engagement letter execution.",
+  "Provide representative Work Order templates, sample Prime Contract excerpts, project specifications, drawings, insurance requirements, and other source documents needed for prompt playbook development and pilot testing.",
+  "Identify the 3-5 initial pilot users and confirm their availability for the kickoff workshop, training sessions, and pilot testing.",
+  "Confirm reviewer availability for David Hasenzahl and Paul Witt during pilot draft validation.",
+  "Purchase and configure Claude Team seats before Week 1 work begins, or coordinate with ITECS on the workspace creation timeline.",
+  "Respond to ITECS questions and information requests within two business days during the active engagement window.",
+  "Notify ITECS of any changes to project scope, stakeholders, or timing that may affect Phase 1 delivery.",
 ] as const;
 
 const outOfScope = [
@@ -526,7 +583,35 @@ const outOfScope = [
   "Custom application development or an Anthropic API-based application.",
   "Private AI network, private model hosting, or on-premises model deployment.",
   "COI automation, Procore photo analysis, scheduling automation, daily reporting automation, or operations-team workflows.",
+  "Onsite delivery of training sessions; training is provided virtually via Microsoft Teams. The kickoff workshop is offered onsite or virtually at Hasen's option.",
   "Ongoing Work Order production support beyond the pilot scenarios and training included above.",
+] as const;
+
+const risks = [
+  {
+    title: "File and document handling",
+    text: "Claude has documented file upload, file size, and page count limits. Large plan and specification packages may need to be split, summarized, or excerpted before Claude review.",
+  },
+  {
+    title: "Context window constraints",
+    text: "Even with Claude's 200,000-token context window, Work Orders spanning multiple large source documents may exceed available context for a single review.",
+  },
+  {
+    title: "Human review required",
+    text: "Claude is a capable drafting partner but is not infallible. Every AI-generated Work Order draft requires review and approval by Hasen's authorized personnel.",
+  },
+  {
+    title: "Quality variance",
+    text: "Initial draft quality may vary by subcontractor trade, source-document quality, and how closely the project resembles pilot scenarios.",
+  },
+  {
+    title: "Source quality affects output",
+    text: "Poorly scanned PDFs, missing specification sections, or incomplete Prime Contract excerpts will affect draft quality.",
+  },
+  {
+    title: "Vendor platform changes",
+    text: "Anthropic may update pricing, features, security controls, or terms. ITECS will monitor material changes during the engagement.",
+  },
 ] as const;
 
 const phaseTwo = [
@@ -536,6 +621,14 @@ const phaseTwo = [
   "Integrating document intake with Microsoft 365, Procore, or Sage.",
   "Automating Certificate of Insurance review support.",
   "Assessing whether a private or self-hosted AI architecture is technically and economically justified.",
+] as const;
+
+const nextSteps = [
+  "Hasen confirms acceptance of this Phase 1 Proposal via email reply to bdesmot@itecsonline.com or through the approval form below.",
+  "ITECS drafts the Master Services Agreement and Exhibit A (Statement of Work) and sends both via DocuSign to Hasen's authorized signatory within two business days of acceptance.",
+  "Hasen reviews and executes both documents via DocuSign.",
+  "ITECS issues the first invoice for 50% of the Phase 1 fixed fee on the date of MSA and Exhibit A execution, on Net 30 terms.",
+  "Phase 1 work begins on the agreed kickoff date, with pilot users and reviewers identified, kickoff format confirmed, and representative source documents available.",
 ] as const;
 
 const vendorSources = [
@@ -669,7 +762,7 @@ export default function HasenClaudeWorkOrderProposal() {
                   {
                     icon: <Scale className="h-5 w-5" />,
                     label: "Human review preserved",
-                    text: "David and Paul Witt retain review authority before Work Orders are issued.",
+                    text: "David Hasenzahl and Paul Witt retain review authority before Work Orders are issued.",
                   },
                 ].map((item) => (
                   <div
@@ -695,7 +788,41 @@ export default function HasenClaudeWorkOrderProposal() {
 
       <Section className="border-y border-[var(--border-subtle)] bg-bg-surface/30">
         <FadeIn>
-          <div className="grid gap-4 md:grid-cols-5">
+          <div className="mb-12 grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
+            <div>
+              <SectionLabel>Phase 1 at a Glance</SectionLabel>
+              <h2 className="text-3xl font-light tracking-[-0.02em] text-text-primary md:text-5xl">
+                The engagement parameters in one executive view.
+              </h2>
+            </div>
+            <p className="text-lg leading-relaxed text-text-secondary">
+              Version 3.0 adds the onsite kickoff option, a named engagement
+              team, clearer responsibilities, and formal acceptance criteria
+              while preserving the fixed Phase 1 fee and delivery timeline.
+            </p>
+          </div>
+        </FadeIn>
+
+        <FadeIn delay={0.08}>
+          <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-4">
+            {glanceRows.map(([label, value]) => (
+              <div
+                key={label}
+                className="rounded-xl border border-brand-accent/15 bg-brand-accent/5 p-4"
+              >
+                <div className="text-[10px] uppercase tracking-widest text-brand-accent-bright">
+                  {label}
+                </div>
+                <div className="mt-2 text-sm leading-relaxed text-text-secondary">
+                  {value}
+                </div>
+              </div>
+            ))}
+          </div>
+        </FadeIn>
+
+        <FadeIn delay={0.12}>
+          <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {metadataRows.map(([label, value]) => (
               <div key={label} className="rounded-xl border border-[var(--border-subtle)] bg-bg-void/50 p-4">
                 <div className="text-[10px] uppercase tracking-widest text-text-dim">
@@ -741,6 +868,88 @@ export default function HasenClaudeWorkOrderProposal() {
                 by project-specific source documents and an audit trail showing
                 the documents, prompt version, draft output, reviewer, and
                 approval status.
+              </p>
+            </div>
+          </SlideIn>
+        </div>
+      </Section>
+
+      <Section className="border-y border-[var(--border-subtle)] bg-bg-surface/20">
+        <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+          <SlideIn direction="left">
+            <SectionLabel>About ITECS</SectionLabel>
+            <h2 className="text-3xl font-light text-text-primary md:text-5xl">
+              A Dallas-Fort Worth technology partner with AI delivery depth.
+            </h2>
+            <div className="mt-6 space-y-5 leading-relaxed text-text-secondary">
+              <p>
+                ITECS Outsourcing, LLC is a Dallas-Fort Worth based managed
+                services and AI consulting firm founded in 2002. Over 23+
+                years, ITECS has supported Texas businesses across construction,
+                healthcare, financial services, professional services, and
+                manufacturing. The company maintains a 95% client retention
+                rate, a 99.9% uptime guarantee, and currently serves 75+ active
+                clients across the DFW metroplex.
+              </p>
+              <p>
+                ITECS service lines include managed IT, managed security with
+                24/7 SOC and SentinelOne/Sophos MDR, cloud hosting, fractional
+                vCIO advisory, and AI consulting and development. For Hasen,
+                ITECS recommends Anthropic Claude based on Hasen&apos;s stated
+                platform preference and Claude&apos;s fit for document-heavy Work
+                Order drafting.
+              </p>
+            </div>
+            <div className="mt-8 grid grid-cols-3 gap-3">
+              {[
+                ["23+", "years serving DFW"],
+                ["95%", "client retention"],
+                ["75+", "active clients"],
+              ].map(([value, label]) => (
+                <div
+                  key={label}
+                  className="rounded-xl border border-brand-accent/15 bg-brand-accent/5 p-3"
+                >
+                  <div className="text-xl font-light text-brand-accent-bright">
+                    {value}
+                  </div>
+                  <div className="mt-1 text-[10px] uppercase leading-snug tracking-[0.12em] text-text-dim">
+                    {label}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </SlideIn>
+
+          <SlideIn direction="right" delay={0.1}>
+            <div className="rounded-2xl border border-brand-accent/20 bg-brand-accent/5 p-6">
+              <div className="mb-6 flex items-center gap-3">
+                <UserCheck className="h-6 w-6 text-brand-accent-bright" />
+                <h3 className="text-xl font-light text-text-primary">
+                  Engagement team
+                </h3>
+              </div>
+              <div className="grid gap-3">
+                {engagementTeam.map(([role, name]) => (
+                  <div
+                    key={role}
+                    className="rounded-xl border border-[var(--border-subtle)] bg-bg-void/60 p-4"
+                  >
+                    <div className="text-[10px] uppercase tracking-widest text-text-dim">
+                      {role}
+                    </div>
+                    <div className="mt-2 text-sm font-medium text-text-primary">
+                      {name}
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <p className="mt-5 text-sm leading-relaxed text-text-secondary">
+                Brian Desmot serves as engagement sponsor and primary contact
+                for executive-level coordination. Jordan Emerle leads day-to-day
+                technical account management. The assigned AI Specialist will
+                lead prompt engineering, workflow design, and pilot testing
+                under Brian&apos;s direction.
               </p>
             </div>
           </SlideIn>
@@ -952,6 +1161,37 @@ export default function HasenClaudeWorkOrderProposal() {
       <Section>
         <FadeIn>
           <div className="mb-14 text-center">
+            <SectionLabel>Risks and Known Constraints</SectionLabel>
+            <h2 className="text-3xl font-light text-text-primary md:text-4xl">
+              Practical AI expectations, stated clearly before kickoff.
+            </h2>
+            <p className="mx-auto mt-4 max-w-3xl leading-relaxed text-text-secondary">
+              ITECS expects Phase 1 to deliver durable value, but commercial AI
+              platforms still require clear operating boundaries, document
+              discipline, and human review.
+            </p>
+          </div>
+        </FadeIn>
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {risks.map((risk, index) => (
+            <FadeIn key={risk.title} delay={index * 0.04}>
+              <div className="h-full rounded-2xl border border-[var(--border-subtle)] bg-bg-surface/35 p-5">
+                <ShieldCheck className="mb-4 h-5 w-5 text-brand-accent-bright" />
+                <h3 className="text-lg font-light text-text-primary">
+                  {risk.title}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-text-secondary">
+                  {risk.text}
+                </p>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+      </Section>
+
+      <Section>
+        <FadeIn>
+          <div className="mb-14 text-center">
             <SectionLabel>Timeline</SectionLabel>
             <h2 className="text-3xl font-light text-text-primary md:text-4xl">
               Initial implementation in 10-15 business days after access and
@@ -1000,8 +1240,10 @@ export default function HasenClaudeWorkOrderProposal() {
             <p className="mx-auto mt-4 max-w-3xl leading-relaxed text-text-secondary">
               ITECS proposes Phase 1 as a fixed-fee AI Pilot Implementation -
               Production engagement. The fee includes scoped implementation,
-              pilot testing, audit-trail documentation, two training sessions,
-              and the 60-day post-launch optimization window.
+              pilot testing, audit-trail documentation, two virtually delivered
+              and recorded training sessions, an onsite or virtual kickoff
+              workshop at Hasen&apos;s option, and the 60-day post-launch
+              optimization window.
             </p>
           </div>
         </FadeIn>
@@ -1044,7 +1286,11 @@ export default function HasenClaudeWorkOrderProposal() {
               {investmentRows.map(([workstream, scope, fee]) => (
                 <div
                   key={workstream}
-                  className="grid gap-3 p-4 text-sm md:grid-cols-[1.2fr_0.7fr_0.5fr]"
+                  className={`grid gap-3 p-4 text-sm md:grid-cols-[1.2fr_0.7fr_0.5fr] ${
+                    workstream === "Total Phase 1 Fixed Fee"
+                      ? "bg-brand-accent/10 text-brand-accent-bright"
+                      : ""
+                  }`}
                 >
                   <div className="text-text-secondary">{workstream}</div>
                   <div className="text-text-dim">{scope}</div>
@@ -1058,6 +1304,29 @@ export default function HasenClaudeWorkOrderProposal() {
         </FadeIn>
 
         <div className="mx-auto mt-8 grid max-w-5xl gap-4 lg:grid-cols-2">
+          <FadeIn delay={0.1}>
+            <div className="h-full rounded-2xl border border-[var(--border-subtle)] bg-bg-surface/35 p-6">
+              <div className="mb-3 flex items-center gap-2 text-text-primary">
+                <FileCheck2 className="h-5 w-5 text-brand-accent-bright" />
+                <h3 className="font-medium">Payment terms</h3>
+              </div>
+              <CheckList items={paymentTerms} />
+            </div>
+          </FadeIn>
+          <FadeIn delay={0.12}>
+            <div className="h-full rounded-2xl border border-[var(--border-subtle)] bg-bg-surface/35 p-6">
+              <div className="mb-3 flex items-center gap-2 text-text-primary">
+                <BadgeCheck className="h-5 w-5 text-brand-accent-bright" />
+                <h3 className="font-medium">Phase 1 acceptance criteria</h3>
+              </div>
+              <CheckList items={acceptanceCriteria} />
+              <p className="mt-4 text-sm leading-relaxed text-text-secondary">
+                The 60-day post-launch optimization window begins on the date
+                Phase 1 is accepted as complete and does not affect the timing
+                of the second invoice.
+              </p>
+            </div>
+          </FadeIn>
           <FadeIn delay={0.12}>
             <div className="h-full rounded-2xl border border-[var(--border-subtle)] bg-bg-surface/35 p-6">
               <div className="mb-3 flex items-center gap-2 text-text-primary">
@@ -1102,13 +1371,22 @@ export default function HasenClaudeWorkOrderProposal() {
             <CheckList items={assumptions} />
           </SlideIn>
           <SlideIn direction="right" delay={0.12}>
+            <SectionLabel>Client Responsibilities</SectionLabel>
+            <h2 className="mb-6 text-3xl font-light text-text-primary md:text-4xl">
+              What Hasen provides so Phase 1 can move quickly.
+            </h2>
+            <CheckList items={clientResponsibilities} />
+          </SlideIn>
+        </div>
+        <FadeIn delay={0.14}>
+          <div className="mt-16 rounded-2xl border border-[var(--border-subtle)] bg-bg-surface/30 p-6">
             <SectionLabel>Out of Scope</SectionLabel>
             <h2 className="mb-6 text-3xl font-light text-text-primary md:text-4xl">
               Items that require written change order or Phase 2 scope.
             </h2>
             <CheckList items={outOfScope} />
-          </SlideIn>
-        </div>
+          </div>
+        </FadeIn>
       </Section>
 
       <CircuitTrace variant="section-divider" />
@@ -1139,14 +1417,30 @@ export default function HasenClaudeWorkOrderProposal() {
           <div className="mb-12 text-center">
             <SectionLabel>Acceptance</SectionLabel>
             <h2 className="text-3xl font-light text-text-primary md:text-4xl">
-              Approval starts the Phase 1 kickoff process.
+              Acceptance starts the contracting and kickoff process.
             </h2>
             <p className="mx-auto mt-4 max-w-2xl leading-relaxed text-text-secondary">
-              To proceed, Hasen would approve the Phase 1 scope, confirm the
-              fixed Phase 1 fee, and identify the initial pilot users and sample
-              project documents. ITECS is prepared to begin Phase 1 promptly
-              upon approval.
+              ITECS is prepared to begin Phase 1 promptly upon execution. The
+              kickoff format, pilot users, reviewers, and source documents are
+              confirmed before Week 1 work begins.
             </p>
+          </div>
+        </FadeIn>
+        <FadeIn delay={0.08}>
+          <div className="mx-auto mb-8 grid max-w-4xl gap-3">
+            {nextSteps.map((step, index) => (
+              <div
+                key={step}
+                className="grid gap-4 rounded-xl border border-[var(--border-subtle)] bg-bg-surface/35 p-4 md:grid-cols-[56px_1fr]"
+              >
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-brand-accent/10 text-sm font-medium text-brand-accent-bright">
+                  {index + 1}
+                </div>
+                <p className="text-sm leading-relaxed text-text-secondary">
+                  {step}
+                </p>
+              </div>
+            ))}
           </div>
         </FadeIn>
         <FadeIn delay={0.1}>
