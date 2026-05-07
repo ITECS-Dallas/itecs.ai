@@ -1,6 +1,6 @@
 ---
 name: itecs-proposals
-description: Use when creating, updating, testing, emailing, or documenting hidden ITECS web proposal pages under /p, including magic-link access, protected PDF downloads, proposal response forms, and proposal template standards.
+description: Use when creating, updating, testing, emailing, or documenting hidden ITECS web proposal pages under /p, including magic-link access, protected PDF downloads, proposal response forms, production URL safety, and proposal template standards.
 ---
 
 # ITECS Proposals
@@ -29,12 +29,40 @@ The template standard includes dark itecs.ai styling, an executive hero, clear s
 7. Client-facing proposal emails should link to `https://itecs.ai/p/<slug>/access`, avoid pricing in the email body unless requested, and use the proposal hero image when suitable.
 8. Update `docs/proposals.md`, `.claude/commands/add-proposal.md`, `CLAUDE.md`, and `.serena/memories/proposal_pages_workflow.md` when the workflow or template standard changes.
 
+## Production URL Safety
+
+All proposal access emails and magic-link redirects must use canonical public URLs.
+
+- Use `SITE_CONFIG.url` or `NEXT_PUBLIC_SITE_URL` for production proposal links.
+- Keep `src/lib/proposals/url.ts` canonical-first for non-local requests.
+- Do not build client-facing email links or redirect destinations from `request.url`, `request.nextUrl.origin`, `Host`, `X-Forwarded-Host`, Docker hostnames, `0.0.0.0`, or container ports.
+- Localhost and `127.0.0.1` may remain supported for local development only.
+- After touching proposal access, verify an internal-host request cannot leak into a client link:
+
+```bash
+docker compose exec -T web node - <<'NODE'
+const http = require('http');
+const { createHmac } = require('crypto');
+const secret = process.env.PROPOSAL_MAGIC_LINK_SECRET;
+const slug = 'hasen-claude-work-order-phase-1-9ee3f0';
+const payload = { slug, email: 'bdesmot@itecsonline.com', purpose: 'magic-link', exp: Math.floor(Date.now() / 1000) + 120 };
+const encodedPayload = Buffer.from(JSON.stringify(payload)).toString('base64url');
+const signature = createHmac('sha256', secret).update(encodedPayload).digest('base64url');
+const path = `/api/proposals/access/verify?token=${encodeURIComponent(`${encodedPayload}.${signature}`)}`;
+http.request({ host: '127.0.0.1', port: 3000, path, headers: { Host: '0.0.0.0:3000' } }, (res) => {
+  console.log(res.statusCode, res.headers.location);
+  if (!String(res.headers.location || '').startsWith('https://itecs.ai/')) process.exit(1);
+  res.resume();
+}).end();
+NODE
+```
+
 ## Validation
 
 - Run `npm run lint`, `npx tsc --noEmit`, `npm run build`, and `git diff --check`.
 - Deploy with `docker compose up -d --build --remove-orphans web` when the user asks to publish or the proposal is ready for client testing.
 - Verify with Playwright using the Googlebot Smartphone viewport from `CLAUDE.md`.
-- Check direct proposal URL redirects to `/access`, magic-link cookie grants access, protected PDF route returns `application/pdf`, and raw public PDF URLs are not reachable.
+- Check direct proposal URL redirects to `/access`, magic-link cookie grants access, protected PDF route returns `application/pdf`, raw public PDF URLs are not reachable, and magic-link redirects use `https://itecs.ai` even when the request host is internal.
 
 ## Guardrails
 

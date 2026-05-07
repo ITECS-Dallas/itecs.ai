@@ -165,13 +165,21 @@ const pdfHref = "/api/proposals/<slug>/pdf";
    section unless the user explicitly asks for them in the sticky bar.
 8. Send client-facing emails to `https://itecs.ai/p/<slug>/access`, not directly
    to `/p/<slug>`.
-9. Confirm `PROPOSAL_MAGIC_LINK_SECRET` exists in `.env`, `.env.example`, and
+9. Confirm magic-link emails and verification redirects use canonical public
+   URLs from `SITE_CONFIG.url` or `NEXT_PUBLIC_SITE_URL`, not request host
+   headers, `request.url`, `request.nextUrl.origin`, Docker hostnames,
+   `0.0.0.0`, or container ports. `src/lib/proposals/url.ts` owns this rule.
+10. Confirm `PROPOSAL_MAGIC_LINK_SECRET` exists in `.env`, `.env.example`, and
    `docker-compose.yml`.
 
 ### 7. Build and verify
 
 - Run `npm run build` to verify no TypeScript or build errors.
 - If the build fails, fix the issue and rebuild.
+- After deploy, run an internal-host redirect check. A request with
+  `Host: 0.0.0.0:3000` to `/api/proposals/access/verify` must redirect to
+  `https://itecs.ai/p/<slug>`, never to `0.0.0.0`, `localhost`, or a container
+  address.
 
 ### 8. Deploy
 

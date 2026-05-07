@@ -86,6 +86,37 @@ When enabling a proposal for magic-link access:
 5. Update the proposal page route to call `hasProposalAccess(<slug>)` and
    redirect visitors without a valid proposal cookie to `/p/<slug>/access`.
 6. Confirm `PROPOSAL_MAGIC_LINK_SECRET` is set in `.env` and Docker Compose.
+7. Confirm proposal email links and verification redirects use the canonical
+   public site URL. Do not build client-facing proposal URLs from request host
+   headers, Docker hostnames, `0.0.0.0`, or container ports.
+
+### URL safety requirement
+
+The proposal access flow must never leak internal runtime hosts into client
+emails or redirects. `src/lib/proposals/url.ts` owns this behavior. Production
+proposal URLs must resolve through `SITE_CONFIG.url` or `NEXT_PUBLIC_SITE_URL`;
+only `localhost` and `127.0.0.1` may use request-derived hosts for local
+development.
+
+After changing proposal access, deploy and run an internal-host redirect check:
+
+```bash
+docker compose exec -T web node - <<'NODE'
+const http = require('http');
+const { createHmac } = require('crypto');
+const secret = process.env.PROPOSAL_MAGIC_LINK_SECRET;
+const slug = 'hasen-claude-work-order-phase-1-9ee3f0';
+const payload = { slug, email: 'bdesmot@itecsonline.com', purpose: 'magic-link', exp: Math.floor(Date.now() / 1000) + 120 };
+const encodedPayload = Buffer.from(JSON.stringify(payload)).toString('base64url');
+const signature = createHmac('sha256', secret).update(encodedPayload).digest('base64url');
+const path = `/api/proposals/access/verify?token=${encodeURIComponent(`${encodedPayload}.${signature}`)}`;
+http.request({ host: '127.0.0.1', port: 3000, path, headers: { Host: '0.0.0.0:3000' } }, (res) => {
+  console.log(res.statusCode, res.headers.location);
+  if (!String(res.headers.location || '').startsWith('https://itecs.ai/')) process.exit(1);
+  res.resume();
+}).end();
+NODE
+```
 
 The public email should avoid pricing and use the access-page URL as the primary
 CTA. This keeps the email short and makes the proposal feel private without
