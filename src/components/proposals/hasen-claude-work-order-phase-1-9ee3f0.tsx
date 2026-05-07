@@ -676,14 +676,14 @@ function StickyProposalDownload() {
       initial={{ opacity: 0, y: 24 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.45, delay: 0.8, ease: "easeOut" }}
-      className="fixed inset-x-0 bottom-4 z-50 mx-auto w-[calc(100%-2rem)] max-w-sm print:hidden"
+      className="fixed bottom-5 right-6 z-50 print:hidden md:right-12 lg:right-[max(6rem,calc((100vw-72rem)/2+1.5rem))]"
     >
       <a
         href={pdfHref}
         download
-        className="group flex items-center justify-center gap-3 rounded-2xl border border-cyan-100/55 bg-cyan-300/95 px-4 py-3 text-sm font-semibold uppercase tracking-[0.12em] text-slate-950 shadow-[0_18px_60px_rgba(34,211,238,0.35)] backdrop-blur transition-all hover:-translate-y-0.5 hover:bg-cyan-200 focus:outline-none focus:ring-2 focus:ring-cyan-100 focus:ring-offset-2 focus:ring-offset-bg-void"
+        className="group flex items-center justify-center gap-2 rounded-xl border border-cyan-100/55 bg-cyan-300/95 px-3.5 py-2.5 text-xs font-semibold uppercase tracking-[0.1em] text-slate-950 shadow-[0_14px_44px_rgba(34,211,238,0.3)] backdrop-blur transition-all hover:-translate-y-0.5 hover:bg-cyan-200 focus:outline-none focus:ring-2 focus:ring-cyan-100 focus:ring-offset-2 focus:ring-offset-bg-void md:px-4"
       >
-        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-slate-950/10 text-slate-950 transition-colors group-hover:bg-slate-950/15">
+        <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-slate-950/10 text-slate-950 transition-colors group-hover:bg-slate-950/15">
           <Download className="h-4 w-4" aria-hidden="true" />
         </span>
         <span>Download Proposal</span>
