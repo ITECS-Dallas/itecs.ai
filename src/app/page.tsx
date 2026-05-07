@@ -5,6 +5,7 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { Hero } from "@/components/sections/Hero";
 import { TrustBar } from "@/components/sections/TrustBar";
 import { AIAdoptionUnderstanding } from "@/components/sections/AIAdoptionUnderstanding";
+import { AIPricingPreview } from "@/components/sections/AIPricingPreview";
 import { AIPracticeAreas } from "@/components/sections/AIPracticeAreas";
 import { ServicesGrid } from "@/components/sections/ServicesGrid";
 import { FeatureShowcase } from "@/components/sections/FeatureShowcase";
@@ -41,6 +42,7 @@ export default function HomePage() {
       <Hero />
       <TrustBar />
       <AIAdoptionUnderstanding />
+      <AIPricingPreview />
       <AIPracticeAreas />
       <ServicesGrid />
       <FeatureShowcase features={HOMEPAGE_FEATURES} />

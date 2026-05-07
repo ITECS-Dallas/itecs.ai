@@ -291,6 +291,7 @@ function MobileNav({
             </p>
             {[
               { label: "All Services", href: "/services" },
+              { label: "Pricing", href: "/pricing" },
               { label: "Insights", href: "/insights" },
               { label: "About", href: "/about" },
             ].map((link, i) => {
@@ -391,6 +392,7 @@ export function Header() {
     pathname.startsWith("/managed-intelligence-provider");
 
   const navItems = [
+    { label: "Pricing", href: "/pricing" },
     { label: "Insights", href: "/insights" },
     { label: "About", href: "/about" },
   ];

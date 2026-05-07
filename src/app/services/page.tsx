@@ -5,6 +5,7 @@ import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { ServicesHero } from "@/components/sections/ServicesHero";
 import { PainPoint } from "@/components/sections/PainPoint";
 import { AIAdoptionUnderstanding } from "@/components/sections/AIAdoptionUnderstanding";
+import { AIPricingPreview } from "@/components/sections/AIPricingPreview";
 import { ServiceJourneyDiagram } from "@/components/sections/ServiceJourneyDiagram";
 import { ServicesGrid } from "@/components/sections/ServicesGrid";
 import { StatsBar } from "@/components/sections/StatsBar";
@@ -80,7 +81,10 @@ export default function ServicesPage() {
       {/* 3. Buyer education — reduce complexity, security, and cost concerns */}
       <AIAdoptionUnderstanding />
 
-      {/* 4. SMB Pain Point — AI choice paralysis */}
+      {/* 4. Pricing pathways — reduce cost uncertainty before the service grid */}
+      <AIPricingPreview />
+
+      {/* 5. SMB Pain Point — AI choice paralysis */}
       <PainPoint
         stat="73%"
         statLabel="of small businesses say AI could help — but don't know where to start"
@@ -98,16 +102,16 @@ export default function ServicesPage() {
         }}
       />
 
-      {/* 5. Three-phase AI journey diagram */}
+      {/* 6. Three-phase AI journey diagram */}
       <ServiceJourneyDiagram />
 
-      {/* 6. Full services grid */}
+      {/* 7. Full services grid */}
       <ServicesGrid />
 
-      {/* 7. Company stats */}
+      {/* 8. Company stats */}
       <StatsBar />
 
-      {/* 8. Enterprise-grade security */}
+      {/* 9. Enterprise-grade security */}
       <SecurityGuarantee
         description="Every AI service ITECS deploys runs in a private, encrypted environment. Your business data never trains public models and never leaves your control. ITECS AI is backed by ITECS — a Dallas cybersecurity MSP operating since 2002."
         points={[
@@ -126,10 +130,10 @@ export default function ServicesPage() {
         }}
       />
 
-      {/* 9. FAQ — LAST content section before CTA (V2.0 protocol) */}
+      {/* 10. FAQ — LAST content section before CTA (V2.0 protocol) */}
       <FAQ items={SERVICES_FAQ} heading="AI Services FAQ" />
 
-      {/* 10. Final CTA */}
+      {/* 11. Final CTA */}
       <CTASection />
 
       {/* JSON-LD Schema — FAQPage with verbatim parity */}

@@ -42,6 +42,7 @@ export const SITE_CONFIG = {
 
 export const NAV_LINKS = [
   { label: "Services", href: "/services" },
+  { label: "Pricing", href: "/pricing" },
   { label: "Managed Intelligence", href: "/managed-intelligence-provider" },
   { label: "AI DevOps", href: "/ai-devops" },
   { label: "AI Receptionist", href: "/ai-receptionist" },
@@ -50,6 +51,283 @@ export const NAV_LINKS = [
   { label: "Insights", href: "/insights" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
+] as const;
+
+// ---------------------------------------------------------------------------
+// Public AI Pricing
+// ---------------------------------------------------------------------------
+
+export interface AIPricingOffering {
+  name: string;
+  price: string;
+  duration?: string;
+  scope?: string;
+  description: string;
+  included: string[];
+  bestFor?: string;
+  highlighted?: boolean;
+}
+
+export interface AIPricingCategory {
+  eyebrow: string;
+  title: string;
+  description: string;
+  offerings: AIPricingOffering[];
+}
+
+export const AI_PRICING_CATEGORIES: AIPricingCategory[] = [
+  {
+    eyebrow: "Start Here",
+    title: "Discovery and Strategy",
+    description:
+      "For leadership teams that want a clear, low-risk way to understand where AI fits before committing to a rollout or custom build.",
+    offerings: [
+      {
+        name: "AI Readiness Assessment",
+        price: "$6,500",
+        duration: "1-2 weeks",
+        description:
+          "The fastest way to understand where AI fits in your organization. ITECS audits current AI usage, identifies shadow AI exposure, prioritizes high-value use cases, and recommends the right platform stack for your environment.",
+        included: [
+          "Current-state audit of AI usage across your organization",
+          "Prioritized use-case map ranked by business impact and feasibility",
+          "Platform stack recommendation across Claude, ChatGPT, Gemini, Microsoft Copilot, GitHub Copilot, and other major tools",
+          "12-month AI roadmap aligned to your strategic priorities",
+          "Executive-ready deliverable suitable for board or leadership review",
+          "90-minute leadership workshop",
+        ],
+        bestFor:
+          "Organizations exploring AI for the first time or wanting to validate an existing AI direction.",
+        highlighted: true,
+      },
+      {
+        name: "Executive AI Literacy Briefing",
+        price: "$3,500/session",
+        duration: "Half-day",
+        description:
+          "A private, tailored session for your board, leadership team, or department heads. We translate AI from buzzword to business reality, calibrated to your industry.",
+        included: [
+          "How modern AI works in plain English",
+          "Where AI creates real value in your industry",
+          "Governance, security, and risk overview",
+          "Live Q&A with senior ITECS strategists",
+        ],
+        bestFor:
+          "Leadership teams that want a credible AI briefing without a multi-week consulting engagement.",
+      },
+      {
+        name: "Shadow AI Discovery and Risk Report",
+        price: "$5,500",
+        duration: "1 week",
+        description:
+          "A focused review that identifies unsanctioned AI usage, ranks the risk, and gives leadership a remediation playbook backed by ITECS cybersecurity experience.",
+        included: [
+          "Endpoint and Microsoft 365 or Google Workspace scan for unsanctioned AI tool usage",
+          "Risk-ranked findings by user, department, and tool category",
+          "Remediation playbook with prioritized actions",
+          "Executive summary suitable for board reporting",
+        ],
+        bestFor:
+          "Organizations with compliance, regulatory, or confidentiality obligations that need visibility into current AI usage.",
+      },
+    ],
+  },
+  {
+    eyebrow: "Build",
+    title: "Production Foundation",
+    description:
+      "For organizations ready to put AI into controlled use with policy, governance, platform setup, training, and pilot support.",
+    offerings: [
+      {
+        name: "AI Acceptable Use Policy Package",
+        price: "$4,500",
+        scope: "Standalone policy package",
+        description:
+          "A complete, custom Acceptable Use Policy and AI governance framework right-sized for SMB teams adopting AI across major platforms.",
+        included: [
+          "Custom Acceptable Use Policy tailored to your industry and risk profile",
+          "AI governance framework with roles, responsibilities, and review cadence",
+          "Employee handbook insert ready for adoption",
+          "30-minute training deck for rollout",
+        ],
+        bestFor:
+          "Organizations adopting AI tools that need clear rules before usage scales.",
+      },
+      {
+        name: "AI Pilot Implementation - Small",
+        price: "$12,500",
+        scope: "3-5 users, 1 primary use case, 30 days",
+        description:
+          "A focused, low-risk pilot of your chosen AI platform. ITECS handles setup, training, and post-launch optimization so the team can prove value before expanding.",
+        included: [
+          "Primary AI platform tenant setup",
+          "Project workspace configuration tailored to the use case",
+          "5-template prompt library built around your real work",
+          "1 onsite or virtual training session",
+          "30-day post-launch optimization window",
+        ],
+        bestFor:
+          "Organizations ready to pilot AI in a focused workflow with a small user group.",
+      },
+      {
+        name: "AI Pilot Implementation - Production",
+        price: "$18,500",
+        scope: "10-25 users, 2-3 use cases, 60 days",
+        description:
+          "A production-ready AI rollout with the role-based libraries, audit-trail documentation, training, and support required for a real department deployment.",
+        included: [
+          "Everything in the Small pilot tier",
+          "Expansion to multiple use cases",
+          "Role-based prompt libraries",
+          "Audit-trail documentation",
+          "2 training sessions for pilot kickoff and expansion",
+          "60-day post-launch optimization window",
+        ],
+        bestFor:
+          "Organizations moving past pilot into production deployment for a full team or department.",
+      },
+    ],
+  },
+  {
+    eyebrow: "Specialize",
+    title: "Custom Build",
+    description:
+      "For teams that need custom agents, platform connectors, AI-enabled workflows, or internal AI capability beyond standard tool configuration.",
+    offerings: [
+      {
+        name: "Custom AI Agent, Connector and Integration Development",
+        price: "$8,000-$25,000 per agent",
+        description:
+          "Custom-built AI agents, connectors, and integrations across major platforms including Claude, OpenAI, Gemini, Procore, Sage, internal MCP servers, and workflow agents.",
+        included: [
+          "Detailed specification and architecture",
+          "Build, test, and deploy",
+          "Documentation and runbook",
+          "Handoff to your team",
+        ],
+        bestFor:
+          "Organizations with a defined workflow that needs secure custom automation or system integration.",
+      },
+      {
+        name: "AI-Augmented Business Process Redesign",
+        price: "$25,000-$75,000",
+        description:
+          "End-to-end redesign of a major workflow such as estimating, proposal generation, project closeout, or billing review, using AI as a force multiplier across the process.",
+        included: [
+          "Senior strategy and workflow discovery",
+          "Process redesign around measurable business outcomes",
+          "Custom engineering where the workflow requires it",
+          "Rollout enablement and documentation",
+        ],
+        bestFor:
+          "Organizations ready to redesign a high-value workflow rather than automate one task at a time.",
+      },
+      {
+        name: "Internal AI Champion Enablement Program",
+        price: "$8,500-$12,000",
+        duration: "4-6 weeks",
+        description:
+          "A structured program that trains one employee to become the organization's internal AI lead, creating capability that compounds after the engagement.",
+        included: [
+          "Custom curriculum tailored to your industry and use cases",
+          "Weekly coaching with a senior ITECS AI strategist",
+          "Project shadowing on real implementations",
+          "Handoff documentation",
+          "90-day post-program support window",
+        ],
+        bestFor:
+          "Organizations that want durable in-house AI fluency instead of relying only on outside consultants.",
+      },
+    ],
+  },
+];
+
+export const MANAGED_AI_TIERS = [
+  {
+    tier: "Managed AI Starter",
+    users: "Up to 10 users",
+    price: "$1,950/mo",
+    includedHours: "4 included hours",
+    highlighted: false,
+    features: [
+      "Monthly check-in",
+      "Prompt-library maintenance",
+      "Quarterly business review",
+    ],
+  },
+  {
+    tier: "Managed AI Standard",
+    users: "11-25 users",
+    price: "$2,650/mo",
+    includedHours: "6 included hours",
+    features: [
+      "Bi-monthly office hours",
+      "Expansion support",
+      "Prompt-library maintenance",
+      "Quarterly business review",
+    ],
+    highlighted: true,
+  },
+  {
+    tier: "Managed AI Plus",
+    users: "26-50 users",
+    price: "$3,500/mo",
+    includedHours: "10 included hours",
+    highlighted: false,
+    features: [
+      "Dedicated AI advisor",
+      "Custom workflow refinement",
+      "Monthly office hours",
+      "Quarterly business review",
+    ],
+  },
+] as const;
+
+export const AI_HOURLY_RATES = [
+  {
+    tier: "Tier 1 - AI Implementer",
+    role: "Hands-on delivery",
+    rate: "$245/hr",
+    typicalWork: "Setup, configuration, training delivery, documentation, testing",
+  },
+  {
+    tier: "Tier 2 - AI Specialist",
+    role: "Senior engineering and authoring",
+    rate: "$295/hr",
+    typicalWork:
+      "Custom AI agent and connector development, prompt engineering, integration work, AI policy authoring",
+  },
+  {
+    tier: "Tier 3 - AI Strategist",
+    role: "Strategic advisory and AI security/governance",
+    rate: "$375/hr",
+    typicalWork:
+      "Executive workshops, AI roadmapping, AI security architecture, shadow AI advisory, AI compliance, fractional Head of AI",
+  },
+] as const;
+
+export const AI_RATE_MULTIPLIERS = [
+  { condition: "Standard business hours", multiplier: "1.0x" },
+  { condition: "After-hours", multiplier: "1.5x" },
+  { condition: "Emergency or same-day onsite", multiplier: "1.5x" },
+  { condition: "After-hours plus emergency", multiplier: "2.0x" },
+  {
+    condition: "Onsite travel beyond 20-mile radius",
+    multiplier: "Standard ITECS travel rates apply",
+  },
+] as const;
+
+export const AI_LOYALTY_DISCOUNTS = [
+  {
+    plan: "MSP Pro",
+    hourlyDiscount: "10%",
+    productizedDiscount: "10%",
+  },
+  {
+    plan: "MSP Elite",
+    hourlyDiscount: "15%",
+    productizedDiscount: "15%",
+  },
 ] as const;
 
 // ---------------------------------------------------------------------------

@@ -12,6 +12,7 @@ import {
 const companyLinks = [
   { label: "About", href: "/about" },
   { label: "Services", href: "/services" },
+  { label: "Pricing", href: "/pricing" },
   { label: "Managed Intelligence", href: "/managed-intelligence-provider" },
   { label: "Insights", href: "/insights" },
   { label: "Contact", href: "/contact" },
