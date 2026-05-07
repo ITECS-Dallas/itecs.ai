@@ -1,0 +1,4 @@
+interface:
+  display_name: "ITECS Proposals"
+  short_description: "Build hidden ITECS web proposals"
+  default_prompt: "Create or update an ITECS hidden web proposal with magic-link access, protected PDF download, proposal response forms, and mobile-first validation."

@@ -670,11 +670,34 @@ function CheckList({ items }: { items: readonly string[] }) {
   );
 }
 
+function StickyProposalDownload() {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 24 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.45, delay: 0.8, ease: "easeOut" }}
+      className="fixed inset-x-0 bottom-4 z-50 mx-auto w-[calc(100%-2rem)] max-w-sm print:hidden"
+    >
+      <a
+        href={pdfHref}
+        download
+        className="group flex items-center justify-center gap-3 rounded-2xl border border-cyan-100/55 bg-cyan-300/95 px-4 py-3 text-sm font-semibold uppercase tracking-[0.12em] text-slate-950 shadow-[0_18px_60px_rgba(34,211,238,0.35)] backdrop-blur transition-all hover:-translate-y-0.5 hover:bg-cyan-200 focus:outline-none focus:ring-2 focus:ring-cyan-100 focus:ring-offset-2 focus:ring-offset-bg-void"
+      >
+        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-slate-950/10 text-slate-950 transition-colors group-hover:bg-slate-950/15">
+          <Download className="h-4 w-4" aria-hidden="true" />
+        </span>
+        <span>Download Proposal</span>
+      </a>
+    </motion.div>
+  );
+}
+
 export default function HasenClaudeWorkOrderProposal() {
   const [decision, setDecision] = useState<ProposalDecision | null>(null);
 
   return (
-    <div className="min-h-screen overflow-hidden bg-bg-void text-text-primary">
+    <div className="min-h-screen overflow-hidden bg-bg-void pb-28 text-text-primary">
+      <StickyProposalDownload />
       <section className="relative min-h-screen overflow-hidden px-6 py-28 md:px-12 lg:px-24">
         <GradientOrb
           color="cyan"

@@ -4,16 +4,19 @@ ITECS uses hidden web proposal pages to send clients polished, browser-based
 proposals from itecs.ai. These live under `/p/<slug>` and are meant to be shared
 manually by email, not discovered through site navigation or search.
 
-The first proposal page is:
+The current proposal page template is:
 
-- `/p/fcc-proposal-b2630d`
-- Route: `src/app/p/fcc-proposal-b2630d/page.tsx`
-- Component: `src/components/proposals/fcc-proposal-b2630d.tsx`
+- `/p/hasen-claude-work-order-phase-1-9ee3f0`
+- Access URL: `/p/hasen-claude-work-order-phase-1-9ee3f0/access`
+- Route: `src/app/p/hasen-claude-work-order-phase-1-9ee3f0/page.tsx`
+- Component:
+  `src/components/proposals/hasen-claude-work-order-phase-1-9ee3f0.tsx`
 
-Use the FCC proposal as the current structural and styling template for future
+Use the Hasen proposal as the current structural and styling template for future
 proposal pages. It demonstrates the desired page rhythm, dark technical visual
-language, section density, pricing/timeline presentation, About ITECS placement,
-and animated approve/decline CTA pattern.
+language, section density, fixed-fee scope presentation, pricing/timeline
+treatment, source-note section, protected PDF download route, magic-link access
+page, proposal response form, and single sticky bottom Download Proposal control.
 
 ## Purpose
 
@@ -101,8 +104,12 @@ overbuilding a full portal.
    - Remove internal headers, footers, logos, or chrome that duplicates the
      global site layout.
    - Keep proposal content intact unless the user asks for wording changes.
-   - Use `/p/fcc-proposal-b2630d` as the reference for structure, visual
-     density, section styling, and proposal response CTA behavior.
+   - Use `/p/hasen-claude-work-order-phase-1-9ee3f0` as the reference for
+     structure, visual density, section styling, protected download behavior,
+     magic-link access, and proposal response CTA behavior.
+   - Include a single sticky bottom Download Proposal control that uses the
+     protected PDF route. Do not add sticky Accept or Decline actions unless the
+     user explicitly requests them.
    - If the proposal will use magic-link access, use the access URL in client
      emails and keep page/PDF links behind the access cookie.
 4. Add tasteful visual effects from `src/components/effects/`, especially

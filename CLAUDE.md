@@ -72,11 +72,11 @@ Use the project-specific Codex skill at `.codex/skills/itecs-insight-articles/SK
 
 ### Hidden Proposal Pages
 
-ITECS uses `/p/<slug>` pages for client web proposals that are shared manually by email. The first and currently known proposal is `/p/fcc-proposal-b2630d`, implemented by `src/app/p/fcc-proposal-b2630d/page.tsx` and `src/components/proposals/fcc-proposal-b2630d.tsx`.
+ITECS uses `/p/<slug>` pages for client web proposals that are shared manually by email. The current structural and styling template is the Hasen proposal at `/p/hasen-claude-work-order-phase-1-9ee3f0`, implemented by `src/app/p/hasen-claude-work-order-phase-1-9ee3f0/page.tsx` and `src/components/proposals/hasen-claude-work-order-phase-1-9ee3f0.tsx`.
 
 Proposal pages are hidden and unlisted. For client-facing delivery, use the lightweight magic-link access flow when the proposal should feel more controlled than a plain URL. This is a comfort and presentation layer, not a hardened client portal. Keep `/p/` out of navigation and sitemap output, and keep `/p/` disallowed in `robots.ts`. Each proposal page should set robots metadata to `noindex`, `nofollow`, `noarchive`, `nosnippet`, and `noimageindex`.
 
-When creating a new proposal, follow `docs/proposals.md` and the detailed `.claude/commands/add-proposal.md` workflow. Use `/p/fcc-proposal-b2630d` as the current structural and styling template for page rhythm, section density, pricing/timeline treatment, About ITECS placement, and the animated approve/decline CTA pattern. Use an unguessable slug with a random suffix, keep the UI native to the itecs.ai design system, localize fragile client screenshots under `public/images/proposals/`, register magic-link access in `src/lib/proposals/access.ts` when enabled, send client emails to `/p/<slug>/access`, run `npm run build`, deploy the web container, and verify the live URL with Playwright before sharing it.
+When creating a new proposal, follow `docs/proposals.md` and the detailed `.claude/commands/add-proposal.md` workflow. Use the Hasen proposal as the current template for page rhythm, section density, fixed-fee scope presentation, pricing/timeline treatment, source notes, protected PDF download behavior, magic-link access, proposal response forms, and the single sticky bottom Download Proposal control. Use an unguessable slug with a random suffix, keep the UI native to the itecs.ai design system, localize fragile client screenshots under `public/images/proposals/`, register magic-link access in `src/lib/proposals/access.ts` when enabled, send client emails to `/p/<slug>/access`, run `npm run build`, deploy the web container, and verify the live URL with Playwright before sharing it.
 
 ### Data Model in constants.ts
 

@@ -30,9 +30,10 @@ docker compose up -d --build --remove-orphans web
 ## Proposal Pages
 
 ITECS uses hidden `/p/<slug>` pages for client web proposals. The first live
-proposal is `/p/fcc-proposal-b2630d`. These pages are unlisted, noindex,
-excluded from the sitemap, and blocked in `robots.ts`, but they are not
-login-protected portals. See [docs/proposals.md](./docs/proposals.md).
+proposal template is `/p/hasen-claude-work-order-phase-1-9ee3f0`. Proposal
+pages are unlisted, noindex, excluded from the sitemap, and blocked in
+`robots.ts`. Magic-link access is a lightweight presentation layer, not a
+hardened client portal. See [docs/proposals.md](./docs/proposals.md).
 
 ## Deployment
 

@@ -12,10 +12,12 @@ Example: `/add-proposal /home/itecs/acme-corp-proposal.tsx`
 
 You are adding a private, unlisted proposal page to itecs.ai. Follow these steps exactly:
 
-Reference `/p/fcc-proposal-b2630d` as the current structural and styling
-template for future proposals. It demonstrates the preferred page rhythm, visual
-density, dark technical styling, section sequencing, pricing/timeline treatment,
-About ITECS placement, and animated approve/decline CTA pattern.
+Reference `/p/hasen-claude-work-order-phase-1-9ee3f0` as the current structural
+and styling template for future proposals. It demonstrates the preferred page
+rhythm, visual density, dark technical styling, section sequencing,
+pricing/timeline treatment, source notes, protected PDF download route,
+magic-link access, proposal response forms, and single sticky bottom Download
+Proposal control.
 
 ### 1. Locate and validate the input file
 
@@ -157,9 +159,13 @@ hardened portal.
 const pdfHref = "/api/proposals/<slug>/pdf";
 ```
 
-7. Send client-facing emails to `https://itecs.ai/p/<slug>/access`, not directly
+7. Add a single sticky bottom Download Proposal control that links to
+   `pdfHref` and uses a `lucide-react` `Download` icon. Keep the sticky control
+   focused on the PDF only; Accept and Decline remain in the proposal response
+   section unless the user explicitly asks for them in the sticky bar.
+8. Send client-facing emails to `https://itecs.ai/p/<slug>/access`, not directly
    to `/p/<slug>`.
-8. Confirm `PROPOSAL_MAGIC_LINK_SECRET` exists in `.env`, `.env.example`, and
+9. Confirm `PROPOSAL_MAGIC_LINK_SECRET` exists in `.env`, `.env.example`, and
    `docker-compose.yml`.
 
 ### 7. Build and verify
