@@ -11,6 +11,8 @@ custom AI agents, AI security compliance, and AI-optimized SEO services.
 - Custom AI Agents — Claude, ChatGPT, Codex, RAG, and workflow agents
 - AI Security & Compliance — HIPAA, SOX, FINRA alignment, PHI/PII redaction
 - AI-Optimized SEO & GEO — Generative engine optimization, AI search
+- Internal AI Champion Enablement Program — 4-6 week AI training and
+  enablement program for building an internal AI lead
 
 ## Contact
 International: (214) 444-7884

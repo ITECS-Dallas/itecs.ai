@@ -47,6 +47,19 @@ const socialLinks = [
   },
 ];
 
+const featuredServiceLinks = [
+  ...SERVICES.map((service) => ({
+    key: service.slug,
+    label: service.shortTitle,
+    href: service.href,
+  })),
+  {
+    key: "ai-champion-program",
+    label: "AI Champion Program",
+    href: "/services/ai-champion-program",
+  },
+];
+
 export function Footer() {
   return (
     <footer className="bg-bg-surface border-t border-[var(--border-subtle)]">
@@ -111,13 +124,13 @@ export function Footer() {
               AI Services
             </h4>
             <ul className="space-y-3">
-              {SERVICES.map((service) => (
-                <li key={service.slug}>
+              {featuredServiceLinks.map((service) => (
+                <li key={service.key}>
                   <Link
                     href={service.href}
                     className="text-sm text-text-dim hover:text-brand-accent transition-colors"
                   >
-                    {service.shortTitle}
+                    {service.label}
                   </Link>
                 </li>
               ))}

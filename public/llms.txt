@@ -45,6 +45,13 @@ URL: https://itecs.ai/insights
 Generative Engine Optimization for AI-powered search. LLMs.txt implementation,
 structured data optimization, AI citation tracking across ChatGPT and Perplexity.
 
+### Internal AI Champion Enablement Program
+URL: https://itecs.ai/services/ai-champion-program
+4-6 week structured enablement program that trains one trusted employee to
+become the organization's internal AI lead. Includes 1:1 strategist coaching,
+prompt library development, governance support, train-the-trainer materials,
+and 90-day post-program support. Pricing: $8,500-$12,000.
+
 ## Technology Partners
 Microsoft Azure, Microsoft, Claude, OpenAI, Copilot, Sophos
 

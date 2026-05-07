@@ -62,6 +62,7 @@ export interface AIPricingOffering {
   price: string;
   duration?: string;
   scope?: string;
+  href?: string;
   description: string;
   included: string[];
   bestFor?: string;
@@ -226,6 +227,7 @@ export const AI_PRICING_CATEGORIES: AIPricingCategory[] = [
         name: "Internal AI Champion Enablement Program",
         price: "$8,500-$12,000",
         duration: "4-6 weeks",
+        href: "/services/ai-champion-program",
         description:
           "A structured program that trains one employee to become the organization's internal AI lead, creating capability that compounds after the engagement.",
         included: [
