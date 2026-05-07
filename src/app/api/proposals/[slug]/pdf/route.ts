@@ -2,6 +2,7 @@ import { readFile } from "fs/promises";
 import { join } from "path";
 import { NextRequest, NextResponse } from "next/server";
 import { getProposalConfig, hasProposalAccess } from "@/lib/proposals/access";
+import { getPublicRequestBaseUrl } from "@/lib/proposals/url";
 
 export const runtime = "nodejs";
 
@@ -17,7 +18,9 @@ export async function GET(
   }
 
   if (!(await hasProposalAccess(slug))) {
-    return NextResponse.redirect(new URL(`/p/${slug}/access`, request.url));
+    return NextResponse.redirect(
+      new URL(`/p/${slug}/access`, getPublicRequestBaseUrl(request)),
+    );
   }
 
   const filePath = join(

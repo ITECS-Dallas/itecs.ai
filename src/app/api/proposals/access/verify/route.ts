@@ -6,6 +6,7 @@ import {
   proposalCookieName,
   verifyProposalToken,
 } from "@/lib/proposals/access";
+import { getPublicRequestBaseUrl } from "@/lib/proposals/url";
 
 export const runtime = "nodejs";
 
@@ -23,7 +24,10 @@ export async function GET(request: NextRequest) {
     return NextResponse.redirect(new URL("/p", request.url));
   }
 
-  const destination = new URL(`/p/${proposal.slug}`, request.url);
+  const destination = new URL(
+    `/p/${proposal.slug}`,
+    getPublicRequestBaseUrl(request),
+  );
   const response = NextResponse.redirect(destination);
   const isSecureRequest =
     request.headers.get("x-forwarded-proto") === "https" ||

@@ -6,6 +6,7 @@ import {
   isProposalEmailAllowed,
   proposalMagicLinkTtlMinutes,
 } from "@/lib/proposals/access";
+import { getPublicRequestBaseUrl } from "@/lib/proposals/url";
 
 export const runtime = "nodejs";
 
@@ -105,7 +106,10 @@ export async function POST(request: NextRequest) {
 
   if (isProposalEmailAllowed(proposal, email)) {
     const token = createMagicLinkToken(slug, email);
-    const magicLink = new URL("/api/proposals/access/verify", request.url);
+    const magicLink = new URL(
+      "/api/proposals/access/verify",
+      getPublicRequestBaseUrl(request),
+    );
     magicLink.searchParams.set("token", token);
 
     await sendGraphEmail({
