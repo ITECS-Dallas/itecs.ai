@@ -104,6 +104,12 @@ export function ProposalAccessForm({
         </button>
       </div>
 
+      <p className="mt-4 rounded-lg border border-[var(--border-subtle)] bg-bg-void/45 p-3 text-xs leading-relaxed text-text-dim">
+        Privacy note: ITECS uses this email address only to send this proposal
+        access link. We do not sell it, add it to a marketing list, or use it
+        for any unrelated purpose.
+      </p>
+
       {message ? (
         <p
           className={`mt-4 text-sm ${
