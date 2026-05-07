@@ -608,7 +608,7 @@ export default function HasenClaudeWorkOrderProposal() {
               Order is issued.
             </p>
 
-            <div className="mt-8 grid gap-3 sm:grid-cols-3">
+            <div className="mt-8 grid grid-cols-3 gap-3">
               {[
                 ["$18,500", "Fixed Phase 1 fee"],
                 ["10-15", "Business day implementation"],
@@ -616,12 +616,12 @@ export default function HasenClaudeWorkOrderProposal() {
               ].map(([value, label]) => (
                 <div
                   key={label}
-                  className="rounded-xl border border-brand-accent/20 bg-brand-accent/5 p-4"
+                  className="rounded-xl border border-brand-accent/20 bg-brand-accent/5 p-3 md:p-4"
                 >
-                  <div className="text-2xl font-light text-brand-accent-bright">
+                  <div className="text-xl font-light text-brand-accent-bright md:text-2xl">
                     {value}
                   </div>
-                  <div className="mt-1 text-xs uppercase tracking-widest text-text-dim">
+                  <div className="mt-1 text-[9px] uppercase tracking-[0.14em] text-text-dim md:text-xs md:tracking-widest">
                     {label}
                   </div>
                 </div>

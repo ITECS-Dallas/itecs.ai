@@ -398,8 +398,6 @@ export function Header() {
     pathname.startsWith("/data-audit") ||
     pathname.startsWith("/managed-intelligence-provider");
 
-  const forceSolidHeader = pathname === "/services/ai-champion-program";
-
   const navItems = [
     { label: "Pricing", href: "/pricing" },
     { label: "Insights", href: "/insights" },
@@ -410,7 +408,7 @@ export function Header() {
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-50 h-[72px] border-b transition-[background-color,backdrop-filter,border-color] duration-500 ${
-          scrolled || mobileOpen || forceSolidHeader
+          scrolled || mobileOpen
             ? "bg-bg-elevated/80 backdrop-blur-xl border-[var(--border-subtle)]"
             : "bg-transparent border-transparent"
         }`}
