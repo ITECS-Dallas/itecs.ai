@@ -43,7 +43,6 @@ export const PROPOSAL_ACCESS: Record<string, ProposalAccessConfig> = {
     allowedEmails: [
       "bdesmot@itecsonline.com",
       "bdesmot@gmail.com",
-      "bramirez@gbafamilylaw.com",
       "mdunbar@itecsmsp.com",
       "jemerle@itecsmsp.com",
       "mwallens@firstchoicecontainers.com",
