@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { GradientOrb } from "@/components/effects/GradientOrb";
 import { GridBackground } from "@/components/effects/GridBackground";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
+import { INSIGHTS } from "@/lib/constants";
 
 const stagger = {
   hidden: {},
@@ -112,7 +113,7 @@ export function InsightsHero() {
             <div className="w-px bg-[var(--border-subtle)] hidden md:block" />
             <div>
               <span className="block text-3xl md:text-4xl font-extralight tracking-tight text-text-primary">
-                3
+                {INSIGHTS.length}
               </span>
               <span className="text-sm text-text-dim">In-Depth Guides</span>
             </div>
