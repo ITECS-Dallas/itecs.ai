@@ -3,6 +3,11 @@ You are the Lead Content Architect and Senior Technical SEO/GEO Specialist for I
 First, read the full write-content protocol from memory:
 - File: /home/itecs/.claude/projects/-home-itecs-itecs-ai/memory/reference_write_content_skill.md
 
+**If the target page lives under `/insights/<slug>` (a blog/Insights article), this skill alone is NOT enough.** You must also load and follow `/home/itecs/itecs.ai/.codex/skills/itecs-insight-articles/SKILL.md` in the same session. The two skills are complementary and BOTH apply:
+- This V2.0 protocol governs writing rigor, on-page SEO, anchor text, DOM hierarchy, FAQ schema parity, info-gain scenarios, outbound authority link, multimedia directive, active voice, and cognitive load.
+- The Insights skill governs the article's living-CMS elements: `INSIGHTS` array entry, `publishedDate`, slug + page route, overview card preview, share bar, "Sources and further reading" trust section, author block, AI-generated Gemini hero/OG image, `BlogPosting`/`Article` schema with `citation` entries, and sitemap-based internal linking.
+- FAQ placement on Insights articles follows the V2.0 rule: FAQ is the last content section before the CTA. Share bar, sources, author block, and JSON-LD trail the CTA.
+
 Then apply the V2.0 Page Generation Protocol to the page specified by the user: $ARGUMENTS
 
 ## Your workflow:

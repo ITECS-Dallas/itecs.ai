@@ -11,6 +11,27 @@ Use this skill whenever the user asks for a new blog article, insight post, guid
 
 The goal is to produce executive-ready AI business content for Dallas business owners, managers, and professionals who are evaluating ITECS.ai for AI services: clear, practical, confident, security-aware, easy to understand, and grounded in ITECS' consulting, training, AI security, custom AI agent, and DevOps expertise.
 
+## Companion Skill: Writing & SEO Rigor (V2.0 Protocol) — REQUIRED
+
+This skill governs the article's living-CMS elements (INSIGHTS entry, overview card, share bar, sources section, author block, AI image, BlogPosting schema). It does NOT cover writing-quality and on-page SEO mechanics.
+
+**Every Insights article must additionally follow the V2.0 Page Generation Protocol:**
+- File: `/home/itecs/.claude/projects/-home-itecs-itecs-ai/memory/reference_write_content_skill.md`
+- Also invokable in Claude Code via the `/write-content` slash command at `.claude/commands/write-content.md`.
+
+Specifically apply these V2.0 rules to every article:
+- **Intent-driven anchor text** — no generic "click here" or blind exact-match stuffing.
+- **Strict DOM heading hierarchy** — H1 → H2 → H3, never skip levels.
+- **FAQ schema parity** — FAQPage JSON-LD `name`/`text` fields must be verbatim 1:1 matches to the rendered HTML text.
+- **FAQ answers always in the DOM** — never `{isOpen && ...}` conditional rendering; use CSS height/opacity for collapse.
+- **Information gain** — inject a specific, realistic SMB scenario (medical clinic, law firm, regional contractor, etc.) rather than generic AI benefits.
+- **One outbound authority link** in the Security section (NIST, Microsoft Trust Center, OpenAI Enterprise Privacy, etc.).
+- **One multimedia directive** — wrap diagrams in `<figure role="img" aria-label="...">` with `<figcaption>`; mark decorative icons `aria-hidden="true"`.
+- **Cognitive load** — active voice, sentences under 20 words, no fluff adjectives, precise verbs and nouns.
+- **`<ol><li>` with `value={N}`** for any "How It Works" or step-based list inside the article body.
+
+FAQ placement on Insights articles follows V2.0: **FAQ is the last content section before the CTA.** Share bar, sources, author block, and JSON-LD trail the CTA. (See the Article Structure section below.)
+
 ## Current Project Shape
 
 - Insight content lives in `src/lib/constants.ts` in the `INSIGHTS` array.
@@ -77,19 +98,19 @@ For Insights article jobs, treat commit, push, build, and activate as the defaul
 
 ## Article Structure
 
-Recommended structure:
+Recommended structure (FAQ-before-CTA, per V2.0 protocol):
 
 1. Breadcrumbs.
 2. Hero with H1, executive summary, read time, author, published/updated date, and generated image when available.
 3. Opening section that answers the topic directly in plain English.
 4. 4-7 substantial sections with practical business guidance.
-5. Security and cost section if the topic touches AI adoption, tools, agents, data, or automation.
-6. Bottom CTA linking to the most relevant ITECS service and `/contact`.
-7. "Share this article" bar.
-8. "Sources and further reading" or similarly named trust signal section with the article's cited resources.
-9. "About the author" block. Default: `The ITECS Team`.
-10. FAQ section if useful for search intent.
-11. JSON-LD blocks.
+5. Security and cost section if the topic touches AI adoption, tools, agents, data, or automation. Include one outbound authority link here (NIST, Microsoft Trust Center, OpenAI Enterprise Privacy, etc.).
+6. **FAQ section** — last content module before the CTA. 3-4 conversational questions, concise answers, always present in the DOM, with verbatim FAQPage JSON-LD parity.
+7. Bottom CTA linking to the most relevant ITECS service and `/contact`.
+8. "Share this article" bar.
+9. "Sources and further reading" or similarly named trust signal section with the article's cited resources.
+10. "About the author" block. Default: `The ITECS Team`.
+11. JSON-LD blocks (Article/BlogPosting, BreadcrumbList, FAQPage).
 
 For the overview preview, make `INSIGHTS[].description` a clear 1-2 sentence summary that reads well inside `InsightCards`. Avoid keyword stuffing.
 
@@ -156,6 +177,6 @@ node .codex/skills/itecs-insight-articles/scripts/generate-google-image.mjs \
 - The article has canonical metadata, OG/Twitter image metadata, Article schema, Breadcrumb schema, and FAQ schema when applicable.
 - External source citations appear in article schema through `citation` when they are used.
 - Internal links resolve to URLs present in `sitemap.xml`.
-- The share bar appears below the article body, followed by the source/trust signal section, then the author block before the global CTA or FAQ, depending on the page rhythm.
+- FAQ appears as the last content section before the CTA. The share bar, sources/trust section, and author block trail the CTA in that order.
 - The generated image contains no people and renders in mobile and desktop layouts without cropping important visual information.
 - Playwright mobile-first validation uses the Googlebot Smartphone viewport in `CLAUDE.md`.
