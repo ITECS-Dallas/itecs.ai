@@ -32,6 +32,7 @@ interface InsightArticleLayoutProps {
   ctaText: string;
   heroImage?: string;
   heroImageAlt?: string;
+  heroCaption?: string;
   publishedDate: string;
   modifiedDate?: string;
   readTime?: string;
@@ -101,6 +102,7 @@ export function InsightArticleLayout({
   ctaText,
   heroImage,
   heroImageAlt,
+  heroCaption,
   publishedDate,
   modifiedDate,
   readTime = "5 min read",
@@ -164,16 +166,27 @@ export function InsightArticleLayout({
           </div>
 
           {heroImage && (
-            <div className="mt-10 overflow-hidden rounded-lg border border-[var(--border-subtle)] bg-bg-void">
-              <Image
-                src={heroImage}
-                alt={heroImageAlt ?? insight.h1}
-                width={1600}
-                height={900}
-                priority
-                className="aspect-video w-full object-cover"
-              />
-            </div>
+            <figure
+              role="img"
+              aria-label={heroImageAlt ?? insight.h1}
+              className="mt-10"
+            >
+              <div className="overflow-hidden rounded-lg border border-[var(--border-subtle)] bg-bg-void">
+                <Image
+                  src={heroImage}
+                  alt={heroImageAlt ?? insight.h1}
+                  width={1600}
+                  height={900}
+                  priority
+                  className="aspect-video w-full object-cover"
+                />
+              </div>
+              {heroCaption && (
+                <figcaption className="mt-3 text-sm leading-relaxed text-text-dim">
+                  {heroCaption}
+                </figcaption>
+              )}
+            </figure>
           )}
         </div>
       </section>

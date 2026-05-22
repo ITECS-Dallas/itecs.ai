@@ -62,6 +62,7 @@ export default function AgenticAiWorkflowsEnterpriseOperationsPage() {
       ctaText="Ready to move your agentic AI workflow from pilot to production?"
       heroImage={heroImage}
       heroImageAlt="Enterprise agentic AI workflow architecture diagram showing planner model, MCP tool layer connecting to finance, procurement, and HR systems, and governance layer for a Dallas business operations center"
+      heroCaption="A production-grade enterprise agentic AI workflow always has three layers — a planner model, a governed tool layer reaching into finance, procurement, and HR systems, and a governance layer with audit logging and human review. Treating any layer as optional is what causes pilots to fail."
       publishedDate={insight.publishedDate}
       modifiedDate={insight.modifiedDate}
       readTime="10 min read"
