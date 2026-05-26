@@ -1248,6 +1248,105 @@ export interface InsightItem {
 
 export const INSIGHTS: InsightItem[] = [
   {
+    slug: "claude-cowork-for-small-business",
+    title:
+      "How to Set Up Claude Cowork for Your Business: 10 Workflows That Replace Manual Operations Work",
+    description:
+      "Claude for Small Business launched May 13, 2026. Enable it, connect your core apps, and replace ten manual operations tasks — safely and with owner sign-off.",
+    href: "/insights/claude-cowork-for-small-business",
+    publishedDate: "2026-05-26",
+    hubSlug: "automation",
+    hubLabel: "AI Workflow Automation",
+    hubHref: "/automation",
+    keywords: [
+      "claude cowork for small business",
+      "claude for small business setup",
+      "claude cowork workflows",
+      "set up claude cowork",
+      "claude cowork project sandbox",
+      "claude.md memory file small business",
+      "claude dispatch schedule daily briefing",
+      "small business ai automation 2026",
+    ],
+    h1: "How to Set Up Claude Cowork for Your Small Business in One Afternoon",
+    content: [
+      "Claude Cowork is Anthropic's collaborative workspace where Claude holds long projects, remembers context across sessions, and runs scheduled tasks. On May 13, 2026, Anthropic added a Small Business toggle inside Cowork with fifteen pre-built workflows for QuickBooks, PayPal, HubSpot, Canva, Docusign, Google Workspace, and Microsoft 365 — the same back-office stack most ten- to fifty-person companies already pay for. Setup takes one afternoon. The savings start the same week.",
+      "**The fastest way to capture that value safely is to pair the Cowork rollout with a structured automation engagement.** ITECS configures [AI workflow automation for Dallas small businesses](/automation) — sandboxes, memory files, scheduled briefings, and approval gates wired together so the agent works for the owner instead of around them.",
+      "**Why Most Small Business Owners Stop At The Chat Window**",
+      "Anthropic's 2026 Work Trend Index reports that only sixteen percent of business users have moved beyond chatting with Claude to actually orchestrating agents. Most owners type a question, copy the answer into an email, and stop. The recurring, multi-step admin work — invoice chasing, weekly reports, Monday meeting prep — still happens by hand in QuickBooks, Outlook, HubSpot, and a stack of browser tabs. The result is that the highest-paid person in the building spends the first hour of every day on data scraping.",
+      "A twenty-eight person Dallas commercial cleaning company we recently helped illustrates the pattern. The owner spent forty minutes every morning pulling the prior day's revenue from QuickBooks, the cash position from PayPal, the new HubSpot deals, and three Outlook calendar checks to build a daily briefing for himself. Forty minutes by five days is more than three hours a week, every week, for the most expensive headcount in the company. That work belongs in Cowork — not in the owner's head. For owners earlier in their AI adoption, [our small business AI guide](/insights/how-to-use-ai-small-business) is a useful prerequisite.",
+      "**What Changed On May 13, 2026**",
+      "Anthropic shipped Claude for Small Business as a toggle inside Cowork rather than a separate product. Switching it on exposes fifteen pre-built workflows tuned for ten- to fifty-person companies and adds curated connectors for QuickBooks, PayPal, HubSpot, Canva, Docusign, Google Workspace, and Microsoft 365. The toggle also tightens the default safety posture — Project Sandboxes are isolated by default, file access is scoped per Project, and Dispatch scheduled tasks now route through an approval gate before they pay an invoice or post anything customer-facing.",
+      "For an owner, this changes the question. The old question was \"what can I ask Claude to do for me?\" The new question is \"which of these fifteen pre-built workflows should I turn on first, and what do I need to wire up around them?\" The remainder of this guide answers that question.",
+      "**How To Set Up Claude Cowork In One Afternoon**",
+      "ITECS uses a six-step setup that takes an experienced operator about three hours for a typical small business. Each step has an owner and a clear stopping point so the work can pause without losing context.",
+      "**Step 1: Enable Small Business mode inside Cowork.** Sign in to claude.ai as the workspace owner. Open Cowork settings, scroll to Business modes, and toggle Small Business on. The setting is per-workspace, not per-user, so the whole team inherits the same defaults the moment it flips.",
+      "**Step 2: Connect the seven core apps.** Open the Integrations tab and authenticate QuickBooks, PayPal, HubSpot, Canva, Docusign, Google Workspace, and Microsoft 365 one at a time through each vendor's OAuth flow. Connect with the account that already owns billing and admin for that tool — not a personal login. Claude inherits the permissions of the connecting user, so granting read-only or scoped roles where the app supports it is the cleanest way to limit blast radius.",
+      "**Step 3: Create one Project Sandbox per business function.** Inside Cowork, create separate Projects for Finance, Sales, Marketing, and Operations. Each Project is its own sandbox — Claude can only read files, memory, and integrations attached to that Project. Do not grant Claude full disk access. The whole point of the sandbox is that a Finance prompt cannot accidentally read a Marketing draft or post to a customer-facing channel.",
+      "**Step 4: Write CLAUDE.md and CONTEXT.md memory files.** In each Project, add two short markdown files. CLAUDE.md tells the agent how you work — tone of voice, approval rules, escalation contacts, the names of top customers and vendors. CONTEXT.md tells the agent what it should know — your fiscal year, billing cycles, payment terms, the QuickBooks accounts you actually use, the HubSpot pipeline stages, and the Microsoft 365 distribution lists for daily and weekly briefings. Two pages each is plenty. The files persist across sessions and replace the prompt copying most owners still do today.",
+      "**Step 5: Schedule Dispatch tasks with /schedule.** Inside a Project, type `/schedule` followed by what you want and when. Three schedules cover most owners' needs: a daily morning briefing at 6:30 a.m., a weekly performance report on Friday at 4 p.m., and a Monday meeting prep deck on Sunday at 7 p.m. Dispatch handles the cron, the integration pulls, the rendering, and the email or Slack delivery without anyone signing in.",
+      "**Step 6: Wire approval gates for money and customer touches.** In the Project's Guardrails panel, set the approval rule to \"Owner sign-off required\" for any action that moves money, files with a regulator, or posts to a customer-facing channel. Approval gates pause the workflow, send a notification, and resume only when the owner taps Approve. Nothing pays a vendor, sends a contract, or publishes a Canva post without an explicit yes.",
+      "**The Ten Workflows That Replace Manual Operations Work**",
+      "The fifteen pre-built workflows in Small Business mode cover finance, sales, marketing, contracts, and ops. The ten below produce the cleanest payback for a typical Dallas small business in the first ninety days.",
+      "**1. Daily morning briefing.** Pulls yesterday's QuickBooks revenue, PayPal balance, new HubSpot deals, and today's Microsoft 365 or Google Workspace calendar into a two-paragraph summary emailed at 6:30 a.m. Replaces the forty-minute manual scrape most owners still do.",
+      "**2. Weekly performance report.** Friday-afternoon roll-up of QuickBooks revenue, accounts receivable aging, HubSpot pipeline movement, and Canva-produced campaign metrics, delivered as a one-page PDF to the leadership group.",
+      "**3. Monday meeting prep deck.** Sunday-evening Canva deck draft assembled from HubSpot pipeline updates, last week's revenue, and the open items pulled from Microsoft 365 task lists. The owner reviews and approves before Monday at 7 a.m.",
+      "**4. Overdue invoice chase.** Reads QuickBooks accounts receivable, drafts polite reminder emails through Google Workspace or Microsoft 365, and queues a Docusign re-send for anything older than forty-five days. Every send requires owner approval.",
+      "**5. New lead enrichment.** When a new HubSpot lead arrives, Claude reads the website form, pulls public company data, drafts a personalized first-touch email, and stages it for sales to approve and send.",
+      "**6. Quote-to-contract pipeline.** Generates a Docusign contract from an approved HubSpot deal, populates pricing and signers, and routes the document for owner countersignature before it goes to the customer.",
+      "**7. Expense and receipt triage.** Reads QuickBooks-connected card transactions and Gmail or Outlook receipts, categorizes each one against your existing chart of accounts, and posts to QuickBooks only after the owner taps Approve on the day's batch.",
+      "**8. Vendor invoice intake.** Picks up incoming PDF invoices from Gmail or Outlook, matches them to PayPal or QuickBooks vendor records, and queues payment runs for owner approval. No invoice is paid without sign-off.",
+      "**9. Social and newsletter draft pack.** Pulls the week's wins from HubSpot and QuickBooks, drafts three LinkedIn posts and a newsletter, and produces Canva visuals as drafts. The owner reviews everything before anything is posted.",
+      "**10. Customer review and reply triage.** Watches new Google and Microsoft 365 mailbox reviews, classifies sentiment, drafts a reply for each, and routes negative reviews to the owner first. Replies are sent only after explicit approval.",
+      "Workflows three through eight are exactly the territory where [agentic AI moves from pilot to production](/insights/agentic-ai-workflows-enterprise-operations) — multi-step, policy-bound, and worth real money once the approval gates are right.",
+      "**The Security Rules That Keep Cowork Out Of Trouble**",
+      "Claude Cowork is powerful precisely because it can read finance data, draft customer-facing copy, and trigger payments. The same capability is what makes a careless setup expensive. Three rules keep the deployment safe.",
+      "**Sandbox by Project, not by user.** Each Project carries its own file scope, its own memory, and its own integration connections. Do not enable full disk access on Cowork's desktop client for an owner account. A bookkeeper's invoice agent should never be able to read the same workspace as the marketing team's social drafts.",
+      "**Owner sign-off for money and customer-facing posts.** Configure Guardrails so any action that pays a vendor, files with a regulator, sends a contract, or posts publicly pauses for approval. Approval friction is the feature, not the bug — it is the difference between an agent that helps and an agent that publishes a bad invoice run on a Saturday.",
+      "**Govern Claude like an employee.** ITECS deploys Cowork against the controls in the [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework) — defined purpose per Project, identity-bound credentials, an immutable audit log of every action, a documented human approval path, and a quarterly review of what the agent did and what it touched. The same discipline ITECS has applied to managed IT for twenty-four years, applied now to an AI workspace. For owners who want to harden the data layer before automating, a [data and AI readiness audit](/data-audit) comes first.",
+      "**Pricing And The ROI Of Cowork For A Small Business**",
+      "Claude for Small Business is part of Claude Cowork's standard subscription tier — pricing sits on Anthropic's plans page and tracks per user. There is no separate license fee for the Small Business toggle. ITECS prices the setup and operating layer transparently: hourly consulting or prepaid retainer hours for configuration and tuning, no minimum monthly commitment, no expiration, and a flat fee for scoped builds such as a [custom AI agent extending one of the ten workflows](/custom-ai-agents).",
+      "Most small businesses recover the setup cost inside the first month. The Dallas cleaning company above reclaimed roughly three hours a week from the owner — at a fully loaded owner's hourly cost, that paid back the configuration retainer in under three weeks and now compounds across every additional workflow turned on. Owners who pair Cowork with [AI training for the rest of the team](/training) get the second multiplier — the work the owner used to do alone now runs as a managed system the whole company can lean on. When you are ready to walk through the setup with someone who has done it before, [talk to the ITECS team](/contact).",
+    ],
+    faq: [
+      {
+        question: "What is Claude Cowork Small Business mode?",
+        answer:
+          "Small Business mode is a toggle inside Claude Cowork that Anthropic launched on May 13, 2026. Switching it on exposes fifteen pre-built workflows tuned for ten- to fifty-person companies and curated connectors for QuickBooks, PayPal, HubSpot, Canva, Docusign, Google Workspace, and Microsoft 365.",
+      },
+      {
+        question: "Which apps does Claude for Small Business connect to?",
+        answer:
+          "The seven core integrations are QuickBooks, PayPal, HubSpot, Canva, Docusign, Google Workspace, and Microsoft 365. Connect each one with the account that already owns billing and admin for that tool, and prefer scoped or read-only roles where the integration supports them.",
+      },
+      {
+        question: "Why use Project Sandboxes instead of giving Claude full disk access?",
+        answer:
+          "Project Sandboxes scope Claude's file access, memory, and integrations to a single business function — Finance, Sales, Marketing, or Operations. Full disk access removes that boundary and lets a prompt in one area accidentally read or write data in another, which is the most common cause of expensive mistakes during early rollouts.",
+      },
+      {
+        question: "What do CLAUDE.md and CONTEXT.md files do?",
+        answer:
+          "CLAUDE.md tells the agent how you work — tone of voice, approval rules, escalation contacts, top customers and vendors. CONTEXT.md tells the agent what it should know — fiscal year, billing cycles, payment terms, QuickBooks accounts, HubSpot pipeline stages, and distribution lists. Both files persist across sessions, so the agent stops asking the same questions every time.",
+      },
+      {
+        question: "How do /schedule and approval gates work together?",
+        answer:
+          "Dispatch tasks created with /schedule run on a cron — daily briefings, weekly reports, Monday decks — and pull data through the connected integrations automatically. Approval gates pause any scheduled task that would move money, send a contract, or post to a customer-facing channel until the owner taps Approve, so nothing pays or posts without an explicit yes.",
+      },
+      {
+        question: "How much time can Claude Cowork actually save a small business?",
+        answer:
+          "Most Dallas small businesses recover three to six hours of owner time per week from the daily briefing, weekly report, and invoice chase workflows alone. At a fully loaded owner's hourly cost, the configuration retainer typically pays back inside the first month and then compounds with every additional workflow turned on.",
+      },
+      {
+        question: "Is Claude Cowork safe for finance and customer data?",
+        answer:
+          "Yes, when it is set up against a recognized control framework. ITECS deploys Cowork against the NIST AI Risk Management Framework — defined purpose per Project, identity-bound credentials, immutable audit logs, a documented human approval path, and a quarterly governance review of what the agent did and what it touched.",
+      },
+    ],
+  },
+  {
     slug: "ceo-guide-ai-roi",
     title: "The CEO's Guide to AI ROI: Measure and Scale AI Impact in 2026",
     description:
