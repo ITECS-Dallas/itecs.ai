@@ -150,7 +150,14 @@ hardened portal.
 2. Include internal test emails and the client's approved emails or email domain
    in `allowedEmails` / `allowedDomains`.
 3. Set `fromEmail` to the ITECS sender requested for the proposal email.
-4. Set `heroImageUrl` to the public proposal image asset.
+4. Set `heroImageUrl` to the public proposal image asset. **The asset must be a
+   PNG or JPG** — the magic-link email embeds this URL via `<img>`, and most
+   email clients (Gmail, Outlook, Apple Mail) block SVG images for security and
+   will render a broken-image placeholder. If you authored a source SVG, render
+   it to PNG before pointing `heroImageUrl` at it. Recommended size 1600×1000 so
+   the email's `max-width:720px` constraint still produces a crisp 2× asset.
+   Render with `google-chrome --headless --disable-gpu --no-sandbox --hide-scrollbars --window-size=1600,1000 --screenshot=<path>.png "file://<absolute-path>.svg"`.
+   Verify the rendered PNG with `file <path>.png` (expect `PNG image data, 1600 x 1000`).
 5. Store gated proposal PDFs under `private/proposals/` and set `pdfFileName`
    to that filename so downloads go through the access-cookie API route.
 6. Change the proposal component's PDF button to:
