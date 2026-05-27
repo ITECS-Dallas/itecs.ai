@@ -51,6 +51,13 @@ yarn-error.log*
 *.png
 !public/**/*.png
 
+# Proposal working artifacts (root-level only; tracked proposal sources live
+# under src/components/proposals/ and public/images/proposals/)
+/*.pdf
+/*.docx
+/*-proposal-*.md
+/*-work-order-*.md
+
 # vercel
 .vercel
 
