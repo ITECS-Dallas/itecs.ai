@@ -58,6 +58,11 @@ const featuredServiceLinks = [
     label: "AI Champion Program",
     href: "/services/ai-champion-program",
   },
+  {
+    key: "ai-optimized-seo",
+    label: "AI-Optimized SEO",
+    href: "/ai-optimized-seo",
+  },
 ];
 
 export function Footer() {

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { generatePageMetadata } from "@/lib/metadata";
 import { generateFAQSchema } from "@/lib/seo";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -105,7 +106,42 @@ const MIP_FAQ = [
     answer:
       "ITECS separates advisory work from scoped implementation. Consulting, optimization, training, and planning can run hourly or through a prepaid retainer block with no minimum monthly usage and no expiration date. Custom AI agents, automations, and secure platform integrations are quoted as flat projects after scope, data access, and security requirements are clear.",
   },
-] as const;
+  {
+    question:
+      "Does a Managed Intelligence Provider include AI search visibility (GEO)?",
+    answer: (
+      <>
+        Yes. AI-Optimized SEO (Generative Engine Optimization) is one of the
+        marketing-layer services a MIP brings under one roof. ITECS runs it as
+        a tiered engagement —{" "}
+        <Link
+          href="/ai-optimized-seo/foundation"
+          className="text-brand-accent underline decoration-brand-accent/30 underline-offset-2 hover:decoration-brand-accent"
+        >
+          Foundation
+        </Link>{" "}
+        for the one-time technical setup, then{" "}
+        <Link
+          href="/ai-optimized-seo/momentum"
+          className="text-brand-accent underline decoration-brand-accent/30 underline-offset-2 hover:decoration-brand-accent"
+        >
+          Momentum
+        </Link>{" "}
+        or{" "}
+        <Link
+          href="/ai-optimized-seo/velocity"
+          className="text-brand-accent underline decoration-brand-accent/30 underline-offset-2 hover:decoration-brand-accent"
+        >
+          Velocity
+        </Link>{" "}
+        for ongoing content velocity and AI visibility tracking across
+        ChatGPT, Claude, and Google AI Overviews.
+      </>
+    ),
+    schemaAnswer:
+      "Yes. AI-Optimized SEO (Generative Engine Optimization) is one of the marketing-layer services a MIP brings under one roof. ITECS runs it as a tiered engagement — Foundation for the one-time technical setup, then Momentum or Velocity for ongoing content velocity and AI visibility tracking across ChatGPT, Claude, and Google AI Overviews.",
+  },
+];
 
 export default function ManagedIntelligenceProviderPage() {
   return (

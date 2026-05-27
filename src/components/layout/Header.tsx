@@ -21,6 +21,7 @@ import {
   Sparkles,
   ArrowRight,
   UserRoundCheck,
+  Search,
 } from "lucide-react";
 import { SITE_CONFIG } from "@/lib/constants";
 import { Button } from "@/components/ui/Button";
@@ -89,6 +90,12 @@ const serviceItems = [
     href: "/data-audit",
     icon: ShieldCheck,
     desc: "Score your AI readiness",
+  },
+  {
+    label: "AI-Optimized SEO",
+    href: "/ai-optimized-seo",
+    icon: Search,
+    desc: "GEO + traditional SEO for Dallas",
   },
 ];
 

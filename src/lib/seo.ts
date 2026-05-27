@@ -1,4 +1,10 @@
-import { SITE_CONFIG, SERVICES, type ServiceItem } from "./constants";
+import {
+  SITE_CONFIG,
+  SERVICES,
+  type ServiceItem,
+  type AISEOTier,
+  type AISEOOverview,
+} from "./constants";
 
 function generateContactPoints() {
   return [
@@ -405,5 +411,106 @@ export function generateHowToSchema(
       name: item.step,
       text: item.description,
     })),
+  };
+}
+
+// ---------------------------------------------------------------------------
+// AI-SEO: Service schema for the overview hub
+// ---------------------------------------------------------------------------
+
+export function generateAISEOServiceSchema(overview: AISEOOverview) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: overview.title,
+    description: overview.description,
+    url: `${SITE_CONFIG.url}${overview.href}`,
+    serviceType: "AI-Optimized SEO (Generative Engine Optimization)",
+    provider: {
+      "@type": "LocalBusiness",
+      name: "ITECS AI",
+      url: SITE_CONFIG.url,
+      parentOrganization: {
+        "@type": "LocalBusiness",
+        name: "ITECS",
+        url: SITE_CONFIG.mainSiteUrl,
+      },
+    },
+    areaServed: { "@type": "City", name: "Dallas" },
+  };
+}
+
+// ---------------------------------------------------------------------------
+// AI-SEO: Service schema for individual tier (Foundation / Momentum / Velocity)
+// ---------------------------------------------------------------------------
+
+export function generateAISEOTierServiceSchema(tier: AISEOTier) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: tier.title,
+    description: tier.description,
+    url: `${SITE_CONFIG.url}${tier.href}`,
+    serviceType: `AI-Optimized SEO — ${tier.shortName}`,
+    provider: {
+      "@type": "LocalBusiness",
+      name: "ITECS AI",
+      url: SITE_CONFIG.url,
+      parentOrganization: {
+        "@type": "LocalBusiness",
+        name: "ITECS",
+        url: SITE_CONFIG.mainSiteUrl,
+      },
+    },
+    areaServed: { "@type": "City", name: "Dallas" },
+  };
+}
+
+// ---------------------------------------------------------------------------
+// Offer schema for a single AI-SEO tier
+// ---------------------------------------------------------------------------
+
+export function generateOfferSchema(tier: AISEOTier) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Offer",
+    name: tier.name,
+    description: tier.overview,
+    url: `${SITE_CONFIG.url}${tier.href}`,
+    price: tier.priceNumeric,
+    priceCurrency: tier.priceCurrency,
+    priceSpecification: {
+      "@type":
+        tier.priceModel === "monthly" ? "UnitPriceSpecification" : "PriceSpecification",
+      price: tier.priceNumeric,
+      priceCurrency: tier.priceCurrency,
+      ...(tier.priceModel === "monthly"
+        ? { referenceQuantity: { "@type": "QuantitativeValue", value: 1, unitCode: "MON" } }
+        : {}),
+    },
+    availability: "https://schema.org/InStock",
+    eligibleRegion: { "@type": "Place", name: "Dallas–Fort Worth" },
+    seller: {
+      "@type": "LocalBusiness",
+      name: "ITECS AI",
+      url: SITE_CONFIG.url,
+    },
+  };
+}
+
+// ---------------------------------------------------------------------------
+// AggregateOffer schema for the parent AI-SEO page showing all 3 tiers
+// ---------------------------------------------------------------------------
+
+export function generateAggregateOfferSchema(tiers: AISEOTier[]) {
+  const prices = tiers.map((t) => t.priceNumeric);
+  return {
+    "@context": "https://schema.org",
+    "@type": "AggregateOffer",
+    priceCurrency: "USD",
+    lowPrice: Math.min(...prices),
+    highPrice: Math.max(...prices),
+    offerCount: tiers.length,
+    offers: tiers.map((t) => generateOfferSchema(t)),
   };
 }

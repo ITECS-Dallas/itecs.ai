@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { generatePageMetadata } from "@/lib/metadata";
 import {
   generateServiceSchema,
@@ -23,33 +24,55 @@ import { CTASection } from "@/components/sections/CTASection";
 
 const service = SERVICES.find((s) => s.slug === "consulting")!;
 
-// Append MSP-program bundling context to the cost FAQ. Factual handoff:
-// businesses already on an ITECS managed-services agreement can bundle AI
-// work into their existing relationship, no new contract.
-const consultingFaq = service.faq.map((item) =>
-  item.question === "How much does AI consulting cost for a small business?"
-    ? {
-        ...item,
-        answer: (
-          <>
-            {item.answer} Businesses already on an ITECS managed-services
-            agreement through one of our{" "}
-            <a
-              href="https://itecsonline.com/msp-pro-program"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-brand-accent underline decoration-brand-accent/30 underline-offset-2 hover:decoration-brand-accent"
-            >
-              MSP programs
-            </a>{" "}
-            can bundle AI consulting hours into their existing engagement
-            rather than opening a separate contract.
-          </>
-        ),
-        schemaAnswer: `${item.answer} Businesses already on an ITECS managed-services agreement through one of our MSP programs (itecsonline.com/msp-pro-program) can bundle AI consulting hours into their existing engagement rather than opening a separate contract.`,
-      }
-    : item,
-);
+// Append MSP-program bundling context to the cost FAQ + add a discoverability
+// FAQ for AI-Optimized SEO so /consulting visitors find the related service.
+const consultingFaq = [
+  ...service.faq.map((item) =>
+    item.question === "How much does AI consulting cost for a small business?"
+      ? {
+          ...item,
+          answer: (
+            <>
+              {item.answer} Businesses already on an ITECS managed-services
+              agreement through one of our{" "}
+              <a
+                href="https://itecsonline.com/msp-pro-program"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-brand-accent underline decoration-brand-accent/30 underline-offset-2 hover:decoration-brand-accent"
+              >
+                MSP programs
+              </a>{" "}
+              can bundle AI consulting hours into their existing engagement
+              rather than opening a separate contract.
+            </>
+          ),
+          schemaAnswer: `${item.answer} Businesses already on an ITECS managed-services agreement through one of our MSP programs (itecsonline.com/msp-pro-program) can bundle AI consulting hours into their existing engagement rather than opening a separate contract.`,
+        }
+      : item,
+  ),
+  {
+    question:
+      "Do you also help us get found by AI search engines like ChatGPT and Google AI Overviews?",
+    answer: (
+      <>
+        Yes. ITECS runs a dedicated{" "}
+        <Link
+          href="/ai-optimized-seo"
+          className="text-brand-accent underline decoration-brand-accent/30 underline-offset-2 hover:decoration-brand-accent"
+        >
+          AI-Optimized SEO
+        </Link>{" "}
+        engagement (Generative Engine Optimization) that structures your
+        content so AI assistants cite you as the answer. Foundation is a
+        one-time technical project; Momentum and Velocity are monthly
+        retainers that compound visibility over time.
+      </>
+    ),
+    schemaAnswer:
+      "Yes. ITECS runs a dedicated AI-Optimized SEO engagement (Generative Engine Optimization) that structures your content so AI assistants cite you as the answer. Foundation is a one-time technical project; Momentum and Velocity are monthly retainers that compound visibility over time.",
+  },
+];
 
 export const metadata = generatePageMetadata({
   title: "AI Consulting for Small Business in Dallas",

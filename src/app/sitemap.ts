@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { SERVICES, INSIGHTS } from "@/lib/constants";
+import { SERVICES, INSIGHTS, AI_SEO_OVERVIEW, AI_SEO_TIERS } from "@/lib/constants";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = "https://itecs.ai";
@@ -18,6 +18,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
+  const seoTierPages = AI_SEO_TIERS.map((t) => ({
+    url: `${base}${t.href}`,
+    lastModified: new Date(),
+    changeFrequency: "weekly" as const,
+    priority: 0.85,
+  }));
+
   return [
     {
       url: base,
@@ -26,6 +33,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1.0,
     },
     ...hubPages,
+    {
+      url: `${base}${AI_SEO_OVERVIEW.href}`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    ...seoTierPages,
     {
       url: `${base}/insights`,
       lastModified: new Date(),

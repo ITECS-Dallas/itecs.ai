@@ -2306,3 +2306,927 @@ export const DFW_SERVICE_AREAS = [
   "Carrollton",
   "Addison",
 ] as const;
+
+// ---------------------------------------------------------------------------
+// AI-Optimized SEO — Parent hub + 3 pricing tiers
+// Canonical home for ITECS's AI-SEO service offering. Replaces the legacy
+// /ai-optimized-seo-services pages on itecsonline.com; those URLs 301 to here.
+// ---------------------------------------------------------------------------
+
+export interface AISEOMechanicStep {
+  number: number;
+  title: string;
+  description: string;
+}
+
+export interface AISEOComparisonRow {
+  aspect: string;
+  traditional: string;
+  aiOptimized: string;
+}
+
+export interface AISEOPhilosophy {
+  refuse: string[];
+  doInstead: string[];
+}
+
+export interface AISEOIncludeCategory {
+  category: string;
+  items: string[];
+}
+
+export interface AISEOMethodologyStep {
+  number: number;
+  title: string;
+  description: string;
+}
+
+export interface AISEOGlossaryTerm {
+  term: string;
+  definition: string;
+}
+
+export interface AISEOProofStat {
+  value: string;
+  label: string;
+}
+
+export interface AISEOTrafficSource {
+  source: string;
+  sessions: string;
+}
+
+export interface AISEOOverview {
+  title: string;
+  description: string;
+  href: string;
+  keywords: string[];
+  eyebrow: string;
+  h1: string;
+  heroSubline: string;
+  heroCTA: string;
+  definitionTitle: string;
+  definitionBody: string;
+  mechanicsTitle: string;
+  mechanicsIntro: string;
+  mechanicsSteps: AISEOMechanicStep[];
+  comparisonTitle: string;
+  comparisonIntro: string;
+  comparisonRows: AISEOComparisonRow[];
+  philosophyTitle: string;
+  philosophyIntro: string;
+  philosophy: AISEOPhilosophy;
+  includesTitle: string;
+  includesIntro: string;
+  includes: AISEOIncludeCategory[];
+  methodologyTitle: string;
+  methodologyIntro: string;
+  methodology: AISEOMethodologyStep[];
+  technicalTitle: string;
+  technicalIntro: string;
+  technicalSpecs: string[];
+  proofTitle: string;
+  proofIntro: string;
+  proofStats: AISEOProofStat[];
+  proofTrafficSources: AISEOTrafficSource[];
+  proofDateRange: string;
+  glossaryTitle: string;
+  glossaryIntro: string;
+  glossary: AISEOGlossaryTerm[];
+  faq: { question: string; answer: string }[];
+}
+
+export const AI_SEO_OVERVIEW: AISEOOverview = {
+  title: "AI-Optimized SEO Services Dallas | GEO & AI Search Visibility",
+  description:
+    "Generative Engine Optimization for Dallas businesses. Get found in ChatGPT, Google AI Overviews, Claude, and Perplexity — not just blue links. Foundation, Momentum, and Velocity tiers.",
+  href: "/ai-optimized-seo",
+  keywords: [
+    "AI optimized SEO Dallas",
+    "generative engine optimization Dallas",
+    "GEO Dallas",
+    "AI SEO services",
+    "ChatGPT SEO optimization",
+    "Google AI Overviews optimization",
+    "Perplexity SEO",
+    "llms.txt Dallas",
+    "schema markup Dallas SEO",
+    "AI search visibility",
+  ],
+  eyebrow: "AI-Optimized SEO",
+  h1: "AI-Optimized SEO Services in Dallas",
+  heroSubline:
+    "Dominate Dallas search results with AI-optimized SEO. We blend technical precision with generative AI strategies to capture local traffic in DFW.",
+  heroCTA: "Request an AI-SEO Audit",
+  definitionTitle: "What is AI SEO?",
+  definitionBody:
+    "Adapting your digital presence for the era of answer engines. SEO used to be a keywords game: convince Google to rank your link #1. Today, buyers ask complex questions to ChatGPT, Google Gemini, and Perplexity. These answer engines do not just list websites — they read them, summarize them, and recommend the most trusted option. AI-Optimized SEO (also called Generative Engine Optimization or GEO) is the engineering process of structuring your brand's data and content so AI models recognize you as the trusted authority in your industry.",
+  mechanicsTitle: "The Mechanics of GEO",
+  mechanicsIntro:
+    "Three-step process that determines whether AI models recommend you or your competitor.",
+  mechanicsSteps: [
+    {
+      number: 1,
+      title: "Entity Extraction",
+      description:
+        "The AI reads your content not as strings of text, but as entities (People, Places, Concepts). It looks for relationships. Does \"ITECS\" have a \"Parent\" relationship with \"Dallas\"? Is \"Managed IT\" a \"Service\" offered by \"ITECS\"? We use Schema.org to hardcode these relationships so the AI doesn't have to guess.",
+    },
+    {
+      number: 2,
+      title: "Retrieval Augmented Generation (RAG)",
+      description:
+        "The model doesn't just memorize the internet — that triggers hallucinations. Instead, it searches its trusted Knowledge Graph to retrieve facts. If your site provides structured, citation-ready facts (via llms.txt and semantic HTML), you become a primary source for the RAG process.",
+    },
+    {
+      number: 3,
+      title: "Response Synthesis",
+      description:
+        "Finally, the AI combines the retrieved facts into a natural language answer. It prioritizes sources that are authoritative (proven expertise) and concise. Our \"Winner Takes All\" content strategy is designed to be the single best answer used in this synthesis.",
+    },
+  ],
+  comparisonTitle: "Traditional SEO vs AI-Optimized SEO",
+  comparisonIntro:
+    "The optimization rules changed when answer engines arrived. Here is what shifts.",
+  comparisonRows: [
+    {
+      aspect: "Core Competition",
+      traditional: "You compete for a click.",
+      aiOptimized: "You compete to be the answer.",
+    },
+    {
+      aspect: "Optimization Focus",
+      traditional: "Keyword-first page optimization",
+      aiOptimized: "Entity clarity + structured data",
+    },
+    {
+      aspect: "Ranking Target",
+      traditional: "Rank for blue links",
+      aiOptimized: "Answer-centric content written for extraction",
+    },
+    {
+      aspect: "Trust Building",
+      traditional: "Win the click, then explain trust",
+      aiOptimized: "Citations and trusted signals across the web",
+    },
+    {
+      aspect: "Authority Source",
+      traditional: "Authority is implied by position",
+      aiOptimized: "Authority is proven by context",
+    },
+  ],
+  philosophyTitle: "Clean SEO Philosophy",
+  philosophyIntro:
+    "We refuse the tactics that look fast and break things later. We invest in the work that compounds.",
+  philosophy: {
+    refuse: [
+      "Paid link placement, link farms, or reciprocal link schemes",
+      "Short-term hacks that trigger Google penalties",
+      "Keyword stuffing that hurts user experience",
+      "Generic SEO packages with no AI visibility strategy",
+    ],
+    doInstead: [
+      "Technical SEO fixes that search engines and AI models reward",
+      "Semantic HTML and content architecture for topical authority",
+      "Schema markup for rich results and AI understanding",
+      "Performance tuning that improves Core Web Vitals",
+      "Content built around real search demand, not fluff",
+    ],
+  },
+  includesTitle: "What AI-Optimized SEO Includes",
+  includesIntro:
+    "Two layers of work running in parallel — the traditional SEO foundation that Google still rewards, plus the AI discovery layer that answer engines require.",
+  includes: [
+    {
+      category: "Traditional SEO Foundation",
+      items: [
+        "Technical SEO audit and remediation (site speed, crawlability, mobile)",
+        "Keyword research and content strategy aligned to business goals",
+        "On-page optimization for titles, headers, and internal linking",
+        "Local SEO targeting Dallas–Fort Worth corridors",
+        "Content architecture that builds topical authority",
+      ],
+    },
+    {
+      category: "AI Discovery Layer",
+      items: [
+        "LLM visibility files (llms.txt + llms-full.txt) for AI ingestion",
+        "Schema.org JSON-LD graphing for entity clarity",
+        "Semantic page structure for AI answer extraction",
+        "Entity optimization and citation readiness across platforms",
+        "AI search optimization for AI Overviews, Perplexity, and Bing Chat",
+      ],
+    },
+  ],
+  methodologyTitle: "Our Process: Widest Net + Sharp Hooks",
+  methodologyIntro:
+    "A four-step engagement that anchors on broad Dallas demand and proves industry-specific expertise in the same content.",
+  methodology: [
+    {
+      number: 1,
+      title: "Audit & Intelligence",
+      description:
+        "We analyze GA4, Search Console, crawl health, and Core Web Vitals to identify technical blockers and AI visibility gaps.",
+    },
+    {
+      number: 2,
+      title: "Widest Net Targeting",
+      description:
+        "We anchor on high-volume Dallas SEO phrases while mapping nearby demand in Uptown, Plano Legacy West, Las Colinas Corporate Center, Downtown Dallas Legal District, and the Richardson Telecom Corridor.",
+    },
+    {
+      number: 3,
+      title: "Sharp Industry Hooks",
+      description:
+        "We hardcode insider terms — Schema.org, JSON-LD, AI Overviews, and LLM files — so search engines and AI models understand your expertise.",
+    },
+    {
+      number: 4,
+      title: "Measure & Iterate",
+      description:
+        "We track rankings, AI referral sessions, and conversion paths to keep content, entities, and citations compounding over time.",
+    },
+  ],
+  technicalTitle: "Technical Foundation",
+  technicalIntro:
+    "The infrastructure layer that makes AI extraction and traditional ranking possible at the same time.",
+  technicalSpecs: [
+    "Schema.org + JSON-LD Graphs",
+    "Core Web Vitals",
+    "Canonical + Sitemap Governance",
+    "OpenGraph + Social Metadata",
+    "LLM Files (llms.txt)",
+    "Semantic Heading Architecture",
+    "GA4 + Search Console Instrumentation",
+    "Citation-Ready Content",
+  ],
+  proofTitle: "Proof: ITECS Practices What We Sell",
+  proofIntro:
+    "Live analytics from itecsonline.com — the same playbook we run for our SEO clients.",
+  proofStats: [
+    { value: "23,238", label: "Active Users" },
+    { value: "3×", label: "Growth in 4 Months" },
+    { value: "550+", label: "AI Platform Sessions" },
+    { value: "165", label: "Countries Reached" },
+  ],
+  proofTrafficSources: [
+    { source: "Google", sessions: "16,000" },
+    { source: "Bing", sessions: "2,500" },
+    { source: "DuckDuckGo", sessions: "600" },
+    { source: "ChatGPT.com", sessions: "300" },
+    { source: "Claude.ai", sessions: "250" },
+  ],
+  proofDateRange: "Aug 1 – Dec 13, 2025",
+  glossaryTitle: "AI-SEO Knowledge Base",
+  glossaryIntro:
+    "Plain-English definitions for the terms that come up in AI-optimized SEO conversations.",
+  glossary: [
+    {
+      term: "Generative Engine Optimization (GEO)",
+      definition:
+        "The practice of optimizing content specifically for AI-powered search engines (like ChatGPT Search, Google AI Overviews, and Perplexity) rather than just traditional blue links.",
+    },
+    {
+      term: "Large Language Model (LLM)",
+      definition:
+        "AI systems like GPT-4, Claude, and Gemini that are trained on vast amounts of text data to understand and generate human-like language.",
+    },
+    {
+      term: "Retrieval Augmented Generation (RAG)",
+      definition:
+        "A technique where an AI model looks up specific, up-to-date information from a trusted external source (like your website) before generating an answer, reducing errors.",
+    },
+    {
+      term: "Knowledge Graph",
+      definition:
+        "A structured database of facts (entities) and the relationships between them. Google and AI models use this to understand that \"ITECS\" is a \"Company\" located in \"Dallas\".",
+    },
+    {
+      term: "Zero-Click Search",
+      definition:
+        "A search result that provides the answer directly on the results page (via a featured snippet or AI overview), so the user doesn't need to click a link.",
+    },
+    {
+      term: "Neural Information Retrieval",
+      definition:
+        "Search technology that uses neural networks to understand the meaning behind a query (semantics), rather than just matching keywords.",
+    },
+  ],
+  faq: [
+    {
+      question: "How is AI SEO different from traditional SEO?",
+      answer:
+        "Traditional SEO focuses on keywords and blue-link rankings. AI SEO focuses on entity clarity and context (who you are, what you do, and where you serve), plus structured data and answer-ready content so AI systems can confidently recommend you.",
+    },
+    {
+      question: "Will AI SEO work for my specific industry (legal, manufacturing, etc.)?",
+      answer:
+        "Yes. Regulated industries often benefit the most because AI systems prioritize trust signals (experience, expertise, and verifiable credentials). We highlight your industry-specific proof and structure it so search engines and AI models understand it clearly.",
+    },
+    {
+      question: "Does ITECS use AI to write the content?",
+      answer:
+        "We use AI for analysis (gap detection, intent mapping, and opportunity research), but strategy and publishing are led by humans. We do not ship unreviewed AI text; quality, accuracy, and usefulness come first.",
+    },
+    {
+      question: "Will this help with Google AI Overviews and AI citations?",
+      answer:
+        "Yes. We structure content for AI extraction, implement Schema.org JSON-LD, and build citation-ready pages so your brand is eligible for AI Overviews and assistants such as ChatGPT, Claude, and Perplexity.",
+    },
+    {
+      question: "Do you build backlinks or run link schemes?",
+      answer:
+        "No. ITECS avoids paid link placement, link farms, and other risky tactics. We focus on on-page optimization, technical SEO, and authoritative content that earns sustainable rankings.",
+    },
+    {
+      question: "What do we receive from an AI-SEO audit?",
+      answer:
+        "You receive a prioritized roadmap covering technical fixes, content architecture, entity gaps, schema enhancements, and AI discovery improvements based on GA4, Search Console, and Core Web Vitals.",
+    },
+    {
+      question: "How long does it take to see results?",
+      answer:
+        "Most sites see early movement within 60–90 days, with compounding growth as content and technical improvements mature. Timelines vary by competition and current site health.",
+    },
+    {
+      question: "Can you target Dallas–Fort Worth and my industry at the same time?",
+      answer:
+        "Yes. We use a widest-net strategy for Dallas SEO visibility while adding industry-specific hooks (tools, compliance terms, and workflows) to prove expertise and capture qualified traffic.",
+    },
+    {
+      question: "Where do the three tiers fit (Foundation, Momentum, Velocity)?",
+      answer:
+        "Foundation is a one-time project that fixes technical SEO and content architecture so AI and search engines can interpret your site. Momentum is the monthly retainer that keeps the foundation healthy and adds content, AI visibility tracking, and one authority backlink per month. Velocity is the premium retainer that doubles content velocity, adds third-party link building, competitor monitoring, and quarterly CRO. Foundation is a prerequisite for Momentum and Velocity.",
+    },
+  ],
+};
+
+export interface AISEOInternalTier {
+  name: string;
+  price: string;
+  pages: string;
+  target: string;
+}
+
+export interface AISEOAddOn {
+  name: string;
+  price: string;
+  description: string;
+  volumeDiscount?: string;
+}
+
+export interface AISEODeliverableArea {
+  area: string;
+  description: string;
+  items: string[];
+}
+
+export interface AISEOMonthlyServiceCategory {
+  category: string;
+  items: string[];
+}
+
+export interface AISEOPrerequisite {
+  title: string;
+  description: string;
+}
+
+export interface AISEOTier {
+  slug: "foundation" | "momentum" | "velocity";
+  name: string;
+  shortName: string;
+  href: string;
+  title: string;
+  description: string;
+  keywords: string[];
+
+  eyebrow: string;
+  h1: string;
+  heroSubline: string;
+  heroCTA: string;
+
+  overview: string;
+
+  priceModel: "one-time" | "monthly";
+  priceLabel: string;
+  priceNumeric: number;
+  priceCurrency: "USD";
+  priceUnit: "USD" | "USD/mo";
+  minimumTerm?: string;
+  cancellationPolicy?: string;
+  refundPolicy?: string;
+  billingTerms?: string;
+  paymentTerms?: string;
+  postDeliverySupport?: string;
+  proposalValidity?: string;
+  projectTimeline?: string;
+
+  internalTiers?: AISEOInternalTier[];
+  internalTiersNote?: string;
+  addOns?: AISEOAddOn[];
+  deliverables?: AISEODeliverableArea[];
+
+  prerequisites?: AISEOPrerequisite[];
+  prerequisitesHeading?: string;
+  monthlyServices?: AISEOMonthlyServiceCategory[];
+  notIncluded?: string[];
+  idealClient?: string[];
+  upgradePath?: { headline: string; description: string; targetSlug: string; ctaText: string };
+
+  whyItecs: string[];
+  faq: { question: string; answer: string }[];
+
+  // Card rendering on parent page
+  cardTagline: string;
+  cardPriceLabel: string;
+  cardHighlights: string[];
+  cardAccent: "cyan" | "purple" | "gradient";
+}
+
+export const AI_SEO_TIERS: AISEOTier[] = [
+  {
+    slug: "foundation",
+    name: "SEO Foundation",
+    shortName: "Foundation",
+    href: "/ai-optimized-seo/foundation",
+    title: "SEO Foundation Dallas | Technical Audits & Schema",
+    description:
+      "One-time technical SEO and AI discoverability project for Dallas businesses. Schema.org, llms.txt, Core Web Vitals, semantic content architecture. From $4,500.",
+    keywords: [
+      "SEO Foundation Dallas",
+      "technical SEO Dallas",
+      "schema markup Dallas",
+      "llms.txt generation",
+      "Core Web Vitals optimization Dallas",
+      "AI visibility audit",
+    ],
+    eyebrow: "Tier 1 · One-Time Project",
+    h1: "SEO Foundation for Dallas Businesses",
+    heroSubline:
+      "Build a flawless digital foundation. SEO Foundation includes deep technical audits, local schema architecture, and site speed optimization for Dallas.",
+    heroCTA: "Schedule Foundation Consultation",
+    overview:
+      "SEO Foundation is a one-time project that fixes the technical SEO and content architecture issues that keep Dallas–Fort Worth businesses from ranking on Google and being cited by AI assistants. We focus on schema, Core Web Vitals, and llms.txt so your site is ready for both traditional and AI-driven discovery. Local focus includes Uptown, Legacy West, Las Colinas, and the Richardson Telecom Corridor so your location signals match how Dallas buyers search.",
+    priceModel: "one-time",
+    priceLabel: "From $4,500",
+    priceNumeric: 4500,
+    priceCurrency: "USD",
+    priceUnit: "USD",
+    projectTimeline: "8 weeks from kickoff",
+    paymentTerms: "50% at acceptance, 50% at final delivery",
+    postDeliverySupport: "30 days of email and phone support",
+    proposalValidity: "30 days from proposal date",
+    internalTiers: [
+      {
+        name: "Standard",
+        price: "$4,500",
+        pages: "Up to 25 pages",
+        target: "Small practices and professional services",
+      },
+      {
+        name: "Professional",
+        price: "$7,000",
+        pages: "26–50 pages",
+        target: "Established SMBs and multi-location teams",
+      },
+      {
+        name: "Enterprise",
+        price: "Custom quote",
+        pages: "51+ pages",
+        target: "Complex sites, subdomains, and ecommerce",
+      },
+    ],
+    internalTiersNote:
+      "Blog articles using a CMS template count as 1 page (template optimization applies to all articles).",
+    addOns: [
+      {
+        name: "Static Page",
+        price: "$400 per page",
+        description: "SEO-optimized copy, 1 media asset, metadata, internal linking",
+        volumeDiscount: "5 static pages for $1,800",
+      },
+      {
+        name: "Blog Article",
+        price: "$250 per article",
+        description: "800–1,200 words, 1 media asset, metadata, topic clustering",
+        volumeDiscount: "10 blog articles for $2,250",
+      },
+    ],
+    deliverables: [
+      {
+        area: "Discovery and Assessment",
+        description:
+          "Technical audits, AI visibility analysis, competitor research, and baseline tracking.",
+        items: [
+          "Core Web Vitals analysis, crawlability review, broken link discovery",
+          "AI visibility audit for Google AI Overviews, ChatGPT, and Perplexity mentions",
+          "Search Console and GA4 verification with conversion tracking setup",
+          "Competitor keyword gap analysis and content opportunity mapping",
+        ],
+      },
+      {
+        area: "Technical Implementation",
+        description:
+          "Schema, Core Web Vitals improvements, metadata updates, and technical SEO fixes.",
+        items: [
+          "llms.txt and llms-full.txt generation for AI ingestion",
+          "Schema.org JSON-LD implementation with service and FAQ markup",
+          "Meta tag rewrites, canonical tags, sitemap/robots optimization",
+          "Image optimization, lazy loading, and mobile readiness improvements",
+        ],
+      },
+      {
+        area: "On-Page Optimization",
+        description:
+          "Keyword mapping, semantic content structure, internal linking, and conversion tuning.",
+        items: [
+          "Keyword mapping for each core page and pillar page",
+          "Semantic content restructuring for AI answer extraction",
+          "Internal linking architecture and CTA conversion tuning",
+          "Local SEO alignment for Dallas–Fort Worth corridors",
+        ],
+      },
+      {
+        area: "AI Discoverability Enhancements",
+        description:
+          "LLM files, entity optimization, and FAQ structuring for AI search visibility.",
+        items: [
+          "llms.txt and llms-full.txt files for AI training and runtime ingestion",
+          "Entity optimization so AI models map your brand to the right categories",
+          "FAQ structuring designed for AI answer extraction",
+          "Before-and-after AI visibility comparison report",
+        ],
+      },
+    ],
+    whyItecs: [
+      "Practitioner-led credibility with rankings that prove our playbook works in Dallas",
+      "Technical superiority across schema, site speed, and secure implementation",
+      "Clean SEO practices without paid links or risky shortcuts",
+      "Unified security standards that align with MSP-grade infrastructure",
+    ],
+    faq: [
+      {
+        question: "Is SEO Foundation required before SEO Momentum or SEO Velocity?",
+        answer:
+          "Yes. SEO Foundation establishes the technical baseline required for managed SEO. If you already have a strong foundation, we can run a foundation audit to confirm readiness for $500.",
+      },
+      {
+        question: "What access does ITECS need for a Foundation project?",
+        answer:
+          "We typically need Google Analytics, Search Console, CMS access, and hosting credentials so we can implement technical fixes, metadata updates, and structured data.",
+      },
+      {
+        question: "Does SEO Foundation include content writing?",
+        answer:
+          "Content writing is optional. We provide add-on pricing for new pages and blog articles if you want ITECS to create SEO-optimized content.",
+      },
+      {
+        question: "How long does the Foundation project take?",
+        answer:
+          "Most engagements complete in about 8 weeks from kickoff, depending on site size and implementation approvals.",
+      },
+      {
+        question: "Will this improve AI visibility for ChatGPT and Google AI Overviews?",
+        answer:
+          "Yes. We implement llms.txt files, structured data, and semantic content architecture so AI platforms can interpret and cite your services.",
+      },
+    ],
+    cardTagline: "One-time technical and AI-readiness project.",
+    cardPriceLabel: "From $4,500 · one-time",
+    cardHighlights: [
+      "Technical audit + remediation",
+      "Schema.org + llms.txt files",
+      "Semantic + local content architecture",
+      "Prerequisite for Momentum & Velocity",
+    ],
+    cardAccent: "cyan",
+  },
+  {
+    slug: "momentum",
+    name: "SEO Momentum",
+    shortName: "Momentum",
+    href: "/ai-optimized-seo/momentum",
+    title: "SEO Momentum Dallas | Monthly AI SEO Retainer",
+    description:
+      "Monthly managed SEO for Dallas businesses. Technical monitoring, 2 articles, AI visibility tracking on ChatGPT/Claude/Google, 1 authority backlink — $1,750/mo, month-to-month.",
+    keywords: [
+      "managed SEO Dallas",
+      "SEO retainer Dallas",
+      "monthly SEO services Dallas",
+      "AI visibility tracking",
+      "SEO Momentum",
+      "Dallas content marketing",
+    ],
+    eyebrow: "Tier 2 · Monthly Retainer",
+    h1: "SEO Momentum — Managed Monthly SEO in Dallas",
+    heroSubline:
+      "Accelerate Dallas growth with SEO Momentum. Data-driven content creation and keyword targeting designed to capture high-intent North Texas traffic.",
+    heroCTA: "Start SEO Momentum",
+    overview:
+      "SEO Momentum keeps your technical foundation healthy and expands visibility with fresh content, AI visibility tracking, and local SEO management. It is built for Dallas–Fort Worth teams in Uptown, Plano, Legacy West, Las Colinas, and the Richardson Telecom Corridor that want steady, compounding growth.",
+    priceModel: "monthly",
+    priceLabel: "$1,750/mo",
+    priceNumeric: 1750,
+    priceCurrency: "USD",
+    priceUnit: "USD/mo",
+    minimumTerm: "Month-to-month",
+    cancellationPolicy: "30 days written notice",
+    refundPolicy: "No refunds for partial months or completed work",
+    billingTerms: "Invoiced on the 1st of each month, due upon receipt",
+    prerequisitesHeading: "A solid foundation comes first.",
+    prerequisites: [
+      {
+        title: "SEO Foundation completed",
+        description:
+          "Completed an ITECS SEO Foundation project within the last 12 months.",
+      },
+      {
+        title: "Or pass a foundation audit",
+        description:
+          "ITECS confirms your technical SEO baseline meets standards (audit fee: $500).",
+      },
+    ],
+    monthlyServices: [
+      {
+        category: "Technical SEO Monitoring",
+        items: [
+          "Continuous site health monitoring for crawl errors and indexing issues",
+          "Core Web Vitals tracking and optimization recommendations",
+          "Schema markup maintenance as content changes",
+          "Security checks for SSL and mixed content warnings",
+        ],
+      },
+      {
+        category: "Ranking and Visibility Tracking",
+        items: [
+          "15–30 keyword position tracking with monthly trends",
+          "Organic traffic monitoring via GA4 and Search Console",
+          "Conversion tracking review for forms and phone clicks",
+        ],
+      },
+      {
+        category: "AI Visibility Tracking",
+        items: [
+          "AI platform checks for ChatGPT, Google AI search mode, and Claude",
+          "Documentation of mentions, accuracy, and competitive positioning",
+          "Quarterly audit cadence with recommendations to improve AI discoverability",
+        ],
+      },
+      {
+        category: "Content Creation",
+        items: [
+          "2 SEO-optimized blog articles per month (800–1,200 words)",
+          "Keyword research for high-demand topics and competitive gaps",
+          "Internal linking and optimized meta titles and descriptions",
+        ],
+      },
+      {
+        category: "ITECS Domain Authority Backlink",
+        items: [
+          "1 feature article or white paper published monthly on itecsonline.com",
+          "Do-follow backlink to your site with permanent publication",
+          "Formats include case studies, industry insights, and technical guides",
+        ],
+      },
+      {
+        category: "Local SEO Management",
+        items: [
+          "Google Business Profile optimization and posting",
+          "Review monitoring and response recommendations",
+          "Citation consistency tracking (NAP accuracy)",
+        ],
+      },
+      {
+        category: "Reporting and Strategy Partnership",
+        items: [
+          "Monthly performance report delivered by the 10th",
+          "AI visibility summary and prioritized next-step recommendations",
+          "Two strategy calls per month (30 minutes each)",
+        ],
+      },
+    ],
+    notIncluded: [
+      "Digital PR and third-party link building",
+      "Four or more blog articles per month",
+      "Competitor monitoring and response strategy",
+      "Conversion rate optimization audits",
+      "Weekly strategy calls and dedicated account manager",
+      "Multi-location SEO",
+      "Google Ads or PPC management",
+      "Website redesign or development",
+    ],
+    upgradePath: {
+      headline: "Upgrade when you need aggressive growth.",
+      description:
+        "SEO Velocity adds doubled content velocity, third-party link building, competitor response, and CRO audits for teams ready to dominate.",
+      targetSlug: "velocity",
+      ctaText: "Explore SEO Velocity",
+    },
+    whyItecs: [
+      "Practitioner-led credibility with Dallas rankings and AI visibility proof",
+      "Technical SEO and AI search expertise rooted in MSP-grade infrastructure",
+      "Clean SEO practices without paid link schemes",
+      "Built-in backlink value through itecsonline.com authority",
+    ],
+    faq: [
+      {
+        question: "Do I need SEO Foundation before starting Momentum?",
+        answer:
+          "Yes. Momentum requires a strong technical baseline. If you have not completed Foundation, we can perform a foundation audit to confirm readiness for $500.",
+      },
+      {
+        question: "How much content is included each month?",
+        answer:
+          "Momentum includes two SEO-optimized blog articles per month, each 800–1,200 words, plus topic research and internal linking.",
+      },
+      {
+        question: "How often is AI visibility reviewed?",
+        answer:
+          "We run a quarterly AI visibility audit across platforms like ChatGPT, Google AI search mode, and Claude.",
+      },
+      {
+        question: "What is the ITECS domain authority backlink?",
+        answer:
+          "Each month we publish a feature article or white paper about your business on itecsonline.com with a do-follow backlink to your site.",
+      },
+      {
+        question: "Can I cancel at any time?",
+        answer:
+          "Momentum is month-to-month with a 30-day written notice. There are no refunds for partial months or completed work.",
+      },
+    ],
+    cardTagline: "Monthly managed SEO with AI visibility tracking.",
+    cardPriceLabel: "$1,750 / month · month-to-month",
+    cardHighlights: [
+      "2 articles + AI visibility audits",
+      "15–30 keywords tracked monthly",
+      "1 do-follow backlink from itecsonline.com",
+      "Two 30-min strategy calls per month",
+    ],
+    cardAccent: "purple",
+  },
+  {
+    slug: "velocity",
+    name: "SEO Velocity",
+    shortName: "Velocity",
+    href: "/ai-optimized-seo/velocity",
+    title: "SEO Velocity Dallas | Advanced Authority & Automation",
+    description:
+      "Premium AI SEO retainer for Dallas businesses. 4 articles, 2 ITECS backlinks, third-party link building, competitor monitoring, quarterly CRO, weekly strategy — $3,500/mo (6-mo min).",
+    keywords: [
+      "premium SEO Dallas",
+      "SEO Velocity",
+      "competitive SEO Dallas",
+      "third-party link building Dallas",
+      "multi-location SEO Dallas",
+      "CRO Dallas SEO",
+    ],
+    eyebrow: "Tier 3 · Premium Retainer",
+    h1: "SEO Velocity — Premium AI SEO for Dallas Leaders",
+    heroSubline:
+      "Maximize your digital footprint in DFW. SEO Velocity delivers high-authority backlinks and AI-driven traffic automation for Dallas market dominance.",
+    heroCTA: "Start SEO Velocity",
+    overview:
+      "SEO Velocity is built for Dallas–Fort Worth businesses that want to dominate organic search. We accelerate content velocity, expand backlink coverage, and run conversion audits so your growth compounds faster than competitors. Ideal for Uptown, Legacy West, Las Colinas, and Richardson Telecom Corridor teams ready to scale visibility across multiple locations.",
+    priceModel: "monthly",
+    priceLabel: "$3,500/mo",
+    priceNumeric: 3500,
+    priceCurrency: "USD",
+    priceUnit: "USD/mo",
+    minimumTerm: "6 months",
+    cancellationPolicy: "30 days written notice after initial term",
+    refundPolicy: "No refunds for partial months or completed work",
+    billingTerms: "Invoiced on the 1st of each month, due upon receipt",
+    projectTimeline: "Most clients see significant improvements within 90–120 days",
+    prerequisitesHeading: "Velocity requires a strong starting line.",
+    prerequisites: [
+      {
+        title: "Foundation completed",
+        description: "SEO Foundation completed within the last 12 months.",
+      },
+      {
+        title: "Or active Momentum client",
+        description:
+          "Upgrading from Momentum with 3+ months of service history.",
+      },
+      {
+        title: "Or pass a foundation audit",
+        description:
+          "ITECS confirms your technical SEO baseline meets requirements (audit fee: $500).",
+      },
+    ],
+    monthlyServices: [
+      {
+        category: "Accelerated Content Creation",
+        items: [
+          "4 SEO-optimized blog articles per month (800–1,200 words)",
+          "Advanced keyword research for high-intent opportunities",
+          "Topic cluster strategy and internal linking architecture",
+        ],
+      },
+      {
+        category: "ITECS Domain Authority Backlinks",
+        items: [
+          "2 feature articles or white papers published monthly on itecsonline.com",
+          "Do-follow backlinks to your site with permanent publication",
+          "Formats include case studies, industry insights, and technical guides",
+        ],
+      },
+      {
+        category: "Third-Party Link Building",
+        items: [
+          "Strategic outreach to authoritative industry publications",
+          "Guest posting opportunities and digital PR placements",
+          "Monthly backlink acquisition report with domain metrics",
+        ],
+      },
+      {
+        category: "Competitor Monitoring and Response",
+        items: [
+          "Monthly competitor ranking analysis (top 3–5 competitors)",
+          "Content gap identification with response recommendations",
+          "Backlink gap analysis to find new authority opportunities",
+        ],
+      },
+      {
+        category: "Quarterly CRO Audit",
+        items: [
+          "Landing page performance analysis and CTA effectiveness review",
+          "Form optimization recommendations and user journey analysis",
+          "A/B testing roadmap for high-traffic pages",
+        ],
+      },
+      {
+        category: "Multi-Location SEO",
+        items: [
+          "GBP optimization and posting for up to three locations",
+          "Location landing page optimization and citation management",
+          "Map pack monitoring and local keyword tracking",
+        ],
+      },
+    ],
+    idealClient: [
+      "Businesses ready to invest aggressively in organic growth",
+      "Teams in competitive Dallas markets needing proactive strategy",
+      "Organizations with multiple locations or expansion plans",
+      "Brands focused on conversion optimization, not just traffic",
+      "Leaders that want dedicated account management and weekly alignment",
+    ],
+    whyItecs: [
+      "Practitioner-led credibility with Dallas rankings and AI visibility proof",
+      "Dual backlink engine combining ITECS authority and third-party outreach",
+      "Clean SEO practices with white-hat link building only",
+      "Conversion-focused reporting that connects traffic to revenue outcomes",
+    ],
+    faq: [
+      {
+        question: "Is there a minimum term for SEO Velocity?",
+        answer:
+          "Yes. SEO Velocity has a six-month minimum term so aggressive SEO strategies have time to deliver measurable results.",
+      },
+      {
+        question: "What makes Velocity different from Momentum?",
+        answer:
+          "Velocity doubles content production, adds third-party link building, includes competitor monitoring, and provides quarterly CRO audits plus weekly strategy calls.",
+      },
+      {
+        question: "What does third-party link building include?",
+        answer:
+          "We run white-hat outreach for guest posts, digital PR placements, and authoritative backlinks. We do not use paid link farms or PBNs.",
+      },
+      {
+        question: "How many locations are supported?",
+        answer:
+          "SEO Velocity includes multi-location SEO for up to three locations, with additional locations available at $500 per month.",
+      },
+      {
+        question: "How quickly can results appear?",
+        answer:
+          "Most clients see meaningful ranking improvements within 90–120 days, with continued gains as content velocity compounds.",
+      },
+    ],
+    cardTagline: "Premium retainer for aggressive growth.",
+    cardPriceLabel: "$3,500 / month · 6-mo minimum",
+    cardHighlights: [
+      "4 articles + 2 backlinks + 3rd-party PR",
+      "50–75 keywords + monthly AI visibility",
+      "Competitor monitoring + quarterly CRO",
+      "Weekly strategy calls + dedicated AM",
+    ],
+    cardAccent: "gradient",
+  },
+];
+
+// Comparison rows for SEO Velocity vs Momentum table (rendered on Velocity page)
+export const AI_SEO_VELOCITY_VS_MOMENTUM = [
+  { feature: "Monthly Investment", momentum: "$1,750", velocity: "$3,500" },
+  { feature: "Minimum Term", momentum: "Month-to-month", velocity: "6 months" },
+  { feature: "Blog Articles per Month", momentum: "2", velocity: "4" },
+  { feature: "ITECS Backlink Articles", momentum: "1", velocity: "2" },
+  { feature: "Third-Party Link Building", momentum: "—", velocity: "Included" },
+  { feature: "Keyword Tracking", momentum: "15–30", velocity: "50–75" },
+  { feature: "AI Visibility Tracking", momentum: "Quarterly", velocity: "Monthly" },
+  { feature: "Competitor Monitoring", momentum: "—", velocity: "Top 3–5 rivals" },
+  { feature: "CRO Audit", momentum: "—", velocity: "Quarterly" },
+  { feature: "Multi-Location SEO", momentum: "—", velocity: "Up to 3 locations" },
+  { feature: "Strategy Calls", momentum: "2× per month", velocity: "Weekly" },
+] as const;
