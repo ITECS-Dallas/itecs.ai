@@ -82,7 +82,23 @@ export default function AIDevOpsPage() {
       />
 
       <SecurityGuarantee
-        description="AI DevOps touches code, data, secrets, models, prompts, and production workflows. ITECS manages that operating layer with the same cybersecurity discipline we apply to business infrastructure."
+        description={
+          <>
+            AI DevOps touches code, data, secrets, models, prompts, and
+            production workflows. ITECS manages that operating layer with the
+            same cybersecurity discipline our{" "}
+            <a
+              href="https://itecsonline.com/it-services/managed-network-services-dallas"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-brand-accent underline decoration-brand-accent/30 underline-offset-2 hover:decoration-brand-accent"
+            >
+              managed network team
+            </a>{" "}
+            applies to business infrastructure — monitoring, patching,
+            backups, and 24/7 response.
+          </>
+        }
         points={[
           "Secrets management — API keys, tokens, and database credentials move into encrypted vaults with scoped access and rotation controls",
           "Environment separation — development, staging, and production changes are isolated so experiments do not break live AI systems",

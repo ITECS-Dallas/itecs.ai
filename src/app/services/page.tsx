@@ -106,7 +106,7 @@ export default function ServicesPage() {
       <ServiceJourneyDiagram />
 
       {/* 7. Full services grid */}
-      <ServicesGrid />
+      <ServicesGrid showSisterSiteCard />
 
       {/* 8. Company stats */}
       <StatsBar />

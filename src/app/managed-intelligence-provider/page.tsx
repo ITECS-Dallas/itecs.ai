@@ -66,8 +66,33 @@ const MIP_FAQ = [
   },
   {
     question: "Do I need to replace my current MSP to work with ITECS?",
-    answer:
-      "No. If you have an MSP you trust for infrastructure, we can layer AI services on top. However, ITECS also provides full MSP and cybersecurity services through itecsonline.com — so you can consolidate IT, security, and AI into one provider if you prefer.",
+    answer: (
+      <>
+        No. If you have an MSP you trust for infrastructure, we can layer AI
+        services on top. However, ITECS also provides full{" "}
+        <a
+          href="https://itecsonline.com/it-services/managed-it-services-in-dallas"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-brand-accent underline decoration-brand-accent/30 underline-offset-2 hover:decoration-brand-accent"
+        >
+          managed IT services
+        </a>{" "}
+        and{" "}
+        <a
+          href="https://itecsonline.com/cybersecurity"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-brand-accent underline decoration-brand-accent/30 underline-offset-2 hover:decoration-brand-accent"
+        >
+          cybersecurity
+        </a>{" "}
+        through itecsonline.com — so you can consolidate IT, security, and AI
+        into one provider if you prefer.
+      </>
+    ),
+    schemaAnswer:
+      "No. If you have an MSP you trust for infrastructure, we can layer AI services on top. However, ITECS also provides full managed IT services and cybersecurity through itecsonline.com — so you can consolidate IT, security, and AI into one provider if you prefer.",
   },
   {
     question:

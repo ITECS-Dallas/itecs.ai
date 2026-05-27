@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import { Geist, Geist_Mono } from "next/font/google";
+import { AnnouncementBar } from "@/components/layout/AnnouncementBar";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -149,6 +150,7 @@ export default function RootLayout({
         >
           Skip to content
         </a>
+        <AnnouncementBar />
         <Header />
         <main id="main-content" className="flex-1">
           {children}

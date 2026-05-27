@@ -2,6 +2,7 @@
 
 import { Shield, Lock, ServerCrash, Eye } from "lucide-react";
 import { motion } from "framer-motion";
+import type { ReactNode } from "react";
 import { ScrollReveal } from "@/components/effects/ScrollReveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { CircuitTrace } from "@/components/effects/CircuitTrace";
@@ -20,8 +21,8 @@ interface SecurityGuaranteeProps {
     text: string;
     href: string;
   };
-  /** Optional paragraph of context */
-  description?: string;
+  /** Optional paragraph of context — string or JSX (for inline links) */
+  description?: ReactNode;
 }
 
 const icons = [Shield, Lock, ServerCrash, Eye];

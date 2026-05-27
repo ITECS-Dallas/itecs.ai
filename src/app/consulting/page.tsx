@@ -23,6 +23,34 @@ import { CTASection } from "@/components/sections/CTASection";
 
 const service = SERVICES.find((s) => s.slug === "consulting")!;
 
+// Append MSP-program bundling context to the cost FAQ. Factual handoff:
+// businesses already on an ITECS managed-services agreement can bundle AI
+// work into their existing relationship, no new contract.
+const consultingFaq = service.faq.map((item) =>
+  item.question === "How much does AI consulting cost for a small business?"
+    ? {
+        ...item,
+        answer: (
+          <>
+            {item.answer} Businesses already on an ITECS managed-services
+            agreement through one of our{" "}
+            <a
+              href="https://itecsonline.com/msp-pro-program"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-brand-accent underline decoration-brand-accent/30 underline-offset-2 hover:decoration-brand-accent"
+            >
+              MSP programs
+            </a>{" "}
+            can bundle AI consulting hours into their existing engagement
+            rather than opening a separate contract.
+          </>
+        ),
+        schemaAnswer: `${item.answer} Businesses already on an ITECS managed-services agreement through one of our MSP programs (itecsonline.com/msp-pro-program) can bundle AI consulting hours into their existing engagement rather than opening a separate contract.`,
+      }
+    : item,
+);
+
 export const metadata = generatePageMetadata({
   title: "AI Consulting for Small Business in Dallas",
   description:
@@ -157,14 +185,14 @@ export default function ConsultingPage() {
       <ServiceStats stats={service.stats} />
 
       {/* 10. FAQ — LAST content section before CTA (V2.0 protocol) */}
-      <FAQ items={service.faq} heading="AI Consulting FAQ" />
+      <FAQ items={consultingFaq} heading="AI Consulting FAQ" />
 
       {/* 11. Final CTA */}
       <CTASection />
 
       {/* JSON-LD Schemas */}
       <JsonLd data={generateServiceSchema(service)} />
-      <JsonLd data={generateFAQSchema(service.faq)} />
+      <JsonLd data={generateFAQSchema(consultingFaq)} />
       <JsonLd data={generateHowToSchema(service)} />
     </>
   );

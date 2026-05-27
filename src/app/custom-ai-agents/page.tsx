@@ -89,7 +89,24 @@ export default function CustomAIAgentsPage() {
 
       {/* 7. Enterprise-Grade Security */}
       <SecurityGuarantee
-        description="Custom AI agents can touch customer data, internal policies, source code, credentials, and proprietary business systems. ITECS AI is backed by ITECS — a Dallas-based cybersecurity MSP operating since 2002 with 24 years of enterprise security experience."
+        description={
+          <>
+            Custom AI agents can touch customer data, internal policies, source
+            code, credentials, and proprietary business systems. ITECS AI is
+            backed by ITECS — a Dallas cybersecurity MSP since 2002 — and
+            credential, access, and compliance posture is reviewed alongside
+            our{" "}
+            <a
+              href="https://itecsonline.com/cybersecurity/cybersecurity-consulting"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-brand-accent underline decoration-brand-accent/30 underline-offset-2 hover:decoration-brand-accent"
+            >
+              cybersecurity advisory team
+            </a>{" "}
+            when an agent handles regulated or high-value data.
+          </>
+        }
         points={[
           "Vendor-neutral architecture — we build with the right mix of ChatGPT, Claude, Gemini, Copilot, Codex, APIs, open-source models, and business platforms for your use case",
           "Human-in-the-loop controls — sensitive actions can require approval before an agent sends a message, updates a record, triggers a workflow, or touches production",

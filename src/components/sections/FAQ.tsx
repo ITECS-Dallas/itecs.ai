@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -8,7 +8,10 @@ import { ScrollReveal } from "@/components/effects/ScrollReveal";
 
 interface FAQItem {
   question: string;
-  answer: string;
+  answer: ReactNode;
+  // Plain-text mirror used for FAQPage schema when `answer` is JSX. Required
+  // whenever `answer` is not a plain string, so structured data stays parseable.
+  schemaAnswer?: string;
 }
 
 function FAQAccordion({ item, isOpen, onToggle }: {

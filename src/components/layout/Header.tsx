@@ -407,7 +407,9 @@ export function Header() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 h-[72px] border-b transition-[background-color,backdrop-filter,border-color] duration-500 ${
+        className={`fixed left-0 right-0 z-50 h-[72px] border-b transition-[top,background-color,backdrop-filter,border-color] duration-300 ease-out ${
+          scrolled || mobileOpen ? "top-0" : "top-8"
+        } ${
           scrolled || mobileOpen
             ? "bg-bg-elevated/80 backdrop-blur-xl border-[var(--border-subtle)]"
             : "bg-transparent border-transparent"

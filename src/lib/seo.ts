@@ -289,7 +289,11 @@ export function generateServiceSchema(service: ServiceItem) {
 // ---------------------------------------------------------------------------
 
 export function generateFAQSchema(
-  items: readonly { question: string; answer: string }[]
+  items: readonly {
+    question: string;
+    answer: unknown;
+    schemaAnswer?: string;
+  }[]
 ) {
   return {
     "@context": "https://schema.org",
@@ -299,7 +303,9 @@ export function generateFAQSchema(
       name: item.question,
       acceptedAnswer: {
         "@type": "Answer",
-        text: item.answer,
+        text:
+          item.schemaAnswer ??
+          (typeof item.answer === "string" ? item.answer : ""),
       },
     })),
   };

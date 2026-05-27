@@ -1631,6 +1631,7 @@ export const INSIGHTS: InsightItem[] = [
       "The ultimate solution is not just securing ChatGPT — it is giving employees an approved AI workflow that fits the business. A [custom AI agent](/custom-ai-agents) grounded in your company's documents, SOPs, and knowledge base gives employees faster, more accurate answers than public AI tools can provide. It knows your product catalog. It knows your internal processes. It knows your client history. And it never shares that knowledge with anyone outside your organization.",
       "A 35-person Dallas law firm we work with deployed a private AI agent trained on 8,000 case files and internal legal research. Associates now find relevant precedents in 15 seconds instead of 45 minutes. The managing partner estimates the tool saves the firm 60 billable hours per month — and not a single client document has ever touched a public AI service.",
       "At ITECS, we deploy private AI environments and governed agent workflows for Dallas businesses. Your employees get an AI assistant that knows your business inside and out — and your data never leaves approved systems.",
+      "For organizations that also need the operational side — DLP rule tuning in Microsoft 365, email gateway controls, and incident response when shadow-AI exposure has already happened — the [ITECS email security and DLP team](https://itecsonline.com/cybersecurity/email-security-services) at our parent site itecsonline.com pairs naturally with the private AI workflow described above.",
     ],
     faq: [
       {

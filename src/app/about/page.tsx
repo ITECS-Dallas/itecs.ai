@@ -35,6 +35,34 @@ export const metadata = generatePageMetadata({
   ],
 });
 
+// Override the "Does ITECS still provide managed IT services?" FAQ to link
+// the existing itecsonline.com mention. Anchors point to the parent site's
+// canonical About page so authority concentrates on the brand-equity URL.
+const aboutFaqWithLinks = ABOUT_FAQ.map((item) =>
+  item.question === "Does ITECS still provide managed IT services?"
+    ? {
+        ...item,
+        answer: (
+          <>
+            Yes. ITECS continues to deliver full managed IT services including
+            helpdesk, cybersecurity, cloud management, and infrastructure
+            support through{" "}
+            <a
+              href="https://itecsonline.com/about-us"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-brand-accent underline decoration-brand-accent/30 underline-offset-2 hover:decoration-brand-accent"
+            >
+              itecsonline.com
+            </a>
+            . ITECS AI is the dedicated AI consulting and automation division.
+          </>
+        ),
+        schemaAnswer: item.answer,
+      }
+    : item,
+);
+
 export default function AboutPage() {
   return (
     <>
@@ -94,13 +122,13 @@ export default function AboutPage() {
       <PartnerLogos />
 
       {/* 9. FAQ — LAST content section before CTA (V2.0 protocol) */}
-      <FAQ items={ABOUT_FAQ} heading="About ITECS — FAQ" />
+      <FAQ items={aboutFaqWithLinks} heading="About ITECS — FAQ" />
 
       {/* 10. Final CTA */}
       <CTASection />
 
       {/* JSON-LD Schemas */}
-      <JsonLd data={generateFAQSchema(ABOUT_FAQ)} />
+      <JsonLd data={generateFAQSchema(aboutFaqWithLinks)} />
     </>
   );
 }

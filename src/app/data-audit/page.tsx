@@ -90,7 +90,24 @@ export default function DataAuditPage() {
 
       {/* 7. Enterprise-Grade Security */}
       <SecurityGuarantee
-        description="Your audit data stays protected throughout the entire engagement. ITECS AI is backed by ITECS — a Dallas-based cybersecurity MSP operating since 2002 with 24 years of enterprise security experience."
+        description={
+          <>
+            Your audit data stays protected throughout the entire engagement.
+            ITECS AI is backed by ITECS — a Dallas-based cybersecurity MSP
+            operating since 2002. For ongoing protection beyond the audit,
+            the{" "}
+            <a
+              href="https://itecsonline.com/cybersecurity"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-brand-accent underline decoration-brand-accent/30 underline-offset-2 hover:decoration-brand-accent"
+            >
+              ITECS cybersecurity team
+            </a>{" "}
+            delivers endpoint detection, managed firewalls, email security,
+            and penetration testing for businesses across Dallas–Fort Worth.
+          </>
+        }
         points={[
           "Read-only API access — we scan configurations and metadata but cannot modify, copy, or download your files, emails, or documents",
           "Zero data retention — all scan findings are encrypted in transit and at rest, and deleted within 30 days of report delivery",
