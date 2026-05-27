@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-label="Star Sleep and Wellness managed services proposal">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#030712"/>
+      <stop offset="60%" stop-color="#081821"/>
+      <stop offset="100%" stop-color="#030712"/>
+    </linearGradient>
+    <radialGradient id="orbCyan" cx="0.2" cy="0.25" r="0.5">
+      <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.45"/>
+      <stop offset="60%" stop-color="#06b6d4" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#06b6d4" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="orbPurple" cx="0.85" cy="0.8" r="0.5">
+      <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.4"/>
+      <stop offset="60%" stop-color="#8b5cf6" stop-opacity="0.07"/>
+      <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="lineGrad" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0%" stop-color="#06b6d4" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#22d3ee" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#06b6d4" stop-opacity="0"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(34,211,238,0.06)" stroke-width="1"/>
+    </pattern>
+    <filter id="blur1" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="40"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="1000" fill="url(#bg)"/>
+  <rect width="1600" height="1000" fill="url(#grid)"/>
+  <ellipse cx="320" cy="250" rx="500" ry="380" fill="url(#orbCyan)"/>
+  <ellipse cx="1360" cy="800" rx="500" ry="380" fill="url(#orbPurple)"/>
+
+  <!-- pulse / ECG line spanning the whole hero -->
+  <g stroke="url(#lineGrad)" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.95">
+    <path d="M 0 500 L 240 500 L 280 500 L 320 460 L 360 540 L 400 380 L 440 620 L 480 500 L 600 500 L 660 500 L 700 480 L 740 520 L 780 500 L 920 500 L 960 500 L 1000 460 L 1040 540 L 1080 380 L 1120 620 L 1160 500 L 1280 500 L 1340 500 L 1380 480 L 1420 520 L 1460 500 L 1600 500"/>
+  </g>
+  <g stroke="rgba(34,211,238,0.15)" stroke-width="1" fill="none" stroke-dasharray="2 6">
+    <path d="M 0 500 L 1600 500"/>
+  </g>
+
+  <!-- decorative circuit nodes -->
+  <g fill="#22d3ee">
+    <circle cx="400" cy="380" r="6" opacity="0.9"/>
+    <circle cx="1080" cy="380" r="6" opacity="0.9"/>
+    <circle cx="440" cy="620" r="4" opacity="0.6"/>
+    <circle cx="1120" cy="620" r="4" opacity="0.6"/>
+  </g>
+
+  <!-- Cyan brand badge -->
+  <g transform="translate(110,720)">
+    <rect width="240" height="80" rx="14" fill="rgba(6,182,212,0.08)" stroke="rgba(6,182,212,0.35)"/>
+    <text x="24" y="34" fill="#22d3ee" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif" font-size="14" font-weight="600" letter-spacing="3">ITECS · MSP ELITE</text>
+    <text x="24" y="60" fill="#cbd5e1" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif" font-size="14" letter-spacing="1">Extended coverage · HIPAA</text>
+  </g>
+
+  <!-- Star / sleep glyph -->
+  <g transform="translate(1180,180)">
+    <g fill="none" stroke="rgba(34,211,238,0.55)" stroke-width="2">
+      <circle r="120" />
+      <circle r="86" stroke="rgba(139,92,246,0.45)"/>
+      <circle r="48" stroke="rgba(34,211,238,0.85)"/>
+    </g>
+    <!-- crescent moon -->
+    <path d="M -20 -32 A 38 38 0 1 0 18 32 A 28 28 0 1 1 -20 -32 Z" fill="rgba(34,211,238,0.85)"/>
+    <!-- small star -->
+    <g fill="rgba(139,92,246,0.95)" transform="translate(60,-60)">
+      <path d="M 0 -12 L 3 -3 L 12 0 L 3 3 L 0 12 L -3 3 L -12 0 L -3 -3 Z"/>
+    </g>
+  </g>
+
+  <!-- right column copy -->
+  <g font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif" fill="#f1f5f9">
+    <text x="110" y="200" font-size="26" letter-spacing="6" fill="#22d3ee">PRIVATE PROPOSAL · ITECS-2026-SSW-001</text>
+    <text x="110" y="320" font-size="80" font-weight="300" letter-spacing="-2">Star Sleep &amp; Wellness</text>
+    <text x="110" y="400" font-size="80" font-weight="300" letter-spacing="-2" fill="#cbd5e1">Managed Services Proposal</text>
+    <text x="110" y="475" font-size="22" fill="#94a3b8">MSP Elite · Extended Coverage · Multi-year term options</text>
+  </g>
+
+  <!-- subtle bottom-right stat block -->
+  <g transform="translate(1100,820)" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">
+    <rect width="380" height="120" rx="14" fill="rgba(8,24,33,0.7)" stroke="rgba(34,211,238,0.25)"/>
+    <text x="24" y="40" fill="#22d3ee" font-size="13" letter-spacing="3" font-weight="600">DALLAS-FOUNDED · 20+ PLANNED LOCATIONS</text>
+    <text x="24" y="78" fill="#f1f5f9" font-size="28" font-weight="300">Healthcare-IT partnership, sized for scale</text>
+  </g>
+</svg>

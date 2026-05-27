@@ -54,6 +54,33 @@ export const PROPOSAL_ACCESS: Record<string, ProposalAccessConfig> = {
       "https://itecs.ai/images/proposals/hasen-claude-work-order-hero.png",
     pdfFileName: "hasen-phase-1-claude-work-order-proposal-v3.pdf",
   },
+  "star-sleep-wellness-01ea28": {
+    slug: "star-sleep-wellness-01ea28",
+    title: "Star Sleep & Wellness Managed Services Proposal (ITECS-2026-SSW-001)",
+    clientName: "Star Sleep & Wellness",
+    clientGreeting: "Hi Taylor,",
+    accessEyebrow: "Private Proposal · ITECS-2026-SSW-001",
+    accessHeading:
+      "Check your email to open the Star Sleep & Wellness proposal.",
+    accessDescription:
+      "Enter your business email and we will send a private access link for the MSP Elite Extended Coverage managed services proposal prepared for Star Sleep & Wellness.",
+    allowedEmails: [
+      "bdesmot@itecsonline.com",
+      "bdesmot@gmail.com",
+      "lawrencetfortney@gmail.com",
+      "mdunbar@itecsmsp.com",
+      "jemerle@itecsmsp.com",
+    ],
+    allowedDomains: [
+      "starsleepwellness.com",
+      "starsleepandwellness.com",
+      "itecsonline.com",
+      "itecsmsp.com",
+    ],
+    fromEmail: "bdesmot@itecsonline.com",
+    heroImageUrl: "https://itecs.ai/images/proposals/star-sleep-wellness-hero.png",
+    pdfFileName: "star-sleep-wellness-01ea28.pdf",
+  },
 };
 
 function requiredEnv(name: string) {
