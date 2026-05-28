@@ -66,6 +66,9 @@ function extractStringNear(source, marker, prop) {
 const constants = read("src/lib/constants.ts");
 const sitemap = read("src/app/sitemap.ts");
 const header = read("src/components/layout/Header.tsx");
+const fullScreenMenu = read("src/components/layout/FullscreenNavMenu.tsx");
+const navData = read("src/components/layout/navData.ts");
+const manufacturingNavigation = read("src/lib/manufacturingNavigation.ts");
 const footer = read("src/components/layout/Footer.tsx");
 const spokeRenderer = read("src/components/sections/ManufacturingSpokePage.tsx");
 const hubPage = read("src/app/manufacturing/page.tsx");
@@ -94,14 +97,29 @@ assert(sitemap.includes("MANUFACTURING_VERTICAL"), "Sitemap must include the man
 assert(sitemap.includes("PPV_AGENT_USE_CASE"), "Sitemap must include the PPV page constant.");
 assert(sitemap.includes("MANUFACTURING_SPOKE_PAGES"), "Sitemap must include manufacturing spoke pages.");
 
-assert(header.includes("Industries"), "Header must expose Industries navigation.");
+assert(
+  header.includes("FullscreenNavMenu"),
+  "Header must mount the fullscreen navigation menu."
+);
+assert(
+  fullScreenMenu.includes("Industries / Manufacturing AI"),
+  "Fullscreen menu must expose Industries navigation."
+);
+assert(
+  navData.includes("MANUFACTURING_USE_CASE_NAV_ITEMS") &&
+    navData.includes("MANUFACTURING_USE_CASE_NAV_DATA"),
+  "Layout nav data must expose manufacturing use-case navigation."
+);
 assert(footer.includes("Industries"), "Footer must expose Industries links.");
 assert(footer.includes("ITECS MSP"), "Footer MSP link label must remain ITECS MSP.");
 assert(!footer.includes("ITECS Main Site"), "Footer must not use old ITECS Main Site label.");
 
 for (const route of manufacturingRoutes.slice(1)) {
   assert(constants.includes(`href: "${route}"`), `Constants must define ${route}.`);
-  assert(header.includes(route) || route === "/manufacturing/ppv-agent", `Header must link ${route}.`);
+  assert(
+    manufacturingNavigation.includes(`href: "${route}"`),
+    `Fullscreen navigation data must link ${route}.`
+  );
 }
 
 for (const route of manufacturingRoutes.slice(2)) {
