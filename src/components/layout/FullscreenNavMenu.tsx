@@ -251,6 +251,10 @@ export function FullscreenNavMenu({
     }
 
     const previousOverflow = document.body.style.overflow;
+    const previouslyFocusedElement =
+      document.activeElement instanceof HTMLElement
+        ? document.activeElement
+        : null;
     const focusFrame = requestAnimationFrame(() => {
       closeButtonRef.current?.focus();
     });
@@ -313,6 +317,13 @@ export function FullscreenNavMenu({
       cancelAnimationFrame(focusFrame);
       document.body.style.overflow = previousOverflow;
       document.removeEventListener("keydown", handleKeyDown);
+
+      if (
+        previouslyFocusedElement &&
+        document.contains(previouslyFocusedElement)
+      ) {
+        previouslyFocusedElement.focus({ preventScroll: true });
+      }
     };
   }, [open, onClose]);
 
