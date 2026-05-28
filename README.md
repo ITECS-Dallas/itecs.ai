@@ -27,6 +27,12 @@ docker compose up -d --build --remove-orphans web
 - [Agent/codebase guidance](./CLAUDE.md)
 - [Hidden web proposal workflow](./docs/proposals.md)
 
+## Public Verticals
+
+- `/manufacturing` — manufacturing AI hub for finance and operations leaders
+- `/manufacturing/ppv-agent` — first manufacturing use-case spoke for PPV
+  Agent: Purchase Price Variance and Commodity Cost Intelligence
+
 ## Proposal Pages
 
 ITECS uses hidden `/p/<slug>` pages for client web proposals. The first live

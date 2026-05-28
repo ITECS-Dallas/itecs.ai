@@ -3230,3 +3230,492 @@ export const AI_SEO_VELOCITY_VS_MOMENTUM = [
   { feature: "Multi-Location SEO", momentum: "—", velocity: "Up to 3 locations" },
   { feature: "Strategy Calls", momentum: "2× per month", velocity: "Weekly" },
 ] as const;
+
+// ---------------------------------------------------------------------------
+// Manufacturing Vertical
+// ---------------------------------------------------------------------------
+
+export interface ManufacturingUseCase {
+  title: string;
+  description: string;
+  outcome: string;
+  icon: string;
+  href?: string;
+  ctaLabel?: string;
+}
+
+export interface ManufacturingProofGroup {
+  title: string;
+  description: string;
+  points: string[];
+}
+
+export interface ManufacturingPageContent {
+  title: string;
+  shortTitle: string;
+  description: string;
+  href: string;
+  h1: string;
+  eyebrow: string;
+  heroSummary: string;
+  longDescription: string;
+  primaryCta: string;
+  primaryCtaHref: string;
+  secondaryCta: string;
+  secondaryCtaHref: string;
+  keywords: string[];
+  stats: { value: string; label: string }[];
+  pressureGroups: ManufacturingProofGroup[];
+  useCases: ManufacturingUseCase[];
+  assessment: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    steps: { title: string; description: string }[];
+  };
+  governance: ManufacturingProofGroup[];
+  faq: { question: string; answer: string }[];
+}
+
+export interface PPVAgentUseCaseContent {
+  title: string;
+  shortTitle: string;
+  description: string;
+  href: string;
+  h1: string;
+  eyebrow: string;
+  heroSummary: string;
+  longDescription: string;
+  primaryCta: string;
+  primaryCtaHref: string;
+  secondaryCta: string;
+  secondaryCtaHref: string;
+  keywords: string[];
+  stats: { value: string; label: string }[];
+  capabilities: ManufacturingProofGroup[];
+  dataInputs: { label: string; description: string }[];
+  scenario: {
+    title: string;
+    problem: string;
+    outcome: string;
+  };
+  workflow: { title: string; description: string }[];
+  roadmap: { step: string; description: string }[];
+  comparison: { label: string; traditional: string; ai: string }[];
+  governance: string[];
+  faq: { question: string; answer: string }[];
+}
+
+export const MANUFACTURING_VERTICAL: ManufacturingPageContent = {
+  title: "AI Solutions for Manufacturing Finance and Operations",
+  shortTitle: "Manufacturing AI",
+  description:
+    "ITECS helps manufacturers use secure AI systems to protect margin, improve working capital, forecast operational risk, and connect ERP, BI, plant, procurement, and quality data.",
+  href: "/manufacturing",
+  h1: "AI Solutions for Manufacturing Finance and Operations",
+  eyebrow: "Manufacturing AI from the ITECS Dallas team",
+  heroSummary:
+    "ITECS helps manufacturers turn ERP, BI, plant, procurement, quality, and contract data into governed AI workflows that protect margin, improve working capital, and surface operational risk before the close.",
+  longDescription:
+    "Manufacturing leaders do not need generic AI demos. They need systems that can explain margin movement, connect finance and operations data, respect approval controls, and support decisions across plants, suppliers, customers, and production programs.",
+  primaryCta: "Manufacturing AI Readiness Assessment",
+  primaryCtaHref: "/contact",
+  secondaryCta: "Explore the PPV Agent",
+  secondaryCtaHref: "/manufacturing/ppv-agent",
+  keywords: [
+    "manufacturing AI solutions",
+    "AI for manufacturing finance",
+    "AI for manufacturing operations",
+    "manufacturing AI readiness assessment",
+    "AI for process manufacturing",
+    "AI for discrete manufacturing",
+    "manufacturing AI consulting",
+  ],
+  stats: [
+    { value: "ERP", label: "Finance and procurement signals" },
+    { value: "Plant", label: "Operations, quality, and yield context" },
+    { value: "BI", label: "Power BI and executive reporting layers" },
+  ],
+  pressureGroups: [
+    {
+      title: "Finance pressure",
+      description:
+        "Manufacturing finance teams are asked to explain margin movement while commodity costs, supplier terms, freight, mix, and customer programs move faster than month-end reporting.",
+      points: [
+        "Purchase price variance and commodity swings",
+        "Working capital tied up in raw, WIP, and finished inventory",
+        "Customer chargebacks, rebates, and pass-through leakage",
+        "SKU, plant, customer, and program margin erosion",
+      ],
+    },
+    {
+      title: "Operations pressure",
+      description:
+        "Plant leaders manage uptime, changeovers, yield, quality holds, labor gaps, and schedule volatility with data that often lives outside the finance view.",
+      points: [
+        "Machine downtime, maintenance risk, and changeover losses",
+        "Scrap, rework, spoilage, and quality investigations",
+        "Production schedule volatility and labor constraints",
+        "Warranty, field issue, and supplier quality patterns",
+      ],
+    },
+    {
+      title: "Data pressure",
+      description:
+        "AI only becomes useful when ERP, BI, plant, quality, contract, and supplier data can be trusted, governed, and connected to the decisions executives already own.",
+      points: [
+        "Discrete manufacturing parts, routings, suppliers, and warranty data",
+        "Process manufacturing formulas, BOMs, lot traceability, and quality records",
+        "BatchMaster/SAP, Power BI, spreadsheets, contracts, and market data",
+        "Role-based access, audit logs, and human approval boundaries",
+      ],
+    },
+  ],
+  useCases: [
+    {
+      title: "PPV Agent: Purchase Price Variance and Commodity Cost Intelligence",
+      description:
+        "Decompose historical PPV, project forward exposure, identify recoverable pass-throughs, and prepare finance-ready recommendations for approval.",
+      outcome: "Margin protection and faster close commentary",
+      icon: "BadgeDollarSign",
+      href: "/manufacturing/ppv-agent",
+      ctaLabel: "View PPV use case",
+    },
+    {
+      title: "Predictive Maintenance and Downtime Forecasting",
+      description:
+        "Use machine, maintenance, and production signals to identify line risk before unplanned downtime disrupts throughput.",
+      outcome: "Higher uptime and better capacity planning",
+      icon: "Activity",
+    },
+    {
+      title: "Demand Forecasting and S&OP Intelligence",
+      description:
+        "Connect customer demand, order history, macro signals, and production constraints into forecast scenarios leaders can interrogate.",
+      outcome: "Better production and inventory decisions",
+      icon: "LineChart",
+    },
+    {
+      title: "Quality Anomaly Detection",
+      description:
+        "Surface unusual defect, hold, supplier, lot, warranty, or inspection patterns earlier in the quality workflow.",
+      outcome: "Lower rework, chargebacks, and recall exposure",
+      icon: "ScanSearch",
+    },
+    {
+      title: "Inventory and Working Capital Optimization",
+      description:
+        "Identify excess, short, aging, and risk-weighted inventory positions across raw materials, WIP, finished goods, and critical parts.",
+      outcome: "Cash released without starving production",
+      icon: "Boxes",
+    },
+    {
+      title: "Contract Intelligence and Pass-Through Tracking",
+      description:
+        "Review customer and supplier agreements for escalators, audit rights, renewal windows, and recoverable cost movement.",
+      outcome: "Less margin leakage hidden in contract language",
+      icon: "FileSearch",
+    },
+    {
+      title: "Production Yield and Labor Planning",
+      description:
+        "Connect schedule, labor, yield, and line-performance data so planners can see bottlenecks before the shift starts.",
+      outcome: "More predictable throughput with the same team",
+      icon: "UsersRound",
+    },
+  ],
+  assessment: {
+    eyebrow: "Start here",
+    title: "Manufacturing AI Readiness Assessment",
+    description:
+      "ITECS starts by mapping the business case, data readiness, integration path, and governance model before recommending an agent build.",
+    steps: [
+      {
+        title: "Map executive priorities",
+        description:
+          "Identify the finance, operations, quality, supply chain, and IT decisions where better signals would change action.",
+      },
+      {
+        title: "Review the data landscape",
+        description:
+          "Assess ERP, BI, plant, quality, procurement, contract, and spreadsheet sources for ownership, cleanliness, access, and gaps.",
+      },
+      {
+        title: "Rank use cases by economics",
+        description:
+          "Prioritize use cases by measurable margin, working capital, throughput, risk reduction, and implementation feasibility.",
+      },
+      {
+        title: "Define the governed path",
+        description:
+          "Document security, approval, audit, deployment, and support requirements before any production AI system is built.",
+      },
+    ],
+  },
+  governance: [
+    {
+      title: "Read broadly, act carefully",
+      description:
+        "Manufacturing AI can read across systems, but sensitive actions need explicit human approval and audit history.",
+      points: [
+        "No autonomous purchasing, hedging, journal entries, or master-data changes",
+        "Role-based access aligned to the client's identity provider",
+        "Recommendation logs that preserve assumptions, source data, and reviewer decisions",
+      ],
+    },
+    {
+      title: "Built for IT reality",
+      description:
+        "ITECS designs around the systems manufacturers already run, from ERP and BI to plant data and Microsoft 365.",
+      points: [
+        "Cloud, hybrid, and Microsoft-stack deployment patterns",
+        "Integration-first discovery before custom development",
+        "Ongoing managed AI operations available after launch",
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: "What types of manufacturers can use ITECS manufacturing AI services?",
+      answer:
+        "ITECS works across discrete and process manufacturing. The hub examples cover parts, machines, suppliers, production schedules, formulas, BOMs, lot traceability, quality holds, commodity exposure, and customer contracts.",
+    },
+    {
+      question: "Is this only for manufacturers in Dallas?",
+      answer:
+        "No. The offer is national. Dallas is used as a credibility signal because ITECS is a Dallas-based MSP with more than two decades of infrastructure, cybersecurity, and operations experience.",
+    },
+    {
+      question: "Do we need a clean data warehouse before starting?",
+      answer:
+        "No. The readiness assessment determines whether existing ERP, BI, spreadsheet, contract, and plant data is enough for a pilot or whether data cleanup must happen first.",
+    },
+    {
+      question: "Can ITECS work with our ERP and Power BI setup?",
+      answer:
+        "Yes. ITECS evaluates the client's ERP, BI, and reporting architecture during discovery. BatchMaster/SAP, Microsoft-stack BI, SQL-backed systems, and Power BI reporting patterns are all plausible starting points.",
+    },
+    {
+      question: "What is the best first AI use case for a manufacturer?",
+      answer:
+        "The best first use case is the one with clean enough data, an executive owner, and measurable economics. For many finance-led manufacturers, PPV and commodity cost intelligence are strong first candidates.",
+    },
+  ],
+};
+
+export const PPV_AGENT_USE_CASE: PPVAgentUseCaseContent = {
+  title: "PPV Agent: Purchase Price Variance and Commodity Cost Intelligence",
+  shortTitle: "PPV Agent",
+  description:
+    "A governed AI agent for purchase price variance decomposition, commodity cost intelligence, forward exposure modeling, contract pass-through tracking, and finance-ready PPV commentary.",
+  href: "/manufacturing/ppv-agent",
+  h1: "PPV Agent for Manufacturing Finance",
+  eyebrow: "Purchase Price Variance and Commodity Cost Intelligence",
+  heroSummary:
+    "The PPV agent continuously answers whether manufacturing teams are paying what they expected, why variance moved, what exposure is coming next, and which actions need human approval.",
+  longDescription:
+    "Built for finance, procurement, and operations leaders, the PPV agent turns purchase transactions, standards, BOMs or formulas, vendor terms, customer pass-throughs, and BI reporting into traceable variance analysis and forward-looking exposure views.",
+  primaryCta: "Schedule a PPV Agent Discovery Workshop",
+  primaryCtaHref: "/contact",
+  secondaryCta: "Start with a Manufacturing AI Readiness Assessment",
+  secondaryCtaHref: "/manufacturing",
+  keywords: [
+    "PPV agent",
+    "purchase price variance AI",
+    "manufacturing PPV analysis",
+    "commodity cost intelligence",
+    "AI for purchase price variance",
+    "manufacturing finance AI agent",
+    "BatchMaster SAP Power BI PPV",
+  ],
+  stats: [
+    { value: "Daily", label: "PPV pulse for finance and procurement" },
+    { value: "1-6 mo", label: "Forward exposure views" },
+    { value: "Human", label: "Approval before financial action" },
+  ],
+  capabilities: [
+    {
+      title: "Continuous PPV decomposition",
+      description:
+        "Move beyond a single unfavorable variance number and attribute movement to the drivers finance and procurement can act on.",
+      points: [
+        "Price, timing, vendor mix, freight, FX, basis, plant, SKU, and customer program views",
+        "Month-end commentary drafts with traceable assumptions",
+        "Exception lists for the contracts, vendors, and materials driving the largest movement",
+      ],
+    },
+    {
+      title: "Forward exposure modeling",
+      description:
+        "Turn open commitments, current standards, and forecast demand into projected PPV before the close surprises the business.",
+      points: [
+        "One, three, and six month exposure snapshots",
+        "Scenario prompts for commodity, freight, FX, demand, and customer mix changes",
+        "Standard cost recommendation drafts for review",
+      ],
+    },
+    {
+      title: "Contract and pass-through intelligence",
+      description:
+        "Connect adverse variance to the customer and supplier terms that determine whether margin can be recovered.",
+      points: [
+        "Customer escalator and pass-through clause tracking",
+        "Vendor formula and rebate drift detection",
+        "Approval-ready escalation summaries for finance, procurement, and sales leaders",
+      ],
+    },
+  ],
+  dataInputs: [
+    {
+      label: "ERP procurement transactions",
+      description:
+        "Purchase orders, goods receipts, invoices, vendors, plants, materials, quantities, prices, and currencies.",
+    },
+    {
+      label: "Standard cost and BOM/formula data",
+      description:
+        "Material standards, revision history, finished-good BOMs, process formulas, yield factors, and packaging components.",
+    },
+    {
+      label: "Commitments and forecasts",
+      description:
+        "Open contracts, purchase commitments, production schedules, demand forecasts, and inventory positions.",
+    },
+    {
+      label: "Contracts and pass-through terms",
+      description:
+        "Customer pricing clauses, supplier formulas, rebate structures, renewal dates, audit rights, and escalation triggers.",
+    },
+    {
+      label: "Market and landed-cost signals",
+      description:
+        "Commodity reference data, freight, energy, FX, basis, and other indices that influence landed cost.",
+    },
+    {
+      label: "Power BI and close artifacts",
+      description:
+        "Existing semantic models, variance dashboards, month-end commentary, and executive reporting packages when usable.",
+    },
+  ],
+  scenario: {
+    title: "Anonymized mid-market manufacturing scenario",
+    problem:
+      "A manufacturer running BatchMaster/SAP and Power BI wants to reproduce 12-24 months of historical PPV, explain unfavorable movement by commodity, vendor, plant, SKU, and customer program, and understand exposure before month-end.",
+    outcome:
+      "ITECS scopes a governed PPV agent that connects purchase transactions, standards, BOMs or formulas, contract terms, and Power BI reporting into daily variance pulses, forward exposure models, and approval-ready recommendations.",
+  },
+  workflow: [
+    {
+      title: "Ingest",
+      description:
+        "Read approved ERP, BI, contract, forecast, and market data without changing operational or financial records.",
+    },
+    {
+      title: "Decompose",
+      description:
+        "Attribute PPV movement across price, timing, vendor, plant, freight, FX, mix, SKU, and customer program drivers.",
+    },
+    {
+      title: "Project",
+      description:
+        "Model forward exposure against standards, commitments, market assumptions, demand, and production schedules.",
+    },
+    {
+      title: "Recommend",
+      description:
+        "Draft standard-cost, procurement, pass-through, hedge, or escalation recommendations with source-backed rationale.",
+    },
+    {
+      title: "Approve",
+      description:
+        "Route sensitive actions to the right human owner with audit logs before any PO, hedge, journal entry, or master-data change.",
+    },
+  ],
+  roadmap: [
+    {
+      step: "Discovery workshop",
+      description:
+        "Confirm PPV methodology, data sources, approval matrix, BatchMaster/SAP setup, Power BI reporting model, and business case.",
+    },
+    {
+      step: "Historical PPV reproduction",
+      description:
+        "Rebuild 12-24 months of variance and reconcile the agent's output against finance's close package.",
+    },
+    {
+      step: "Forward exposure model",
+      description:
+        "Add open commitments, demand or production forecasts, standards, and market assumptions so finance sees future risk.",
+    },
+    {
+      step: "Recommendation workflow",
+      description:
+        "Add human-in-the-loop recommendations, weekly review, month-end commentary drafts, and governed approval paths.",
+    },
+  ],
+  comparison: [
+    {
+      label: "Variance timing",
+      traditional: "Explained after close",
+      ai: "Tracked daily with forward exposure",
+    },
+    {
+      label: "Root cause",
+      traditional: "Manual spreadsheet bridges",
+      ai: "Driver-level decomposition by source data",
+    },
+    {
+      label: "Contract recovery",
+      traditional: "Reviewed ad hoc",
+      ai: "Pass-through and escalator candidates flagged",
+    },
+    {
+      label: "Recommendations",
+      traditional: "Finance and procurement meetings",
+      ai: "Approval-ready actions with rationale",
+    },
+    {
+      label: "Governance",
+      traditional: "Email approvals and unclear assumptions",
+      ai: "Versioned assumptions and audit logs",
+    },
+  ],
+  governance: [
+    "The agent is read-heavy and write-controlled: it can analyze, draft, flag, model, and recommend.",
+    "It does not autonomously place POs, execute hedges, post journal entries, update standard costs, or change vendor master data.",
+    "All recommendations preserve the source data, assumptions, model context, confidence level, and human reviewer decision.",
+    "SOX-relevant outputs follow the same approval and evidence expectations as other close or ledger-adjacent work.",
+  ],
+  faq: [
+    {
+      question: "What is purchase price variance?",
+      answer:
+        "Purchase price variance, or PPV, is the difference between what a manufacturer expected to pay for materials or components and what it actually paid. It is usually measured against standard cost and can be driven by commodity movement, vendor terms, freight, FX, timing, mix, or sourcing decisions.",
+    },
+    {
+      question: "What does a PPV agent do?",
+      answer:
+        "A PPV agent reads approved procurement, finance, BOM or formula, contract, forecast, and market data to decompose historical variance, project forward exposure, flag anomalies, and prepare recommendations for human approval.",
+    },
+    {
+      question: "Can the PPV agent work with BatchMaster/SAP and Power BI?",
+      answer:
+        "Yes, that is a realistic discovery pattern. The first step is to confirm the BatchMaster/SAP configuration, database or API access, Power BI semantic model quality, and how finance currently calculates PPV.",
+    },
+    {
+      question: "Does the agent execute purchases or hedges automatically?",
+      answer:
+        "No. The PPV agent can prepare purchase, hedge, standard-cost, pass-through, or escalation recommendations, but sensitive financial and procurement actions require human approval and existing controls.",
+    },
+    {
+      question: "What data is needed for a PPV discovery workshop?",
+      answer:
+        "ITECS typically asks for PPV methodology, sample variance reports, purchase lines, receipts, invoices, standards, BOMs or formulas, vendor terms, customer pass-through clauses, open commitments, and Power BI reporting context.",
+    },
+    {
+      question: "Can it connect PPV to customer pass-through clauses?",
+      answer:
+        "Yes. When customer agreements and pricing terms are available, the agent can identify which unfavorable variances may be recoverable through escalators or pass-through language and which represent true margin erosion.",
+    },
+  ],
+};

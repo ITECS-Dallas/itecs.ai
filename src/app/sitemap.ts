@@ -1,5 +1,12 @@
 import type { MetadataRoute } from "next";
-import { SERVICES, INSIGHTS, AI_SEO_OVERVIEW, AI_SEO_TIERS } from "@/lib/constants";
+import {
+  SERVICES,
+  INSIGHTS,
+  AI_SEO_OVERVIEW,
+  AI_SEO_TIERS,
+  MANUFACTURING_VERTICAL,
+  PPV_AGENT_USE_CASE,
+} from "@/lib/constants";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = "https://itecs.ai";
@@ -25,6 +32,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.85,
   }));
 
+  const manufacturingPages = [
+    {
+      url: `${base}${MANUFACTURING_VERTICAL.href}`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.9,
+    },
+    {
+      url: `${base}${PPV_AGENT_USE_CASE.href}`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.85,
+    },
+  ];
+
   return [
     {
       url: base,
@@ -33,6 +55,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1.0,
     },
     ...hubPages,
+    ...manufacturingPages,
     {
       url: `${base}${AI_SEO_OVERVIEW.href}`,
       lastModified: new Date(),

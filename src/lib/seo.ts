@@ -290,6 +290,42 @@ export function generateServiceSchema(service: ServiceItem) {
   };
 }
 
+export function generateNationalServiceSchema(service: {
+  title: string;
+  description: string;
+  href: string;
+  shortTitle: string;
+  keywords?: readonly string[];
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: service.title,
+    description: service.description,
+    url: `${SITE_CONFIG.url}${service.href}`,
+    provider: {
+      "@type": "LocalBusiness",
+      name: SITE_CONFIG.name,
+      url: SITE_CONFIG.url,
+      parentOrganization: {
+        "@type": "LocalBusiness",
+        name: "ITECS",
+        url: SITE_CONFIG.mainSiteUrl,
+      },
+    },
+    areaServed: {
+      "@type": "Country",
+      name: "United States",
+    },
+    audience: {
+      "@type": "BusinessAudience",
+      audienceType: "Manufacturing executives",
+    },
+    serviceType: service.shortTitle,
+    category: service.keywords ?? ["Manufacturing AI"],
+  };
+}
+
 // ---------------------------------------------------------------------------
 // FAQPage
 // ---------------------------------------------------------------------------
