@@ -1,11 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
 import {
-  MANUFACTURING_SPOKE_PAGES,
-  PPV_AGENT_USE_CASE,
-  SERVICES,
-  SITE_CONFIG,
-} from "@/lib/constants";
+  MANUFACTURING_HUB_NAV_ITEM,
+  MANUFACTURING_USE_CASE_NAV_ITEMS,
+} from "@/components/layout/navData";
+import { SERVICES, SITE_CONFIG } from "@/lib/constants";
 import {
   LinkedInIcon,
   XIcon,
@@ -68,24 +67,6 @@ const featuredServiceLinks = [
     label: "AI-Optimized SEO",
     href: "/ai-optimized-seo",
   },
-];
-
-const industryLinks = [
-  {
-    key: "manufacturing",
-    label: "Manufacturing AI",
-    href: "/manufacturing",
-  },
-  {
-    key: "ppv-agent",
-    label: PPV_AGENT_USE_CASE.shortTitle,
-    href: PPV_AGENT_USE_CASE.href,
-  },
-  ...MANUFACTURING_SPOKE_PAGES.map((page) => ({
-    key: page.slug,
-    label: page.shortTitle,
-    href: page.href,
-  })),
 ];
 
 export function Footer() {
@@ -166,22 +147,41 @@ export function Footer() {
           </div>
 
           {/* Industries */}
-          <div>
+          <div className="min-w-0">
             <h4 className="text-sm font-medium tracking-[0.05em] uppercase text-text-primary mb-4">
               Industries
             </h4>
-            <ul className="space-y-3">
-              {industryLinks.map((industry) => (
-                <li key={industry.key}>
-                  <Link
-                    href={industry.href}
-                    className="text-sm text-text-dim hover:text-brand-accent transition-colors"
-                  >
-                    {industry.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            <div className="space-y-4">
+              <Link
+                href={MANUFACTURING_HUB_NAV_ITEM.href}
+                className="group block rounded-lg border border-brand-accent/20 bg-brand-accent/5 p-3 transition-colors hover:border-brand-accent/40"
+              >
+                <span className="block text-sm font-medium text-text-primary transition-colors group-hover:text-brand-accent">
+                  Manufacturing AI
+                </span>
+                <span className="mt-1 block text-xs leading-relaxed text-text-dim">
+                  Finance, operations, quality, and supply-chain use cases
+                </span>
+              </Link>
+
+              <div>
+                <p className="mb-3 text-xs font-medium tracking-[0.08em] text-text-secondary uppercase">
+                  Manufacturing use cases
+                </p>
+                <ul className="space-y-2 border-l border-[var(--border-subtle)] pl-3">
+                  {MANUFACTURING_USE_CASE_NAV_ITEMS.map((industry) => (
+                    <li key={industry.href}>
+                      <Link
+                        href={industry.href}
+                        className="text-sm text-text-dim transition-colors hover:text-brand-accent"
+                      >
+                        {industry.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
           </div>
 
           {/* Contact + Social */}
