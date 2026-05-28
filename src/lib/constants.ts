@@ -4144,7 +4144,7 @@ export const PPV_AGENT_USE_CASE: PPVAgentUseCaseContent = {
 export const MANUFACTURING_SPOKE_PAGES: ManufacturingSpokePageContent[] = [
   {
     slug: "demand-forecasting-sop-ai",
-    title: "Demand Forecasting and S&OP Intelligence for Manufacturers",
+    title: "Manufacturing Demand Forecasting & S&OP AI",
     shortTitle: "Demand & S&OP",
     description:
       "Manufacturing AI for demand forecasting, S&OP scenarios, inventory exposure, service risk, and production planning decisions.",
@@ -4408,6 +4408,16 @@ export const MANUFACTURING_SPOKE_PAGES: ManufacturingSpokePageContent[] = [
         question: "Can this work before we have a perfect data warehouse?",
         answer:
           "Yes, if the right order, shipment, forecast, inventory, and production data can be accessed and reconciled for a focused pilot.",
+      },
+      {
+        question: "What data is needed for a demand forecasting AI pilot?",
+        answer:
+          "A focused pilot typically starts with order history, shipment history, current forecasts, planner overrides, inventory, supplier lead times, production constraints, and any customer or market signals already used in planning.",
+      },
+      {
+        question: "Can this work with ERP and Power BI reporting?",
+        answer:
+          "Yes. ITECS reviews the ERP, Power BI semantic model, spreadsheet planning files, and source-system ownership during discovery before recommending the integration pattern.",
       },
       {
         question: "How does demand forecasting connect to PPV?",
