@@ -51,7 +51,7 @@ export function Header() {
           </Link>
 
           <div className="flex shrink-0 items-center gap-3">
-            <Button href="/contact" size="sm">
+            <Button href="/contact" size="sm" className="hidden sm:inline-flex">
               Contact
             </Button>
             <button
