@@ -80,18 +80,20 @@ describe("manufacturing vertical pages", () => {
     }
   });
 
-  it("links manufacturing pages from full-screen navigation and grouped footer", () => {
+  it("links manufacturing pages from sidebar mega menu and grouped footer", () => {
     const header = read("src/components/layout/Header.tsx");
     const navData = read("src/components/layout/navData.ts");
     const manufacturingNavigation = read("src/lib/manufacturingNavigation.ts");
     const footer = read("src/components/layout/Footer.tsx");
+    const fullScreenMenu = read("src/components/layout/FullscreenNavMenu.tsx");
 
     assert.match(navData, /MANUFACTURING_HUB_NAV_ITEM/);
     assert.match(navData, /MANUFACTURING_USE_CASE_NAV_ITEMS/);
+    assert.match(navData, /RESOURCE_NAV_ITEMS/);
+    assert.match(navData, /COMPANY_NAV_ITEMS/);
+    assert.match(navData, /MENU_CATEGORY_ITEMS/);
     assert.match(navData, /@\/lib\/manufacturingNavigation/);
     assert.match(navData, /resolveManufacturingIcon/);
-    assert.doesNotMatch(navData, /label:\s*useCase\.title/);
-    assert.doesNotMatch(navData, /desc:\s*useCase\.description/);
     assert.doesNotMatch(navData, /@\/lib\/constants/);
     assert.doesNotMatch(navData, /PPV_AGENT_USE_CASE/);
     assert.doesNotMatch(navData, /MANUFACTURING_VERTICAL/);
@@ -105,19 +107,41 @@ describe("manufacturing vertical pages", () => {
     assert.match(manufacturingNavigation, /Vendor Anomaly Detection/);
     assert.doesNotMatch(manufacturingNavigation, /@\/lib\/constants/);
 
-    const fullScreenMenu = read("src/components/layout/FullscreenNavMenu.tsx");
-
-    assert.match(fullScreenMenu, /Manufacturing AI Hub/);
-    assert.match(fullScreenMenu, /Dallas team/);
-    assert.match(fullScreenMenu, /National manufacturing reach/);
-    assert.match(fullScreenMenu, /MANUFACTURING_USE_CASE_NAV_ITEMS/);
+    assert.match(fullScreenMenu, /SidebarCategoryRail/);
+    assert.match(fullScreenMenu, /MegaMenuLink/);
+    assert.match(fullScreenMenu, /ManufacturingChildLink/);
+    assert.match(fullScreenMenu, /MENU_CATEGORY_ITEMS/);
     assert.match(fullScreenMenu, /SERVICE_NAV_ITEMS/);
+    assert.match(fullScreenMenu, /MANUFACTURING_USE_CASE_NAV_ITEMS/);
+    assert.match(fullScreenMenu, /RESOURCE_NAV_ITEMS/);
+    assert.match(fullScreenMenu, /COMPANY_NAV_ITEMS/);
+    assert.match(fullScreenMenu, /AI Services/);
+    assert.match(fullScreenMenu, /Industries/);
+    assert.match(fullScreenMenu, /Resources/);
+    assert.match(fullScreenMenu, /Company/);
+    assert.match(fullScreenMenu, /Manufacturing AI Hub/);
+    assert.match(fullScreenMenu, /Manufacturing AI child pages/);
+    assert.match(fullScreenMenu, /Contact Us/);
+    assert.match(fullScreenMenu, /Insights/);
+    assert.match(fullScreenMenu, /ITECS MSP/);
+    assert.match(fullScreenMenu, /brand-purple/);
+    assert.match(fullScreenMenu, /prefers-reduced-motion/);
+
+    const aiServicesIndex = fullScreenMenu.indexOf("AI Services");
+    const industriesIndex = fullScreenMenu.indexOf("Industries");
+    const resourcesIndex = fullScreenMenu.indexOf("Resources");
+    const companyIndex = fullScreenMenu.indexOf("Company");
+
+    assert.ok(aiServicesIndex >= 0, "AI Services category should exist");
+    assert.ok(industriesIndex > aiServicesIndex, "Industries should follow AI Services");
+    assert.ok(resourcesIndex > industriesIndex, "Resources should follow Industries");
+    assert.ok(companyIndex > resourcesIndex, "Company should follow Resources");
+
     assert.match(fullScreenMenu, /dialogRef/);
     assert.match(fullScreenMenu, /focusableElements/);
     assert.match(fullScreenMenu, /shiftKey/);
     assert.match(fullScreenMenu, /isExactPath/);
     assert.match(fullScreenMenu, /aria-current=\{current \? "page" : undefined\}/);
-    assert.match(fullScreenMenu, /aria-current=\{hubCurrent \? "page" : undefined\}/);
 
     assert.match(header, /FullscreenNavMenu/);
     assert.match(header, /aria-label/);
