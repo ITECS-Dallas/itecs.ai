@@ -434,7 +434,7 @@ export function FullscreenNavMenu({
                         <div className="flex h-14 w-14 items-center justify-center rounded-xl border border-brand-accent/35 bg-brand-accent/15 text-brand-accent">
                           <HubIcon className="h-7 w-7" aria-hidden="true" />
                         </div>
-                        <div className="hidden rounded-lg border border-white/10 bg-bg-void/45 px-3 py-2 text-right sm:block">
+                        <div className="min-w-0 rounded-lg border border-white/10 bg-bg-void/45 px-3 py-2 text-left sm:text-right">
                           <p className="text-xs uppercase tracking-[0.12em] text-text-dim">
                             Parent hub
                           </p>
