@@ -1248,6 +1248,101 @@ export interface InsightItem {
 
 export const INSIGHTS: InsightItem[] = [
   {
+    slug: "openclaw-security-crisis",
+    title:
+      "The OpenClaw Security Crisis: What Every Business Should Learn Before Deploying an AI Agent",
+    description:
+      "Four chainable CVEs, 245,000 exposed instances, 1,184 malicious marketplace skills — what the OpenClaw crisis teaches every business deploying AI agents in 2026.",
+    href: "/insights/openclaw-security-crisis",
+    publishedDate: "2026-05-28",
+    hubSlug: "custom-ai-agents",
+    hubLabel: "Custom AI Agents",
+    hubHref: "/custom-ai-agents",
+    keywords: [
+      "openclaw security crisis",
+      "openclaw vulnerabilities",
+      "claw chain cve",
+      "clawhavoc supply chain attack",
+      "ai agent security 2026",
+      "agentic ai risk",
+      "openclaw cve-2026-44112",
+      "openclaw cve-2026-25253",
+      "ai agent sandbox escape",
+      "ai agent governance dallas",
+    ],
+    h1: "The OpenClaw Security Crisis: What 245,000 Exposed AI Agents Reveal About Agentic AI Risk",
+    content: [
+      "OpenClaw is the open-source AI agent platform that ran away with 2026 — a viral GitHub repository that crossed 180,000 stars in January and is now at the center of the year's first major agentic-AI security crisis. Between January 27 and May 15, researchers disclosed five CVEs, identified more than 1,100 malicious marketplace skills, and counted roughly 245,000 OpenClaw instances exposed to the public internet across Shodan and ZoomEye. The lesson for every business deploying AI agents is not that OpenClaw is uniquely broken — it is that the entire category needs governance the open-source community has not yet built.",
+      "**For Dallas businesses evaluating AI agents, the safer path is a [governed custom AI agent deployment](/custom-ai-agents) — sandboxed per workflow, identity-bound, audited, and run on the same operational discipline ITECS has applied to managed IT since 2002.** This article walks through what happened, why traditional defenses missed it, and the operating model that prevents your business from becoming the next case study.",
+      "**The Timeline: From Viral Repository To Security Crisis In Four Months**",
+      "OpenClaw's trajectory is what made the crisis newsworthy. The project went viral the first week of January 2026 and, within three weeks, exposed instances on the public internet jumped from roughly 1,000 to over 21,000. By February 8, Bitsight counted more than 30,000 distinct exposed deployments. By mid-February, roughly 42,000 instances were found exposed — 93 percent of them with no authentication at all.",
+      "January 27 brought the first malicious skill upload to ClawHub, OpenClaw's official plugin marketplace. February 1, Koi Security named the coordinated campaign \"ClawHavoc.\" February 3, security researchers published CVE-2026-25253 — a one-click remote code execution flaw rated CVSS 8.8 that could compromise any OpenClaw user who clicked a malicious link. February 5, Antiy CERT's post-incident sweep identified at least 1,184 weaponized skills across the marketplace. ClawHub did not introduce verified screening of skill publishers until March 26 — eight weeks after the first malicious upload.",
+      "April 23 brought patches for the next disclosure wave. May 15, Cyera Research published \"Claw Chain\" — four chainable vulnerabilities that, taken together, let an attacker move from a malicious skill installation to a persistent backdoor on the host. Today, the underlying architectural pattern is unchanged across the broader open-source agent ecosystem.",
+      "**The Claw Chain: Four Vulnerabilities That Compose A Full Takeover**",
+      "Cyera's disclosure is the part most leaders should read carefully, because it shows how agentic-AI compromise differs from the vulnerabilities IT teams already know how to handle.",
+      "**CVE-2026-44113 (CVSS 7.7) — Filesystem read escape.** A time-of-check / time-of-use race condition in OpenClaw's OpenShell sandbox lets an attacker swap a validated file path with a symbolic link pointing outside the approved sandbox root. The agent reads files the operator believed were isolated.",
+      "**CVE-2026-44115 (CVSS 8.8) — Credential disclosure.** A gap between command validation and shell execution lets environment variables expand inside unquoted heredocs at runtime. API keys, tokens, and connected-service credentials leak through what looked like a sanitized command.",
+      "**CVE-2026-44118 (CVSS 7.8) — Privilege escalation.** The agent's Model Context Protocol loopback trusts a client-controlled `senderIsOwner` flag without validating the session. A local attacker promotes themselves to owner of the agent without a credential.",
+      "**CVE-2026-44112 (CVSS 9.6) — Filesystem write escape.** The same TOCTOU race applied to write operations. Attackers redirect writes outside the sandbox boundary and place a backdoor anywhere on the host filesystem.",
+      "Chained together, the four flaws produce a kill chain that begins with a malicious marketplace skill, reads sensitive files, steals credentials, escalates to owner, and plants a persistent backdoor. The deeper problem is that every step looks like ordinary agent behavior — read a file, run a shell command, write to disk. Traditional endpoint monitoring cannot distinguish it from legitimate work. All four vulnerabilities were patched in OpenClaw 2026.4.22.",
+      "**ClawHavoc: The Supply Chain Attack That Made The Crisis Worse**",
+      "While the protocol-level flaws are what made OpenClaw a CVE story, ClawHavoc is what made it a business-risk story. Koi Security's February audit of all 2,857 skills in the ClawHub marketplace found 341 malicious entries — roughly 12 percent of the entire catalog at that moment. Antiy CERT, working with a larger post-discovery sample, identified at least 1,184 malicious packages tied to 12 publisher accounts. By the time the marketplace expanded past 10,000 skills, the running malicious-skill count was over 800.",
+      "The payloads were the same families business security teams already track. macOS hosts received Atomic macOS Stealer, the malware-as-a-service tool that harvests keychain passwords, browser data, cryptocurrency wallets, SSH keys, and user-directory files. Windows hosts received VMProtect-packed infostealers and keyloggers, often delivered via password-protected ZIPs to bypass scanners. Several skills opened reverse shells for interactive attacker access.",
+      "Most of the malicious skills passed casual inspection. They had professional documentation. Some genuinely worked as advertised — a Solana wallet tracker really tracked Solana wallets — but their manifest content quietly instructed the agent to fetch and run external code. The root cause was structural: ClawHub allowed anyone with a GitHub account at least one week old to publish a skill until March 26. There was no signing, no review, no maintainer attestation. That is the same trust posture early npm and PyPI had — and the same lesson is being relearned now for AI agent capability registries.",
+      "**Why Patches Alone Will Not Solve This**",
+      "Every disclosed OpenClaw vulnerability is patched. The maintainers responded quickly, the version bumps are public, and the marketplace introduced screening in March. None of that fixes the category-level risk, and that is the point business leaders most need to absorb.",
+      "Most AI agent platforms — open-source or commercial — share three architectural choices that the OpenClaw crisis exposed. First, they run with the human operator's full credentials across every connected system, which means a compromised agent inherits the operator's entire blast radius. Second, they trust plugin or skill marketplaces with no security review, because shipping fast matters more than shipping signed. Third, they ship default configurations that expose the agent to the local network or the public internet without authentication, on the assumption that a developer who installs it will harden it later. Many never do.",
+      "Traditional endpoint and network monitoring also assume a human at the keyboard. When the agent reads a file, runs a shell command, and writes another file, the security stack sees three legitimate-looking actions. The Claw Chain attack succeeds precisely because each step is normal — only the sequence is malicious. Detecting that requires behavior-pattern monitoring built around how the agent is supposed to operate. Most businesses do not have it.",
+      "**What This Means For Every Business Deploying AI Agents**",
+      "A 95-person Dallas third-party logistics company we recently advised illustrates the practical risk. The operations director had installed a self-hosted AI agent to scrape carrier portals, post status updates to the customer CRM, and prepare a daily exceptions report. The agent ran on a shared workstation, used the operator's stored credentials for the carrier portals, and pulled a community plugin from a public registry to handle PDF rate confirmations. None of that was on the IT roadmap. None of it had been audited. None of it had been logged.",
+      "The fix was not to ban the agent. It was to rebuild the same workflow on a governed footprint — a scoped service account per integration, a sandboxed agent runtime, an allowlist of approved skills, an audit log of every action the agent took, and an owner approval gate on anything that would touch a customer record or a carrier invoice. The agent kept its job. The business kept its blast radius small. The pattern is the same one we cover in our guide to [moving agentic AI workflows from pilot to production](/insights/agentic-ai-workflows-enterprise-operations) and our analysis of [why MCP requires managed governance](/insights/mcp-is-the-new-api).",
+      "**The Governance Pattern That Keeps Agents Safe**",
+      "Kaspersky's public assessment of OpenClaw is blunt — for enterprise use, it remains \"at best unsafe, and at worst utterly reckless\" until the architectural problems are fixed. That posture is correct, and it generalizes. Any AI agent platform a business deploys needs to clear the same six controls before it touches production data.",
+      "First, identity-bound credentials per workflow, never the operator's personal logins. Second, sandboxed runtime — file access, network access, and tool access scoped per agent purpose. Third, an allowlisted skill or plugin set with signed publishers and a documented review process. Fourth, an immutable audit log capturing every read, every write, every credential use, and every tool call. Fifth, an approval gate for any action that moves money, files with a regulator, or posts to a customer-facing channel. Sixth, a quarterly governance review of what the agent did and what it touched.",
+      "ITECS deploys every AI agent against the [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework) — the standard most enterprise auditors and U.S. federal agencies now use as the policy backbone for AI accountability. The controls above map directly to its Govern, Map, Measure, and Manage functions. For businesses whose data is not yet ready to support this discipline, a [data and AI readiness audit](/data-audit) comes before any agent goes live, and team-level [AI training](/training) follows so that human reviewers actually use the approval gates the way they were designed.",
+      "**Pricing And The ROI Of Doing This Right**",
+      "ITECS prices AI security and consulting transparently — hourly engineering and consulting or prepaid retainer hours with tracked usage, no minimum monthly commitment, and no expiration. Scoped builds, including a governed [custom AI agent deployment](/custom-ai-agents), carry a flat fee. The entry point for most leadership teams is a fixed-fee [AI consulting and readiness engagement](/consulting) that audits current AI usage, prioritizes use cases by payback, and produces a board-ready security and governance roadmap.",
+      "The ROI of governance is asymmetric. A single avoided incident — one Atomic Stealer infection on a controller's workstation, one credential leak from a shared agent, one customer-data exposure from an unsanctioned plugin — pays for years of disciplined deployment. The 95-person logistics company above kept the productivity gains of its AI agent program and reduced its incident exposure to something the leadership team could actually defend. That is what a managed approach delivers. When you are ready to plan an agent deployment your auditor, your insurer, and your board can sign off on, [talk to the ITECS team](/contact).",
+    ],
+    faq: [
+      {
+        question: "What is OpenClaw and why is it in the security news?",
+        answer:
+          "OpenClaw is an open-source AI agent platform that went viral in January 2026, crossing 180,000 GitHub stars within weeks. Between January 27 and May 15, researchers disclosed five CVEs, identified more than 1,100 malicious marketplace skills, and counted roughly 245,000 OpenClaw instances exposed to the public internet across Shodan and ZoomEye.",
+      },
+      {
+        question: "What is the Claw Chain disclosure?",
+        answer:
+          "Claw Chain is the name Cyera Research gave to four chainable OpenClaw vulnerabilities disclosed on May 15, 2026 — CVE-2026-44112 (CVSS 9.6 filesystem write escape), CVE-2026-44113 (CVSS 7.7 filesystem read escape), CVE-2026-44115 (CVSS 8.8 credential disclosure), and CVE-2026-44118 (CVSS 7.8 privilege escalation). Chained together, they let an attacker move from a malicious skill to a persistent backdoor on the host.",
+      },
+      {
+        question: "What was ClawHavoc?",
+        answer:
+          "ClawHavoc is the coordinated supply-chain attack on ClawHub, OpenClaw's official skill marketplace. Koi Security identified 341 malicious skills in February 2026 — about 12 percent of the catalog — and Antiy CERT later raised the count to at least 1,184 packages across 12 publisher accounts, delivering Atomic macOS Stealer, Windows infostealers, and reverse shells.",
+      },
+      {
+        question: "Are all the OpenClaw vulnerabilities patched?",
+        answer:
+          "Yes. CVE-2026-25253 was patched in OpenClaw 2026.1.29 and the four Claw Chain flaws were patched in OpenClaw 2026.4.22. The remaining business risk is architectural — most AI agent platforms still run with the operator's full credentials, trust unsigned marketplace plugins, and lack the behavioral monitoring needed to detect chained agent abuse.",
+      },
+      {
+        question: "What does this mean for my business if we are not using OpenClaw?",
+        answer:
+          "The OpenClaw crisis is a category lesson, not a single-product warning. Any AI agent deployment — open-source or commercial — needs identity-bound credentials per workflow, a sandboxed runtime, an allowlisted skill set, an immutable audit log, owner approval gates for sensitive actions, and a quarterly governance review. Without those controls, a compromised agent inherits the operator's full blast radius.",
+      },
+      {
+        question: "How does ITECS deploy AI agents safely for Dallas businesses?",
+        answer:
+          "ITECS deploys every AI agent against the NIST AI Risk Management Framework with scoped service accounts per integration, a sandboxed runtime, an allowlist of approved skills, immutable audit logs, owner approval gates, and a quarterly governance review. The same operational discipline ITECS has applied to managed IT since 2002, applied now to agentic AI.",
+      },
+      {
+        question: "Should we wait to deploy AI agents until the open-source ecosystem matures?",
+        answer:
+          "No. The competitive value of AI agents is real and growing. The right response is not to delay but to deploy on a governed footprint — choose a vetted platform, scope it tightly, log every action, and require human approval on anything that moves money or touches customer data. That is the pattern that lets businesses capture the productivity gains without inheriting the OpenClaw-class risk.",
+      },
+    ],
+  },
+  {
     slug: "claude-cowork-for-small-business",
     title:
       "How to Set Up Claude Cowork for Your Business: 10 Workflows That Replace Manual Operations Work",
