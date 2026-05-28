@@ -51,9 +51,11 @@ export function Header() {
           </Link>
 
           <div className="flex shrink-0 items-center gap-3">
-            <Button href="/contact" size="sm" className="hidden sm:inline-flex">
-              Contact
-            </Button>
+            <div className="hidden sm:block">
+              <Button href="/contact" size="sm">
+                Contact
+              </Button>
+            </div>
             <button
               type="button"
               className="relative z-50 flex h-10 w-10 items-center justify-center rounded-lg text-text-primary transition-colors hover:bg-bg-surface/70 focus:outline-none focus:ring-2 focus:ring-brand-accent/60 focus:ring-offset-2 focus:ring-offset-bg-void"
