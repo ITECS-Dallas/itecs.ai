@@ -80,22 +80,42 @@ describe("manufacturing vertical pages", () => {
     }
   });
 
-  it("links manufacturing pages from global navigation and footer", () => {
+  it("links manufacturing pages from full-screen navigation and grouped footer", () => {
     const header = read("src/components/layout/Header.tsx");
+    const fullScreenMenu = read("src/components/layout/FullscreenNavMenu.tsx");
+    const navData = read("src/components/layout/navData.ts");
     const footer = read("src/components/layout/Footer.tsx");
 
-    assert.match(header, /Industries/);
-    assert.match(header, /Manufacturing AI/);
-    assert.match(header, /\/manufacturing\/ppv-agent/);
-    assert.match(footer, /Industries/);
-    assert.match(footer, /Manufacturing AI/);
-    assert.match(footer, /PPV_AGENT_USE_CASE/);
+    assert.match(header, /FullscreenNavMenu/);
+    assert.match(header, /aria-label/);
+    assert.match(header, /Open site menu/);
+    assert.match(header, /Close site menu/);
+    assert.match(header, /href="\/contact"/);
+    assert.doesNotMatch(header, /SolutionsDropdown/);
+    assert.doesNotMatch(header, /IndustriesDropdown/);
+    assert.doesNotMatch(header, /const navItems = \[/);
+
+    assert.match(fullScreenMenu, /Manufacturing AI Hub/);
+    assert.match(fullScreenMenu, /Dallas team/);
+    assert.match(fullScreenMenu, /National manufacturing reach/);
+    assert.match(fullScreenMenu, /MANUFACTURING_USE_CASE_NAV_ITEMS/);
+    assert.match(fullScreenMenu, /SERVICE_NAV_ITEMS/);
+
+    assert.match(navData, /MANUFACTURING_HUB_NAV_ITEM/);
+    assert.match(navData, /MANUFACTURING_USE_CASE_NAV_ITEMS/);
+    assert.match(navData, /PPV_AGENT_USE_CASE/);
+    assert.match(navData, /MANUFACTURING_SPOKE_PAGES/);
+    assert.match(navData, /["']\/manufacturing["']/);
+
+    assert.match(footer, /Manufacturing use cases/);
+    assert.match(footer, /MANUFACTURING_USE_CASE_NAV_ITEMS/);
     assert.match(footer, /ITECS MSP/);
     assert.doesNotMatch(footer, /ITECS Main Site/);
+
     for (const route of spokeRoutes) {
-      assert.match(header, new RegExp(route));
+      assert.match(navData, new RegExp(route));
     }
-    assert.match(footer, /MANUFACTURING_SPOKE_PAGES/);
+    assert.match(navData, /\/manufacturing\/ppv-agent/);
   });
 
   it("defines unique manufacturing spoke concepts and chart modes", () => {
