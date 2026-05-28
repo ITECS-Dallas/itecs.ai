@@ -6,7 +6,9 @@ import {
   Bot,
   Boxes,
   Brain,
+  Building2,
   ChartNoAxesCombined,
+  Compass,
   Factory,
   FileSearch,
   GraduationCap,
@@ -16,6 +18,7 @@ import {
   Search,
   ServerCog,
   ShieldCheck,
+  Sparkles,
   Truck,
   UserRoundCheck,
   UsersRound,
@@ -33,6 +36,16 @@ export interface LayoutNavItem {
   href: string;
   icon: LucideIcon;
   desc: string;
+  external?: boolean;
+}
+
+export type MenuCategoryAccent = "cyan" | "purple" | "neutral";
+
+export interface MenuCategoryItem {
+  label: string;
+  desc: string;
+  icon: LucideIcon;
+  accent: MenuCategoryAccent;
 }
 
 export const SERVICE_NAV_ITEMS: LayoutNavItem[] = [
@@ -101,6 +114,88 @@ export const SERVICE_NAV_ITEMS: LayoutNavItem[] = [
     href: "/ai-optimized-seo",
     icon: Search,
     desc: "GEO + traditional SEO for Dallas",
+  },
+];
+
+export const RESOURCE_NAV_ITEMS: LayoutNavItem[] = [
+  {
+    label: "Insights",
+    href: "/insights",
+    icon: BookOpen,
+    desc: "AI strategy, security, and operations articles",
+  },
+  {
+    label: "AI-Optimized SEO",
+    href: "/ai-optimized-seo",
+    icon: Search,
+    desc: "GEO and traditional SEO for AI-era search",
+  },
+  {
+    label: "Services Overview",
+    href: "/services",
+    icon: Compass,
+    desc: "All ITECS AI services in one place",
+  },
+];
+
+export const COMPANY_NAV_ITEMS: LayoutNavItem[] = [
+  {
+    label: "About",
+    href: "/about",
+    icon: Building2,
+    desc: "ITECS AI background and operating model",
+  },
+  {
+    label: "Pricing",
+    href: "/pricing",
+    icon: BadgeDollarSign,
+    desc: "Engagement models and managed AI options",
+  },
+  {
+    label: "Managed Intelligence",
+    href: "/managed-intelligence-provider",
+    icon: Sparkles,
+    desc: "Ongoing AI operations and improvement",
+  },
+  {
+    label: "Contact Us",
+    href: "/contact",
+    icon: Phone,
+    desc: "Start a practical AI conversation",
+  },
+  {
+    label: "ITECS MSP",
+    href: "https://itecsonline.com",
+    icon: ShieldCheck,
+    desc: "Dallas managed IT services from ITECS",
+    external: true,
+  },
+];
+
+export const MENU_CATEGORY_ITEMS: MenuCategoryItem[] = [
+  {
+    label: "AI Services",
+    desc: "Consulting, agents, automation, and AI operations.",
+    icon: Brain,
+    accent: "cyan",
+  },
+  {
+    label: "Industries",
+    desc: "Manufacturing AI hub and use-case pages.",
+    icon: Factory,
+    accent: "purple",
+  },
+  {
+    label: "Resources",
+    desc: "Insights and reference pages.",
+    icon: BookOpen,
+    accent: "neutral",
+  },
+  {
+    label: "Company",
+    desc: "About, pricing, contact, and ITECS MSP.",
+    icon: Building2,
+    accent: "neutral",
   },
 ];
 
