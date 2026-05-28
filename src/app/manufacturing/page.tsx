@@ -22,7 +22,7 @@ import { Button } from "@/components/ui/Button";
 const page = MANUFACTURING_VERTICAL;
 
 export const metadata = generatePageMetadata({
-  title: "AI Solutions for Manufacturing Finance and Operations",
+  title: "Manufacturing AI for Finance and Operations",
   description: page.description,
   path: page.href,
   keywords: page.keywords,

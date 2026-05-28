@@ -5,7 +5,7 @@ import { PPV_AGENT_USE_CASE } from "@/lib/constants";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { ManufacturingHero } from "@/components/sections/ManufacturingHero";
-import { ManufacturingMetricsChart } from "@/components/sections/ManufacturingMetricsChart";
+import { PPVExposureWaterfall } from "@/components/sections/PPVExposureWaterfall";
 import { PPVAgentWorkflowDiagram } from "@/components/sections/PPVAgentWorkflowDiagram";
 import { SecurityGuarantee } from "@/components/sections/SecurityGuarantee";
 import { PricingROI } from "@/components/sections/PricingROI";
@@ -106,7 +106,7 @@ export default function PPVAgentPage() {
         </div>
       </section>
 
-      <ManufacturingMetricsChart chart={page.metricChart} />
+      <PPVExposureWaterfall waterfall={page.exposureWaterfall} />
 
       <section className="py-24 md:py-32 bg-bg-surface">
         <div className="mx-auto max-w-6xl px-6 md:px-8">

@@ -3269,6 +3269,32 @@ export interface ManufacturingMetricChart {
   notes: string[];
 }
 
+export interface PPVExposureWaterfall {
+  eyebrow: string;
+  title: string;
+  description: string;
+  stages: {
+    label: string;
+    value: string;
+    detail: string;
+    height: number;
+    direction: "increase" | "decrease";
+    tone: "risk" | "watch" | "recoverable" | "controlled";
+  }[];
+  windows: {
+    label: string;
+    exposure: string;
+    detail: string;
+    tone: "risk" | "watch" | "recoverable";
+  }[];
+  decisions: {
+    action: string;
+    owner: string;
+    timing: string;
+    detail: string;
+  }[];
+}
+
 export interface ManufacturingPageContent {
   title: string;
   shortTitle: string;
@@ -3312,8 +3338,8 @@ export interface PPVAgentUseCaseContent {
   secondaryCtaHref: string;
   keywords: string[];
   stats: { value: string; label: string }[];
-  metricChart: ManufacturingMetricChart;
   capabilities: ManufacturingProofGroup[];
+  exposureWaterfall: PPVExposureWaterfall;
   dataInputs: { label: string; description: string }[];
   scenario: {
     title: string;
@@ -3397,11 +3423,111 @@ export const MANUFACTURING_CFO_SIGNAL_CHART: ManufacturingMetricChart = {
   ],
 };
 
+export const PPV_EXPOSURE_WATERFALL: PPVExposureWaterfall = {
+  eyebrow: "PPV exposure model",
+  title: "A Waterfall View of What Finance Can Act On Next",
+  description:
+    "This illustrative waterfall shows how the agent separates adverse cost movement from recoverable variance, then turns the remaining exposure into an approval queue for finance, procurement, and sales leaders.",
+  stages: [
+    {
+      label: "Open commitments vs. standards",
+      value: "$1.84M",
+      detail: "Unfavorable exposure before recovery or approved actions",
+      height: 92,
+      direction: "increase",
+      tone: "risk",
+    },
+    {
+      label: "Freight, energy, and basis",
+      value: "+$420K",
+      detail: "Landed-cost movement not captured in material standards",
+      height: 56,
+      direction: "increase",
+      tone: "watch",
+    },
+    {
+      label: "Supplier formula drift",
+      value: "+$190K",
+      detail: "Vendor prices outside expected index or rebate behavior",
+      height: 34,
+      direction: "increase",
+      tone: "risk",
+    },
+    {
+      label: "Customer pass-through candidate",
+      value: "-$510K",
+      detail: "Variance with contract language that may support recovery",
+      height: 68,
+      direction: "decrease",
+      tone: "recoverable",
+    },
+    {
+      label: "Approved forward-buy offset",
+      value: "-$310K",
+      detail: "Modeled reduction from actions already routed for approval",
+      height: 48,
+      direction: "decrease",
+      tone: "controlled",
+    },
+    {
+      label: "Net unresolved margin risk",
+      value: "$1.63M",
+      detail: "Remaining exposure requiring pricing, sourcing, or standard-cost review",
+      height: 80,
+      direction: "increase",
+      tone: "risk",
+    },
+  ],
+  windows: [
+    {
+      label: "Next 30 days",
+      exposure: "$440K",
+      detail: "Close-period commentary and urgent recovery candidates",
+      tone: "risk",
+    },
+    {
+      label: "Next 90 days",
+      exposure: "$1.63M",
+      detail: "Open commitment exposure after modeled offsets",
+      tone: "watch",
+    },
+    {
+      label: "Recoverable review",
+      exposure: "$510K",
+      detail: "Customer contracts requiring finance and sales validation",
+      tone: "recoverable",
+    },
+  ],
+  decisions: [
+    {
+      action: "Validate escalator recovery",
+      owner: "Finance + Sales",
+      timing: "This week",
+      detail:
+        "Review three customer programs where commodity movement may qualify for pass-through.",
+    },
+    {
+      action: "Review supplier formula drift",
+      owner: "Procurement",
+      timing: "48 hours",
+      detail:
+        "Compare invoice pricing against contracted index, basis, freight, and rebate terms.",
+    },
+    {
+      action: "Approve standard-cost update draft",
+      owner: "Controller",
+      timing: "Before close",
+      detail:
+        "Use forward curves and actual receipt history to prevent stale standards in next-period reporting.",
+    },
+  ],
+};
+
 export const MANUFACTURING_VERTICAL: ManufacturingPageContent = {
   title: "AI Solutions for Manufacturing Finance and Operations",
   shortTitle: "Manufacturing AI",
   description:
-    "ITECS helps manufacturers use secure AI systems to protect margin, improve working capital, forecast operational risk, and connect ERP, BI, plant, procurement, and quality data.",
+    "Secure manufacturing AI to protect margin, improve working capital, forecast risk, and connect ERP, BI, plant, procurement, and quality data.",
   href: "/manufacturing",
   h1: "AI Solutions for Manufacturing Finance and Operations",
   eyebrow: "Manufacturing AI from the ITECS Dallas team",
@@ -3599,7 +3725,7 @@ export const PPV_AGENT_USE_CASE: PPVAgentUseCaseContent = {
   title: "PPV Agent: Purchase Price Variance and Commodity Cost Intelligence",
   shortTitle: "PPV Agent",
   description:
-    "A governed AI agent for purchase price variance decomposition, commodity cost intelligence, forward exposure modeling, contract pass-through tracking, and finance-ready PPV commentary.",
+    "Governed PPV agent for purchase price variance, commodity cost intelligence, forward exposure modeling, pass-through tracking, and finance commentary.",
   href: "/manufacturing/ppv-agent",
   h1: "PPV Agent for Manufacturing Finance",
   eyebrow: "Purchase Price Variance and Commodity Cost Intelligence",
@@ -3625,7 +3751,7 @@ export const PPV_AGENT_USE_CASE: PPVAgentUseCaseContent = {
     { value: "1-6 mo", label: "Forward exposure views" },
     { value: "Human", label: "Approval before financial action" },
   ],
-  metricChart: MANUFACTURING_CFO_SIGNAL_CHART,
+  exposureWaterfall: PPV_EXPOSURE_WATERFALL,
   capabilities: [
     {
       title: "Continuous PPV decomposition",

@@ -33,16 +33,19 @@ describe("manufacturing vertical pages", () => {
     assert.match(constants, /does not autonomously/);
   });
 
-  it("includes an executive manufacturing metrics chart", () => {
+  it("keeps the hub chart broad and the PPV chart use-case specific", () => {
     const hub = read("src/app/manufacturing/page.tsx");
     const ppv = read("src/app/manufacturing/ppv-agent/page.tsx");
     const constants = read("src/lib/constants.ts");
 
     assert.match(hub, /ManufacturingMetricsChart/);
-    assert.match(ppv, /ManufacturingMetricsChart/);
+    assert.match(ppv, /PPVExposureWaterfall/);
+    assert.doesNotMatch(ppv, /ManufacturingMetricsChart/);
     assert.match(constants, /Projected PPV exposure/);
     assert.match(constants, /Recoverable pass-through/);
     assert.match(constants, /Inventory cash at risk/);
+    assert.match(constants, /PPV_EXPOSURE_WATERFALL/);
+    assert.match(constants, /A Waterfall View of What Finance Can Act On Next/);
   });
 
   it("publishes both manufacturing pages in the sitemap source", () => {
