@@ -12,6 +12,7 @@ import {
   ManufacturingPressure,
 } from "@/components/sections/ManufacturingProof";
 import { ManufacturingUseCases } from "@/components/sections/ManufacturingUseCases";
+import { ManufacturingMetricsChart } from "@/components/sections/ManufacturingMetricsChart";
 import { SecurityGuarantee } from "@/components/sections/SecurityGuarantee";
 import { FAQ } from "@/components/sections/FAQ";
 import { CTASection } from "@/components/sections/CTASection";
@@ -79,6 +80,8 @@ export default function ManufacturingPage() {
       </section>
 
       <ManufacturingPressure groups={page.pressureGroups} />
+
+      <ManufacturingMetricsChart chart={page.metricChart} />
 
       <ManufacturingUseCases useCases={page.useCases} />
 

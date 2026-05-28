@@ -3250,6 +3250,25 @@ export interface ManufacturingProofGroup {
   points: string[];
 }
 
+export interface ManufacturingMetricChart {
+  eyebrow: string;
+  title: string;
+  description: string;
+  kpis: {
+    label: string;
+    value: string;
+    detail: string;
+    tone: "risk" | "recoverable" | "watch" | "stable";
+  }[];
+  drivers: {
+    label: string;
+    value: string;
+    width: number;
+    tone: "risk" | "recoverable" | "watch";
+  }[];
+  notes: string[];
+}
+
 export interface ManufacturingPageContent {
   title: string;
   shortTitle: string;
@@ -3265,6 +3284,7 @@ export interface ManufacturingPageContent {
   secondaryCtaHref: string;
   keywords: string[];
   stats: { value: string; label: string }[];
+  metricChart: ManufacturingMetricChart;
   pressureGroups: ManufacturingProofGroup[];
   useCases: ManufacturingUseCase[];
   assessment: {
@@ -3292,6 +3312,7 @@ export interface PPVAgentUseCaseContent {
   secondaryCtaHref: string;
   keywords: string[];
   stats: { value: string; label: string }[];
+  metricChart: ManufacturingMetricChart;
   capabilities: ManufacturingProofGroup[];
   dataInputs: { label: string; description: string }[];
   scenario: {
@@ -3305,6 +3326,76 @@ export interface PPVAgentUseCaseContent {
   governance: string[];
   faq: { question: string; answer: string }[];
 }
+
+export const MANUFACTURING_CFO_SIGNAL_CHART: ManufacturingMetricChart = {
+  eyebrow: "Example CFO signal board",
+  title: "The Metrics a Manufacturing AI System Should Make Visible",
+  description:
+    "A finance-led manufacturing AI program should give executives a daily view of margin exposure, recoverable cost movement, cash tied up in inventory, and operational risk. These example figures are illustrative; discovery replaces them with the client's actual ERP, BI, contract, and plant data.",
+  kpis: [
+    {
+      label: "Projected PPV exposure",
+      value: "$1.84M",
+      detail: "Next 90 days against current standards",
+      tone: "risk",
+    },
+    {
+      label: "Recoverable pass-through",
+      value: "$510K",
+      detail: "Variance tied to customer escalator language",
+      tone: "recoverable",
+    },
+    {
+      label: "Inventory cash at risk",
+      value: "$3.2M",
+      detail: "Aging, excess, and commodity-sensitive positions",
+      tone: "watch",
+    },
+    {
+      label: "Margin protected",
+      value: "1.1 pts",
+      detail: "Modeled impact of approved actions",
+      tone: "stable",
+    },
+  ],
+  drivers: [
+    {
+      label: "Material price",
+      value: "+$1.20M",
+      width: 92,
+      tone: "risk",
+    },
+    {
+      label: "Freight and energy",
+      value: "+$420K",
+      width: 58,
+      tone: "risk",
+    },
+    {
+      label: "FX and basis",
+      value: "+$180K",
+      width: 34,
+      tone: "watch",
+    },
+    {
+      label: "Supplier mix",
+      value: "-$260K",
+      width: 44,
+      tone: "recoverable",
+    },
+    {
+      label: "Pass-through candidate",
+      value: "-$510K",
+      width: 66,
+      tone: "recoverable",
+    },
+  ],
+  notes: [
+    "Ties PPV to SKU, plant, customer program, and contract terms",
+    "Separates true margin erosion from recoverable customer pass-throughs",
+    "Routes purchase, hedge, and standard-cost recommendations for approval",
+  ],
+};
 
 export const MANUFACTURING_VERTICAL: ManufacturingPageContent = {
   title: "AI Solutions for Manufacturing Finance and Operations",
@@ -3336,6 +3427,7 @@ export const MANUFACTURING_VERTICAL: ManufacturingPageContent = {
     { value: "Plant", label: "Operations, quality, and yield context" },
     { value: "BI", label: "Power BI and executive reporting layers" },
   ],
+  metricChart: MANUFACTURING_CFO_SIGNAL_CHART,
   pressureGroups: [
     {
       title: "Finance pressure",
@@ -3533,6 +3625,7 @@ export const PPV_AGENT_USE_CASE: PPVAgentUseCaseContent = {
     { value: "1-6 mo", label: "Forward exposure views" },
     { value: "Human", label: "Approval before financial action" },
   ],
+  metricChart: MANUFACTURING_CFO_SIGNAL_CHART,
   capabilities: [
     {
       title: "Continuous PPV decomposition",
