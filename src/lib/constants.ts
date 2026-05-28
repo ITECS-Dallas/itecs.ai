@@ -4712,7 +4712,7 @@ export const MANUFACTURING_SPOKE_PAGES: ManufacturingSpokePageContent[] = [
   },
   {
     slug: "inventory-working-capital-ai",
-    title: "Inventory and Working Capital Optimization for Manufacturers",
+    title: "Inventory & Working Capital AI for Manufacturers",
     shortTitle: "Inventory & Working Capital",
     description:
       "Manufacturing AI for inventory rightsizing, aging stock, service risk, cash conversion, and working capital decisions.",
@@ -4722,7 +4722,7 @@ export const MANUFACTURING_SPOKE_PAGES: ManufacturingSpokePageContent[] = [
     heroSummary:
       "ITECS helps manufacturers see which raw, WIP, finished-goods, spare-parts, and constrained inventory positions are protecting service and which are quietly trapping cash.",
     longDescription:
-      "Inventory AI should not blindly cut stock. It should help leaders distinguish strategic buffers from stale, excess, obsolete, supplier-sensitive, or forecast-sensitive positions that deserve action.",
+      "Inventory AI should not blindly cut stock. It should help leaders distinguish strategic buffers from stale, excess, obsolete, supplier-sensitive, or forecast-sensitive positions while making cash conversion and service impact visible.",
     primaryCta: "Plan an Inventory AI Workshop",
     primaryCtaHref: "/contact",
     secondaryCta: "Return to Manufacturing AI",
@@ -4831,7 +4831,7 @@ export const MANUFACTURING_SPOKE_PAGES: ManufacturingSpokePageContent[] = [
       description:
         "A manufacturer sees inventory rising while customer service remains uneven. Finance wants cash relief, but operations does not want to starve production.",
       startingPoint:
-        "ERP and Power BI show balances and turns, but not the reason each position exists or what decision would safely reduce cash tied up in inventory.",
+        "ERP and Power BI show balances, inventory turns, and days inventory outstanding, but not the reason each position exists or what decision would safely reduce cash tied up in inventory.",
       scopedOutcome:
         "ITECS scopes an inventory intelligence layer that segments inventory by risk, demand support, production need, and action path.",
     },
@@ -4976,6 +4976,16 @@ export const MANUFACTURING_SPOKE_PAGES: ManufacturingSpokePageContent[] = [
         question: "What systems are usually involved?",
         answer:
           "ERP, inventory, production planning, procurement, Power BI or reporting models, and sometimes WMS, MES, or spreadsheet planning files.",
+      },
+      {
+        question: "What data is needed for an inventory AI pilot?",
+        answer:
+          "A focused pilot usually starts with inventory balances, aging, valuation, demand forecasts, open orders, production plans, BOMs or formulas, open POs, supplier lead times, and service metrics.",
+      },
+      {
+        question: "How does this improve the cash conversion cycle?",
+        answer:
+          "The system identifies inventory that can be consumed, transferred, reserved, discounted, or paused without creating unacceptable stockout risk, giving finance and operations evidence for DIO and cash conversion improvement.",
       },
     ],
   },
