@@ -83,25 +83,41 @@ describe("manufacturing vertical pages", () => {
   it("links manufacturing pages from full-screen navigation and grouped footer", () => {
     const header = read("src/components/layout/Header.tsx");
     const navData = read("src/components/layout/navData.ts");
+    const manufacturingNavigation = read("src/lib/manufacturingNavigation.ts");
     const footer = read("src/components/layout/Footer.tsx");
 
     assert.match(navData, /MANUFACTURING_HUB_NAV_ITEM/);
     assert.match(navData, /MANUFACTURING_USE_CASE_NAV_ITEMS/);
-    assert.match(navData, /PPV_AGENT_USE_CASE/);
-    assert.match(navData, /MANUFACTURING_VERTICAL/);
-    assert.match(navData, /MANUFACTURING_VERTICAL\.useCases/);
-    assert.match(navData, /manufacturingUseCaseOrder/);
-    assert.match(navData, /manufacturingUseCaseOrder\.map/);
-    assert.match(navData, /resolveManufacturingUseCase/);
-    assert.match(navData, /manufacturingNavCopy/);
+    assert.match(navData, /@\/lib\/manufacturingNavigation/);
+    assert.match(navData, /resolveManufacturingIcon/);
     assert.doesNotMatch(navData, /label:\s*useCase\.title/);
     assert.doesNotMatch(navData, /desc:\s*useCase\.description/);
+    assert.doesNotMatch(navData, /@\/lib\/constants/);
+    assert.doesNotMatch(navData, /PPV_AGENT_USE_CASE/);
+    assert.doesNotMatch(navData, /MANUFACTURING_VERTICAL/);
     assert.doesNotMatch(navData, /MANUFACTURING_SPOKE_PAGES/);
-    assert.match(navData, /href:\s*MANUFACTURING_VERTICAL\.href/);
 
-    assert.match(navData, /href:\s*PPV_AGENT_USE_CASE\.href/);
+    assert.match(manufacturingNavigation, /MANUFACTURING_HUB_NAV_DATA/);
+    assert.match(manufacturingNavigation, /MANUFACTURING_USE_CASE_NAV_DATA/);
+    assert.match(manufacturingNavigation, /Manufacturing AI Hub/);
+    assert.match(manufacturingNavigation, /PPV Agent/);
+    assert.match(manufacturingNavigation, /Demand & S&OP/);
+    assert.match(manufacturingNavigation, /Vendor Anomaly Detection/);
+    assert.doesNotMatch(manufacturingNavigation, /@\/lib\/constants/);
 
     const fullScreenMenu = read("src/components/layout/FullscreenNavMenu.tsx");
+
+    assert.match(fullScreenMenu, /Manufacturing AI Hub/);
+    assert.match(fullScreenMenu, /Dallas team/);
+    assert.match(fullScreenMenu, /National manufacturing reach/);
+    assert.match(fullScreenMenu, /MANUFACTURING_USE_CASE_NAV_ITEMS/);
+    assert.match(fullScreenMenu, /SERVICE_NAV_ITEMS/);
+    assert.match(fullScreenMenu, /dialogRef/);
+    assert.match(fullScreenMenu, /focusableElements/);
+    assert.match(fullScreenMenu, /shiftKey/);
+    assert.match(fullScreenMenu, /isExactPath/);
+    assert.match(fullScreenMenu, /aria-current=\{current \? "page" : undefined\}/);
+    assert.match(fullScreenMenu, /aria-current=\{hubCurrent \? "page" : undefined\}/);
 
     assert.match(header, /FullscreenNavMenu/);
     assert.match(header, /aria-label/);
@@ -111,12 +127,6 @@ describe("manufacturing vertical pages", () => {
     assert.doesNotMatch(header, /SolutionsDropdown/);
     assert.doesNotMatch(header, /IndustriesDropdown/);
     assert.doesNotMatch(header, /const navItems = \[/);
-
-    assert.match(fullScreenMenu, /Manufacturing AI Hub/);
-    assert.match(fullScreenMenu, /Dallas team/);
-    assert.match(fullScreenMenu, /National manufacturing reach/);
-    assert.match(fullScreenMenu, /MANUFACTURING_USE_CASE_NAV_ITEMS/);
-    assert.match(fullScreenMenu, /SERVICE_NAV_ITEMS/);
 
     assert.match(footer, /Manufacturing use cases/);
     assert.match(footer, /MANUFACTURING_USE_CASE_NAV_ITEMS/);

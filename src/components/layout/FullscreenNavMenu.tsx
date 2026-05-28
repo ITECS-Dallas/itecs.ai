@@ -64,6 +64,15 @@ const decisionAreas = [
   "Supply chain",
 ];
 
+const focusableSelector = [
+  "a[href]",
+  "button:not([disabled])",
+  "textarea:not([disabled])",
+  "input:not([disabled])",
+  "select:not([disabled])",
+  '[tabindex]:not([tabindex="-1"])',
+].join(",");
+
 function classNames(...classes: Array<string | false | null | undefined>) {
   return classes.filter(Boolean).join(" ");
 }
@@ -74,6 +83,10 @@ function isActivePath(pathname: string, href: string) {
   }
 
   return pathname === href || pathname.startsWith(`${href}/`);
+}
+
+function isExactPath(pathname: string, href: string) {
+  return pathname === href;
 }
 
 function SectionHeading({
@@ -133,6 +146,7 @@ function MenuCard({
   parentActive = false,
 }: MenuCardProps) {
   const active = parentActive || isActivePath(pathname, item.href);
+  const current = isExactPath(pathname, item.href);
   const Icon = item.icon;
 
   return (
@@ -140,7 +154,7 @@ function MenuCard({
       <Link
         href={item.href}
         onClick={onClose}
-        aria-current={active ? "page" : undefined}
+        aria-current={current ? "page" : undefined}
         className={classNames(
           "group flex h-full rounded-xl border transition-colors duration-200",
           compact
@@ -195,13 +209,14 @@ function SecondaryLink({
   onClose: () => void;
 }) {
   const active = isActivePath(pathname, href);
+  const current = isExactPath(pathname, href);
 
   return (
     <motion.div variants={itemVariants}>
       <Link
         href={href}
         onClick={onClose}
-        aria-current={active ? "page" : undefined}
+        aria-current={current ? "page" : undefined}
         className={classNames(
           "group flex min-h-12 items-center justify-between rounded-lg border px-4 py-3 text-sm transition-colors",
           active
@@ -224,9 +239,11 @@ export function FullscreenNavMenu({
   pathname,
   onClose,
 }: FullscreenNavMenuProps) {
+  const dialogRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const HubIcon = MANUFACTURING_HUB_NAV_ITEM.icon;
   const hubActive = isActivePath(pathname, MANUFACTURING_HUB_NAV_ITEM.href);
+  const hubCurrent = isExactPath(pathname, MANUFACTURING_HUB_NAV_ITEM.href);
 
   useEffect(() => {
     if (!open) {
@@ -238,9 +255,54 @@ export function FullscreenNavMenu({
       closeButtonRef.current?.focus();
     });
 
+    function trapFocus(event: KeyboardEvent) {
+      const dialog = dialogRef.current;
+
+      if (!dialog) {
+        return;
+      }
+
+      const focusableElements = Array.from(
+        dialog.querySelectorAll<HTMLElement>(focusableSelector)
+      ).filter((element) => element.offsetParent !== null);
+
+      if (focusableElements.length === 0) {
+        event.preventDefault();
+        dialog.focus();
+        return;
+      }
+
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+      const activeElement = document.activeElement;
+
+      if (!dialog.contains(activeElement)) {
+        event.preventDefault();
+        (event.shiftKey ? lastElement : firstElement).focus();
+        return;
+      }
+
+      if (event.shiftKey && activeElement === firstElement) {
+        event.preventDefault();
+        lastElement.focus();
+        return;
+      }
+
+      if (!event.shiftKey && activeElement === lastElement) {
+        event.preventDefault();
+        firstElement.focus();
+      }
+    }
+
     function handleKeyDown(event: KeyboardEvent) {
       if (event.key === "Escape") {
+        event.preventDefault();
         onClose();
+        return;
+      }
+
+      if (event.key === "Tab") {
+        trapFocus(event);
       }
     }
 
@@ -258,9 +320,11 @@ export function FullscreenNavMenu({
     <AnimatePresence>
       {open ? (
         <motion.div
+          ref={dialogRef}
           role="dialog"
           aria-modal="true"
           aria-label="Site navigation"
+          tabIndex={-1}
           initial="hidden"
           animate="visible"
           exit="exit"
@@ -338,7 +402,7 @@ export function FullscreenNavMenu({
                   <Link
                     href={MANUFACTURING_HUB_NAV_ITEM.href}
                     onClick={onClose}
-                    aria-current={hubActive ? "page" : undefined}
+                    aria-current={hubCurrent ? "page" : undefined}
                     className={classNames(
                       "group relative flex min-h-[260px] flex-col justify-between overflow-hidden rounded-xl border p-5 transition-colors sm:p-6",
                       hubActive
