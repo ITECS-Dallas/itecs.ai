@@ -4428,7 +4428,7 @@ export const MANUFACTURING_SPOKE_PAGES: ManufacturingSpokePageContent[] = [
   },
   {
     slug: "predictive-maintenance-ai",
-    title: "Predictive Maintenance and Downtime Forecasting for Manufacturers",
+    title: "Predictive Maintenance AI for Manufacturers",
     shortTitle: "Predictive Maintenance",
     description:
       "Manufacturing AI for downtime forecasting, asset risk prioritization, work-order intelligence, and maintenance decision support.",
@@ -4697,6 +4697,16 @@ export const MANUFACTURING_SPOKE_PAGES: ManufacturingSpokePageContent[] = [
         question: "Can this help justify capex?",
         answer:
           "Yes. When the data supports it, the system can quantify recurring downtime patterns and capacity risk to strengthen repair, replacement, or automation business cases.",
+      },
+      {
+        question: "What data is needed for a predictive maintenance AI pilot?",
+        answer:
+          "ITECS typically starts with asset hierarchy, work-order history, downtime reason codes, production performance, quality signals, spare-part availability, and any available sensor or historian data.",
+      },
+      {
+        question: "Can this work with CMMS, ERP, and plant sensor data?",
+        answer:
+          "Yes. Discovery confirms which systems are authoritative, then the first pilot connects only the approved CMMS, ERP, production, quality, and sensor signals needed for the scoped reliability use case.",
       },
     ],
   },
