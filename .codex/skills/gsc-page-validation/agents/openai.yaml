@@ -1,0 +1,6 @@
+interface:
+  display_name: "GSC Page Validation"
+  short_description: "Submit and inspect ITECS pages in GSC."
+  default_prompt: "Use $gsc-page-validation to submit and inspect the new public page URLs in Google Search Console."
+policy:
+  allow_implicit_invocation: true

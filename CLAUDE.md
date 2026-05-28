@@ -70,6 +70,10 @@ Each hub page renders shared section components (ServiceHero, ServiceFeatures, S
 
 Use the project-specific Codex skill at `.codex/skills/itecs-insight-articles/SKILL.md` when creating or updating Insights blog articles. The skill documents the current code-managed article workflow, overview card preview requirements, executive business writing style, SEO metadata, Article schema, OpenGraph imagery, internal-linking from `sitemap.xml`, Google-generated non-people article images, share bars, and default `The ITECS Team` author block.
 
+### Google Search Console Validation Skill
+
+Use the project-specific Codex skill at `.codex/skills/gsc-page-validation/SKILL.md` after deploying any new or materially updated public, indexable page. The skill submits the sitemap to Google Search Console, inspects the changed URLs with the URL Inspection API, checks Search Analytics, and performs live Googlebot-style checks for status, canonical, robots, JSON-LD, and sitemap inclusion. Include the GSC result in the final report for page creation work.
+
 ### Hidden Proposal Pages
 
 ITECS uses `/p/<slug>` pages for client web proposals that are shared manually by email. The current structural and styling template is the Hasen proposal at `/p/hasen-claude-work-order-phase-1-9ee3f0`, implemented by `src/app/p/hasen-claude-work-order-phase-1-9ee3f0/page.tsx` and `src/components/proposals/hasen-claude-work-order-phase-1-9ee3f0.tsx`.
@@ -143,3 +147,5 @@ Copy `.env.example` to `.env` and fill in:
 - `CLOUDFLARE_DNS_API_TOKEN` — Cloudflare API token with Zone:Read + DNS:Edit for itecs.ai zone
 - `LETSENCRYPT_EMAIL` — Email for Let's Encrypt registration
 - `GITHUB_TOKEN` — GitHub PAT for CI/deployment
+- `GSC_SITE_URL` — Google Search Console property, currently `sc-domain:itecs.ai`
+- `GOOGLE_APPLICATION_CREDENTIALS` — local path to the GSC service-account JSON, currently `/home/itecs/.secrets/gsc-service-account.json`
