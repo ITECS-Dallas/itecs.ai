@@ -22,6 +22,8 @@ import {
   ArrowRight,
   UserRoundCheck,
   Search,
+  Factory,
+  BadgeDollarSign,
 } from "lucide-react";
 import { SITE_CONFIG } from "@/lib/constants";
 import { Button } from "@/components/ui/Button";
@@ -96,6 +98,21 @@ const serviceItems = [
     href: "/ai-optimized-seo",
     icon: Search,
     desc: "GEO + traditional SEO for Dallas",
+  },
+];
+
+const industryItems = [
+  {
+    label: "Manufacturing AI",
+    href: "/manufacturing",
+    icon: Factory,
+    desc: "AI for manufacturing finance and operations",
+  },
+  {
+    label: "PPV Agent",
+    href: "/manufacturing/ppv-agent",
+    icon: BadgeDollarSign,
+    desc: "Purchase price variance and commodity cost intelligence",
   },
 ];
 
@@ -199,6 +216,75 @@ function SolutionsDropdown({
   );
 }
 
+function IndustriesDropdown({
+  open,
+  onClose,
+}: {
+  open: boolean;
+  onClose: () => void;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClick(e: MouseEvent) {
+      if (ref.current && !ref.current.contains(e.target as Node)) {
+        onClose();
+      }
+    }
+    if (open) document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, [open, onClose]);
+
+  return (
+    <AnimatePresence>
+      {open && (
+        <motion.div
+          ref={ref}
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 8 }}
+          transition={{ duration: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
+          className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[420px] rounded-xl border border-[var(--border-subtle)] bg-bg-elevated/95 backdrop-blur-2xl shadow-2xl shadow-black/40 overflow-hidden"
+        >
+          <div className="p-5">
+            <p className="text-xs font-medium tracking-[0.08em] uppercase text-text-dim mb-4">
+              Industries
+            </p>
+            <div className="space-y-1">
+              {industryItems.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={onClose}
+                    className="group flex items-start gap-3 p-3 rounded-lg hover:bg-bg-surface/60 transition-colors"
+                  >
+                    <div className="flex items-center justify-center shrink-0 w-8 h-8 rounded-md bg-brand-accent/8 group-hover:bg-brand-accent/15 transition-colors">
+                      <Icon
+                        className="h-4 w-4 text-brand-accent"
+                        aria-hidden="true"
+                      />
+                    </div>
+                    <div>
+                      <span className="block text-sm text-text-primary group-hover:text-brand-accent transition-colors">
+                        {item.label}
+                      </span>
+                      <span className="block text-xs text-text-dim leading-snug mt-0.5">
+                        {item.desc}
+                      </span>
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+}
+
 /* ------------------------------------------------------------------ */
 /* Mobile nav panel                                                    */
 /* ------------------------------------------------------------------ */
@@ -260,6 +346,53 @@ function MobileNav({
                       >
                         {item.label}
                       </span>
+                    </Link>
+                  </motion.div>
+                );
+              })}
+            </div>
+
+            <p className="text-xs font-medium tracking-[0.08em] uppercase text-text-dim mb-4">
+              Industries
+            </p>
+            <div className="grid grid-cols-1 gap-2 mb-8">
+              {industryItems.map((item, i) => {
+                const Icon = item.icon;
+                const active = pathname === item.href;
+                return (
+                  <motion.div
+                    key={item.href}
+                    initial={{ opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.25 + i * 0.04, duration: 0.3 }}
+                  >
+                    <Link
+                      href={item.href}
+                      onClick={onClose}
+                      className={`flex items-center gap-2.5 p-3 rounded-lg border transition-colors ${
+                        active
+                          ? "border-[var(--border-active)] bg-brand-accent/10"
+                          : "border-[var(--border-subtle)] bg-bg-surface/30 active:bg-bg-surface/60"
+                      }`}
+                    >
+                      <Icon
+                        className={`h-4 w-4 shrink-0 ${
+                          active ? "text-brand-accent" : "text-text-dim"
+                        }`}
+                        aria-hidden="true"
+                      />
+                      <div>
+                        <span
+                          className={`block text-sm ${
+                            active ? "text-brand-accent" : "text-text-primary"
+                          }`}
+                        >
+                          {item.label}
+                        </span>
+                        <span className="mt-0.5 block text-xs leading-snug text-text-dim">
+                          {item.desc}
+                        </span>
+                      </div>
                     </Link>
                   </motion.div>
                 );
@@ -365,6 +498,7 @@ export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [solutionsOpen, setSolutionsOpen] = useState(false);
+  const [industriesOpen, setIndustriesOpen] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -378,6 +512,7 @@ export function Header() {
     const frame = requestAnimationFrame(() => {
       setMobileOpen(false);
       setSolutionsOpen(false);
+      setIndustriesOpen(false);
     });
 
     return () => cancelAnimationFrame(frame);
@@ -404,6 +539,7 @@ export function Header() {
     pathname.startsWith("/ai-knowledge-base") ||
     pathname.startsWith("/data-audit") ||
     pathname.startsWith("/managed-intelligence-provider");
+  const isIndustryPage = pathname.startsWith("/manufacturing");
 
   const navItems = [
     { label: "Pricing", href: "/pricing" },
@@ -441,8 +577,14 @@ export function Header() {
             {/* Solutions dropdown trigger */}
             <div className="relative">
               <button
-                onClick={() => setSolutionsOpen(!solutionsOpen)}
-                onMouseEnter={() => setSolutionsOpen(true)}
+                onClick={() => {
+                  setSolutionsOpen(!solutionsOpen);
+                  setIndustriesOpen(false);
+                }}
+                onMouseEnter={() => {
+                  setSolutionsOpen(true);
+                  setIndustriesOpen(false);
+                }}
                 className={`flex items-center gap-1 px-3 py-2 rounded-lg text-sm tracking-wide transition-colors ${
                   isServicePage || solutionsOpen
                     ? "text-brand-accent"
@@ -462,6 +604,38 @@ export function Header() {
               <SolutionsDropdown
                 open={solutionsOpen}
                 onClose={() => setSolutionsOpen(false)}
+              />
+            </div>
+
+            <div className="relative">
+              <button
+                onClick={() => {
+                  setIndustriesOpen(!industriesOpen);
+                  setSolutionsOpen(false);
+                }}
+                onMouseEnter={() => {
+                  setIndustriesOpen(true);
+                  setSolutionsOpen(false);
+                }}
+                className={`flex items-center gap-1 px-3 py-2 rounded-lg text-sm tracking-wide transition-colors ${
+                  isIndustryPage || industriesOpen
+                    ? "text-brand-accent"
+                    : "text-text-secondary hover:text-text-primary"
+                }`}
+                aria-expanded={industriesOpen}
+                aria-haspopup="true"
+              >
+                Industries
+                <ChevronDown
+                  className={`h-3.5 w-3.5 transition-transform duration-200 ${
+                    industriesOpen ? "rotate-180" : ""
+                  }`}
+                  aria-hidden="true"
+                />
+              </button>
+              <IndustriesDropdown
+                open={industriesOpen}
+                onClose={() => setIndustriesOpen(false)}
               />
             </div>
 

@@ -16,7 +16,7 @@ const companyLinks = [
   { label: "Managed Intelligence", href: "/managed-intelligence-provider" },
   { label: "Insights", href: "/insights" },
   { label: "Contact", href: "/contact" },
-  { label: "ITECS Main Site", href: SITE_CONFIG.mainSiteUrl, external: true },
+  { label: "ITECS MSP", href: SITE_CONFIG.mainSiteUrl, external: true },
 ];
 
 const socialLinks = [
@@ -65,11 +65,24 @@ const featuredServiceLinks = [
   },
 ];
 
+const industryLinks = [
+  {
+    key: "manufacturing",
+    label: "Manufacturing AI",
+    href: "/manufacturing",
+  },
+  {
+    key: "ppv-agent",
+    label: "PPV Agent",
+    href: "/manufacturing/ppv-agent",
+  },
+];
+
 export function Footer() {
   return (
     <footer className="bg-bg-surface border-t border-[var(--border-subtle)]">
       <div className="mx-auto max-w-7xl px-6 md:px-8 py-16">
-        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-5">
           {/* Brand + Address */}
           <div>
             <Link href="/" className="inline-block mb-4">
@@ -136,6 +149,25 @@ export function Footer() {
                     className="text-sm text-text-dim hover:text-brand-accent transition-colors"
                   >
                     {service.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Industries */}
+          <div>
+            <h4 className="text-sm font-medium tracking-[0.05em] uppercase text-text-primary mb-4">
+              Industries
+            </h4>
+            <ul className="space-y-3">
+              {industryLinks.map((industry) => (
+                <li key={industry.key}>
+                  <Link
+                    href={industry.href}
+                    className="text-sm text-text-dim hover:text-brand-accent transition-colors"
+                  >
+                    {industry.label}
                   </Link>
                 </li>
               ))}

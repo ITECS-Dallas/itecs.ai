@@ -57,4 +57,18 @@ describe("manufacturing vertical pages", () => {
     assert.match(constants, /href: "\/manufacturing"/);
     assert.match(constants, /href: "\/manufacturing\/ppv-agent"/);
   });
+
+  it("links manufacturing pages from global navigation and footer", () => {
+    const header = read("src/components/layout/Header.tsx");
+    const footer = read("src/components/layout/Footer.tsx");
+
+    assert.match(header, /Industries/);
+    assert.match(header, /Manufacturing AI/);
+    assert.match(header, /\/manufacturing\/ppv-agent/);
+    assert.match(footer, /Industries/);
+    assert.match(footer, /Manufacturing AI/);
+    assert.match(footer, /\/manufacturing\/ppv-agent/);
+    assert.match(footer, /ITECS MSP/);
+    assert.doesNotMatch(footer, /ITECS Main Site/);
+  });
 });
