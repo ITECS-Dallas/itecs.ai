@@ -102,13 +102,30 @@ assert(
   "Header must mount the fullscreen navigation menu."
 );
 assert(
-  fullScreenMenu.includes("Industries / Manufacturing AI"),
-  "Fullscreen menu must expose Industries navigation."
+  fullScreenMenu.includes("AI Services") &&
+    fullScreenMenu.includes("Industries") &&
+    fullScreenMenu.indexOf("AI Services") < fullScreenMenu.indexOf("Industries"),
+  "Fullscreen menu must expose AI Services before Industries."
+);
+assert(
+  fullScreenMenu.includes("Manufacturing AI child pages"),
+  "Fullscreen menu must nest manufacturing use-case pages under the Manufacturing AI hub."
+);
+assert(
+  fullScreenMenu.includes("Resources") &&
+    fullScreenMenu.includes("Company") &&
+    fullScreenMenu.includes("Contact Us") &&
+    fullScreenMenu.includes("Insights") &&
+    fullScreenMenu.includes("ITECS MSP"),
+  "Fullscreen menu must expose resources, company, contact, insights, and ITECS MSP links."
 );
 assert(
   navData.includes("MANUFACTURING_USE_CASE_NAV_ITEMS") &&
-    navData.includes("MANUFACTURING_USE_CASE_NAV_DATA"),
-  "Layout nav data must expose manufacturing use-case navigation."
+    navData.includes("MANUFACTURING_USE_CASE_NAV_DATA") &&
+    navData.includes("RESOURCE_NAV_ITEMS") &&
+    navData.includes("COMPANY_NAV_ITEMS") &&
+    navData.includes("MENU_CATEGORY_ITEMS"),
+  "Layout nav data must expose manufacturing, resources, company, and category navigation."
 );
 assert(footer.includes("Industries"), "Footer must expose Industries links.");
 assert(footer.includes("ITECS MSP"), "Footer MSP link label must remain ITECS MSP.");
