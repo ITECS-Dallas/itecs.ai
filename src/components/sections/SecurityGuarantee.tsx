@@ -9,6 +9,8 @@ import { CircuitTrace } from "@/components/effects/CircuitTrace";
 import Link from "next/link";
 
 interface SecurityGuaranteeProps {
+  /** Section title, overrideable for industry-specific pages */
+  title?: string;
   /** Bullet points describing security measures */
   points: string[];
   /** Internal link for intent-driven anchor */
@@ -28,6 +30,7 @@ interface SecurityGuaranteeProps {
 const icons = [Shield, Lock, ServerCrash, Eye];
 
 export function SecurityGuarantee({
+  title = "Enterprise-Grade Security for SMB Data",
   points,
   internalLink,
   externalLink,
@@ -41,7 +44,7 @@ export function SecurityGuarantee({
         <ScrollReveal>
           <SectionHeading
             eyebrow="Security"
-            title="Enterprise-Grade Security for SMB Data"
+            title={title}
           />
         </ScrollReveal>
 

@@ -208,6 +208,7 @@ export default function PPVAgentPage() {
       />
 
       <SecurityGuarantee
+        title="Security for Manufacturing AI Workflows"
         description="PPV workflows can touch ERP transactions, vendor terms, customer contracts, cost standards, and close commentary. ITECS keeps those signals controlled with scoped access, human approval, and audit-ready recommendation history."
         points={[
           "Read-only discovery patterns where possible before any production integration is approved",

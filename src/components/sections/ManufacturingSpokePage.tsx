@@ -210,6 +210,7 @@ export function ManufacturingSpokePage({
       />
 
       <SecurityGuarantee
+        title="Security for Manufacturing AI Workflows"
         description={page.security.description}
         points={page.security.points}
         internalLink={{

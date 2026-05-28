@@ -137,6 +137,7 @@ export default function ManufacturingPage() {
       <ManufacturingGovernance groups={page.governance} />
 
       <SecurityGuarantee
+        title="Security for Manufacturing AI Workflows"
         description="Manufacturing AI can touch financial data, ERP records, supplier terms, plant signals, quality records, and customer contracts. ITECS designs these systems with scoped access, audit logs, and human approval before sensitive actions."
         points={[
           "Private data boundaries aligned to the client's identity, role, and access-control model",
