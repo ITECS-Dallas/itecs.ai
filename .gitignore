@@ -46,6 +46,9 @@ yarn-error.log*
 .serena/cache/
 .serena/logs/
 
+# Superpowers brainstorming artifacts
+.superpowers/
+
 # Playwright MCP
 .playwright-mcp/
 *.png
