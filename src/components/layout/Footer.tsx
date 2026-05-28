@@ -1,6 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
-import { SITE_CONFIG, SERVICES } from "@/lib/constants";
+import {
+  MANUFACTURING_SPOKE_PAGES,
+  PPV_AGENT_USE_CASE,
+  SERVICES,
+  SITE_CONFIG,
+} from "@/lib/constants";
 import {
   LinkedInIcon,
   XIcon,
@@ -73,9 +78,14 @@ const industryLinks = [
   },
   {
     key: "ppv-agent",
-    label: "PPV Agent",
-    href: "/manufacturing/ppv-agent",
+    label: PPV_AGENT_USE_CASE.shortTitle,
+    href: PPV_AGENT_USE_CASE.href,
   },
+  ...MANUFACTURING_SPOKE_PAGES.map((page) => ({
+    key: page.slug,
+    label: page.shortTitle,
+    href: page.href,
+  })),
 ];
 
 export function Footer() {

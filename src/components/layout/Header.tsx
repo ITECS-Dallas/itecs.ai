@@ -24,6 +24,14 @@ import {
   Search,
   Factory,
   BadgeDollarSign,
+  Activity,
+  Boxes,
+  ChartNoAxesCombined,
+  FileSearch,
+  LineChart,
+  ScanSearch,
+  Truck,
+  UsersRound,
 } from "lucide-react";
 import { SITE_CONFIG } from "@/lib/constants";
 import { Button } from "@/components/ui/Button";
@@ -113,6 +121,60 @@ const industryItems = [
     href: "/manufacturing/ppv-agent",
     icon: BadgeDollarSign,
     desc: "Purchase price variance and commodity cost intelligence",
+  },
+  {
+    label: "Demand & S&OP",
+    href: "/manufacturing/demand-forecasting-sop-ai",
+    icon: LineChart,
+    desc: "Forecast confidence and planning scenarios",
+  },
+  {
+    label: "Predictive Maintenance",
+    href: "/manufacturing/predictive-maintenance-ai",
+    icon: Activity,
+    desc: "Downtime risk and asset reliability",
+  },
+  {
+    label: "Inventory & Working Capital",
+    href: "/manufacturing/inventory-working-capital-ai",
+    icon: Boxes,
+    desc: "Inventory cash, aging, and service risk",
+  },
+  {
+    label: "Quality & Traceability",
+    href: "/manufacturing/quality-traceability-ai",
+    icon: ScanSearch,
+    desc: "Quality anomalies and recall readiness",
+  },
+  {
+    label: "Customer/SKU Profitability",
+    href: "/manufacturing/customer-sku-profitability-ai",
+    icon: ChartNoAxesCombined,
+    desc: "Margin by customer, SKU, and program",
+  },
+  {
+    label: "Production Planning",
+    href: "/manufacturing/production-scheduling-yield-ai",
+    icon: UsersRound,
+    desc: "Schedule, yield, and labor risk",
+  },
+  {
+    label: "Contract Recovery",
+    href: "/manufacturing/contract-pass-through-intelligence",
+    icon: FileSearch,
+    desc: "Escalators, pass-throughs, and terms",
+  },
+  {
+    label: "Energy & Freight",
+    href: "/manufacturing/energy-freight-scope-3-ai",
+    icon: Truck,
+    desc: "Landed cost and customer evidence",
+  },
+  {
+    label: "Vendor Anomaly Detection",
+    href: "/manufacturing/vendor-payment-anomaly-ai",
+    icon: ShieldCheck,
+    desc: "AP, vendor, and payment exceptions",
   },
 ];
 
@@ -244,13 +306,13 @@ function IndustriesDropdown({
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 8 }}
           transition={{ duration: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
-          className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[420px] rounded-xl border border-[var(--border-subtle)] bg-bg-elevated/95 backdrop-blur-2xl shadow-2xl shadow-black/40 overflow-hidden"
+          className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[720px] rounded-xl border border-[var(--border-subtle)] bg-bg-elevated/95 backdrop-blur-2xl shadow-2xl shadow-black/40 overflow-hidden"
         >
           <div className="p-5">
             <p className="text-xs font-medium tracking-[0.08em] uppercase text-text-dim mb-4">
               Industries
             </p>
-            <div className="space-y-1">
+            <div className="grid grid-cols-2 gap-1">
               {industryItems.map((item) => {
                 const Icon = item.icon;
                 return (
