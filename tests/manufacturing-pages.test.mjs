@@ -82,9 +82,26 @@ describe("manufacturing vertical pages", () => {
 
   it("links manufacturing pages from full-screen navigation and grouped footer", () => {
     const header = read("src/components/layout/Header.tsx");
-    const fullScreenMenu = read("src/components/layout/FullscreenNavMenu.tsx");
     const navData = read("src/components/layout/navData.ts");
     const footer = read("src/components/layout/Footer.tsx");
+
+    assert.match(navData, /MANUFACTURING_HUB_NAV_ITEM/);
+    assert.match(navData, /MANUFACTURING_USE_CASE_NAV_ITEMS/);
+    assert.match(navData, /PPV_AGENT_USE_CASE/);
+    assert.match(navData, /MANUFACTURING_VERTICAL/);
+    assert.match(navData, /MANUFACTURING_VERTICAL\.useCases/);
+    assert.match(navData, /manufacturingUseCaseOrder/);
+    assert.match(navData, /manufacturingUseCaseOrder\.map/);
+    assert.match(navData, /resolveManufacturingUseCase/);
+    assert.match(navData, /manufacturingNavCopy/);
+    assert.doesNotMatch(navData, /label:\s*useCase\.title/);
+    assert.doesNotMatch(navData, /desc:\s*useCase\.description/);
+    assert.doesNotMatch(navData, /MANUFACTURING_SPOKE_PAGES/);
+    assert.match(navData, /href:\s*MANUFACTURING_VERTICAL\.href/);
+
+    assert.match(navData, /href:\s*PPV_AGENT_USE_CASE\.href/);
+
+    const fullScreenMenu = read("src/components/layout/FullscreenNavMenu.tsx");
 
     assert.match(header, /FullscreenNavMenu/);
     assert.match(header, /aria-label/);
@@ -101,21 +118,10 @@ describe("manufacturing vertical pages", () => {
     assert.match(fullScreenMenu, /MANUFACTURING_USE_CASE_NAV_ITEMS/);
     assert.match(fullScreenMenu, /SERVICE_NAV_ITEMS/);
 
-    assert.match(navData, /MANUFACTURING_HUB_NAV_ITEM/);
-    assert.match(navData, /MANUFACTURING_USE_CASE_NAV_ITEMS/);
-    assert.match(navData, /PPV_AGENT_USE_CASE/);
-    assert.match(navData, /MANUFACTURING_SPOKE_PAGES/);
-    assert.match(navData, /["']\/manufacturing["']/);
-
     assert.match(footer, /Manufacturing use cases/);
     assert.match(footer, /MANUFACTURING_USE_CASE_NAV_ITEMS/);
     assert.match(footer, /ITECS MSP/);
     assert.doesNotMatch(footer, /ITECS Main Site/);
-
-    for (const route of spokeRoutes) {
-      assert.match(navData, new RegExp(route));
-    }
-    assert.match(navData, /\/manufacturing\/ppv-agent/);
   });
 
   it("defines unique manufacturing spoke concepts and chart modes", () => {
