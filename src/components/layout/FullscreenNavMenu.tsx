@@ -593,7 +593,7 @@ export function FullscreenNavMenu({
                     </motion.div>
 
                     <div className="mt-4 border-l border-brand-purple/35 pl-4">
-                      <p className="mb-3 text-xs font-medium uppercase tracking-[0.12em] text-text-dim">
+                      <p className="mb-3 text-xs font-medium tracking-[0.08em] text-text-dim">
                         Manufacturing AI child pages
                       </p>
                       <motion.div
