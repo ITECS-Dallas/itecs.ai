@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/Button";
 import { SITE_CONFIG } from "@/lib/constants";
 
 const stats = [
-  { value: "9", label: "AI Services" },
+  { value: "10", label: "AI Services" },
   { value: "24+", label: "Years IT Experience" },
   { value: "10–300", label: "Employee Sweet Spot" },
 ];
@@ -46,10 +46,11 @@ export function ServicesHero() {
           {/* GEO zero-click answer block */}
           <p className="mt-6 text-lg md:text-xl text-text-primary font-medium max-w-2xl leading-relaxed">
             <strong>
-              ITECS delivers 9 managed AI services — from consulting and
+              ITECS delivers 10 managed AI services — from consulting and
               workflow automation to custom AI agents, employee training,
-              AI DevOps, and AI-powered CRM — built for Dallas businesses that need
-              practical results without enterprise budgets or vendor lock-in.
+              AI DevOps, AI-powered CRM, and AI-optimized SEO — built for
+              Dallas businesses that need practical results without enterprise
+              budgets or vendor lock-in.
             </strong>
           </p>
 

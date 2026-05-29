@@ -1,0 +1,521 @@
+From: <Saved by Blink>
+Snapshot-Content-Location: file:///Users/baddad/Github/ITECS-Sales/outputs/mega-menu-redesign/itecs-dominant-menu.html
+Subject: =?utf-8?Q?ITECS=20=E2=80=94=20Dominant=20AI=20Mega=20Menu=20(Palantir-ins?=
+ =?utf-8?Q?pired)?=
+Date: Fri, 29 May 2026 08:18:35 -0500
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----MultipartBoundary--NrofBvXeycZ8MjzIJwVACRKXRpuDsS2HrE3aPjmPxe----"
+
+
+------MultipartBoundary--NrofBvXeycZ8MjzIJwVACRKXRpuDsS2HrE3aPjmPxe----
+Content-Type: text/html
+Content-ID: <frame-2C18E1934E3700448F8C4CD85B97F0D7@mhtml.blink>
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///Users/baddad/Github/ITECS-Sales/outputs/mega-menu-redesign/itecs-dominant-menu.html
+
+<!DOCTYPE html><html lang=3D"en"><head><meta http-equiv=3D"Content-Type" co=
+ntent=3D"text/html; charset=3DUTF-8"><link rel=3D"stylesheet" type=3D"text/=
+css" href=3D"cid:css-860c0d46-84f2-43c7-8586-d442bab92c22@mhtml.blink" />
+
+<meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scale=3D1.=
+0">
+<title>ITECS =E2=80=94 Dominant AI Mega Menu (Palantir-inspired)</title>
+
+</head>
+<body>
+
+<div class=3D"viewer-top">
+  <div class=3D"viewer-row">
+    <div class=3D"vbrand"><span class=3D"dot">AI</span><div>ITECS Dominant =
+Mega Menu<small>Palantir-inspired =C2=B7 ITECS colors</small></div></div>
+    <div class=3D"seg dev" id=3D"devSeg">
+      <span class=3D"seg-label">Viewport</span>
+      <button data-d=3D"desktop" class=3D"on">Desktop 1440</button>
+      <button data-d=3D"tablet">Tablet 768</button>
+      <button data-d=3D"mobile">Mobile 390</button>
+    </div>
+  </div>
+</div>
+<div class=3D"hint">Three-column full-screen takeover. Hover a category (le=
+ft) to expand its links; the middle column carries editorial proof, the rig=
+ht column carries offerings + quick links. <b>Click =E2=98=B0</b> to toggle=
+.</div>
+
+<div class=3D"stage">
+  <div class=3D"frame" id=3D"frame">
+    <div class=3D"frame-w" id=3D"frameW">1440 px</div>
+    <div class=3D"site-head">
+      <div class=3D"logo"><span class=3D"lk">i</span><div>ITECS<small>YOUR =
+AI SOLUTION</small></div></div>
+      <div class=3D"head-right">
+        <button class=3D"btn-started">Get Started</button>
+        <button class=3D"hamb" id=3D"hambBtn" aria-label=3D"Open menu"><spa=
+n></span><span></span><span></span></button>
+      </div>
+    </div>
+    <div class=3D"hero-hint">
+      <div class=3D"kick">AI Consulting =C2=B7 Training =C2=B7 Security =C2=
+=B7 DevOps</div>
+      <h1>Secure AI <b>Strategy, Training</b> &amp; DevOps</h1>
+    </div>
+    <div class=3D"menu open" id=3D"menuMount"><div class=3D"m-head"><div cl=
+ass=3D"logo"><span class=3D"lk">i</span><div>ITECS<small>YOUR AI SOLUTION</=
+small></div></div><div class=3D"head-right"><button class=3D"btn-started">G=
+et Started</button><button class=3D"ico">=E2=9A=B2</button><button class=3D=
+"ico close">=E2=9C=95</button></div></div><div class=3D"m-body"><div class=
+=3D"col"><div class=3D"sec-rule"><span class=3D"lbl">Navigate // ITECS AI</=
+span><a class=3D"all" href=3D"file:///services">All services =E2=86=97</a><=
+/div><div class=3D"cat cat-staggered" data-k=3D"aiServices" style=3D"animat=
+ion-delay: 0.05s;"><div class=3D"cat-row"><span class=3D"cat-name">AI Servi=
+ces</span><span class=3D"cat-num">01</span></div><div class=3D"children"><a=
+ class=3D"child" href=3D"file:///consulting"><span class=3D"arr">=E2=86=B3<=
+/span>AI Consulting</a><a class=3D"child" href=3D"file:///custom-ai-agents"=
+><span class=3D"arr">=E2=86=B3</span>Custom AI Agents</a><a class=3D"child"=
+ href=3D"file:///automation"><span class=3D"arr">=E2=86=B3</span>Automation=
+</a><a class=3D"child" href=3D"file:///ai-devops"><span class=3D"arr">=E2=
+=86=B3</span>AI DevOps</a><a class=3D"child" href=3D"file:///training"><spa=
+n class=3D"arr">=E2=86=B3</span>AI Training</a><a class=3D"child" href=3D"f=
+ile:///data-audit"><span class=3D"arr">=E2=86=B3</span>Data &amp; AI Readin=
+ess Audit</a></div></div><div class=3D"cat cat-staggered active" data-k=3D"=
+aiProducts" style=3D"animation-delay: 0.1s;"><div class=3D"cat-row"><span c=
+lass=3D"cat-name">AI Products</span><span class=3D"cat-num">02</span></div>=
+<div class=3D"children"><a class=3D"child" href=3D"file:///ai-receptionist"=
+><span class=3D"arr">=E2=86=B3</span>AI Receptionist</a><a class=3D"child" =
+href=3D"file:///crm-sales-ai"><span class=3D"arr">=E2=86=B3</span>CRM &amp;=
+ Sales AI</a><a class=3D"child" href=3D"file:///ai-knowledge-base"><span cl=
+ass=3D"arr">=E2=86=B3</span>Knowledge Base</a><a class=3D"child" href=3D"fi=
+le:///ai-optimized-seo"><span class=3D"arr">=E2=86=B3</span>AI-Optimized SE=
+O</a></div></div><div class=3D"cat cat-staggered" data-k=3D"manufacturing" =
+style=3D"animation-delay: 0.15s;"><div class=3D"cat-row"><span class=3D"cat=
+-name">Manufacturing AI</span><span class=3D"cat-num">03</span></div><div c=
+lass=3D"children"><a class=3D"child" href=3D"file:///manufacturing"><span c=
+lass=3D"arr">=E2=86=B3</span>Manufacturing AI Hub</a><a class=3D"child" hre=
+f=3D"file:///manufacturing/ppv-agent"><span class=3D"arr">=E2=86=B3</span>P=
+PV Agent</a><a class=3D"child" href=3D"file:///manufacturing/demand-forecas=
+ting-sop-ai"><span class=3D"arr">=E2=86=B3</span>Demand &amp; S&amp;OP</a><=
+a class=3D"child" href=3D"file:///manufacturing/predictive-maintenance-ai">=
+<span class=3D"arr">=E2=86=B3</span>Predictive Maintenance</a><a class=3D"c=
+hild" href=3D"file:///manufacturing/quality-traceability-ai"><span class=3D=
+"arr">=E2=86=B3</span>Quality &amp; Traceability</a></div></div><div class=
+=3D"cat cat-staggered" data-k=3D"resources" style=3D"animation-delay: 0.2s;=
+"><div class=3D"cat-row"><span class=3D"cat-name">Resources</span><span cla=
+ss=3D"cat-num">04</span></div><div class=3D"children"><a class=3D"child" hr=
+ef=3D"file:///insights"><span class=3D"arr">=E2=86=B3</span>Insights</a><a =
+class=3D"child" href=3D"https://itecsonline.com/white-papers-case-studies">=
+<span class=3D"arr">=E2=86=B3</span>Whitepapers &amp; Case Studies</a><a cl=
+ass=3D"child" href=3D"https://itecsonline.com/experiencing-a-breach"><span =
+class=3D"arr">=E2=86=B3</span>Experiencing a Breach?</a></div></div><div cl=
+ass=3D"cat cat-staggered" data-k=3D"company" style=3D"animation-delay: 0.25=
+s;"><div class=3D"cat-row"><span class=3D"cat-name">Company</span><span cla=
+ss=3D"cat-num">05</span></div><div class=3D"children"><a class=3D"child" hr=
+ef=3D"file:///about"><span class=3D"arr">=E2=86=B3</span>About ITECS</a><a =
+class=3D"child" href=3D"file:///pricing"><span class=3D"arr">=E2=86=B3</spa=
+n>Pricing</a><a class=3D"child" href=3D"file:///managed-intelligence-provid=
+er"><span class=3D"arr">=E2=86=B3</span>Managed Intelligence</a><a class=3D=
+"child" href=3D"https://itecsonline.com/"><span class=3D"arr">=E2=86=B3</sp=
+an>ITECS MSP</a></div></div></div><div class=3D"col"><div class=3D"sec-rule=
+"><span class=3D"lbl" id=3D"c2lbl">Featured // Proof</span><a class=3D"all"=
+ href=3D"file:///insights">View insights =E2=86=97</a></div><div><a class=
+=3D"feat" href=3D"file:///Users/baddad/Github/ITECS-Sales/outputs/mega-menu=
+-redesign/itecs-dominant-menu.html#"><div class=3D"img"><div class=3D"nodes=
+"><span>=E2=97=87 ITECS.AI / aiProducts</span><span class=3D"pulse"></span>=
+</div></div><div class=3D"body"><div class=3D"eb">Product // AI Receptionis=
+t</div><h3>Stop losing revenue to missed calls</h3><p>A 24/7 AI receptionis=
+t that answers, qualifies and books =E2=80=94 in your brand voice, on every=
+ channel.</p><span class=3D"go">See it work <span>=E2=86=92</span></span></=
+div></a><a class=3D"feat" href=3D"file:///Users/baddad/Github/ITECS-Sales/o=
+utputs/mega-menu-redesign/itecs-dominant-menu.html#"><div class=3D"img"><di=
+v class=3D"nodes"><span>=E2=97=87 ITECS.AI / aiProducts</span><span class=
+=3D"pulse"></span></div></div><div class=3D"body"><div class=3D"eb">Product=
+ // CRM &amp; Sales AI</div><h3>Pipeline that updates itself</h3><p>AI that=
+ logs activity, drafts follow-ups and surfaces the deals most likely to clo=
+se.</p><span class=3D"go">Explore CRM AI <span>=E2=86=92</span></span></div=
+></a></div></div><div class=3D"col"><div class=3D"sec-rule"><span class=3D"=
+lbl">Offerings</span><a class=3D"all" href=3D"file:///services">View all =
+=E2=86=97</a></div><div class=3D"offer"><p>Packaged, production-ready AI yo=
+u can deploy in weeks: receptionists, sales AI, internal knowledge search a=
+nd AI-era SEO =E2=80=94 all governed and supported.</p><a class=3D"learn" h=
+ref=3D"file:///services"><span class=3D"arr">=E2=86=B3</span> Explore AI Se=
+rvices</a><div class=3D"stats"><div class=3D"stat"><div class=3D"n">24 yrs<=
+/div><div class=3D"l">in DFW</div></div><div class=3D"stat"><div class=3D"n=
+">99.9%</div><div class=3D"l">uptime</div></div><div class=3D"stat"><div cl=
+ass=3D"n">75+</div><div class=3D"l">clients =C2=B7 95% kept</div></div></di=
+v></div><div class=3D"sec-rule" style=3D"margin-top: 4px;"><span class=3D"l=
+bl">Quick links</span></div><div class=3D"qlinks"><a class=3D"qlink" href=
+=3D"file:///about"><span>About ITECS</span><span class=3D"rx">=E2=86=97</sp=
+an></a><a class=3D"qlink" href=3D"file:///pricing"><span>Pricing</span><spa=
+n class=3D"rx">=E2=86=97</span></a><a class=3D"qlink" href=3D"file:///manag=
+ed-intelligence-provider"><span>Managed Intelligence</span><span class=3D"r=
+x">=E2=86=97</span></a><a class=3D"qlink" href=3D"https://itecsonline.com/w=
+hite-papers-case-studies"><span>Whitepapers &amp; Case Studies</span><span =
+class=3D"rx">=E2=86=97</span></a><a class=3D"qlink" href=3D"https://itecson=
+line.com/"><span>ITECS MSP (managed IT)</span><span class=3D"rx">=E2=86=97<=
+/span></a><a class=3D"qlink" href=3D"https://portal.itecs.io/"><span>Custom=
+er Portal</span><span class=3D"rx">=E2=86=97</span></a><a class=3D"qlink" h=
+ref=3D"file:///contact"><span>Contact</span><span class=3D"rx">=E2=86=97</s=
+pan></a></div></div></div><div class=3D"m-foot"><div class=3D"flinks"><span=
+ class=3D"place">Dallas=E2=80=93Fort Worth, TX</span><a href=3D"file:///Use=
+rs/baddad/Github/ITECS-Sales/outputs/mega-menu-redesign/itecs-dominant-menu=
+.html#">YouTube</a><a href=3D"file:///Users/baddad/Github/ITECS-Sales/outpu=
+ts/mega-menu-redesign/itecs-dominant-menu.html#">X</a><a href=3D"file:///Us=
+ers/baddad/Github/ITECS-Sales/outputs/mega-menu-redesign/itecs-dominant-men=
+u.html#">LinkedIn</a></div><a class=3D"cta-main" href=3D"file:///contact">S=
+chedule a Consultation <span>=E2=86=92</span></a></div></div>
+  </div>
+</div>
+
+
+
+
+</body></html>
+------MultipartBoundary--NrofBvXeycZ8MjzIJwVACRKXRpuDsS2HrE3aPjmPxe----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: cid:css-860c0d46-84f2-43c7-8586-d442bab92c22@mhtml.blink
+
+@charset "utf-8";
+
+:root { --void: #070b15; --bg: #0a0f1e; --bg2: #0d1426; --panel: #111a33; -=
+-panel2: #16213f; --line: rgba(120,150,200,.16); --line2: rgba(120,150,200,=
+.3); --txt: #eef3fb; --muted: #93a4c4; --faint: #5d6e8f; --cyan: #38bdf8; -=
+-purple: #8b5cf6; --blue: #2E5090; --blue2: #3f6bd0; --grad: linear-gradien=
+t(110deg,#38bdf8 0%,#6aa0f5 45%,#8b5cf6 100%); --font: 'Inter',-apple-syste=
+m,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; --mono: =
+'SF Mono',ui-monospace,'Cascadia Code',Menlo,Consolas,monospace; }
+
+* { box-sizing: border-box; }
+
+html, body { margin: 0px; padding: 0px; background: var(--void); color: var=
+(--txt); font-family: var(--font); -webkit-font-smoothing: antialiased; }
+
+a { color: inherit; text-decoration: none; }
+
+.viewer-top { position: sticky; top: 0px; z-index: 50; background: rgba(7, =
+11, 21, 0.93); backdrop-filter: blur(10px); border-bottom: 1px solid var(--=
+line); padding: 13px 20px; }
+
+.viewer-row { display: flex; flex-wrap: wrap; gap: 14px; align-items: cente=
+r; justify-content: space-between; max-width: 1620px; margin: 0px auto; }
+
+.vbrand { display: flex; align-items: center; gap: 10px; font-weight: 700; =
+letter-spacing: 0.4px; font-size: 14px; }
+
+.vbrand .dot { width: 26px; height: 26px; border-radius: 7px; background: v=
+ar(--grad); display: grid; place-items: center; font-size: 11px; font-weigh=
+t: 800; color: rgb(6, 16, 31); }
+
+.vbrand small { display: block; font-weight: 500; color: var(--muted); font=
+-size: 11px; }
+
+.seg { display: flex; gap: 4px; background: var(--panel); border: 1px solid=
+ var(--line); border-radius: 11px; padding: 4px; }
+
+.seg button { border: 0px; background: transparent; color: var(--muted); fo=
+nt-style: inherit; font-variant: inherit; font-stretch: inherit; line-heigh=
+t: inherit; font-family: inherit; font-optical-sizing: inherit; font-size-a=
+djust: inherit; font-kerning: inherit; font-feature-settings: inherit; font=
+-variation-settings: inherit; font-language-override: inherit; font-size: 1=
+3px; font-weight: 600; padding: 8px 14px; border-radius: 8px; cursor: point=
+er; white-space: nowrap; transition: 0.15s; }
+
+.seg button:hover { color: var(--txt); }
+
+.seg button.on { background: rgb(30, 42, 72); color: var(--txt); }
+
+.seg-label { font-size: 11px; color: var(--faint); text-transform: uppercas=
+e; letter-spacing: 0.12em; margin-right: 2px; }
+
+.hint { max-width: 1620px; margin: 14px auto 0px; padding: 0px 20px; color:=
+ var(--muted); font-size: 13px; }
+
+.hint b { color: var(--txt); }
+
+.stage { display: flex; justify-content: center; padding: 22px 20px 70px; }
+
+.frame { container: stage / inline-size; width: 1500px; max-width: 100%; ba=
+ckground: var(--bg); border: 1px solid var(--line2); border-radius: 16px; o=
+verflow: hidden; position: relative; min-height: 640px; box-shadow: rgba(0,=
+ 0, 0, 0.85) 0px 40px 100px -40px; transition: width 0.3s cubic-bezier(0.4,=
+ 0, 0.2, 1); }
+
+.frame.tablet { width: 768px; }
+
+.frame.mobile { width: 390px; }
+
+.frame-w { position: absolute; top: 9px; right: 13px; font-size: 11px; colo=
+r: var(--faint); z-index: 60; font-family: var(--mono); }
+
+.site-head { position: relative; z-index: 30; display: flex; align-items: c=
+enter; justify-content: space-between; padding: 17px 30px; }
+
+.logo { display: flex; align-items: center; gap: 9px; font-weight: 800; let=
+ter-spacing: 1px; font-size: 17px; }
+
+.logo .lk { width: 23px; height: 23px; border-radius: 6px; background: var(=
+--grad); display: grid; place-items: center; color: rgb(6, 16, 31); font-si=
+ze: 10px; font-weight: 900; }
+
+.logo small { display: block; font-size: 7.5px; font-weight: 600; letter-sp=
+acing: 0.2em; color: var(--muted); }
+
+.head-right { display: flex; align-items: center; gap: 10px; }
+
+.btn-started { background: transparent; border: 1px solid var(--line2); col=
+or: var(--txt); font-weight: 600; font-size: 13px; padding: 10px 22px; bord=
+er-radius: 8px; cursor: pointer; }
+
+.btn-started:hover { border-color: var(--cyan); }
+
+.hamb { width: 42px; height: 42px; border-radius: 9px; border: 1px solid va=
+r(--line2); background: var(--panel); display: flex; flex-direction: column=
+; align-items: center; justify-content: center; cursor: pointer; gap: 5px; =
+transition: 0.15s; }
+
+.hamb:hover { border-color: var(--cyan); }
+
+.hamb span { display: block; width: 18px; height: 2px; background: var(--tx=
+t); border-radius: 2px; }
+
+.hero-hint { padding: 46px 30px; max-width: 560px; }
+
+.hero-hint .kick { color: var(--cyan); font-size: 11px; letter-spacing: 0.1=
+8em; text-transform: uppercase; font-family: var(--mono); }
+
+.hero-hint h1 { font-size: 40px; line-height: 1.05; margin: 16px 0px 0px; c=
+olor: rgb(219, 230, 247); font-weight: 300; letter-spacing: -0.5px; }
+
+.hero-hint h1 b { font-weight: 600; background-image: ; background-position=
+-x: ; background-position-y: ; background-size: ; background-repeat: ; back=
+ground-attachment: ; background-origin: ; background-color: ; background-cl=
+ip: text; color: transparent; }
+
+@container stage (max-width: 560px) {
+  .hero-hint h1 { font-size: 28px; }
+  .btn-started { display: none; }
+}
+
+.menu { position: absolute; inset: 0px; z-index: 40; display: none; backgro=
+und: var(--void); overflow: auto; }
+
+.menu.open { display: block; animation: 0.42s cubic-bezier(0.16, 1, 0.3, 1)=
+ 0s 1 normal none running wipe; }
+
+@keyframes wipe {=20
+  0% { clip-path: inset(0px 0px 100%); }
+  100% { clip-path: inset(0px); }
+}
+
+.menu::before { content: ""; position: fixed; inset: 0px; opacity: 0.6; poi=
+nter-events: none; background: radial-gradient(55% 45% at 82% 6%, rgba(139,=
+ 92, 246, 0.18), transparent 60%) 0% 0% / auto, radial-gradient(45% 38% at =
+10% 96%, rgba(56, 189, 248, 0.13), transparent 60%) 0% 0% / auto, linear-gr=
+adient(transparent 0px, transparent 31px, rgba(120, 150, 200, 0.04) 31px, r=
+gba(120, 150, 200, 0.04) 32px) 0% 0% / 32px 32px, linear-gradient(90deg, tr=
+ansparent 0px, transparent 31px, rgba(120, 150, 200, 0.04) 31px, rgba(120, =
+150, 200, 0.04) 32px) 0% 0% / 32px 32px; }
+
+.m-head { position: relative; z-index: 2; display: flex; align-items: cente=
+r; justify-content: space-between; padding: 17px 30px; border-bottom: 1px s=
+olid var(--line); }
+
+.m-head .logo .lk { box-shadow: rgba(56, 189, 248, 0.55) 0px 0px 22px; }
+
+.m-head .ico { width: 42px; height: 42px; border-radius: 9px; border: 1px s=
+olid var(--line2); background: var(--panel); color: var(--txt); font-size: =
+16px; cursor: pointer; display: grid; place-items: center; transition: 0.15=
+s; }
+
+.m-head .ico:hover { border-color: var(--cyan); }
+
+.close:hover { transform: rotate(90deg); }
+
+.m-body { position: relative; z-index: 2; display: grid; grid-template-colu=
+mns: 1.05fr 1.25fr 0.95fr; gap: 0px; }
+
+.col { padding: 30px 34px; border-right: 1px solid var(--line); }
+
+.col:last-child { border-right: 0px; }
+
+.sec-rule { display: flex; align-items: center; justify-content: space-betw=
+een; border-top: 1px solid var(--line2); padding-top: 12px; margin-bottom: =
+20px; }
+
+.sec-rule .lbl { font-family: var(--mono); font-size: 11px; letter-spacing:=
+ 0.18em; text-transform: uppercase; color: var(--faint); }
+
+.sec-rule .all { font-family: var(--mono); font-size: 11px; letter-spacing:=
+ 0.1em; text-transform: uppercase; color: var(--muted); }
+
+.sec-rule .all:hover { color: var(--cyan); }
+
+.cat { padding: 2px 0px; }
+
+.cat-row { display: flex; align-items: baseline; gap: 13px; cursor: pointer=
+; padding: 8px 0px; }
+
+.cat-name { font-size: 33px; font-weight: 300; letter-spacing: -0.6px; colo=
+r: var(--muted); line-height: 1.1; transition: 0.18s; }
+
+.cat-row:hover .cat-name { color: var(--txt); }
+
+.cat-num { font-family: var(--mono); font-size: 10.5px; color: var(--faint)=
+; transform: translateY(-9px); }
+
+.cat.active .cat-name { background-image: ; background-position-x: ; backgr=
+ound-position-y: ; background-size: ; background-repeat: ; background-attac=
+hment: ; background-origin: ; background-color: ; background-clip: text; co=
+lor: transparent; font-weight: 500; }
+
+.children { max-height: 0px; overflow: hidden; transition: max-height 0.35s=
+ cubic-bezier(0.16, 1, 0.3, 1); }
+
+.cat.active .children { max-height: 480px; }
+
+.child { display: flex; align-items: center; gap: 11px; padding: 6px 0px 6p=
+x 2px; font-size: 18px; color: var(--faint); cursor: pointer; transition: 0=
+.15s; }
+
+.child .arr { color: var(--cyan); font-size: 14px; opacity: 0.75; }
+
+.child:hover { color: var(--txt); transform: translateX(4px); }
+
+.child:hover .arr { opacity: 1; }
+
+.cat-staggered { opacity: 0; transform: translateY(12px); animation: 0.5s c=
+ubic-bezier(0.16, 1, 0.3, 1) 0s 1 normal forwards running rise; }
+
+@keyframes rise {=20
+  100% { opacity: 1; transform: none; }
+}
+
+.feat { display: block; border: 1px solid var(--line); border-radius: 14px;=
+ overflow: hidden; margin-bottom: 18px; cursor: pointer; transition: 0.16s;=
+ background: var(--bg2); }
+
+.feat:hover { border-color: var(--line2); transform: translateY(-2px); }
+
+.feat .img { height: 150px; position: relative; overflow: hidden; backgroun=
+d: linear-gradient(135deg, rgb(15, 27, 58), rgb(10, 17, 36)); }
+
+.feat .img::before { content: ""; position: absolute; inset: 0px; opacity: =
+0.9; background: radial-gradient(40% 60% at 78% 30%, rgba(56, 189, 248, 0.4=
+), transparent 60%), radial-gradient(50% 70% at 22% 80%, rgba(139, 92, 246,=
+ 0.38), transparent 62%), repeating-linear-gradient(90deg, rgba(120, 150, 2=
+00, 0.1) 0px, rgba(120, 150, 200, 0.1) 1px, transparent 1px, transparent 26=
+px), repeating-linear-gradient(0deg, rgba(120, 150, 200, 0.1) 0px, rgba(120=
+, 150, 200, 0.1) 1px, transparent 1px, transparent 26px); }
+
+.feat .img .nodes { position: absolute; inset: 0px; font-family: var(--mono=
+); color: rgba(220, 235, 255, 0.6); font-size: 10px; letter-spacing: 0.1em;=
+ padding: 12px; display: flex; flex-direction: column; justify-content: spa=
+ce-between; }
+
+.feat .img .nodes .pulse { width: 9px; height: 9px; border-radius: 50%; bac=
+kground: var(--cyan); box-shadow: rgba(56, 189, 248, 0.6) 0px 0px 0px 0px; =
+animation: 2.4s ease 0s infinite normal none running pulse; align-self: fle=
+x-end; }
+
+@keyframes pulse {=20
+  0% { box-shadow: rgba(56, 189, 248, 0.55) 0px 0px 0px 0px; }
+  70% { box-shadow: rgba(56, 189, 248, 0) 0px 0px 0px 14px; }
+  100% { box-shadow: rgba(56, 189, 248, 0) 0px 0px 0px 0px; }
+}
+
+.feat .body { padding: 16px 18px 18px; }
+
+.feat .eb { font-family: var(--mono); font-size: 10px; letter-spacing: 0.16=
+em; text-transform: uppercase; color: var(--cyan); }
+
+.feat h3 { margin: 9px 0px 6px; font-size: 18px; font-weight: 600; line-hei=
+ght: 1.22; letter-spacing: -0.2px; }
+
+.feat p { margin: 0px; color: var(--muted); font-size: 13px; line-height: 1=
+.5; }
+
+.feat .go { display: inline-flex; gap: 7px; margin-top: 12px; font-size: 12=
+.5px; font-weight: 600; color: var(--cyan); }
+
+.feat:hover .go { gap: 12px; }
+
+.feat.urgent { background: linear-gradient(120deg, rgba(46, 80, 144, 0.3), =
+rgba(139, 92, 246, 0.12)); border-color: rgba(56, 189, 248, 0.3); }
+
+.feat.urgent .body { padding: 18px; }
+
+.feat.urgent h3 { margin-top: 4px; }
+
+.offer p { margin: 0px 0px 14px; color: rgb(205, 217, 238); font-size: 14.5=
+px; line-height: 1.55; }
+
+.offer .learn { display: inline-flex; gap: 9px; font-size: 13px; font-weigh=
+t: 600; color: var(--cyan); }
+
+.offer .learn .arr { color: var(--cyan); }
+
+.stats { display: flex; border: 1px solid var(--line); border-radius: 12px;=
+ overflow: hidden; margin: 22px 0px; }
+
+.stat { flex: 1 1 0%; padding: 14px; border-right: 1px solid var(--line); }
+
+.stat:last-child { border-right: 0px; }
+
+.stat .n { font-size: 20px; font-weight: 700; background-image: ; backgroun=
+d-position-x: ; background-position-y: ; background-size: ; background-repe=
+at: ; background-attachment: ; background-origin: ; background-color: ; bac=
+kground-clip: text; color: transparent; }
+
+.stat .l { font-size: 10px; color: var(--muted); text-transform: uppercase;=
+ letter-spacing: 0.08em; margin-top: 3px; }
+
+.qlinks { display: flex; flex-direction: column; gap: 2px; }
+
+.qlink { display: flex; justify-content: space-between; align-items: center=
+; padding: 9px 2px; font-size: 15px; color: var(--muted); border-bottom: 1p=
+x solid var(--line); cursor: pointer; transition: 0.14s; }
+
+.qlink:hover { color: var(--txt); padding-left: 8px; }
+
+.qlink .rx { color: var(--faint); font-size: 12px; }
+
+.qlink:hover .rx { color: var(--cyan); }
+
+.m-foot { position: relative; z-index: 2; display: flex; align-items: cente=
+r; justify-content: space-between; gap: 16px; padding: 16px 34px; border-to=
+p: 1px solid var(--line); flex-wrap: wrap; }
+
+.m-foot .flinks { display: flex; gap: 22px; align-items: center; font-famil=
+y: var(--mono); font-size: 11px; letter-spacing: 0.12em; color: var(--faint=
+); text-transform: uppercase; }
+
+.m-foot .flinks .place { color: var(--muted); }
+
+.m-foot .flinks a:hover { color: var(--cyan); }
+
+.cta-main { display: inline-flex; align-items: center; gap: 10px; backgroun=
+d: var(--grad); color: rgb(6, 16, 31); font-weight: 700; font-size: 14px; p=
+adding: 13px 24px; border-radius: 10px; cursor: pointer; }
+
+.cta-main:hover { filter: brightness(1.08); }
+
+@container stage (max-width: 900px) {
+  .m-body { grid-template-columns: 1fr; }
+  .col { border-right: 0px; border-bottom: 1px solid var(--line); }
+  .cat-name { font-size: 28px; }
+  .cat.active .children { max-height: 560px; }
+}
+
+@container stage (max-width: 560px) {
+  .m-head, .m-foot { padding-left: 18px; padding-right: 18px; }
+  .col { padding: 22px 18px; }
+  .cat-name { font-size: 24px; }
+  .cat-num { display: none; }
+  .cat.active .children { max-height: 740px; }
+  .stats { flex-direction: row; }
+  .stat .n { font-size: 17px; }
+  .m-foot { justify-content: center; }
+  .m-foot .flinks { display: none; }
+  .cta-main { width: 100%; justify-content: center; }
+}
+------MultipartBoundary--NrofBvXeycZ8MjzIJwVACRKXRpuDsS2HrE3aPjmPxe------

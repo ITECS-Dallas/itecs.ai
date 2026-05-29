@@ -16,6 +16,7 @@ export const metadata = generatePageMetadata({
   description: tier.description,
   path: tier.href,
   keywords: tier.keywords,
+  ogImage: "/images/og/ai-optimized-seo.png",
 });
 
 export default function VelocityPage() {

@@ -235,7 +235,7 @@ export default function ManagedIntelligenceProviderPage() {
           {
             label: "AI automation",
             traditional: "DIY or freelance integrator",
-            ai: "9 managed AI services included",
+            ai: "10 managed AI services included",
           },
           {
             label: "AI agent deployment",

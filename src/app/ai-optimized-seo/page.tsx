@@ -30,6 +30,7 @@ export const metadata = generatePageMetadata({
   description: overview.description,
   path: overview.href,
   keywords: overview.keywords,
+  ogImage: "/images/og/ai-optimized-seo.png",
 });
 
 export default function AIOptimizedSEOPage() {

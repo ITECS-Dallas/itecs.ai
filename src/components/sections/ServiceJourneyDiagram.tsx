@@ -12,6 +12,7 @@ import {
   BookOpen,
   ShieldCheck,
   ServerCog,
+  Search,
   ArrowRight,
 } from "lucide-react";
 import { ScrollReveal } from "@/components/effects/ScrollReveal";
@@ -94,6 +95,12 @@ const phases = [
         name: "AI Training",
         href: "/training",
         desc: "Hands-on workshops for safe, effective AI use",
+      },
+      {
+        icon: Search,
+        name: "AI-Optimized SEO",
+        href: "/ai-optimized-seo",
+        desc: "GEO and AI search visibility for Dallas growth",
       },
     ],
   },
@@ -217,7 +224,7 @@ export function ServiceJourneyDiagram() {
 
         <figure
           role="img"
-          aria-label="Three-phase AI adoption journey: Phase 1 Assess covers AI Consulting and Data Audit; Phase 2 Build covers Custom AI Agents, Automation, AI DevOps, AI Receptionist, CRM and Sales AI, and Knowledge Base; Phase 3 Scale covers AI Training for team enablement"
+          aria-label="Three-phase AI adoption journey: Phase 1 Assess covers AI Consulting and Data Audit; Phase 2 Build covers Custom AI Agents, Automation, AI DevOps, AI Receptionist, CRM and Sales AI, and Knowledge Base; Phase 3 Scale covers AI Training and AI-Optimized SEO"
           className="mt-16"
         >
           {/* Desktop: 3 columns with connectors */}
@@ -244,7 +251,7 @@ export function ServiceJourneyDiagram() {
           </div>
 
           <figcaption className="mt-8 text-center text-sm text-text-dim">
-            ITECS AI adoption framework — 9 managed services across assessment,
+            ITECS AI adoption framework — 10 managed services across assessment,
             deployment, and team enablement phases
           </figcaption>
         </figure>

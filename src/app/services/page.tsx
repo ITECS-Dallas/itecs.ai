@@ -17,7 +17,7 @@ import { CTASection } from "@/components/sections/CTASection";
 export const metadata = generatePageMetadata({
   title: "AI Services for Dallas Small Businesses",
   description:
-    "9 managed AI services for Dallas businesses with 10–300 employees: consulting, automation, custom AI agents, AI DevOps, training, security, CRM, and more. 24+ years IT experience.",
+    "10 managed AI services for Dallas businesses with 10–300 employees: consulting, automation, custom AI agents, AI DevOps, training, CRM, AI SEO, and more.",
   path: "/services",
   keywords: [
     "small business AI services Dallas",
