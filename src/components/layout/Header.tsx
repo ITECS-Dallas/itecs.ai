@@ -1,295 +1,64 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X, ArrowRight, ArrowUpRight, CornerDownRight } from "lucide-react";
 import {
-  Menu,
-  X,
-  ChevronDown,
-  Brain,
-  Bot,
-  Zap,
-  GraduationCap,
-  Phone,
-  BarChart3,
-  BookOpen,
-  ShieldCheck,
-  ServerCog,
-  Sparkles,
-  ArrowRight,
-  UserRoundCheck,
-  Search,
-  Factory,
-  BadgeDollarSign,
-} from "lucide-react";
-import { SITE_CONFIG } from "@/lib/constants";
+  SITE_CONFIG,
+  MEGA_MENU_CATEGORIES,
+  MEGA_MENU_FEATURED,
+  MEGA_MENU_QUICK_LINKS,
+  MEGA_MENU_STATS,
+  type MegaMenuLink,
+} from "@/lib/constants";
 import { Button } from "@/components/ui/Button";
 
 /* ------------------------------------------------------------------ */
-/* Nav data — structured by role, not flat list                        */
+/* Helpers                                                             */
 /* ------------------------------------------------------------------ */
 
-const serviceItems = [
-  {
-    label: "AI Consulting",
-    href: "/consulting",
-    icon: Brain,
-    desc: "Workflow audit and AI roadmap",
-  },
-  {
-    label: "Custom AI Agents",
-    href: "/custom-ai-agents",
-    icon: Bot,
-    desc: "Claude, Codex, RAG, and app workflows",
-  },
-  {
-    label: "Automation",
-    href: "/automation",
-    icon: Zap,
-    desc: "Connect tools, eliminate handoffs",
-  },
-  {
-    label: "AI DevOps",
-    href: "/ai-devops",
-    icon: ServerCog,
-    desc: "Deploy, monitor, and operate AI",
-  },
-  {
-    label: "AI Training",
-    href: "/training",
-    icon: GraduationCap,
-    desc: "Hands-on workshops for your team",
-  },
-  {
-    label: "AI Champion Program",
-    href: "/services/ai-champion-program",
-    icon: UserRoundCheck,
-    desc: "Develop your internal AI lead",
-  },
-  {
-    label: "AI Receptionist",
-    href: "/ai-receptionist",
-    icon: Phone,
-    desc: "24/7 call answering and booking",
-  },
-  {
-    label: "CRM & Sales AI",
-    href: "/crm-sales-ai",
-    icon: BarChart3,
-    desc: "AI-powered pipeline automation",
-  },
-  {
-    label: "Knowledge Base",
-    href: "/ai-knowledge-base",
-    icon: BookOpen,
-    desc: "Internal RAG search for SOPs",
-  },
-  {
-    label: "Data Audit",
-    href: "/data-audit",
-    icon: ShieldCheck,
-    desc: "Score your AI readiness",
-  },
-  {
-    label: "AI-Optimized SEO",
-    href: "/ai-optimized-seo",
-    icon: Search,
-    desc: "GEO + traditional SEO for Dallas",
-  },
-];
+const REDUCE_MOTION = "motion-reduce:transition-none motion-reduce:transform-none";
 
-const industryItems = [
-  {
-    label: "Manufacturing AI",
-    href: "/manufacturing",
-    icon: Factory,
-    desc: "AI for manufacturing finance and operations",
-  },
-  {
-    label: "PPV Agent",
-    href: "/manufacturing/ppv-agent",
-    icon: BadgeDollarSign,
-    desc: "Purchase price variance and commodity cost intelligence",
-  },
-];
-
-/* ------------------------------------------------------------------ */
-/* Desktop mega-dropdown                                               */
-/* ------------------------------------------------------------------ */
-
-function SolutionsDropdown({
-  open,
-  onClose,
+/** Renders an internal Next.js <Link> or an external new-tab <a>. */
+function MenuLink({
+  link,
+  onNavigate,
+  className,
+  children,
 }: {
-  open: boolean;
-  onClose: () => void;
+  link: MegaMenuLink;
+  onNavigate: () => void;
+  className?: string;
+  children: React.ReactNode;
 }) {
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    function handleClick(e: MouseEvent) {
-      if (ref.current && !ref.current.contains(e.target as Node)) {
-        onClose();
-      }
-    }
-    if (open) document.addEventListener("mousedown", handleClick);
-    return () => document.removeEventListener("mousedown", handleClick);
-  }, [open, onClose]);
-
+  if (link.external) {
+    return (
+      <a
+        href={link.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={onNavigate}
+        className={className}
+      >
+        {children}
+      </a>
+    );
+  }
   return (
-    <AnimatePresence>
-      {open && (
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 8 }}
-          transition={{ duration: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
-          className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[640px] rounded-xl border border-[var(--border-subtle)] bg-bg-elevated/95 backdrop-blur-2xl shadow-2xl shadow-black/40 overflow-hidden"
-        >
-          {/* Services grid */}
-          <div className="p-5">
-            <p className="text-xs font-medium tracking-[0.08em] uppercase text-text-dim mb-4">
-              AI Services
-            </p>
-            <div className="grid grid-cols-2 gap-1">
-              {serviceItems.map((item) => {
-                const Icon = item.icon;
-                return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    onClick={onClose}
-                    className="group flex items-start gap-3 p-3 rounded-lg hover:bg-bg-surface/60 transition-colors"
-                  >
-                    <div className="flex items-center justify-center shrink-0 w-8 h-8 rounded-md bg-brand-accent/8 group-hover:bg-brand-accent/15 transition-colors">
-                      <Icon
-                        className="h-4 w-4 text-brand-accent"
-                        aria-hidden="true"
-                      />
-                    </div>
-                    <div>
-                      <span className="block text-sm text-text-primary group-hover:text-brand-accent transition-colors">
-                        {item.label}
-                      </span>
-                      <span className="block text-xs text-text-dim leading-snug mt-0.5">
-                        {item.desc}
-                      </span>
-                    </div>
-                  </Link>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Bottom bar — featured links */}
-          <div className="border-t border-[var(--border-subtle)] bg-bg-surface/40 px-5 py-3 flex items-center justify-between">
-            <Link
-              href="/managed-intelligence-provider"
-              onClick={onClose}
-              className="group flex items-center gap-2 text-sm text-text-secondary hover:text-brand-accent transition-colors"
-            >
-              <Sparkles
-                className="h-4 w-4 text-brand-purple"
-                aria-hidden="true"
-              />
-              <span>Managed Intelligence Provider</span>
-              <ArrowRight
-                className="h-3 w-3 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
-                aria-hidden="true"
-              />
-            </Link>
-            <Link
-              href="/services"
-              onClick={onClose}
-              className="text-xs text-text-dim hover:text-brand-accent transition-colors"
-            >
-              View all services &rarr;
-            </Link>
-          </div>
-        </motion.div>
-      )}
-    </AnimatePresence>
-  );
-}
-
-function IndustriesDropdown({
-  open,
-  onClose,
-}: {
-  open: boolean;
-  onClose: () => void;
-}) {
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    function handleClick(e: MouseEvent) {
-      if (ref.current && !ref.current.contains(e.target as Node)) {
-        onClose();
-      }
-    }
-    if (open) document.addEventListener("mousedown", handleClick);
-    return () => document.removeEventListener("mousedown", handleClick);
-  }, [open, onClose]);
-
-  return (
-    <AnimatePresence>
-      {open && (
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 8 }}
-          transition={{ duration: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
-          className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[420px] rounded-xl border border-[var(--border-subtle)] bg-bg-elevated/95 backdrop-blur-2xl shadow-2xl shadow-black/40 overflow-hidden"
-        >
-          <div className="p-5">
-            <p className="text-xs font-medium tracking-[0.08em] uppercase text-text-dim mb-4">
-              Industries
-            </p>
-            <div className="space-y-1">
-              {industryItems.map((item) => {
-                const Icon = item.icon;
-                return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    onClick={onClose}
-                    className="group flex items-start gap-3 p-3 rounded-lg hover:bg-bg-surface/60 transition-colors"
-                  >
-                    <div className="flex items-center justify-center shrink-0 w-8 h-8 rounded-md bg-brand-accent/8 group-hover:bg-brand-accent/15 transition-colors">
-                      <Icon
-                        className="h-4 w-4 text-brand-accent"
-                        aria-hidden="true"
-                      />
-                    </div>
-                    <div>
-                      <span className="block text-sm text-text-primary group-hover:text-brand-accent transition-colors">
-                        {item.label}
-                      </span>
-                      <span className="block text-xs text-text-dim leading-snug mt-0.5">
-                        {item.desc}
-                      </span>
-                    </div>
-                  </Link>
-                );
-              })}
-            </div>
-          </div>
-        </motion.div>
-      )}
-    </AnimatePresence>
+    <Link href={link.href} onClick={onNavigate} className={className}>
+      {children}
+    </Link>
   );
 }
 
 /* ------------------------------------------------------------------ */
-/* Mobile nav panel                                                    */
+/* Full-screen takeover menu                                           */
 /* ------------------------------------------------------------------ */
 
-function MobileNav({
+function MegaMenu({
   open,
   onClose,
   pathname,
@@ -298,192 +67,314 @@ function MobileNav({
   onClose: () => void;
   pathname: string;
 }) {
+  // First category expanded by default; hover (desktop) or tap (mobile) switches.
+  const [activeCat, setActiveCat] = useState(0);
+
+  // Close on Escape
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [open, onClose]);
+
   return (
     <AnimatePresence>
       {open && (
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.25 }}
-          className="fixed inset-0 top-[72px] z-[60] bg-bg-void/98 backdrop-blur-2xl md:hidden overflow-y-auto"
+          initial={{ opacity: 0, clipPath: "inset(0 0 100% 0)" }}
+          animate={{ opacity: 1, clipPath: "inset(0 0 0% 0)" }}
+          exit={{ opacity: 0, clipPath: "inset(0 0 100% 0)" }}
+          transition={{ duration: 0.42, ease: [0.16, 1, 0.3, 1] }}
+          className="fixed inset-0 top-0 z-[60] overflow-y-auto bg-bg-void"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Site menu"
         >
-          <nav className="px-6 pt-8 pb-16">
-            {/* Services section */}
-            <p className="text-xs font-medium tracking-[0.08em] uppercase text-text-dim mb-4">
-              AI Services
-            </p>
-            <div className="grid grid-cols-2 gap-2 mb-8">
-              {serviceItems.map((item, i) => {
-                const Icon = item.icon;
-                const active = pathname.startsWith(item.href);
+          {/* Ambient grid + glow */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none fixed inset-0 opacity-60"
+            style={{
+              backgroundImage:
+                "radial-gradient(55% 45% at 82% 6%, rgba(139,92,246,0.16), transparent 60%), radial-gradient(45% 38% at 10% 96%, rgba(6,182,212,0.12), transparent 60%)",
+            }}
+          />
+
+          {/* Menu header bar */}
+          <div className="relative z-[2] flex items-center justify-between border-b border-[var(--border-subtle)] px-6 py-4 md:px-8">
+            <Link href="/" onClick={onClose} className="flex items-center shrink-0">
+              <Image
+                src="/images/logos/itecs-horizontal.svg"
+                alt="ITECS"
+                width={148}
+                height={44}
+                className="brightness-0 invert"
+                style={{ height: "40px", width: "auto" }}
+              />
+            </Link>
+            <div className="flex items-center gap-2.5">
+              <Button href="/contact" size="sm">
+                Get Started
+              </Button>
+              <button
+                onClick={onClose}
+                aria-label="Close menu"
+                className={`flex h-10 w-10 items-center justify-center rounded-lg border border-[var(--border-subtle)] bg-bg-surface text-text-primary transition-colors hover:border-brand-accent hover:text-brand-accent ${REDUCE_MOTION}`}
+              >
+                <X className="h-5 w-5" />
+              </button>
+            </div>
+          </div>
+
+          {/* Body — 3 columns on desktop, stacked on mobile */}
+          <div className="relative z-[2] grid grid-cols-1 lg:grid-cols-[1.05fr_1.25fr_0.95fr]">
+            {/* Column 1 — categories */}
+            <div className="border-b border-[var(--border-subtle)] px-6 py-8 md:px-8 lg:border-b-0 lg:border-r">
+              <div className="mb-5 flex items-center justify-between border-t border-[var(--border-subtle)] pt-3">
+                <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-text-dim">
+                  Navigate // ITECS AI
+                </span>
+                <Link
+                  href="/services"
+                  onClick={onClose}
+                  className="font-mono text-[11px] uppercase tracking-[0.1em] text-text-secondary transition-colors hover:text-brand-accent"
+                >
+                  All services ↗
+                </Link>
+              </div>
+
+              {MEGA_MENU_CATEGORIES.map((cat, i) => {
+                const isActive = activeCat === i;
                 return (
                   <motion.div
-                    key={item.href}
+                    key={cat.name}
                     initial={{ opacity: 0, y: 12 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: i * 0.04, duration: 0.3 }}
+                    transition={{ delay: 0.05 + i * 0.05, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                    onMouseEnter={() => setActiveCat(i)}
+                    className="py-0.5"
                   >
-                    <Link
-                      href={item.href}
-                      onClick={onClose}
-                      className={`flex items-center gap-2.5 p-3 rounded-lg border transition-colors ${
-                        active
-                          ? "border-[var(--border-active)] bg-brand-accent/10"
-                          : "border-[var(--border-subtle)] bg-bg-surface/30 active:bg-bg-surface/60"
-                      }`}
+                    <button
+                      type="button"
+                      onClick={() => setActiveCat(isActive ? -1 : i)}
+                      aria-expanded={isActive}
+                      className="flex w-full items-baseline gap-3 py-2 text-left"
                     >
-                      <Icon
-                        className={`h-4 w-4 shrink-0 ${
-                          active ? "text-brand-accent" : "text-text-dim"
-                        }`}
-                        aria-hidden="true"
-                      />
                       <span
-                        className={`text-sm ${
-                          active ? "text-brand-accent" : "text-text-primary"
+                        className={`text-[28px] font-light leading-tight tracking-tight transition-colors md:text-[33px] ${
+                          isActive
+                            ? "text-text-primary"
+                            : "text-text-secondary"
                         }`}
                       >
-                        {item.label}
+                        {cat.name}
                       </span>
-                    </Link>
-                  </motion.div>
-                );
-              })}
-            </div>
-
-            <p className="text-xs font-medium tracking-[0.08em] uppercase text-text-dim mb-4">
-              Industries
-            </p>
-            <div className="grid grid-cols-1 gap-2 mb-8">
-              {industryItems.map((item, i) => {
-                const Icon = item.icon;
-                const active = pathname === item.href;
-                return (
-                  <motion.div
-                    key={item.href}
-                    initial={{ opacity: 0, y: 12 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.25 + i * 0.04, duration: 0.3 }}
-                  >
-                    <Link
-                      href={item.href}
-                      onClick={onClose}
-                      className={`flex items-center gap-2.5 p-3 rounded-lg border transition-colors ${
-                        active
-                          ? "border-[var(--border-active)] bg-brand-accent/10"
-                          : "border-[var(--border-subtle)] bg-bg-surface/30 active:bg-bg-surface/60"
+                      <span className="font-mono text-[10.5px] text-text-dim">{cat.num}</span>
+                    </button>
+                    <div
+                      className={`overflow-hidden transition-[max-height,opacity] duration-300 ease-out ${REDUCE_MOTION} ${
+                        isActive ? "max-h-[480px] opacity-100" : "max-h-0 opacity-0"
                       }`}
                     >
-                      <Icon
-                        className={`h-4 w-4 shrink-0 ${
-                          active ? "text-brand-accent" : "text-text-dim"
-                        }`}
-                        aria-hidden="true"
-                      />
-                      <div>
-                        <span
-                          className={`block text-sm ${
-                            active ? "text-brand-accent" : "text-text-primary"
-                          }`}
-                        >
-                          {item.label}
-                        </span>
-                        <span className="mt-0.5 block text-xs leading-snug text-text-dim">
-                          {item.desc}
-                        </span>
-                      </div>
-                    </Link>
+                      {cat.links.map((link) => {
+                        const active = !link.external && pathname === link.href;
+                        return (
+                          <MenuLink
+                            key={link.label}
+                            link={link}
+                            onNavigate={onClose}
+                            className={`group/link flex items-center gap-2.5 py-1.5 pl-0.5 text-[17px] transition-all ${REDUCE_MOTION} hover:translate-x-1 ${
+                              active
+                                ? "text-brand-accent"
+                                : "text-text-dim hover:text-text-primary"
+                            }`}
+                          >
+                            <CornerDownRight
+                              className="h-3.5 w-3.5 shrink-0 text-brand-accent opacity-75 transition-opacity group-hover/link:opacity-100"
+                              aria-hidden="true"
+                            />
+                            <span>{link.label}</span>
+                            {link.external && (
+                              <ArrowUpRight
+                                className="h-3 w-3 text-text-dim"
+                                aria-hidden="true"
+                              />
+                            )}
+                          </MenuLink>
+                        );
+                      })}
+                    </div>
                   </motion.div>
                 );
               })}
             </div>
 
-            {/* Divider */}
-            <div className="h-px bg-[var(--border-subtle)] mb-6" />
-
-            {/* Featured link */}
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.35 }}
-            >
-              <Link
-                href="/managed-intelligence-provider"
-                onClick={onClose}
-                className={`flex items-center gap-3 p-4 rounded-lg border mb-6 transition-colors ${
-                  pathname === "/managed-intelligence-provider"
-                    ? "border-brand-purple/40 bg-brand-purple/10"
-                    : "border-[var(--border-subtle)] bg-bg-surface/30"
-                }`}
-              >
-                <Sparkles
-                  className="h-5 w-5 text-brand-purple shrink-0"
-                  aria-hidden="true"
-                />
-                <div>
-                  <span className="block text-sm font-medium text-text-primary">
-                    Managed Intelligence Provider
-                  </span>
-                  <span className="block text-xs text-text-dim mt-0.5">
-                    The evolution beyond the MSP
-                  </span>
-                </div>
-              </Link>
-            </motion.div>
-
-            {/* Page links */}
-            <p className="text-xs font-medium tracking-[0.08em] uppercase text-text-dim mb-4">
-              Company
-            </p>
-            {[
-              { label: "All Services", href: "/services" },
-              { label: "Pricing", href: "/pricing" },
-              { label: "Insights", href: "/insights" },
-              { label: "About", href: "/about" },
-            ].map((link, i) => {
-              const active = pathname.startsWith(link.href);
-              return (
-                <motion.div
-                  key={link.href}
-                  initial={{ opacity: 0, x: -12 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.4 + i * 0.06 }}
+            {/* Column 2 — featured proof cards */}
+            <div className="border-b border-[var(--border-subtle)] px-6 py-8 md:px-8 lg:border-b-0 lg:border-r">
+              <div className="mb-5 flex items-center justify-between border-t border-[var(--border-subtle)] pt-3">
+                <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-text-dim">
+                  Featured // Proof
+                </span>
+                <Link
+                  href="/insights"
+                  onClick={onClose}
+                  className="font-mono text-[11px] uppercase tracking-[0.1em] text-text-secondary transition-colors hover:text-brand-accent"
                 >
-                  <Link
-                    href={link.href}
-                    onClick={onClose}
-                    className={`block py-3 text-lg font-light transition-colors ${
-                      active
-                        ? "text-brand-accent"
-                        : "text-text-primary active:text-brand-accent"
-                    }`}
-                  >
-                    {link.label}
-                  </Link>
-                </motion.div>
-              );
-            })}
+                  View insights ↗
+                </Link>
+              </div>
 
-            {/* CTA */}
-            <motion.div
-              className="mt-8 space-y-3"
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
-            >
-              <Button href="/contact" size="lg" className="w-full">
-                Get Your Free Assessment
-              </Button>
-              <a
-                href={`tel:${SITE_CONFIG.phoneE164}`}
-                className="flex items-center justify-center gap-2 py-3 text-sm text-text-secondary hover:text-brand-accent transition-colors"
+              {MEGA_MENU_FEATURED.map((feat) => (
+                <Link
+                  key={feat.href}
+                  href={feat.href}
+                  onClick={onClose}
+                  className={`group/feat mb-4 block overflow-hidden rounded-2xl border border-[var(--border-subtle)] bg-bg-elevated transition-all ${REDUCE_MOTION} hover:-translate-y-0.5 hover:border-[var(--border-active)]`}
+                >
+                  <div
+                    className="relative h-[120px] overflow-hidden"
+                    style={{
+                      background:
+                        "radial-gradient(40% 60% at 78% 30%, rgba(6,182,212,0.35), transparent 60%), radial-gradient(50% 70% at 22% 80%, rgba(139,92,246,0.32), transparent 62%), linear-gradient(135deg, #0f1b3a, #0a1124)",
+                    }}
+                  >
+                    <span className="absolute left-3 top-3 font-mono text-[10px] tracking-[0.1em] text-text-secondary">
+                      ◇ ITECS.AI
+                    </span>
+                    <span className="absolute bottom-3 right-3 h-2.5 w-2.5 animate-pulse rounded-full bg-brand-accent" />
+                  </div>
+                  <div className="px-5 py-4">
+                    <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-brand-accent">
+                      {feat.eyebrow}
+                    </div>
+                    <h3 className="mt-2 text-[18px] font-semibold leading-snug tracking-tight text-text-primary">
+                      {feat.title}
+                    </h3>
+                    <p className="mt-1.5 text-[13px] leading-relaxed text-text-secondary">
+                      {feat.description}
+                    </p>
+                    <span className="mt-3 inline-flex items-center gap-1.5 text-[12.5px] font-semibold text-brand-accent">
+                      {feat.cta}
+                      <ArrowRight
+                        className={`h-3.5 w-3.5 transition-transform ${REDUCE_MOTION} group-hover/feat:translate-x-1`}
+                        aria-hidden="true"
+                      />
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+
+            {/* Column 3 — offerings, stats, quick links */}
+            <div className="px-6 py-8 md:px-8">
+              <div className="mb-5 flex items-center justify-between border-t border-[var(--border-subtle)] pt-3">
+                <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-text-dim">
+                  Offerings
+                </span>
+                <Link
+                  href="/services"
+                  onClick={onClose}
+                  className="font-mono text-[11px] uppercase tracking-[0.1em] text-text-secondary transition-colors hover:text-brand-accent"
+                >
+                  View all ↗
+                </Link>
+              </div>
+
+              <p className="mb-4 text-[14.5px] leading-relaxed text-text-secondary">
+                Packaged, production-ready AI you can deploy in weeks: receptionists,
+                sales AI, internal knowledge search and AI-era SEO — all governed and
+                supported.
+              </p>
+              <Link
+                href="/services"
+                onClick={onClose}
+                className="inline-flex items-center gap-2 text-[13px] font-semibold text-brand-accent"
               >
-                <Phone className="h-4 w-4" aria-hidden="true" />
-                {SITE_CONFIG.phone}
+                <CornerDownRight className="h-3.5 w-3.5" aria-hidden="true" />
+                Explore AI Services
+              </Link>
+
+              {/* Stats */}
+              <div className="my-6 flex overflow-hidden rounded-xl border border-[var(--border-subtle)]">
+                {MEGA_MENU_STATS.map((stat) => (
+                  <div
+                    key={stat.l}
+                    className="flex-1 border-r border-[var(--border-subtle)] p-3.5 last:border-r-0"
+                  >
+                    <div className="text-[20px] font-bold text-text-primary">{stat.n}</div>
+                    <div className="mt-0.5 text-[10px] uppercase tracking-[0.08em] text-text-secondary">
+                      {stat.l}
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Quick links */}
+              <div className="mb-4 border-t border-[var(--border-subtle)] pt-3">
+                <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-text-dim">
+                  Quick links
+                </span>
+              </div>
+              <div className="flex flex-col">
+                {MEGA_MENU_QUICK_LINKS.map((link) => (
+                  <MenuLink
+                    key={link.label}
+                    link={link}
+                    onNavigate={onClose}
+                    className={`group/q flex items-center justify-between border-b border-[var(--border-subtle)] py-2.5 text-[15px] text-text-secondary transition-all ${REDUCE_MOTION} hover:pl-2 hover:text-text-primary`}
+                  >
+                    <span>{link.label}</span>
+                    <ArrowUpRight
+                      className="h-3.5 w-3.5 text-text-dim transition-colors group-hover/q:text-brand-accent"
+                      aria-hidden="true"
+                    />
+                  </MenuLink>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Footer */}
+          <div className="relative z-[2] flex flex-wrap items-center justify-between gap-4 border-t border-[var(--border-subtle)] px-6 py-4 md:px-8">
+            <div className="flex items-center gap-5 font-mono text-[11px] uppercase tracking-[0.12em] text-text-dim">
+              <span className="text-text-secondary">Dallas–Fort Worth, TX</span>
+              <a
+                href={SITE_CONFIG.social.youtube}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition-colors hover:text-brand-accent"
+              >
+                YouTube
               </a>
-            </motion.div>
-          </nav>
+              <a
+                href={SITE_CONFIG.social.x}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition-colors hover:text-brand-accent"
+              >
+                X
+              </a>
+              <a
+                href={SITE_CONFIG.social.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition-colors hover:text-brand-accent"
+              >
+                LinkedIn
+              </a>
+            </div>
+            <Link
+              href="/contact"
+              onClick={onClose}
+              className={`inline-flex items-center gap-2.5 rounded-lg bg-gradient-to-r from-brand-accent to-brand-purple px-6 py-3 text-[14px] font-bold text-bg-void transition-all ${REDUCE_MOTION} hover:brightness-110`}
+            >
+              Schedule a Consultation
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
+          </div>
         </motion.div>
       )}
     </AnimatePresence>
@@ -496,9 +387,7 @@ function MobileNav({
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [solutionsOpen, setSolutionsOpen] = useState(false);
-  const [industriesOpen, setIndustriesOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -507,53 +396,27 @@ export function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Close everything on route change
+  // Close menu on route change
   useEffect(() => {
-    const frame = requestAnimationFrame(() => {
-      setMobileOpen(false);
-      setSolutionsOpen(false);
-      setIndustriesOpen(false);
-    });
-
+    const frame = requestAnimationFrame(() => setMenuOpen(false));
     return () => cancelAnimationFrame(frame);
   }, [pathname]);
 
-  // Lock body scroll when mobile menu is open
+  // Lock body scroll when menu is open
   useEffect(() => {
-    document.body.style.overflow = mobileOpen ? "hidden" : "";
+    document.body.style.overflow = menuOpen ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
     };
-  }, [mobileOpen]);
-
-  const isServicePage =
-    pathname.startsWith("/services") ||
-    pathname.startsWith("/consulting") ||
-    pathname.startsWith("/custom-ai-agents") ||
-    pathname.startsWith("/custom-chatgpt") ||
-    pathname.startsWith("/automation") ||
-    pathname.startsWith("/ai-devops") ||
-    pathname.startsWith("/training") ||
-    pathname.startsWith("/ai-receptionist") ||
-    pathname.startsWith("/crm-sales-ai") ||
-    pathname.startsWith("/ai-knowledge-base") ||
-    pathname.startsWith("/data-audit") ||
-    pathname.startsWith("/managed-intelligence-provider");
-  const isIndustryPage = pathname.startsWith("/manufacturing");
-
-  const navItems = [
-    { label: "Pricing", href: "/pricing" },
-    { label: "Insights", href: "/insights" },
-    { label: "About", href: "/about" },
-  ];
+  }, [menuOpen]);
 
   return (
     <>
       <header
         className={`fixed left-0 right-0 z-50 h-[72px] border-b transition-[top,background-color,backdrop-filter,border-color] duration-300 ease-out ${
-          scrolled || mobileOpen ? "top-0" : "top-8"
+          scrolled || menuOpen ? "top-0" : "top-8"
         } ${
-          scrolled || mobileOpen
+          scrolled || menuOpen
             ? "bg-bg-elevated/80 backdrop-blur-xl border-[var(--border-subtle)]"
             : "bg-transparent border-transparent"
         }`}
@@ -572,139 +435,50 @@ export function Header() {
             />
           </Link>
 
-          {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-1">
-            {/* Solutions dropdown trigger */}
-            <div className="relative">
-              <button
-                onClick={() => {
-                  setSolutionsOpen(!solutionsOpen);
-                  setIndustriesOpen(false);
-                }}
-                onMouseEnter={() => {
-                  setSolutionsOpen(true);
-                  setIndustriesOpen(false);
-                }}
-                className={`flex items-center gap-1 px-3 py-2 rounded-lg text-sm tracking-wide transition-colors ${
-                  isServicePage || solutionsOpen
-                    ? "text-brand-accent"
-                    : "text-text-secondary hover:text-text-primary"
-                }`}
-                aria-expanded={solutionsOpen}
-                aria-haspopup="true"
-              >
-                Solutions
-                <ChevronDown
-                  className={`h-3.5 w-3.5 transition-transform duration-200 ${
-                    solutionsOpen ? "rotate-180" : ""
-                  }`}
-                  aria-hidden="true"
-                />
-              </button>
-              <SolutionsDropdown
-                open={solutionsOpen}
-                onClose={() => setSolutionsOpen(false)}
-              />
+          {/* Right side — CTA + menu toggle */}
+          <div className="flex items-center gap-2.5">
+            <div className="hidden sm:block">
+              <Button href="/contact" size="sm">
+                Get Started
+              </Button>
             </div>
-
-            <div className="relative">
-              <button
-                onClick={() => {
-                  setIndustriesOpen(!industriesOpen);
-                  setSolutionsOpen(false);
-                }}
-                onMouseEnter={() => {
-                  setIndustriesOpen(true);
-                  setSolutionsOpen(false);
-                }}
-                className={`flex items-center gap-1 px-3 py-2 rounded-lg text-sm tracking-wide transition-colors ${
-                  isIndustryPage || industriesOpen
-                    ? "text-brand-accent"
-                    : "text-text-secondary hover:text-text-primary"
-                }`}
-                aria-expanded={industriesOpen}
-                aria-haspopup="true"
-              >
-                Industries
-                <ChevronDown
-                  className={`h-3.5 w-3.5 transition-transform duration-200 ${
-                    industriesOpen ? "rotate-180" : ""
-                  }`}
-                  aria-hidden="true"
-                />
-              </button>
-              <IndustriesDropdown
-                open={industriesOpen}
-                onClose={() => setIndustriesOpen(false)}
-              />
-            </div>
-
-            {/* Direct links */}
-            {navItems.map((link) => {
-              const active = pathname.startsWith(link.href);
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={`px-3 py-2 rounded-lg text-sm tracking-wide transition-colors ${
-                    active
-                      ? "text-brand-accent"
-                      : "text-text-secondary hover:text-text-primary"
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              );
-            })}
-          </nav>
-
-          {/* Desktop CTA */}
-          <div className="hidden md:block shrink-0">
-            <Button href="/contact" size="sm">
-              Get Started
-            </Button>
+            <button
+              className={`relative z-50 flex h-10 w-10 items-center justify-center rounded-lg border border-[var(--border-subtle)] bg-bg-surface text-text-primary transition-colors hover:border-brand-accent hover:text-brand-accent ${REDUCE_MOTION}`}
+              onClick={() => setMenuOpen((v) => !v)}
+              aria-label={menuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={menuOpen}
+              aria-haspopup="true"
+            >
+              <AnimatePresence mode="wait" initial={false}>
+                {menuOpen ? (
+                  <motion.span
+                    key="close"
+                    initial={{ opacity: 0, rotate: -90 }}
+                    animate={{ opacity: 1, rotate: 0 }}
+                    exit={{ opacity: 0, rotate: 90 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <X className="h-5 w-5" />
+                  </motion.span>
+                ) : (
+                  <motion.span
+                    key="open"
+                    initial={{ opacity: 0, rotate: 90 }}
+                    animate={{ opacity: 1, rotate: 0 }}
+                    exit={{ opacity: 0, rotate: -90 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <Menu className="h-5 w-5" />
+                  </motion.span>
+                )}
+              </AnimatePresence>
+            </button>
           </div>
-
-          {/* Mobile hamburger */}
-          <button
-            className="md:hidden relative z-50 flex items-center justify-center w-10 h-10 rounded-lg text-text-primary"
-            onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label={mobileOpen ? "Close menu" : "Open menu"}
-            aria-expanded={mobileOpen}
-          >
-            <AnimatePresence mode="wait" initial={false}>
-              {mobileOpen ? (
-                <motion.div
-                  key="close"
-                  initial={{ opacity: 0, rotate: -90 }}
-                  animate={{ opacity: 1, rotate: 0 }}
-                  exit={{ opacity: 0, rotate: 90 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <X className="h-6 w-6" />
-                </motion.div>
-              ) : (
-                <motion.div
-                  key="open"
-                  initial={{ opacity: 0, rotate: 90 }}
-                  animate={{ opacity: 1, rotate: 0 }}
-                  exit={{ opacity: 0, rotate: -90 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <Menu className="h-6 w-6" />
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </button>
         </div>
       </header>
 
-      {/* Mobile panel — rendered outside header to avoid stacking context issues */}
-      <MobileNav
-        open={mobileOpen}
-        onClose={() => setMobileOpen(false)}
-        pathname={pathname}
-      />
+      {/* Full-screen takeover — rendered outside header to avoid stacking issues */}
+      <MegaMenu open={menuOpen} onClose={() => setMenuOpen(false)} pathname={pathname} />
     </>
   );
 }

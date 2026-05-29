@@ -54,6 +54,130 @@ export const NAV_LINKS = [
 ] as const;
 
 // ---------------------------------------------------------------------------
+// Mega menu (full-screen takeover) — single source of truth for the Header
+// ---------------------------------------------------------------------------
+// Links resolve internally on itecs.ai unless `external: true`, in which case
+// they point to the parent MSP site (itecsonline.com) and open in a new tab.
+
+export interface MegaMenuLink {
+  label: string;
+  href: string;
+  external?: boolean;
+}
+
+export interface MegaMenuCategory {
+  num: string;
+  name: string;
+  links: MegaMenuLink[];
+}
+
+export const MEGA_MENU_CATEGORIES: MegaMenuCategory[] = [
+  {
+    num: "01",
+    name: "AI Services",
+    links: [
+      { label: "AI Consulting", href: "/consulting" },
+      { label: "Custom AI Agents", href: "/custom-ai-agents" },
+      { label: "Automation", href: "/automation" },
+      { label: "AI DevOps", href: "/ai-devops" },
+      { label: "AI Training", href: "/training" },
+      { label: "Data & AI Readiness Audit", href: "/data-audit" },
+    ],
+  },
+  {
+    num: "02",
+    name: "AI Products",
+    links: [
+      { label: "AI Receptionist", href: "/ai-receptionist" },
+      { label: "CRM & Sales AI", href: "/crm-sales-ai" },
+      { label: "Knowledge Base", href: "/ai-knowledge-base" },
+      { label: "AI-Optimized SEO", href: "/ai-optimized-seo" },
+    ],
+  },
+  {
+    num: "03",
+    name: "Manufacturing AI",
+    links: [
+      { label: "Manufacturing AI Hub", href: "/manufacturing" },
+      { label: "PPV Agent", href: "/manufacturing/ppv-agent" },
+    ],
+  },
+  {
+    num: "04",
+    name: "Resources",
+    links: [
+      { label: "Insights", href: "/insights" },
+      {
+        label: "Whitepapers & Case Studies",
+        href: "https://itecsonline.com/white-papers-case-studies",
+        external: true,
+      },
+      {
+        label: "Experiencing a Breach?",
+        href: "https://itecsonline.com/experiencing-a-breach",
+        external: true,
+      },
+    ],
+  },
+  {
+    num: "05",
+    name: "Company",
+    links: [
+      { label: "About ITECS", href: "/about" },
+      { label: "Pricing", href: "/pricing" },
+      { label: "Managed Intelligence", href: "/managed-intelligence-provider" },
+      { label: "ITECS MSP", href: "https://itecsonline.com/", external: true },
+    ],
+  },
+];
+
+export interface MegaMenuFeatured {
+  eyebrow: string;
+  title: string;
+  description: string;
+  cta: string;
+  href: string;
+}
+
+export const MEGA_MENU_FEATURED: MegaMenuFeatured[] = [
+  {
+    eyebrow: "Product // AI Receptionist",
+    title: "Stop losing revenue to missed calls",
+    description:
+      "A 24/7 AI receptionist that answers, qualifies and books — in your brand voice, on every channel.",
+    cta: "See it work",
+    href: "/ai-receptionist",
+  },
+  {
+    eyebrow: "Product // CRM & Sales AI",
+    title: "Pipeline that updates itself",
+    description:
+      "AI that logs activity, drafts follow-ups and surfaces the deals most likely to close.",
+    cta: "Explore CRM AI",
+    href: "/crm-sales-ai",
+  },
+];
+
+export const MEGA_MENU_QUICK_LINKS: MegaMenuLink[] = [
+  { label: "About ITECS", href: "/about" },
+  { label: "Pricing", href: "/pricing" },
+  { label: "Managed Intelligence", href: "/managed-intelligence-provider" },
+  {
+    label: "Whitepapers & Case Studies",
+    href: "https://itecsonline.com/white-papers-case-studies",
+    external: true,
+  },
+  { label: "ITECS MSP (managed IT)", href: "https://itecsonline.com/", external: true },
+  { label: "Contact", href: "/contact" },
+];
+
+export const MEGA_MENU_STATS = [
+  { n: "24+", l: "yrs in DFW" },
+  { n: "99.9%", l: "uptime" },
+  { n: "92%", l: "clients kept" },
+] as const;
+
+// ---------------------------------------------------------------------------
 // Public AI Pricing
 // ---------------------------------------------------------------------------
 
@@ -2492,9 +2616,9 @@ export interface AISEOOverview {
 }
 
 export const AI_SEO_OVERVIEW: AISEOOverview = {
-  title: "AI-Optimized SEO Services Dallas | GEO & AI Search Visibility",
+  title: "AI SEO Services Dallas | GEO Visibility",
   description:
-    "Generative Engine Optimization for Dallas businesses. Get found in ChatGPT, Google AI Overviews, Claude, and Perplexity — not just blue links. Foundation, Momentum, and Velocity tiers.",
+    "GEO and AI SEO for Dallas businesses. Get found in ChatGPT, Google AI Overviews, Claude, and Perplexity with Foundation, Momentum, and Velocity tiers.",
   href: "/ai-optimized-seo",
   keywords: [
     "AI optimized SEO Dallas",
@@ -3002,7 +3126,7 @@ export const AI_SEO_TIERS: AISEOTier[] = [
     href: "/ai-optimized-seo/momentum",
     title: "SEO Momentum Dallas | Monthly AI SEO Retainer",
     description:
-      "Monthly managed SEO for Dallas businesses. Technical monitoring, 2 articles, AI visibility tracking on ChatGPT/Claude/Google, 1 authority backlink — $1,750/mo, month-to-month.",
+      "Monthly managed AI SEO for Dallas businesses with technical monitoring, 2 articles, AI visibility tracking, and 1 authority backlink for $1,750/mo.",
     keywords: [
       "managed SEO Dallas",
       "SEO retainer Dallas",
@@ -3164,9 +3288,9 @@ export const AI_SEO_TIERS: AISEOTier[] = [
     name: "SEO Velocity",
     shortName: "Velocity",
     href: "/ai-optimized-seo/velocity",
-    title: "SEO Velocity Dallas | Advanced Authority & Automation",
+    title: "SEO Velocity Dallas | Premium AI SEO",
     description:
-      "Premium AI SEO retainer for Dallas businesses. 4 articles, 2 ITECS backlinks, third-party link building, competitor monitoring, quarterly CRO, weekly strategy — $3,500/mo (6-mo min).",
+      "Premium AI SEO for Dallas businesses: 4 articles, 2 ITECS backlinks, third-party link building, competitor monitoring, CRO, and weekly strategy.",
     keywords: [
       "premium SEO Dallas",
       "SEO Velocity",
