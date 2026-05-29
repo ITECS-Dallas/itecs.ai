@@ -5,6 +5,17 @@ import { join } from "node:path";
 
 const root = process.cwd();
 const read = (path) => readFileSync(join(root, path), "utf8");
+const spokeRoutes = [
+  "/manufacturing/demand-forecasting-sop-ai",
+  "/manufacturing/predictive-maintenance-ai",
+  "/manufacturing/inventory-working-capital-ai",
+  "/manufacturing/quality-traceability-ai",
+  "/manufacturing/customer-sku-profitability-ai",
+  "/manufacturing/production-scheduling-yield-ai",
+  "/manufacturing/contract-pass-through-intelligence",
+  "/manufacturing/energy-freight-scope-3-ai",
+  "/manufacturing/vendor-payment-anomaly-ai",
+];
 
 describe("manufacturing vertical pages", () => {
   it("defines the manufacturing hub and PPV spoke routes", () => {
@@ -13,6 +24,13 @@ describe("manufacturing vertical pages", () => {
       existsSync(join(root, "src/app/manufacturing/ppv-agent/page.tsx")),
       true
     );
+    for (const route of spokeRoutes) {
+      assert.equal(
+        existsSync(join(root, `src/app${route}/page.tsx`)),
+        true,
+        `${route} route should exist`
+      );
+    }
   });
 
   it("keeps the approved public positioning in source", () => {
@@ -48,27 +66,55 @@ describe("manufacturing vertical pages", () => {
     assert.match(constants, /A Waterfall View of What Finance Can Act On Next/);
   });
 
-  it("publishes both manufacturing pages in the sitemap source", () => {
+  it("publishes manufacturing pages in the sitemap source", () => {
     const sitemap = read("src/app/sitemap.ts");
     const constants = read("src/lib/constants.ts");
 
     assert.match(sitemap, /MANUFACTURING_VERTICAL/);
     assert.match(sitemap, /PPV_AGENT_USE_CASE/);
+    assert.match(sitemap, /MANUFACTURING_SPOKE_PAGES/);
     assert.match(constants, /href: "\/manufacturing"/);
     assert.match(constants, /href: "\/manufacturing\/ppv-agent"/);
+    for (const route of spokeRoutes) {
+      assert.match(constants, new RegExp(`href: "${route}"`));
+    }
   });
 
   it("links manufacturing pages from global navigation and footer", () => {
     const header = read("src/components/layout/Header.tsx");
     const footer = read("src/components/layout/Footer.tsx");
+    const constants = read("src/lib/constants.ts");
 
-    assert.match(header, /Industries/);
-    assert.match(header, /Manufacturing AI/);
-    assert.match(header, /\/manufacturing\/ppv-agent/);
+    assert.match(header, /MEGA_MENU_CATEGORIES/);
+    assert.match(constants, /Industries/);
+    assert.match(constants, /Manufacturing AI/);
+    assert.match(constants, /MEGA_MENU_CATEGORIES/);
+    assert.match(constants, /\/manufacturing\/ppv-agent/);
     assert.match(footer, /Industries/);
     assert.match(footer, /Manufacturing AI/);
     assert.match(footer, /\/manufacturing\/ppv-agent/);
+    for (const route of spokeRoutes) {
+      assert.match(constants, new RegExp(route));
+      assert.match(footer, new RegExp(route));
+    }
     assert.match(footer, /ITECS MSP/);
     assert.doesNotMatch(footer, /ITECS Main Site/);
+  });
+
+  it("defines unique manufacturing spoke concepts and chart modes", () => {
+    const constants = read("src/lib/constants.ts");
+
+    assert.match(constants, /Demand Forecasting and S&OP Intelligence/);
+    assert.match(constants, /Predictive Maintenance and Downtime Forecasting/);
+    assert.match(constants, /Inventory and Working Capital Optimization/);
+    assert.match(constants, /Quality, Traceability, and Recall Risk Intelligence/);
+    assert.match(constants, /Customer and SKU Profitability Intelligence/);
+    assert.match(constants, /Production Scheduling, Yield, and Labor Planning/);
+    assert.match(constants, /Contract Intelligence and Pass-Through Recovery/);
+    assert.match(constants, /Energy, Freight, and Scope 3 Reporting Intelligence/);
+    assert.match(constants, /Vendor Payment and Finance Anomaly Detection/);
+    assert.match(constants, /mode: "timeline"/);
+    assert.match(constants, /mode: "matrix"/);
+    assert.match(constants, /mode: "waterfall"/);
   });
 });

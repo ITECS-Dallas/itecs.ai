@@ -6,17 +6,23 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 
 export function PPVAgentWorkflowDiagram({
   steps,
+  eyebrow = "Workflow",
+  title = "Read-Heavy, Write-Controlled PPV Intelligence",
+  description = "The agent connects approved signals, decomposes variance, models exposure, and routes recommendations for human approval before any financial action.",
 }: {
   steps: readonly { title: string; description: string }[];
+  eyebrow?: string;
+  title?: string;
+  description?: string;
 }) {
   return (
     <section className="py-24 md:py-32 bg-bg-surface">
       <div className="mx-auto max-w-7xl px-6 md:px-8">
         <ScrollReveal>
           <SectionHeading
-            eyebrow="Workflow"
-            title="Read-Heavy, Write-Controlled PPV Intelligence"
-            description="The agent connects approved signals, decomposes variance, models exposure, and routes recommendations for human approval before any financial action."
+            eyebrow={eyebrow}
+            title={title}
+            description={description}
           />
         </ScrollReveal>
 

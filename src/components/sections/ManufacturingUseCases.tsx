@@ -5,9 +5,12 @@ import {
   Activity,
   BadgeDollarSign,
   Boxes,
+  ChartNoAxesCombined,
   FileSearch,
   LineChart,
   ScanSearch,
+  ShieldCheck,
+  Truck,
   UsersRound,
   type LucideIcon,
 } from "lucide-react";
@@ -20,9 +23,12 @@ const iconMap: Record<string, LucideIcon> = {
   Activity,
   BadgeDollarSign,
   Boxes,
+  ChartNoAxesCombined,
   FileSearch,
   LineChart,
   ScanSearch,
+  ShieldCheck,
+  Truck,
   UsersRound,
 };
 

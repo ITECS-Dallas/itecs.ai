@@ -5,6 +5,7 @@ import {
   AI_SEO_OVERVIEW,
   AI_SEO_TIERS,
   MANUFACTURING_VERTICAL,
+  MANUFACTURING_SPOKE_PAGES,
   PPV_AGENT_USE_CASE,
 } from "@/lib/constants";
 
@@ -45,6 +46,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly" as const,
       priority: 0.85,
     },
+    ...MANUFACTURING_SPOKE_PAGES.map((page) => ({
+      url: `${base}${page.href}`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.82,
+    })),
   ];
 
   return [

@@ -96,10 +96,19 @@ export const MEGA_MENU_CATEGORIES: MegaMenuCategory[] = [
   },
   {
     num: "03",
-    name: "Manufacturing AI",
+    name: "Industries",
     links: [
       { label: "Manufacturing AI Hub", href: "/manufacturing" },
       { label: "PPV Agent", href: "/manufacturing/ppv-agent" },
+      { label: "Demand & S&OP", href: "/manufacturing/demand-forecasting-sop-ai" },
+      { label: "Predictive Maintenance", href: "/manufacturing/predictive-maintenance-ai" },
+      { label: "Inventory & Working Capital", href: "/manufacturing/inventory-working-capital-ai" },
+      { label: "Quality & Traceability", href: "/manufacturing/quality-traceability-ai" },
+      { label: "Customer/SKU Profitability", href: "/manufacturing/customer-sku-profitability-ai" },
+      { label: "Production Planning", href: "/manufacturing/production-scheduling-yield-ai" },
+      { label: "Contract Recovery", href: "/manufacturing/contract-pass-through-intelligence" },
+      { label: "Energy & Freight", href: "/manufacturing/energy-freight-scope-3-ai" },
+      { label: "Vendor Anomaly Detection", href: "/manufacturing/vendor-payment-anomaly-ai" },
     ],
   },
   {
@@ -3572,6 +3581,74 @@ export interface PPVAgentUseCaseContent {
   faq: { question: string; answer: string }[];
 }
 
+export type ManufacturingSpokeChartMode = "timeline" | "matrix" | "waterfall";
+
+export interface ManufacturingSpokeChart {
+  mode: ManufacturingSpokeChartMode;
+  eyebrow: string;
+  title: string;
+  description: string;
+  summaryMetric: {
+    label: string;
+    value: string;
+    detail: string;
+  };
+  signals: {
+    label: string;
+    value: string;
+    detail: string;
+    score: number;
+    tone: "risk" | "watch" | "recoverable" | "stable";
+  }[];
+  notes: string[];
+}
+
+export interface ManufacturingSpokePageContent {
+  slug: string;
+  title: string;
+  shortTitle: string;
+  description: string;
+  href: string;
+  h1: string;
+  eyebrow: string;
+  heroSummary: string;
+  longDescription: string;
+  primaryCta: string;
+  primaryCtaHref: string;
+  secondaryCta: string;
+  secondaryCtaHref: string;
+  keywords: string[];
+  stats: { value: string; label: string }[];
+  pain: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    proof: string;
+  };
+  chart: ManufacturingSpokeChart;
+  capabilities: ManufacturingProofGroup[];
+  scenario: {
+    title: string;
+    description: string;
+    startingPoint: string;
+    scopedOutcome: string;
+  };
+  dataInputs: { label: string; description: string }[];
+  workflow: { title: string; description: string }[];
+  governance: string[];
+  roadmap: { step: string; description: string }[];
+  comparison: { label: string; traditional: string; ai: string }[];
+  roiStatement: string;
+  pricingNotes: string[];
+  security: {
+    description: string;
+    points: string[];
+    externalLink?: { text: string; href: string };
+  };
+  relatedHrefs: string[];
+  faq: { question: string; answer: string }[];
+}
+
 export const MANUFACTURING_CFO_SIGNAL_CHART: ManufacturingMetricChart = {
   eyebrow: "Example CFO signal board",
   title: "The Metrics a Manufacturing AI System Should Make Visible",
@@ -3824,6 +3901,8 @@ export const MANUFACTURING_VERTICAL: ManufacturingPageContent = {
         "Use machine, maintenance, and production signals to identify line risk before unplanned downtime disrupts throughput.",
       outcome: "Higher uptime and better capacity planning",
       icon: "Activity",
+      href: "/manufacturing/predictive-maintenance-ai",
+      ctaLabel: "View maintenance use case",
     },
     {
       title: "Demand Forecasting and S&OP Intelligence",
@@ -3831,13 +3910,17 @@ export const MANUFACTURING_VERTICAL: ManufacturingPageContent = {
         "Connect customer demand, order history, macro signals, and production constraints into forecast scenarios leaders can interrogate.",
       outcome: "Better production and inventory decisions",
       icon: "LineChart",
+      href: "/manufacturing/demand-forecasting-sop-ai",
+      ctaLabel: "View forecasting use case",
     },
     {
-      title: "Quality Anomaly Detection",
+      title: "Quality, Traceability, and Recall Risk Intelligence",
       description:
-        "Surface unusual defect, hold, supplier, lot, warranty, or inspection patterns earlier in the quality workflow.",
+        "Surface unusual defect, hold, supplier, lot, warranty, or inspection patterns earlier and keep traceability evidence usable.",
       outcome: "Lower rework, chargebacks, and recall exposure",
       icon: "ScanSearch",
+      href: "/manufacturing/quality-traceability-ai",
+      ctaLabel: "View quality use case",
     },
     {
       title: "Inventory and Working Capital Optimization",
@@ -3845,20 +3928,53 @@ export const MANUFACTURING_VERTICAL: ManufacturingPageContent = {
         "Identify excess, short, aging, and risk-weighted inventory positions across raw materials, WIP, finished goods, and critical parts.",
       outcome: "Cash released without starving production",
       icon: "Boxes",
+      href: "/manufacturing/inventory-working-capital-ai",
+      ctaLabel: "View inventory use case",
     },
     {
-      title: "Contract Intelligence and Pass-Through Tracking",
+      title: "Customer and SKU Profitability Intelligence",
       description:
-        "Review customer and supplier agreements for escalators, audit rights, renewal windows, and recoverable cost movement.",
-      outcome: "Less margin leakage hidden in contract language",
-      icon: "FileSearch",
+        "Trace margin by customer, SKU, plant, program, and service requirement so finance can see which growth is actually profitable.",
+      outcome: "Cleaner pricing and customer margin decisions",
+      icon: "ChartNoAxesCombined",
+      href: "/manufacturing/customer-sku-profitability-ai",
+      ctaLabel: "View profitability use case",
     },
     {
-      title: "Production Yield and Labor Planning",
+      title: "Production Scheduling, Yield, and Labor Planning",
       description:
         "Connect schedule, labor, yield, and line-performance data so planners can see bottlenecks before the shift starts.",
       outcome: "More predictable throughput with the same team",
       icon: "UsersRound",
+      href: "/manufacturing/production-scheduling-yield-ai",
+      ctaLabel: "View production use case",
+    },
+    {
+      title: "Contract Intelligence and Pass-Through Recovery",
+      description:
+        "Review customer and supplier agreements for escalators, audit rights, renewal windows, and recoverable cost movement.",
+      outcome: "Less margin leakage hidden in contract language",
+      icon: "FileSearch",
+      href: "/manufacturing/contract-pass-through-intelligence",
+      ctaLabel: "View contract use case",
+    },
+    {
+      title: "Energy, Freight, and Scope 3 Reporting Intelligence",
+      description:
+        "Combine utility, lane, carrier, packaging, and supplier signals into executive cost and customer reporting views.",
+      outcome: "Better cost control and customer evidence",
+      icon: "Truck",
+      href: "/manufacturing/energy-freight-scope-3-ai",
+      ctaLabel: "View cost intelligence use case",
+    },
+    {
+      title: "Vendor Payment and Finance Anomaly Detection",
+      description:
+        "Find duplicate payments, vendor master drift, unusual terms, and approval exceptions before they become close or audit problems.",
+      outcome: "Cleaner finance operations and fewer leakage points",
+      icon: "ShieldCheck",
+      href: "/manufacturing/vendor-payment-anomaly-ai",
+      ctaLabel: "View anomaly use case",
     },
   ],
   assessment: {
@@ -4157,3 +4273,2481 @@ export const PPV_AGENT_USE_CASE: PPVAgentUseCaseContent = {
     },
   ],
 };
+
+export const MANUFACTURING_SPOKE_PAGES: ManufacturingSpokePageContent[] = [
+  {
+    slug: "demand-forecasting-sop-ai",
+    title: "Manufacturing Demand Forecasting & S&OP AI",
+    shortTitle: "Demand & S&OP",
+    description:
+      "Manufacturing AI for demand forecasting, S&OP scenarios, inventory exposure, service risk, and production planning decisions.",
+    href: "/manufacturing/demand-forecasting-sop-ai",
+    h1: "Demand Forecasting and S&OP Intelligence for Manufacturing",
+    eyebrow: "Manufacturing AI for forecast confidence",
+    heroSummary:
+      "ITECS helps manufacturers connect order history, customer demand, inventory, production constraints, and market signals into governed S&OP intelligence leaders can question before they commit cash, capacity, or supplier volume.",
+    longDescription:
+      "The goal is not a prettier forecast. The goal is a planning system that shows where demand uncertainty will affect service levels, working capital, plant utilization, purchasing exposure, and customer commitments.",
+    primaryCta: "Plan a Demand Forecasting Workshop",
+    primaryCtaHref: "/contact",
+    secondaryCta: "Return to Manufacturing AI",
+    secondaryCtaHref: "/manufacturing",
+    keywords: [
+      "manufacturing demand forecasting AI",
+      "S&OP AI for manufacturers",
+      "AI sales and operations planning",
+      "manufacturing forecast accuracy",
+      "AI production planning",
+    ],
+    stats: [
+      { value: "Daily", label: "forecast confidence changes" },
+      { value: "SKU", label: "customer and program visibility" },
+      { value: "S&OP", label: "scenario-ready planning views" },
+    ],
+    pain: {
+      eyebrow: "Planning pressure",
+      title: "Forecast Error Becomes Inventory, Expedite Cost, or Missed Service",
+      description:
+        "Manufacturers often run S&OP from static demand files, spreadsheet overrides, and disconnected production assumptions. By the time forecast error is visible, purchasing, labor, and customer commitments may already be locked.",
+      proof:
+        "A governed forecasting agent should explain what changed, which demand signal moved, what confidence band applies, and how the change affects inventory, production, procurement, and customer service.",
+    },
+    chart: {
+      mode: "timeline",
+      eyebrow: "Illustrative forecast signal",
+      title: "Forecast Confidence by Planning Horizon",
+      description:
+        "A planning view should separate near-term order certainty from mid-term customer volatility and long-range capacity risk.",
+      summaryMetric: {
+        label: "At-risk demand",
+        value: "$4.8M",
+        detail: "Open revenue tied to low-confidence forecast bands",
+      },
+      signals: [
+        {
+          label: "Firm orders",
+          value: "93%",
+          detail: "Next 14 days supported by customer orders",
+          score: 93,
+          tone: "stable",
+        },
+        {
+          label: "Promotion and program lift",
+          value: "71%",
+          detail: "Demand sensitive to customer mix and timing",
+          score: 71,
+          tone: "watch",
+        },
+        {
+          label: "Supplier-constrained SKUs",
+          value: "$1.2M",
+          detail: "Forecast demand exposed to constrained inputs",
+          score: 58,
+          tone: "risk",
+        },
+        {
+          label: "Recoverable inventory plan",
+          value: "$740K",
+          detail: "Safety stock that can be reduced with confidence",
+          score: 66,
+          tone: "recoverable",
+        },
+      ],
+      notes: [
+        "Shows forecast confidence by SKU, customer, plant, and horizon",
+        "Connects demand changes to inventory, procurement, and capacity decisions",
+        "Keeps planner overrides visible instead of burying them in spreadsheet versions",
+      ],
+    },
+    capabilities: [
+      {
+        title: "Demand signal fusion",
+        description:
+          "Combine order history, customer programs, seasonality, promotions, macro signals, and planner overrides into one governed planning view.",
+        points: [
+          "Forecast confidence bands by SKU, customer, plant, and horizon",
+          "Outlier detection for sudden demand shifts and abnormal order patterns",
+          "Planner override tracking with rationale and version history",
+        ],
+      },
+      {
+        title: "S&OP scenario modeling",
+        description:
+          "Translate demand changes into operational scenarios before leaders commit capacity, labor, inventory, or supplier volume.",
+        points: [
+          "What-if scenarios for demand upside, shortfall, supplier delay, and capacity limits",
+          "Projected impact on service levels, inventory, cash, and line utilization",
+          "Executive-ready summaries for S&OP meetings",
+        ],
+      },
+      {
+        title: "Procurement and inventory alignment",
+        description:
+          "Connect forecast movement to purchasing exposure, safety stock, and raw material commitments.",
+        points: [
+          "Demand-driven raw material and component exposure views",
+          "Early warnings for expedited freight and service risk",
+          "Links to PPV and working capital use cases",
+        ],
+      },
+    ],
+    scenario: {
+      title: "Anonymized S&OP scenario",
+      description:
+        "A manufacturer with customer concentration and long material lead times needs a better way to see which forecast changes will turn into cash or service problems.",
+      startingPoint:
+        "Demand planning runs through ERP exports, Power BI reports, and manual spreadsheet adjustments that are not consistently connected to procurement or production constraints.",
+      scopedOutcome:
+        "ITECS scopes a demand intelligence layer that reconciles forecast versions, flags confidence changes, and produces S&OP scenarios for finance, supply chain, and operations review.",
+    },
+    dataInputs: [
+      {
+        label: "Orders and shipment history",
+        description:
+          "Customer orders, shipments, cancellations, lead times, demand history, and seasonality.",
+      },
+      {
+        label: "Forecast and planner overrides",
+        description:
+          "Baseline forecasts, account-level changes, promotion assumptions, and manual adjustments.",
+      },
+      {
+        label: "Inventory and commitments",
+        description:
+          "Raw, WIP, finished goods, safety stock, open purchase orders, and supplier lead times.",
+      },
+      {
+        label: "Production constraints",
+        description:
+          "Capacity, line rates, changeovers, labor assumptions, bottlenecks, and maintenance windows.",
+      },
+      {
+        label: "Customer and market signals",
+        description:
+          "Customer programs, foodservice or retail signals, weather, regional demand, and macro indicators when relevant.",
+      },
+    ],
+    workflow: [
+      {
+        title: "Ingest",
+        description:
+          "Read approved demand, order, inventory, procurement, and production data.",
+      },
+      {
+        title: "Compare",
+        description:
+          "Detect changes between forecast versions, actual orders, and planner overrides.",
+      },
+      {
+        title: "Model",
+        description:
+          "Generate confidence bands and scenario impacts for service, inventory, and capacity.",
+      },
+      {
+        title: "Explain",
+        description:
+          "Draft S&OP commentary with source-backed assumptions and affected SKUs or customers.",
+      },
+      {
+        title: "Approve",
+        description:
+          "Route production, procurement, and inventory recommendations to the right human owners.",
+      },
+    ],
+    governance: [
+      "The system can recommend forecast changes, but planners approve the demand plan.",
+      "The system does not autonomously change customer commitments, production schedules, or purchase orders.",
+      "All assumptions, overrides, and scenario inputs remain visible for executive review.",
+      "Role-based access separates account, finance, supply chain, and plant-level views.",
+    ],
+    roadmap: [
+      {
+        step: "Forecast method review",
+        description:
+          "Document current forecast sources, planner overrides, S&OP cadence, and pain points.",
+      },
+      {
+        step: "Historical backtest",
+        description:
+          "Compare model output against prior demand periods and known misses.",
+      },
+      {
+        step: "Scenario cockpit",
+        description:
+          "Add planning scenarios for capacity, inventory, procurement, and service levels.",
+      },
+      {
+        step: "S&OP workflow",
+        description:
+          "Embed approvals, commentary, and decision records into the planning cadence.",
+      },
+    ],
+    comparison: [
+      {
+        label: "Planning cadence",
+        traditional: "Monthly forecast refresh",
+        ai: "Continuous signal changes with S&OP-ready summaries",
+      },
+      {
+        label: "Forecast confidence",
+        traditional: "Single number by SKU",
+        ai: "Confidence bands by horizon and driver",
+      },
+      {
+        label: "Scenario impact",
+        traditional: "Manual meeting prep",
+        ai: "Modeled effect on service, inventory, capacity, and cash",
+      },
+      {
+        label: "Overrides",
+        traditional: "Hidden in spreadsheet versions",
+        ai: "Tracked with owner, rationale, and timing",
+      },
+    ],
+    roiStatement:
+      "The value is better commitment discipline: less excess inventory, fewer expedites, clearer service risk, and faster executive decisions when demand changes.",
+    pricingNotes: [
+      "Discovery starts with historical forecast accuracy and the current S&OP process",
+      "The first proof point is a backtest against prior demand periods",
+      "Production recommendations remain human-approved",
+    ],
+    security: {
+      description:
+        "Demand planning can expose customer, pricing, production, and inventory data. ITECS scopes access so each role sees the planning signals they are allowed to use.",
+      points: [
+        "Read-only discovery before production workflow integration",
+        "Versioned demand assumptions and planner overrides",
+        "No autonomous changes to customer commitments, production schedules, or purchase orders",
+        "Audit history for forecast recommendations and approvals",
+      ],
+    },
+    relatedHrefs: [
+      "/manufacturing/ppv-agent",
+      "/manufacturing/inventory-working-capital-ai",
+      "/manufacturing/production-scheduling-yield-ai",
+    ],
+    faq: [
+      {
+        question: "What makes AI demand forecasting different from a normal forecast report?",
+        answer:
+          "The agent does not just show a forecast number. It explains signal changes, confidence bands, planner overrides, and the operational impact on service, inventory, purchasing, and capacity.",
+      },
+      {
+        question: "Does this replace the S&OP team?",
+        answer:
+          "No. It supports the S&OP team with better evidence, scenario modeling, and faster commentary. Planners and executives still approve the plan.",
+      },
+      {
+        question: "Can this work before we have a perfect data warehouse?",
+        answer:
+          "Yes, if the right order, shipment, forecast, inventory, and production data can be accessed and reconciled for a focused pilot.",
+      },
+      {
+        question: "What data is needed for a demand forecasting AI pilot?",
+        answer:
+          "A focused pilot typically starts with order history, shipment history, current forecasts, planner overrides, inventory, supplier lead times, production constraints, and any customer or market signals already used in planning.",
+      },
+      {
+        question: "Can this work with ERP and Power BI reporting?",
+        answer:
+          "Yes. ITECS reviews the ERP, Power BI semantic model, spreadsheet planning files, and source-system ownership during discovery before recommending the integration pattern.",
+      },
+      {
+        question: "How does demand forecasting connect to PPV?",
+        answer:
+          "Demand changes affect purchase commitments and material exposure. Linking demand forecasting to PPV helps finance see whether forecast movement will create future unfavorable variance.",
+      },
+    ],
+  },
+  {
+    slug: "predictive-maintenance-ai",
+    title: "Predictive Maintenance AI for Manufacturers",
+    shortTitle: "Predictive Maintenance",
+    description:
+      "Manufacturing AI for downtime forecasting, asset risk prioritization, work-order intelligence, and maintenance decision support.",
+    href: "/manufacturing/predictive-maintenance-ai",
+    h1: "Predictive Maintenance and Downtime Forecasting",
+    eyebrow: "Manufacturing AI for asset reliability",
+    heroSummary:
+      "ITECS helps manufacturers turn machine, maintenance, production, and quality signals into downtime risk intelligence so plant leaders can prioritize work before a critical line loses capacity.",
+    longDescription:
+      "Predictive maintenance is not useful when it only produces sensor alerts. It becomes valuable when it connects asset risk to production schedule, labor availability, quality risk, spare parts, and the financial cost of downtime.",
+    primaryCta: "Plan a Maintenance AI Workshop",
+    primaryCtaHref: "/contact",
+    secondaryCta: "Return to Manufacturing AI",
+    secondaryCtaHref: "/manufacturing",
+    keywords: [
+      "predictive maintenance AI manufacturing",
+      "downtime forecasting AI",
+      "manufacturing asset reliability AI",
+      "AI maintenance planning",
+      "plant downtime intelligence",
+    ],
+    stats: [
+      { value: "Asset", label: "health and risk scoring" },
+      { value: "Line", label: "downtime impact context" },
+      { value: "CMMS", label: "work-order intelligence" },
+    ],
+    pain: {
+      eyebrow: "Reliability pressure",
+      title: "Downtime Risk Is Usually Visible Somewhere Before the Line Stops",
+      description:
+        "Maintenance teams often see warning signs across sensor readings, work orders, operator notes, quality drift, and production performance. The challenge is connecting those signals early enough to prioritize action.",
+      proof:
+        "A maintenance intelligence agent should rank risk by asset, line, production impact, spare-part readiness, and confidence instead of flooding teams with disconnected alerts.",
+    },
+    chart: {
+      mode: "matrix",
+      eyebrow: "Illustrative asset risk matrix",
+      title: "Downtime Risk by Asset and Production Impact",
+      description:
+        "A plant-ready view should show which assets deserve attention first because they combine failure probability with production consequence.",
+      summaryMetric: {
+        label: "Capacity at risk",
+        value: "18 hrs",
+        detail: "Modeled line time exposed over the next two weeks",
+      },
+      signals: [
+        {
+          label: "Mixer drive assembly",
+          value: "High",
+          detail: "Rising vibration and recurring work-order notes",
+          score: 88,
+          tone: "risk",
+        },
+        {
+          label: "Packaging line servo",
+          value: "Watch",
+          detail: "Cycle-time drift during high-volume runs",
+          score: 64,
+          tone: "watch",
+        },
+        {
+          label: "Chiller compressor",
+          value: "Stable",
+          detail: "No material deviation from operating envelope",
+          score: 32,
+          tone: "stable",
+        },
+        {
+          label: "Spare parts readiness",
+          value: "72%",
+          detail: "Critical spares available for flagged work",
+          score: 72,
+          tone: "recoverable",
+        },
+      ],
+      notes: [
+        "Combines asset health with production schedule impact",
+        "Prioritizes maintenance actions by consequence, not alert volume",
+        "Keeps work-order recommendations routed through existing approval paths",
+      ],
+    },
+    capabilities: [
+      {
+        title: "Asset risk scoring",
+        description:
+          "Rank equipment by failure likelihood, production consequence, quality impact, and maintenance readiness.",
+        points: [
+          "Machine, work-order, operator, and production-signal analysis",
+          "Asset-level risk scores with confidence and supporting evidence",
+          "Downtime cost context for finance and operations",
+        ],
+      },
+      {
+        title: "Work-order intelligence",
+        description:
+          "Help maintenance leaders decide which work orders need attention before they become line events.",
+        points: [
+          "Recurring issue detection across historical work orders",
+          "Spare-part and labor readiness checks",
+          "Drafted maintenance recommendations for supervisor review",
+        ],
+      },
+      {
+        title: "Schedule-aware maintenance",
+        description:
+          "Connect maintenance risk to production schedule, customer commitments, and changeover windows.",
+        points: [
+          "Maintenance timing options based on line utilization",
+          "Risk escalation before high-volume or constrained runs",
+          "Evidence for capex, reliability, and maintenance staffing decisions",
+        ],
+      },
+    ],
+    scenario: {
+      title: "Anonymized downtime scenario",
+      description:
+        "A manufacturer has recurring micro-stops and inconsistent work-order notes on a high-volume line, but the team struggles to quantify which issue deserves attention first.",
+      startingPoint:
+        "Maintenance data sits in a CMMS, production losses are tracked separately, and plant leaders rely on manual tribal knowledge to prioritize work.",
+      scopedOutcome:
+        "ITECS scopes a downtime risk layer that ranks assets by probability, consequence, production schedule, spare readiness, and human-approved work recommendations.",
+    },
+    dataInputs: [
+      {
+        label: "Asset and equipment hierarchy",
+        description:
+          "Lines, machines, components, criticality, OEM data, and maintenance ownership.",
+      },
+      {
+        label: "Work orders and failure history",
+        description:
+          "Corrective work, preventive work, parts used, technician notes, downtime reason codes, and recurrence.",
+      },
+      {
+        label: "Production and quality signals",
+        description:
+          "Cycle time, throughput, stops, yield, scrap, quality drift, and affected products.",
+      },
+      {
+        label: "Sensor or historian data",
+        description:
+          "Temperature, vibration, pressure, amperage, runtime, and other available machine readings.",
+      },
+      {
+        label: "Schedule and spare parts",
+        description:
+          "Upcoming production demand, planned downtime windows, inventory of critical spares, and labor availability.",
+      },
+    ],
+    workflow: [
+      {
+        title: "Collect",
+        description:
+          "Read approved CMMS, production, quality, sensor, and schedule data.",
+      },
+      {
+        title: "Detect",
+        description:
+          "Identify abnormal asset patterns, recurring failures, and production loss signatures.",
+      },
+      {
+        title: "Prioritize",
+        description:
+          "Rank issues by downtime probability, production consequence, quality risk, and readiness.",
+      },
+      {
+        title: "Recommend",
+        description:
+          "Draft work-order, inspection, parts, or scheduling recommendations for supervisor review.",
+      },
+      {
+        title: "Review",
+        description:
+          "Keep maintenance execution inside existing work-order and approval processes.",
+      },
+    ],
+    governance: [
+      "The system can recommend maintenance work, but supervisors approve work orders.",
+      "The system does not autonomously stop lines, reschedule production, or purchase parts.",
+      "Model evidence is preserved so plant leaders can see why an asset was flagged.",
+      "Access can be scoped by plant, line, maintenance role, and executive reporting need.",
+    ],
+    roadmap: [
+      {
+        step: "Reliability data review",
+        description:
+          "Map asset hierarchy, work-order quality, downtime reasons, and available plant signals.",
+      },
+      {
+        step: "Historical event model",
+        description:
+          "Backtest known failures and downtime events against available leading indicators.",
+      },
+      {
+        step: "Risk dashboard",
+        description:
+          "Build asset risk views with production impact and recommended next action.",
+      },
+      {
+        step: "CMMS workflow",
+        description:
+          "Route human-approved recommendations into the maintenance planning process.",
+      },
+    ],
+    comparison: [
+      {
+        label: "Downtime visibility",
+        traditional: "Known after production loss",
+        ai: "Flagged earlier from asset and production signals",
+      },
+      {
+        label: "Priority setting",
+        traditional: "Based on urgency and tribal knowledge",
+        ai: "Ranked by probability, impact, and readiness",
+      },
+      {
+        label: "Work orders",
+        traditional: "Manual notes and follow-up",
+        ai: "Evidence-backed recommendations for supervisor approval",
+      },
+      {
+        label: "Executive view",
+        traditional: "Downtime history",
+        ai: "Capacity risk and avoided disruption scenarios",
+      },
+    ],
+    roiStatement:
+      "The value is protecting capacity: fewer avoidable line events, better maintenance timing, more credible capex decisions, and less firefighting across production shifts.",
+    pricingNotes: [
+      "Discovery validates CMMS quality and available machine signals",
+      "The first model should backtest against known downtime events",
+      "Execution stays inside human-approved maintenance workflows",
+    ],
+    security: {
+      description:
+        "Maintenance AI can touch plant data, asset histories, production schedules, and vendor information. ITECS designs these systems with limited access and controlled write paths.",
+      points: [
+        "Read-first architecture for CMMS, historian, ERP, and production data",
+        "No autonomous line stops, work-order execution, or parts purchases",
+        "Asset and recommendation audit history for plant review",
+        "Scoped access by plant, line, role, and reporting level",
+      ],
+    },
+    relatedHrefs: [
+      "/manufacturing/production-scheduling-yield-ai",
+      "/manufacturing/quality-traceability-ai",
+      "/manufacturing/inventory-working-capital-ai",
+    ],
+    faq: [
+      {
+        question: "Do we need sensor data to start predictive maintenance?",
+        answer:
+          "Sensor data helps, but many pilots can start by combining work orders, downtime reasons, production performance, quality signals, and asset criticality.",
+      },
+      {
+        question: "Will the system create work orders automatically?",
+        answer:
+          "It can draft or recommend work-order actions, but maintenance supervisors approve execution according to the client's existing process.",
+      },
+      {
+        question: "How does this differ from a CMMS dashboard?",
+        answer:
+          "A CMMS dashboard shows maintenance records. The agent connects those records to production impact, schedule context, recurring signals, and recommended actions.",
+      },
+      {
+        question: "Can this help justify capex?",
+        answer:
+          "Yes. When the data supports it, the system can quantify recurring downtime patterns and capacity risk to strengthen repair, replacement, or automation business cases.",
+      },
+      {
+        question: "What data is needed for a predictive maintenance AI pilot?",
+        answer:
+          "ITECS typically starts with asset hierarchy, work-order history, downtime reason codes, production performance, quality signals, spare-part availability, and any available sensor or historian data.",
+      },
+      {
+        question: "Can this work with CMMS, ERP, and plant sensor data?",
+        answer:
+          "Yes. Discovery confirms which systems are authoritative, then the first pilot connects only the approved CMMS, ERP, production, quality, and sensor signals needed for the scoped reliability use case.",
+      },
+    ],
+  },
+  {
+    slug: "inventory-working-capital-ai",
+    title: "Inventory & Working Capital AI for Manufacturers",
+    shortTitle: "Inventory & Working Capital",
+    description:
+      "Manufacturing AI for inventory rightsizing, aging stock, service risk, cash conversion, and working capital decisions.",
+    href: "/manufacturing/inventory-working-capital-ai",
+    h1: "Inventory and Working Capital Optimization",
+    eyebrow: "Manufacturing AI for cash and service balance",
+    heroSummary:
+      "ITECS helps manufacturers see which raw, WIP, finished-goods, spare-parts, and constrained inventory positions are protecting service and which are quietly trapping cash.",
+    longDescription:
+      "Inventory AI should not blindly cut stock. It should help leaders distinguish strategic buffers from stale, excess, obsolete, supplier-sensitive, or forecast-sensitive positions while making cash conversion and service impact visible.",
+    primaryCta: "Plan an Inventory AI Workshop",
+    primaryCtaHref: "/contact",
+    secondaryCta: "Return to Manufacturing AI",
+    secondaryCtaHref: "/manufacturing",
+    keywords: [
+      "manufacturing inventory optimization AI",
+      "working capital AI manufacturing",
+      "AI inventory rightsizing",
+      "manufacturing cash conversion AI",
+      "excess inventory analytics",
+    ],
+    stats: [
+      { value: "Cash", label: "inventory exposure visibility" },
+      { value: "Aging", label: "raw, WIP, finished goods, and spares" },
+      { value: "Service", label: "stockout and fill-rate context" },
+    ],
+    pain: {
+      eyebrow: "Working capital pressure",
+      title: "Inventory Is Either Insurance, Waste, or Cash Waiting for a Decision",
+      description:
+        "Manufacturers hold inventory to protect service, but disconnected demand, supplier, production, and finance views make it hard to know which positions are useful and which are margin leakage.",
+      proof:
+        "An inventory intelligence agent should show the reason a position exists, the risk it protects, the cash it consumes, and the human-approved action path.",
+    },
+    chart: {
+      mode: "waterfall",
+      eyebrow: "Illustrative cash exposure bridge",
+      title: "Inventory Cash by Risk and Action Type",
+      description:
+        "A CFO-ready inventory view should separate required buffers from aging, excess, constrained, and recoverable positions.",
+      summaryMetric: {
+        label: "Cash reviewed",
+        value: "$6.4M",
+        detail: "Illustrative inventory positions requiring action review",
+      },
+      signals: [
+        {
+          label: "Service-critical buffer",
+          value: "$2.1M",
+          detail: "Inventory protecting constrained customers or lines",
+          score: 72,
+          tone: "stable",
+        },
+        {
+          label: "Aging finished goods",
+          value: "$1.3M",
+          detail: "Demand confidence below current inventory position",
+          score: 68,
+          tone: "risk",
+        },
+        {
+          label: "Excess raw material",
+          value: "$940K",
+          detail: "Open demand and BOM usage do not support coverage",
+          score: 57,
+          tone: "watch",
+        },
+        {
+          label: "Transfer or consume candidate",
+          value: "$610K",
+          detail: "Recoverable through plant transfer, substitution, or run plan",
+          score: 64,
+          tone: "recoverable",
+        },
+      ],
+      notes: [
+        "Separates cash tied to service protection from avoidable excess",
+        "Links inventory to forecast confidence, PPV exposure, and production plans",
+        "Routes write-down, transfer, and purchasing actions for review",
+      ],
+    },
+    capabilities: [
+      {
+        title: "Inventory exposure segmentation",
+        description:
+          "Classify inventory by business reason instead of treating all stock as either good or bad.",
+        points: [
+          "Raw, WIP, finished goods, spare parts, and constrained materials",
+          "Aging, excess, obsolete, shortage, and service-critical positions",
+          "Cash view by plant, SKU, supplier, customer, and program",
+        ],
+      },
+      {
+        title: "Forecast and service alignment",
+        description:
+          "Connect demand confidence to current inventory and service commitments.",
+        points: [
+          "Coverage windows by demand scenario",
+          "Stockout risk and excess risk in the same view",
+          "Recommended planner review before purchase or write-down action",
+        ],
+      },
+      {
+        title: "Working capital action queue",
+        description:
+          "Prepare action candidates for finance, supply chain, and plant review.",
+        points: [
+          "Buy, hold, consume, transfer, substitute, discount, or reserve recommendations",
+          "Financial impact estimates with assumptions visible",
+          "Decision records for audit and post-action review",
+        ],
+      },
+    ],
+    scenario: {
+      title: "Anonymized working capital scenario",
+      description:
+        "A manufacturer sees inventory rising while customer service remains uneven. Finance wants cash relief, but operations does not want to starve production.",
+      startingPoint:
+        "ERP and Power BI show balances, inventory turns, and days inventory outstanding, but not the reason each position exists or what decision would safely reduce cash tied up in inventory.",
+      scopedOutcome:
+        "ITECS scopes an inventory intelligence layer that segments inventory by risk, demand support, production need, and action path.",
+    },
+    dataInputs: [
+      {
+        label: "Inventory balances",
+        description:
+          "Raw, WIP, finished goods, spare parts, lots, locations, aging, holds, and valuation.",
+      },
+      {
+        label: "Demand and production plans",
+        description:
+          "Forecasts, orders, production schedules, BOMs, formulas, routings, and usage history.",
+      },
+      {
+        label: "Procurement and supplier data",
+        description:
+          "Open POs, minimum buys, lead times, supplier constraints, price movement, and substitutes.",
+      },
+      {
+        label: "Finance and service metrics",
+        description:
+          "Working capital, reserves, write-down history, fill rates, shortages, and customer priorities.",
+      },
+    ],
+    workflow: [
+      {
+        title: "Profile",
+        description:
+          "Read inventory, demand, production, procurement, and finance data.",
+      },
+      {
+        title: "Segment",
+        description:
+          "Classify positions by service protection, shortage risk, aging, excess, and recoverability.",
+      },
+      {
+        title: "Model",
+        description:
+          "Estimate cash impact, service risk, and operating constraints by action path.",
+      },
+      {
+        title: "Recommend",
+        description:
+          "Draft buy, hold, transfer, consume, reserve, or review recommendations.",
+      },
+      {
+        title: "Approve",
+        description:
+          "Route actions to finance, supply chain, and plant owners before execution.",
+      },
+    ],
+    governance: [
+      "The system can recommend inventory actions, but it does not autonomously write down, scrap, transfer, or purchase stock.",
+      "Inventory decisions preserve demand, finance, and operational assumptions.",
+      "Access can be scoped by plant, role, product family, and financial sensitivity.",
+      "Recommendations include confidence and source-data references.",
+    ],
+    roadmap: [
+      {
+        step: "Inventory profile review",
+        description:
+          "Map current inventory reporting, data quality, ownership, and decision cadence.",
+      },
+      {
+        step: "Cash and service segmentation",
+        description:
+          "Classify inventory by business purpose and risk type.",
+      },
+      {
+        step: "Action model",
+        description:
+          "Add recommended actions and financial impact estimates for review.",
+      },
+      {
+        step: "Working capital workflow",
+        description:
+          "Embed review queues into finance and supply chain routines.",
+      },
+    ],
+    comparison: [
+      {
+        label: "Inventory view",
+        traditional: "Turns and balances",
+        ai: "Cash, service, risk, and action context",
+      },
+      {
+        label: "Aging stock",
+        traditional: "Periodic reports",
+        ai: "Action queue with demand and production rationale",
+      },
+      {
+        label: "Shortage risk",
+        traditional: "Planner escalation",
+        ai: "Forecast, supplier, and line-risk signal",
+      },
+      {
+        label: "Governance",
+        traditional: "Manual approvals",
+        ai: "Traceable recommendations and decisions",
+      },
+    ],
+    roiStatement:
+      "The value is disciplined cash release: reduce avoidable inventory without weakening service, production continuity, or supplier risk controls.",
+    pricingNotes: [
+      "Discovery validates inventory definitions and current working capital reporting",
+      "The first proof point is segmentation of current inventory positions",
+      "Financial actions remain human-approved",
+    ],
+    security: {
+      description:
+        "Inventory AI touches financial valuation, customer service, production, and supplier data. ITECS designs the system so sensitive financial actions remain controlled.",
+      points: [
+        "Read-first access to ERP, BI, inventory, production, and procurement data",
+        "No autonomous purchasing, write-downs, transfers, or scrap actions",
+        "Decision logs for inventory recommendations",
+        "Role-based visibility for finance, supply chain, plant, and executive users",
+      ],
+    },
+    relatedHrefs: [
+      "/manufacturing/demand-forecasting-sop-ai",
+      "/manufacturing/ppv-agent",
+      "/manufacturing/production-scheduling-yield-ai",
+    ],
+    faq: [
+      {
+        question: "Does inventory AI just reduce stock?",
+        answer:
+          "No. It distinguishes inventory that protects service from inventory that is aging, excess, obsolete, or recoverable through a different action.",
+      },
+      {
+        question: "Can this help finance and operations agree?",
+        answer:
+          "Yes. The page is designed around a shared view of cash, service, production, and supplier risk so teams can make tradeoffs with the same evidence.",
+      },
+      {
+        question: "Does it change inventory records automatically?",
+        answer:
+          "No. It recommends actions for review. Write-downs, transfers, purchases, and scrap decisions remain under human approval.",
+      },
+      {
+        question: "What systems are usually involved?",
+        answer:
+          "ERP, inventory, production planning, procurement, Power BI or reporting models, and sometimes WMS, MES, or spreadsheet planning files.",
+      },
+      {
+        question: "What data is needed for an inventory AI pilot?",
+        answer:
+          "A focused pilot usually starts with inventory balances, aging, valuation, demand forecasts, open orders, production plans, BOMs or formulas, open POs, supplier lead times, and service metrics.",
+      },
+      {
+        question: "How does this improve the cash conversion cycle?",
+        answer:
+          "The system identifies inventory that can be consumed, transferred, reserved, discounted, or paused without creating unacceptable stockout risk, giving finance and operations evidence for DIO and cash conversion improvement.",
+      },
+    ],
+  },
+  {
+    slug: "quality-traceability-ai",
+    title: "Quality, Traceability, and Recall Risk Intelligence",
+    shortTitle: "Quality & Traceability",
+    description:
+      "Manufacturing AI for quality anomaly detection, lot traceability, hold investigation, recall readiness, and supplier quality signals.",
+    href: "/manufacturing/quality-traceability-ai",
+    h1: "Quality, Traceability, and Recall Risk Intelligence",
+    eyebrow: "Manufacturing AI for quality risk",
+    heroSummary:
+      "ITECS helps manufacturers connect quality records, lot history, supplier performance, production context, and customer claims into earlier warnings and faster investigations.",
+    longDescription:
+      "Quality AI should reduce the time between an unusual signal and a controlled response. It needs to support investigation, traceability, and evidence, not bypass quality leadership.",
+    primaryCta: "Plan a Quality AI Workshop",
+    primaryCtaHref: "/contact",
+    secondaryCta: "Return to Manufacturing AI",
+    secondaryCtaHref: "/manufacturing",
+    keywords: [
+      "quality anomaly detection manufacturing AI",
+      "manufacturing traceability AI",
+      "AI recall risk intelligence",
+      "food safety AI manufacturing",
+      "supplier quality AI",
+    ],
+    stats: [
+      { value: "Lot", label: "traceability and genealogy context" },
+      { value: "QA", label: "holds, defects, claims, and investigations" },
+      { value: "Risk", label: "early warning and response evidence" },
+    ],
+    pain: {
+      eyebrow: "Quality pressure",
+      title: "Quality Signals Often Scatter Before the Investigation Starts",
+      description:
+        "Defects, holds, supplier issues, customer claims, lot data, and production context often live in separate systems. That slows root-cause work and makes recall readiness harder to prove.",
+      proof:
+        "A quality intelligence agent should surface abnormal patterns, connect them to lots, suppliers, shifts, lines, and customers, and preserve evidence for human-led response.",
+    },
+    chart: {
+      mode: "timeline",
+      eyebrow: "Illustrative traceability signal",
+      title: "From Quality Signal to Controlled Response",
+      description:
+        "A quality view should show the response path from anomaly detection through lot impact and documented action.",
+      summaryMetric: {
+        label: "Investigation window",
+        value: "4 hrs",
+        detail: "Illustrative target for first evidence package",
+      },
+      signals: [
+        {
+          label: "Defect anomaly",
+          value: "Line 3",
+          detail: "Complaint and inspection pattern above threshold",
+          score: 82,
+          tone: "risk",
+        },
+        {
+          label: "Lot impact map",
+          value: "12 lots",
+          detail: "Affected lots, shifts, materials, and customers identified",
+          score: 76,
+          tone: "watch",
+        },
+        {
+          label: "Supplier signal",
+          value: "2 vendors",
+          detail: "Recent inbound variance tied to affected materials",
+          score: 61,
+          tone: "watch",
+        },
+        {
+          label: "Evidence package",
+          value: "Ready",
+          detail: "QA review bundle prepared for human decision",
+          score: 88,
+          tone: "stable",
+        },
+      ],
+      notes: [
+        "Links defects, holds, lots, suppliers, production context, and customer claims",
+        "Supports quality investigations without making autonomous recall decisions",
+        "Preserves evidence for leadership, customers, and compliance review",
+      ],
+    },
+    capabilities: [
+      {
+        title: "Quality anomaly detection",
+        description:
+          "Find unusual patterns across inspections, claims, defects, holds, line events, and supplier performance.",
+        points: [
+          "Defect, hold, warranty, complaint, and QA record pattern detection",
+          "Line, shift, lot, supplier, material, and SKU correlations",
+          "Early warning lists for QA review",
+        ],
+      },
+      {
+        title: "Traceability intelligence",
+        description:
+          "Connect lot genealogy, production records, BOMs or formulas, materials, and customers into a response-ready view.",
+        points: [
+          "Lot impact maps and containment candidates",
+          "Supplier and material history tied to affected production",
+          "Evidence package drafts for QA leadership",
+        ],
+      },
+      {
+        title: "Recall readiness support",
+        description:
+          "Help teams move faster during investigations while keeping decisions human-owned.",
+        points: [
+          "Controlled response workflow with approvals",
+          "Customer, lot, and inventory exposure views",
+          "Audit history for assumptions and decisions",
+        ],
+      },
+    ],
+    scenario: {
+      title: "Anonymized quality scenario",
+      description:
+        "A manufacturer sees a rise in customer complaints and internal holds, but root-cause work is slowed by disconnected lot, supplier, and production data.",
+      startingPoint:
+        "Quality records, lot traceability, production data, supplier history, and customer claims are available but not connected into one investigation view.",
+      scopedOutcome:
+        "ITECS scopes a quality intelligence layer that flags anomalies, maps impacted lots, and prepares a QA review package with source-backed evidence.",
+    },
+    dataInputs: [
+      {
+        label: "Quality records",
+        description:
+          "Inspections, holds, nonconformances, claims, defects, lab results, and corrective actions.",
+      },
+      {
+        label: "Lot and production history",
+        description:
+          "Lots, batches, genealogy, shift, line, operator, BOMs, formulas, and production records.",
+      },
+      {
+        label: "Supplier and material data",
+        description:
+          "Inbound quality, vendor performance, raw material lots, certificates, and substitutions.",
+      },
+      {
+        label: "Customer and inventory exposure",
+        description:
+          "Shipments, customers, open orders, on-hand inventory, finished goods, and affected locations.",
+      },
+    ],
+    workflow: [
+      {
+        title: "Monitor",
+        description:
+          "Read approved quality, production, lot, supplier, customer, and inventory signals.",
+      },
+      {
+        title: "Detect",
+        description:
+          "Flag unusual patterns and correlate them to lots, lines, shifts, materials, and customers.",
+      },
+      {
+        title: "Map",
+        description:
+          "Prepare impact maps for lots, inventory, shipments, suppliers, and customer exposure.",
+      },
+      {
+        title: "Package",
+        description:
+          "Draft evidence summaries and likely next steps for QA leadership review.",
+      },
+      {
+        title: "Approve",
+        description:
+          "Keep holds, releases, customer notifications, and recall actions under human control.",
+      },
+    ],
+    governance: [
+      "The system can flag quality risk and prepare evidence, but quality leaders approve holds, releases, notices, and recalls.",
+      "The system does not autonomously quarantine inventory or contact customers.",
+      "Investigation assumptions, affected lots, and evidence sources remain traceable.",
+      "Access can be scoped by quality role, plant, product family, and customer sensitivity.",
+    ],
+    roadmap: [
+      {
+        step: "Quality data review",
+        description:
+          "Map quality systems, lot traceability, production records, and claim data.",
+      },
+      {
+        step: "Historical investigation backtest",
+        description:
+          "Recreate prior holds, claims, or defects to test signal quality.",
+      },
+      {
+        step: "Traceability view",
+        description:
+          "Build lot, supplier, production, inventory, and customer impact maps.",
+      },
+      {
+        step: "Controlled response workflow",
+        description:
+          "Route evidence packages and recommendations through QA approvals.",
+      },
+    ],
+    comparison: [
+      {
+        label: "Anomaly detection",
+        traditional: "Manual trend review",
+        ai: "Continuous pattern detection across quality and production data",
+      },
+      {
+        label: "Traceability",
+        traditional: "System-by-system lookup",
+        ai: "Lot impact map with source evidence",
+      },
+      {
+        label: "Response package",
+        traditional: "Built during the investigation",
+        ai: "Drafted for QA review as signals emerge",
+      },
+      {
+        label: "Governance",
+        traditional: "Email and spreadsheet evidence",
+        ai: "Versioned assumptions and approval records",
+      },
+    ],
+    roiStatement:
+      "The value is faster controlled response: fewer surprise escalations, better containment evidence, lower chargeback risk, and stronger customer confidence.",
+    pricingNotes: [
+      "Discovery validates traceability and quality record completeness",
+      "The first proof point should recreate known investigations",
+      "QA and compliance decisions remain human-approved",
+    ],
+    security: {
+      description:
+        "Quality and traceability workflows can involve customer exposure, regulated records, supplier claims, and recall-sensitive information. ITECS keeps the AI layer governed and evidence-driven.",
+      points: [
+        "Read-first access to quality, lot, production, supplier, and customer data",
+        "No autonomous recalls, customer notices, holds, releases, or inventory quarantines",
+        "Evidence logs for lots, assumptions, recommendations, and reviewer decisions",
+        "Role-based access for quality, operations, finance, and executive users",
+      ],
+      externalLink: {
+        text: "FDA Food Traceability Rule",
+        href: "https://www.fda.gov/food/food-safety-modernization-act-fsma/fsma-final-rule-requirements-additional-traceability-records-certain-foods",
+      },
+    },
+    relatedHrefs: [
+      "/manufacturing/predictive-maintenance-ai",
+      "/manufacturing/production-scheduling-yield-ai",
+      "/manufacturing/inventory-working-capital-ai",
+    ],
+    faq: [
+      {
+        question: "Does this make recall decisions automatically?",
+        answer:
+          "No. The system can prepare traceability evidence and risk summaries, but quality and executive leaders approve holds, releases, notifications, and recall decisions.",
+      },
+      {
+        question: "Is this only for food manufacturers?",
+        answer:
+          "No. Food and process manufacturers have strong traceability needs, but the same approach applies to discrete manufacturers managing defects, supplier quality, warranty patterns, and field failures.",
+      },
+      {
+        question: "What is the first proof point?",
+        answer:
+          "A practical first proof point is recreating prior investigations to see whether the system can connect signals and evidence faster than the current process.",
+      },
+      {
+        question: "Can it work with BatchMaster or SAP data?",
+        answer:
+          "Yes, discovery confirms how formulas, lots, quality records, and production history are stored before an integration path is proposed.",
+      },
+    ],
+  },
+  {
+    slug: "customer-sku-profitability-ai",
+    title: "Customer and SKU Profitability Intelligence for Manufacturers",
+    shortTitle: "Customer/SKU Profitability",
+    description:
+      "Manufacturing AI for customer, SKU, plant, program, and contract-level profitability analysis.",
+    href: "/manufacturing/customer-sku-profitability-ai",
+    h1: "Customer and SKU Profitability Intelligence",
+    eyebrow: "Manufacturing AI for margin truth",
+    heroSummary:
+      "ITECS helps manufacturing finance teams see which customers, SKUs, plants, and programs actually create margin after cost movement, service requirements, rebates, chargebacks, freight, and complexity.",
+    longDescription:
+      "Revenue growth can hide unprofitable complexity. Profitability intelligence connects finance, operations, customer terms, production cost, and service burden so leaders can price, negotiate, and simplify with evidence.",
+    primaryCta: "Plan a Profitability AI Workshop",
+    primaryCtaHref: "/contact",
+    secondaryCta: "Return to Manufacturing AI",
+    secondaryCtaHref: "/manufacturing",
+    keywords: [
+      "manufacturing customer profitability AI",
+      "SKU profitability analytics manufacturing",
+      "AI margin analysis manufacturing",
+      "customer margin intelligence",
+      "activity based costing AI manufacturing",
+    ],
+    stats: [
+      { value: "SKU", label: "margin and complexity signals" },
+      { value: "Customer", label: "service and contract economics" },
+      { value: "Plant", label: "cost-to-serve context" },
+    ],
+    pain: {
+      eyebrow: "Margin pressure",
+      title: "The Largest Customer Is Not Always the Most Profitable Customer",
+      description:
+        "Customer concentration, custom SKUs, rebates, freight, changeovers, chargebacks, and service expectations can make reported revenue look better than realized margin.",
+      proof:
+        "A profitability agent should connect cost drivers to customer and SKU economics so finance and commercial leaders know where pricing, contract, or portfolio decisions need attention.",
+    },
+    chart: {
+      mode: "waterfall",
+      eyebrow: "Illustrative margin bridge",
+      title: "From Gross Margin to True Customer Profitability",
+      description:
+        "A margin bridge should show which cost-to-serve items turn a high-volume account into a low-return program.",
+      summaryMetric: {
+        label: "Margin leakage reviewed",
+        value: "$2.7M",
+        detail: "Illustrative customer and SKU economics requiring review",
+      },
+      signals: [
+        {
+          label: "Reported gross margin",
+          value: "18.4%",
+          detail: "Margin before cost-to-serve and contract leakage",
+          score: 84,
+          tone: "stable",
+        },
+        {
+          label: "Freight and service burden",
+          value: "-3.1 pts",
+          detail: "Lane, expedite, minimum order, and service requirements",
+          score: 63,
+          tone: "watch",
+        },
+        {
+          label: "Changeover and complexity",
+          value: "-2.4 pts",
+          detail: "Small runs, custom packaging, and yield loss",
+          score: 71,
+          tone: "risk",
+        },
+        {
+          label: "Recoverable pricing action",
+          value: "+1.6 pts",
+          detail: "Contract, surcharge, or portfolio review candidate",
+          score: 62,
+          tone: "recoverable",
+        },
+      ],
+      notes: [
+        "Connects financial margin to operational cost-to-serve",
+        "Shows customer/SKU combinations that need pricing or portfolio review",
+        "Links PPV, contracts, freight, chargebacks, yield, and changeovers",
+      ],
+    },
+    capabilities: [
+      {
+        title: "Customer and SKU margin model",
+        description:
+          "Build a finance view that connects revenue to the real costs of serving each customer and product.",
+        points: [
+          "Customer, SKU, plant, program, and channel profitability",
+          "Chargebacks, rebates, freight, discounts, and service-level burden",
+          "Margin movement tied to PPV, yield, and labor signals",
+        ],
+      },
+      {
+        title: "Complexity cost detection",
+        description:
+          "Expose operational complexity that normal gross-margin reports miss.",
+        points: [
+          "Short runs, custom packaging, changeovers, low-volume SKUs, and rework",
+          "Cost-to-serve signals by customer requirement",
+          "Portfolio simplification candidates for review",
+        ],
+      },
+      {
+        title: "Pricing and contract action support",
+        description:
+          "Prepare evidence for pricing, surcharge, pass-through, renewal, or service-level discussions.",
+        points: [
+          "Recoverable margin candidates",
+          "Customer negotiation summaries",
+          "Scenario views for price, volume, and service changes",
+        ],
+      },
+    ],
+    scenario: {
+      title: "Anonymized profitability scenario",
+      description:
+        "A manufacturer has a large customer program with strong revenue but inconsistent realized margin across plants and SKUs.",
+      startingPoint:
+        "Finance sees gross margin by SKU and customer, but freight, service requirements, changeover burden, chargebacks, and contract terms are not connected in one view.",
+      scopedOutcome:
+        "ITECS scopes a profitability intelligence layer that shows true margin by customer/SKU/program and creates action-ready pricing and portfolio review candidates.",
+    },
+    dataInputs: [
+      {
+        label: "Sales and margin data",
+        description:
+          "Revenue, price, discounts, rebates, chargebacks, credits, customer, SKU, plant, and program.",
+      },
+      {
+        label: "Cost and production data",
+        description:
+          "Standards, actuals, routings, formulas, changeovers, yield, labor, scrap, and rework.",
+      },
+      {
+        label: "Freight and service burden",
+        description:
+          "Lane cost, expedites, minimum orders, special handling, service levels, and returns.",
+      },
+      {
+        label: "Customer contracts",
+        description:
+          "Price terms, pass-throughs, rebates, service commitments, renewal windows, and penalties.",
+      },
+    ],
+    workflow: [
+      {
+        title: "Assemble",
+        description:
+          "Read approved finance, sales, production, freight, quality, and contract data.",
+      },
+      {
+        title: "Allocate",
+        description:
+          "Connect margin to cost-to-serve and complexity drivers.",
+      },
+      {
+        title: "Rank",
+        description:
+          "Identify customer/SKU/program combinations with margin risk or recovery potential.",
+      },
+      {
+        title: "Model",
+        description:
+          "Run pricing, volume, service, surcharge, and portfolio scenarios.",
+      },
+      {
+        title: "Approve",
+        description:
+          "Route commercial actions to finance, sales, and executive owners.",
+      },
+    ],
+    governance: [
+      "The system can recommend pricing and portfolio actions, but it does not change prices or customer terms.",
+      "Sensitive customer profitability views are role-restricted.",
+      "Cost allocation assumptions remain visible and versioned.",
+      "Commercial recommendations preserve source evidence for leadership review.",
+    ],
+    roadmap: [
+      {
+        step: "Profitability method review",
+        description:
+          "Document current margin reporting, allocation logic, and commercial decision cadence.",
+      },
+      {
+        step: "Cost-to-serve model",
+        description:
+          "Connect operational and commercial burden to customer/SKU economics.",
+      },
+      {
+        step: "Action queue",
+        description:
+          "Identify pricing, surcharge, service, contract, and portfolio review candidates.",
+      },
+      {
+        step: "Commercial workflow",
+        description:
+          "Embed finance-approved evidence into sales and executive review.",
+      },
+    ],
+    comparison: [
+      {
+        label: "Margin view",
+        traditional: "Gross margin by SKU or customer",
+        ai: "Customer/SKU margin after cost-to-serve and complexity",
+      },
+      {
+        label: "Complexity",
+        traditional: "Known anecdotally",
+        ai: "Quantified by changeover, yield, service, and freight signals",
+      },
+      {
+        label: "Pricing action",
+        traditional: "Periodic commercial review",
+        ai: "Evidence-backed action candidates",
+      },
+      {
+        label: "Governance",
+        traditional: "Spreadsheet logic",
+        ai: "Versioned assumptions and role-restricted views",
+      },
+    ],
+    roiStatement:
+      "The value is margin clarity: better pricing, cleaner customer negotiations, fewer hidden loss programs, and more confidence in growth decisions.",
+    pricingNotes: [
+      "Discovery validates current margin methodology and cost allocation logic",
+      "The first proof point is a customer/SKU margin bridge",
+      "Commercial and pricing actions remain human-approved",
+    ],
+    security: {
+      description:
+        "Customer profitability is sensitive. ITECS scopes access carefully so margin, pricing, and contract views are only available to approved roles.",
+      points: [
+        "Role-restricted profitability dashboards and agent responses",
+        "No autonomous customer price, rebate, or contract changes",
+        "Versioned allocation assumptions and source references",
+        "Audit history for recommendations and approvals",
+      ],
+    },
+    relatedHrefs: [
+      "/manufacturing/ppv-agent",
+      "/manufacturing/contract-pass-through-intelligence",
+      "/manufacturing/production-scheduling-yield-ai",
+    ],
+    faq: [
+      {
+        question: "Is this activity-based costing?",
+        answer:
+          "It can support activity-based costing, but the first goal is practical margin visibility by customer, SKU, plant, program, and cost-to-serve driver.",
+      },
+      {
+        question: "Does it replace finance's margin model?",
+        answer:
+          "No. It reconciles to finance's method and makes assumptions more visible, then extends the view with operational and commercial signals.",
+      },
+      {
+        question: "Can sales use this?",
+        answer:
+          "Yes, with role-appropriate access. The system can prepare pricing and renewal evidence for sales while protecting sensitive finance views.",
+      },
+      {
+        question: "How does this connect to PPV?",
+        answer:
+          "PPV explains material cost movement. Profitability intelligence shows where that movement affects customer, SKU, and contract margin.",
+      },
+    ],
+  },
+  {
+    slug: "production-scheduling-yield-ai",
+    title: "Production Scheduling, Yield, and Labor Planning Intelligence",
+    shortTitle: "Production Planning",
+    description:
+      "Manufacturing AI for production scheduling, yield variance, labor planning, bottleneck visibility, and shift-readiness decisions.",
+    href: "/manufacturing/production-scheduling-yield-ai",
+    h1: "Production Scheduling, Yield, and Labor Planning Intelligence",
+    eyebrow: "Manufacturing AI for shift readiness",
+    heroSummary:
+      "ITECS helps manufacturers connect demand, schedules, labor, line rates, yield, changeovers, maintenance, and quality holds into a planning view that shows where the next shift is already at risk.",
+    longDescription:
+      "Production planning AI should help leaders see constraints before the shift starts. The point is not autonomous scheduling. The point is better evidence for the planners and supervisors who own schedule, labor, and throughput decisions.",
+    primaryCta: "Plan a Production AI Workshop",
+    primaryCtaHref: "/contact",
+    secondaryCta: "Return to Manufacturing AI",
+    secondaryCtaHref: "/manufacturing",
+    keywords: [
+      "AI production scheduling manufacturing",
+      "manufacturing yield planning AI",
+      "labor planning AI manufacturing",
+      "production bottleneck intelligence",
+      "AI shift planning manufacturing",
+    ],
+    stats: [
+      { value: "Shift", label: "readiness and bottleneck signals" },
+      { value: "Yield", label: "variance and loss context" },
+      { value: "Labor", label: "coverage and skill alignment" },
+    ],
+    pain: {
+      eyebrow: "Execution pressure",
+      title: "The Schedule Usually Breaks for Reasons the Planning Meeting Already Hinted At",
+      description:
+        "Material availability, labor coverage, changeovers, maintenance windows, yield loss, and quality holds can all invalidate a schedule. These signals often sit in separate views.",
+      proof:
+        "A production planning agent should show which orders, lines, shifts, and constraints need attention before the plan turns into missed throughput.",
+    },
+    chart: {
+      mode: "matrix",
+      eyebrow: "Illustrative shift-readiness matrix",
+      title: "Schedule Risk by Line, Constraint, and Shift",
+      description:
+        "A planner-ready view should combine line readiness, labor coverage, material availability, yield risk, and quality constraints.",
+      summaryMetric: {
+        label: "Schedule risk",
+        value: "27%",
+        detail: "Illustrative planned hours requiring supervisor review",
+      },
+      signals: [
+        {
+          label: "Line 2 labor coverage",
+          value: "Gap",
+          detail: "Skill coverage below planned run requirement",
+          score: 78,
+          tone: "risk",
+        },
+        {
+          label: "Changeover sequence",
+          value: "Watch",
+          detail: "Planned sequence creates avoidable downtime",
+          score: 62,
+          tone: "watch",
+        },
+        {
+          label: "Yield trend",
+          value: "-1.8 pts",
+          detail: "Recent loss trend on related product family",
+          score: 67,
+          tone: "watch",
+        },
+        {
+          label: "Material readiness",
+          value: "Clear",
+          detail: "Inputs available for critical run window",
+          score: 85,
+          tone: "stable",
+        },
+      ],
+      notes: [
+        "Connects schedule, material, labor, yield, quality, and maintenance constraints",
+        "Highlights risk before the shift starts",
+        "Supports planner and supervisor review without autonomous rescheduling",
+      ],
+    },
+    capabilities: [
+      {
+        title: "Schedule risk intelligence",
+        description:
+          "Identify where the production plan is exposed before execution begins.",
+        points: [
+          "Line, order, SKU, shift, and customer commitment risk",
+          "Material, labor, maintenance, quality, and changeover constraints",
+          "Supervisor-ready exception summaries",
+        ],
+      },
+      {
+        title: "Yield and loss analysis",
+        description:
+          "Connect yield variance to product, line, shift, material, operator, and process context.",
+        points: [
+          "Yield, scrap, rework, and spoilage pattern detection",
+          "Root-cause candidate lists for operations and quality review",
+          "Financial impact context for finance and plant leadership",
+        ],
+      },
+      {
+        title: "Labor planning support",
+        description:
+          "Link labor availability and skill coverage to schedule feasibility.",
+        points: [
+          "Shift coverage and skill gap views",
+          "Overtime and staffing scenario support",
+          "Human-approved schedule and labor recommendations",
+        ],
+      },
+    ],
+    scenario: {
+      title: "Anonymized shift planning scenario",
+      description:
+        "A manufacturer regularly enters the day with a feasible schedule on paper but loses throughput to labor gaps, changeovers, yield drift, and late quality holds.",
+      startingPoint:
+        "Schedule, labor, maintenance, quality, yield, and inventory views exist, but planners do not have one risk-weighted shift-readiness view.",
+      scopedOutcome:
+        "ITECS scopes a planning intelligence layer that flags schedule risk by line, shift, order, material, labor, and quality constraint.",
+    },
+    dataInputs: [
+      {
+        label: "Production schedule",
+        description:
+          "Orders, lines, routings, planned rates, changeovers, priorities, and customer commitments.",
+      },
+      {
+        label: "Labor and skill coverage",
+        description:
+          "Shift rosters, skills, attendance, overtime, training, and staffing constraints.",
+      },
+      {
+        label: "Yield and line performance",
+        description:
+          "Actual rates, downtime, scrap, rework, spoilage, yield variance, and loss reasons.",
+      },
+      {
+        label: "Operational constraints",
+        description:
+          "Material availability, maintenance windows, quality holds, tooling, and bottlenecks.",
+      },
+    ],
+    workflow: [
+      {
+        title: "Read",
+        description:
+          "Connect approved schedule, labor, material, maintenance, quality, and yield data.",
+      },
+      {
+        title: "Score",
+        description:
+          "Rank orders, lines, and shifts by constraint and readiness risk.",
+      },
+      {
+        title: "Explain",
+        description:
+          "Show why a schedule is exposed and which constraint is driving the risk.",
+      },
+      {
+        title: "Recommend",
+        description:
+          "Draft schedule, labor, sequence, or escalation recommendations.",
+      },
+      {
+        title: "Approve",
+        description:
+          "Keep schedule and staffing changes under planner and supervisor control.",
+      },
+    ],
+    governance: [
+      "The system can recommend schedule and labor actions, but planners approve changes.",
+      "The system does not autonomously reschedule lines, reassign labor, or override supervisors.",
+      "Assumptions around rates, labor, materials, and holds remain visible.",
+      "Plant-level access can be separated from executive reporting views.",
+    ],
+    roadmap: [
+      {
+        step: "Planning data review",
+        description:
+          "Map production schedule, labor, yield, quality, maintenance, and material signals.",
+      },
+      {
+        step: "Constraint model",
+        description:
+          "Identify the constraints that have historically disrupted the plan.",
+      },
+      {
+        step: "Shift-readiness view",
+        description:
+          "Build risk scoring by line, order, product, and shift.",
+      },
+      {
+        step: "Planner workflow",
+        description:
+          "Route recommendations through planning and supervisor review.",
+      },
+    ],
+    comparison: [
+      {
+        label: "Schedule review",
+        traditional: "Static plan and manual calls",
+        ai: "Risk-weighted readiness view",
+      },
+      {
+        label: "Yield loss",
+        traditional: "Reviewed after production",
+        ai: "Pattern signals before similar runs",
+      },
+      {
+        label: "Labor planning",
+        traditional: "Roster and supervisor judgment",
+        ai: "Skill coverage tied to schedule risk",
+      },
+      {
+        label: "Governance",
+        traditional: "Manual schedule changes",
+        ai: "Human-approved recommendations with rationale",
+      },
+    ],
+    roiStatement:
+      "The value is more predictable execution: fewer preventable schedule misses, better shift readiness, lower yield loss, and clearer supervisor priorities.",
+    pricingNotes: [
+      "Discovery validates schedule, labor, and yield data quality",
+      "The first proof point is recreating known schedule misses",
+      "Schedule and staffing decisions remain human-approved",
+    ],
+    security: {
+      description:
+        "Production planning AI touches labor, schedule, quality, and operational data. ITECS keeps the system advisory unless approved workflows are explicitly designed.",
+      points: [
+        "Read-first access to planning, labor, production, and quality data",
+        "No autonomous schedule, labor, or production-order changes",
+        "Planner and supervisor decision logs",
+        "Scoped access by plant, shift, role, and executive reporting need",
+      ],
+    },
+    relatedHrefs: [
+      "/manufacturing/demand-forecasting-sop-ai",
+      "/manufacturing/predictive-maintenance-ai",
+      "/manufacturing/quality-traceability-ai",
+    ],
+    faq: [
+      {
+        question: "Will AI schedule the plant automatically?",
+        answer:
+          "No. The system can highlight risks and recommend changes, but planners and supervisors approve schedule and labor decisions.",
+      },
+      {
+        question: "Can this work without an MES?",
+        answer:
+          "Possibly. Discovery determines whether ERP, scheduling, labor, quality, maintenance, and manual production records provide enough signal for a pilot.",
+      },
+      {
+        question: "How does this help yield?",
+        answer:
+          "It connects yield variance to product, line, shift, material, labor, quality, and process context so leaders can see likely drivers earlier.",
+      },
+      {
+        question: "Who owns the workflow?",
+        answer:
+          "Usually operations, planning, and plant leadership, with finance included where yield or throughput has material P&L impact.",
+      },
+    ],
+  },
+  {
+    slug: "contract-pass-through-intelligence",
+    title: "Contract Intelligence and Pass-Through Recovery for Manufacturers",
+    shortTitle: "Contract Recovery",
+    description:
+      "Manufacturing AI for customer and supplier contract review, price escalators, pass-through recovery, renewal risk, and audit evidence.",
+    href: "/manufacturing/contract-pass-through-intelligence",
+    h1: "Contract Intelligence and Pass-Through Recovery",
+    eyebrow: "Manufacturing AI for recoverable margin",
+    heroSummary:
+      "ITECS helps manufacturers use governed AI to find pricing clauses, escalators, rebate terms, audit rights, renewal windows, and pass-through opportunities hidden across customer and supplier agreements.",
+    longDescription:
+      "Contract intelligence matters because adverse cost movement is not always pure margin erosion. Some of it may be recoverable if finance, sales, procurement, and legal can find and act on the right language in time.",
+    primaryCta: "Plan a Contract Intelligence Workshop",
+    primaryCtaHref: "/contact",
+    secondaryCta: "Return to Manufacturing AI",
+    secondaryCtaHref: "/manufacturing",
+    keywords: [
+      "contract intelligence manufacturing AI",
+      "pass through recovery AI manufacturing",
+      "price escalator AI",
+      "manufacturing contract review AI",
+      "AI contract analytics procurement",
+    ],
+    stats: [
+      { value: "Terms", label: "escalators, rebates, and audit rights" },
+      { value: "Margin", label: "recoverable variance candidates" },
+      { value: "Renewal", label: "deadline and obligation tracking" },
+    ],
+    pain: {
+      eyebrow: "Commercial pressure",
+      title: "Recoverable Margin Is Often Lost Because the Clause Is Found Too Late",
+      description:
+        "Manufacturers may have customer pass-throughs, supplier rebates, audit rights, or renewal leverage, but the language lives in contracts that finance and procurement cannot continuously monitor.",
+      proof:
+        "A contract intelligence agent should connect agreement language to cost movement, customer programs, vendors, and deadlines so humans can pursue recovery with evidence.",
+    },
+    chart: {
+      mode: "timeline",
+      eyebrow: "Illustrative recovery queue",
+      title: "Contract Windows That Finance Can Act On",
+      description:
+        "A recovery view should show the clause, exposure, owner, deadline, and evidence needed for action.",
+      summaryMetric: {
+        label: "Recovery candidates",
+        value: "$820K",
+        detail: "Illustrative variance tied to contract language",
+      },
+      signals: [
+        {
+          label: "Customer escalator",
+          value: "$360K",
+          detail: "Commodity movement may qualify for pass-through review",
+          score: 82,
+          tone: "recoverable",
+        },
+        {
+          label: "Supplier rebate",
+          value: "$180K",
+          detail: "Volume threshold and audit evidence require validation",
+          score: 66,
+          tone: "watch",
+        },
+        {
+          label: "Renewal deadline",
+          value: "45 days",
+          detail: "Pricing term expires before next planning cycle",
+          score: 74,
+          tone: "risk",
+        },
+        {
+          label: "Audit right",
+          value: "Open",
+          detail: "Vendor formula and freight assumptions need review",
+          score: 58,
+          tone: "watch",
+        },
+      ],
+      notes: [
+        "Connects contract language to PPV, freight, commodity, and customer margin movement",
+        "Tracks owner, deadline, evidence, and approval path",
+        "Supports finance, procurement, sales, and legal review",
+      ],
+    },
+    capabilities: [
+      {
+        title: "Clause and obligation extraction",
+        description:
+          "Find the agreement language that affects pricing, margin, rights, deadlines, and obligations.",
+        points: [
+          "Escalators, pass-throughs, rebates, audit rights, renewal terms, and notice windows",
+          "Customer and supplier contract comparison",
+          "Source-linked clause summaries",
+        ],
+      },
+      {
+        title: "Recovery candidate matching",
+        description:
+          "Connect contract language to actual cost movement and customer or vendor exposure.",
+        points: [
+          "PPV, freight, commodity, FX, and service-cost movement",
+          "Recoverable variance candidates by customer and program",
+          "Vendor formula drift and rebate review candidates",
+        ],
+      },
+      {
+        title: "Approval-ready action packs",
+        description:
+          "Prepare evidence packages for finance, sales, procurement, and legal review.",
+        points: [
+          "Clause source, calculation assumptions, owner, and deadline",
+          "Customer or vendor communication drafts for review",
+          "Decision history and outcome tracking",
+        ],
+      },
+    ],
+    scenario: {
+      title: "Anonymized pass-through scenario",
+      description:
+        "A manufacturer has adverse material movement and mixed customer contracts. Finance suspects some variance is recoverable but cannot review every clause during close.",
+      startingPoint:
+        "Contracts, PPV reports, customer programs, and supplier terms are available but disconnected from the variance review workflow.",
+      scopedOutcome:
+        "ITECS scopes a contract intelligence layer that flags recoverable exposure, links source clauses, and routes action packs for finance, sales, procurement, and legal approval.",
+    },
+    dataInputs: [
+      {
+        label: "Customer contracts",
+        description:
+          "Pricing terms, escalators, pass-through clauses, service commitments, notice windows, and renewal dates.",
+      },
+      {
+        label: "Supplier contracts",
+        description:
+          "Pricing formulas, rebates, audit rights, freight terms, volume tiers, and renewal obligations.",
+      },
+      {
+        label: "Cost and variance data",
+        description:
+          "PPV, commodity movement, freight, energy, FX, customer margin, and program economics.",
+      },
+      {
+        label: "Commercial workflows",
+        description:
+          "Owners, approval paths, legal review, customer communication, and evidence requirements.",
+      },
+    ],
+    workflow: [
+      {
+        title: "Ingest",
+        description:
+          "Read approved contract documents, ERP terms, finance data, and variance reports.",
+      },
+      {
+        title: "Extract",
+        description:
+          "Identify clauses, obligations, deadlines, and calculation terms.",
+      },
+      {
+        title: "Match",
+        description:
+          "Tie clause language to cost movement, customer programs, and supplier exposure.",
+      },
+      {
+        title: "Package",
+        description:
+          "Draft recovery or review packs with source language and assumptions.",
+      },
+      {
+        title: "Approve",
+        description:
+          "Route action to finance, sales, procurement, or legal before execution.",
+      },
+    ],
+    governance: [
+      "The system can summarize contracts and recommend actions, but legal and business owners approve interpretations and communications.",
+      "The system does not autonomously change prices, terms, contracts, or customer notices.",
+      "Every clause summary links back to source documents.",
+      "Sensitive contract access is role-restricted.",
+    ],
+    roadmap: [
+      {
+        step: "Contract inventory",
+        description:
+          "Map customer and supplier agreement sources, ownership, and clause families.",
+      },
+      {
+        step: "Clause extraction pilot",
+        description:
+          "Extract and validate escalators, rebates, audit rights, and renewal terms.",
+      },
+      {
+        step: "Variance matching",
+        description:
+          "Connect contract language to PPV, freight, commodity, and margin signals.",
+      },
+      {
+        step: "Recovery workflow",
+        description:
+          "Route evidence packs through finance, sales, procurement, and legal review.",
+      },
+    ],
+    comparison: [
+      {
+        label: "Clause review",
+        traditional: "Manual search during issues",
+        ai: "Continuous extraction and monitoring",
+      },
+      {
+        label: "Recovery",
+        traditional: "Ad hoc and relationship-dependent",
+        ai: "Evidence-backed candidate queue",
+      },
+      {
+        label: "Deadlines",
+        traditional: "Calendar and email reminders",
+        ai: "Term, notice, and renewal risk linked to economics",
+      },
+      {
+        label: "Governance",
+        traditional: "Loose summaries",
+        ai: "Source-linked clause and approval history",
+      },
+    ],
+    roiStatement:
+      "The value is recoverable margin and reduced contract leakage: find the clause, quantify the economics, and route action before the window closes.",
+    pricingNotes: [
+      "Discovery validates contract sources and document quality",
+      "The first proof point is clause extraction against known agreements",
+      "Legal and commercial decisions remain human-approved",
+    ],
+    security: {
+      description:
+        "Contract intelligence touches sensitive customer, supplier, pricing, and legal terms. ITECS scopes document access and preserves source-backed evidence.",
+      points: [
+        "Role-restricted access to contract documents and summaries",
+        "No autonomous price, term, notice, or contract changes",
+        "Source-linked clause output for legal and finance review",
+        "Audit trail for recommendations, reviewers, and outcomes",
+      ],
+    },
+    relatedHrefs: [
+      "/manufacturing/ppv-agent",
+      "/manufacturing/customer-sku-profitability-ai",
+      "/manufacturing/energy-freight-scope-3-ai",
+    ],
+    faq: [
+      {
+        question: "Does contract intelligence replace legal review?",
+        answer:
+          "No. It finds clauses, summarizes terms, and prepares evidence. Legal and business owners approve interpretations and actions.",
+      },
+      {
+        question: "What contracts are most useful to start with?",
+        answer:
+          "The highest-value starting point is usually top customer agreements and major supplier agreements with pricing formulas, pass-throughs, rebates, or renewal windows.",
+      },
+      {
+        question: "Can it connect to PPV?",
+        answer:
+          "Yes. The contract page is PPV-adjacent because it helps identify which unfavorable variance may be recoverable through customer or supplier terms.",
+      },
+      {
+        question: "Will it contact customers automatically?",
+        answer:
+          "No. It can draft communication for review, but customer, vendor, legal, and pricing actions remain human-approved.",
+      },
+    ],
+  },
+  {
+    slug: "energy-freight-scope-3-ai",
+    title: "Energy, Freight, and Scope 3 Reporting Intelligence",
+    shortTitle: "Energy & Freight",
+    description:
+      "Manufacturing AI for energy cost, freight exposure, landed-cost movement, packaging data, and customer Scope 3 reporting support.",
+    href: "/manufacturing/energy-freight-scope-3-ai",
+    h1: "Energy, Freight, and Scope 3 Reporting Intelligence",
+    eyebrow: "Manufacturing AI for cost and customer evidence",
+    heroSummary:
+      "ITECS helps manufacturers connect utility, freight, carrier, lane, packaging, supplier, production, and customer reporting data into governed cost and evidence workflows.",
+    longDescription:
+      "Energy and freight are not just overhead categories. They affect landed cost, quote accuracy, customer margin, production decisions, and the evidence larger customers increasingly request for carbon, packaging, and supplier reporting.",
+    primaryCta: "Plan an Energy and Freight AI Workshop",
+    primaryCtaHref: "/contact",
+    secondaryCta: "Return to Manufacturing AI",
+    secondaryCtaHref: "/manufacturing",
+    keywords: [
+      "manufacturing energy cost AI",
+      "freight cost intelligence manufacturing",
+      "Scope 3 reporting AI manufacturing",
+      "manufacturing landed cost AI",
+      "AI sustainability reporting manufacturing",
+    ],
+    stats: [
+      { value: "Lane", label: "freight and landed-cost exposure" },
+      { value: "kWh", label: "energy intensity and production context" },
+      { value: "Scope 3", label: "customer evidence readiness" },
+    ],
+    pain: {
+      eyebrow: "Cost and reporting pressure",
+      title: "Energy, Freight, and Customer Evidence Are Moving Into the Same Conversation",
+      description:
+        "Manufacturers face volatile utility and freight costs while larger customers ask for packaging, supplier, emissions, and sustainability data. The data usually sits across invoices, TMS, ERP, spreadsheets, and supplier documents.",
+      proof:
+        "A cost and reporting intelligence agent should connect these signals into landed-cost exposure, operational actions, and customer-ready evidence without inventing unsupported ESG claims.",
+    },
+    chart: {
+      mode: "waterfall",
+      eyebrow: "Illustrative landed-cost bridge",
+      title: "Energy and Freight Movement by Action Path",
+      description:
+        "A CFO-ready view should separate controllable cost actions from customer reporting and contract recovery candidates.",
+      summaryMetric: {
+        label: "Cost movement reviewed",
+        value: "$1.1M",
+        detail: "Illustrative freight, energy, and packaging movement",
+      },
+      signals: [
+        {
+          label: "Freight lane variance",
+          value: "$430K",
+          detail: "Carrier, lane, fuel, expedite, and mode movement",
+          score: 76,
+          tone: "risk",
+        },
+        {
+          label: "Energy intensity drift",
+          value: "+8%",
+          detail: "Cost per production unit above recent baseline",
+          score: 64,
+          tone: "watch",
+        },
+        {
+          label: "Packaging data gap",
+          value: "14 SKUs",
+          detail: "Customer reporting evidence incomplete",
+          score: 59,
+          tone: "watch",
+        },
+        {
+          label: "Recoverable surcharge review",
+          value: "$210K",
+          detail: "Potential fuel or freight pass-through candidate",
+          score: 62,
+          tone: "recoverable",
+        },
+      ],
+      notes: [
+        "Connects freight, energy, packaging, production, and customer evidence",
+        "Separates landed-cost movement from reporting gaps",
+        "Supports recovery, sourcing, routing, and customer reporting review",
+      ],
+    },
+    capabilities: [
+      {
+        title: "Freight and landed-cost intelligence",
+        description:
+          "Track cost movement by lane, carrier, mode, customer, product, and plant.",
+        points: [
+          "Freight variance and expedite pattern detection",
+          "Landed-cost views tied to SKU, customer, and contract terms",
+          "Recovery candidates for surcharge or pass-through review",
+        ],
+      },
+      {
+        title: "Energy intensity analysis",
+        description:
+          "Connect utility usage and rates to production volume, line performance, and schedule choices.",
+        points: [
+          "Cost per unit, plant, line, and product family",
+          "Energy drift and abnormal usage detection",
+          "Operational context for finance and facilities teams",
+        ],
+      },
+      {
+        title: "Scope 3 and customer evidence support",
+        description:
+          "Help collect, validate, and organize the data customers request without building a new reporting department.",
+        points: [
+          "Packaging, supplier, freight, energy, and product data readiness",
+          "Evidence packages with source references",
+          "Human-approved customer reporting workflows",
+        ],
+      },
+    ],
+    scenario: {
+      title: "Anonymized cost and reporting scenario",
+      description:
+        "A manufacturer faces rising freight and utility costs while strategic customers request more packaging and Scope 3 data.",
+      startingPoint:
+        "Freight invoices, utility bills, ERP shipments, packaging data, supplier records, and customer reporting requests are handled by separate teams.",
+      scopedOutcome:
+        "ITECS scopes an intelligence layer that reconciles cost movement, flags recovery candidates, and organizes customer evidence with source references.",
+    },
+    dataInputs: [
+      {
+        label: "Freight and logistics data",
+        description:
+          "TMS, carrier invoices, lanes, modes, fuel surcharge, expedites, weights, and delivery performance.",
+      },
+      {
+        label: "Energy and utility data",
+        description:
+          "Electricity, gas, water, rates, meters, production volume, and plant operating context.",
+      },
+      {
+        label: "ERP and production data",
+        description:
+          "Shipments, products, customers, plants, production units, BOMs, formulas, and schedules.",
+      },
+      {
+        label: "Customer reporting evidence",
+        description:
+          "Packaging specs, supplier records, emissions factors, customer templates, and source documentation.",
+      },
+    ],
+    workflow: [
+      {
+        title: "Gather",
+        description:
+          "Read approved freight, energy, ERP, production, packaging, and supplier data.",
+      },
+      {
+        title: "Normalize",
+        description:
+          "Align costs and evidence to products, plants, customers, lanes, and reporting periods.",
+      },
+      {
+        title: "Detect",
+        description:
+          "Flag abnormal cost movement, reporting gaps, and recovery candidates.",
+      },
+      {
+        title: "Package",
+        description:
+          "Prepare landed-cost, sourcing, surcharge, and customer evidence summaries.",
+      },
+      {
+        title: "Approve",
+        description:
+          "Route pricing, sourcing, and customer reporting actions for human review.",
+      },
+    ],
+    governance: [
+      "The system can prepare evidence and recommendations, but it does not submit customer reports or change rates automatically.",
+      "Customer-facing sustainability claims remain human-approved and source-backed.",
+      "Freight, pricing, and sourcing actions follow existing approval paths.",
+      "Evidence packages preserve source files, assumptions, and reporting periods.",
+    ],
+    roadmap: [
+      {
+        step: "Cost and evidence inventory",
+        description:
+          "Map freight, energy, packaging, supplier, production, and customer reporting sources.",
+      },
+      {
+        step: "Landed-cost bridge",
+        description:
+          "Connect freight and energy movement to product, plant, customer, and contract views.",
+      },
+      {
+        step: "Reporting evidence layer",
+        description:
+          "Organize customer-requested data and highlight gaps for review.",
+      },
+      {
+        step: "Action workflow",
+        description:
+          "Route surcharge, sourcing, reporting, and operational recommendations to owners.",
+      },
+    ],
+    comparison: [
+      {
+        label: "Freight view",
+        traditional: "Invoice and lane reports",
+        ai: "Landed-cost movement with recovery candidates",
+      },
+      {
+        label: "Energy view",
+        traditional: "Monthly utility review",
+        ai: "Intensity and anomaly signals tied to production",
+      },
+      {
+        label: "Customer reporting",
+        traditional: "Manual spreadsheet collection",
+        ai: "Evidence packages with source references",
+      },
+      {
+        label: "Governance",
+        traditional: "Distributed assumptions",
+        ai: "Versioned data, assumptions, and approvals",
+      },
+    ],
+    roiStatement:
+      "The value is tighter landed-cost control and better customer evidence: see cost movement earlier, recover where contracts allow, and reduce reporting scramble.",
+    pricingNotes: [
+      "Discovery validates available freight, utility, production, and reporting data",
+      "The first proof point is a landed-cost bridge or customer evidence package",
+      "Customer-facing reports and claims remain human-approved",
+    ],
+    security: {
+      description:
+        "Energy, freight, and reporting intelligence touches supplier, customer, cost, and sustainability evidence. ITECS keeps outputs source-backed and approval-controlled.",
+      points: [
+        "Read-first access to invoices, ERP, TMS, utility, and reporting data",
+        "No autonomous customer submissions, rate changes, sourcing decisions, or claims",
+        "Source references for customer evidence packages",
+        "Role-based access for finance, supply chain, operations, and reporting teams",
+      ],
+    },
+    relatedHrefs: [
+      "/manufacturing/contract-pass-through-intelligence",
+      "/manufacturing/customer-sku-profitability-ai",
+      "/manufacturing/ppv-agent",
+    ],
+    faq: [
+      {
+        question: "Does this produce ESG reports automatically?",
+        answer:
+          "No. It organizes and validates supporting data for human-approved customer or compliance reporting.",
+      },
+      {
+        question: "How does this help with freight cost?",
+        answer:
+          "It connects freight movement to lanes, carriers, products, customers, contracts, and landed-cost impact so finance and supply chain can see action candidates.",
+      },
+      {
+        question: "Can it help with Scope 3 requests?",
+        answer:
+          "It can help collect and validate evidence for customer reporting requests, but final claims and submissions remain human-approved.",
+      },
+      {
+        question: "What is a good first pilot?",
+        answer:
+          "A focused pilot can start with freight lane variance, utility intensity by plant, or one strategic customer's reporting evidence request.",
+      },
+    ],
+  },
+  {
+    slug: "vendor-payment-anomaly-ai",
+    title: "Vendor Payment and Finance Anomaly Detection for Manufacturers",
+    shortTitle: "Vendor Anomaly Detection",
+    description:
+      "Manufacturing AI for duplicate payments, vendor master drift, unusual invoice terms, finance exceptions, and control-ready anomaly review.",
+    href: "/manufacturing/vendor-payment-anomaly-ai",
+    h1: "Vendor Payment and Finance Anomaly Detection",
+    eyebrow: "Manufacturing AI for finance controls",
+    heroSummary:
+      "ITECS helps manufacturing finance teams detect duplicate payments, vendor master drift, invoice anomalies, segregation-of-duties issues, and unusual purchasing patterns before they become close or audit problems.",
+    longDescription:
+      "Manufacturers process high volumes of supplier invoices, freight bills, parts purchases, and operating expenses. Small leakage points can compound quickly when finance only samples exceptions after the fact.",
+    primaryCta: "Plan a Finance Anomaly Workshop",
+    primaryCtaHref: "/contact",
+    secondaryCta: "Return to Manufacturing AI",
+    secondaryCtaHref: "/manufacturing",
+    keywords: [
+      "vendor payment anomaly detection AI",
+      "manufacturing finance anomaly AI",
+      "duplicate payment detection AI",
+      "vendor master data AI",
+      "accounts payable anomaly detection manufacturing",
+    ],
+    stats: [
+      { value: "AP", label: "invoice and payment exception signals" },
+      { value: "Vendor", label: "master data and term drift" },
+      { value: "Controls", label: "approval and audit evidence" },
+    ],
+    pain: {
+      eyebrow: "Control pressure",
+      title: "Finance Leakage Rarely Announces Itself as a Material Error",
+      description:
+        "Duplicate invoices, changed bank details, unusual terms, split purchases, freight billing errors, and approval exceptions often hide inside routine transaction volume.",
+      proof:
+        "A finance anomaly agent should rank exceptions by evidence and business risk so AP, procurement, and controllers can review the right items before payment or close.",
+    },
+    chart: {
+      mode: "matrix",
+      eyebrow: "Illustrative anomaly risk board",
+      title: "Vendor and Payment Exceptions by Evidence Strength",
+      description:
+        "A controller-ready view should prioritize exceptions by risk, dollar exposure, recurrence, and control relevance.",
+      summaryMetric: {
+        label: "Exceptions queued",
+        value: "$390K",
+        detail: "Illustrative vendor and payment items requiring review",
+      },
+      signals: [
+        {
+          label: "Duplicate invoice cluster",
+          value: "$74K",
+          detail: "Same vendor, amount, and service window pattern",
+          score: 86,
+          tone: "risk",
+        },
+        {
+          label: "Vendor master change",
+          value: "High",
+          detail: "Bank detail update near unusual payment request",
+          score: 91,
+          tone: "risk",
+        },
+        {
+          label: "Freight invoice outlier",
+          value: "$42K",
+          detail: "Lane and fuel surcharge outside expected range",
+          score: 67,
+          tone: "watch",
+        },
+        {
+          label: "Term drift candidate",
+          value: "$18K",
+          detail: "Payment timing outside contracted terms",
+          score: 56,
+          tone: "recoverable",
+        },
+      ],
+      notes: [
+        "Connects AP, procurement, vendor master, freight, and approval signals",
+        "Prioritizes exceptions for review instead of flooding finance with alerts",
+        "Preserves evidence for controller and audit review",
+      ],
+    },
+    capabilities: [
+      {
+        title: "Duplicate and unusual payment detection",
+        description:
+          "Find transaction patterns that rule-based controls and manual sampling can miss.",
+        points: [
+          "Duplicate invoice, vendor, amount, date, and service-period patterns",
+          "Unusual payment timing, split purchases, and changed terms",
+          "Freight, parts, and operating invoice outlier detection",
+        ],
+      },
+      {
+        title: "Vendor master risk monitoring",
+        description:
+          "Flag changes that deserve review before payment exposure increases.",
+        points: [
+          "Bank, address, tax, contact, and payment-term changes",
+          "Vendor duplication and inactive vendor reuse",
+          "Segregation-of-duties and approval-path exceptions",
+        ],
+      },
+      {
+        title: "Control-ready exception workflow",
+        description:
+          "Prepare prioritized review queues for AP, procurement, and controllers.",
+        points: [
+          "Exception summaries with source transactions",
+          "Recommended reviewer, urgency, and dollar exposure",
+          "Decision log for audit and close support",
+        ],
+      },
+    ],
+    scenario: {
+      title: "Anonymized finance control scenario",
+      description:
+        "A manufacturer with high supplier and freight invoice volume wants better exception detection without slowing ordinary AP processing.",
+      startingPoint:
+        "ERP and AP reports catch obvious duplicates, but vendor master changes, freight outliers, term drift, and split purchases require manual review.",
+      scopedOutcome:
+        "ITECS scopes an anomaly detection layer that ranks exceptions by risk, evidence, exposure, and reviewer path before payment or close.",
+    },
+    dataInputs: [
+      {
+        label: "AP and payment data",
+        description:
+          "Invoices, payments, credits, vendors, dates, amounts, purchase orders, receipts, and terms.",
+      },
+      {
+        label: "Vendor master data",
+        description:
+          "Bank details, addresses, tax IDs, contacts, payment terms, status, and change history.",
+      },
+      {
+        label: "Procurement and freight context",
+        description:
+          "POs, receipts, contracts, freight bills, lanes, carriers, and sourcing ownership.",
+      },
+      {
+        label: "Approval and control data",
+        description:
+          "Approvers, thresholds, segregation-of-duties rules, audit history, and exception outcomes.",
+      },
+    ],
+    workflow: [
+      {
+        title: "Read",
+        description:
+          "Connect approved AP, ERP, vendor, procurement, freight, and approval data.",
+      },
+      {
+        title: "Detect",
+        description:
+          "Find duplicate, unusual, changed, or policy-sensitive patterns.",
+      },
+      {
+        title: "Rank",
+        description:
+          "Prioritize exceptions by dollar exposure, evidence strength, recurrence, and control relevance.",
+      },
+      {
+        title: "Route",
+        description:
+          "Send review-ready exception packs to AP, procurement, or controller owners.",
+      },
+      {
+        title: "Record",
+        description:
+          "Preserve decision outcomes for close, audit, and model tuning.",
+      },
+    ],
+    governance: [
+      "The system can flag and route exceptions, but it does not approve vendors or release payments.",
+      "Vendor master and payment changes remain under existing finance controls.",
+      "Exception evidence is preserved for controller and audit review.",
+      "Access is role-restricted because vendor and payment data is sensitive.",
+    ],
+    roadmap: [
+      {
+        step: "Finance control review",
+        description:
+          "Map AP workflow, vendor master ownership, approval rules, and known leakage patterns.",
+      },
+      {
+        step: "Historical anomaly backtest",
+        description:
+          "Run the model against prior invoices, vendor changes, and known exceptions.",
+      },
+      {
+        step: "Exception queue",
+        description:
+          "Create ranked review queues with source evidence and reviewer routing.",
+      },
+      {
+        step: "Control workflow",
+        description:
+          "Embed outcomes into AP, controller, and audit review routines.",
+      },
+    ],
+    comparison: [
+      {
+        label: "Detection",
+        traditional: "Rules and manual samples",
+        ai: "Pattern detection across AP, vendor, procurement, and freight data",
+      },
+      {
+        label: "Prioritization",
+        traditional: "All exceptions look similar",
+        ai: "Ranked by risk, evidence, and dollar exposure",
+      },
+      {
+        label: "Vendor changes",
+        traditional: "Reviewed in process",
+        ai: "Monitored with payment and approval context",
+      },
+      {
+        label: "Audit support",
+        traditional: "Evidence gathered later",
+        ai: "Decision record created during review",
+      },
+    ],
+    roiStatement:
+      "The value is cleaner finance operations: fewer duplicate payments, faster exception review, stronger vendor controls, and better evidence before audit questions arrive.",
+    pricingNotes: [
+      "Discovery validates AP, vendor master, and approval data access",
+      "The first proof point is a backtest against historical transactions",
+      "Payment and vendor actions remain human-approved",
+    ],
+    security: {
+      description:
+        "Finance anomaly detection touches payment, bank, vendor, approval, and audit-sensitive data. ITECS designs this as a controlled exception workflow.",
+      points: [
+        "Read-first access to AP, ERP, vendor master, procurement, and freight data",
+        "No autonomous vendor approvals, payment releases, or master-data changes",
+        "Exception and reviewer decision logs",
+        "Role-based access for AP, procurement, controllers, and auditors",
+      ],
+    },
+    relatedHrefs: [
+      "/manufacturing/contract-pass-through-intelligence",
+      "/manufacturing/ppv-agent",
+      "/manufacturing/energy-freight-scope-3-ai",
+    ],
+    faq: [
+      {
+        question: "Does this stop payments automatically?",
+        answer:
+          "No. It flags and routes exceptions for review. Payment holds, releases, vendor approvals, and master-data changes remain controlled by finance.",
+      },
+      {
+        question: "How is this manufacturing-specific?",
+        answer:
+          "The model can include manufacturing-specific invoice patterns such as freight, parts, MRO, raw materials, receipts, plant-level purchasing, and supplier terms.",
+      },
+      {
+        question: "Can this help with audit readiness?",
+        answer:
+          "Yes. Exception evidence, reviewer decisions, and outcomes can be preserved for controller review and audit support.",
+      },
+      {
+        question: "What is a good first pilot?",
+        answer:
+          "A focused first pilot can backtest duplicate invoices, vendor master changes, freight billing outliers, or unusual payment terms against historical data.",
+      },
+    ],
+  },
+];
+
+export function getManufacturingSpokePage(
+  href: string
+): ManufacturingSpokePageContent {
+  const page = MANUFACTURING_SPOKE_PAGES.find((item) => item.href === href);
+  if (!page) {
+    throw new Error(`Unknown manufacturing spoke page: ${href}`);
+  }
+  return page;
+}

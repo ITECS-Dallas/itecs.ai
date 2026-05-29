@@ -27,7 +27,7 @@ export function CTASection() {
 
         <ScrollReveal>
           <h2 className="text-3xl md:text-5xl font-light tracking-[-0.02em] text-text-primary">
-            Ready to See What AI
+            Ready to See What AI{" "}
             <br />
             <span className="bg-gradient-to-r from-brand-accent to-brand-purple bg-clip-text text-transparent">
               Can Do for Your Business?

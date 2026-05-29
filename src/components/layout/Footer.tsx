@@ -76,6 +76,51 @@ const industryLinks = [
     label: "PPV Agent",
     href: "/manufacturing/ppv-agent",
   },
+  {
+    key: "demand-sop",
+    label: "Demand & S&OP",
+    href: "/manufacturing/demand-forecasting-sop-ai",
+  },
+  {
+    key: "predictive-maintenance",
+    label: "Predictive Maintenance",
+    href: "/manufacturing/predictive-maintenance-ai",
+  },
+  {
+    key: "inventory-working-capital",
+    label: "Inventory & Working Capital",
+    href: "/manufacturing/inventory-working-capital-ai",
+  },
+  {
+    key: "quality-traceability",
+    label: "Quality & Traceability",
+    href: "/manufacturing/quality-traceability-ai",
+  },
+  {
+    key: "customer-sku-profitability",
+    label: "Customer/SKU Profitability",
+    href: "/manufacturing/customer-sku-profitability-ai",
+  },
+  {
+    key: "production-planning",
+    label: "Production Planning",
+    href: "/manufacturing/production-scheduling-yield-ai",
+  },
+  {
+    key: "contract-recovery",
+    label: "Contract Recovery",
+    href: "/manufacturing/contract-pass-through-intelligence",
+  },
+  {
+    key: "energy-freight",
+    label: "Energy & Freight",
+    href: "/manufacturing/energy-freight-scope-3-ai",
+  },
+  {
+    key: "vendor-anomaly",
+    label: "Vendor Anomaly Detection",
+    href: "/manufacturing/vendor-payment-anomaly-ai",
+  },
 ];
 
 export function Footer() {

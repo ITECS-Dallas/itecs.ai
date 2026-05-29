@@ -1,11 +1,15 @@
+import Link from "next/link";
 import { ArrowRight, Check, Database, FileText } from "lucide-react";
-import { generatePageMetadata } from "@/lib/metadata";
 import { generateFAQSchema, generateNationalServiceSchema } from "@/lib/seo";
-import { PPV_AGENT_USE_CASE } from "@/lib/constants";
+import {
+  MANUFACTURING_SPOKE_PAGES,
+  MANUFACTURING_VERTICAL,
+  type ManufacturingSpokePageContent,
+} from "@/lib/constants";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { ManufacturingHero } from "@/components/sections/ManufacturingHero";
-import { PPVExposureWaterfall } from "@/components/sections/PPVExposureWaterfall";
+import { ManufacturingSpokeMetricsChart } from "@/components/sections/ManufacturingSpokeMetricsChart";
 import { PPVAgentWorkflowDiagram } from "@/components/sections/PPVAgentWorkflowDiagram";
 import { SecurityGuarantee } from "@/components/sections/SecurityGuarantee";
 import { PricingROI } from "@/components/sections/PricingROI";
@@ -15,23 +19,30 @@ import { CTASection } from "@/components/sections/CTASection";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
 
-const page = PPV_AGENT_USE_CASE;
+function getRelatedPages(page: ManufacturingSpokePageContent) {
+  return page.relatedHrefs
+    .map((href) =>
+      MANUFACTURING_SPOKE_PAGES.find((candidate) => candidate.href === href)
+    )
+    .filter((candidate): candidate is ManufacturingSpokePageContent =>
+      Boolean(candidate)
+    );
+}
 
-export const metadata = generatePageMetadata({
-  title: "PPV Agent for Manufacturing Finance",
-  description: page.description,
-  path: page.href,
-  keywords: page.keywords,
-});
+export function ManufacturingSpokePage({
+  page,
+}: {
+  page: ManufacturingSpokePageContent;
+}) {
+  const relatedPages = getRelatedPages(page);
 
-export default function PPVAgentPage() {
   return (
     <>
       <div className="mx-auto max-w-7xl px-6 md:px-8 pt-24">
         <Breadcrumbs
           items={[
             { label: "Home", href: "/" },
-            { label: "Manufacturing", href: "/manufacturing" },
+            { label: "Manufacturing", href: MANUFACTURING_VERTICAL.href },
             { label: page.shortTitle, href: page.href },
           ]}
         />
@@ -49,39 +60,35 @@ export default function PPVAgentPage() {
         stats={page.stats}
       />
 
-      <section className="py-24 md:py-32 bg-bg-surface">
+      <section className="bg-bg-surface py-24 md:py-32">
         <div className="mx-auto max-w-5xl px-6 md:px-8">
           <SectionHeading
-            eyebrow="CFO pain"
-            title="Month-End PPV Arrives Too Late to Protect Margin"
-            description="The problem is not that finance lacks reports. The problem is that variance explanation, contract recovery, and forward exposure often arrive after the buying, pricing, and production decisions have already moved."
+            eyebrow={page.pain.eyebrow}
+            title={page.pain.title}
+            description={page.pain.description}
           />
           <div className="mt-10 rounded-xl border border-[var(--border-subtle)] bg-bg-void/50 p-6 md:p-8">
             <p className="text-lg font-medium leading-relaxed text-text-primary">
-              {page.title}
-            </p>
-            <p className="mt-4 leading-relaxed text-text-secondary">
-              A PPV agent gives finance and procurement a daily operating view:
-              what changed, why it changed, where the exposure sits, and what
-              needs approval next. It is designed for traceability, not
-              autonomous financial action.
+              {page.pain.proof}
             </p>
           </div>
         </div>
       </section>
 
-      <section className="py-24 md:py-32">
+      <ManufacturingSpokeMetricsChart chart={page.chart} />
+
+      <section className="py-24 md:py-32 bg-bg-surface">
         <div className="mx-auto max-w-7xl px-6 md:px-8">
           <SectionHeading
             eyebrow="Capabilities"
-            title="What the PPV Agent Does"
-            description="The agent connects historical explanation with forward-looking exposure, then packages actions for review."
+            title={`What ${page.shortTitle} Intelligence Does`}
+            description="Each capability is designed to produce evidence for the people who already own the manufacturing decision."
           />
           <div className="mt-12 grid grid-cols-1 gap-6 lg:grid-cols-3">
             {page.capabilities.map((capability) => (
               <div
                 key={capability.title}
-                className="h-full rounded-xl border border-[var(--border-subtle)] bg-bg-surface/50 p-6"
+                className="h-full rounded-xl border border-[var(--border-subtle)] bg-bg-void/50 p-6"
               >
                 <h3 className="text-xl font-light text-text-primary">
                   {capability.title}
@@ -106,23 +113,21 @@ export default function PPVAgentPage() {
         </div>
       </section>
 
-      <PPVExposureWaterfall waterfall={page.exposureWaterfall} />
-
-      <section className="py-24 md:py-32 bg-bg-surface">
+      <section className="py-24 md:py-32">
         <div className="mx-auto max-w-6xl px-6 md:px-8">
           <SectionHeading
             eyebrow="Scenario"
             title={page.scenario.title}
-            description="This scenario is anonymized and is not presented as a named public case study."
+            description={page.scenario.description}
           />
           <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2">
-            <div className="rounded-xl border border-[var(--border-subtle)] bg-bg-void/50 p-6">
+            <div className="rounded-xl border border-[var(--border-subtle)] bg-bg-surface/50 p-6">
               <FileText className="mb-5 h-6 w-6 text-brand-accent" />
               <h3 className="text-xl font-light text-text-primary">
                 Starting point
               </h3>
               <p className="mt-3 text-sm leading-relaxed text-text-secondary">
-                {page.scenario.problem}
+                {page.scenario.startingPoint}
               </p>
             </div>
             <div className="rounded-xl border border-brand-accent/20 bg-brand-accent/5 p-6">
@@ -131,25 +136,25 @@ export default function PPVAgentPage() {
                 Scoped outcome
               </h3>
               <p className="mt-3 text-sm leading-relaxed text-text-secondary">
-                {page.scenario.outcome}
+                {page.scenario.scopedOutcome}
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="py-24 md:py-32">
+      <section className="py-24 md:py-32 bg-bg-surface">
         <div className="mx-auto max-w-7xl px-6 md:px-8">
           <SectionHeading
             eyebrow="Data inputs"
-            title="What the Agent Needs to Read"
-            description="Discovery confirms which systems are authoritative. The page describes likely inputs, not a promise that every client has clean integration-ready data on day one."
+            title="What the System Needs to Read"
+            description="Discovery confirms authoritative systems, data quality, access, and governance before any production workflow is proposed."
           />
-          <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+          <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
             {page.dataInputs.map((input) => (
               <div
                 key={input.label}
-                className="rounded-xl border border-[var(--border-subtle)] bg-bg-surface/50 p-5"
+                className="rounded-xl border border-[var(--border-subtle)] bg-bg-void/50 p-5"
               >
                 <h3 className="text-lg font-medium text-text-primary">
                   {input.label}
@@ -163,14 +168,18 @@ export default function PPVAgentPage() {
         </div>
       </section>
 
-      <PPVAgentWorkflowDiagram steps={page.workflow} />
+      <PPVAgentWorkflowDiagram
+        steps={page.workflow}
+        title="Read-Heavy, Write-Controlled Manufacturing Intelligence"
+        description="The system connects approved signals, explains risk, prepares recommendations, and routes sensitive actions for human approval."
+      />
 
       <section className="py-24 md:py-32">
         <div className="mx-auto max-w-5xl px-6 md:px-8">
           <SectionHeading
             eyebrow="Controls"
-            title="The Agent Is Read-Heavy and Write-Controlled"
-            description="The PPV agent can analyze, draft, flag, model, and recommend. It does not autonomously execute financial or procurement actions."
+            title="Read Broadly, Recommend Carefully, Keep Humans in Control"
+            description="Manufacturing AI becomes trustworthy when it preserves assumptions, source data, approvals, and boundaries."
           />
           <div className="mt-10 rounded-xl border border-brand-accent/20 bg-brand-accent/5 p-6 md:p-8">
             <ul className="space-y-4">
@@ -188,53 +197,73 @@ export default function PPVAgentPage() {
         </div>
       </section>
 
-      <HowItWorks
-        steps={page.roadmap}
-        heading="How a PPV Agent Engagement Starts"
-      />
+      <HowItWorks steps={page.roadmap} heading="How the Engagement Starts" />
 
       <PricingROI
-        heading="The Business Case Is Margin Protection, Not AI Novelty"
-        description="Public pricing is intentionally not published for this use case because scope depends on ERP access, data quality, reporting maturity, contract complexity, and governance requirements. The discovery workshop defines the economics before a build is proposed."
-        traditionalLabel="Traditional PPV Reporting"
-        aiLabel="ITECS PPV Agent"
+        heading="The Business Case Is Operational Evidence, Not AI Novelty"
+        description="Public pricing is intentionally not published for this use case because scope depends on data availability, systems, process maturity, governance requirements, and the first proof point selected during discovery."
+        traditionalLabel="Traditional Workflow"
+        aiLabel="ITECS Manufacturing AI"
         comparison={page.comparison}
-        roiStatement="The agent does not need to predict markets perfectly. It needs to make variance visible earlier, recover contract-protected margin faster, and give finance better evidence for action."
-        pricingNotes={[
-          "Discovery validates the PPV method, data availability, and approval model before a pilot is quoted",
-          "Historical PPV reproduction is the first proof point because it can be reconciled against finance's own close package",
-          "Forward exposure and recommendations are added only after the retrospective math is trusted",
-        ]}
+        roiStatement={page.roiStatement}
+        pricingNotes={page.pricingNotes}
       />
 
       <SecurityGuarantee
         title="Security for Manufacturing AI Workflows"
-        description="PPV workflows can touch ERP transactions, vendor terms, customer contracts, cost standards, and close commentary. ITECS keeps those signals controlled with scoped access, human approval, and audit-ready recommendation history."
-        points={[
-          "Read-only discovery patterns where possible before any production integration is approved",
-          "No autonomous POs, hedges, journal entries, standard-cost updates, or vendor master changes",
-          "Versioned assumptions and source references for finance, procurement, and audit review",
-          "Credential isolation and encrypted secrets for ERP, BI, document, and market-data access",
-        ]}
+        description={page.security.description}
+        points={page.security.points}
         internalLink={{
           text: "Return to the manufacturing AI hub",
-          href: "/manufacturing",
+          href: MANUFACTURING_VERTICAL.href,
         }}
-        externalLink={{
-          text: "NIST AI Risk Management Framework",
-          href: "https://www.nist.gov/itl/ai-risk-management-framework",
-        }}
+        externalLink={
+          page.security.externalLink ?? {
+            text: "NIST AI Risk Management Framework",
+            href: "https://www.nist.gov/itl/ai-risk-management-framework",
+          }
+        }
       />
 
-      <section className="py-20">
+      {relatedPages.length > 0 && (
+        <section className="py-20">
+          <div className="mx-auto max-w-6xl px-6 md:px-8">
+            <SectionHeading
+              eyebrow="Related manufacturing use cases"
+              title="Adjacent Signals Worth Connecting"
+              description="The strongest manufacturing AI programs connect one use case to the next instead of trapping insight in a single dashboard."
+            />
+            <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
+              {relatedPages.map((related) => (
+                <Link
+                  key={related.href}
+                  href={related.href}
+                  className="rounded-xl border border-[var(--border-subtle)] bg-bg-surface/50 p-5 transition-colors hover:border-[var(--border-active)]"
+                >
+                  <h3 className="text-lg font-light text-text-primary">
+                    {related.shortTitle}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-text-secondary">
+                    {related.description}
+                  </p>
+                  <span className="mt-4 inline-flex items-center gap-2 text-sm text-brand-accent">
+                    Explore use case <ArrowRight className="h-4 w-4" />
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      <section className="py-20 bg-bg-surface">
         <div className="mx-auto max-w-3xl px-6 text-center md:px-8">
           <h2 className="text-3xl font-light tracking-[-0.02em] text-text-primary md:text-4xl">
-            Ready to test PPV on your own data?
+            Ready to test this use case against your manufacturing data?
           </h2>
           <p className="mt-4 text-text-secondary leading-relaxed">
-            Start with a focused workshop that reviews your PPV method,
-            BatchMaster/SAP and Power BI environment, data availability, and
-            approval requirements.
+            Start with a focused workshop that reviews systems, data readiness,
+            governance requirements, and the first measurable proof point.
           </p>
           <div className="mt-8 flex justify-center">
             <Button
@@ -248,7 +277,7 @@ export default function PPVAgentPage() {
         </div>
       </section>
 
-      <FAQ items={page.faq} heading="PPV Agent FAQ" />
+      <FAQ items={page.faq} heading={`${page.shortTitle} FAQ`} />
 
       <CTASection />
 
