@@ -5,13 +5,24 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ArrowRight, ArrowUpRight, CornerDownRight } from "lucide-react";
+import type { ComponentType, SVGProps } from "react";
+import {
+  ArrowRight,
+  ArrowUpRight,
+  BookOpenText,
+  Bot,
+  Brain,
+  Building2,
+  CornerDownRight,
+  Factory,
+  Menu,
+  PackageCheck,
+  Sparkles,
+  X,
+} from "lucide-react";
 import {
   SITE_CONFIG,
   MEGA_MENU_CATEGORIES,
-  MEGA_MENU_FEATURED,
-  MEGA_MENU_QUICK_LINKS,
-  MEGA_MENU_STATS,
   type MegaMenuLink,
 } from "@/lib/constants";
 import { Button } from "@/components/ui/Button";
@@ -21,6 +32,27 @@ import { Button } from "@/components/ui/Button";
 /* ------------------------------------------------------------------ */
 
 const REDUCE_MOTION = "motion-reduce:transition-none motion-reduce:transform-none";
+type MenuIcon = ComponentType<SVGProps<SVGSVGElement>>;
+
+const CATEGORY_ICONS: Record<string, MenuIcon> = {
+  "AI Services": Brain,
+  "AI Products": PackageCheck,
+  Industries: Factory,
+  Resources: BookOpenText,
+  Company: Building2,
+};
+
+function routeMatches(pathname: string, link: MegaMenuLink) {
+  return !link.external && pathname === link.href;
+}
+
+function findCategoryIndex(pathname: string) {
+  const index = MEGA_MENU_CATEGORIES.findIndex((cat) =>
+    cat.links.some((link) => routeMatches(pathname, link))
+  );
+
+  return index >= 0 ? index : 0;
+}
 
 /** Renders an internal Next.js <Link> or an external new-tab <a>. */
 function MenuLink({
@@ -67,8 +99,13 @@ function MegaMenu({
   onClose: () => void;
   pathname: string;
 }) {
-  // First category expanded by default; hover (desktop) or tap (mobile) switches.
-  const [activeCat, setActiveCat] = useState(0);
+  const [activeCat, setActiveCat] = useState(() => findCategoryIndex(pathname));
+  const activeCategory = MEGA_MENU_CATEGORIES[activeCat] ?? MEGA_MENU_CATEGORIES[0];
+  const ActiveIcon = CATEGORY_ICONS[activeCategory.name] ?? Sparkles;
+  const primaryLink: MegaMenuLink = {
+    label: activeCategory.primaryCta,
+    href: activeCategory.primaryHref,
+  };
 
   // Close on Escape
   useEffect(() => {
@@ -130,210 +167,280 @@ function MegaMenu({
           </div>
 
           {/* Body — 3 columns on desktop, stacked on mobile */}
-          <div className="relative z-[2] grid grid-cols-1 lg:grid-cols-[1.05fr_1.25fr_0.95fr]">
+          <div className="relative z-[2] grid grid-cols-1 lg:grid-cols-[0.9fr_1.28fr_1.12fr]">
             {/* Column 1 — categories */}
             <div className="border-b border-[var(--border-subtle)] px-6 py-8 md:px-8 lg:border-b-0 lg:border-r">
-              <div className="mb-5 flex items-center justify-between border-t border-[var(--border-subtle)] pt-3">
+              <div className="mb-5 border-t border-[var(--border-subtle)] pt-3">
                 <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-text-dim">
                   Navigate // ITECS AI
                 </span>
-                <Link
-                  href="/services"
-                  onClick={onClose}
-                  className="font-mono text-[11px] uppercase tracking-[0.1em] text-text-secondary transition-colors hover:text-brand-accent"
-                >
-                  All services ↗
-                </Link>
               </div>
 
-              {MEGA_MENU_CATEGORIES.map((cat, i) => {
-                const isActive = activeCat === i;
-                return (
-                  <motion.div
-                    key={cat.name}
-                    initial={{ opacity: 0, y: 12 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.05 + i * 0.05, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                    onMouseEnter={() => setActiveCat(i)}
-                    className="py-0.5"
-                  >
-                    <button
+              <div className="space-y-2">
+                {MEGA_MENU_CATEGORIES.map((cat, i) => {
+                  const isActive = activeCat === i;
+                  const CatIcon = CATEGORY_ICONS[cat.name] ?? Sparkles;
+                  return (
+                    <motion.button
+                      key={cat.name}
                       type="button"
-                      onClick={() => setActiveCat(isActive ? -1 : i)}
-                      aria-expanded={isActive}
-                      className="flex w-full items-baseline gap-3 py-2 text-left"
-                    >
-                      <span
-                        className={`text-[28px] font-light leading-tight tracking-tight transition-colors md:text-[33px] ${
-                          isActive
-                            ? "text-text-primary"
-                            : "text-text-secondary"
-                        }`}
-                      >
-                        {cat.name}
-                      </span>
-                      <span className="font-mono text-[10.5px] text-text-dim">{cat.num}</span>
-                    </button>
-                    <div
-                      className={`overflow-hidden transition-[max-height,opacity] duration-300 ease-out ${REDUCE_MOTION} ${
-                        isActive ? "max-h-[480px] opacity-100" : "max-h-0 opacity-0"
+                      initial={{ opacity: 0, y: 12 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{
+                        delay: 0.05 + i * 0.05,
+                        duration: 0.4,
+                        ease: [0.16, 1, 0.3, 1],
+                      }}
+                      onMouseEnter={() => setActiveCat(i)}
+                      onFocus={() => setActiveCat(i)}
+                      onClick={() => setActiveCat(i)}
+                      aria-current={isActive ? "true" : undefined}
+                      className={`group/cat relative isolate w-full overflow-hidden rounded-xl border px-4 py-3 text-left transition-all ${REDUCE_MOTION} ${
+                        isActive
+                          ? "border-[var(--border-active)] bg-bg-elevated text-text-primary shadow-[0_0_36px_rgba(139,92,246,0.12)]"
+                          : "border-transparent text-text-secondary hover:border-[var(--border-subtle)] hover:bg-bg-surface/70 hover:text-text-primary"
                       }`}
                     >
-                      {cat.links.map((link) => {
-                        const active = !link.external && pathname === link.href;
-                        return (
-                          <MenuLink
-                            key={link.label}
-                            link={link}
-                            onNavigate={onClose}
-                            className={`group/link flex items-center gap-2.5 py-1.5 pl-0.5 text-[17px] transition-all ${REDUCE_MOTION} hover:translate-x-1 ${
-                              active
-                                ? "text-brand-accent"
-                                : "text-text-dim hover:text-text-primary"
-                            }`}
-                          >
-                            <CornerDownRight
-                              className="h-3.5 w-3.5 shrink-0 text-brand-accent opacity-75 transition-opacity group-hover/link:opacity-100"
-                              aria-hidden="true"
-                            />
-                            <span>{link.label}</span>
-                            {link.external && (
-                              <ArrowUpRight
-                                className="h-3 w-3 text-text-dim"
+                      {isActive && (
+                        <motion.span
+                          layoutId="mega-menu-active-category"
+                          className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_18%_20%,rgba(139,92,246,0.22),transparent_34%),radial-gradient(circle_at_88%_76%,rgba(6,182,212,0.14),transparent_38%)]"
+                          transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+                        />
+                      )}
+                      <span className="flex items-start justify-between gap-3">
+                        <span>
+                          <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-text-dim">
+                            {cat.num}
+                          </span>
+                          <span className="mt-1 block text-[25px] font-light leading-tight tracking-tight md:text-[29px]">
+                            {cat.name}
+                          </span>
+                          <span className="mt-1.5 line-clamp-2 block text-[12.5px] leading-relaxed text-text-dim">
+                            {cat.eyebrow}
+                          </span>
+                        </span>
+                        <CatIcon
+                          className={`mt-1 h-6 w-6 shrink-0 transition-colors ${
+                            isActive ? "text-brand-purple" : "text-text-dim group-hover/cat:text-brand-accent"
+                          }`}
+                          aria-hidden="true"
+                        />
+                      </span>
+                    </motion.button>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Column 2 — active category story and cards */}
+            <div className="border-b border-[var(--border-subtle)] px-6 py-8 md:px-8 lg:border-b-0 lg:border-r">
+              <AnimatePresence mode="wait" initial={false}>
+                <motion.div
+                  key={`${activeCategory.name}-story`}
+                  initial={{ opacity: 0, x: 18 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -18 }}
+                  transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  <div className="mb-5 flex items-center justify-between border-t border-[var(--border-subtle)] pt-3">
+                    <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-text-dim">
+                      {activeCategory.num}
+                      {" // "}
+                      {activeCategory.name}
+                    </span>
+                    <MenuLink
+                      link={primaryLink}
+                      onNavigate={onClose}
+                      className="font-mono text-[11px] uppercase tracking-[0.1em] text-text-secondary transition-colors hover:text-brand-accent"
+                    >
+                      Open section ↗
+                    </MenuLink>
+                  </div>
+
+                  <div className="relative overflow-hidden rounded-2xl border border-[var(--border-subtle)] bg-bg-elevated p-6 shadow-[0_0_60px_rgba(6,182,212,0.08)]">
+                    <div
+                      aria-hidden="true"
+                      className="absolute inset-0 opacity-95"
+                      style={{
+                        background:
+                          "radial-gradient(42% 58% at 84% 18%, rgba(139,92,246,0.24), transparent 62%), radial-gradient(42% 58% at 8% 92%, rgba(6,182,212,0.16), transparent 66%)",
+                      }}
+                    />
+                    <div className="relative">
+                      <div className="flex items-start justify-between gap-5">
+                        <div>
+                          <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-brand-accent">
+                            {activeCategory.eyebrow}
+                          </div>
+                          <h2 className="mt-3 max-w-[520px] text-[34px] font-light leading-tight tracking-tight text-text-primary md:text-[42px]">
+                            {activeCategory.name}
+                          </h2>
+                        </div>
+                        <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl border border-[var(--border-active)] bg-bg-void/65 text-brand-purple shadow-[0_0_35px_rgba(139,92,246,0.18)]">
+                          <ActiveIcon className="h-8 w-8" aria-hidden="true" />
+                        </div>
+                      </div>
+                      <p className="mt-4 max-w-[580px] text-[15px] leading-relaxed text-text-secondary">
+                        {activeCategory.summary}
+                      </p>
+                      <MenuLink
+                        link={primaryLink}
+                        onNavigate={onClose}
+                        className={`group/primary mt-6 inline-flex items-center gap-2.5 rounded-lg bg-gradient-to-r from-brand-accent to-brand-purple px-5 py-3 text-[13px] font-bold uppercase tracking-[0.05em] text-bg-void transition-all ${REDUCE_MOTION} hover:brightness-110`}
+                      >
+                        {activeCategory.primaryCta}
+                        <ArrowRight
+                          className={`h-4 w-4 transition-transform ${REDUCE_MOTION} group-hover/primary:translate-x-1`}
+                          aria-hidden="true"
+                        />
+                      </MenuLink>
+                    </div>
+                  </div>
+
+                  <div className="mt-4 grid gap-4 md:grid-cols-2">
+                    {activeCategory.cards.map((card, index) => (
+                      <MenuLink
+                        key={card.href}
+                        link={{
+                          label: card.title,
+                          href: card.href,
+                          external: card.external,
+                        }}
+                        onNavigate={onClose}
+                        className={`group/card relative min-h-[224px] overflow-hidden rounded-2xl border border-[var(--border-subtle)] bg-bg-surface p-5 transition-all ${REDUCE_MOTION} hover:-translate-y-0.5 hover:border-[var(--border-active)] hover:shadow-[0_0_32px_rgba(139,92,246,0.12)]`}
+                      >
+                        <div
+                          aria-hidden="true"
+                          className="absolute inset-x-0 top-0 h-24 opacity-80 transition-opacity group-hover/card:opacity-100"
+                          style={{
+                            background:
+                              index % 2 === 0
+                                ? "radial-gradient(80% 90% at 18% 0%, rgba(6,182,212,0.2), transparent 68%)"
+                                : "radial-gradient(80% 90% at 18% 0%, rgba(139,92,246,0.22), transparent 68%)",
+                          }}
+                        />
+                        <div className="relative">
+                          <div className="flex items-start justify-between gap-4">
+                            <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-brand-accent">
+                              {card.eyebrow}
+                            </div>
+                            <Bot className="h-5 w-5 shrink-0 text-brand-purple/80" aria-hidden="true" />
+                          </div>
+                          <h3 className="mt-4 text-[20px] font-semibold leading-snug tracking-tight text-text-primary">
+                            {card.title}
+                          </h3>
+                          <p className="mt-2 text-[13.5px] leading-relaxed text-text-secondary">
+                            {card.description}
+                          </p>
+                          <span className="mt-4 inline-flex items-center gap-1.5 text-[12.5px] font-semibold text-brand-accent">
+                            {card.cta}
+                            {card.external ? (
+                              <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+                            ) : (
+                              <ArrowRight
+                                className={`h-3.5 w-3.5 transition-transform ${REDUCE_MOTION} group-hover/card:translate-x-1`}
                                 aria-hidden="true"
                               />
                             )}
-                          </MenuLink>
-                        );
-                      })}
-                    </div>
-                  </motion.div>
-                );
-              })}
+                          </span>
+                        </div>
+                      </MenuLink>
+                    ))}
+                  </div>
+                </motion.div>
+              </AnimatePresence>
             </div>
 
-            {/* Column 2 — featured proof cards */}
-            <div className="border-b border-[var(--border-subtle)] px-6 py-8 md:px-8 lg:border-b-0 lg:border-r">
-              <div className="mb-5 flex items-center justify-between border-t border-[var(--border-subtle)] pt-3">
-                <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-text-dim">
-                  Featured // Proof
-                </span>
-                <Link
-                  href="/insights"
-                  onClick={onClose}
-                  className="font-mono text-[11px] uppercase tracking-[0.1em] text-text-secondary transition-colors hover:text-brand-accent"
-                >
-                  View insights ↗
-                </Link>
-              </div>
-
-              {MEGA_MENU_FEATURED.map((feat) => (
-                <Link
-                  key={feat.href}
-                  href={feat.href}
-                  onClick={onClose}
-                  className={`group/feat mb-4 block overflow-hidden rounded-2xl border border-[var(--border-subtle)] bg-bg-elevated transition-all ${REDUCE_MOTION} hover:-translate-y-0.5 hover:border-[var(--border-active)]`}
-                >
-                  <div
-                    className="relative h-[120px] overflow-hidden"
-                    style={{
-                      background:
-                        "radial-gradient(40% 60% at 78% 30%, rgba(6,182,212,0.35), transparent 60%), radial-gradient(50% 70% at 22% 80%, rgba(139,92,246,0.32), transparent 62%), linear-gradient(135deg, #0f1b3a, #0a1124)",
-                    }}
-                  >
-                    <span className="absolute left-3 top-3 font-mono text-[10px] tracking-[0.1em] text-text-secondary">
-                      ◇ ITECS.AI
-                    </span>
-                    <span className="absolute bottom-3 right-3 h-2.5 w-2.5 animate-pulse rounded-full bg-brand-accent" />
-                  </div>
-                  <div className="px-5 py-4">
-                    <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-brand-accent">
-                      {feat.eyebrow}
-                    </div>
-                    <h3 className="mt-2 text-[18px] font-semibold leading-snug tracking-tight text-text-primary">
-                      {feat.title}
-                    </h3>
-                    <p className="mt-1.5 text-[13px] leading-relaxed text-text-secondary">
-                      {feat.description}
-                    </p>
-                    <span className="mt-3 inline-flex items-center gap-1.5 text-[12.5px] font-semibold text-brand-accent">
-                      {feat.cta}
-                      <ArrowRight
-                        className={`h-3.5 w-3.5 transition-transform ${REDUCE_MOTION} group-hover/feat:translate-x-1`}
-                        aria-hidden="true"
-                      />
-                    </span>
-                  </div>
-                </Link>
-              ))}
-            </div>
-
-            {/* Column 3 — offerings, stats, quick links */}
+            {/* Column 3 — active category links and proof points */}
             <div className="px-6 py-8 md:px-8">
-              <div className="mb-5 flex items-center justify-between border-t border-[var(--border-subtle)] pt-3">
-                <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-text-dim">
-                  Offerings
-                </span>
-                <Link
-                  href="/services"
-                  onClick={onClose}
-                  className="font-mono text-[11px] uppercase tracking-[0.1em] text-text-secondary transition-colors hover:text-brand-accent"
+              <AnimatePresence mode="wait" initial={false}>
+                <motion.div
+                  key={`${activeCategory.name}-links`}
+                  initial={{ opacity: 0, x: 18 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -18 }}
+                  transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
                 >
-                  View all ↗
-                </Link>
-              </div>
+                  <div className="mb-5 flex items-center justify-between border-t border-[var(--border-subtle)] pt-3">
+                    <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-text-dim">
+                      Explore
+                      {" // "}
+                      {activeCategory.name}
+                    </span>
+                    <MenuLink
+                      link={primaryLink}
+                      onNavigate={onClose}
+                      className="font-mono text-[11px] uppercase tracking-[0.1em] text-text-secondary transition-colors hover:text-brand-accent"
+                    >
+                      View hub ↗
+                    </MenuLink>
+                  </div>
 
-              <p className="mb-4 text-[14.5px] leading-relaxed text-text-secondary">
-                Packaged, production-ready AI you can deploy in weeks: receptionists,
-                sales AI, internal knowledge search and AI-era SEO — all governed and
-                supported.
-              </p>
-              <Link
-                href="/services"
-                onClick={onClose}
-                className="inline-flex items-center gap-2 text-[13px] font-semibold text-brand-accent"
-              >
-                <CornerDownRight className="h-3.5 w-3.5" aria-hidden="true" />
-                Explore AI Services
-              </Link>
+                  <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
+                    {activeCategory.links.map((link) => {
+                      const active = routeMatches(pathname, link);
+                      return (
+                        <MenuLink
+                          key={link.label}
+                          link={link}
+                          onNavigate={onClose}
+                          className={`group/link flex min-h-[52px] items-center justify-between gap-3 rounded-xl border px-3.5 py-2.5 text-[14.5px] transition-all ${REDUCE_MOTION} hover:-translate-y-0.5 ${
+                            active
+                              ? "border-[var(--border-active)] bg-brand-accent/10 text-brand-accent"
+                              : "border-[var(--border-subtle)] bg-bg-surface/70 text-text-secondary hover:border-[var(--border-active)] hover:text-text-primary"
+                          }`}
+                        >
+                          <span className="flex items-center gap-2.5">
+                            <CornerDownRight
+                              className="h-3.5 w-3.5 shrink-0 text-brand-purple"
+                              aria-hidden="true"
+                            />
+                            <span>{link.label}</span>
+                          </span>
+                          {link.external ? (
+                            <ArrowUpRight
+                              className="h-3.5 w-3.5 shrink-0 text-text-dim transition-colors group-hover/link:text-brand-accent"
+                              aria-hidden="true"
+                            />
+                          ) : (
+                            <ArrowRight
+                              className={`h-3.5 w-3.5 shrink-0 text-text-dim transition-all ${REDUCE_MOTION} group-hover/link:translate-x-1 group-hover/link:text-brand-accent`}
+                              aria-hidden="true"
+                            />
+                          )}
+                        </MenuLink>
+                      );
+                    })}
+                  </div>
 
-              {/* Stats */}
-              <div className="my-6 flex overflow-hidden rounded-xl border border-[var(--border-subtle)]">
-                {MEGA_MENU_STATS.map((stat) => (
-                  <div
-                    key={stat.l}
-                    className="flex-1 border-r border-[var(--border-subtle)] p-3.5 last:border-r-0"
-                  >
-                    <div className="text-[20px] font-bold text-text-primary">{stat.n}</div>
-                    <div className="mt-0.5 text-[10px] uppercase tracking-[0.08em] text-text-secondary">
-                      {stat.l}
+                  <div className="mt-6 overflow-hidden rounded-2xl border border-[var(--border-subtle)] bg-bg-elevated">
+                    <div className="border-b border-[var(--border-subtle)] bg-[linear-gradient(135deg,rgba(139,92,246,0.16),rgba(6,182,212,0.08))] px-5 py-4">
+                      <div className="font-mono text-[10px] uppercase tracking-[0.17em] text-brand-accent">
+                        {activeCategory.proofLabel}
+                      </div>
+                    </div>
+                    <div className="p-5">
+                      <div className="space-y-3">
+                        {activeCategory.proofPoints.map((point) => (
+                          <div key={point} className="flex gap-3 text-[13.5px] leading-relaxed text-text-secondary">
+                            <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-purple shadow-[0_0_14px_rgba(139,92,246,0.8)]" />
+                            <span>{point}</span>
+                          </div>
+                        ))}
+                      </div>
+                      <MenuLink
+                        link={{ label: "Contact", href: "/contact" }}
+                        onNavigate={onClose}
+                        className={`mt-5 inline-flex items-center gap-2 text-[13px] font-semibold text-brand-accent transition-all ${REDUCE_MOTION} hover:translate-x-1`}
+                      >
+                        Talk with the ITECS Dallas team
+                        <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+                      </MenuLink>
                     </div>
                   </div>
-                ))}
-              </div>
-
-              {/* Quick links */}
-              <div className="mb-4 border-t border-[var(--border-subtle)] pt-3">
-                <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-text-dim">
-                  Quick links
-                </span>
-              </div>
-              <div className="flex flex-col">
-                {MEGA_MENU_QUICK_LINKS.map((link) => (
-                  <MenuLink
-                    key={link.label}
-                    link={link}
-                    onNavigate={onClose}
-                    className={`group/q flex items-center justify-between border-b border-[var(--border-subtle)] py-2.5 text-[15px] text-text-secondary transition-all ${REDUCE_MOTION} hover:pl-2 hover:text-text-primary`}
-                  >
-                    <span>{link.label}</span>
-                    <ArrowUpRight
-                      className="h-3.5 w-3.5 text-text-dim transition-colors group-hover/q:text-brand-accent"
-                      aria-hidden="true"
-                    />
-                  </MenuLink>
-                ))}
-              </div>
+                </motion.div>
+              </AnimatePresence>
             </div>
           </div>
 
@@ -478,7 +585,12 @@ export function Header() {
       </header>
 
       {/* Full-screen takeover — rendered outside header to avoid stacking issues */}
-      <MegaMenu open={menuOpen} onClose={() => setMenuOpen(false)} pathname={pathname} />
+      <MegaMenu
+        key={pathname}
+        open={menuOpen}
+        onClose={() => setMenuOpen(false)}
+        pathname={pathname}
+      />
     </>
   );
 }

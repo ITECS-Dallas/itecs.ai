@@ -65,9 +65,25 @@ export interface MegaMenuLink {
   external?: boolean;
 }
 
+export interface MegaMenuCard {
+  eyebrow: string;
+  title: string;
+  description: string;
+  href: string;
+  cta: string;
+  external?: boolean;
+}
+
 export interface MegaMenuCategory {
   num: string;
   name: string;
+  eyebrow: string;
+  summary: string;
+  primaryHref: string;
+  primaryCta: string;
+  proofLabel: string;
+  proofPoints: string[];
+  cards: MegaMenuCard[];
   links: MegaMenuLink[];
 }
 
@@ -75,28 +91,120 @@ export const MEGA_MENU_CATEGORIES: MegaMenuCategory[] = [
   {
     num: "01",
     name: "AI Services",
+    eyebrow: "Strategy, build, train, operate",
+    summary:
+      "Practical AI services for leadership teams that need secure adoption, useful automation, and production support without turning AI into a science project.",
+    primaryHref: "/services",
+    primaryCta: "Explore AI services",
+    proofLabel: "Where service engagements usually start",
+    proofPoints: [
+      "Readiness audits and business-case prioritization",
+      "Custom agents with human approval and audit trails",
+      "Training and operating models that keep adoption governed",
+    ],
+    cards: [
+      {
+        eyebrow: "AI Consulting",
+        title: "Find the workflows where AI has a real operating case",
+        description:
+          "Discovery, ROI mapping, governance, platform guidance, and an adoption roadmap your leadership team can actually defend.",
+        href: "/consulting",
+        cta: "Start with consulting",
+      },
+      {
+        eyebrow: "Custom AI Agents",
+        title: "Build secure agents around your data and approvals",
+        description:
+          "RAG, project workspaces, agentic workflows, and tool-connected assistants with practical controls from day one.",
+        href: "/custom-ai-agents",
+        cta: "Review agent builds",
+      },
+    ],
     links: [
+      { label: "AI Services Overview", href: "/services" },
       { label: "AI Consulting", href: "/consulting" },
       { label: "Custom AI Agents", href: "/custom-ai-agents" },
       { label: "Automation", href: "/automation" },
       { label: "AI DevOps", href: "/ai-devops" },
       { label: "AI Training", href: "/training" },
+      { label: "AI Champion Program", href: "/services/ai-champion-program" },
       { label: "Data & AI Readiness Audit", href: "/data-audit" },
     ],
   },
   {
     num: "02",
     name: "AI Products",
+    eyebrow: "Packaged AI systems",
+    summary:
+      "Focused AI products that solve visible business problems: missed calls, stale CRM data, scattered knowledge, and search visibility in AI answer engines.",
+    primaryHref: "/ai-receptionist",
+    primaryCta: "View AI products",
+    proofLabel: "Packaged systems, implemented with operations discipline",
+    proofPoints: [
+      "Clear use case, defined integration scope, measurable adoption path",
+      "Built for Microsoft 365, CRM, telephony, and knowledge workflows",
+      "Maintained after launch instead of handed off as fragile automation",
+    ],
+    cards: [
+      {
+        eyebrow: "AI Receptionist",
+        title: "Answer, qualify, and book calls after hours and during peaks",
+        description:
+          "A voice agent for high-intent inbound calls, appointment booking, routing, and caller context capture.",
+        href: "/ai-receptionist",
+        cta: "See the voice agent",
+      },
+      {
+        eyebrow: "AI-Optimized SEO",
+        title: "Prepare your site for Google AI Overviews and answer engines",
+        description:
+          "Technical structure, content depth, schema, and authority signals for the AI search era.",
+        href: "/ai-optimized-seo",
+        cta: "Explore AI SEO",
+      },
+    ],
     links: [
       { label: "AI Receptionist", href: "/ai-receptionist" },
       { label: "CRM & Sales AI", href: "/crm-sales-ai" },
       { label: "Knowledge Base", href: "/ai-knowledge-base" },
       { label: "AI-Optimized SEO", href: "/ai-optimized-seo" },
+      { label: "AI SEO Foundation", href: "/ai-optimized-seo/foundation" },
+      { label: "AI SEO Momentum", href: "/ai-optimized-seo/momentum" },
+      { label: "AI SEO Velocity", href: "/ai-optimized-seo/velocity" },
     ],
   },
   {
     num: "03",
     name: "Industries",
+    eyebrow: "Manufacturing AI vertical",
+    summary:
+      "AI services for manufacturers where the business case ties to margin, working capital, uptime, quality, traceability, and finance-grade decision support.",
+    primaryHref: "/manufacturing",
+    primaryCta: "Open manufacturing hub",
+    proofLabel: "Built around manufacturer operating pressure",
+    proofPoints: [
+      "Finance, procurement, plant, and quality workflows in one operating view",
+      "Read-heavy, write-controlled agents with human approval boundaries",
+      "Dallas ITECS team, national manufacturing engagement model",
+    ],
+    cards: [
+      {
+        eyebrow: "Manufacturing AI Hub",
+        title: "A vertical hub for CFOs, operators, and plant leaders",
+        description:
+          "A broader manufacturing AI program that starts with defendable use cases before expanding into adjacent workflows.",
+        href: "/manufacturing",
+        cta: "Visit the hub",
+      },
+      {
+        eyebrow: "PPV Agent",
+        title: "Purchase Price Variance and Commodity Cost Intelligence",
+        description:
+          "A finance-grade agent for PPV decomposition, forward exposure, contract pass-throughs, and commodity cost scenarios.",
+        href: "/manufacturing/ppv-agent",
+        cta: "Review PPV agent",
+      },
+    ],
     links: [
       { label: "Manufacturing AI Hub", href: "/manufacturing" },
       { label: "PPV Agent", href: "/manufacturing/ppv-agent" },
@@ -114,8 +222,55 @@ export const MEGA_MENU_CATEGORIES: MegaMenuCategory[] = [
   {
     num: "04",
     name: "Resources",
+    eyebrow: "Executive guidance and field notes",
+    summary:
+      "Plain-English resources for owners and executives evaluating AI adoption, risk, ROI, governance, search, security, and operational automation.",
+    primaryHref: "/insights",
+    primaryCta: "Read insights",
+    proofLabel: "Useful when leadership needs context before budget",
+    proofPoints: [
+      "AI strategy and ROI guidance for non-technical executives",
+      "Security and governance articles grounded in managed IT experience",
+      "Operational AI playbooks connected back to service pages",
+    ],
+    cards: [
+      {
+        eyebrow: "Executive AI ROI",
+        title: "What CEOs should ask before approving AI spend",
+        description:
+          "A practical lens for separating credible operating value from AI novelty.",
+        href: "/insights/ceo-guide-ai-roi",
+        cta: "Read the guide",
+      },
+      {
+        eyebrow: "Security",
+        title: "Secure business data before expanding AI usage",
+        description:
+          "How to keep employee AI adoption from becoming uncontrolled data exposure.",
+        href: "/insights/secure-business-data-chatgpt",
+        cta: "Review the risks",
+      },
+    ],
     links: [
       { label: "Insights", href: "/insights" },
+      { label: "CEO Guide to AI ROI", href: "/insights/ceo-guide-ai-roi" },
+      {
+        label: "Secure Business Data in ChatGPT",
+        href: "/insights/secure-business-data-chatgpt",
+      },
+      {
+        label: "Agentic AI Workflows",
+        href: "/insights/agentic-ai-workflows-enterprise-operations",
+      },
+      { label: "Automate Lead Follow-Up", href: "/insights/automate-lead-follow-up" },
+      { label: "Claude Cowork for Small Business", href: "/insights/claude-cowork-for-small-business" },
+      { label: "How to Use AI in Small Business", href: "/insights/how-to-use-ai-small-business" },
+      { label: "MCP Is the New API", href: "/insights/mcp-is-the-new-api" },
+      { label: "OpenClaw Security Crisis", href: "/insights/openclaw-security-crisis" },
+      {
+        label: "Enterprise Agentic Skills Repo",
+        href: "/insights/enterprise-agentic-skills-repo",
+      },
       {
         label: "Whitepapers & Case Studies",
         href: "https://itecsonline.com/white-papers-case-studies",
@@ -131,60 +286,45 @@ export const MEGA_MENU_CATEGORIES: MegaMenuCategory[] = [
   {
     num: "05",
     name: "Company",
+    eyebrow: "ITECS AI and MSP operations",
+    summary:
+      "ITECS AI is backed by the Dallas ITECS managed services team, bringing AI strategy together with infrastructure, security, support, and long-term operations.",
+    primaryHref: "/about",
+    primaryCta: "About ITECS AI",
+    proofLabel: "Why the delivery model matters",
+    proofPoints: [
+      "24+ years operating client technology environments",
+      "AI delivery connected to security, identity, endpoint, and support reality",
+      "Clear paths from assessment to implementation to managed operations",
+    ],
+    cards: [
+      {
+        eyebrow: "Managed Intelligence",
+        title: "AI operations as an ongoing managed service",
+        description:
+          "Monitoring, governance, prompt and model upkeep, user support, and continuous improvement after launch.",
+        href: "/managed-intelligence-provider",
+        cta: "See managed AI",
+      },
+      {
+        eyebrow: "ITECS MSP",
+        title: "Managed IT, cybersecurity, and support from the parent team",
+        description:
+          "Connect AI initiatives to the infrastructure and security foundation that keeps the business running.",
+        href: "https://itecsonline.com/",
+        cta: "Visit ITECS MSP",
+        external: true,
+      },
+    ],
     links: [
       { label: "About ITECS", href: "/about" },
       { label: "Pricing", href: "/pricing" },
       { label: "Managed Intelligence", href: "/managed-intelligence-provider" },
+      { label: "Contact", href: "/contact" },
       { label: "ITECS MSP", href: "https://itecsonline.com/", external: true },
     ],
   },
 ];
-
-export interface MegaMenuFeatured {
-  eyebrow: string;
-  title: string;
-  description: string;
-  cta: string;
-  href: string;
-}
-
-export const MEGA_MENU_FEATURED: MegaMenuFeatured[] = [
-  {
-    eyebrow: "Product // AI Receptionist",
-    title: "Stop losing revenue to missed calls",
-    description:
-      "A 24/7 AI receptionist that answers, qualifies and books — in your brand voice, on every channel.",
-    cta: "See it work",
-    href: "/ai-receptionist",
-  },
-  {
-    eyebrow: "Product // CRM & Sales AI",
-    title: "Pipeline that updates itself",
-    description:
-      "AI that logs activity, drafts follow-ups and surfaces the deals most likely to close.",
-    cta: "Explore CRM AI",
-    href: "/crm-sales-ai",
-  },
-];
-
-export const MEGA_MENU_QUICK_LINKS: MegaMenuLink[] = [
-  { label: "About ITECS", href: "/about" },
-  { label: "Pricing", href: "/pricing" },
-  { label: "Managed Intelligence", href: "/managed-intelligence-provider" },
-  {
-    label: "Whitepapers & Case Studies",
-    href: "https://itecsonline.com/white-papers-case-studies",
-    external: true,
-  },
-  { label: "ITECS MSP (managed IT)", href: "https://itecsonline.com/", external: true },
-  { label: "Contact", href: "/contact" },
-];
-
-export const MEGA_MENU_STATS = [
-  { n: "24+", l: "yrs in DFW" },
-  { n: "99.9%", l: "uptime" },
-  { n: "92%", l: "clients kept" },
-] as const;
 
 // ---------------------------------------------------------------------------
 // Public AI Pricing
