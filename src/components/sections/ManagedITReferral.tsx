@@ -82,7 +82,7 @@ export function ManagedITReferral() {
             aria-label="Open the main ITECS website"
             className="group block"
           >
-            <div className="relative overflow-hidden rounded-lg border border-[var(--border-subtle)] bg-bg-surface shadow-[0_0_40px_rgba(6,182,212,0.08)]">
+            <div className="relative overflow-hidden rounded-lg border border-[var(--border-subtle)] bg-bg-surface shadow-[0_0_40px_var(--accent-cyan-subtle)]">
               <div className="relative aspect-[16/9]">
                 <Image
                   src="/images/sections/itecsonline-homepage-top.png"

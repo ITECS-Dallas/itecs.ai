@@ -47,7 +47,7 @@ const telemetry = [
 export function AIDevOpsWorkflowDiagram() {
   return (
     <section className="relative overflow-hidden py-24 md:py-32">
-      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(6,182,212,0.04)_1px,transparent_1px),linear-gradient(rgba(6,182,212,0.04)_1px,transparent_1px)] bg-[size:56px_56px]" />
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,var(--accent-cyan-subtle)_1px,transparent_1px),linear-gradient(var(--accent-cyan-subtle)_1px,transparent_1px)] bg-[size:56px_56px]" />
 
       <div className="relative z-10 mx-auto max-w-6xl px-6 md:px-8">
         <ScrollReveal>

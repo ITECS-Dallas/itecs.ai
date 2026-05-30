@@ -24,7 +24,7 @@ export function ServicesHero() {
         position={{ top: "5%", right: "5%" }}
       />
       <GradientOrb
-        color="purple"
+        color="brand"
         size="md"
         position={{ bottom: "10%", left: "10%" }}
       />

@@ -73,7 +73,7 @@ function HeroCircuit() {
         </filter>
         <linearGradient id="hero-gradient" x1="0%" y1="100%" x2="100%" y2="0%">
           <stop offset="0%" stopColor="var(--brand-accent)" />
-          <stop offset="100%" stopColor="var(--brand-purple)" />
+          <stop offset="100%" stopColor="var(--brand)" />
         </linearGradient>
         <radialGradient id="hero-halo-grad">
           <stop offset="0%" stopColor="var(--brand-accent)" stopOpacity="0.4" />
@@ -227,7 +227,7 @@ function SectionDivider() {
         </filter>
         <linearGradient id="divider-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
           <stop offset="0%" stopColor="var(--brand-accent)" />
-          <stop offset="100%" stopColor="var(--brand-purple)" />
+          <stop offset="100%" stopColor="var(--brand)" />
         </linearGradient>
       </defs>
 

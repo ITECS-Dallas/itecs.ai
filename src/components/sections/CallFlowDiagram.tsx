@@ -23,13 +23,13 @@ const steps = [
     icon: MessageSquare,
     label: "Handles Request",
     detail: "FAQs, routing, qualification",
-    color: "var(--brand-purple)",
+    color: "var(--brand)",
   },
   {
     icon: Calendar,
     label: "Books or Routes",
     detail: "Calendar booking or live transfer",
-    color: "var(--brand-purple)",
+    color: "var(--brand)",
   },
   {
     icon: UserCheck,
@@ -115,7 +115,7 @@ export function CallFlowDiagram() {
         position={{ top: "30%", left: "5%" }}
       />
       <GradientOrb
-        color="purple"
+        color="brand"
         size="sm"
         position={{ bottom: "20%", right: "10%" }}
       />

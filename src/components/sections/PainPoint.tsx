@@ -31,7 +31,7 @@ export function PainPoint({
   return (
     <section className="relative py-24 md:py-32 overflow-hidden">
       <GradientOrb
-        color="purple"
+        color="brand"
         size="md"
         position={{ top: "20%", right: "5%" }}
       />
@@ -46,7 +46,7 @@ export function PainPoint({
               viewport={{ once: true, amount: 0.5 }}
               transition={{ duration: 0.5, ease: "easeOut" }}
             >
-              <span className="block text-6xl md:text-8xl font-extralight tracking-tight bg-gradient-to-r from-brand-accent to-brand-purple bg-clip-text text-transparent">
+              <span className="block text-6xl md:text-8xl font-extralight tracking-tight bg-gradient-to-r from-brand to-cyan bg-clip-text text-transparent">
                 {stat}
               </span>
               <span className="block mt-2 text-lg text-text-secondary font-light">

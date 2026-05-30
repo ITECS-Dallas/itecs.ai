@@ -30,13 +30,13 @@ const stages = [
     icon: Database,
     label: "Vector Store",
     detail: "Private Pinecone or pgvector DB",
-    color: "var(--brand-purple)",
+    color: "var(--brand)",
   },
   {
     icon: MessageSquare,
     label: "Employee Query",
     detail: "Plain-English question via Slack or Teams",
-    color: "var(--brand-purple)",
+    color: "var(--brand)",
   },
   {
     icon: Search,
@@ -127,7 +127,7 @@ export function KnowledgeBaseRAGDiagram() {
         position={{ top: "25%", left: "5%" }}
       />
       <GradientOrb
-        color="purple"
+        color="brand"
         size="sm"
         position={{ bottom: "20%", right: "8%" }}
       />

@@ -416,12 +416,12 @@ export default function PricingPage() {
                 key={tier.tier}
                 className={`relative flex h-full flex-col rounded-2xl border p-8 ${
                   tier.highlighted
-                    ? "border-brand-purple bg-brand-purple/5"
+                    ? "border-brand bg-brand/5"
                     : "border-[var(--border-subtle)] bg-bg-surface/50"
                 }`}
               >
                 {tier.highlighted ? (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-brand-purple px-3 py-1 text-xs font-medium text-text-primary">
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-brand px-3 py-1 text-xs font-medium text-text-primary">
                     Popular for teams
                   </div>
                 ) : null}

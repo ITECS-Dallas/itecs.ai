@@ -29,13 +29,13 @@ const stages = [
     icon: Route,
     label: "Roadmap",
     detail: "Prioritized plan, cost estimates",
-    color: "var(--brand-purple)",
+    color: "var(--brand)",
   },
   {
     icon: Wrench,
     label: "Implement",
     detail: "Tool setup, system integration",
-    color: "var(--brand-purple)",
+    color: "var(--brand)",
   },
   {
     icon: TrendingUp,
@@ -120,7 +120,7 @@ export function ConsultingWorkflowDiagram() {
         position={{ top: "30%", left: "5%" }}
       />
       <GradientOrb
-        color="purple"
+        color="brand"
         size="sm"
         position={{ bottom: "20%", right: "10%" }}
       />

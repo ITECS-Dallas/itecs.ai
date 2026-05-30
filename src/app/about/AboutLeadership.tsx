@@ -44,7 +44,7 @@ export function AboutLeadership({
                   whileHover={{ scale: 1.02 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <div className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-brand-accent/20 to-brand-purple/20 blur-sm" />
+                  <div className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-brand/20 to-cyan/20 blur-sm" />
                   <Image
                     src={member.image}
                     alt={`${member.name}, ${member.title} at ITECS`}

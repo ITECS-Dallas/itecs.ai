@@ -15,7 +15,7 @@ export function AboutHero() {
         position={{ top: "10%", right: "5%" }}
       />
       <GradientOrb
-        color="purple"
+        color="brand"
         size="sm"
         position={{ bottom: "20%", left: "10%" }}
       />
@@ -34,7 +34,7 @@ export function AboutHero() {
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-extralight tracking-[-0.03em] leading-[1.08] max-w-4xl">
             24 Years Serving Dallas Businesses.
             <br />
-            <span className="bg-gradient-to-r from-brand-accent to-brand-purple bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-brand to-cyan bg-clip-text text-transparent">
               Now Bringing Them AI.
             </span>
           </h1>

@@ -201,7 +201,7 @@ function ProposalDecisionForm({ decision }: { decision: ProposalDecision }) {
       animate={{ opacity: 1, height: "auto", y: 0, scale: 1 }}
       exit={{ opacity: 0, height: 0, y: -12, scale: 0.98 }}
       transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-      className={`mt-6 overflow-hidden rounded-2xl border p-5 text-left shadow-[0_0_45px_rgba(6,182,212,0.08)] md:p-6 ${
+      className={`mt-6 overflow-hidden rounded-2xl border p-5 text-left shadow-[0_0_45px_var(--accent-cyan-subtle)] md:p-6 ${
         isApproval
           ? "border-brand-accent/35 bg-brand-accent/5"
           : "border-red-400/30 bg-red-400/5"
@@ -449,7 +449,7 @@ export default function FCCMarketplacePostingAssistantProposal() {
     <div className="min-h-screen overflow-x-hidden bg-bg-surface text-text-primary">
       <div className="relative overflow-hidden">
         <GradientOrb color="cyan" size="lg" position={{ top: "-220px", left: "-180px" }} />
-        <GradientOrb color="purple" size="md" position={{ bottom: "-140px", right: "-120px" }} />
+        <GradientOrb color="brand" size="md" position={{ bottom: "-140px", right: "-120px" }} />
         <GridBackground opacity={0.025} />
 
         <div className="relative mx-auto max-w-6xl px-6 pb-8 pt-24 md:px-12 lg:px-24">
@@ -463,7 +463,7 @@ export default function FCCMarketplacePostingAssistantProposal() {
                 <SectionLabel>First Choice Containers Proposal</SectionLabel>
                 <h1 className="mb-6 text-4xl font-light leading-tight text-text-primary md:text-5xl lg:text-6xl">
                   FCC Marketplace{" "}
-                  <span className="bg-gradient-to-r from-brand-accent-bright to-brand-purple bg-clip-text text-transparent">
+                  <span className="bg-gradient-to-r from-brand to-cyan bg-clip-text text-transparent">
                     Posting Assistant
                   </span>
                 </h1>
@@ -726,7 +726,7 @@ export default function FCCMarketplacePostingAssistantProposal() {
               ].map((layer, index) => (
                 <div key={layer.label} className="relative">
                   <motion.div
-                    whileHover={{ y: -4, borderColor: "rgba(34,211,238,0.35)" }}
+                    whileHover={{ y: -4, borderColor: "var(--accent-cyan-subtle)" }}
                     className="h-full rounded-xl border border-gray-800/50 bg-gray-800/20 p-5 text-center"
                   >
                     <div className="mx-auto mb-3 flex h-11 w-11 items-center justify-center rounded-lg bg-brand-accent/10 text-brand-accent-bright">
@@ -926,7 +926,7 @@ export default function FCCMarketplacePostingAssistantProposal() {
           ].map((guardrail, index) => (
             <FadeIn key={guardrail.title} delay={index * 0.08}>
               <motion.div
-                whileHover={{ y: -5, borderColor: "rgba(34,211,238,0.3)" }}
+                whileHover={{ y: -5, borderColor: "var(--accent-cyan-subtle)" }}
                 className="h-full rounded-xl border border-gray-800/50 bg-gray-900/30 p-6"
               >
                 <div className="mb-4 inline-flex rounded-lg bg-brand-accent/10 p-2 text-brand-accent-bright">
@@ -1369,7 +1369,7 @@ export default function FCCMarketplacePostingAssistantProposal() {
 
       <Section className="relative overflow-hidden border-t border-gray-800/50 bg-bg-void">
         <GradientOrb color="cyan" size="md" position={{ top: "-120px", left: "-120px" }} />
-        <GradientOrb color="purple" size="sm" position={{ bottom: "-80px", right: "-60px" }} />
+        <GradientOrb color="brand" size="sm" position={{ bottom: "-80px", right: "-60px" }} />
         <FadeIn>
           <div className="mx-auto max-w-3xl text-center">
             <SectionLabel>Next Steps</SectionLabel>

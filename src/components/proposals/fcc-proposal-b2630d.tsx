@@ -207,7 +207,7 @@ function ProposalDecisionForm({ decision }: { decision: ProposalDecision }) {
         isApproval
           ? "border-brand-accent/35 bg-brand-accent/5"
           : "border-red-400/30 bg-red-400/5"
-      } p-5 text-left shadow-[0_0_45px_rgba(6,182,212,0.08)] md:p-6`}
+      } p-5 text-left shadow-[0_0_45px_var(--accent-cyan-subtle)] md:p-6`}
     >
       <input type="hidden" name="proposalAction" value={fieldsValue(decision)} />
 
@@ -458,7 +458,7 @@ export default function FCCProposal() {
       <div className="relative overflow-hidden">
         {/* Gradient orbs */}
         <div className="absolute top-[-200px] left-[-200px] w-[600px] h-[600px] bg-brand-accent/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-[-100px] right-[-100px] w-[400px] h-[400px] bg-brand-purple/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-[-100px] right-[-100px] w-[400px] h-[400px] bg-brand/5 rounded-full blur-3xl" />
 
         <div className="relative max-w-6xl mx-auto px-6 md:px-12 lg:px-24 pt-24 pb-6">
           {/* Hero content */}
@@ -472,7 +472,7 @@ export default function FCCProposal() {
                 <SectionLabel>Web Application Proposal</SectionLabel>
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-light text-text-primary leading-tight mb-6">
                   A Modern Platform for{" "}
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent-bright to-brand-accent">
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand to-cyan">
                     First Choice Containers
                   </span>
                 </h1>
@@ -693,7 +693,7 @@ export default function FCCProposal() {
               ].map((tech, i) => (
                 <motion.div
                   key={i}
-                  whileHover={{ y: -4, borderColor: "rgba(34,211,238,0.3)" }}
+                  whileHover={{ y: -4, borderColor: "var(--accent-cyan-subtle)" }}
                   className="flex flex-col items-center gap-2 p-4 rounded-xl border border-gray-800/50 bg-gray-800/20 transition-colors"
                 >
                   <div className="text-brand-accent-bright">{tech.icon}</div>
@@ -723,7 +723,7 @@ export default function FCCProposal() {
               ].map((tech, i) => (
                 <motion.div
                   key={i}
-                  whileHover={{ y: -4, borderColor: "rgba(34,211,238,0.3)" }}
+                  whileHover={{ y: -4, borderColor: "var(--accent-cyan-subtle)" }}
                   className="flex flex-col items-center gap-2 p-4 rounded-xl border border-gray-800/50 bg-gray-800/20 transition-colors"
                 >
                   <div className="text-brand-accent-bright">{tech.icon}</div>
@@ -753,7 +753,7 @@ export default function FCCProposal() {
               ].map((tech, i) => (
                 <motion.div
                   key={i}
-                  whileHover={{ y: -4, borderColor: "rgba(34,211,238,0.3)" }}
+                  whileHover={{ y: -4, borderColor: "var(--accent-cyan-subtle)" }}
                   className="flex flex-col items-center gap-2 p-4 rounded-xl border border-gray-800/50 bg-gray-800/20 transition-colors"
                 >
                   <div className="text-brand-accent-bright">{tech.icon}</div>
@@ -882,7 +882,7 @@ export default function FCCProposal() {
           ].map((skill, i) => (
             <FadeIn key={i} delay={i * 0.1}>
               <motion.div
-                whileHover={{ y: -6, borderColor: "rgba(34,211,238,0.3)" }}
+                whileHover={{ y: -6, borderColor: "var(--accent-cyan-subtle)" }}
                 className="p-6 rounded-xl border border-gray-800/50 bg-gray-900/30 transition-colors h-full"
               >
                 <div className="p-2 rounded-lg bg-brand-accent/10 inline-block mb-4">
@@ -1376,7 +1376,7 @@ export default function FCCProposal() {
       {/* ─── CTA ─── */}
       <Section className="border-t border-gray-800/50 bg-bg-void relative overflow-hidden">
         <GradientOrb color="cyan" size="md" position={{ top: "-100px", left: "-100px" }} />
-        <GradientOrb color="purple" size="sm" position={{ bottom: "-80px", right: "-60px" }} />
+        <GradientOrb color="brand" size="sm" position={{ bottom: "-80px", right: "-60px" }} />
         <FadeIn>
           <div className="text-center max-w-3xl mx-auto">
             <SectionLabel>Next Steps</SectionLabel>

@@ -29,13 +29,13 @@ const stages = [
     icon: FlaskConical,
     label: "Test & Tune",
     detail: "Approvals, guardrails, evals",
-    color: "var(--brand-purple)",
+    color: "var(--brand)",
   },
   {
     icon: Rocket,
     label: "Deploy",
     detail: "Claude, Codex, Slack, web",
-    color: "var(--brand-purple)",
+    color: "var(--brand)",
   },
   {
     icon: Activity,
@@ -120,7 +120,7 @@ export function CustomAIAgentsWorkflowDiagram() {
         position={{ top: "25%", left: "5%" }}
       />
       <GradientOrb
-        color="purple"
+        color="brand"
         size="sm"
         position={{ bottom: "20%", right: "8%" }}
       />

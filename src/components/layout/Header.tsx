@@ -136,7 +136,7 @@ function MegaMenu({
             className="pointer-events-none fixed inset-0 opacity-60"
             style={{
               backgroundImage:
-                "radial-gradient(55% 45% at 82% 6%, rgba(139,92,246,0.16), transparent 60%), radial-gradient(45% 38% at 10% 96%, rgba(6,182,212,0.12), transparent 60%)",
+                "radial-gradient(55% 45% at 82% 6%, var(--brand-subtle), transparent 60%), radial-gradient(45% 38% at 10% 96%, var(--accent-cyan-subtle), transparent 60%)",
             }}
           />
 
@@ -197,14 +197,14 @@ function MegaMenu({
                       aria-current={isActive ? "true" : undefined}
                       className={`group/cat relative isolate w-full overflow-hidden rounded-xl border px-4 py-3 text-left transition-all ${REDUCE_MOTION} ${
                         isActive
-                          ? "border-[var(--border-active)] bg-bg-elevated text-text-primary shadow-[0_0_36px_rgba(139,92,246,0.12)]"
+                          ? "border-[var(--border-active)] bg-bg-elevated text-text-primary shadow-[0_0_36px_var(--brand-subtle)]"
                           : "border-transparent text-text-secondary hover:border-[var(--border-subtle)] hover:bg-bg-surface/70 hover:text-text-primary"
                       }`}
                     >
                       {isActive && (
                         <motion.span
                           layoutId="mega-menu-active-category"
-                          className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_18%_20%,rgba(139,92,246,0.22),transparent_34%),radial-gradient(circle_at_88%_76%,rgba(6,182,212,0.14),transparent_38%)]"
+                          className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_18%_20%,var(--brand-subtle),transparent_34%),radial-gradient(circle_at_88%_76%,var(--accent-cyan-subtle),transparent_38%)]"
                           transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
                         />
                       )}
@@ -222,7 +222,7 @@ function MegaMenu({
                         </span>
                         <CatIcon
                           className={`mt-1 h-6 w-6 shrink-0 transition-colors ${
-                            isActive ? "text-brand-purple" : "text-text-dim group-hover/cat:text-brand-accent"
+                            isActive ? "text-brand" : "text-text-dim group-hover/cat:text-brand-accent"
                           }`}
                           aria-hidden="true"
                         />
@@ -258,13 +258,13 @@ function MegaMenu({
                     </MenuLink>
                   </div>
 
-                  <div className="relative overflow-hidden rounded-2xl border border-[var(--border-subtle)] bg-bg-elevated p-6 shadow-[0_0_60px_rgba(6,182,212,0.08)]">
+                  <div className="relative overflow-hidden rounded-2xl border border-[var(--border-subtle)] bg-bg-elevated p-6 shadow-[0_0_60px_var(--accent-cyan-subtle)]">
                     <div
                       aria-hidden="true"
                       className="absolute inset-0 opacity-95"
                       style={{
                         background:
-                          "radial-gradient(42% 58% at 84% 18%, rgba(139,92,246,0.24), transparent 62%), radial-gradient(42% 58% at 8% 92%, rgba(6,182,212,0.16), transparent 66%)",
+                          "radial-gradient(42% 58% at 84% 18%, var(--brand-subtle), transparent 62%), radial-gradient(42% 58% at 8% 92%, var(--accent-cyan-subtle), transparent 66%)",
                       }}
                     />
                     <div className="relative">
@@ -277,7 +277,7 @@ function MegaMenu({
                             {activeCategory.name}
                           </h2>
                         </div>
-                        <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl border border-[var(--border-active)] bg-bg-void/65 text-brand-purple shadow-[0_0_35px_rgba(139,92,246,0.18)]">
+                        <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl border border-[var(--border-active)] bg-bg-void/65 text-brand shadow-[0_0_35px_var(--brand-subtle)]">
                           <ActiveIcon className="h-8 w-8" aria-hidden="true" />
                         </div>
                       </div>
@@ -287,7 +287,7 @@ function MegaMenu({
                       <MenuLink
                         link={primaryLink}
                         onNavigate={onClose}
-                        className={`group/primary mt-6 inline-flex items-center gap-2.5 rounded-lg bg-gradient-to-r from-brand-accent to-brand-purple px-5 py-3 text-[13px] font-bold uppercase tracking-[0.05em] text-bg-void transition-all ${REDUCE_MOTION} hover:brightness-110`}
+                        className={`group/primary mt-6 inline-flex items-center gap-2.5 rounded-lg bg-gradient-to-r from-brand to-cyan px-5 py-3 text-[13px] font-bold uppercase tracking-[0.05em] text-bg-void transition-all ${REDUCE_MOTION} hover:brightness-110`}
                       >
                         {activeCategory.primaryCta}
                         <ArrowRight
@@ -308,7 +308,7 @@ function MegaMenu({
                           external: card.external,
                         }}
                         onNavigate={onClose}
-                        className={`group/card relative min-h-[224px] overflow-hidden rounded-2xl border border-[var(--border-subtle)] bg-bg-surface p-5 transition-all ${REDUCE_MOTION} hover:-translate-y-0.5 hover:border-[var(--border-active)] hover:shadow-[0_0_32px_rgba(139,92,246,0.12)]`}
+                        className={`group/card relative min-h-[224px] overflow-hidden rounded-2xl border border-[var(--border-subtle)] bg-bg-surface p-5 transition-all ${REDUCE_MOTION} hover:-translate-y-0.5 hover:border-[var(--border-active)] hover:shadow-[0_0_32px_var(--brand-subtle)]`}
                       >
                         <div
                           aria-hidden="true"
@@ -316,8 +316,8 @@ function MegaMenu({
                           style={{
                             background:
                               index % 2 === 0
-                                ? "radial-gradient(80% 90% at 18% 0%, rgba(6,182,212,0.2), transparent 68%)"
-                                : "radial-gradient(80% 90% at 18% 0%, rgba(139,92,246,0.22), transparent 68%)",
+                                ? "radial-gradient(80% 90% at 18% 0%, var(--accent-cyan-subtle), transparent 68%)"
+                                : "radial-gradient(80% 90% at 18% 0%, var(--brand-subtle), transparent 68%)",
                           }}
                         />
                         <div className="relative">
@@ -325,7 +325,7 @@ function MegaMenu({
                             <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-brand-accent">
                               {card.eyebrow}
                             </div>
-                            <Bot className="h-5 w-5 shrink-0 text-brand-purple/80" aria-hidden="true" />
+                            <Bot className="h-5 w-5 shrink-0 text-brand/80" aria-hidden="true" />
                           </div>
                           <h3 className="mt-4 text-[20px] font-semibold leading-snug tracking-tight text-text-primary">
                             {card.title}
@@ -393,7 +393,7 @@ function MegaMenu({
                         >
                           <span className="flex items-center gap-2.5">
                             <CornerDownRight
-                              className="h-3.5 w-3.5 shrink-0 text-brand-purple"
+                              className="h-3.5 w-3.5 shrink-0 text-brand"
                               aria-hidden="true"
                             />
                             <span>{link.label}</span>
@@ -415,7 +415,7 @@ function MegaMenu({
                   </div>
 
                   <div className="mt-6 overflow-hidden rounded-2xl border border-[var(--border-subtle)] bg-bg-elevated">
-                    <div className="border-b border-[var(--border-subtle)] bg-[linear-gradient(135deg,rgba(139,92,246,0.16),rgba(6,182,212,0.08))] px-5 py-4">
+                    <div className="border-b border-[var(--border-subtle)] bg-[linear-gradient(135deg,var(--brand-subtle),var(--accent-cyan-subtle))] px-5 py-4">
                       <div className="font-mono text-[10px] uppercase tracking-[0.17em] text-brand-accent">
                         {activeCategory.proofLabel}
                       </div>
@@ -424,7 +424,7 @@ function MegaMenu({
                       <div className="space-y-3">
                         {activeCategory.proofPoints.map((point) => (
                           <div key={point} className="flex gap-3 text-[13.5px] leading-relaxed text-text-secondary">
-                            <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-purple shadow-[0_0_14px_rgba(139,92,246,0.8)]" />
+                            <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand shadow-[0_0_14px_var(--brand-subtle)]" />
                             <span>{point}</span>
                           </div>
                         ))}
@@ -476,7 +476,7 @@ function MegaMenu({
             <Link
               href="/contact"
               onClick={onClose}
-              className={`inline-flex items-center gap-2.5 rounded-lg bg-gradient-to-r from-brand-accent to-brand-purple px-6 py-3 text-[14px] font-bold text-bg-void transition-all ${REDUCE_MOTION} hover:brightness-110`}
+              className={`inline-flex items-center gap-2.5 rounded-lg bg-gradient-to-r from-brand to-cyan px-6 py-3 text-[14px] font-bold text-bg-void transition-all ${REDUCE_MOTION} hover:brightness-110`}
             >
               Schedule a Consultation
               <ArrowRight className="h-4 w-4" aria-hidden="true" />

@@ -51,7 +51,7 @@ export default function ContactPage() {
         <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-8">
           <h1 className="text-4xl md:text-6xl font-extralight tracking-[-0.03em] leading-[1.1] max-w-3xl">
             Let&apos;s Find Where AI Can{" "}
-            <span className="bg-gradient-to-r from-brand-accent to-brand-purple bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-brand to-cyan bg-clip-text text-transparent">
               Save You Time & Money
             </span>
           </h1>
@@ -274,7 +274,7 @@ export default function ContactPage() {
           </ScrollReveal>
 
           <ScrollReveal direction="up" delay={0.1}>
-            <div className="relative h-full min-h-[340px] overflow-hidden rounded-lg border border-[var(--border-subtle)] bg-bg-void shadow-[0_0_40px_rgba(6,182,212,0.08)] md:min-h-[430px]">
+            <div className="relative h-full min-h-[340px] overflow-hidden rounded-lg border border-[var(--border-subtle)] bg-bg-void shadow-[0_0_40px_var(--accent-cyan-subtle)] md:min-h-[430px]">
               <iframe
                 title="Google map showing ITECS corporate office in Plano, Texas"
                 src={SITE_CONFIG.googleMapsEmbedUrl}

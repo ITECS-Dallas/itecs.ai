@@ -16,7 +16,7 @@ export function ServiceHero({ service, circuit }: ServiceHeroProps) {
     <section className="relative pt-32 pb-20 overflow-hidden">
       <GridBackground opacity={0.03} />
       <GradientOrb color="cyan" size="md" position={{ top: "10%", right: "10%" }} />
-      <GradientOrb color="purple" size="sm" position={{ bottom: "20%", left: "5%" }} />
+      <GradientOrb color="brand" size="sm" position={{ bottom: "20%", left: "5%" }} />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-center">

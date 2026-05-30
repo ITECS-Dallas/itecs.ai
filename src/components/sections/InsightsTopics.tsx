@@ -24,8 +24,8 @@ const TOPICS = [
       "Protect sensitive business data from public AI tools. Build private AI workflows, agent guardrails, and DLP policies.",
     hubLabel: "Explore Custom AI Agents",
     hubHref: "/custom-ai-agents",
-    color: "text-brand-purple" as const,
-    bgColor: "bg-brand-purple/10" as const,
+    color: "text-brand" as const,
+    bgColor: "bg-brand/10" as const,
   },
   {
     icon: Zap,

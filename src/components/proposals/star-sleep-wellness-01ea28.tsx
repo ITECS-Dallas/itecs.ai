@@ -210,7 +210,7 @@ function ProposalDecisionForm({ decision }: { decision: ProposalDecision }) {
         isApproval
           ? "border-brand-accent/35 bg-brand-accent/5"
           : "border-red-400/30 bg-red-400/5"
-      } p-5 text-left shadow-[0_0_45px_rgba(6,182,212,0.08)] md:p-6`}
+      } p-5 text-left shadow-[0_0_45px_var(--accent-cyan-subtle)] md:p-6`}
     >
       <input type="hidden" name="proposalAction" value={fieldsValue(decision)} />
 
@@ -404,7 +404,7 @@ function StickyProposalDownload() {
       <a
         href={pdfHref}
         download
-        className="group flex items-center justify-center gap-2 rounded-xl border border-cyan-100/55 bg-cyan-300/95 px-3.5 py-2.5 text-xs font-semibold uppercase tracking-[0.1em] text-slate-950 shadow-[0_14px_44px_rgba(34,211,238,0.3)] backdrop-blur transition-all hover:-translate-y-0.5 hover:bg-cyan-200 focus:outline-none focus:ring-2 focus:ring-cyan-100 focus:ring-offset-2 focus:ring-offset-bg-void md:px-4"
+        className="group flex items-center justify-center gap-2 rounded-xl border border-cyan-100/55 bg-cyan-300/95 px-3.5 py-2.5 text-xs font-semibold uppercase tracking-[0.1em] text-slate-950 shadow-[0_14px_44px_var(--accent-cyan-subtle)] backdrop-blur transition-all hover:-translate-y-0.5 hover:bg-cyan-200 focus:outline-none focus:ring-2 focus:ring-cyan-100 focus:ring-offset-2 focus:ring-offset-bg-void md:px-4"
       >
         <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-slate-950/10 text-slate-950 transition-colors group-hover:bg-slate-950/15">
           <Download className="h-4 w-4" aria-hidden="true" />
@@ -700,15 +700,15 @@ function MonthlyCostChart() {
 
   // Pro stack composition
   const proStack = [
-    { label: "Base management", value: 18887.5, color: "rgba(148,163,184,0.75)" },
-    { label: "Required add-ons", value: 6888, color: "rgba(34,211,238,0.55)" },
+    { label: "Base management", value: 18887.5, color: "var(--text-tertiary)" },
+    { label: "Required add-ons", value: 6888, color: "var(--accent-cyan-subtle)" },
   ];
   const proStackPct = proStack.map((s) => (s.value / max) * 100);
 
   // Elite stack composition
   const eliteStack = [
-    { label: "Base management", value: 25996, color: "rgba(34,211,238,0.85)" },
-    { label: "MDR — servers", value: 288, color: "rgba(139,92,246,0.65)" },
+    { label: "Base management", value: 25996, color: "var(--accent-cyan-subtle)" },
+    { label: "MDR — servers", value: 288, color: "var(--brand-subtle)" },
   ];
   const eliteStackPct = eliteStack.map((s) => (s.value / max) * 100);
 
@@ -872,7 +872,7 @@ function Year1CostChart() {
               viewport={{ once: true }}
               transition={{ duration: 1, ease: "easeOut" }}
               className="absolute inset-y-0 left-0"
-              style={{ backgroundColor: "rgba(148,163,184,0.7)" }}
+              style={{ backgroundColor: "var(--text-tertiary)" }}
             />
             <motion.div
               initial={{ width: 0, left: `${proAnnualPct}%` }}
@@ -882,7 +882,7 @@ function Year1CostChart() {
               className="absolute inset-y-0"
               style={{
                 left: `${proAnnualPct}%`,
-                backgroundColor: "rgba(248,113,113,0.65)",
+                backgroundColor: "var(--danger)",
               }}
             />
           </div>
@@ -890,14 +890,14 @@ function Year1CostChart() {
             <span className="inline-flex items-center gap-1.5">
               <span
                 className="inline-block h-2 w-3 rounded"
-                style={{ backgroundColor: "rgba(148,163,184,0.7)" }}
+                style={{ backgroundColor: "var(--text-tertiary)" }}
               />
               Recurring ${proAnnual.toLocaleString()}
             </span>
             <span className="inline-flex items-center gap-1.5">
               <span
                 className="inline-block h-2 w-3 rounded"
-                style={{ backgroundColor: "rgba(248,113,113,0.65)" }}
+                style={{ backgroundColor: "var(--danger)" }}
               />
               Phase 1 projects $19,188
             </span>
@@ -916,7 +916,7 @@ function Year1CostChart() {
               viewport={{ once: true }}
               transition={{ duration: 1, ease: "easeOut" }}
               className="absolute inset-y-0 left-0"
-              style={{ backgroundColor: "rgba(34,211,238,0.85)" }}
+              style={{ backgroundColor: "var(--accent-cyan-subtle)" }}
             />
             <motion.div
               initial={{ width: 0, left: `${eliteAnnualPct}%` }}
@@ -926,7 +926,7 @@ function Year1CostChart() {
               className="absolute inset-y-0"
               style={{
                 left: `${eliteAnnualPct}%`,
-                backgroundColor: "rgba(139,92,246,0.7)",
+                backgroundColor: "var(--brand-subtle)",
               }}
             />
           </div>
@@ -934,14 +934,14 @@ function Year1CostChart() {
             <span className="inline-flex items-center gap-1.5">
               <span
                 className="inline-block h-2 w-3 rounded"
-                style={{ backgroundColor: "rgba(34,211,238,0.85)" }}
+                style={{ backgroundColor: "var(--accent-cyan-subtle)" }}
               />
               Recurring ${eliteAnnual.toLocaleString()}
             </span>
             <span className="inline-flex items-center gap-1.5">
               <span
                 className="inline-block h-2 w-3 rounded"
-                style={{ backgroundColor: "rgba(139,92,246,0.7)" }}
+                style={{ backgroundColor: "var(--brand-subtle)" }}
               />
               Phase 1 projects $3,536
             </span>
@@ -984,7 +984,7 @@ function ProjectHourEconomicsChart() {
                 cy="60"
                 r="46"
                 fill="none"
-                stroke="rgba(148,163,184,0.25)"
+                stroke="var(--text-tertiary)"
                 strokeWidth="14"
               />
               <motion.circle
@@ -992,7 +992,7 @@ function ProjectHourEconomicsChart() {
                 cy="60"
                 r="46"
                 fill="none"
-                stroke="rgba(34,211,238,0.85)"
+                stroke="var(--accent-cyan-subtle)"
                 strokeWidth="14"
                 strokeDasharray={`${(24 / 106) * 289} 289`}
                 strokeLinecap="round"
@@ -1015,7 +1015,7 @@ function ProjectHourEconomicsChart() {
         </div>
 
         {/* Elite donut */}
-        <div className="flex flex-col items-center rounded-xl border border-brand-accent/30 bg-brand-accent/5 p-5 shadow-[0_0_45px_rgba(6,182,212,0.08)]">
+        <div className="flex flex-col items-center rounded-xl border border-brand-accent/30 bg-brand-accent/5 p-5 shadow-[0_0_45px_var(--accent-cyan-subtle)]">
           <div className="text-sm text-brand-accent-bright">MSP Elite</div>
           <div className="my-4 relative">
             <svg viewBox="0 0 120 120" className="h-40 w-40">
@@ -1024,7 +1024,7 @@ function ProjectHourEconomicsChart() {
                 cy="60"
                 r="46"
                 fill="none"
-                stroke="rgba(34,211,238,0.18)"
+                stroke="var(--accent-cyan-subtle)"
                 strokeWidth="14"
               />
               <motion.circle
@@ -1032,7 +1032,7 @@ function ProjectHourEconomicsChart() {
                 cy="60"
                 r="46"
                 fill="none"
-                stroke="rgba(34,211,238,0.95)"
+                stroke="var(--accent-cyan-subtle)"
                 strokeWidth="14"
                 strokeDasharray={`${(90 / 106) * 289} 289`}
                 strokeLinecap="round"
@@ -1142,7 +1142,7 @@ function TermSavingsChart() {
               viewport={{ once: true }}
               transition={{ duration: 1, ease: "easeOut" }}
               className="absolute inset-y-0 left-0"
-              style={{ backgroundColor: "rgba(148,163,184,0.6)" }}
+              style={{ backgroundColor: "var(--text-tertiary)" }}
             />
           </div>
         </div>
@@ -1161,7 +1161,7 @@ function TermSavingsChart() {
               viewport={{ once: true }}
               transition={{ duration: 1, ease: "easeOut" }}
               className="absolute inset-y-0 left-0"
-              style={{ backgroundColor: "rgba(34,211,238,0.85)" }}
+              style={{ backgroundColor: "var(--accent-cyan-subtle)" }}
             />
           </div>
         </div>
@@ -1190,7 +1190,7 @@ export default function StarSleepWellnessProposal() {
           position={{ top: "-240px", right: "-160px" }}
         />
         <GradientOrb
-          color="purple"
+          color="brand"
           size="md"
           position={{ bottom: "-180px", left: "-120px" }}
         />
@@ -1342,7 +1342,7 @@ export default function StarSleepWellnessProposal() {
             return (
               <FadeIn key={priority.title} delay={index * 0.05}>
                 <motion.div
-                  whileHover={{ y: -4, borderColor: "rgba(34,211,238,0.28)" }}
+                  whileHover={{ y: -4, borderColor: "var(--accent-cyan-subtle)" }}
                   className="h-full rounded-2xl border border-[var(--border-subtle)] bg-bg-void/55 p-5"
                 >
                   <div className="mb-4 inline-flex rounded-lg bg-brand-accent/10 p-2.5 text-brand-accent-bright">
@@ -1610,7 +1610,7 @@ export default function StarSleepWellnessProposal() {
                 transition={{ duration: 0.3 }}
                 className={`relative rounded-2xl border p-6 ${
                   option.accent
-                    ? "border-brand-accent/40 bg-brand-accent/5 shadow-[0_0_60px_rgba(6,182,212,0.12)]"
+                    ? "border-brand-accent/40 bg-brand-accent/5 shadow-[0_0_60px_var(--accent-cyan-subtle)]"
                     : "border-[var(--border-subtle)] bg-bg-surface/35"
                 }`}
               >
@@ -1751,7 +1751,7 @@ export default function StarSleepWellnessProposal() {
             return (
               <FadeIn key={project.title} delay={index * 0.04}>
                 <motion.div
-                  whileHover={{ y: -4, borderColor: "rgba(34,211,238,0.28)" }}
+                  whileHover={{ y: -4, borderColor: "var(--accent-cyan-subtle)" }}
                   className="h-full rounded-2xl border border-[var(--border-subtle)] bg-bg-void/55 p-5"
                 >
                   <div className="mb-4 inline-flex rounded-lg bg-brand-accent/10 p-2.5 text-brand-accent-bright">
@@ -1936,7 +1936,7 @@ export default function StarSleepWellnessProposal() {
             <a
               href={pdfHref}
               download
-              className="group rounded-2xl border border-brand-accent/30 bg-brand-accent/5 p-6 transition-all hover:-translate-y-1 hover:border-brand-accent hover:shadow-[0_0_45px_rgba(6,182,212,0.18)]"
+              className="group rounded-2xl border border-brand-accent/30 bg-brand-accent/5 p-6 transition-all hover:-translate-y-1 hover:border-brand-accent hover:shadow-[0_0_45px_var(--accent-cyan-subtle)]"
             >
               <div className="mb-4 flex items-center gap-3">
                 <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-brand-accent/15 text-brand-accent-bright">
@@ -1965,7 +1965,7 @@ export default function StarSleepWellnessProposal() {
               href={mspInfoHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="group rounded-2xl border border-[var(--border-subtle)] bg-bg-surface/35 p-6 transition-all hover:-translate-y-1 hover:border-brand-accent/40 hover:shadow-[0_0_45px_rgba(6,182,212,0.08)]"
+              className="group rounded-2xl border border-[var(--border-subtle)] bg-bg-surface/35 p-6 transition-all hover:-translate-y-1 hover:border-brand-accent/40 hover:shadow-[0_0_45px_var(--accent-cyan-subtle)]"
             >
               <div className="mb-4 flex items-center gap-3">
                 <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-brand-accent/10 text-brand-accent-bright">

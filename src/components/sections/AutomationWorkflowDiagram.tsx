@@ -29,13 +29,13 @@ const stages = [
     icon: Wrench,
     label: "Build",
     detail: "Connect tools with AI logic",
-    color: "var(--brand-purple)",
+    color: "var(--brand)",
   },
   {
     icon: Rocket,
     label: "Deploy",
     detail: "Launch and verify automations",
-    color: "var(--brand-purple)",
+    color: "var(--brand)",
   },
   {
     icon: Activity,
@@ -120,7 +120,7 @@ export function AutomationWorkflowDiagram() {
         position={{ top: "20%", left: "6%" }}
       />
       <GradientOrb
-        color="purple"
+        color="brand"
         size="sm"
         position={{ bottom: "15%", right: "8%" }}
       />

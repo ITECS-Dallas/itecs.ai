@@ -102,12 +102,12 @@ export function ServicesGrid({ showSisterSiteCard = false }: { showSisterSiteCar
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Visit itecsonline.com for managed IT services, cybersecurity, and managed cloud"
-              className="group relative block h-full rounded-xl border border-dashed border-brand-purple/40 bg-brand-purple/[0.04] p-6 transition-all duration-300 hover:border-brand-purple/70 hover:-translate-y-0.5 hover:shadow-[0_0_30px_rgba(139,92,246,0.18)] flex flex-col"
+              className="group relative block h-full rounded-xl border border-dashed border-brand/40 bg-brand/[0.04] p-6 transition-all duration-300 hover:border-brand/70 hover:-translate-y-0.5 hover:shadow-[0_0_30px_var(--brand-subtle)] flex flex-col"
             >
-              <div className="mb-4 inline-flex items-center justify-center w-12 h-12 rounded-lg bg-brand-purple/10">
-                <Server className="h-6 w-6 text-brand-purple" aria-hidden="true" />
+              <div className="mb-4 inline-flex items-center justify-center w-12 h-12 rounded-lg bg-brand/10">
+                <Server className="h-6 w-6 text-brand" aria-hidden="true" />
               </div>
-              <p className="text-xs font-medium tracking-[0.08em] uppercase text-brand-purple mb-2">
+              <p className="text-xs font-medium tracking-[0.08em] uppercase text-brand mb-2">
                 Sister Site
               </p>
               <h3 className="text-lg font-medium text-text-primary mb-2">
@@ -118,7 +118,7 @@ export function ServicesGrid({ showSisterSiteCard = false }: { showSisterSiteCar
                 support, Microsoft 365, cybersecurity monitoring, Azure, and managed
                 cloud, visit our main site.
               </p>
-              <div className="mt-4 flex items-center gap-1 text-sm text-brand-purple group-hover:gap-2 transition-all">
+              <div className="mt-4 flex items-center gap-1 text-sm text-brand group-hover:gap-2 transition-all">
                 Visit itecsonline.com
                 <ArrowRight className="h-3.5 w-3.5" />
               </div>

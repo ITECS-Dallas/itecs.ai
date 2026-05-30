@@ -39,7 +39,7 @@ export default async function ProposalAccessPage({
         position={{ top: "-240px", right: "-160px" }}
       />
       <GradientOrb
-        color="purple"
+        color="brand"
         size="md"
         position={{ bottom: "-180px", left: "-120px" }}
       />

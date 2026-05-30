@@ -77,7 +77,7 @@ export function ServiceCircuit({
           </filter>
           <linearGradient id="circuit-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" stopColor="var(--brand-accent)" />
-            <stop offset="100%" stopColor="var(--brand-purple)" />
+            <stop offset="100%" stopColor="var(--brand)" />
           </linearGradient>
           <radialGradient id="node-halo-grad">
             <stop offset="0%" stopColor="var(--brand-accent)" stopOpacity="0.4" />

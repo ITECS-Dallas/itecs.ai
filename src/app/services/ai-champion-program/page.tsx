@@ -376,7 +376,7 @@ export default function AIChampionProgramPage() {
         <GridBackground opacity={0.03} />
         <GradientOrb color="cyan" size="lg" position={{ top: "0", right: "5%" }} />
         <GradientOrb
-          color="purple"
+          color="brand"
           size="md"
           position={{ bottom: "10%", left: "8%" }}
         />

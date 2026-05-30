@@ -3107,7 +3107,7 @@ export interface AISEOTier {
   cardTagline: string;
   cardPriceLabel: string;
   cardHighlights: string[];
-  cardAccent: "cyan" | "purple" | "gradient";
+  cardAccent: "cyan" | "brand" | "gradient";
 }
 
 export const AI_SEO_TIERS: AISEOTier[] = [
@@ -3430,7 +3430,7 @@ export const AI_SEO_TIERS: AISEOTier[] = [
       "1 do-follow backlink from itecsonline.com",
       "Two 30-min strategy calls per month",
     ],
-    cardAccent: "purple",
+    cardAccent: "brand",
   },
   {
     slug: "velocity",

@@ -27,7 +27,7 @@ const stages = [
     label: "Managed Security Service Provider",
     era: "2015–2023",
     icon: ShieldCheck,
-    color: "var(--brand-purple)",
+    color: "var(--brand)",
     description:
       "Adds cybersecurity to the MSP model. Monitors threats, manages firewalls, runs compliance audits. Protects your data — but doesn't use it.",
     capabilities: [

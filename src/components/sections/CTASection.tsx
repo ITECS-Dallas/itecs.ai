@@ -17,7 +17,7 @@ export function CTASection() {
         position={{ top: "10%", left: "20%" }}
       />
       <GradientOrb
-        color="purple"
+        color="brand"
         size="md"
         position={{ bottom: "10%", right: "15%" }}
       />
@@ -29,7 +29,7 @@ export function CTASection() {
           <h2 className="text-3xl md:text-5xl font-light tracking-[-0.02em] text-text-primary">
             Ready to See What AI{" "}
             <br />
-            <span className="bg-gradient-to-r from-brand-accent to-brand-purple bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-brand to-cyan bg-clip-text text-transparent">
               Can Do for Your Business?
             </span>
           </h2>
