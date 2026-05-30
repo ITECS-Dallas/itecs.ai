@@ -29,13 +29,13 @@ const stages = [
     icon: FlaskConical,
     label: "Test & Tune",
     detail: "Approvals, guardrails, evals",
-    color: "var(--brand)",
+    color: "var(--brand-hover)",
   },
   {
     icon: Rocket,
     label: "Deploy",
     detail: "Claude, Codex, Slack, web",
-    color: "var(--brand)",
+    color: "var(--brand-hover)",
   },
   {
     icon: Activity,

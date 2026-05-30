@@ -30,13 +30,13 @@ const stages = [
     icon: BarChart3,
     label: "AI Scores Lead",
     detail: "Fit, intent, engagement",
-    color: "var(--brand)",
+    color: "var(--brand-hover)",
   },
   {
     icon: Mail,
     label: "AI Drafts Outreach",
     detail: "Personalized from CRM data",
-    color: "var(--brand)",
+    color: "var(--brand-hover)",
   },
   {
     icon: Handshake,

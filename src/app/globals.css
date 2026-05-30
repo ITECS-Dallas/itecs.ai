@@ -223,8 +223,11 @@ body::before {
   color: var(--text-primary);
 }
 
-a {
+main :where(p, li) a:not([class]) {
   color: var(--brand-hover);
+  text-decoration-line: underline;
+  text-decoration-color: var(--border-strong);
+  text-underline-offset: 0.18em;
 }
 
 :focus-visible {

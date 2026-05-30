@@ -29,13 +29,13 @@ const stages = [
     icon: Wrench,
     label: "Build",
     detail: "Connect tools with AI logic",
-    color: "var(--brand)",
+    color: "var(--brand-hover)",
   },
   {
     icon: Rocket,
     label: "Deploy",
     detail: "Launch and verify automations",
-    color: "var(--brand)",
+    color: "var(--brand-hover)",
   },
   {
     icon: Activity,

@@ -29,13 +29,13 @@ const stages = [
     icon: Presentation,
     label: "Train",
     detail: "Hands-on workshops, real scenarios",
-    color: "var(--brand)",
+    color: "var(--brand-hover)",
   },
   {
     icon: ShieldCheck,
     label: "Secure",
     detail: "AI usage policies, data safety",
-    color: "var(--brand)",
+    color: "var(--brand-hover)",
   },
   {
     icon: RefreshCw,

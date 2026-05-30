@@ -23,13 +23,13 @@ const steps = [
     icon: MessageSquare,
     label: "Handles Request",
     detail: "FAQs, routing, qualification",
-    color: "var(--brand)",
+    color: "var(--brand-hover)",
   },
   {
     icon: Calendar,
     label: "Books or Routes",
     detail: "Calendar booking or live transfer",
-    color: "var(--brand)",
+    color: "var(--brand-hover)",
   },
   {
     icon: UserCheck,

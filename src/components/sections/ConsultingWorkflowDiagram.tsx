@@ -29,13 +29,13 @@ const stages = [
     icon: Route,
     label: "Roadmap",
     detail: "Prioritized plan, cost estimates",
-    color: "var(--brand)",
+    color: "var(--brand-hover)",
   },
   {
     icon: Wrench,
     label: "Implement",
     detail: "Tool setup, system integration",
-    color: "var(--brand)",
+    color: "var(--brand-hover)",
   },
   {
     icon: TrendingUp,

@@ -23,13 +23,13 @@ const stages = [
     icon: BrainCircuit,
     label: "Analyze",
     detail: "Risks, gaps, opportunities",
-    color: "var(--brand)",
+    color: "var(--brand-hover)",
   },
   {
     icon: FileCheck,
     label: "Report",
     detail: "Prioritized action items",
-    color: "var(--brand)",
+    color: "var(--brand-hover)",
   },
   {
     icon: Users,

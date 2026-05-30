@@ -44,7 +44,7 @@ const phases = [
     phase: "02",
     label: "Build",
     tagline: "Deploy solutions",
-    color: "var(--brand)",
+    color: "var(--brand-hover)",
     services: [
       {
         icon: Bot,

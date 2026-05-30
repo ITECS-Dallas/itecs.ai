@@ -30,13 +30,13 @@ const stages = [
     icon: Database,
     label: "Vector Store",
     detail: "Private Pinecone or pgvector DB",
-    color: "var(--brand)",
+    color: "var(--brand-hover)",
   },
   {
     icon: MessageSquare,
     label: "Employee Query",
     detail: "Plain-English question via Slack or Teams",
-    color: "var(--brand)",
+    color: "var(--brand-hover)",
   },
   {
     icon: Search,
