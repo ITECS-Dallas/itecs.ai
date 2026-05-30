@@ -58,7 +58,7 @@ export function ProposalAccessForm({
   return (
     <form
       onSubmit={handleSubmit}
-      className="rounded-2xl border border-brand-accent/20 bg-bg-surface/45 p-5 shadow-2xl shadow-black/20 md:p-6"
+      className="rounded-2xl border border-brand-accent/20 bg-bg-surface/45 p-5 shadow-e2 md:p-6"
     >
       <div className="mb-5 flex items-start gap-3">
         <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-brand-accent/10 text-brand-accent-bright">

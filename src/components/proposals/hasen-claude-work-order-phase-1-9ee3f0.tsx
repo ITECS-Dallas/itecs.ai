@@ -764,7 +764,7 @@ export default function HasenClaudeWorkOrderProposal() {
           </SlideIn>
 
           <SlideIn direction="right" delay={0.12}>
-            <div className="relative overflow-hidden rounded-3xl border border-[var(--border-subtle)] bg-bg-surface/50 p-3 shadow-2xl shadow-black/30">
+            <div className="relative overflow-hidden rounded-3xl border border-[var(--border-subtle)] bg-bg-surface/50 p-3 shadow-e2">
               <div className="relative aspect-[16/10] overflow-hidden rounded-2xl">
                 <Image
                   src="/images/proposals/hasen-claude-work-order-hero.png"

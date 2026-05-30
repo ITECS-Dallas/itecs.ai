@@ -96,7 +96,7 @@ export function Hero() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
           >
-            <div className="relative h-[320px] overflow-hidden rounded-lg border border-[var(--border-subtle)] bg-bg-surface shadow-2xl shadow-black/40 md:h-[420px] lg:h-[540px]">
+            <div className="relative h-[320px] overflow-hidden rounded-lg border border-[var(--border-subtle)] bg-bg-surface [box-shadow:var(--elev-1-inset),var(--elev-2)] md:h-[420px] lg:h-[540px]">
               <Image
                 src="/images/services/technology-desks.webp"
                 alt="ITECS AI operations workstation with monitored deployment pipelines"

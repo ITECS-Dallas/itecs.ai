@@ -521,7 +521,7 @@ export default function FCCProposal() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-bg-surface via-transparent to-transparent" />
                 <div className="absolute bottom-4 left-4 right-4">
-                  <div className="flex items-center gap-2 px-3 py-2 bg-black/60 backdrop-blur-sm rounded-lg border border-gray-700/50">
+                  <div className="flex items-center gap-2 px-3 py-2 bg-bg-sunken/80 backdrop-blur-sm rounded-lg border border-gray-700/50">
                     <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
                     <span className="text-xs text-text-secondary">
                       Current site: WordPress + Avada — multiple broken pages, outdated architecture

@@ -61,7 +61,7 @@ export default async function ProposalAccessPage({
           </div>
         </section>
 
-        <section className="relative overflow-hidden rounded-3xl border border-[var(--border-subtle)] bg-bg-surface/50 p-3 shadow-2xl shadow-black/30">
+        <section className="relative overflow-hidden rounded-3xl border border-[var(--border-subtle)] bg-bg-surface/50 p-3 shadow-e2">
           <div className="relative aspect-[16/10] overflow-hidden rounded-2xl">
             <Image
               src={heroImageSrc}
