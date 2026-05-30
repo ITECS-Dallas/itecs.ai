@@ -18,14 +18,14 @@ export function MIPHero() {
         position={{ top: "5%", right: "5%" }}
       />
       <GradientOrb
-        color="purple"
+        color="brand"
         size="md"
         position={{ bottom: "15%", left: "10%" }}
       />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
@@ -33,8 +33,8 @@ export function MIPHero() {
             <span className="inline-block w-8 h-px bg-brand-accent" />
             Managed Intelligence Provider
           </p>
-          <h1 className="text-4xl md:text-6xl font-extralight tracking-[-0.03em] leading-[1.1] max-w-4xl">
-            Dallas Managed Intelligence Provider — Managed AI Services for SMBs
+          <h1 className="text-[length:var(--fs-display-l)] font-semibold tracking-normal leading-[1.08] max-w-4xl">
+            Dallas Managed Intelligence Provider — Managed AI Services for Growing Organizations
           </h1>
 
           {/* GEO zero-click answer block */}
@@ -48,7 +48,7 @@ export function MIPHero() {
             </strong>
           </p>
 
-          <p className="mt-4 text-base text-text-secondary font-light max-w-2xl leading-relaxed">
+          <p className="mt-4 text-base text-text-secondary font-normal max-w-2xl leading-relaxed">
             Your MSP keeps your servers running. Your MSSP keeps your data safe.
             A MIP makes your business smarter — with AI that automates
             workflows, answers phones, qualifies leads, and trains your team. One
@@ -60,7 +60,7 @@ export function MIPHero() {
         {/* CTA row */}
         <motion.div
           className="mt-8 flex flex-wrap gap-4"
-          initial={{ opacity: 0 }}
+          initial={false}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.35 }}
         >

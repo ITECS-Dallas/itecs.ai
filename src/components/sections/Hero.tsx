@@ -8,13 +8,7 @@ import { GridBackground } from "@/components/effects/GridBackground";
 import { CircuitTrace } from "@/components/effects/CircuitTrace";
 import { CursorGlow } from "@/components/effects/CursorGlow";
 
-const stagger = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.15, delayChildren: 0.2 } },
-};
-
 const fadeUp = (delay = 0) => ({
-  hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1,
     y: 0,
@@ -23,7 +17,6 @@ const fadeUp = (delay = 0) => ({
 });
 
 const fadeLeft = {
-  hidden: { opacity: 0, x: -20 },
   visible: {
     opacity: 1,
     x: 0,
@@ -37,7 +30,7 @@ export function Hero() {
       {/* Background layers */}
       <div className="absolute inset-0">
         <GridBackground opacity={0.04} />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_30%,rgba(6,182,212,0.10),transparent_32%),radial-gradient(circle_at_15%_80%,rgba(16,185,129,0.08),transparent_28%)]" />
+        <div className="absolute inset-0 bg-[image:var(--glow-hero)]" />
         <CursorGlow />
       </div>
 
@@ -47,8 +40,7 @@ export function Hero() {
           {/* Text — 3/5 width on desktop */}
           <motion.div
             className="lg:col-span-3"
-            variants={stagger}
-            initial="hidden"
+            initial={false}
             animate="visible"
           >
             {/* Eyebrow */}
@@ -63,11 +55,11 @@ export function Hero() {
             {/* H1 */}
             <motion.h1
               variants={fadeUp()}
-              className="text-5xl md:text-7xl font-extralight tracking-normal leading-[1.05]"
+              className="text-[length:var(--fs-display-xl)] font-semibold tracking-normal leading-[1.04]"
             >
               Secure AI
               <br />
-              <span className="bg-gradient-to-r from-brand-accent to-brand-purple bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-brand to-cyan bg-clip-text text-transparent">
                 Strategy, Training
               </span>
               <br />
@@ -77,9 +69,9 @@ export function Hero() {
             {/* Zero-click block */}
             <motion.p
               variants={fadeUp(0.1)}
-              className="mt-6 text-lg md:text-xl text-text-secondary font-light max-w-xl leading-relaxed"
+              className="mt-6 text-[length:var(--fs-body-l)] text-text-secondary font-normal max-w-xl leading-relaxed"
             >
-              <strong className="text-text-primary font-normal">ITECS helps Dallas businesses turn AI ideas into secure, managed systems</strong>{" "}
+              <strong className="text-text-primary font-medium">ITECS helps Dallas businesses turn AI ideas into secure, managed systems</strong>{" "}
               with consulting, employee training, data protection, workflow automation, and production AI DevOps backed by 24 years of IT operations expertise.
             </motion.p>
 
@@ -100,7 +92,7 @@ export function Hero() {
           {/* Image-backed operations visual — 2/5 width on desktop */}
           <motion.div
             className="lg:col-span-2"
-            initial={{ opacity: 0, x: 28 }}
+            initial={false}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
           >
@@ -140,7 +132,7 @@ export function Hero() {
 
       {/* Scroll indicator */}
       <motion.div
-        initial={{ opacity: 0 }}
+        initial={false}
         animate={{ opacity: 1 }}
         transition={{ delay: 2 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2"
