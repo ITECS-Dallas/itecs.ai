@@ -26,7 +26,7 @@ export function AnnouncementBar() {
   return (
     <div
       aria-hidden={hidden}
-      className={`fixed top-0 left-0 right-0 z-[60] h-8 bg-gradient-to-r from-[#003A5C] via-[#00649E] to-[#003A5C] text-white text-xs transition-transform duration-300 ease-out ${
+      className={`fixed top-0 left-0 right-0 z-[60] h-8 border-b border-[var(--border-subtle)] bg-bg-sunken text-text-secondary text-xs transition-transform duration-300 ease-out ${
         hidden ? "-translate-y-full pointer-events-none" : "translate-y-0"
       }`}
     >
@@ -35,14 +35,14 @@ export function AnnouncementBar() {
         <div className="flex items-center gap-3">
           <a
             href={`mailto:${SITE_CONFIG.email}`}
-            className="hover:text-white/80 transition-colors truncate"
+            className="hover:text-text-primary transition-colors truncate"
           >
             {SITE_CONFIG.email}
           </a>
-          <span className="text-white/40" aria-hidden="true">|</span>
+          <span className="text-text-tertiary" aria-hidden="true">|</span>
           <a
             href={`tel:${SITE_CONFIG.phoneE164}`}
-            className="hover:text-white/80 transition-colors whitespace-nowrap"
+            className="hover:text-text-primary transition-colors whitespace-nowrap"
           >
             {SITE_CONFIG.phone}
           </a>
@@ -57,7 +57,7 @@ export function AnnouncementBar() {
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-white/80 transition-colors whitespace-nowrap"
+                className="hover:text-text-primary transition-colors whitespace-nowrap"
               >
                 {link.label}
               </a>
@@ -65,7 +65,7 @@ export function AnnouncementBar() {
               <Link
                 key={link.label}
                 href={link.href}
-                className="hover:text-white/80 transition-colors whitespace-nowrap"
+                className="hover:text-text-primary transition-colors whitespace-nowrap"
               >
                 {link.label}
               </Link>

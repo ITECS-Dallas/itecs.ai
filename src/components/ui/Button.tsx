@@ -15,15 +15,15 @@ interface ButtonProps {
 }
 
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-lg font-medium tracking-wide uppercase transition-all duration-300 cursor-pointer";
+  "inline-flex items-center justify-center gap-2 rounded-md font-semibold tracking-normal transition-all duration-200 ease-out cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-void disabled:cursor-not-allowed disabled:bg-bg-elevated disabled:text-text-disabled";
 
 const variants = {
   primary:
-    "bg-brand-accent text-bg-void hover:shadow-[0_0_30px_var(--glow-cyan)]",
+    "bg-brand text-white hover:bg-brand-hover hover:-translate-y-0.5 hover:shadow-[0_8px_24px_var(--brand-subtle)] active:bg-brand-active",
   secondary:
-    "border border-brand-accent text-brand-accent bg-transparent hover:bg-brand-accent/10 hover:border-brand-accent-bright",
+    "border border-[var(--border-strong)] text-text-primary bg-transparent hover:bg-bg-elevated hover:border-[var(--border-strong)]",
   ghost:
-    "text-text-secondary hover:text-brand-accent",
+    "text-brand-hover hover:text-text-primary",
 };
 
 const sizes = {

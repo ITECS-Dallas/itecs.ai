@@ -17,9 +17,10 @@ export function Card({
   href,
 }: CardProps) {
   const base = `
-    relative rounded-xl border bg-bg-surface p-6
-    border-[var(--border-subtle)]
-    ${hover ? "transition-all duration-300 hover:border-[var(--border-active)] hover:-translate-y-0.5 hover:shadow-[0_0_30px_var(--glow-cyan)]" : ""}
+    relative rounded-lg border bg-bg-surface p-6
+    border-[var(--border-default)] shadow-e1
+    [box-shadow:var(--elev-1-inset),var(--elev-1)]
+    ${hover ? "transition-all duration-200 ease-out hover:border-[var(--border-strong)] hover:-translate-y-0.5 hover:[box-shadow:var(--elev-1-inset),var(--elev-2)]" : ""}
     ${className}
   `;
 
