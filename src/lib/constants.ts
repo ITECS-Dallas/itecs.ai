@@ -2428,6 +2428,69 @@ export const CERTIFICATION_BADGES = [
 ] as const;
 
 // ---------------------------------------------------------------------------
+// Homepage outcomes proof — sourced public proof only
+// ---------------------------------------------------------------------------
+
+export const HOMEPAGE_OUTCOMES_PROOF = {
+  eyebrow: "Outcomes Proof",
+  title: "Operational proof from the managed-services foundation behind ITECS AI.",
+  description:
+    "Managed Intelligence is built on the same operating discipline ITECS applies to infrastructure, security, continuity, and support. These proof points use approved live metrics and public ITECS case studies.",
+  metrics: [
+    {
+      value: "24+",
+      label: "Years operating client technology environments",
+      source: "ITECS approved live proof",
+    },
+    {
+      value: "92%",
+      label: "Client retention rate",
+      source: "ITECS approved live proof",
+    },
+    {
+      value: "200+",
+      label: "Client engagements",
+      source: "ITECS approved live proof",
+    },
+  ],
+  cases: [
+    {
+      client: "Pegasus Foods",
+      industry: "Food manufacturing",
+      label: "Public case study",
+      outcome: "100% uptime maintained",
+      summary:
+        "ITECS used virtualization and managed migration controls to move business-critical infrastructure across 1,200 miles without production downtime or data loss.",
+      sourceHref:
+        "https://itecsonline.com/white-papers-case-studies/pegasus-foods-white-paper",
+      sourceLabel: "Read Pegasus Foods case study",
+    },
+    {
+      client: "OpenText",
+      industry: "Enterprise software",
+      label: "Public case study",
+      outcome: "99.8% system uptime",
+      summary:
+        "Dedicated on-site IT support helped the Dallas office keep operations stable while improving local response coverage for a growing enterprise team.",
+      sourceHref:
+        "https://itecsonline.com/white-papers-case-studies/opentext-success-story",
+      sourceLabel: "Read OpenText case study",
+    },
+    {
+      client: "PepsiCo",
+      industry: "Food and beverage",
+      label: "Public case study",
+      outcome: "99.9% transition uptime",
+      summary:
+        "ITECS supported newly acquired subsidiaries with compliant infrastructure and managed IT services during enterprise transition periods.",
+      sourceHref:
+        "https://itecsonline.com/white-papers-case-studies/pepsico-success-story-itecs-manages-it-transitions",
+      sourceLabel: "Read PepsiCo case study",
+    },
+  ],
+} as const;
+
+// ---------------------------------------------------------------------------
 // Team
 // ---------------------------------------------------------------------------
 

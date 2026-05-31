@@ -11,6 +11,7 @@ import { ServicesGrid } from "@/components/sections/ServicesGrid";
 import { FeatureShowcase } from "@/components/sections/FeatureShowcase";
 import { Heritage } from "@/components/sections/Heritage";
 import { MethodologySteps } from "@/components/sections/MethodologySteps";
+import { OutcomesProof } from "@/components/sections/OutcomesProof";
 import { ManagedITReferral } from "@/components/sections/ManagedITReferral";
 import { StatsBar } from "@/components/sections/StatsBar";
 import { LocalFootprint } from "@/components/sections/LocalFootprint";
@@ -47,6 +48,7 @@ export default function HomePage() {
       <ServicesGrid />
       <Heritage />
       <MethodologySteps />
+      <OutcomesProof />
       <FeatureShowcase features={HOMEPAGE_FEATURES} />
       <ManagedITReferral />
       <StatsBar />
