@@ -1,4 +1,5 @@
 import { ArrowUpRight, Building2, CheckCircle2 } from "lucide-react";
+import Link from "next/link";
 import { HOMEPAGE_OUTCOMES_PROOF } from "@/lib/constants";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
@@ -17,7 +18,7 @@ export function OutcomesProof() {
   }
 
   return (
-    <section className="bg-bg-base py-24 md:py-32">
+    <section id="case-studies" className="bg-bg-base py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-6 md:px-8">
         <SectionHeading
           eyebrow={HOMEPAGE_OUTCOMES_PROOF.eyebrow}
@@ -83,20 +84,41 @@ export function OutcomesProof() {
                   <CheckCircle2 aria-hidden="true" className="h-5 w-5" />
                   {caseStudy.outcome}
                 </p>
-                <p className="mt-4 flex-1 text-sm leading-relaxed text-text-secondary">
-                  {caseStudy.summary}
-                </p>
+                <dl className="mt-4 grid flex-1 gap-3 text-sm leading-relaxed">
+                  <div>
+                    <dt className="font-mono text-[0.68rem] font-semibold uppercase tracking-[0.1em] text-text-tertiary">
+                      Challenge
+                    </dt>
+                    <dd className="mt-1 text-text-secondary">
+                      {caseStudy.challenge}
+                    </dd>
+                  </div>
+                  <div>
+                    <dt className="font-mono text-[0.68rem] font-semibold uppercase tracking-[0.1em] text-text-tertiary">
+                      Solution
+                    </dt>
+                    <dd className="mt-1 text-text-secondary">
+                      {caseStudy.solution}
+                    </dd>
+                  </div>
+                  <div>
+                    <dt className="font-mono text-[0.68rem] font-semibold uppercase tracking-[0.1em] text-text-tertiary">
+                      Measured outcome
+                    </dt>
+                    <dd className="mt-1 text-text-secondary">
+                      {caseStudy.measuredOutcome}
+                    </dd>
+                  </div>
+                </dl>
 
-                <a
-                  href={caseStudy.sourceHref}
-                  target="_blank"
-                  rel="noreferrer"
+                <Link
+                  href={caseStudy.detailHref}
                   className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-brand-hover transition-colors duration-[var(--dur-base)] hover:text-accent-cyan focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base"
-                  aria-label={`${caseStudy.sourceLabel} on itecsonline.com`}
+                  aria-label={`Read case study detail: ${caseStudy.client}`}
                 >
-                  {caseStudy.sourceLabel}
+                  Read case study
                   <ArrowUpRight aria-hidden="true" className="h-4 w-4" />
-                </a>
+                </Link>
               </div>
             </article>
           ))}

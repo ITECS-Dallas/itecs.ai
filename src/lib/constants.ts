@@ -2447,6 +2447,88 @@ export const CERTIFICATION_BADGES = [
 ] as const;
 
 // ---------------------------------------------------------------------------
+// Trust case studies — public, sourced proof only
+// ---------------------------------------------------------------------------
+
+export const TRUST_CASE_STUDIES = [
+  {
+    slug: "pegasus-foods-zero-downtime-relocation",
+    detailHref: "/case-studies/pegasus-foods-zero-downtime-relocation",
+    client: "Pegasus Foods",
+    industry: "Food manufacturing",
+    label: "Public case study",
+    sourceDate: "May 28, 2020",
+    outcome: "100% uptime maintained",
+    challenge:
+      "Pegasus Foods needed to relocate its IT infrastructure across 1,200 miles while maintaining continuous 24/7 manufacturing operations.",
+    solution:
+      "ITECS used virtualization, real-time replication, failover planning, encrypted connectivity, staged testing, and 24/7 monitoring to move the environment without interrupting production.",
+    measuredOutcome:
+      "100% uptime maintained, zero data loss incidents, and $2.1M in prevented downtime losses documented in the public case study.",
+    summary:
+      "ITECS used virtualization and managed migration controls to move business-critical infrastructure across 1,200 miles without production downtime or data loss.",
+    metrics: [
+      { value: "100%", label: "Uptime maintained" },
+      { value: "Zero", label: "Data loss incidents" },
+      { value: "$2.1M", label: "Revenue loss prevented" },
+    ],
+    sourceHref:
+      "https://itecsonline.com/white-papers-case-studies/pegasus-foods-white-paper",
+    sourceLabel: "Read Pegasus Foods case study",
+  },
+  {
+    slug: "opentext-dallas-onsite-support",
+    detailHref: "/case-studies/opentext-dallas-onsite-support",
+    client: "OpenText",
+    industry: "Enterprise software",
+    label: "Public case study",
+    sourceDate: "July 3, 2024",
+    outcome: "99.8% system uptime",
+    challenge:
+      "OpenText's Dallas branch needed consistent local IT support as growth increased the strain on distributed internal resources.",
+    solution:
+      "ITECS delivered a dedicated on-site support program for workstation support, provisioning, troubleshooting, and coordination with central IT.",
+    measuredOutcome:
+      "99.8% system uptime, 52+ weeks of uninterrupted on-site support, and a 30% reduction in IT support response time.",
+    summary:
+      "Dedicated on-site IT support helped the Dallas office keep operations stable while improving local response coverage for a growing enterprise team.",
+    metrics: [
+      { value: "99.8%", label: "System uptime" },
+      { value: "52+", label: "Weeks of on-site support" },
+      { value: "30%", label: "Response-time reduction" },
+    ],
+    sourceHref:
+      "https://itecsonline.com/white-papers-case-studies/opentext-success-story",
+    sourceLabel: "Read OpenText case study",
+  },
+  {
+    slug: "pepsico-subsidiary-it-transitions",
+    detailHref: "/case-studies/pepsico-subsidiary-it-transitions",
+    client: "PepsiCo",
+    industry: "Food and beverage",
+    label: "Public case study",
+    sourceDate: "March 25, 2025",
+    outcome: "99.9% transition uptime",
+    challenge:
+      "Newly acquired PepsiCo subsidiaries needed operational continuity while preparing for eventual integration into corporate systems and governance.",
+    solution:
+      "ITECS provided transition IT management, compliant interim infrastructure, procurement support, risk management, and managed IT services during the acquisition-to-integration period.",
+    measuredOutcome:
+      "99.9% system uptime, five subsidiaries supported, 40% fewer transition-related IT disruptions, and 100% compliance with PepsiCo IT governance standards.",
+    summary:
+      "ITECS supported newly acquired subsidiaries with compliant infrastructure and managed IT services during enterprise transition periods.",
+    metrics: [
+      { value: "99.9%", label: "System uptime" },
+      { value: "5", label: "Subsidiaries supported" },
+      { value: "40%", label: "Disruption reduction" },
+    ],
+    sourceHref:
+      "https://itecsonline.com/white-papers-case-studies/pepsico-success-story-itecs-manages-it-transitions",
+    sourceLabel: "Read PepsiCo case study",
+  },
+] as const;
+
+// ---------------------------------------------------------------------------
 // Homepage outcomes proof — sourced public proof only
 // ---------------------------------------------------------------------------
 
@@ -2472,41 +2554,7 @@ export const HOMEPAGE_OUTCOMES_PROOF = {
       source: "ITECS approved live proof",
     },
   ],
-  cases: [
-    {
-      client: "Pegasus Foods",
-      industry: "Food manufacturing",
-      label: "Public case study",
-      outcome: "100% uptime maintained",
-      summary:
-        "ITECS used virtualization and managed migration controls to move business-critical infrastructure across 1,200 miles without production downtime or data loss.",
-      sourceHref:
-        "https://itecsonline.com/white-papers-case-studies/pegasus-foods-white-paper",
-      sourceLabel: "Read Pegasus Foods case study",
-    },
-    {
-      client: "OpenText",
-      industry: "Enterprise software",
-      label: "Public case study",
-      outcome: "99.8% system uptime",
-      summary:
-        "Dedicated on-site IT support helped the Dallas office keep operations stable while improving local response coverage for a growing enterprise team.",
-      sourceHref:
-        "https://itecsonline.com/white-papers-case-studies/opentext-success-story",
-      sourceLabel: "Read OpenText case study",
-    },
-    {
-      client: "PepsiCo",
-      industry: "Food and beverage",
-      label: "Public case study",
-      outcome: "99.9% transition uptime",
-      summary:
-        "ITECS supported newly acquired subsidiaries with compliant infrastructure and managed IT services during enterprise transition periods.",
-      sourceHref:
-        "https://itecsonline.com/white-papers-case-studies/pepsico-success-story-itecs-manages-it-transitions",
-      sourceLabel: "Read PepsiCo case study",
-    },
-  ],
+  cases: TRUST_CASE_STUDIES,
 } as const;
 
 // ---------------------------------------------------------------------------
