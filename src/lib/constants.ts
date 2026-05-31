@@ -2491,6 +2491,66 @@ export const HOMEPAGE_OUTCOMES_PROOF = {
 } as const;
 
 // ---------------------------------------------------------------------------
+// Shared security, governance, and responsible-AI band
+// ---------------------------------------------------------------------------
+
+export const SECURITY_GOVERNANCE_BAND = {
+  eyebrow: "Security, Compliance & Responsible AI",
+  title: "Governed AI with the controls enterprise buyers expect.",
+  description:
+    "ITECS plans AI around identity, data boundaries, human review, auditability, and the same security operations discipline used for managed IT and cybersecurity clients.",
+  frameworks: [
+    {
+      name: "NIST AI RMF",
+      detail:
+        "Govern, Map, Measure, and Manage functions guide AI risk decisions and operating reviews.",
+    },
+    {
+      name: "SOC 2 Type II",
+      detail:
+        "Security and operational control expectations inform monitoring, access, and change-management practices.",
+    },
+    {
+      name: "ISO 27001",
+      detail:
+        "Information-security management principles shape policy, asset, vendor, and evidence handling.",
+    },
+    {
+      name: "CMMC",
+      detail:
+        "Cybersecurity maturity controls support clients with defense, manufacturing, and regulated supply-chain exposure.",
+    },
+    {
+      name: "HIPAA / BAA",
+      detail:
+        "Healthcare workflows are planned around protected-health-information handling and Business Associate Agreement requirements.",
+    },
+  ],
+  controls: [
+    {
+      title: "Data residency planning",
+      detail:
+        "Data location, vendor processing paths, and tenant boundaries are documented before any production workflow is approved.",
+    },
+    {
+      title: "Model governance",
+      detail:
+        "Approved models, prompt versions, retrieval sources, quality thresholds, and review cadence are owned after launch.",
+    },
+    {
+      title: "Human-in-the-loop",
+      detail:
+        "Sensitive recommendations route to named human owners before financial, customer-facing, legal, or regulated actions occur.",
+    },
+    {
+      title: "Audit and evidence trails",
+      detail:
+        "Agent actions, approvals, exceptions, and change history are captured so executives can defend the program.",
+    },
+  ],
+} as const;
+
+// ---------------------------------------------------------------------------
 // Team
 // ---------------------------------------------------------------------------
 
