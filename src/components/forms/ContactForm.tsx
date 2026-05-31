@@ -8,6 +8,7 @@ import {
   TextAreaField,
   TextField,
 } from "@/components/ui/FormControls";
+import { ANALYTICS_EVENTS, trackConversionEvent } from "@/lib/analytics";
 
 type SubmissionState = "idle" | "submitting" | "success" | "error";
 
@@ -16,6 +17,7 @@ export function ContactForm() {
   const [message, setMessage] = useState("");
   const [turnstileToken, setTurnstileToken] = useState("");
   const [turnstileResetSignal, setTurnstileResetSignal] = useState(0);
+  const [formStarted, setFormStarted] = useState(false);
 
   const resetTurnstile = useCallback(() => {
     setTurnstileToken("");
@@ -45,7 +47,7 @@ export function ContactForm() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          formName: "Free AI Assessment Request",
+          formName: "ITECS Contact Request",
           sourcePath: window.location.pathname,
           turnstileToken,
           fields,
@@ -61,6 +63,9 @@ export function ContactForm() {
       form.reset();
       setState("success");
       setMessage("Your message was sent. The ITECS team will follow up shortly.");
+      trackConversionEvent(ANALYTICS_EVENTS.formComplete, {
+        form_id: "contact",
+      });
     } catch (error) {
       setState("error");
       setMessage(
@@ -73,8 +78,19 @@ export function ContactForm() {
     }
   }
 
+  function handleFormStart() {
+    if (formStarted) {
+      return;
+    }
+
+    setFormStarted(true);
+    trackConversionEvent(ANALYTICS_EVENTS.formStart, {
+      form_id: "contact",
+    });
+  }
+
   return (
-    <form onSubmit={handleSubmit} className="space-y-5">
+    <form onSubmit={handleSubmit} onFocusCapture={handleFormStart} className="space-y-5">
       <input
         type="text"
         name="website"
@@ -134,8 +150,7 @@ export function ContactForm() {
           }
         }}
         onError={() => {
-          setState("error");
-          setMessage("Verification could not load. Please refresh and try again.");
+          setTurnstileToken("");
         }}
         className="rounded-md border border-[var(--border-strong)] bg-bg-elevated px-4 py-3 shadow-[var(--elev-1-inset)]"
       />

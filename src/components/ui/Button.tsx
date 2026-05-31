@@ -4,8 +4,10 @@ import Link from "next/link";
 import type {
   AnchorHTMLAttributes,
   ButtonHTMLAttributes,
+  MouseEvent as ReactMouseEvent,
   ReactNode,
 } from "react";
+import { ANALYTICS_EVENTS, trackConversionEvent } from "@/lib/analytics";
 
 type ButtonVariant = "primary" | "secondary" | "tertiary" | "icon";
 type ButtonSize = "sm" | "md" | "lg";
@@ -86,6 +88,22 @@ function getNativeButtonProps(props: NativeButtonProps) {
   return buttonProps as ButtonHTMLAttributes<HTMLButtonElement>;
 }
 
+function getTrackedCtaType(href: string) {
+  if (href === "/assessment" || href.startsWith("/assessment#")) {
+    return "assessment";
+  }
+
+  if (href === "/contact" || href.startsWith("/contact#")) {
+    return "contact";
+  }
+
+  if (href.startsWith("tel:")) {
+    return "phone";
+  }
+
+  return null;
+}
+
 export function Button(props: ButtonProps) {
   const {
     children,
@@ -130,9 +148,25 @@ export function Button(props: ButtonProps) {
   if ("href" in props && props.href) {
     const linkProps = getLinkProps(props);
     const { href } = props;
-    const { rel, target } = linkProps;
+    const { rel, target, onClick } = linkProps;
     const safeRel =
       target === "_blank" && !rel ? "noopener noreferrer" : rel;
+    const handleClick = (event: ReactMouseEvent<HTMLAnchorElement>) => {
+      onClick?.(event);
+
+      if (event.defaultPrevented) {
+        return;
+      }
+
+      const ctaType = getTrackedCtaType(href);
+
+      if (ctaType) {
+        trackConversionEvent(ANALYTICS_EVENTS.ctaClick, {
+          cta_type: ctaType,
+          destination: href,
+        });
+      }
+    };
 
     if (disabled) {
       return (
@@ -153,6 +187,7 @@ export function Button(props: ButtonProps) {
         href={href}
         rel={safeRel}
         target={target}
+        onClick={handleClick}
         className={classes}
       >
         {content}
