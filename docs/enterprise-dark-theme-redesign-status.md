@@ -5,7 +5,7 @@ Source of truth: `itecs-ai-website/itecs-ai-dark-theme-redesign-spec.md`.
 ## Current Branch
 
 - Branch: `enterprise-dark-theme-rebuild`
-- Latest completed epic: Epic 6 — Conversion and lead generation
+- Latest completed epic: Epic 7 — Responsive and accessibility
 - Status date: 2026-05-31
 
 ## Decisions
@@ -23,6 +23,11 @@ Source of truth: `itecs-ai-website/itecs-ai-dark-theme-redesign-spec.md`.
 - No calendar embed URL was invented. The success state gives a clear scheduling/next-step path through `/contact` and phone because no source-backed assessment booking embed exists in the repo.
 - Analytics are consent-gated. Google Analytics no longer loads from the root layout before consent; CTA clicks, form starts/completions, and scroll-depth events are defined without form values or other PII in event payloads.
 - Performance remains measured but non-blocking for this slice per Brian's later direction; accessibility and layout correctness remain blocking.
+- Epic 7 hardens shared controls rather than one-off pages: the base button sizes, footer links, breadcrumbs, article share controls, source links, and CTA-style text links now carry 44px+ touch targets where they behave as standalone controls.
+- Inline links inside article body copy remain inline text links. The runtime tap-target audit treats those as the WCAG inline-text exception instead of forcing paragraph lines to 44px.
+- ScrollReveal now explicitly keeps content visible on load (`initial={false}`); parallax disables transform motion for reduced-motion users; decorative gradient orbs are hidden from assistive technology.
+- The `backdrop-filter` enhancement now has a global solid-surface fallback for engines that do not support `backdrop-filter`.
+- Cross-browser local coverage is Chromium and Firefox through Playwright. WebKit downloaded but cannot launch on this Linux host because system libraries are missing; native Safari and Edge are not available in this environment.
 
 ## Epic 6 Checklist
 
@@ -48,9 +53,33 @@ Source of truth: `itecs-ai-website/itecs-ai-dark-theme-redesign-spec.md`.
 - Lighthouse on `/assessment`: accessibility 96, performance 87, LCP 2.8s, CLS 0, TBT 370ms.
 - Lighthouse on `/contact`: accessibility 97, performance 57, LCP 7.3s, CLS 0, TBT 510ms.
 
+## Epic 7 Checklist
+
+- Story 7.1 — Responsive integrity: Passed for public routes in the local browser matrix. Intentional horizontally scrollable comparison/data tables stay inside overflow containers.
+- Story 7.2 — WCAG 2.1 AA: Passed for static contracts, keyboard focus styling, reduced-motion handling, labeled/error-accessible forms, and automated axe critical scan.
+- Story 7.3 — Cross-browser: Passed for Chromium and Firefox local smoke. CSS `backdrop-filter` fallback is implemented and statically validated. WebKit/Safari remains environment-limited on this Linux host.
+
+## Epic 7 Validation
+
+- Story validators: `scripts/validate-epic7-responsive.mjs`, `scripts/validate-epic7-wcag-motion.mjs`, and `scripts/validate-epic7-cross-browser.mjs` passed.
+- Regression validators: all `scripts/validate*.mjs` passed with `for f in scripts/validate*.mjs; do node "$f"; done`.
+- Typecheck: `npx tsc --noEmit --pretty false` passed.
+- Lint: `npm run lint` passed.
+- Build: `npm run build` passed.
+- Purple retirement scan: no shipped public source hits for retired purple tokens/gradients.
+- Component/page hex scan: no hardcoded hex hits outside `src/app/globals.css` token definitions and excluded proposal surfaces.
+- Responsive matrix: 46 public routes passed document-level horizontal overflow checks at 390, 768, and 1920px.
+- Mobile tap-target smoke: 46 public routes passed for visible standalone controls at 390px; inline article text links were excluded as inline-text links.
+- Axe: 0 critical violations across `/`, `/assessment`, `/contact`, `/managed-intelligence-provider`, `/services`, `/insights/ceo-guide-ai-roi`, and `/manufacturing/ppv-agent`.
+- Lighthouse on `/`: accessibility 96, performance 88, LCP 3.8s, CLS 0, TBT 50ms.
+- Lighthouse on `/managed-intelligence-provider`: accessibility 97, performance 91, LCP 3.4s, CLS 0, TBT 40ms.
+- Cross-browser smoke: Chromium passed and Firefox passed on `/` and `/managed-intelligence-provider` at 390px. WebKit could not launch due missing host libraries.
+- Screenshots captured: `epic7-home-390.png`, `epic7-home-768.png`, `epic7-home-1920.png`, `epic7-mip-390.png`, `epic7-mip-768.png`, `epic7-mip-1920.png`, `epic7-ppv-390.png`, `epic7-ppv-768.png`, `epic7-ppv-1920.png`.
+
 ## Remaining Risks
 
 - Broader non-MIP pages still need the later Epic 9 content and altitude pass for legacy small-business wording outside the rebuilt homepage and MIP page.
 - Performance scores were recorded but not optimized in this slice by explicit product direction.
 - The assessment rate limit is process-local, which matches the current standalone Node runtime but is not a distributed abuse-control layer.
 - The contact page Google Maps iframe may appear blank in headless/local browser screenshots when the external embed does not load, but the verified map link and structured location content remain present.
+- Native Safari/Edge verification is not available from this Linux environment. Playwright WebKit also cannot launch until host packages such as GTK/GStreamer/WebKit dependencies are installed.
