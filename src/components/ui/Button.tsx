@@ -48,14 +48,14 @@ const variantClasses: Record<ButtonVariant, string> = {
 };
 
 const sizeClasses: Record<ButtonSize, string> = {
-  sm: "h-9 px-4 text-sm",
+  sm: "h-11 px-4 text-sm",
   md: "h-11 px-6 text-[15px]",
   lg: "h-[52px] px-7 text-base",
 };
 
 const iconSizeClasses: Record<ButtonSize, string> = {
-  sm: "h-9 w-9 p-0",
-  md: "h-10 w-10 p-0",
+  sm: "h-11 w-11 p-0",
+  md: "h-11 w-11 p-0",
   lg: "h-[52px] w-[52px] p-0",
 };
 

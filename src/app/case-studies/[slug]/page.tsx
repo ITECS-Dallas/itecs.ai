@@ -124,7 +124,7 @@ export default async function CaseStudyDetailPage({
               href={caseStudy.sourceHref}
               target="_blank"
               rel="noreferrer"
-              className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-brand-hover transition-colors duration-[var(--dur-base)] hover:text-accent-cyan focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base"
+              className="mt-4 inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-brand-hover transition-colors duration-[var(--dur-base)] hover:text-accent-cyan focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base"
             >
               {caseStudy.sourceLabel}
               <ArrowUpRight aria-hidden="true" className="h-4 w-4" />

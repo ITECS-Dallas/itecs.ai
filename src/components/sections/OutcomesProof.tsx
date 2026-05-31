@@ -113,7 +113,7 @@ export function OutcomesProof() {
 
                 <Link
                   href={caseStudy.detailHref}
-                  className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-brand-hover transition-colors duration-[var(--dur-base)] hover:text-accent-cyan focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base"
+                  className="mt-6 inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-brand-hover transition-colors duration-[var(--dur-base)] hover:text-accent-cyan focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base"
                   aria-label={`Read case study detail: ${caseStudy.client}`}
                 >
                   Read case study

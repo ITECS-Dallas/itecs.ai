@@ -77,14 +77,14 @@ export default function ContactPage() {
                   <h3 className="text-text-primary font-medium">Phone</h3>
                   <a
                     href={`tel:${SITE_CONFIG.phoneE164}`}
-                    className="text-text-secondary hover:text-brand-accent transition-colors block"
+                    className="flex min-h-11 items-center text-text-secondary transition-colors hover:text-brand-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base"
                   >
                     {SITE_CONFIG.phone}
                     <span className="text-text-dim text-xs ml-2">International</span>
                   </a>
                   <a
                     href={`tel:${SITE_CONFIG.supportPhoneE164}`}
-                    className="text-text-secondary hover:text-brand-accent transition-colors block mt-1"
+                    className="mt-1 flex min-h-11 items-center text-text-secondary transition-colors hover:text-brand-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base"
                   >
                     {SITE_CONFIG.supportPhone}
                     <span className="text-text-dim text-xs ml-2">
@@ -159,9 +159,9 @@ export default function ContactPage() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={social.label}
-                      className="flex items-center justify-center w-9 h-9 rounded-lg bg-bg-surface border border-[var(--border-subtle)] text-text-dim hover:text-brand-accent hover:border-[var(--border-active)] transition-colors"
+                      className="flex h-11 w-11 items-center justify-center rounded-lg border border-[var(--border-subtle)] bg-bg-surface text-text-dim transition-colors hover:border-[var(--border-active)] hover:text-brand-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base"
                     >
-                      <Icon className="h-4 w-4" />
+                      <Icon aria-hidden="true" className="h-4 w-4" />
                     </a>
                   );
                 })}
@@ -175,13 +175,13 @@ export default function ContactPage() {
                 <div className="mt-4 flex gap-4">
                   <Link
                     href="/services"
-                    className="text-brand-accent hover:text-brand-accent-bright transition-colors text-sm"
+                    className="inline-flex min-h-11 items-center text-sm text-brand-accent transition-colors hover:text-brand-accent-bright focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base"
                   >
                     View our services &rarr;
                   </Link>
                   <Link
                     href="/about"
-                    className="text-brand-accent hover:text-brand-accent-bright transition-colors text-sm"
+                    className="inline-flex min-h-11 items-center text-sm text-brand-accent transition-colors hover:text-brand-accent-bright focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base"
                   >
                     About ITECS &rarr;
                   </Link>
@@ -286,7 +286,7 @@ export default function ContactPage() {
                   href={SITE_CONFIG.googleMapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-brand-accent transition-colors hover:text-brand-accent-bright"
+                  className="mt-6 inline-flex min-h-11 items-center gap-2 text-sm font-medium text-brand-accent transition-colors hover:text-brand-accent-bright focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base"
                 >
                   View ITECS on Google Maps
                   <ExternalLink className="h-4 w-4" aria-hidden="true" />

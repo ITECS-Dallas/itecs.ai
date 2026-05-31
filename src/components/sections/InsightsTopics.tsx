@@ -77,7 +77,7 @@ export function InsightsTopics() {
 
                   <Link
                     href={topic.hubHref}
-                    className="mt-6 inline-flex items-center gap-1.5 text-sm text-brand-accent hover:gap-2.5 transition-all"
+                    className="mt-6 inline-flex min-h-11 items-center gap-1.5 text-sm text-brand-accent transition-all hover:gap-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base"
                   >
                     {topic.hubLabel}
                     <ArrowRight className="h-3.5 w-3.5" />

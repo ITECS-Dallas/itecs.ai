@@ -252,7 +252,7 @@ export default function AIOptimizedSEOPage() {
                   </p>
                   <Link
                     href="/about"
-                    className="mt-4 inline-flex items-center gap-1.5 text-sm text-brand-accent hover:text-brand-accent-bright transition-colors"
+                    className="mt-4 inline-flex min-h-11 items-center gap-1.5 text-sm text-brand-accent transition-colors hover:text-brand-accent-bright focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base"
                   >
                     Learn more about ITECS
                     <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />

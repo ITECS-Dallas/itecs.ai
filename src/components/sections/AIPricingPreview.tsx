@@ -109,7 +109,7 @@ export function AIPricingPreview() {
           </div>
           <Link
             href="/pricing#loyalty"
-            className="shrink-0 text-sm font-medium text-brand-accent transition-colors hover:text-brand-accent-bright"
+            className="inline-flex min-h-11 shrink-0 items-center text-sm font-medium text-brand-accent transition-colors hover:text-brand-accent-bright focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base"
           >
             See discounts
           </Link>

@@ -83,7 +83,7 @@ export function AboutValues({ values }: { values: readonly ValueItem[] }) {
                 href="https://www.nist.gov/cyberframework"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-text-secondary hover:text-text-primary transition-colors underline underline-offset-4 decoration-[var(--border-subtle)]"
+                className="inline-flex min-h-11 items-center text-text-secondary underline decoration-[var(--border-subtle)] underline-offset-4 transition-colors hover:text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base"
               >
                 NIST Cybersecurity Framework
               </a>

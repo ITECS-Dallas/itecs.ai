@@ -115,7 +115,7 @@ export default function ManufacturingPage() {
                 </Button>
                 <Link
                   href={page.primaryCtaHref}
-                  className="text-sm text-text-secondary hover:text-brand-accent"
+                  className="inline-flex min-h-11 items-center text-sm text-text-secondary transition-colors hover:text-brand-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base"
                 >
                   Start with the readiness assessment &rarr;
                 </Link>

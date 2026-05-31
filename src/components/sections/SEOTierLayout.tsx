@@ -559,7 +559,7 @@ export function SEOTierLayout({ tier }: Props) {
                 </p>
                 <Link
                   href={`/ai-optimized-seo/${tier.upgradePath.targetSlug}`}
-                  className="mt-6 inline-flex items-center gap-2 text-brand hover:text-brand-hover transition-colors"
+                  className="mt-6 inline-flex min-h-11 items-center gap-2 text-brand transition-colors hover:text-brand-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-surface"
                 >
                   {tier.upgradePath.ctaText}
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />

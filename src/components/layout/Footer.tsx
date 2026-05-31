@@ -95,7 +95,7 @@ const socialLinks = [
 
 function FooterNavLink({ link }: { link: FooterLink }) {
   const className =
-    "flex min-h-8 items-center text-sm text-text-tertiary transition-colors hover:text-brand-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-sunken";
+    "flex min-h-11 items-center text-sm text-text-tertiary transition-colors hover:text-brand-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-sunken";
 
   if (link.external) {
     return (
@@ -221,7 +221,7 @@ export function Footer() {
                 <p className="text-text-secondary">Phone</p>
                 <a
                   href={`tel:${SITE_CONFIG.phoneE164}`}
-                  className="mt-1 flex min-h-8 items-center font-mono transition-colors hover:text-brand-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-sunken"
+                  className="mt-1 flex min-h-11 items-center font-mono transition-colors hover:text-brand-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-sunken"
                 >
                   {SITE_CONFIG.phone}
                 </a>
@@ -230,7 +230,7 @@ export function Footer() {
                 <p className="text-text-secondary">Email</p>
                 <a
                   href={`mailto:${SITE_CONFIG.email}`}
-                  className="mt-1 flex min-h-8 items-center transition-colors hover:text-brand-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-sunken"
+                  className="mt-1 flex min-h-11 items-center transition-colors hover:text-brand-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-sunken"
                 >
                   {SITE_CONFIG.email}
                 </a>
@@ -266,13 +266,13 @@ export function Footer() {
           <div className="flex flex-wrap gap-x-6 gap-y-2">
             <Link
               href="/sitemap.xml"
-              className="flex min-h-8 items-center transition-colors hover:text-brand-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-sunken"
+              className="flex min-h-11 items-center transition-colors hover:text-brand-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-sunken"
             >
               Sitemap
             </Link>
             <Link
               href="/ai.txt"
-              className="flex min-h-8 items-center transition-colors hover:text-brand-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-sunken"
+              className="flex min-h-11 items-center transition-colors hover:text-brand-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-sunken"
             >
               AI Policy
             </Link>
@@ -280,7 +280,7 @@ export function Footer() {
               href={SITE_CONFIG.mainSiteUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex min-h-8 items-center transition-colors hover:text-brand-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-sunken"
+              className="flex min-h-11 items-center transition-colors hover:text-brand-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-sunken"
             >
               itecsonline.com
             </a>

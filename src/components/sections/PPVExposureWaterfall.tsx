@@ -79,7 +79,7 @@ export function PPVExposureWaterfall({
                 </div>
               </div>
 
-              <div className="mt-8 max-w-full overflow-x-auto pb-2">
+              <div className="mt-8 w-full max-w-[calc(100vw-4rem)] overflow-x-auto pb-2 md:max-w-full">
                 <div className="min-w-[720px]">
                   <div className="relative grid h-64 grid-cols-6 gap-4">
                     <div className="absolute left-0 right-0 top-1/2 h-px bg-[var(--border-subtle)]" />

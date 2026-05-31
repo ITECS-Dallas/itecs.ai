@@ -80,7 +80,7 @@ export function AboutLeadership({
                       href={SITE_CONFIG.social.linkedin}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-sm text-text-dim hover:text-brand-accent transition-colors"
+                      className="inline-flex min-h-11 items-center gap-2 text-sm text-text-dim transition-colors hover:text-brand-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base"
                     >
                       <ExternalLink className="h-4 w-4" aria-hidden="true" />
                       Connect on LinkedIn

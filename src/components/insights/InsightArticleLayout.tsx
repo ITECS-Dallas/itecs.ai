@@ -70,7 +70,7 @@ function isStandaloneHeading(paragraph: string) {
 function sourceLink(source: ArticleSource) {
   const isInternal = source.href.startsWith("/");
   const className =
-    "inline-flex items-center gap-1 text-sm text-brand-accent transition-colors hover:text-brand-accent-bright";
+    "inline-flex min-h-11 items-center gap-1 text-sm text-brand-accent transition-colors hover:text-brand-accent-bright focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base";
 
   if (isInternal) {
     return (
@@ -218,14 +218,14 @@ export function InsightArticleLayout({
                 {ctaText}{" "}
                 <Link
                   href={insight.hubHref}
-                  className="text-brand-accent underline underline-offset-4 transition-colors hover:text-brand-accent-bright"
+                  className="inline-flex min-h-11 items-center text-brand-accent underline underline-offset-4 transition-colors hover:text-brand-accent-bright focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-surface"
                 >
                   Learn about our {insight.hubLabel} service
                 </Link>{" "}
                 or{" "}
                 <Link
                   href="/contact"
-                  className="text-brand-accent underline underline-offset-4 transition-colors hover:text-brand-accent-bright"
+                  className="inline-flex min-h-11 items-center text-brand-accent underline underline-offset-4 transition-colors hover:text-brand-accent-bright focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-surface"
                 >
                   schedule a free AI assessment
                 </Link>

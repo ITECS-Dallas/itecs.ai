@@ -67,13 +67,13 @@ export function AboutHero() {
         >
           <a
             href="#timeline"
-            className="text-brand-accent hover:text-brand-accent-bright transition-colors"
+            className="inline-flex min-h-11 items-center text-brand-accent transition-colors hover:text-brand-accent-bright focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base"
           >
             See our 24-year journey &darr;
           </a>
           <a
             href="/services"
-            className="text-text-secondary hover:text-text-primary transition-colors"
+            className="inline-flex min-h-11 items-center text-text-secondary transition-colors hover:text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base"
           >
             Explore AI services for your business &rarr;
           </a>
