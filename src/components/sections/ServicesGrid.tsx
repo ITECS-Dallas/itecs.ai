@@ -24,7 +24,7 @@ const blurbsBySlug = Object.fromEntries(
 
 export function ServicesGrid({ showSisterSiteCard = false }: { showSisterSiteCard?: boolean } = {}) {
   return (
-    <section className="py-24 md:py-32">
+    <section id="managed-ai" className="py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-6 md:px-8">
         <ScrollReveal>
           <SectionHeading
