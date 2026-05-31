@@ -50,7 +50,7 @@ export function AboutHero() {
           <strong className="text-text-primary font-normal">
             ITECS is a Dallas-based IT services company founded in 2002 that
             now delivers practical AI consulting, automation, and custom AI agent
-            development for small and mid-sized businesses.
+            development for growth-stage and mid-market organizations.
           </strong>{" "}
           With 24+ years of managed IT operations, 500+ endpoints under
           management, and a 92% client retention rate, ITECS AI builds on a

@@ -36,7 +36,7 @@ const sources: ArticleSource[] = [
     label: "ITECS AI Workflow Automation",
     href: "/automation",
     description:
-      "ITECS' AI workflow automation service for Dallas small businesses adopting Claude Cowork, with project sandboxes, memory files, scheduled briefings, and approval gates configured by an experienced operator.",
+      "ITECS' AI workflow automation service for Dallas teams adopting Claude Cowork, with project sandboxes, memory files, scheduled briefings, and approval gates configured by an experienced operator.",
   },
   {
     label: "ITECS AI Consulting",
@@ -48,7 +48,7 @@ const sources: ArticleSource[] = [
     label: "ITECS Data Audit",
     href: "/data-audit",
     description:
-      "ITECS' data and AI readiness audit — the foundation that lets a small business automate finance, sales, and customer workflows on a clean data layer.",
+      "ITECS' data and AI readiness audit — the foundation that lets a growing organization automate finance, sales, and customer workflows on a clean data layer.",
   },
 ];
 
@@ -59,10 +59,10 @@ export default function ClaudeCoworkForSmallBusinessPage() {
       breadcrumbLabel="Claude Cowork for Small Business"
       faqHeading="Claude Cowork for Small Business FAQ"
       sources={sources}
-      ctaText="Ready to turn Claude Cowork into ten production workflows for your small business?"
+      ctaText="Ready to turn Claude Cowork into ten production workflows for your team?"
       heroImage={heroImage}
       heroImageAlt="Abstract Claude Cowork Small Business workspace diagram showing isolated Project Sandboxes for Finance, Sales, Marketing, and Operations connected to QuickBooks, PayPal, HubSpot, Canva, Docusign, Google Workspace, and Microsoft 365 through approval gates"
-      heroCaption="A correctly configured Claude Cowork deployment runs as four isolated Project Sandboxes — Finance, Sales, Marketing, and Operations — connected to the seven core small business apps through owner-approved gates."
+      heroCaption="A correctly configured Claude Cowork deployment runs as four isolated Project Sandboxes — Finance, Sales, Marketing, and Operations — connected to the core operating apps through owner-approved gates."
       publishedDate={insight.publishedDate}
       modifiedDate={insight.modifiedDate}
       readTime="9 min read"

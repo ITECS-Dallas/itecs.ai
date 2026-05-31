@@ -15,17 +15,17 @@ import { FAQ } from "@/components/sections/FAQ";
 import { CTASection } from "@/components/sections/CTASection";
 
 export const metadata = generatePageMetadata({
-  title: "AI Services for Dallas Small Businesses",
+  title: "AI Services for Dallas Growth-Stage and Mid-Market Teams",
   description:
     "10 managed AI services for Dallas businesses with 10–300 employees: consulting, automation, custom AI agents, AI DevOps, training, CRM, AI SEO, and more.",
   path: "/services",
   keywords: [
-    "small business AI services Dallas",
+    "mid-market AI services Dallas",
     "AI automation Dallas",
     "custom AI agents Dallas",
     "AI consulting Dallas",
     "AI training Dallas",
-    "AI services for small business",
+    "AI services for growing organizations",
     "managed AI services Dallas",
   ],
 });
@@ -84,10 +84,10 @@ export default function ServicesPage() {
       {/* 4. Pricing pathways — reduce cost uncertainty before the service grid */}
       <AIPricingPreview />
 
-      {/* 5. SMB Pain Point — AI choice paralysis */}
+      {/* 5. Operating pain point — AI choice paralysis */}
       <PainPoint
         stat="73%"
-        statLabel="of small businesses say AI could help — but don't know where to start"
+        statLabel="of business leaders say AI could help — but need a clear operating model"
         heading="You Know AI Could Save Time. You Just Don't Know Which Tool to Pick."
         paragraphs={[
           "Your inbox is full of pitches — ChatGPT wrappers, automation platforms, AI-powered CRMs, voice bots. Each one claims to save your team hours. But none of them explain which problem to solve first, how to connect it to your existing tools, or who maintains it when something breaks at 2 AM.",

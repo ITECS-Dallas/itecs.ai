@@ -26,9 +26,9 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { CTASection } from "@/components/sections/CTASection";
 
 export const metadata = generatePageMetadata({
-  title: "AI Consulting Pricing for SMBs",
+  title: "AI Consulting Pricing for Growing Organizations",
   description:
-    "Transparent AI consulting pricing for SMBs: readiness assessments, executive briefings, pilots, custom AI agents, managed AI retainers, and hourly rates.",
+    "Transparent AI consulting pricing for readiness assessments, executive briefings, pilots, custom AI agents, managed AI retainers, and hourly rates.",
   path: "/pricing",
   keywords: [
     "AI consulting pricing",
@@ -186,11 +186,11 @@ export default function PricingPage() {
               Public AI Pricing
             </p>
             <h1 className="text-4xl font-light tracking-[-0.03em] text-text-primary md:text-6xl">
-              Practical AI pricing for SMB leaders who need clarity before
+              Practical AI pricing for leaders who need clarity before
               committing.
             </h1>
             <p className="mt-6 max-w-3xl text-lg leading-relaxed text-text-secondary">
-              ITECS helps SMB and mid-market organizations adopt AI with
+              ITECS helps growth-stage and mid-market organizations adopt AI with
               predictable pricing, productized engagement options, and the right
               platform fit. We work across Claude, ChatGPT, Gemini, Microsoft
               Copilot, GitHub Copilot, and other major AI platforms without
@@ -607,7 +607,7 @@ function FAQSection() {
             Pricing FAQ
           </p>
           <h2 className="text-3xl font-light tracking-[-0.02em] text-text-primary md:text-5xl">
-            Common pricing questions from SMB leaders.
+            Common pricing questions from business leaders.
           </h2>
         </div>
         <div className="divide-y divide-[var(--border-subtle)] rounded-2xl border border-[var(--border-subtle)] bg-bg-surface/45">

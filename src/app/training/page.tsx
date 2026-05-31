@@ -48,7 +48,7 @@ export default function TrainingPage() {
 
       <AIAdoptionUnderstanding />
 
-      {/* 2. SMB Pain Point — validate the unsupervised AI chaos */}
+      {/* 2. Operating pain point — validate the unsupervised AI chaos */}
       <PainPoint
         stat="72%"
         statLabel="of employees already use AI at work — most without any guidance or guardrails"

@@ -49,7 +49,7 @@ export default function HowToUseAIPage() {
     <InsightArticleLayout
       insight={insight}
       breadcrumbLabel="How to Use AI"
-      faqHeading="AI for Small Business FAQ"
+      faqHeading="AI Adoption FAQ"
       sources={sources}
       ctaText="Ready to see what AI can do for your business?"
       publishedDate={insight.publishedDate}

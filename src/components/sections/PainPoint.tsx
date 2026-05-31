@@ -13,7 +13,7 @@ interface PainPointProps {
   heading: string;
   /** 1-2 short paragraphs validating the frustration */
   paragraphs: string[];
-  /** Optional specific SMB scenario for information gain */
+  /** Optional specific business scenario for information gain */
   scenario?: {
     business: string;
     problem: string;
@@ -71,7 +71,7 @@ export function PainPoint({
           </ScrollReveal>
         ))}
 
-        {/* Specific SMB scenario — information gain */}
+        {/* Specific business scenario — information gain */}
         {scenario && (
           <ScrollReveal delay={0.25}>
             <div className="mt-8 p-6 rounded-xl border border-[var(--border-subtle)] bg-bg-surface/50">

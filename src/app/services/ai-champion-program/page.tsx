@@ -32,7 +32,7 @@ export const metadata = generatePageMetadata({
   path: "/services/ai-champion-program",
   keywords: [
     "internal AI champion program",
-    "AI training for SMB",
+    "AI training for growing teams",
     "AI enablement",
     "internal AI lead",
     "AI champion certification",
@@ -276,7 +276,7 @@ const courseSchema = {
   timeRequired: "P6W",
   educationalCredentialAwarded: "Certificate of Completion",
   about: [
-    "AI training for SMB",
+    "AI training for growing teams",
     "AI enablement",
     "Prompt engineering",
     "AI governance",
@@ -489,7 +489,7 @@ export default function AIChampionProgramPage() {
           <ScrollReveal delay={0.1}>
             <div className="space-y-5 text-lg leading-relaxed text-text-secondary">
               <p>
-                Across SMB and mid-market organizations, AI tools are rolling
+                Across growth-stage and mid-market organizations, AI tools are rolling
                 out quickly. The harder question is who owns AI after the first
                 pilot, who keeps employees using it correctly, and who knows
                 when a new use case is worth investment.

@@ -22,13 +22,13 @@ import { AboutLeadership } from "./AboutLeadership";
 export const metadata = generatePageMetadata({
   title: "About ITECS — Dallas IT & AI Consulting Since 2002",
   description:
-    "ITECS is a Dallas IT company founded in 2002 — 24 years of managed IT, cybersecurity, and now practical AI consulting for small businesses. Meet the team.",
+    "ITECS is a Dallas IT company founded in 2002 — 24 years of managed IT, cybersecurity, and now practical AI consulting for growth-stage and mid-market teams. Meet the team.",
   path: "/about",
   keywords: [
     "About ITECS Dallas",
     "ITECS AI consulting",
     "Dallas IT company",
-    "small business AI Dallas",
+    "mid-market AI Dallas",
     "managed IT services Dallas",
     "ITECS history",
     "Dallas AI company",
@@ -97,7 +97,7 @@ export default function AboutPage() {
             <div className="relative rounded-xl overflow-hidden border border-[var(--border-subtle)]">
               <Image
                 src="/images/team/team-office.webp"
-                alt="ITECS team working at their Dallas office, delivering managed IT and AI consulting services to small businesses"
+                alt="ITECS team working at their Dallas office, delivering managed IT and AI consulting services to growing organizations"
                 width={1200}
                 height={600}
                 className="w-full h-auto object-cover"

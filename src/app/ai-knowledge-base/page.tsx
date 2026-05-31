@@ -48,7 +48,7 @@ export default function AIKnowledgeBasePage() {
 
       <AIAdoptionUnderstanding />
 
-      {/* 2. SMB Pain Point — validate the scattered knowledge problem */}
+      {/* 2. Operating pain point — validate the scattered knowledge problem */}
       <PainPoint
         stat="19.8%"
         statLabel="of the average work week spent searching for internal information"

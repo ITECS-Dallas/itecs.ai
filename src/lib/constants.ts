@@ -263,8 +263,8 @@ export const MEGA_MENU_CATEGORIES: MegaMenuCategory[] = [
         href: "/insights/agentic-ai-workflows-enterprise-operations",
       },
       { label: "Automate Lead Follow-Up", href: "/insights/automate-lead-follow-up" },
-      { label: "Claude Cowork for Small Business", href: "/insights/claude-cowork-for-small-business" },
-      { label: "How to Use AI in Small Business", href: "/insights/how-to-use-ai-small-business" },
+      { label: "Claude Cowork for Growing Teams", href: "/insights/claude-cowork-for-small-business" },
+      { label: "How Growing Teams Use AI", href: "/insights/how-to-use-ai-small-business" },
       { label: "MCP Is the New API", href: "/insights/mcp-is-the-new-api" },
       { label: "OpenClaw Security Crisis", href: "/insights/openclaw-security-crisis" },
       {
@@ -417,7 +417,7 @@ export const AI_PRICING_CATEGORIES: AIPricingCategory[] = [
         price: "$4,500",
         scope: "Standalone policy package",
         description:
-          "A complete, custom Acceptable Use Policy and AI governance framework right-sized for SMB teams adopting AI across major platforms.",
+          "A complete, custom Acceptable Use Policy and AI governance framework right-sized for growing teams adopting AI across major platforms.",
         included: [
           "Custom Acceptable Use Policy tailored to your industry and risk profile",
           "AI governance framework with roles, responsibilities, and review cadence",
@@ -631,24 +631,24 @@ export interface ServiceItem {
 export const SERVICES: ServiceItem[] = [
   {
     slug: "consulting",
-    title: "Small Business AI Consulting in Dallas",
+    title: "AI Consulting for Growing Organizations in Dallas",
     shortTitle: "AI Consulting",
     description:
       "We help Dallas businesses with 10–300 employees adopt AI without confusion: understand the opportunity, configure the right tools, train the team, and only build custom AI when it is justified.",
     longDescription:
-      "Most small businesses know AI could help, but don't know where to start or what it should cost. We sit down with your team, identify the tasks eating up the most time, and build a practical adoption plan. Often that starts with properly setting up tools like ChatGPT, Claude, Gemini, or Microsoft Copilot before anyone pays for a custom agent.",
+      "Most growing organizations know AI could help, but need a defensible plan for where to start, what it should cost, and how to govern it. We sit down with your team, identify the workflows consuming the most time, and build a practical adoption plan. Often that starts with properly setting up tools like ChatGPT, Claude, Gemini, or Microsoft Copilot before anyone pays for a custom agent.",
     heroSummary:
       "We guide Dallas businesses through AI adoption from workflow discovery to tool setup, security guardrails, employee training, and testing. Consulting can be hourly or through a prepaid retainer, with flat project pricing reserved for scoped AI builds.",
     href: "/consulting",
     icon: "Brain",
     keywords: [
-      "AI consulting for small business",
-      "small business AI Dallas",
-      "how to use AI in small business",
+      "AI consulting for growing organizations",
+      "mid-market AI Dallas",
+      "how to use AI in a business",
       "AI consultant Dallas",
       "AI readiness assessment Dallas",
     ],
-    h1: "AI Consulting for Small Businesses in Dallas",
+    h1: "AI Consulting for Growing Organizations in Dallas",
     features: [
       "Identify which manual tasks are costing you the most time and money",
       "Get a plain-English AI adoption agenda tailored to your budget",
@@ -695,7 +695,7 @@ export const SERVICES: ServiceItem[] = [
     ],
     faq: [
       {
-        question: "How much does AI consulting cost for a small business?",
+        question: "How much does AI consulting cost for a growing organization?",
         answer:
           "AI consulting can be billed hourly, but most clients prefer a prepaid retainer block of time. Retainer hours can be used at your discretion for discovery, tool configuration, training, testing, workflow design, and advisory work. There is no minimum monthly usage and no expiration date. Flat-rate fees are used only for scoped projects such as building AI agents or securely connecting them to your platforms.",
       },
@@ -787,7 +787,7 @@ export const SERVICES: ServiceItem[] = [
     ],
     faq: [
       {
-        question: "How much does a custom AI agent cost for a small business?",
+        question: "How much does a custom AI agent cost for a growing organization?",
         answer:
           "Custom AI agents are quoted as scoped projects after we understand the workflow, data sources, security requirements, approval points, and external systems involved. Discovery, project-folder setup, prompt systems, testing, training, and tuning can also use prepaid retainer hours with no minimum monthly usage or expiration date.",
       },
@@ -831,11 +831,11 @@ export const SERVICES: ServiceItem[] = [
     href: "/automation",
     icon: "Activity",
     keywords: [
-      "AI workflow automation for small business",
+      "AI workflow automation for growing businesses",
       "automate lead follow up with AI",
       "AI automation Dallas",
       "workflow automation Dallas",
-      "small business automation",
+      "business workflow automation",
     ],
     h1: "AI Workflow Automation for Dallas Businesses",
     features: [
@@ -881,14 +881,14 @@ export const SERVICES: ServiceItem[] = [
     ],
     faq: [
       {
-        question: "How much does AI workflow automation cost for a small business?",
+        question: "How much does AI workflow automation cost for a growing business?",
         answer:
           "Setup costs for Dallas businesses typically range from $2,500–$10,000 depending on the number of workflows, with ongoing management starting at $500/month. Most clients break even within the first month through time savings alone.",
       },
       {
         question: "What tasks can you automate with AI?",
         answer:
-          "The most common automations we build for Dallas SMBs: lead follow-up emails and texts, appointment scheduling and reminders, invoice processing and data entry, customer onboarding sequences, report generation, and helpdesk ticket routing. If your team does it repeatedly, we can probably automate it.",
+          "The most common automations we build for Dallas teams: lead follow-up emails and texts, appointment scheduling and reminders, invoice processing and data entry, customer onboarding sequences, report generation, and helpdesk ticket routing. If your team does it repeatedly, we can probably automate it.",
       },
       {
         question: "Can you automate lead follow-up with AI?",
@@ -916,7 +916,7 @@ export const SERVICES: ServiceItem[] = [
     icon: "ServerCog",
     keywords: [
       "AI DevOps Dallas",
-      "MLOps for small business",
+      "MLOps for growing organizations",
       "AI deployment services",
       "RAG pipeline monitoring",
       "LLM operations",
@@ -976,7 +976,7 @@ export const SERVICES: ServiceItem[] = [
           "AI DevOps is the operating discipline that moves AI systems from prototype to production. It covers CI/CD, model and prompt versioning, data pipeline monitoring, secrets management, testing, observability, rollback plans, and cost controls for AI apps, RAG systems, agents, and automations.",
       },
       {
-        question: "Do small businesses need MLOps or AI DevOps?",
+        question: "Do growing organizations need MLOps or AI DevOps?",
         answer:
           "If an AI system touches customers, employees, regulated data, revenue workflows, or operational decisions, yes. You do not need an enterprise platform, but you do need a repeatable way to deploy changes, monitor accuracy, secure credentials, and recover when something breaks.",
       },
@@ -1014,7 +1014,7 @@ export const SERVICES: ServiceItem[] = [
       "AI training Dallas",
       "ChatGPT training for business",
       "Microsoft Copilot training Dallas",
-      "employee AI training small business",
+      "employee AI training for growing teams",
     ],
     h1: "AI Training for Your Dallas Team",
     features: [
@@ -1084,7 +1084,7 @@ export const SERVICES: ServiceItem[] = [
   },
   {
     slug: "ai-receptionist",
-    title: "AI Receptionists & Voice Agents for Small Businesses",
+    title: "AI Receptionists & Voice Agents for Growing Teams",
     shortTitle: "AI Receptionist",
     description:
       "Human-sounding AI voice agents that answer your phones 24/7, book appointments, and route calls — saving Dallas businesses $3,000+ a month over traditional answering services.",
@@ -1095,14 +1095,14 @@ export const SERVICES: ServiceItem[] = [
     href: "/ai-receptionist",
     icon: "Phone",
     keywords: [
-      "AI receptionist for small business",
+      "AI receptionist for business",
       "AI phone answering service",
       "AI voice agent Dallas",
       "virtual receptionist AI",
-      "automated phone answering small business",
+      "automated phone answering for business",
       "AI appointment booking",
     ],
-    h1: "Human-Sounding AI Receptionists for Small Businesses",
+    h1: "Human-Sounding AI Receptionists for Growing Teams",
     features: [
       "24/7 phone answering — nights, weekends, holidays, no voicemail",
       "Natural-sounding AI voices powered by ElevenLabs and Twilio",
@@ -1145,7 +1145,7 @@ export const SERVICES: ServiceItem[] = [
     ],
     faq: [
       {
-        question: "How much does an AI receptionist cost for a small business?",
+        question: "How much does an AI receptionist cost for a growing organization?",
         answer:
           "Setup starts at $3,000–$6,000 depending on call complexity and integrations. Monthly service runs $300–$800/month — compared to $1,500–$4,000/month for a human receptionist or traditional answering service. Most Dallas businesses save $3,000+ per month from day one.",
       },
@@ -1183,7 +1183,7 @@ export const SERVICES: ServiceItem[] = [
       "AI sales automation",
       "HubSpot AI integration Dallas",
       "Salesforce Einstein setup",
-      "AI lead scoring small business",
+      "AI lead scoring for business",
       "CRM automation Dallas",
     ],
     h1: "AI CRM Integration & Sales Automation",
@@ -1230,7 +1230,7 @@ export const SERVICES: ServiceItem[] = [
     ],
     faq: [
       {
-        question: "How much does AI CRM integration cost for a small business?",
+        question: "How much does AI CRM integration cost for a growing organization?",
         answer:
           "Setup ranges from $5,000–$15,000 depending on your CRM platform, number of integrations, and team size. Ongoing optimization and support starts at $500/month. Most Dallas businesses see the investment pay for itself within 60 days through increased close rates and time savings.",
       },
@@ -1272,7 +1272,7 @@ export const SERVICES: ServiceItem[] = [
       "internal RAG system",
       "AI knowledge management Dallas",
       "private AI search company documents",
-      "RAG knowledge base SMB",
+      "RAG knowledge base for growing teams",
     ],
     h1: "Internal AI Knowledge Bases & SOP Automation",
     features: [
@@ -1364,7 +1364,7 @@ export const SERVICES: ServiceItem[] = [
   },
   {
     slug: "data-audit",
-    title: "The Small Business AI Data Readiness Audit",
+    title: "The AI Data Readiness Audit",
     shortTitle: "AI Data Audit",
     description:
       "Is your data secure enough for AI? Get a comprehensive, flat-fee audit of your Microsoft 365 or Google Workspace environment — security risks and automation opportunities identified in 7 days.",
@@ -1378,11 +1378,11 @@ export const SERVICES: ServiceItem[] = [
       "AI data readiness audit",
       "Microsoft 365 security audit",
       "Google Workspace security audit",
-      "small business data audit Dallas",
+      "business data audit Dallas",
       "AI readiness assessment",
       "data security audit for AI",
     ],
-    h1: "The Small Business AI Data Readiness Audit",
+    h1: "The AI Data Readiness Audit",
     features: [
       "Complete security assessment of your Microsoft 365 or Google Workspace",
       "Identify exposed sensitive data — PII, financial records, credentials",
@@ -1455,7 +1455,7 @@ export const DATA_AUDIT_PRICING = [
   {
     tier: "Essentials",
     price: "$2,500",
-    description: "Core security assessment for small teams",
+    description: "Core security assessment for lean teams",
     users: "Up to 25 users",
     features: [
       "Microsoft 365 or Google Workspace security scan",
@@ -1639,15 +1639,15 @@ export const INSIGHTS: InsightItem[] = [
     h1: "How to Set Up Claude Cowork for Your Small Business in One Afternoon",
     content: [
       "Claude Cowork is Anthropic's collaborative workspace where Claude holds long projects, remembers context across sessions, and runs scheduled tasks. On May 13, 2026, Anthropic added a Small Business toggle inside Cowork with fifteen pre-built workflows for QuickBooks, PayPal, HubSpot, Canva, Docusign, Google Workspace, and Microsoft 365 — the same back-office stack most ten- to fifty-person companies already pay for. Setup takes one afternoon. The savings start the same week.",
-      "**The fastest way to capture that value safely is to pair the Cowork rollout with a structured automation engagement.** ITECS configures [AI workflow automation for Dallas small businesses](/automation) — sandboxes, memory files, scheduled briefings, and approval gates wired together so the agent works for the owner instead of around them.",
-      "**Why Most Small Business Owners Stop At The Chat Window**",
+      "**The fastest way to capture that value safely is to pair the Cowork rollout with a structured automation engagement.** ITECS configures [AI workflow automation for Dallas teams](/automation) — sandboxes, memory files, scheduled briefings, and approval gates wired together so the agent works for the owner instead of around them.",
+      "**Why Many Operators Stop At The Chat Window**",
       "Anthropic's 2026 Work Trend Index reports that only sixteen percent of business users have moved beyond chatting with Claude to actually orchestrating agents. Most owners type a question, copy the answer into an email, and stop. The recurring, multi-step admin work — invoice chasing, weekly reports, Monday meeting prep — still happens by hand in QuickBooks, Outlook, HubSpot, and a stack of browser tabs. The result is that the highest-paid person in the building spends the first hour of every day on data scraping.",
-      "A twenty-eight person Dallas commercial cleaning company we recently helped illustrates the pattern. The owner spent forty minutes every morning pulling the prior day's revenue from QuickBooks, the cash position from PayPal, the new HubSpot deals, and three Outlook calendar checks to build a daily briefing for himself. Forty minutes by five days is more than three hours a week, every week, for the most expensive headcount in the company. That work belongs in Cowork — not in the owner's head. For owners earlier in their AI adoption, [our small business AI guide](/insights/how-to-use-ai-small-business) is a useful prerequisite.",
+      "A twenty-eight person Dallas commercial cleaning company we recently helped illustrates the pattern. The owner spent forty minutes every morning pulling the prior day's revenue from QuickBooks, the cash position from PayPal, the new HubSpot deals, and three Outlook calendar checks to build a daily briefing for himself. Forty minutes by five days is more than three hours a week, every week, for the most expensive headcount in the company. That work belongs in Cowork — not in the owner's head. For operators earlier in their AI adoption, [our AI adoption guide](/insights/how-to-use-ai-small-business) is a useful prerequisite.",
       "**What Changed On May 13, 2026**",
       "Anthropic shipped Claude for Small Business as a toggle inside Cowork rather than a separate product. Switching it on exposes fifteen pre-built workflows tuned for ten- to fifty-person companies and adds curated connectors for QuickBooks, PayPal, HubSpot, Canva, Docusign, Google Workspace, and Microsoft 365. The toggle also tightens the default safety posture — Project Sandboxes are isolated by default, file access is scoped per Project, and Dispatch scheduled tasks now route through an approval gate before they pay an invoice or post anything customer-facing.",
       "For an owner, this changes the question. The old question was \"what can I ask Claude to do for me?\" The new question is \"which of these fifteen pre-built workflows should I turn on first, and what do I need to wire up around them?\" The remainder of this guide answers that question.",
       "**How To Set Up Claude Cowork In One Afternoon**",
-      "ITECS uses a six-step setup that takes an experienced operator about three hours for a typical small business. Each step has an owner and a clear stopping point so the work can pause without losing context.",
+      "ITECS uses a six-step setup that takes an experienced operator about three hours for a typical growth-stage team. Each step has an owner and a clear stopping point so the work can pause without losing context.",
       "**Step 1: Enable Small Business mode inside Cowork.** Sign in to claude.ai as the workspace owner. Open Cowork settings, scroll to Business modes, and toggle Small Business on. The setting is per-workspace, not per-user, so the whole team inherits the same defaults the moment it flips.",
       "**Step 2: Connect the seven core apps.** Open the Integrations tab and authenticate QuickBooks, PayPal, HubSpot, Canva, Docusign, Google Workspace, and Microsoft 365 one at a time through each vendor's OAuth flow. Connect with the account that already owns billing and admin for that tool — not a personal login. Claude inherits the permissions of the connecting user, so granting read-only or scoped roles where the app supports it is the cleanest way to limit blast radius.",
       "**Step 3: Create one Project Sandbox per business function.** Inside Cowork, create separate Projects for Finance, Sales, Marketing, and Operations. Each Project is its own sandbox — Claude can only read files, memory, and integrations attached to that Project. Do not grant Claude full disk access. The whole point of the sandbox is that a Finance prompt cannot accidentally read a Marketing draft or post to a customer-facing channel.",
@@ -1655,7 +1655,7 @@ export const INSIGHTS: InsightItem[] = [
       "**Step 5: Schedule Dispatch tasks with /schedule.** Inside a Project, type `/schedule` followed by what you want and when. Three schedules cover most owners' needs: a daily morning briefing at 6:30 a.m., a weekly performance report on Friday at 4 p.m., and a Monday meeting prep deck on Sunday at 7 p.m. Dispatch handles the cron, the integration pulls, the rendering, and the email or Slack delivery without anyone signing in.",
       "**Step 6: Wire approval gates for money and customer touches.** In the Project's Guardrails panel, set the approval rule to \"Owner sign-off required\" for any action that moves money, files with a regulator, or posts to a customer-facing channel. Approval gates pause the workflow, send a notification, and resume only when the owner taps Approve. Nothing pays a vendor, sends a contract, or publishes a Canva post without an explicit yes.",
       "**The Ten Workflows That Replace Manual Operations Work**",
-      "The fifteen pre-built workflows in Small Business mode cover finance, sales, marketing, contracts, and ops. The ten below produce the cleanest payback for a typical Dallas small business in the first ninety days.",
+      "The fifteen pre-built workflows in Small Business mode cover finance, sales, marketing, contracts, and ops. The ten below produce the cleanest payback for a typical Dallas operator in the first ninety days.",
       "**1. Daily morning briefing.** Pulls yesterday's QuickBooks revenue, PayPal balance, new HubSpot deals, and today's Microsoft 365 or Google Workspace calendar into a two-paragraph summary emailed at 6:30 a.m. Replaces the forty-minute manual scrape most owners still do.",
       "**2. Weekly performance report.** Friday-afternoon roll-up of QuickBooks revenue, accounts receivable aging, HubSpot pipeline movement, and Canva-produced campaign metrics, delivered as a one-page PDF to the leadership group.",
       "**3. Monday meeting prep deck.** Sunday-evening Canva deck draft assembled from HubSpot pipeline updates, last week's revenue, and the open items pulled from Microsoft 365 task lists. The owner reviews and approves before Monday at 7 a.m.",
@@ -1672,9 +1672,9 @@ export const INSIGHTS: InsightItem[] = [
       "**Sandbox by Project, not by user.** Each Project carries its own file scope, its own memory, and its own integration connections. Do not enable full disk access on Cowork's desktop client for an owner account. A bookkeeper's invoice agent should never be able to read the same workspace as the marketing team's social drafts.",
       "**Owner sign-off for money and customer-facing posts.** Configure Guardrails so any action that pays a vendor, files with a regulator, sends a contract, or posts publicly pauses for approval. Approval friction is the feature, not the bug — it is the difference between an agent that helps and an agent that publishes a bad invoice run on a Saturday.",
       "**Govern Claude like an employee.** ITECS deploys Cowork against the controls in the [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework) — defined purpose per Project, identity-bound credentials, an immutable audit log of every action, a documented human approval path, and a quarterly review of what the agent did and what it touched. The same discipline ITECS has applied to managed IT for twenty-four years, applied now to an AI workspace. For owners who want to harden the data layer before automating, a [data and AI readiness audit](/data-audit) comes first.",
-      "**Pricing And The ROI Of Cowork For A Small Business**",
+      "**Pricing And The ROI Of Cowork For A Growing Team**",
       "Claude for Small Business is part of Claude Cowork's standard subscription tier — pricing sits on Anthropic's plans page and tracks per user. There is no separate license fee for the Small Business toggle. ITECS prices the setup and operating layer transparently: hourly consulting or prepaid retainer hours for configuration and tuning, no minimum monthly commitment, no expiration, and a flat fee for scoped builds such as a [custom AI agent extending one of the ten workflows](/custom-ai-agents).",
-      "Most small businesses recover the setup cost inside the first month. The Dallas cleaning company above reclaimed roughly three hours a week from the owner — at a fully loaded owner's hourly cost, that paid back the configuration retainer in under three weeks and now compounds across every additional workflow turned on. Owners who pair Cowork with [AI training for the rest of the team](/training) get the second multiplier — the work the owner used to do alone now runs as a managed system the whole company can lean on. When you are ready to walk through the setup with someone who has done it before, [talk to the ITECS team](/contact).",
+      "Many growing teams recover the setup cost inside the first month. The Dallas cleaning company above reclaimed roughly three hours a week from the owner — at a fully loaded owner's hourly cost, that paid back the configuration retainer in under three weeks and now compounds across every additional workflow turned on. Owners who pair Cowork with [AI training for the rest of the team](/training) get the second multiplier — the work the owner used to do alone now runs as a managed system the whole company can lean on. When you are ready to walk through the setup with someone who has done it before, [talk to the ITECS team](/contact).",
     ],
     faq: [
       {
@@ -1703,9 +1703,9 @@ export const INSIGHTS: InsightItem[] = [
           "Dispatch tasks created with /schedule run on a cron — daily briefings, weekly reports, Monday decks — and pull data through the connected integrations automatically. Approval gates pause any scheduled task that would move money, send a contract, or post to a customer-facing channel until the owner taps Approve, so nothing pays or posts without an explicit yes.",
       },
       {
-        question: "How much time can Claude Cowork actually save a small business?",
+        question: "How much time can Claude Cowork actually save a growing team?",
         answer:
-          "Most Dallas small businesses recover three to six hours of owner time per week from the daily briefing, weekly report, and invoice chase workflows alone. At a fully loaded owner's hourly cost, the configuration retainer typically pays back inside the first month and then compounds with every additional workflow turned on.",
+          "Many Dallas operators recover three to six hours of owner time per week from the daily briefing, weekly report, and invoice chase workflows alone. At a fully loaded owner's hourly cost, the configuration retainer typically pays back inside the first month and then compounds with every additional workflow turned on.",
       },
       {
         question: "Is Claude Cowork safe for finance and customer data?",
@@ -1891,27 +1891,27 @@ export const INSIGHTS: InsightItem[] = [
   },
   {
     slug: "how-to-use-ai-small-business",
-    title: "How to Use AI in a Small Business (2026 Guide)",
+    title: "How Growing Businesses Use AI (2026 Guide)",
     description:
-      "A practical guide for Dallas small business owners on using AI to automate tasks, reduce costs, and grow without hiring. From ChatGPT to workflow automation.",
+      "A practical guide for Dallas operators on using AI to automate tasks, reduce costs, and grow without unnecessary hiring. From ChatGPT to workflow automation.",
     href: "/insights/how-to-use-ai-small-business",
     publishedDate: "2026-04-12",
     modifiedDate: "2026-05-06",
     hubSlug: "consulting",
-    hubLabel: "AI Consulting for Small Businesses",
+    hubLabel: "AI Consulting for Growing Organizations",
     hubHref: "/consulting",
     keywords: [
-      "how to use AI in small business",
-      "AI for small business owners",
-      "small business AI guide 2026",
+      "how to use AI in business",
+      "AI for business operators",
+      "AI adoption guide 2026",
       "AI tools for small companies",
     ],
-    h1: "How to Use AI in Your Small Business",
+    h1: "How Growing Businesses Use AI",
     content: [
       "If you're running a Dallas business with 10–300 employees, AI is no longer optional. It's the difference between scaling efficiently and drowning in manual work that your competitors automated six months ago. The good news: you don't need a data science team or a six-figure budget to get started.",
-      "**The first step is working with an experienced [AI consulting partner](/consulting) who understands small business operations.** At ITECS, we've helped dozens of Dallas businesses identify the manual tasks that cost them the most time — and automate them with practical AI tools that pay for themselves within weeks.",
+      "**The first step is working with an experienced [AI consulting partner](/consulting) who understands operating discipline.** At ITECS, we've helped Dallas businesses identify the manual tasks that cost them the most time — and automate them with practical AI tools that pay for themselves within weeks.",
       "**Identify Your Biggest Time Drains First**",
-      "Most small businesses waste 15–25 hours per week on tasks that AI handles in seconds. Data entry, customer follow-up emails, report generation, appointment scheduling, answering the same customer questions over and over. These are not complex AI problems. They are workflow problems that tools like Microsoft Copilot, ChatGPT, Zapier, and Make.com solve today.",
+      "Many growing businesses waste 15–25 hours per week on tasks that AI handles in seconds. Data entry, customer follow-up emails, report generation, appointment scheduling, answering the same customer questions over and over. These are not complex AI problems. They are workflow problems that tools like Microsoft Copilot, ChatGPT, Zapier, and Make.com solve today.",
       "Start by listing every task your team does more than three times per week. Rank them by hours consumed. The top three are your AI targets. A 25-person Dallas staffing agency we worked with found that their recruiters spent 12 hours per week copying candidate data between Indeed, their ATS, and a shared spreadsheet. One Zapier automation eliminated the spreadsheet entirely.",
       "**Choose the Right AI Tools for Your Size**",
       "Not every AI tool fits every business. Here is how the landscape breaks down for companies with 10–300 employees:",
@@ -1931,12 +1931,12 @@ export const INSIGHTS: InsightItem[] = [
     ],
     faq: [
       {
-        question: "What's the easiest way to start using AI in a small business?",
+        question: "What's the easiest way to start using AI in a growing business?",
         answer:
           "Identify your team's top 3 most repetitive tasks, then evaluate whether existing tools like Microsoft Copilot or ChatGPT can automate them. For custom automation, a free AI assessment from ITECS identifies quick wins and estimates ROI in under an hour.",
       },
       {
-        question: "How much does AI cost for a small business?",
+        question: "How much does AI cost for a growing business?",
         answer:
           "Off-the-shelf AI tools can start with existing subscriptions or per-user plans. ITECS consulting can be hourly or handled through prepaid retainer hours with no minimum monthly usage or expiration date. Scoped custom builds such as AI agents, automations, and secure integrations are quoted after requirements are clear.",
       },
@@ -1971,7 +1971,7 @@ export const INSIGHTS: InsightItem[] = [
     keywords: [
       "how to secure business data from ChatGPT",
       "ChatGPT data security for business",
-      "AI data protection small business",
+      "AI data protection for business",
       "private AI workspace for business",
     ],
     h1: "How to Secure Your Business Data from ChatGPT",
@@ -2044,14 +2044,14 @@ export const INSIGHTS: InsightItem[] = [
       "automate lead follow up with AI",
       "AI lead follow up",
       "automated lead response",
-      "lead automation small business",
+      "lead automation for business",
     ],
     h1: "How to Automate Lead Follow-Up with AI",
     content: [
-      "The average small business takes over 24 hours to respond to a new lead. By that point, 78% of buyers have already gone with whoever responded first. If you are not following up within minutes, you are losing deals to competitors who are. The fix is simpler than you think — and the ROI is immediate.",
+      "The average business takes over 24 hours to respond to a new lead. By that point, 78% of buyers have already gone with whoever responded first. If you are not following up within minutes, you are losing deals to competitors who are. The fix is simpler than you think — and the ROI is immediate.",
       "**[AI-powered workflow automation](/automation) can follow up with new leads within seconds of form submission — via email, text, or both.** At ITECS, we build these automated lead follow-up systems for Dallas businesses using tools like Zapier, Make.com, HubSpot AI, and custom integrations.",
       "**Why Speed to Lead Is the Highest-ROI Metric You Are Ignoring**",
-      "Harvard Business Review research shows that companies contacting leads within 5 minutes are 100x more likely to connect than those waiting 30 minutes. InsideSales.com data shows that 50% of leads go to the vendor that responds first. Yet most small businesses rely on their office manager to check email, then manually enter lead info into the CRM, then draft a follow-up — a process that takes hours on a good day.",
+      "Harvard Business Review research shows that companies contacting leads within 5 minutes are 100x more likely to connect than those waiting 30 minutes. InsideSales.com data shows that 50% of leads go to the vendor that responds first. Yet many growing teams still rely on an office manager to check email, then manually enter lead info into the CRM, then draft a follow-up — a process that takes hours on a good day.",
       "Every hour that passes between form submission and first contact cuts your conversion probability in half. A 30-person roofing company in McKinney was spending $4,000 per month on Google Ads generating 80+ leads. Their average response time was 6 hours. When ITECS automated their follow-up to respond in under 60 seconds, their conversion rate jumped from 12% to 28% — without spending a dollar more on ads.",
       "**The Anatomy of an AI-Powered Lead Follow-Up System**",
       "Here is how a complete automated lead follow-up pipeline works, step by step:",
@@ -2064,7 +2064,7 @@ export const INSIGHTS: InsightItem[] = [
       "**Step 6: CRM logging and reporting.** Every touchpoint — emails sent, texts delivered, opens, clicks, calls made — is logged in the CRM automatically. Your sales manager gets a weekly report showing lead volume, response times, conversion rates, and pipeline value. No manual data entry required.",
       "**Which Tools Power the Automation**",
       "You do not need to replace your existing tech stack. The automation layer sits on top of whatever you already use:",
-      "**Zapier** is the most popular no-code automation platform for small business. It connects 6,000+ apps with simple trigger-action workflows. Best for straightforward lead routing and CRM sync. Plans start at $20/month.",
+      "**Zapier** is a widely used no-code automation platform. It connects 6,000+ apps with simple trigger-action workflows. Best for straightforward lead routing and CRM sync. Plans start at $20/month.",
       "**Make.com** (formerly Integromat) handles more complex workflows with branching logic, loops, and data transformations. Better for multi-step sequences that involve conditional routing or AI qualification. Plans start at $9/month.",
       "**HubSpot AI** adds native automation within your CRM. If you already use HubSpot, its built-in workflows handle lead scoring, email sequences, and task assignment without a third-party tool. Requires Marketing Hub Professional ($800/month) or higher.",
       "**OpenAI API** adds intelligence to the pipeline. The AI reads the lead's form submission, scores it against your ideal customer profile, and generates personalized follow-up copy. Costs $0.01–$0.03 per lead processed.",
@@ -2239,7 +2239,7 @@ export const INSIGHTS: InsightItem[] = [
       "You do not need to know how MCP works to make the right decisions about it. You need to know three things.",
       "First, MCP is not optional. The protocol is now the default way major SaaS vendors, AI platforms, and operating systems expose their data to AI agents. If your 2026 AI roadmap still assumes proprietary connectors, that roadmap is already out of date.",
       "Second, MCP without governance is shadow AI in a new uniform. Letting employees connect personal AI tools to business systems through unmanaged MCP servers carries the same compliance risk as letting them paste customer data into public ChatGPT.",
-      "Third, the highest-leverage AI investment for most SMBs this year is not a custom agent. It is a managed AI operating model: which tools are approved, which MCP servers are allowed, how the gateway is configured, who reviews the logs, and how employees are trained to work alongside it.",
+      "Third, the highest-leverage AI investment for most growing teams this year is not a custom agent. It is a managed AI operating model: which tools are approved, which MCP servers are allowed, how the gateway is configured, who reviews the logs, and how employees are trained to work alongside it.",
       "**How ITECS Approaches Managed MCP**",
       "ITECS is a [Managed Intelligence Provider](/managed-intelligence-provider) — an MSP-grade approach applied to AI. For MCP specifically, that work breaks down into four practical steps.",
       "We start with a discovery audit of every AI tool already in use across your business, including unsanctioned ones. We then design a managed MCP architecture that fits your existing stack — Microsoft 365, Google Workspace, HubSpot, Salesforce, QuickBooks, Slack, or whatever else runs your operation. We deploy a governed gateway with policy, logging, and observability. We train your team on what to use, what to avoid, and why.",
@@ -3734,7 +3734,7 @@ export const AI_SEO_TIERS: AISEOTier[] = [
         name: "Professional",
         price: "$7,000",
         pages: "26–50 pages",
-        target: "Established SMBs and multi-location teams",
+        target: "Established firms and multi-location teams",
       },
       {
         name: "Enterprise",

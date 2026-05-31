@@ -24,7 +24,7 @@ import { CTASection } from "@/components/sections/CTASection";
 const service = SERVICES.find((s) => s.slug === "ai-receptionist")!;
 
 export const metadata = generatePageMetadata({
-  title: "AI Receptionist for Small Business",
+  title: "AI Receptionist for Growing Teams",
   description:
     "Deploy AI voice agents that answer calls 24/7, book appointments, and save $3,000+/month. Backed by 24 years of IT security expertise.",
   path: service.href,
@@ -48,7 +48,7 @@ export default function AIReceptionistPage() {
 
       <AIAdoptionUnderstanding />
 
-      {/* 2. SMB Pain Point — validate the bleeding neck */}
+      {/* 2. Operating pain point — validate the missed-call risk */}
       <PainPoint
         stat="$3,000+"
         statLabel="lost per month on missed calls for a typical 20-person office"
@@ -109,7 +109,7 @@ export default function AIReceptionistPage() {
       {/* 8. Pricing Transparency & ROI */}
       <PricingROI
         heading="How Much Does an AI Receptionist Cost?"
-        description="SMBs deserve transparent pricing. Here's how an AI receptionist compares to traditional alternatives for a business handling 200-500 calls per month."
+        description="Growth-stage teams deserve transparent pricing. Here's how an AI receptionist compares to traditional alternatives for a business handling 200-500 calls per month."
         comparison={[
           {
             label: "Monthly cost",

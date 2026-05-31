@@ -5,7 +5,7 @@ Source of truth: `itecs-ai-website/itecs-ai-dark-theme-redesign-spec.md`.
 ## Current Branch
 
 - Branch: `enterprise-dark-theme-rebuild`
-- Latest completed epic: Epic 8 — Motion, performance, and SEO
+- Latest completed epic: Epic 9 — Content and launch QA
 - Status date: 2026-05-31
 
 ## Decisions
@@ -33,6 +33,10 @@ Source of truth: `itecs-ai-website/itecs-ai-dark-theme-redesign-spec.md`.
 - Epic 8 GEO files now describe Managed Intelligence Provider with a clear extractable definition and remove the previously unapproved `99.9% uptime` proof point from `public/llms.txt`.
 - Case-study detail pages now expose a visible H1 via the shared `SectionHeading` component so sitemap routes satisfy the single-H1 contract.
 - WCAG contrast fixes in Epic 8 keep brand blue as the primary fill while moving small blue text to AA-compliant `--brand-hover` or white text where needed.
+- Epic 9 completed the broader altitude pass on primary public pages, service metadata, pricing, about, the insights listing, shared page-section comments, and core constants. ITECS-owned positioning now uses growth-stage, mid-market, enterprise, business-leader, or organization language while preserving the 10-300 employee fit.
+- The only remaining `Small Business` wording in shipped public source is intentionally confined to the source-backed Anthropic product article about Claude for Small Business and its route slug. The official Anthropic announcement is dated May 13, 2026 and uses that product name, so those references are article/product context rather than ITECS positioning.
+- Epic 9 adds static launch contracts in `scripts/validate-epic9-content-launch.mjs` and `scripts/validate-epic9-cross-page-launch.mjs` to keep approved proof, shared launch sections, dark-theme surfaces, sitemap/robots, analytics consent, and form wiring from regressing.
+- Browser launch QA uses Googlebot Smartphone user-agent per `CLAUDE.md` while still capturing the required 390 / 768 / 1920 screenshots requested in the redesign work order.
 
 ## Epic 6 Checklist
 
@@ -104,11 +108,32 @@ Source of truth: `itecs-ai-website/itecs-ai-dark-theme-redesign-spec.md`.
 - Lighthouse on `/assessment`: accessibility 100, SEO 100, performance 96, LCP 2807ms, CLS 0, TBT 37ms.
 - Screenshots captured: `epic8-home-390.png`, `epic8-home-768.png`, `epic8-home-1920.png`, `epic8-mip-390.png`, `epic8-mip-768.png`, and `epic8-mip-1920.png`.
 
+## Epic 9 Checklist
+
+- Story 9.1 — Content load: Passed for approved live proof stats, real logos, certifications, case studies, testimonials, and primary public copy altitude. No unapproved 95% retention / 75 clients / generic 99.9% uptime proof set appears in public AI crawler files.
+- Story 9.2 — Cross-page consistency: Passed. Shared `TrustBar`, `SecurityGovernanceBand`, `MethodologySteps`, `OutcomesProof`, `ConversionBand`, and `Footer` contracts remain composed across Home, MIP, assessment, contact, services, and legacy CTA surfaces.
+- Story 9.3 — Launch QA gate: Passed with local browser route/link, screenshot, 404, safe form-boundary, analytics, Lighthouse accessibility/SEO, typecheck, lint, and build validation. Performance remains reported but non-blocking by product direction.
+
+## Epic 9 Validation
+
+- Story validators: `scripts/validate-epic9-content-launch.mjs` and `scripts/validate-epic9-cross-page-launch.mjs` passed.
+- Regression validators: all `scripts/validate*.mjs` passed with `for f in scripts/validate*.mjs; do node "$f"; done`.
+- Typecheck: `npx tsc --noEmit --pretty false` passed.
+- Lint: `npm run lint` passed.
+- Build: `npm run build` passed.
+- Browser launch QA: captured `epic9-home-390.png`, `epic9-home-768.png`, `epic9-home-1920.png`, `epic9-mip-390.png`, `epic9-mip-768.png`, and `epic9-mip-1920.png`.
+- Browser launch QA: 44 sitemap routes and 48 internal links returned non-error statuses; `/__launch-qa-missing` returned 404.
+- Browser launch QA: Home and MIP had no document-level horizontal overflow at 390, 768, and 1920 after excluding intentionally scrollable data tables.
+- Form boundary smoke: `/api/assessment` returned 400 for invalid payload, 200 for honeypot, and 400 for a valid payload missing Turnstile; `/api/contact` returned 400 for invalid payload.
+- Analytics smoke: Google Analytics script count was 0 before consent and 1 after choosing "Allow analytics"; a tracked assessment CTA emitted one `cta_click` event.
+- Lighthouse on `/`: accessibility 100, best practices 100, SEO 100, performance 81, LCP 4536ms, CLS 0, TBT 66ms.
+- Lighthouse on `/managed-intelligence-provider`: accessibility 100, best practices 100, SEO 100, performance 72, LCP 3941ms, CLS 0, TBT 600ms.
+
 ## Remaining Risks
 
-- Broader non-MIP pages still need the later Epic 9 content and altitude pass for legacy small-business wording outside the rebuilt homepage and MIP page.
 - Performance scores were recorded with Lighthouse mobile/Googlebot emulation but not deeply optimized in this slice by explicit product direction. Home and MIP still miss the original LCP <2.5s target.
 - Lighthouse lab runs report TBT rather than field INP; no production field data was mutated or queried in this slice.
 - The assessment rate limit is process-local, which matches the current standalone Node runtime but is not a distributed abuse-control layer.
+- Valid assessment email delivery was not triggered during local launch QA because that requires a real Cloudflare Turnstile token and would send an external email. The handler wiring, validation, honeypot, rate limit, and missing-token path were verified locally.
 - The contact page Google Maps iframe may appear blank in headless/local browser screenshots when the external embed does not load, but the verified map link and structured location content remain present.
 - Native Safari/Edge verification is not available from this Linux environment. Playwright WebKit also cannot launch until host packages such as GTK/GStreamer/WebKit dependencies are installed.

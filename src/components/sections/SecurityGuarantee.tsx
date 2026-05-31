@@ -30,7 +30,7 @@ interface SecurityGuaranteeProps {
 const icons = [Shield, Lock, ServerCrash, Eye];
 
 export function SecurityGuarantee({
-  title = "Enterprise-Grade Security for SMB Data",
+  title = "Enterprise-Grade Security for Business Data",
   points,
   internalLink,
   externalLink,
