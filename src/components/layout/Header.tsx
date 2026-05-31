@@ -89,7 +89,7 @@ export function Header() {
   const pathname = usePathname();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
     return () => window.removeEventListener("scroll", onScroll);
@@ -151,7 +151,9 @@ export function Header() {
             setSolutionsOpen(false);
           }
         }}
-        className={`fixed left-0 right-0 top-0 z-50 border-b transition-[background-color,backdrop-filter,border-color] duration-300 ease-out ${
+        className={`fixed left-0 right-0 z-50 border-b transition-[top,background-color,backdrop-filter,border-color] duration-300 ease-out ${
+          scrolled || menuOpen || solutionsOpen ? "top-0" : "top-8"
+        } ${
           scrolled || menuOpen || solutionsOpen
             ? "border-[var(--border-subtle)] bg-bg-elevated/80 backdrop-blur-md"
             : "border-transparent bg-transparent"

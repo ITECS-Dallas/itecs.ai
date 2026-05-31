@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { AnnouncementBar } from "@/components/layout/AnnouncementBar";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { AnalyticsConsent } from "@/components/analytics/AnalyticsConsent";
@@ -138,6 +139,7 @@ export default function RootLayout({
         >
           Skip to content
         </a>
+        <AnnouncementBar />
         <Header />
         <main id="main-content" className="flex-1">
           {children}

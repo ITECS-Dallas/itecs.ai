@@ -25,6 +25,7 @@ export function AnnouncementBar() {
 
   return (
     <div
+      data-site-announcement-bar
       aria-hidden={hidden}
       className={`fixed top-0 left-0 right-0 z-[60] h-8 border-b border-[var(--border-subtle)] bg-bg-sunken text-text-secondary text-xs transition-transform duration-300 ease-out ${
         hidden ? "-translate-y-full pointer-events-none" : "translate-y-0"
