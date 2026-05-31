@@ -24,6 +24,7 @@ import {
   SectionDivider,
   Tabs,
 } from "@/components/ui/Structural";
+import { AIOperationsConsole } from "@/components/ui/AIOperationsConsole";
 
 export function Epic1ComponentContracts() {
   return (
@@ -139,6 +140,7 @@ export function Epic1ComponentContracts() {
           },
         ]}
       />
+      <AIOperationsConsole />
     </div>
   );
 }

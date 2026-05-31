@@ -1,11 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import { AIOperationsConsole } from "@/components/ui/AIOperationsConsole";
 import { GridBackground } from "@/components/effects/GridBackground";
-import { CircuitTrace } from "@/components/effects/CircuitTrace";
 import { CursorGlow } from "@/components/effects/CursorGlow";
 
 const fadeUp = (delay = 0) => ({
@@ -89,43 +88,14 @@ export function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* Image-backed operations visual — 2/5 width on desktop */}
+          {/* Operations console visual — 2/5 width on desktop */}
           <motion.div
             className="lg:col-span-2"
             initial={false}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
           >
-            <div className="relative h-[320px] overflow-hidden rounded-lg border border-[var(--border-subtle)] bg-bg-surface [box-shadow:var(--elev-1-inset),var(--elev-2)] md:h-[420px] lg:h-[540px]">
-              <Image
-                src="/images/services/technology-desks.webp"
-                alt="ITECS AI operations workstation with monitored deployment pipelines"
-                fill
-                priority
-                className="object-cover object-center opacity-80"
-                sizes="(min-width: 1024px) 40vw, 100vw"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-bg-void via-bg-void/45 to-transparent" />
-              <CircuitTrace variant="hero" className="absolute inset-0 opacity-45" />
-
-              <div className="absolute inset-x-6 bottom-6 rounded-lg border border-white/10 bg-bg-void/80 p-5 backdrop-blur-xl">
-                <p className="text-xs font-medium uppercase tracking-[0.08em] text-emerald-300">
-                  Managed AI Operations
-                </p>
-                <div className="mt-4 grid grid-cols-3 gap-3">
-                  {[
-                    ["Assess", "roadmap"],
-                    ["Protect", "data"],
-                    ["Operate", "AI stack"],
-                  ].map(([label, value]) => (
-                    <div key={label} className="border-l border-brand-accent/40 pl-3">
-                      <p className="text-sm text-text-primary">{label}</p>
-                      <p className="mt-0.5 text-xs text-text-dim">{value}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
+            <AIOperationsConsole />
           </motion.div>
         </div>
       </div>
