@@ -32,7 +32,7 @@ function joinClasses(...classes: Array<string | false | null | undefined>) {
 
 export function AIOperationsConsole({ className }: AIOperationsConsoleProps) {
   return (
-    <figure className={joinClasses("relative", className)}>
+    <figure className={joinClasses("relative max-w-full", className)}>
       <figcaption className="sr-only">
         Illustrative ITECS AI Operations Console showing agent runs, a sample
         success-rate metric, a live ticker, and a mini time-series chart.
@@ -45,9 +45,9 @@ export function AIOperationsConsole({ className }: AIOperationsConsoleProps) {
         <div className="absolute inset-0 bg-[image:var(--glow-hero)] opacity-80" />
         <div className="absolute inset-0 bg-[linear-gradient(to_right,var(--border-subtle)_1px,transparent_1px),linear-gradient(to_bottom,var(--border-subtle)_1px,transparent_1px)] bg-[size:32px_32px] opacity-25" />
 
-        <div className="relative rounded-lg border border-[var(--border-default)] bg-bg-sunken">
-          <div className="flex items-center justify-between border-b border-[var(--border-default)] px-4 py-3">
-            <div>
+        <div className="relative min-w-0 rounded-lg border border-[var(--border-default)] bg-bg-sunken">
+          <div className="flex items-center justify-between gap-3 border-b border-[var(--border-default)] px-4 py-3">
+            <div className="min-w-0">
               <p className="font-mono text-xs uppercase text-text-tertiary">
                 ITECS Managed Intelligence
               </p>
@@ -55,7 +55,7 @@ export function AIOperationsConsole({ className }: AIOperationsConsoleProps) {
                 AI Operations Console
               </h3>
             </div>
-            <div className="inline-flex items-center gap-2 rounded-pill border border-[var(--border-default)] bg-bg-elevated px-3 py-1 font-mono text-xs uppercase text-brand-accent">
+            <div className="inline-flex shrink-0 items-center gap-2 rounded-pill border border-[var(--border-default)] bg-bg-elevated px-3 py-1 font-mono text-xs uppercase text-brand-accent">
               <span className="relative flex h-2 w-2">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-pill bg-accent-cyan opacity-60 motion-reduce:hidden" />
                 <span className="relative inline-flex h-2 w-2 rounded-pill bg-accent-cyan" />
@@ -64,10 +64,10 @@ export function AIOperationsConsole({ className }: AIOperationsConsoleProps) {
             </div>
           </div>
 
-          <div className="grid gap-4 p-4 lg:grid-cols-[1.15fr_0.85fr]">
-            <section className="rounded-md border border-[var(--border-default)] bg-bg-surface p-4">
-              <div className="flex items-center justify-between gap-4">
-                <div>
+          <div className="grid min-w-0 gap-4 p-4 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]">
+            <section className="min-w-0 rounded-md border border-[var(--border-default)] bg-bg-surface p-4">
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <div className="min-w-0">
                   <p className="font-mono text-xs uppercase text-text-tertiary">
                     Agent runs
                   </p>
@@ -75,7 +75,7 @@ export function AIOperationsConsole({ className }: AIOperationsConsoleProps) {
                     Sample operating queue
                   </p>
                 </div>
-                <span className="rounded-pill border border-[var(--border-default)] bg-bg-elevated px-3 py-1 font-mono text-xs uppercase text-text-tertiary">
+                <span className="shrink-0 rounded-pill border border-[var(--border-default)] bg-bg-elevated px-3 py-1 font-mono text-xs uppercase text-text-tertiary">
                   Illustrative
                 </span>
               </div>
@@ -84,7 +84,7 @@ export function AIOperationsConsole({ className }: AIOperationsConsoleProps) {
                 {agentRuns.map((run, index) => (
                   <div
                     key={run.label}
-                    className="grid grid-cols-[auto_1fr_auto] items-center gap-3 rounded-md border border-[var(--border-subtle)] bg-bg-elevated px-3 py-3"
+                    className="grid min-w-0 grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 rounded-md border border-[var(--border-subtle)] bg-bg-elevated px-3 py-3"
                   >
                     <span
                       className={joinClasses(
@@ -94,27 +94,29 @@ export function AIOperationsConsole({ className }: AIOperationsConsoleProps) {
                         index === 2 && "bg-[var(--viz-5)]",
                       )}
                     />
-                    <div>
+                    <div className="min-w-0">
                       <p className="text-sm font-medium text-text-primary">{run.label}</p>
                       <p className="mt-0.5 text-xs text-text-tertiary">{run.status}</p>
                     </div>
-                    <p className="font-mono text-xs text-text-secondary">{run.value}</p>
+                    <p className="max-w-20 text-right font-mono text-xs leading-snug text-text-secondary">
+                      {run.value}
+                    </p>
                   </div>
                 ))}
               </div>
             </section>
 
-            <section className="grid gap-4">
-              <div className="rounded-md border border-[var(--border-default)] bg-bg-surface p-4">
+            <section className="grid min-w-0 gap-4">
+              <div className="min-w-0 rounded-md border border-[var(--border-default)] bg-bg-surface p-4">
                 <p className="font-mono text-xs uppercase text-text-tertiary">
                   Success rate
                 </p>
-                <div className="mt-3 flex items-end justify-between gap-4">
+                <div className="mt-3 flex flex-wrap items-end justify-between gap-2">
                   <p className="font-mono text-4xl font-semibold leading-none text-text-primary">
                     97.4
                     <span className="text-[0.45em] text-brand-accent">%</span>
                   </p>
-                  <span className="rounded-pill border border-[var(--success)] bg-bg-elevated px-3 py-1 font-mono text-xs uppercase text-success">
+                  <span className="shrink-0 rounded-pill border border-[var(--success)] bg-bg-elevated px-3 py-1 font-mono text-xs uppercase text-success">
                     Sample
                   </span>
                 </div>
@@ -123,29 +125,29 @@ export function AIOperationsConsole({ className }: AIOperationsConsoleProps) {
                 </p>
               </div>
 
-              <div className="rounded-md border border-[var(--border-default)] bg-bg-surface p-4">
-                <div className="flex items-center justify-between">
+              <div className="min-w-0 rounded-md border border-[var(--border-default)] bg-bg-surface p-4">
+                <div className="flex flex-wrap items-center justify-between gap-2">
                   <p className="font-mono text-xs uppercase text-text-tertiary">
                     Ticker
                   </p>
-                  <span className="font-mono text-xs uppercase text-brand-accent">
+                  <span className="shrink-0 font-mono text-xs uppercase text-brand-accent">
                     Live pulse
                   </span>
                 </div>
                 <div className="mt-3 space-y-2">
                   {tickerItems.map((item) => (
-                    <div key={item} className="flex items-center gap-2 text-xs text-text-secondary">
-                      <span className="h-1.5 w-1.5 rounded-pill bg-brand-accent" />
-                      <span>{item}</span>
+                    <div key={item} className="flex min-w-0 items-center gap-2 text-xs text-text-secondary">
+                      <span className="h-1.5 w-1.5 shrink-0 rounded-pill bg-brand-accent" />
+                      <span className="min-w-0">{item}</span>
                     </div>
                   ))}
                 </div>
               </div>
             </section>
 
-            <section className="rounded-md border border-[var(--border-default)] bg-bg-surface p-4 lg:col-span-2">
-              <div className="flex flex-wrap items-center justify-between gap-3">
-                <div>
+            <section className="min-w-0 rounded-md border border-[var(--border-default)] bg-bg-surface p-4 lg:col-span-2">
+              <div className="flex min-w-0 flex-wrap items-center justify-between gap-3">
+                <div className="min-w-0">
                   <p className="font-mono text-xs uppercase text-text-tertiary">
                     Time series
                   </p>
@@ -153,7 +155,7 @@ export function AIOperationsConsole({ className }: AIOperationsConsoleProps) {
                     Sample agent throughput trend
                   </p>
                 </div>
-                <div className="flex gap-3 font-mono text-xs uppercase text-text-tertiary">
+                <div className="flex shrink-0 gap-3 font-mono text-xs uppercase text-text-tertiary">
                   <span className="inline-flex items-center gap-1">
                     <span className="h-2 w-2 rounded-pill bg-[var(--viz-1)]" />
                     Runs
@@ -166,7 +168,7 @@ export function AIOperationsConsole({ className }: AIOperationsConsoleProps) {
               </div>
 
               <svg
-                className="mt-4 h-28 w-full overflow-visible"
+                className="mt-4 h-28 w-full min-w-0 overflow-visible"
                 viewBox="0 0 246 96"
                 fill="none"
                 preserveAspectRatio="none"
