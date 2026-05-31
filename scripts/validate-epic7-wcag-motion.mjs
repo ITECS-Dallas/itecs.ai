@@ -26,9 +26,10 @@ assert(
   "Global CSS must honor prefers-reduced-motion.",
 );
 assert(
-  scrollReveal.includes("initial={false}") &&
-    !/initial=\{\{\s*opacity:\s*0/.test(scrollReveal),
-  "ScrollReveal must not hide content before it enters the viewport.",
+  scrollReveal.includes("useReducedMotion") &&
+    scrollReveal.includes("initial={reducedMotion ? false : initialTransform}") &&
+    !/opacity:\s*0(?:[,}])/.test(scrollReveal),
+  "ScrollReveal must not hide content before it enters the viewport and must honor reduced motion.",
 );
 assert(
   parallax.includes("useReducedMotion") && parallax.includes("reducedMotion ? 0"),

@@ -27,7 +27,9 @@ export function ParallaxWrapper({
 
   return (
     <div ref={ref} className={className}>
-      <motion.div style={{ y }}>{children}</motion.div>
+      <motion.div data-motion="parallax" style={{ y }}>
+        {children}
+      </motion.div>
     </div>
   );
 }

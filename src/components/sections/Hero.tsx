@@ -100,7 +100,7 @@ export function Hero() {
                   key={stat.label}
                   className="rounded-md border border-[var(--border-subtle)] bg-bg-elevated px-3 py-3 text-center"
                 >
-                  <p className="font-mono text-lg font-semibold leading-none text-brand md:text-2xl">
+                  <p className="font-mono text-lg font-semibold leading-none text-brand-hover md:text-2xl">
                     {stat.value}
                     {stat.suffix}
                   </p>

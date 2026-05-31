@@ -309,4 +309,28 @@ main :where(p, li) a:not([class]) {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+
+  .animate-orb-float,
+  .animate-pulse-node,
+  .animate-grid-pulse,
+  .animate-bounce-subtle,
+  .animate-circuit-flow,
+  [class*="animate-ping"] {
+    animation: none !important;
+  }
+
+  [data-motion="parallax"],
+  [data-motion="scroll-reveal"],
+  [class*="hover:-translate"],
+  [class*="group-hover:translate"],
+  [class*="group-hover:scale"],
+  [class*="hover:scale"] {
+    transform: none !important;
+  }
+
+  [class*="before:-translate"]::before,
+  [class*="hover:before:translate"]::before {
+    opacity: 0 !important;
+    transform: none !important;
+  }
 }

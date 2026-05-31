@@ -130,7 +130,7 @@ export function AnalyticsConsent() {
               <button
                 type="button"
                 onClick={() => chooseConsent("granted")}
-                className="min-h-11 rounded-md bg-brand px-4 py-2 text-sm font-semibold text-text-onaccent transition-colors hover:bg-brand-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base"
+                className="min-h-11 rounded-md bg-brand px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-brand-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base"
               >
                 Allow analytics
               </button>

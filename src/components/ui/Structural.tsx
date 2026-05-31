@@ -87,7 +87,7 @@ const badgeToneClasses: Record<AccentTone, string> = {
 };
 
 const eyebrowToneClasses: Record<Required<EyebrowProps>["tone"], string> = {
-  brand: "text-brand before:bg-brand",
+  brand: "text-brand-hover before:bg-brand",
   cyan: "text-brand-accent before:bg-brand-accent",
   warning: "text-amber before:bg-amber",
 };
@@ -96,7 +96,7 @@ const comparisonToneClasses: Record<ComparisonTone, string> = {
   default: "text-text-secondary",
   brand: "text-brand-hover",
   success: "text-[var(--success)]",
-  muted: "text-[var(--text-disabled)]",
+  muted: "text-text-tertiary",
 };
 
 function joinClasses(...classes: Array<string | false | null | undefined>) {
@@ -173,8 +173,8 @@ export function LiveIndicator({ label = "Live", className }: LiveIndicatorProps)
       )}
     >
       <span className="relative flex h-2.5 w-2.5" aria-hidden="true">
-        <span className="absolute inline-flex h-full w-full animate-ping rounded-pill bg-brand-accent opacity-60 motion-reduce:hidden" />
-        <span className="relative inline-flex h-2.5 w-2.5 rounded-pill bg-brand-accent" />
+        <span className="absolute inline-flex h-full w-full animate-ping rounded-pill bg-accent-cyan opacity-60 motion-reduce:hidden" />
+        <span className="relative inline-flex h-2.5 w-2.5 rounded-pill bg-accent-cyan" />
       </span>
       {label}
     </span>
@@ -378,7 +378,10 @@ export function ComparisonTable({
   className,
 }: ComparisonTableProps) {
   return (
-    <div className={joinClasses("overflow-x-auto rounded-lg border border-[var(--border-default)]", className)}>
+    <div
+      className={joinClasses("overflow-x-auto rounded-lg border border-[var(--border-default)]", className)}
+      tabIndex={0}
+    >
       <table className="min-w-[720px] border-collapse bg-bg-surface text-left text-sm">
         {caption ? <caption className="sr-only">{caption}</caption> : null}
         <thead className="sticky top-0 z-10 bg-bg-elevated text-text-primary">

@@ -57,8 +57,8 @@ export function AIOperationsConsole({ className }: AIOperationsConsoleProps) {
             </div>
             <div className="inline-flex items-center gap-2 rounded-pill border border-[var(--border-default)] bg-bg-elevated px-3 py-1 font-mono text-xs uppercase text-brand-accent">
               <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-pill bg-brand-accent opacity-60 motion-reduce:hidden" />
-                <span className="relative inline-flex h-2 w-2 rounded-pill bg-brand-accent" />
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-pill bg-accent-cyan opacity-60 motion-reduce:hidden" />
+                <span className="relative inline-flex h-2 w-2 rounded-pill bg-accent-cyan" />
               </span>
               Live
             </div>

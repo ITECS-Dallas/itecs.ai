@@ -34,11 +34,11 @@ type ButtonLinkProps = ButtonBaseProps &
 export type ButtonProps = NativeButtonProps | ButtonLinkProps;
 
 const baseClasses =
-  "group/button relative inline-flex shrink-0 items-center justify-center gap-2 overflow-hidden rounded-md font-semibold tracking-normal transition-[transform,background-color,border-color,color,box-shadow] duration-[var(--dur-base)] ease-[var(--ease-out)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base disabled:pointer-events-none disabled:cursor-not-allowed disabled:border-[var(--border-default)] disabled:bg-bg-elevated disabled:text-text-disabled disabled:shadow-none";
+  "group/button relative inline-flex shrink-0 items-center justify-center gap-2 overflow-hidden rounded-md font-semibold tracking-normal transition-[transform,background-color,border-color,color,box-shadow] duration-[var(--dur-base)] ease-[var(--ease-out)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base disabled:pointer-events-none disabled:cursor-not-allowed disabled:border-[var(--border-default)] disabled:bg-bg-elevated disabled:text-text-disabled disabled:shadow-none motion-reduce:transition-none motion-reduce:hover:translate-y-0 motion-reduce:active:translate-y-0";
 
 const variantClasses: Record<ButtonVariant, string> = {
   primary:
-    "border border-transparent bg-brand text-white shadow-[0_8px_24px_var(--brand-subtle)] before:pointer-events-none before:absolute before:inset-0 before:-translate-x-full before:opacity-0 before:transition-[transform,opacity] before:duration-[var(--dur-slow)] before:ease-[var(--ease-out)] before:[background:var(--gradient-intelligence)] hover:-translate-y-0.5 hover:bg-brand-hover hover:text-text-onaccent hover:shadow-[0_12px_32px_var(--brand-subtle)] hover:before:translate-x-0 hover:before:opacity-20 active:translate-y-0 active:bg-brand-active active:text-white",
+    "border border-transparent bg-brand text-white shadow-[0_8px_24px_var(--brand-subtle)] before:pointer-events-none before:absolute before:inset-0 before:-translate-x-full before:opacity-0 before:transition-[transform,opacity] before:duration-[var(--dur-slow)] before:ease-[var(--ease-out)] before:[background:var(--gradient-intelligence)] hover:-translate-y-0.5 hover:bg-brand-hover hover:text-white hover:shadow-[0_12px_32px_var(--brand-subtle)] hover:before:translate-x-0 hover:before:opacity-20 active:translate-y-0 active:bg-brand-active active:text-white motion-reduce:before:hidden",
   secondary:
     "border border-[var(--border-strong)] bg-transparent text-text-primary hover:-translate-y-0.5 hover:border-[var(--text-tertiary)] hover:bg-bg-elevated active:translate-y-0 active:bg-[var(--surface-3)]",
   tertiary:
@@ -137,7 +137,7 @@ export function Button(props: ButtonProps) {
       {variant === "tertiary" ? (
         <span
           aria-hidden="true"
-          className="relative z-10 transition-transform duration-[var(--dur-base)] ease-[var(--ease-out)] group-hover/button:translate-x-1"
+          className="relative z-10 transition-transform duration-[var(--dur-base)] ease-[var(--ease-out)] group-hover/button:translate-x-1 motion-reduce:transition-none motion-reduce:group-hover/button:translate-x-0"
         >
           →
         </span>

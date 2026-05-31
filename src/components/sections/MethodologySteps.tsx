@@ -60,7 +60,7 @@ export function MethodologySteps() {
                         </dd>
                       </div>
                       <div className="rounded-md border border-[var(--border-subtle)] bg-bg-base px-3 py-2">
-                        <dt className="font-mono text-[0.68rem] font-semibold uppercase text-brand">
+                        <dt className="font-mono text-[0.68rem] font-semibold uppercase text-brand-hover">
                           SLA
                         </dt>
                         <dd className="mt-1 text-xs leading-relaxed text-text-secondary">

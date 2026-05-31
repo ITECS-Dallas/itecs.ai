@@ -59,7 +59,7 @@ export function InsightsTeaser() {
                 className="flex h-full flex-col rounded-lg border border-[var(--border-default)] bg-bg-base p-6 shadow-e1 [box-shadow:var(--elev-1-inset),var(--elev-1)] transition-[border-color,transform] duration-[var(--dur-base)] ease-[var(--ease-out)] hover:-translate-y-1 hover:border-[var(--border-strong)] motion-reduce:transition-none motion-reduce:hover:translate-y-0"
               >
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className="inline-flex items-center gap-1.5 rounded-md border border-[var(--border-default)] bg-brand-subtle px-2.5 py-1 font-mono text-[0.68rem] uppercase tracking-[0.1em] text-brand">
+                  <span className="inline-flex items-center gap-1.5 rounded-md border border-[var(--border-default)] bg-brand-subtle px-2.5 py-1 font-mono text-[0.68rem] uppercase tracking-[0.1em] text-brand-hover">
                     <Tag aria-hidden="true" className="h-3 w-3" />
                     {insight.hubLabel}
                   </span>

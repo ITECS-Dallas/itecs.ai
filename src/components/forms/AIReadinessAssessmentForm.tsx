@@ -301,7 +301,7 @@ export function AIReadinessAssessmentForm() {
                   className={[
                     "flex h-9 w-9 shrink-0 items-center justify-center rounded-md border font-mono text-xs font-semibold",
                     active
-                      ? "border-[var(--brand)] bg-brand text-text-onaccent"
+                      ? "border-[var(--brand)] bg-brand text-white"
                       : complete
                         ? "border-[var(--success)] bg-success/10 text-success"
                         : "border-[var(--border-default)] bg-bg-elevated text-text-tertiary",

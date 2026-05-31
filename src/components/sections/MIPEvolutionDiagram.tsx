@@ -8,7 +8,7 @@ const stageIcons = [Building2, Server, ShieldCheck, Brain] as const;
 const stageColors = {
   heritage: "var(--heritage-amber)",
   muted: "var(--text-tertiary)",
-  brand: "var(--brand)",
+  brand: "var(--brand-hover)",
   cyan: "var(--accent-cyan)",
 } as const;
 
