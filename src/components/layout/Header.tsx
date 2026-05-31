@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -14,10 +14,17 @@ import {
   Brain,
   Building2,
   CornerDownRight,
+  Database,
   Factory,
+  GraduationCap,
+  Headset,
   Menu,
   PackageCheck,
+  Search,
+  ServerCog,
+  ShieldCheck,
   Sparkles,
+  Workflow,
   X,
 } from "lucide-react";
 import {
@@ -33,6 +40,18 @@ import { Button } from "@/components/ui/Button";
 
 const REDUCE_MOTION = "motion-reduce:transition-none motion-reduce:transform-none";
 type MenuIcon = ComponentType<SVGProps<SVGSVGElement>>;
+type SolutionMegaItem = {
+  label: string;
+  href: string;
+  description: string;
+  icon: MenuIcon;
+};
+
+type SolutionMegaColumn = {
+  title: string;
+  description: string;
+  items: SolutionMegaItem[];
+};
 
 const CATEGORY_ICONS: Record<string, MenuIcon> = {
   "AI Services": Brain,
@@ -72,6 +91,102 @@ const desktopNavLinks = [
   { label: "Contact", href: "/contact" },
 ] as const;
 
+const solutionsMegaColumns: SolutionMegaColumn[] = [
+  {
+    title: "Managed Intelligence",
+    description:
+      "Managed AI operations, governance, monitoring, and executive reporting.",
+    items: [
+      {
+        label: "Managed Intelligence Provider",
+        href: "/managed-intelligence-provider",
+        description: "The MSP model evolved into managed AI operations.",
+        icon: ServerCog,
+      },
+      {
+        label: "AI Champion Program",
+        href: "/services/ai-champion-program",
+        description: "Build internal AI operators with ITECS guidance.",
+        icon: GraduationCap,
+      },
+      {
+        label: "AI DevOps",
+        href: "/ai-devops",
+        description: "Operate prompts, agents, RAG, cost, and releases.",
+        icon: Workflow,
+      },
+    ],
+  },
+  {
+    title: "AI Consulting & Strategy",
+    description:
+      "Readiness, ROI, governance, training, and security-first adoption.",
+    items: [
+      {
+        label: "AI Consulting",
+        href: "/consulting",
+        description: "Prioritize workflows and defend the business case.",
+        icon: Brain,
+      },
+      {
+        label: "Data & AI Readiness Audit",
+        href: "/data-audit",
+        description: "Find data risk and practical automation openings.",
+        icon: Database,
+      },
+      {
+        label: "AI Training",
+        href: "/training",
+        description: "Teach teams how to use AI safely and productively.",
+        icon: ShieldCheck,
+      },
+    ],
+  },
+  {
+    title: "AI Solutions",
+    description:
+      "Agents, workflow automation, CRM AI, voice AI, knowledge bases, and AI SEO.",
+    items: [
+      {
+        label: "Custom AI Agents",
+        href: "/custom-ai-agents",
+        description: "Secure agents grounded in approved business context.",
+        icon: Bot,
+      },
+      {
+        label: "Workflow Automation",
+        href: "/automation",
+        description: "Connect systems and remove repetitive manual steps.",
+        icon: Workflow,
+      },
+      {
+        label: "CRM & Sales AI",
+        href: "/crm-sales-ai",
+        description: "Research, score, route, and follow up with leads.",
+        icon: Building2,
+      },
+      {
+        label: "AI Receptionist",
+        href: "/ai-receptionist",
+        description: "Answer, qualify, route, and book inbound calls.",
+        icon: Headset,
+      },
+      {
+        label: "Knowledge Base",
+        href: "/ai-knowledge-base",
+        description: "Private retrieval across SOPs, files, and systems.",
+        icon: BookOpenText,
+      },
+      {
+        label: "AI-Optimized SEO",
+        href: "/ai-optimized-seo",
+        description: "Prepare content for AI search and answer engines.",
+        icon: Search,
+      },
+    ],
+  },
+];
+
 function routeMatches(pathname: string, link: MegaMenuLink) {
   return !link.external && pathname === link.href;
 }
@@ -99,6 +214,14 @@ function findCategoryIndex(pathname: string) {
   );
 
   return index >= 0 ? index : 0;
+}
+
+function solutionMegaRouteMatches(pathname: string, item: SolutionMegaItem) {
+  return pathname === item.href || pathname.startsWith(`${item.href}/`);
+}
+
+function isNodeInside(parent: HTMLElement | null, child: EventTarget | null) {
+  return Boolean(parent && child instanceof Node && parent.contains(child));
 }
 
 /** Renders an internal Next.js <Link> or an external new-tab <a>. */
@@ -535,6 +658,105 @@ function MegaMenu({
   );
 }
 
+function SolutionsMegaMenu({
+  open,
+  pathname,
+  onNavigate,
+}: {
+  open: boolean;
+  pathname: string;
+  onNavigate: () => void;
+}) {
+  return (
+    <div
+      id="solutions-mega-menu"
+      role="region"
+      aria-label="Solutions menu"
+      hidden={!open}
+      className="absolute left-0 top-full hidden w-full border-y border-[var(--border-subtle)] bg-bg-elevated/95 shadow-e3 backdrop-blur-md lg:block"
+    >
+      <div className="mx-auto grid max-w-7xl grid-cols-[1fr_1fr_1fr_0.95fr] gap-0 px-8">
+        {solutionsMegaColumns.map((column) => (
+          <section
+            key={column.title}
+            className="border-r border-[var(--border-subtle)] px-5 py-6 first:pl-0"
+          >
+            <p className="font-mono text-xs uppercase text-brand-accent">
+              {column.title}
+            </p>
+            <p className="mt-2 min-h-12 text-sm leading-relaxed text-text-tertiary">
+              {column.description}
+            </p>
+            <div className="mt-5 space-y-1.5">
+              {column.items.map((item) => {
+                const Icon = item.icon;
+                const active = solutionMegaRouteMatches(pathname, item);
+
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={onNavigate}
+                    aria-current={active ? "page" : undefined}
+                    className={`group/item grid min-h-[72px] grid-cols-[2.75rem_1fr] gap-3 rounded-md border px-3 py-3 transition-[background-color,border-color,color] duration-[var(--dur-base)] ease-[var(--ease-out)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-elevated ${
+                      active
+                        ? "border-[var(--border-strong)] bg-brand-subtle text-text-primary"
+                        : "border-transparent text-text-secondary hover:border-[var(--border-default)] hover:bg-bg-surface hover:text-text-primary"
+                    }`}
+                  >
+                    <span className="flex h-11 w-11 items-center justify-center rounded-md bg-brand-subtle text-brand">
+                      <Icon aria-hidden="true" className="h-5 w-5" />
+                    </span>
+                    <span>
+                      <span className="block text-sm font-semibold">
+                        {item.label}
+                      </span>
+                      <span className="mt-1 block text-xs leading-relaxed text-text-tertiary">
+                        {item.description}
+                      </span>
+                    </span>
+                  </Link>
+                );
+              })}
+            </div>
+          </section>
+        ))}
+
+        <aside className="px-6 py-6">
+          <div className="relative h-full overflow-hidden rounded-lg border border-[var(--border-default)] bg-bg-surface p-5 [box-shadow:var(--elev-1-inset),var(--elev-2)]">
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 bg-[image:var(--glow-hero)] opacity-75"
+            />
+            <div className="relative flex h-full flex-col">
+              <p className="font-mono text-xs uppercase text-brand-accent">
+                Featured
+              </p>
+              <h2 className="mt-3 text-[length:var(--fs-h4)] font-semibold leading-tight text-text-primary">
+                AI Readiness Assessment
+              </h2>
+              <p className="mt-3 text-sm leading-relaxed text-text-secondary">
+                A focused executive conversation to identify where AI can be
+                governed, useful, and worth operational investment.
+              </p>
+              <div className="mt-5 grid gap-2 text-xs text-text-tertiary">
+                <span>30 minutes</span>
+                <span>No obligation</span>
+                <span>Dallas-Fort Worth team</span>
+              </div>
+              <div className="mt-auto pt-6">
+                <Button href="/contact" size="sm" className="w-full">
+                  Book AI Assessment
+                </Button>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  );
+}
+
 /* ------------------------------------------------------------------ */
 /* Main header                                                         */
 /* ------------------------------------------------------------------ */
@@ -542,6 +764,9 @@ function MegaMenu({
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [solutionsOpen, setSolutionsOpen] = useState(false);
+  const chromeRef = useRef<HTMLDivElement>(null);
+  const solutionsTriggerRef = useRef<HTMLButtonElement>(null);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -565,16 +790,48 @@ export function Header() {
     };
   }, [menuOpen]);
 
+  useEffect(() => {
+    if (!solutionsOpen) return;
+
+    const onPointerDown = (event: PointerEvent) => {
+      if (!isNodeInside(chromeRef.current, event.target)) {
+        setSolutionsOpen(false);
+      }
+    };
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setSolutionsOpen(false);
+        solutionsTriggerRef.current?.focus();
+      }
+    };
+
+    document.addEventListener("pointerdown", onPointerDown);
+    document.addEventListener("keydown", onKeyDown);
+
+    return () => {
+      document.removeEventListener("pointerdown", onPointerDown);
+      document.removeEventListener("keydown", onKeyDown);
+    };
+  }, [solutionsOpen]);
+
   return (
     <>
       <header
-        className={`fixed left-0 right-0 top-0 z-50 h-16 border-b transition-[background-color,backdrop-filter,border-color] duration-300 ease-out lg:h-[72px] ${
-          scrolled || menuOpen
+        ref={chromeRef}
+        onMouseLeave={() => setSolutionsOpen(false)}
+        onBlur={(event) => {
+          if (!event.currentTarget.contains(event.relatedTarget)) {
+            setSolutionsOpen(false);
+          }
+        }}
+        className={`fixed left-0 right-0 top-0 z-50 border-b transition-[background-color,backdrop-filter,border-color] duration-300 ease-out ${
+          scrolled || menuOpen || solutionsOpen
             ? "bg-bg-elevated/80 backdrop-blur-md border-[var(--border-subtle)]"
             : "bg-transparent border-transparent"
         }`}
       >
-        <div className="mx-auto flex h-full max-w-7xl items-center justify-between px-6 md:px-8">
+        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 md:px-8 lg:h-[72px]">
           {/* Logo */}
           <Link href="/" className="flex items-center shrink-0">
             <Image
@@ -594,6 +851,35 @@ export function Header() {
           >
             {desktopNavLinks.map((link) => {
               const isActive = desktopRouteMatches(pathname, link);
+
+              if (link.label === "Solutions") {
+                return (
+                  <button
+                    key={link.label}
+                    ref={solutionsTriggerRef}
+                    type="button"
+                    aria-current={isActive ? "page" : undefined}
+                    aria-expanded={solutionsOpen}
+                    aria-controls="solutions-mega-menu"
+                    onMouseEnter={() => setSolutionsOpen(true)}
+                    onFocus={() => setSolutionsOpen(true)}
+                    onClick={() => setSolutionsOpen((current) => !current)}
+                    onKeyDown={(event) => {
+                      if (event.key === "Enter" || event.key === " ") {
+                        event.preventDefault();
+                        setSolutionsOpen((current) => !current);
+                      }
+                    }}
+                    className={`relative px-3 py-2 text-sm font-medium transition-colors duration-[var(--dur-base)] ease-[var(--ease-out)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base ${
+                      isActive
+                        ? "text-text-primary after:absolute after:inset-x-3 after:bottom-0 after:h-0.5 after:bg-brand"
+                        : "text-text-secondary hover:text-text-primary"
+                    }`}
+                  >
+                    {link.label}
+                  </button>
+                );
+              }
 
               return (
                 <Link
@@ -658,6 +944,11 @@ export function Header() {
             </button>
           </div>
         </div>
+        <SolutionsMegaMenu
+          open={solutionsOpen}
+          pathname={pathname}
+          onNavigate={() => setSolutionsOpen(false)}
+        />
       </header>
 
       {/* Full-screen takeover — rendered outside header to avoid stacking issues */}
