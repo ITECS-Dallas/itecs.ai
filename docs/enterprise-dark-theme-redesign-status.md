@@ -5,7 +5,7 @@ Source of truth: `itecs-ai-website/itecs-ai-dark-theme-redesign-spec.md`.
 ## Current Branch
 
 - Branch: `enterprise-dark-theme-rebuild`
-- Latest completed epic: Epic 7 — Responsive and accessibility
+- Latest completed epic: Epic 8 — Motion, performance, and SEO
 - Status date: 2026-05-31
 
 ## Decisions
@@ -22,12 +22,17 @@ Source of truth: `itecs-ai-website/itecs-ai-dark-theme-redesign-spec.md`.
 - AI Readiness Assessment submissions route to ITECS by email through a dedicated `/api/assessment` handler using the existing Microsoft Graph mailer, Cloudflare Turnstile, honeypot, and a process-local rate limit.
 - No calendar embed URL was invented. The success state gives a clear scheduling/next-step path through `/contact` and phone because no source-backed assessment booking embed exists in the repo.
 - Analytics are consent-gated. Google Analytics no longer loads from the root layout before consent; CTA clicks, form starts/completions, and scroll-depth events are defined without form values or other PII in event payloads.
-- Performance remains measured but non-blocking for this slice per Brian's later direction; accessibility and layout correctness remain blocking.
+- Performance remains measured but non-blocking per Brian's later direction; accessibility, SEO/schema, and layout correctness remain blocking.
 - Epic 7 hardens shared controls rather than one-off pages: the base button sizes, footer links, breadcrumbs, article share controls, source links, and CTA-style text links now carry 44px+ touch targets where they behave as standalone controls.
 - Inline links inside article body copy remain inline text links. The runtime tap-target audit treats those as the WCAG inline-text exception instead of forcing paragraph lines to 44px.
-- ScrollReveal now explicitly keeps content visible on load (`initial={false}`); parallax disables transform motion for reduced-motion users; decorative gradient orbs are hidden from assistive technology.
+- ScrollReveal now keeps content visible on load with a non-gating reveal transform; parallax disables transform motion for reduced-motion users; decorative gradient orbs are hidden from assistive technology.
 - The `backdrop-filter` enhancement now has a global solid-surface fallback for engines that do not support `backdrop-filter`.
 - Cross-browser local coverage is Chromium and Firefox through Playwright. WebKit downloaded but cannot launch on this Linux host because system libraries are missing; native Safari and Edge are not available in this environment.
+- Epic 8 reduced-motion hardening now disables reveal transforms, parallax, ambient animation classes, shimmer/lift transforms, and live-dot pulse animation under `prefers-reduced-motion: reduce`.
+- Epic 8 technical SEO adds `/managed-intelligence-provider` to the sitemap and emits MIP Service schema alongside the existing BreadcrumbList and FAQPage schema.
+- Epic 8 GEO files now describe Managed Intelligence Provider with a clear extractable definition and remove the previously unapproved `99.9% uptime` proof point from `public/llms.txt`.
+- Case-study detail pages now expose a visible H1 via the shared `SectionHeading` component so sitemap routes satisfy the single-H1 contract.
+- WCAG contrast fixes in Epic 8 keep brand blue as the primary fill while moving small blue text to AA-compliant `--brand-hover` or white text where needed.
 
 ## Epic 6 Checklist
 
@@ -76,10 +81,34 @@ Source of truth: `itecs-ai-website/itecs-ai-dark-theme-redesign-spec.md`.
 - Cross-browser smoke: Chromium passed and Firefox passed on `/` and `/managed-intelligence-provider` at 390px. WebKit could not launch due missing host libraries.
 - Screenshots captured: `epic7-home-390.png`, `epic7-home-768.png`, `epic7-home-1920.png`, `epic7-mip-390.png`, `epic7-mip-768.png`, `epic7-mip-1920.png`, `epic7-ppv-390.png`, `epic7-ppv-768.png`, `epic7-ppv-1920.png`.
 
+## Epic 8 Checklist
+
+- Story 8.1 — Motion system: Passed. ScrollReveal is one-shot and stagger-capable without hiding content; live pulse uses the sanctioned cyan dot; reduced motion disables reveal/parallax/shimmer/lift transforms.
+- Story 8.2 — Core Web Vitals: Partially passed and measured. Image/font/third-party hygiene passed; Lighthouse Performance remains below the original target on `/` and `/managed-intelligence-provider`, treated as non-blocking by explicit product direction.
+- Story 8.3 — Technical SEO and schema: Passed. Public sitemap routes have canonical metadata, descriptions, single visible H1s, and MIP emits Organization, LocalBusiness, BreadcrumbList, Service, and FAQPage schema.
+- Story 8.4 — GEO / answer-engine optimization: Passed. MIP has a direct extractable definition and the public AI crawler files reference the canonical MIP route without disputed proof points.
+
+## Epic 8 Validation
+
+- Story validators: `scripts/validate-epic8-motion-system.mjs`, `scripts/validate-epic8-cwv-performance.mjs`, `scripts/validate-epic8-technical-seo-schema.mjs`, and `scripts/validate-epic8-geo-answer-engine.mjs` passed.
+- Regression validators: all `scripts/validate*.mjs` passed with `for f in scripts/validate*.mjs; do node "$f"; done`.
+- Typecheck: `npx tsc --noEmit --pretty false` passed.
+- Lint: `npm run lint` passed.
+- Build: `npm run build` passed.
+- Browser SEO smoke: 45 sitemap routes passed at 390px with exactly one visible H1, canonical metadata, meta descriptions, and no document-level horizontal overflow.
+- MIP structured data smoke: `/managed-intelligence-provider` emitted `Organization`, `LocalBusiness`, `BreadcrumbList`, `Service`, and `FAQPage` JSON-LD.
+- Reduced-motion smoke: with `prefers-reduced-motion: reduce`, reveal transform was `none`, live pulse display was `none`, and H1 opacity remained `1`.
+- Axe serious/critical smoke: 0 serious or critical violations on `/`, `/managed-intelligence-provider`, `/assessment`, and `/case-studies/pegasus-foods-zero-downtime-relocation`.
+- Lighthouse on `/`: accessibility 100, SEO 100, performance 88, LCP 3868ms, CLS 0, TBT 48ms.
+- Lighthouse on `/managed-intelligence-provider`: accessibility 100, SEO 100, performance 88, LCP 3411ms, CLS 0, TBT 200ms.
+- Lighthouse on `/assessment`: accessibility 100, SEO 100, performance 96, LCP 2807ms, CLS 0, TBT 37ms.
+- Screenshots captured: `epic8-home-390.png`, `epic8-home-768.png`, `epic8-home-1920.png`, `epic8-mip-390.png`, `epic8-mip-768.png`, and `epic8-mip-1920.png`.
+
 ## Remaining Risks
 
 - Broader non-MIP pages still need the later Epic 9 content and altitude pass for legacy small-business wording outside the rebuilt homepage and MIP page.
-- Performance scores were recorded but not optimized in this slice by explicit product direction.
+- Performance scores were recorded with Lighthouse mobile/Googlebot emulation but not deeply optimized in this slice by explicit product direction. Home and MIP still miss the original LCP <2.5s target.
+- Lighthouse lab runs report TBT rather than field INP; no production field data was mutated or queried in this slice.
 - The assessment rate limit is process-local, which matches the current standalone Node runtime but is not a distributed abuse-control layer.
 - The contact page Google Maps iframe may appear blank in headless/local browser screenshots when the external embed does not load, but the verified map link and structured location content remain present.
 - Native Safari/Edge verification is not available from this Linux environment. Playwright WebKit also cannot launch until host packages such as GTK/GStreamer/WebKit dependencies are installed.
