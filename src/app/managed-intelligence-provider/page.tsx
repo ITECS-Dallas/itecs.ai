@@ -8,10 +8,10 @@ import { MIPEvolutionDiagram } from "@/components/sections/MIPEvolutionDiagram";
 import { MIPDefinitionCapabilities } from "@/components/sections/MIPDefinitionCapabilities";
 import { MIPComparison } from "@/components/sections/MIPComparison";
 import { MethodologySteps } from "@/components/sections/MethodologySteps";
-import { SecurityGuarantee } from "@/components/sections/SecurityGuarantee";
-import { StatsBar } from "@/components/sections/StatsBar";
+import { SecurityGovernanceBand } from "@/components/sections/SecurityGovernanceBand";
+import { OutcomesProof } from "@/components/sections/OutcomesProof";
 import { FAQ } from "@/components/sections/FAQ";
-import { CTASection } from "@/components/sections/CTASection";
+import { ConversionBand } from "@/components/sections/ConversionBand";
 
 export const metadata = generatePageMetadata({
   title: "Managed Intelligence Provider — Enterprise AI Operations",
@@ -148,33 +148,17 @@ export default function ManagedIntelligenceProviderPage() {
       {/* 5. Methodology */}
       <MethodologySteps />
 
-      {/* 6. Company stats */}
-      <StatsBar />
+      {/* 6. Security & governance */}
+      <SecurityGovernanceBand />
 
-      {/* 7. Enterprise-Grade Security */}
-      <SecurityGuarantee
-        description="A managed intelligence provider handles your most sensitive business data — customer records, financial documents, internal SOPs. ITECS treats AI security with the same rigor we apply to network security, backed by 24 years of cybersecurity operations as a Dallas MSSP."
-        points={[
-          "Private AI environments — every AI agent and automation runs in tenant-isolated deployments with no cross-client data sharing",
-          "Zero third-party training — your business data never trains OpenAI, Anthropic, or any public AI model",
-          "AES-256 encryption at rest and in transit across all AI pipelines, API connections, and data stores",
-          "HIPAA, SOC 2, and PCI-DSS compliance support for regulated industries including healthcare, legal, and financial services",
-        ]}
-        internalLink={{
-          text: "Run an AI data readiness audit before deploying managed AI services",
-          href: "/data-audit",
-        }}
-        externalLink={{
-          text: "NIST AI Risk Management Framework",
-          href: "https://www.nist.gov/artificial-intelligence/executive-order-safe-secure-and-trustworthy-artificial-intelligence",
-        }}
-      />
+      {/* 7. Proof / outcomes */}
+      <OutcomesProof />
 
       {/* 8. FAQ */}
       <FAQ items={MIP_FAQ} heading="Managed Intelligence Provider FAQ" />
 
       {/* 9. Final CTA */}
-      <CTASection />
+      <ConversionBand />
 
       {/* JSON-LD Schema — FAQPage with verbatim parity */}
       <JsonLd data={generateFAQSchema(MIP_FAQ)} />
