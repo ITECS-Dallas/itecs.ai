@@ -33,21 +33,23 @@ assert(
 );
 
 assert(
-  scrollReveal.includes("useReducedMotion") &&
+  !scrollReveal.includes('"use client"') &&
     scrollReveal.includes('data-motion="scroll-reveal"') &&
     scrollReveal.includes("distance = 16") &&
     scrollReveal.includes("Math.min(Math.max(distance, 12), 16)") &&
-    scrollReveal.includes("viewport={{ once, amount }}") &&
+    scrollReveal.includes("data-motion-once") &&
+    scrollReveal.includes("data-motion-amount") &&
     scrollReveal.includes("delay") &&
     !/opacity:\s*0(?:[,}])/.test(scrollReveal),
-  "ScrollReveal must be visible on load, one-shot, stagger-capable, 12-16px, and reduced-motion aware.",
+  "ScrollReveal must stay visible on load, server-rendered, one-shot/stagger-capable via data markers, and bounded to 12-16px.",
 );
 
 assert(
-  parallax.includes("useReducedMotion") &&
+  !parallax.includes('"use client"') &&
     parallax.includes('data-motion="parallax"') &&
-    parallax.includes("reducedMotion ? 0 : parallaxY"),
-  "ParallaxWrapper must expose a motion marker and disable transforms for reduced-motion users.",
+    parallax.includes("data-parallax-speed") &&
+    !parallax.includes("framer-motion"),
+  "ParallaxWrapper must expose a motion marker without adding client-side parallax work.",
 );
 
 assert(

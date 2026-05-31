@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { SITE_CONFIG } from "@/lib/constants";
+import { SITE_CONFIG } from "@/lib/site-config";
 
 const utilityLinks = [
   { label: "Experiencing a Breach?", href: "https://itecsonline.com/experiencing-a-breach", external: true },

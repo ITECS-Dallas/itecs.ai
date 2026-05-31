@@ -28,7 +28,7 @@ export function LogoWall({ logos, columns = "clients" }: LogoWallProps) {
               alt={`${logo.name} logo`}
               width={logo.width}
               height={logo.height}
-              loading="eager"
+              loading="lazy"
               className="max-h-10 w-auto object-contain opacity-65 grayscale brightness-0 invert transition-[filter,opacity,transform] duration-[var(--dur-base)] ease-[var(--ease-out)] group-hover:scale-[1.03] group-hover:opacity-100 group-hover:grayscale-0 group-hover:brightness-100 group-hover:invert-0 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
               style={{ width: "auto" }}
             />

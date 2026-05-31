@@ -1,28 +1,8 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import { STATS } from "@/lib/constants";
 import { Button } from "@/components/ui/Button";
 import { AIOperationsConsole } from "@/components/ui/AIOperationsConsole";
 import { GridBackground } from "@/components/effects/GridBackground";
-import { CursorGlow } from "@/components/effects/CursorGlow";
-
-const fadeUp = (delay = 0) => ({
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, delay, ease: [0.25, 0.1, 0.25, 1] as [number, number, number, number] },
-  },
-});
-
-const fadeLeft = {
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1] as [number, number, number, number] },
-  },
-};
 
 export function Hero() {
   return (
@@ -31,55 +11,52 @@ export function Hero() {
       <div className="absolute inset-0">
         <GridBackground opacity={0.04} />
         <div className="absolute inset-0 bg-[image:var(--glow-hero)]" />
-        <CursorGlow />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-[radial-gradient(600px_circle_at_50%_22%,var(--accent-cyan-subtle),transparent_80%)]"
+        />
       </div>
 
       {/* Content */}
       <div className="relative z-10 mx-auto w-full max-w-7xl px-6 md:px-8">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-5">
           {/* Text - 3/5 width on desktop */}
-          <motion.div
+          <div
             className="lg:col-span-3"
-            initial={false}
-            animate="visible"
           >
             {/* Eyebrow */}
-            <motion.p
-              variants={fadeLeft}
+            <p
               className="text-sm font-medium tracking-[0.05em] uppercase text-brand-accent mb-6 flex items-center gap-2"
             >
               <span className="inline-block w-8 h-px bg-brand-accent" />
               DALLAS MANAGED INTELLIGENCE · SINCE 2002
-            </motion.p>
+            </p>
 
             {/* H1 */}
-            <motion.h1
-              variants={fadeUp()}
+            <h1
               className="text-[length:var(--fs-display-xl)] font-semibold tracking-normal leading-[1.04]"
             >
-              Managed Intelligence for
+              Managed Intelligence for{" "}
               <br />
               <span className="bg-gradient-to-r from-brand to-cyan bg-clip-text text-transparent">
                 Secure AI Operations
               </span>
-            </motion.h1>
+            </h1>
 
             {/* Zero-click block */}
-            <motion.p
-              variants={fadeUp(0.1)}
-              className="mt-6 text-[length:var(--fs-body-l)] text-text-secondary font-normal max-w-xl leading-relaxed"
+            <p
+              className="mt-6 max-w-xl text-base font-normal leading-relaxed text-text-secondary md:text-[length:var(--fs-body-l)]"
             >
               <strong className="text-text-primary font-medium">
                 ITECS helps 10-300 employee organizations turn AI adoption into
                 governed, monitored operating systems.
               </strong>{" "}
-              We combine strategy, training, automation, security, and AI
-              DevOps on top of 24 years of managed IT operations.
-            </motion.p>
+              Strategy, training, automation, security, and AI DevOps are backed
+              by 24 years of managed IT operations.
+            </p>
 
             {/* CTAs */}
-            <motion.div
-              variants={fadeUp(0.2)}
+            <div
               className="mt-8 flex flex-wrap gap-4"
             >
               <Button href="/assessment" size="lg" icon={<ArrowRight className="h-4 w-4" />}>
@@ -88,10 +65,9 @@ export function Hero() {
               <Button href="#managed-ai" variant="secondary" size="lg">
                 Explore Managed AI
               </Button>
-            </motion.div>
+            </div>
 
-            <motion.div
-              variants={fadeUp(0.25)}
+            <div
               aria-label="Approved ITECS proof points"
               className="mt-8 grid max-w-2xl grid-cols-3 gap-2 rounded-lg border border-[var(--border-default)] bg-bg-surface/70 p-2 shadow-e1 [box-shadow:var(--elev-1-inset),var(--elev-1)]"
             >
@@ -109,30 +85,24 @@ export function Hero() {
                   </p>
                 </div>
               ))}
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
 
           {/* Operations console visual - 2/5 width on desktop */}
-          <motion.div
+          <div
             className="lg:col-span-2"
-            initial={false}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, delay: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
           >
             <AIOperationsConsole />
-          </motion.div>
+          </div>
         </div>
       </div>
 
       {/* Scroll indicator */}
-      <motion.div
-        initial={false}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2 }}
+      <div
         className="absolute bottom-8 left-1/2 -translate-x-1/2"
       >
         <ChevronDown className="h-6 w-6 text-text-dim animate-bounce-subtle" />
-      </motion.div>
+      </div>
     </section>
   );
 }

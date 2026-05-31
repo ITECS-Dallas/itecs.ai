@@ -1,5 +1,8 @@
 import { MIP_COMPARISON } from "@/lib/constants";
-import { ComparisonTable, type ComparisonRow } from "@/components/ui/Structural";
+import {
+  ComparisonTable,
+  type ComparisonRow,
+} from "@/components/ui/ComparisonTable";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 function getTone(mark: string) {

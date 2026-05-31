@@ -6,7 +6,7 @@ import { ExternalLink } from "lucide-react";
 import { ScrollReveal } from "@/components/effects/ScrollReveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { GradientOrb } from "@/components/effects/GradientOrb";
-import { SITE_CONFIG } from "@/lib/constants";
+import { SITE_CONFIG } from "@/lib/site-config";
 
 interface TeamMember {
   readonly name: string;

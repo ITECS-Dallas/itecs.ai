@@ -11,7 +11,7 @@ import {
   TextField,
 } from "@/components/ui/FormControls";
 import { ANALYTICS_EVENTS, trackConversionEvent } from "@/lib/analytics";
-import { SITE_CONFIG } from "@/lib/constants";
+import { SITE_CONFIG } from "@/lib/site-config";
 
 type FormValues = {
   name: string;
