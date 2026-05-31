@@ -26,7 +26,7 @@ assertIncludes(
     "Managed Intelligence",
     "Secure AI Operations",
     "Book an AI Readiness Assessment",
-    'href="/contact"',
+    'href="/assessment"',
     "Explore Managed AI",
     'href="#managed-ai"',
     "STATS",

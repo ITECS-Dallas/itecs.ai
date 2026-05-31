@@ -3012,7 +3012,7 @@ export const MIP_PAGE_HERO = {
     "ITECS extends its 24-year Dallas managed IT and cybersecurity foundation into the intelligence layer: agents, automations, model governance, data readiness, executive reporting, and the support path that keeps production AI dependable.",
   primaryCta: {
     label: "Book an AI Readiness Assessment",
-    href: "/contact",
+    href: "/assessment",
   },
   secondaryCta: {
     label: "Explore Managed AI",

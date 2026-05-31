@@ -332,7 +332,7 @@ function SolutionsMegaMenu({
                 <span>Dallas-Fort Worth team</span>
               </div>
               <div className="mt-auto pt-6">
-                <Button href="/contact" size="sm" className="w-full">
+                <Button href="/assessment" size="sm" className="w-full">
                   Book AI Assessment
                 </Button>
               </div>
@@ -573,7 +573,7 @@ function MobileNavDrawer({
         </nav>
 
         <div className="fixed inset-x-0 bottom-0 border-t border-[var(--border-default)] bg-bg-base px-5 py-4">
-          <Button href="/contact" size="lg" className="w-full" onClick={onClose}>
+          <Button href="/assessment" size="lg" className="w-full" onClick={onClose}>
             Book AI Assessment
           </Button>
           <a
@@ -740,7 +740,7 @@ export function Header() {
               >
                 {SITE_CONFIG.phone}
               </a>
-              <Button href="/contact" size="sm">
+              <Button href="/assessment" size="sm">
                 Book AI Assessment
               </Button>
             </div>

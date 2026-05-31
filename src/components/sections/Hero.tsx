@@ -82,7 +82,7 @@ export function Hero() {
               variants={fadeUp(0.2)}
               className="mt-8 flex flex-wrap gap-4"
             >
-              <Button href="/contact" size="lg" icon={<ArrowRight className="h-4 w-4" />}>
+              <Button href="/assessment" size="lg" icon={<ArrowRight className="h-4 w-4" />}>
                 Book an AI Readiness Assessment
               </Button>
               <Button href="#managed-ai" variant="secondary" size="lg">

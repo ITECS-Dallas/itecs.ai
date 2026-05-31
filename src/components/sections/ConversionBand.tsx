@@ -23,7 +23,7 @@ export function ConversionBand() {
 
         <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <Button
-            href="/contact"
+            href="/assessment"
             size="lg"
             icon={<ArrowRight className="h-4 w-4" />}
           >

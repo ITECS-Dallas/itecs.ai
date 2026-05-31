@@ -15,7 +15,7 @@ for (const value of [
   "30 minutes",
   "no obligation",
   "DFW-based team",
-  "href=\"/contact\"",
+  "href=\"/assessment\"",
 ]) {
   if (!`${page}\n${component}`.includes(value)) {
     throw new Error(`Conversion band missing: ${value}`);
