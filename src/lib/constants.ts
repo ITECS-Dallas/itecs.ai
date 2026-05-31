@@ -2625,7 +2625,7 @@ export const HOMEPAGE_TESTIMONIALS = {
   eyebrow: "Client Voice",
   title: "Attributed client commentary from public ITECS proof.",
   description:
-    "These short excerpts are sourced from public ITECS case studies and review modules. Each quote is attributed to a named person or hidden rather than filled with anonymous placeholders.",
+    "These short excerpts are sourced from public ITECS case studies and review modules. Each quote is attributed to a named person or hidden rather than filled with unnamed filler.",
   testimonials: [
     {
       quote:

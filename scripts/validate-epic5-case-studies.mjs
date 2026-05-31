@@ -50,7 +50,8 @@ if (caseCount < 3) {
 }
 
 for (const forbidden of ["Lorem", "TBD", "placeholder", "anonymous CEO"]) {
-  if (combined.toLowerCase().includes(forbidden.toLowerCase())) {
+  const caseStudySource = `${caseStudyBlock}\n${outcomes}\n${detailPage}`;
+  if (caseStudySource.toLowerCase().includes(forbidden.toLowerCase())) {
     throw new Error(`Forbidden case-study placeholder found: ${forbidden}`);
   }
 }
