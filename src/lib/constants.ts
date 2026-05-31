@@ -3083,6 +3083,44 @@ export const MIP_METHODOLOGY_STEPS = [
   },
 ] as const;
 
+export const MIP_ENTERPRISE_FAQ = [
+  {
+    question: "How does data security work in a Managed Intelligence Provider engagement?",
+    answer:
+      "ITECS starts with data classification, identity boundaries, approved systems, vendor processing paths, and human review rules before production AI is deployed. The goal is to keep sensitive data governed instead of letting teams route it through unmanaged tools.",
+  },
+  {
+    question: "Who controls model choice?",
+    answer:
+      "Model choice is treated as an operating decision, not a default vendor preference. ITECS documents approved models based on data sensitivity, integration requirements, quality needs, cost profile, and the workflow owner responsible for outcomes.",
+  },
+  {
+    question: "How does integration work with existing business systems?",
+    answer:
+      "ITECS designs integration around the tools already in place: Microsoft 365, CRM, ticketing, finance, document, and communication systems. Each connection is scoped around permissions, data flow, logging, rollback, and the human action that remains accountable.",
+  },
+  {
+    question: "What pricing model should we expect?",
+    answer:
+      "Advisory, planning, optimization, governance, and enablement work can run hourly or through prepaid retainer hours. Build work such as agents, automations, and secure integrations is scoped separately once requirements, data access, and controls are clear.",
+  },
+  {
+    question: "How is IP ownership handled?",
+    answer:
+      "IP ownership, prompt documentation, workflow design, integration notes, and operating procedures are addressed during scope so the client understands what is delivered, what is reusable, and what remains specific to the engagement.",
+  },
+  {
+    question: "What is the getting started process?",
+    answer:
+      "Getting started begins with an AI Readiness Assessment that identifies workflows, risks, data boundaries, stakeholders, and success measures. From there, ITECS recommends the first governed use case instead of starting with a tool demo.",
+  },
+  {
+    question: "Can we keep our current MSP while working with ITECS?",
+    answer:
+      "Yes. ITECS can operate as the managed-intelligence layer while an existing MSP continues infrastructure support, or the work can be consolidated with ITECS managed IT and security services when that is the cleaner operating model.",
+  },
+] as const;
+
 // ---------------------------------------------------------------------------
 // Homepage: Local Dallas footprint — DFW metro cities for local SEO
 // ---------------------------------------------------------------------------

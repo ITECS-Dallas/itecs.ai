@@ -1,6 +1,6 @@
-import Link from "next/link";
 import { generatePageMetadata } from "@/lib/metadata";
 import { generateFAQSchema } from "@/lib/seo";
+import { MIP_ENTERPRISE_FAQ } from "@/lib/constants";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { MIPHero } from "./MIPHero";
@@ -28,95 +28,6 @@ export const metadata = generatePageMetadata({
     "enterprise AI operations",
   ],
 });
-
-const MIP_FAQ = [
-  {
-    question: "What is a managed intelligence provider?",
-    answer:
-      "A managed intelligence provider (MIP) is the evolution of the traditional MSP. While an MSP manages your IT infrastructure and an MSSP adds cybersecurity, a MIP deploys AI automation, custom AI agents, and data intelligence on top of that foundation. ITECS manages AI the same way we manage servers — with 24/7 monitoring, maintenance, and optimization.",
-  },
-  {
-    question: "How is a MIP different from an MSP?",
-    answer:
-      "An MSP keeps your systems running. A MIP makes your business smarter. MSPs handle helpdesk tickets, server patches, and backups. A MIP adds AI workflow automation, custom AI agents, AI-powered CRM, and employee AI training — all managed as a service with one provider and one bill.",
-  },
-  {
-    question: "Do I need to replace my current MSP to work with ITECS?",
-    answer: (
-      <>
-        No. If you have an MSP you trust for infrastructure, we can layer AI
-        services on top. However, ITECS also provides full{" "}
-        <a
-          href="https://itecsonline.com/it-services/managed-it-services-in-dallas"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-brand-accent underline decoration-brand-accent/30 underline-offset-2 hover:decoration-brand-accent"
-        >
-          managed IT services
-        </a>{" "}
-        and{" "}
-        <a
-          href="https://itecsonline.com/cybersecurity"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-brand-accent underline decoration-brand-accent/30 underline-offset-2 hover:decoration-brand-accent"
-        >
-          cybersecurity
-        </a>{" "}
-        through itecsonline.com — so you can consolidate IT, security, and AI
-        into one provider if you prefer.
-      </>
-    ),
-    schemaAnswer:
-      "No. If you have an MSP you trust for infrastructure, we can layer AI services on top. However, ITECS also provides full managed IT services and cybersecurity through itecsonline.com — so you can consolidate IT, security, and AI into one provider if you prefer.",
-  },
-  {
-    question:
-      "What size business benefits most from a managed intelligence provider?",
-    answer:
-      "Businesses with 10–300 employees see the biggest ROI. You have enough repetitive workflows to automate meaningfully, but not the budget for in-house AI engineers. A MIP gives you enterprise AI capabilities at SMB pricing.",
-  },
-  {
-    question: "How much do managed AI services cost?",
-    answer:
-      "ITECS separates advisory work from scoped implementation. Consulting, optimization, training, and planning can run hourly or through a prepaid retainer block with no minimum monthly usage and no expiration date. Custom AI agents, automations, and secure platform integrations are quoted as flat projects after scope, data access, and security requirements are clear.",
-  },
-  {
-    question:
-      "Does a Managed Intelligence Provider include AI search visibility (GEO)?",
-    answer: (
-      <>
-        Yes. AI-Optimized SEO (Generative Engine Optimization) is one of the
-        marketing-layer services a MIP brings under one roof. ITECS runs it as
-        a tiered engagement —{" "}
-        <Link
-          href="/ai-optimized-seo/foundation"
-          className="text-brand-accent underline decoration-brand-accent/30 underline-offset-2 hover:decoration-brand-accent"
-        >
-          Foundation
-        </Link>{" "}
-        for the one-time technical setup, then{" "}
-        <Link
-          href="/ai-optimized-seo/momentum"
-          className="text-brand-accent underline decoration-brand-accent/30 underline-offset-2 hover:decoration-brand-accent"
-        >
-          Momentum
-        </Link>{" "}
-        or{" "}
-        <Link
-          href="/ai-optimized-seo/velocity"
-          className="text-brand-accent underline decoration-brand-accent/30 underline-offset-2 hover:decoration-brand-accent"
-        >
-          Velocity
-        </Link>{" "}
-        for ongoing content velocity and AI visibility tracking across
-        ChatGPT, Claude, and Google AI Overviews.
-      </>
-    ),
-    schemaAnswer:
-      "Yes. AI-Optimized SEO (Generative Engine Optimization) is one of the marketing-layer services a MIP brings under one roof. ITECS runs it as a tiered engagement — Foundation for the one-time technical setup, then Momentum or Velocity for ongoing content velocity and AI visibility tracking across ChatGPT, Claude, and Google AI Overviews.",
-  },
-];
 
 export default function ManagedIntelligenceProviderPage() {
   return (
@@ -155,13 +66,16 @@ export default function ManagedIntelligenceProviderPage() {
       <OutcomesProof />
 
       {/* 8. FAQ */}
-      <FAQ items={MIP_FAQ} heading="Managed Intelligence Provider FAQ" />
+      <FAQ
+        items={MIP_ENTERPRISE_FAQ}
+        heading="Managed Intelligence Provider FAQ"
+      />
 
       {/* 9. Final CTA */}
       <ConversionBand />
 
       {/* JSON-LD Schema — FAQPage with verbatim parity */}
-      <JsonLd data={generateFAQSchema(MIP_FAQ)} />
+      <JsonLd data={generateFAQSchema(MIP_ENTERPRISE_FAQ)} />
     </>
   );
 }
