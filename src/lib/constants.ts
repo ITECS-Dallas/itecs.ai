@@ -2678,15 +2678,41 @@ export const HOMEPAGE_SERVICE_BLURBS = [
 // ---------------------------------------------------------------------------
 
 export const HOMEPAGE_HERITAGE = {
-  eyebrow: "Est. 2002",
-  title: "24 Years of IT Operations Behind Every AI Deployment",
+  eyebrow: "Why ITECS",
+  title: "MSP to Managed Intelligence Provider",
   description:
-    "ITECS started as a managed IT and cybersecurity firm in Dallas in 2002. We launched itecs.ai as the AI division of that same company — not a startup that discovered AI last year. Every automation we build sits on top of two decades of network security, compliance, and infrastructure experience.",
+    "ITECS started as a managed IT and cybersecurity firm in Dallas in 2002. itecs.ai is the AI division of that same company: AI consulting, automation, training, and DevOps delivered on top of the operating discipline that keeps infrastructure, identity, security, and support reliable.",
+  badge: {
+    eyebrow: "Heritage badge",
+    value: "Since 2002",
+    label: "Dallas managed IT foundation",
+  },
+  differentiators: [
+    {
+      title: "MSP to Managed Intelligence Provider",
+      description:
+        "ITECS extends the MSP operating model from devices, networks, and security into prompts, agents, automations, governance, and executive reporting.",
+    },
+    {
+      title: "Dedicated operating teams",
+      description:
+        "AI work is handled by people accountable for discovery, build, training, security, and ongoing support instead of being thrown into a generic ticket queue.",
+    },
+    {
+      title: "Security-first",
+      description:
+        "Data handling, identity, approvals, vendor selection, and auditability are treated as first-order design constraints.",
+    },
+    {
+      title: "AI on a managed-IT foundation",
+      description:
+        "Every workflow is designed around the Microsoft 365, CRM, endpoint, cloud, backup, and support reality the business already runs on.",
+    },
+  ],
   stats: [
-    { value: "2002", label: "Founded in Dallas" },
+    { value: "24+", label: "Years of IT Operations" },
     { value: "92%", label: "Client Retention Rate" },
     { value: "200+", label: "Client Engagements" },
-    { value: "CMMC", label: "Compliance Expertise" },
   ],
   parentLink: {
     text: "Learn more about ITECS managed IT services",
