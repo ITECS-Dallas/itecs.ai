@@ -25,10 +25,12 @@ Vendor-neutral AI readiness assessments, ROI modeling, and governance frameworks
 Industries: Healthcare, Financial Services, Manufacturing, Legal.
 Engagement models: Two-week Insight Sprints, 4-6 week POCs, 8-12 week implementations.
 
-### Managed AI Operations
+### Managed Intelligence Provider
 URL: https://itecs.ai/managed-intelligence-provider
-24/7 managed AI infrastructure including model monitoring, drift detection,
-retraining pipelines, and incident response. 99.9% uptime SLA.
+A Managed Intelligence Provider is an operating layer for production AI:
+governed agents, automations, model selection, monitoring, optimization,
+security controls, and executive reporting for organizations with 10-300
+employees.
 
 ### Custom AI Agents
 URL: https://itecs.ai/custom-ai-agents

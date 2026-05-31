@@ -104,10 +104,13 @@ strategy. Price: $3,500 per month with a six-month minimum.
 ## Managed Intelligence Provider
 
 URL: https://itecs.ai/managed-intelligence-provider
-ITECS positions a Managed Intelligence Provider as the evolution of an MSP:
-one team that manages AI consulting, automation, custom agents, AI operations,
-training, secure data readiness, and AI search visibility as ongoing business
-infrastructure.
+A Managed Intelligence Provider is the operating model for putting AI agents,
+automations, data workflows, model governance, monitoring, optimization,
+security, and executive reporting into production without handing
+business-critical decisions to unmanaged tools. ITECS positions MIP as the
+evolution of an MSP: one team that manages AI consulting, automation, custom
+agents, AI operations, training, secure data readiness, and AI search
+visibility as ongoing business infrastructure.
 
 ## Content And Policy Files
 

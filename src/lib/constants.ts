@@ -3007,7 +3007,7 @@ export const MIP_PAGE_HERO = {
   eyebrow: "DALLAS'S FIRST MANAGED INTELLIGENCE PROVIDER",
   title: "The MSP, Evolved into a Managed Intelligence Provider",
   subhead:
-    "A Managed Intelligence Provider operates AI the way a mature MSP operates infrastructure: governed, monitored, documented, secured, and continually improved.",
+    "A Managed Intelligence Provider is a team that operates AI the way a mature MSP operates infrastructure: governed, monitored, documented, secured, and continually improved.",
   supporting:
     "ITECS extends its 24-year Dallas managed IT and cybersecurity foundation into the intelligence layer: agents, automations, model governance, data readiness, executive reporting, and the support path that keeps production AI dependable.",
   primaryCta: {
@@ -3087,7 +3087,7 @@ export const MIP_DEFINITION_CAPABILITIES = {
   eyebrow: "Managed AI Workforce",
   title: 'What Managed Intelligence means',
   definition:
-    "Managed Intelligence is the operating model for putting AI agents, automations, data workflows, and model governance into production without handing business-critical decisions to unmanaged tools.",
+    "A Managed Intelligence Provider is the operating model for putting AI agents, automations, data workflows, model governance, monitoring, optimization, security, and executive reporting into production without handing business-critical decisions to unmanaged tools.",
   workforce:
     "The managed-AI workforce concept is practical: each AI workflow has an approved job, data boundary, owner, quality threshold, escalation path, and executive reporting loop.",
   capabilities: [
