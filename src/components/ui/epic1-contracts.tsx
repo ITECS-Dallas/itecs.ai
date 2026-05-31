@@ -8,6 +8,13 @@ import {
   TestimonialCard,
   TierCard,
 } from "@/components/ui/Card";
+import {
+  CheckboxField,
+  FormStatus,
+  SelectField,
+  TextAreaField,
+  TextField,
+} from "@/components/ui/FormControls";
 
 export function Epic1ComponentContracts() {
   return (
@@ -59,6 +66,39 @@ export function Epic1ComponentContracts() {
         features={["Readiness assessment", "Governance model", "Operational reporting"]}
         ctaHref="/contact"
       />
+      <TextField
+        id="work-email"
+        label="Work email"
+        name="email"
+        type="email"
+        required
+        error="Use a valid work email."
+      />
+      <SelectField
+        id="employee-range"
+        label="Employee range"
+        name="employeeRange"
+        required
+        options={[
+          { label: "10-50", value: "10-50" },
+          { label: "51-300", value: "51-300" },
+        ]}
+        successMessage="Range selected."
+      />
+      <TextAreaField
+        id="top-goal"
+        label="Top AI goal"
+        name="goal"
+        required
+        hint="One or two operational outcomes is enough."
+      />
+      <CheckboxField
+        id="permission"
+        label="ITECS may contact me about the assessment."
+        name="permission"
+        required
+      />
+      <FormStatus tone="success" message="Your request was sent." />
     </div>
   );
 }
