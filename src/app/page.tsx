@@ -19,24 +19,25 @@ import { ManagedITReferral } from "@/components/sections/ManagedITReferral";
 import { StatsBar } from "@/components/sections/StatsBar";
 import { LocalFootprint } from "@/components/sections/LocalFootprint";
 import { FAQ } from "@/components/sections/FAQ";
-import { CTASection } from "@/components/sections/CTASection";
+import { ConversionBand } from "@/components/sections/ConversionBand";
 
 export const metadata = generatePageMetadata({
-  title: "Small Business AI Consulting & Automation in Dallas | ITECS",
+  title: "Managed Intelligence & Secure AI Operations in Dallas | ITECS",
   description:
-    "ITECS helps Dallas SMBs with 10–300 employees deploy secure AI consulting, training, automation, DevOps, and custom AI agents backed by 24 years of IT operations expertise.",
+    "ITECS helps Dallas mid-market and enterprise teams with 10-300 employees deploy secure AI consulting, training, automation, DevOps, and custom AI agents backed by 24 years of IT operations expertise.",
   path: "/",
   keywords: [
-    "small business AI consulting",
+    "managed intelligence provider",
     "Dallas AI consultants",
-    "SMB AI automation",
-    "AI IT services",
-    "AI consulting for small business",
+    "enterprise AI operations",
+    "mid-market AI consulting",
+    "AI IT services Dallas",
+    "AI readiness assessment",
     "AI automation Dallas",
     "custom AI agents for business",
     "AI consultant Dallas TX",
-    "how to automate small business with AI",
-    "secure AI companies for SMBs",
+    "secure AI operations",
+    "managed AI services Dallas",
   ],
 });
 
@@ -60,7 +61,7 @@ export default function HomePage() {
       <StatsBar />
       <LocalFootprint />
       <FAQ items={FAQ_ITEMS} />
-      <CTASection />
+      <ConversionBand />
       <JsonLd data={generateFAQSchema(FAQ_ITEMS)} />
     </>
   );

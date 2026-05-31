@@ -41,9 +41,10 @@ export function AIPricingPreview() {
               AI pricing without the mystery.
             </h2>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-text-secondary">
-              Most SMB teams do not need an open-ended AI experiment. ITECS
-              publishes flat-fee starting points, scoped build ranges, and
-              managed AI retainers so leadership can plan before committing.
+              Most mid-market teams do not need an open-ended AI experiment.
+              ITECS publishes flat-fee starting points, scoped build ranges,
+              and managed AI retainers so enterprise leadership can plan before
+              committing.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <Link

@@ -9,7 +9,7 @@ export const SITE_CONFIG = {
   mainSiteUrl: "https://itecsonline.com",
   tagline: "Practical AI for Dallas Businesses.",
   description:
-    "ITECS helps small and mid-sized Dallas businesses save time and cut costs with practical AI automation, custom AI agents, and hands-on AI consulting. 24+ years of IT operations expertise.",
+    "ITECS helps Dallas mid-market and enterprise teams with 10-300 employees deploy secure AI automation, custom AI agents, and hands-on AI consulting. 24+ years of IT operations expertise.",
   phone: "(214) 444-7884",
   phoneE164: "+1-214-444-7884",
   supportPhone: "(877) 483-2710",
@@ -2331,7 +2331,7 @@ export const STATS = [
 
 export const FAQ_ITEMS = [
   {
-    question: "How much does AI cost for a small business?",
+    question: "How much does AI cost for a growing organization?",
     answer:
       "AI adoption does not need to start as a large fixed project. ITECS can consult hourly, but most clients prefer a prepaid retainer block of time they can use at their discretion with no minimum monthly usage and no expiration date. Every hour consumed is documented clearly. Flat project pricing is used only when the scope is defined, such as building an AI agent, automation, or secure platform integration.",
   },
@@ -2341,7 +2341,7 @@ export const FAQ_ITEMS = [
       "We're not a startup that discovered AI last year. ITECS has been managing IT infrastructure for Dallas businesses since 2002. That means your AI tools are built by people who already understand networks, security, compliance, and the realities of running a business with 10–300 employees.",
   },
   {
-    question: "How do I know if AI is right for my small business?",
+    question: "How do I know if AI is right for my organization?",
     answer:
       "If your team spends time on repetitive tasks — data entry, report generation, customer follow-ups, answering the same questions, scheduling — AI can help. We offer a free initial assessment where we identify the tasks that are costing you the most time and show you exactly what AI can automate.",
   },
