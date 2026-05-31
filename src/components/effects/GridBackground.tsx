@@ -1,9 +1,14 @@
-"use client";
-
 interface GridBackgroundProps {
   className?: string;
   opacity?: number;
 }
+
+const gridNodes = Array.from({ length: 8 }, (_, index) => ({
+  id: index,
+  cx: 60 * ((index % 4) + 2),
+  cy: 60 * (Math.floor(index / 4) + 2),
+  delay: `${index * 0.3}s`,
+}));
 
 export function GridBackground({
   className = "",
@@ -33,17 +38,16 @@ export function GridBackground({
           </pattern>
         </defs>
         <rect width="100%" height="100%" fill="url(#grid-pattern)" />
-        {/* Pulsing intersection nodes */}
         <g className="animate-grid-pulse">
-          {Array.from({ length: 8 }).map((_, i) => (
+          {gridNodes.map((node) => (
             <circle
-              key={i}
-              cx={60 * ((i % 4) + 2)}
-              cy={60 * (Math.floor(i / 4) + 2)}
+              key={node.id}
+              cx={node.cx}
+              cy={node.cy}
               r="1.5"
               fill="var(--brand-accent)"
               opacity="0.6"
-              style={{ animationDelay: `${i * 0.3}s` }}
+              style={{ animationDelay: node.delay }}
             />
           ))}
         </g>

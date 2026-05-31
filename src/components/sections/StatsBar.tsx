@@ -1,5 +1,3 @@
-"use client";
-
 import { STATS } from "@/lib/constants";
 import { StatCounter } from "@/components/ui/StatCounter";
 import { GridBackground } from "@/components/effects/GridBackground";

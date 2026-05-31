@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import { Check } from "lucide-react";
 import { ScrollReveal } from "@/components/effects/ScrollReveal";

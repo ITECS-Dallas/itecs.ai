@@ -4,6 +4,7 @@ import { join } from "node:path";
 const root = process.cwd();
 const page = readFileSync(join(root, "src/app/page.tsx"), "utf8");
 const constants = readFileSync(join(root, "src/lib/constants.ts"), "utf8");
+const siteConfig = readFileSync(join(root, "src/lib/site-config.ts"), "utf8");
 const pricingPreview = readFileSync(
   join(root, "src/components/sections/AIPricingPreview.tsx"),
   "utf8",
@@ -12,9 +13,9 @@ const pricingPreview = readFileSync(
 const faqBlock = constants.match(
   /export const FAQ_ITEMS = \[[\s\S]*?\] as const;/,
 )?.[0];
-const siteConfigBlock = constants.match(
-  /export const SITE_CONFIG = \{[\s\S]*?\n\} as const;/,
-)?.[0];
+const siteConfigBlock =
+  constants.match(/export const SITE_CONFIG = \{[\s\S]*?\n\} as const;/)?.[0] ??
+  siteConfig.match(/export const SITE_CONFIG = \{[\s\S]*?\n\} as const;/)?.[0];
 
 if (!faqBlock || !siteConfigBlock) {
   throw new Error("Could not locate homepage metadata copy blocks");

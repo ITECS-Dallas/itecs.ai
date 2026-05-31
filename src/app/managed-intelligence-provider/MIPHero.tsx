@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { GridBackground } from "@/components/effects/GridBackground";
 import { ArrowRight, CheckCircle2, Layers3 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
@@ -17,11 +14,7 @@ export function MIPHero() {
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-8">
         <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(360px,0.48fr)] lg:items-center">
-          <motion.div
-            initial={false}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
+          <div>
             <p className="mb-5 flex items-center gap-3 font-mono text-[length:var(--fs-eyebrow)] font-semibold uppercase tracking-normal text-brand-accent">
               <span className="inline-block h-px w-8 bg-brand-accent" />
               {MIP_PAGE_HERO.eyebrow}
@@ -54,7 +47,7 @@ export function MIPHero() {
                 {MIP_PAGE_HERO.secondaryCta.label}
               </Button>
             </div>
-          </motion.div>
+          </div>
 
           <aside
             aria-label="Managed Intelligence operating layer"

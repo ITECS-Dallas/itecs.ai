@@ -26,14 +26,17 @@ assert(
   "Global CSS must honor prefers-reduced-motion.",
 );
 assert(
-  scrollReveal.includes("useReducedMotion") &&
-    scrollReveal.includes("initial={reducedMotion ? false : initialTransform}") &&
+  !scrollReveal.includes('"use client"') &&
+    scrollReveal.includes('data-motion="scroll-reveal"') &&
+    scrollReveal.includes("Math.min(Math.max(distance, 12), 16)") &&
     !/opacity:\s*0(?:[,}])/.test(scrollReveal),
-  "ScrollReveal must not hide content before it enters the viewport and must honor reduced motion.",
+  "ScrollReveal must be server-rendered, visible on load, and bounded to the approved reveal distance.",
 );
 assert(
-  parallax.includes("useReducedMotion") && parallax.includes("reducedMotion ? 0"),
-  "ParallaxWrapper must disable transforms for reduced-motion users.",
+  !parallax.includes('"use client"') &&
+    parallax.includes('data-motion="parallax"') &&
+    !parallax.includes("framer-motion"),
+  "ParallaxWrapper must be server-rendered and must not add client-side motion work.",
 );
 assert(
   gradientOrb.includes('aria-hidden="true"'),

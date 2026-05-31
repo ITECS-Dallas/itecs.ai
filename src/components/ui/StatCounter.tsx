@@ -1,5 +1,3 @@
-"use client";
-
 interface StatCounterProps {
   value: number;
   suffix?: string;

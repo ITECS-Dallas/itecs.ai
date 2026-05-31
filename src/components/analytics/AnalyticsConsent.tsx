@@ -89,6 +89,38 @@ export function AnalyticsConsent() {
     };
   }, [consent, pagePath]);
 
+  useEffect(() => {
+    if (consent !== "granted" || !hasAnalyticsConsent()) {
+      return;
+    }
+
+    function handleCtaClick(event: MouseEvent) {
+      if (event.defaultPrevented || !(event.target instanceof Element)) {
+        return;
+      }
+
+      const target = event.target.closest<HTMLElement>(
+        "[data-cta-type][data-cta-destination]",
+      );
+
+      if (!target) {
+        return;
+      }
+
+      trackConversionEvent(ANALYTICS_EVENTS.ctaClick, {
+        cta_type: target.dataset.ctaType,
+        destination: target.dataset.ctaDestination,
+        page_path: pagePath,
+      });
+    }
+
+    document.addEventListener("click", handleCtaClick);
+
+    return () => {
+      document.removeEventListener("click", handleCtaClick);
+    };
+  }, [consent, pagePath]);
+
   function chooseConsent(value: "granted" | "denied") {
     setAnalyticsConsent(value);
     window.dispatchEvent(new Event(CONSENT_CHANGE_EVENT));

@@ -129,9 +129,22 @@ Source of truth: `itecs-ai-website/itecs-ai-dark-theme-redesign-spec.md`.
 - Lighthouse on `/`: accessibility 100, best practices 100, SEO 100, performance 81, LCP 4536ms, CLS 0, TBT 66ms.
 - Lighthouse on `/managed-intelligence-provider`: accessibility 100, best practices 100, SEO 100, performance 72, LCP 3941ms, CLS 0, TBT 600ms.
 
+## Performance Optimization Slice
+
+- Direction changed on May 31, 2026: Core Web Vitals and shipped-byte optimization are active priorities again.
+- Root-cause baseline: Lighthouse mobile/Googlebot local production run showed text-based LCP on Home and MIP. Home loaded 11 script requests and 496,802 total bytes with LCP 3,893ms. MIP loaded 10 script requests and 389,892 total bytes with LCP 3,430ms.
+- Implemented static-boundary optimization: `Button`, `Hero`, `MIPHero`, `ScrollReveal`, `ParallaxWrapper`, `GridBackground`, `StatCounter`, Home static sections, FAQ, and MIP comparison now avoid unnecessary client bundles and Framer Motion hydration.
+- Implemented delegated CTA analytics: buttons emit `data-cta-*` metadata and `AnalyticsConsent` tracks CTA clicks from one consent-gated document listener, keeping link buttons server-renderable.
+- Split hidden navigation work: the visible `Header` remains the initial client island, while `HeaderMenus` lazy-loads the desktop mega menu and mobile drawer only when opened.
+- Split `SITE_CONFIG` into `src/lib/site-config.ts` so client components can read contact data without importing the full structured content tree from `constants.ts`.
+- Proof logos remain real and preserved, but `LogoWall` now lazy-loads below-fold logos so client and partner assets do not compete with hero LCP.
+- Additional mobile critical-path tuning: the mono font no longer preloads, the fixed grain overlay is disabled on mobile, and top-level below-fold sections use browser-native `content-visibility: auto`.
+- Optimized Lighthouse mobile/Googlebot local production run: Home performance 88, accessibility 100, best practices 100, SEO 100, LCP 3,581ms, CLS 0.000037, TBT 124ms, 7 script requests, 25 total requests, and 405,329 total bytes. MIP performance 93, accessibility 100, best practices 100, SEO 100, LCP 3,020ms, CLS 0, TBT 106ms, 7 script requests, 14 total requests, and 303,145 total bytes.
+- Client-boundary check: Home project client modules dropped from 44 to 4; MIP dropped from 34 to 4. The remaining project client modules are `Header` and `AnalyticsConsent`.
+
 ## Remaining Risks
 
-- Performance scores were recorded with Lighthouse mobile/Googlebot emulation but not deeply optimized in this slice by explicit product direction. Home and MIP still miss the original LCP <2.5s target.
+- Performance scores were improved with Lighthouse mobile/Googlebot emulation, but Home and MIP still miss the original LCP <2.5s target in local lab runs. The remaining LCP elements are hero text nodes, so further gains likely need more aggressive font/critical-rendering work or a different hero rendering strategy.
 - Lighthouse lab runs report TBT rather than field INP; no production field data was mutated or queried in this slice.
 - The assessment rate limit is process-local, which matches the current standalone Node runtime but is not a distributed abuse-control layer.
 - Valid assessment email delivery was not triggered during local launch QA because that requires a real Cloudflare Turnstile token and would send an external email. The handler wiring, validation, honeypot, rate limit, and missing-token path were verified locally.

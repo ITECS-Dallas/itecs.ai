@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import { ArrowRight, Cloud, Headset, ShieldCheck } from "lucide-react";
 import { ScrollReveal } from "@/components/effects/ScrollReveal";

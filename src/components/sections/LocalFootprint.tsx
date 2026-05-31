@@ -1,5 +1,3 @@
-"use client";
-
 import { MapPin } from "lucide-react";
 import { DFW_SERVICE_AREAS, SITE_CONFIG } from "@/lib/constants";
 import { ScrollReveal } from "@/components/effects/ScrollReveal";

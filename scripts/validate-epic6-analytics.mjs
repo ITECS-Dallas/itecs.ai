@@ -49,7 +49,16 @@ assertIncludes(
 );
 
 assertIncludes(layout, ["AnalyticsConsent"], "Root layout");
-assertIncludes(button, ["trackConversionEvent", "ANALYTICS_EVENTS.ctaClick"], "CTA click tracking");
+assertIncludes(button, ["data-cta-type", "data-cta-destination"], "CTA click metadata");
+assertIncludes(
+  consent,
+  [
+    "[data-cta-type][data-cta-destination]",
+    "ANALYTICS_EVENTS.ctaClick",
+    "trackConversionEvent",
+  ],
+  "Delegated CTA click tracking",
+);
 assertIncludes(
   assessmentForm,
   ["ANALYTICS_EVENTS.formStart", "ANALYTICS_EVENTS.formComplete"],

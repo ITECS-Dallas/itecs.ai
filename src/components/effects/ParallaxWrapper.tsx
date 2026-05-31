@@ -1,7 +1,3 @@
-"use client";
-
-import { useRef } from "react";
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import type { ReactNode } from "react";
 
 interface ParallaxWrapperProps {
@@ -15,21 +11,11 @@ export function ParallaxWrapper({
   speed = 0.5,
   className,
 }: ParallaxWrapperProps) {
-  const ref = useRef<HTMLDivElement>(null);
-  const reducedMotion = useReducedMotion();
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
-
-  const parallaxY = useTransform(scrollYProgress, [0, 1], [speed * -100, speed * 100]);
-  const y = reducedMotion ? 0 : parallaxY;
-
   return (
-    <div ref={ref} className={className}>
-      <motion.div data-motion="parallax" style={{ y }}>
+    <div className={className}>
+      <div data-motion="parallax" data-parallax-speed={speed}>
         {children}
-      </motion.div>
+      </div>
     </div>
   );
 }
