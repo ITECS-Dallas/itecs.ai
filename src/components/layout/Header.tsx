@@ -453,7 +453,7 @@ function MobileNavDrawer({
     >
       <div className="flex min-h-full flex-col">
         <div className="flex h-16 items-center justify-between border-b border-[var(--border-subtle)] px-5">
-          <Link href="/" onClick={onClose} className="flex items-center">
+          <Link href="/" onClick={onClose} className="flex min-h-12 items-center">
             <Image
               src="/images/logos/itecs-horizontal.svg"
               alt="ITECS"
