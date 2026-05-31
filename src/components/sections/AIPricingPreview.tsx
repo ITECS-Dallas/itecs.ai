@@ -71,7 +71,7 @@ export function AIPricingPreview() {
                   key={pathway.label}
                   className="rounded-2xl border border-[var(--border-subtle)] bg-bg-surface/55 p-5 transition-colors hover:border-brand-accent/35"
                 >
-                  <div className="mb-4 flex items-start justify-between gap-4">
+                  <div className="mb-4 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between md:flex-col lg:flex-row lg:items-start lg:justify-between">
                     <div className="flex items-center gap-3">
                       <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-brand-accent/10 text-brand-accent">
                         <Icon className="h-5 w-5" aria-hidden="true" />
