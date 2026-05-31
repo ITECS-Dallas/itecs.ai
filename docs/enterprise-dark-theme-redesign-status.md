@@ -5,7 +5,7 @@ Source of truth: `itecs-ai-website/itecs-ai-dark-theme-redesign-spec.md`.
 ## Current Branch
 
 - Branch: `enterprise-dark-theme-rebuild`
-- Latest completed epic: Epic 5 — Trust system, remaining stories
+- Latest completed epic: Epic 6 — Conversion and lead generation
 - Status date: 2026-05-31
 
 ## Decisions
@@ -18,32 +18,39 @@ Source of truth: `itecs-ai-website/itecs-ai-dark-theme-redesign-spec.md`.
 - Epic 5 case studies use public ITECS case-study sources only: Pegasus Foods, OpenText, and PepsiCo. The new detail route is generated from the shared `TRUST_CASE_STUDIES` data.
 - Testimonials now require named attribution. Entries without a real person/company are filtered out rather than replaced with filler.
 - Third-party validation is limited to locally/publicly sourced items: Google rating, G2 rating, PRNewswire anniversary coverage, Top MSP 2024, and BusinessRate Best of 2026. No Clutch or analyst claim is shown because no safe source was found during this slice.
+- Epic 6 uses `/assessment` as the dedicated AI Readiness Assessment route. Primary assessment CTAs now point there; secondary architect/contact paths still point to `/contact`.
+- AI Readiness Assessment submissions route to ITECS by email through a dedicated `/api/assessment` handler using the existing Microsoft Graph mailer, Cloudflare Turnstile, honeypot, and a process-local rate limit.
+- No calendar embed URL was invented. The success state gives a clear scheduling/next-step path through `/contact` and phone because no source-backed assessment booking embed exists in the repo.
+- Analytics are consent-gated. Google Analytics no longer loads from the root layout before consent; CTA clicks, form starts/completions, and scroll-depth events are defined without form values or other PII in event payloads.
 - Performance remains measured but non-blocking for this slice per Brian's later direction; accessibility and layout correctness remain blocking.
 
-## Epic 5 Checklist
+## Epic 6 Checklist
 
-- Story 5.1 — Preserve & elevate existing proof: Passed in earlier slice and retained.
-- Story 5.2 — Add certifications & compliance badges: Passed.
-- Story 5.4 — Case studies: Passed.
-- Story 5.5 — Testimonials: Passed.
-- Story 5.6 — Awards / third-party validation: Passed with available sourced items only.
+- Story 6.1 — AI Readiness Assessment: Passed.
+- Story 6.2 — Persistent conversion paths: Passed for the shared nav CTA, hero CTA, MIP CTA, and shared closing conversion band. Legacy pages that still import `CTASection` now delegate to `ConversionBand`.
+- Story 6.3 — Contact page upgrade: Passed.
+- Story 6.4 — Analytics and lead tracking: Passed with consent-gated analytics and PII-safe event payloads.
 
-## Epic 5 Validation
+## Epic 6 Validation
 
-- Story validators: `scripts/validate-epic5-*.mjs` passed.
+- Story validators: `scripts/validate-epic6-*.mjs` passed.
 - Regression validators: `scripts/validate*.mjs` passed with `set -e`.
 - Typecheck: `npx tsc --noEmit --pretty false` passed.
 - Lint: `npm run lint` passed.
 - Build: `npm run build` passed.
 - Purple retirement scan: no shipped source hits for retired purple tokens/gradients.
 - Component hex scan: no component/page hardcoded hex hits outside existing proposal email templates.
-- Screenshots captured: `epic5-home-390.png`, `epic5-home-768.png`, `epic5-home-1920.png`, `epic5-case-390.png`, `epic5-case-768.png`, `epic5-case-1920.png`.
-- Overflow check: `/` and `/case-studies/pegasus-foods-zero-downtime-relocation` passed at 390, 768, and 1920 with no offenders.
-- Lighthouse on `/`: accessibility 96, performance 64, LCP 6.2s, CLS 0, TBT 250ms.
-- Lighthouse on `/case-studies/pegasus-foods-zero-downtime-relocation`: accessibility 100, performance 59, LCP 5.0s, CLS 0, TBT 680ms.
+- API smoke: `/api/assessment` returned 400 for invalid JSON, 200 for honeypot, 400 for a valid payload missing Turnstile, and 429 on the sixth repeated attempt from the same test IP.
+- Assessment inline validation: empty 390px submission shows accessible errors with two `aria-invalid` fields and no form top/width document-position shift.
+- Analytics consent smoke: Google Analytics script count was 0 before consent, then 1 after choosing "Allow analytics"; consent persisted as `itecs.analytics.consent=granted`.
+- Screenshots captured: `epic6-assessment-390.png`, `epic6-assessment-768.png`, `epic6-assessment-1920.png`, `epic6-contact-390.png`, `epic6-contact-768.png`, `epic6-contact-1920.png`.
+- Overflow check: `/assessment`, `/contact`, and `/` passed at 390, 768, and 1920 with no offenders.
+- Lighthouse on `/assessment`: accessibility 96, performance 87, LCP 2.8s, CLS 0, TBT 370ms.
+- Lighthouse on `/contact`: accessibility 97, performance 57, LCP 7.3s, CLS 0, TBT 510ms.
 
 ## Remaining Risks
 
 - Broader non-MIP pages still need the later Epic 9 content and altitude pass for legacy small-business wording outside the rebuilt homepage and MIP page.
-- AI Readiness Assessment still routes through `/contact` until Epic 6 builds the dedicated assessment flow.
 - Performance scores were recorded but not optimized in this slice by explicit product direction.
+- The assessment rate limit is process-local, which matches the current standalone Node runtime but is not a distributed abuse-control layer.
+- The contact page Google Maps iframe may appear blank in headless/local browser screenshots when the external embed does not load, but the verified map link and structured location content remain present.
