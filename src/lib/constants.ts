@@ -2623,13 +2623,13 @@ export const SECURITY_GOVERNANCE_BAND = {
 
 export const HOMEPAGE_TESTIMONIALS = {
   eyebrow: "Client Voice",
-  title: "Public client commentary from ITECS case studies.",
+  title: "Attributed client commentary from public ITECS proof.",
   description:
-    "These excerpts are sourced from published ITECS case studies. Where the source names only a role and company, the site preserves that attribution without inventing a person name.",
+    "These short excerpts are sourced from public ITECS case studies and review modules. Each quote is attributed to a named person or hidden rather than filled with anonymous placeholders.",
   testimonials: [
     {
       quote:
-        "The ITECS team provided an innovative solution to what seemed like an impossible challenge.",
+        "an innovative solution to what seemed like an impossible challenge.",
       name: "Dan",
       title: "CEO",
       company: "Pegasus Foods, Inc.",
@@ -2638,22 +2638,20 @@ export const HOMEPAGE_TESTIMONIALS = {
       sourceLabel: "Pegasus Foods case study",
     },
     {
-      quote:
-        "Their team provides the technical expertise we need without the overhead of additional full-time staff.",
-      title: "IT Manager",
-      company: "Bob Evans Farms",
-      sourceHref:
-        "https://itecsonline.com/white-papers-case-studies/how-itecs-elevated-bob-evans-farms",
-      sourceLabel: "Bob Evans Farms case study",
+      quote: "strategic IT guidance is top-notch.",
+      name: "David Bryant",
+      title: "Verified Google reviewer",
+      company: "Dallas business review",
+      sourceHref: "https://itecsonline.com/",
+      sourceLabel: "Google review excerpt",
     },
     {
-      quote:
-        "Their thorough analysis and practical recommendations gave us confidence in our technology decisions.",
-      title: "IT Director",
-      company: "Miller Brewing Company",
-      sourceHref:
-        "https://itecsonline.com/white-papers-case-studies/rds-implementation-planning-miller-brewings",
-      sourceLabel: "Miller Brewing case study",
+      quote: "a huge asset to our business.",
+      name: "Jason Jones",
+      title: "Verified Google reviewer",
+      company: "Dallas business review",
+      sourceHref: "https://itecsonline.com/hipaa-compliance",
+      sourceLabel: "Google review excerpt",
     },
   ],
 } as const;

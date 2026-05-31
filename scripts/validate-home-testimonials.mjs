@@ -13,8 +13,10 @@ for (const value of [
   "Testimonials",
   "HOMEPAGE_TESTIMONIALS",
   "Pegasus Foods",
-  "Bob Evans Farms",
-  "Miller Brewing Company",
+  "David Bryant",
+  "Jason Jones",
+  "testimonial.name",
+  "testimonial.company",
   "sourceHref",
 ]) {
   if (!`${page}\n${constants}\n${component}`.includes(value)) {

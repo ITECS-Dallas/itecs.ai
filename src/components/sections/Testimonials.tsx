@@ -3,7 +3,9 @@ import { HOMEPAGE_TESTIMONIALS } from "@/lib/constants";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 export function Testimonials() {
-  const testimonials = [...HOMEPAGE_TESTIMONIALS.testimonials];
+  const testimonials = HOMEPAGE_TESTIMONIALS.testimonials.filter(
+    (testimonial) => testimonial.name && testimonial.company,
+  );
 
   if (testimonials.length === 0) {
     return null;
