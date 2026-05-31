@@ -2388,6 +2388,45 @@ export const PARTNER_LOGOS = [
   { name: "Sophos", src: "/images/partners/sophos.svg", width: 101, height: 32 },
 ] as const;
 
+export const CERTIFICATION_BADGES = [
+  {
+    label: "Microsoft Solutions Partner",
+    detail: "Microsoft ecosystem delivery and advisory partner.",
+  },
+  {
+    label: "Azure",
+    detail: "Microsoft Azure cloud and AI infrastructure experience.",
+  },
+  {
+    label: "SOC 2 Type II",
+    detail: "Security and operational control framework.",
+  },
+  {
+    label: "CMMC",
+    detail: "Cybersecurity maturity model alignment.",
+  },
+  {
+    label: "ISO 27001",
+    detail: "Information security management framework.",
+  },
+  {
+    label: "Sophos",
+    detail: "Security platform partner.",
+  },
+  {
+    label: "Veeam",
+    detail: "Backup and resilience platform partner.",
+  },
+  {
+    label: "Fortinet",
+    detail: "Network security platform partner.",
+  },
+  {
+    label: "CompTIA",
+    detail: "IT industry certification ecosystem.",
+  },
+] as const;
+
 // ---------------------------------------------------------------------------
 // Team
 // ---------------------------------------------------------------------------

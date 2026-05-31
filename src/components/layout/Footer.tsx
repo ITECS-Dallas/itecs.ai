@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { SITE_CONFIG, SERVICES } from "@/lib/constants";
+import { CERTIFICATION_BADGES, SITE_CONFIG, SERVICES } from "@/lib/constants";
 import {
   FacebookIcon,
   GitHubIcon,
@@ -8,6 +8,7 @@ import {
   XIcon,
   YouTubeIcon,
 } from "@/components/ui/SocialIcons";
+import { CertificationStrip } from "@/components/ui/CertificationStrip";
 
 type FooterLink = {
   label: string;
@@ -81,45 +82,6 @@ const resourceLinks: FooterLink[] = [
     label: "Experiencing a Breach?",
     href: "https://itecsonline.com/experiencing-a-breach",
     external: true,
-  },
-];
-
-const certifications = [
-  {
-    label: "Microsoft Solutions Partner",
-    detail: "Microsoft ecosystem delivery and advisory partner.",
-  },
-  {
-    label: "Azure",
-    detail: "Microsoft Azure cloud and AI infrastructure experience.",
-  },
-  {
-    label: "SOC 2 Type II",
-    detail: "Security and operational control framework.",
-  },
-  {
-    label: "CMMC",
-    detail: "Cybersecurity maturity model alignment.",
-  },
-  {
-    label: "ISO 27001",
-    detail: "Information security management framework.",
-  },
-  {
-    label: "Sophos",
-    detail: "Security platform partner.",
-  },
-  {
-    label: "Veeam",
-    detail: "Backup and resilience platform partner.",
-  },
-  {
-    label: "Fortinet",
-    detail: "Network security platform partner.",
-  },
-  {
-    label: "CompTIA",
-    detail: "IT industry certification ecosystem.",
   },
 ];
 
@@ -230,17 +192,10 @@ export function Footer() {
                 managed intelligence delivery.
               </p>
             </div>
-            <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:max-w-3xl lg:grid-cols-5">
-              {certifications.map((certification) => (
-                <span
-                  key={certification.label}
-                  title={certification.detail}
-                  className="inline-flex min-h-10 items-center justify-center rounded-md border border-[var(--border-default)] bg-bg-surface px-3 py-2 text-center font-mono text-xs uppercase text-text-secondary transition-colors hover:border-[var(--border-strong)] hover:text-text-primary"
-                >
-                  {certification.label}
-                </span>
-              ))}
-            </div>
+            <CertificationStrip
+              badges={CERTIFICATION_BADGES}
+              className="lg:max-w-3xl"
+            />
           </div>
         </section>
 

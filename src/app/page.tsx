@@ -12,7 +12,6 @@ import { FeatureShowcase } from "@/components/sections/FeatureShowcase";
 import { Heritage } from "@/components/sections/Heritage";
 import { ManagedITReferral } from "@/components/sections/ManagedITReferral";
 import { StatsBar } from "@/components/sections/StatsBar";
-import { PartnerLogos } from "@/components/sections/PartnerLogos";
 import { LocalFootprint } from "@/components/sections/LocalFootprint";
 import { FAQ } from "@/components/sections/FAQ";
 import { CTASection } from "@/components/sections/CTASection";
@@ -49,7 +48,6 @@ export default function HomePage() {
       <Heritage />
       <ManagedITReferral />
       <StatsBar />
-      <PartnerLogos />
       <LocalFootprint />
       <FAQ items={FAQ_ITEMS} />
       <CTASection />
