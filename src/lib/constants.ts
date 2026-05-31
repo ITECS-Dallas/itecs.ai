@@ -3052,6 +3052,37 @@ export const MIP_COMPARISON = {
   ],
 } as const;
 
+export const MIP_METHODOLOGY_STEPS = [
+  {
+    title: "Assess",
+    description:
+      "Map workflows, shadow AI usage, data readiness, risk, and the operating case before recommending tools.",
+    kpi: "Readiness score",
+    sla: "Discovery summary and prioritized use cases before implementation scope.",
+  },
+  {
+    title: "Architect",
+    description:
+      "Design the approved workflow, governance model, data boundaries, integrations, and human review path.",
+    kpi: "Approved operating blueprint",
+    sla: "Security, integration, and owner review before build authorization.",
+  },
+  {
+    title: "Deploy",
+    description:
+      "Build or configure the system, train users, validate quality, and move only stable workflows into production.",
+    kpi: "Production release checklist",
+    sla: "Launch validation and rollback path before production handoff.",
+  },
+  {
+    title: "Manage & Optimize",
+    description:
+      "Monitor usage, cost, reliability, model changes, prompt drift, and executive outcomes after launch.",
+    kpi: "30-day operating review",
+    sla: "Monthly optimization review for active managed-intelligence workflows.",
+  },
+] as const;
+
 // ---------------------------------------------------------------------------
 // Homepage: Local Dallas footprint — DFW metro cities for local SEO
 // ---------------------------------------------------------------------------

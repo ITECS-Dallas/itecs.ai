@@ -7,7 +7,7 @@ import { MIPHero } from "./MIPHero";
 import { MIPEvolutionDiagram } from "@/components/sections/MIPEvolutionDiagram";
 import { MIPDefinitionCapabilities } from "@/components/sections/MIPDefinitionCapabilities";
 import { MIPComparison } from "@/components/sections/MIPComparison";
-import { HowItWorks } from "@/components/sections/HowItWorks";
+import { MethodologySteps } from "@/components/sections/MethodologySteps";
 import { SecurityGuarantee } from "@/components/sections/SecurityGuarantee";
 import { StatsBar } from "@/components/sections/StatsBar";
 import { FAQ } from "@/components/sections/FAQ";
@@ -28,29 +28,6 @@ export const metadata = generatePageMetadata({
     "enterprise AI operations",
   ],
 });
-
-const MIP_HOW_IT_WORKS = [
-  {
-    step: "AI readiness audit and workflow analysis",
-    description:
-      "We map your team's daily operations, identify repetitive tasks costing the most time, and score your data readiness across systems like Microsoft 365, HubSpot, QuickBooks, and your CRM. You get a plain-English report showing exactly where AI delivers the fastest ROI.",
-  },
-  {
-    step: "Deploy AI solutions on your existing tools",
-    description:
-      "We build and deploy AI agents, automations, and integrations on the platforms your team already uses. No rip-and-replace. Custom AI agents connect to your internal data, workflow automations link your CRM to your invoicing, and AI voice agents answer your phones 24/7.",
-  },
-  {
-    step: "Manage, monitor, and optimize continuously",
-    description:
-      "ITECS manages every AI deployment like we manage IT infrastructure — with 24/7 monitoring, error recovery, and monthly performance reports. When a workflow breaks at 2 AM, we fix it before your team notices. When OpenAI releases a new model, we evaluate and upgrade.",
-  },
-  {
-    step: "Scale AI adoption across your organization",
-    description:
-      "We train your employees to use AI tools safely and effectively, then expand automation into new departments. Most clients start with one service and add 2–3 more within the first year as ROI compounds.",
-  },
-] as const;
 
 const MIP_FAQ = [
   {
@@ -168,11 +145,8 @@ export default function ManagedIntelligenceProviderPage() {
       {/* 4. MSP vs. MIP comparison */}
       <MIPComparison />
 
-      {/* 5. How It Works — semantic ol/li numbered workflow */}
-      <HowItWorks
-        steps={MIP_HOW_IT_WORKS}
-        heading="How Managed Intelligence Works at ITECS"
-      />
+      {/* 5. Methodology */}
+      <MethodologySteps />
 
       {/* 6. Company stats */}
       <StatsBar />

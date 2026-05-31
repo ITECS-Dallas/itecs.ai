@@ -7,6 +7,7 @@ const component = readFileSync(
   join(root, "src/components/sections/MethodologySteps.tsx"),
   "utf8",
 );
+const constants = readFileSync(join(root, "src/lib/constants.ts"), "utf8");
 
 for (const value of [
   "MethodologySteps",
@@ -16,7 +17,7 @@ for (const value of [
   "Manage & Optimize",
   "AIOperationsConsole",
 ]) {
-  if (!`${page}\n${component}`.includes(value)) {
+  if (!`${page}\n${component}\n${constants}`.includes(value)) {
     throw new Error(`Homepage methodology missing: ${value}`);
   }
 }

@@ -4,35 +4,16 @@ import {
   Rocket,
   SlidersHorizontal,
 } from "lucide-react";
+import { MIP_METHODOLOGY_STEPS } from "@/lib/constants";
 import { AIOperationsConsole } from "@/components/ui/AIOperationsConsole";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
-const methodologySteps = [
-  {
-    title: "Assess",
-    description:
-      "Map workflows, shadow AI usage, data readiness, risk, and the operating case before recommending tools.",
-    icon: ClipboardCheck,
-  },
-  {
-    title: "Architect",
-    description:
-      "Design the approved workflow, governance model, data boundaries, integrations, and human review path.",
-    icon: GitBranch,
-  },
-  {
-    title: "Deploy",
-    description:
-      "Build or configure the system, train users, validate quality, and move only stable workflows into production.",
-    icon: Rocket,
-  },
-  {
-    title: "Manage & Optimize",
-    description:
-      "Monitor usage, cost, reliability, model changes, prompt drift, and executive outcomes after launch.",
-    icon: SlidersHorizontal,
-  },
-] as const;
+const stepIcons = [ClipboardCheck, GitBranch, Rocket, SlidersHorizontal] as const;
+
+const methodologySteps = MIP_METHODOLOGY_STEPS.map((step, index) => ({
+  ...step,
+  icon: stepIcons[index] ?? ClipboardCheck,
+}));
 
 export function MethodologySteps() {
   return (
@@ -69,6 +50,24 @@ export function MethodologySteps() {
                     <p className="mt-2 text-sm leading-relaxed text-text-secondary">
                       {step.description}
                     </p>
+                    <dl className="mt-4 grid gap-2 sm:grid-cols-2">
+                      <div className="rounded-md border border-[var(--border-subtle)] bg-bg-base px-3 py-2">
+                        <dt className="font-mono text-[0.68rem] font-semibold uppercase text-accent-cyan">
+                          KPI
+                        </dt>
+                        <dd className="mt-1 text-xs leading-relaxed text-text-secondary">
+                          {step.kpi}
+                        </dd>
+                      </div>
+                      <div className="rounded-md border border-[var(--border-subtle)] bg-bg-base px-3 py-2">
+                        <dt className="font-mono text-[0.68rem] font-semibold uppercase text-brand">
+                          SLA
+                        </dt>
+                        <dd className="mt-1 text-xs leading-relaxed text-text-secondary">
+                          {step.sla}
+                        </dd>
+                      </div>
+                    </dl>
                   </div>
                 </article>
               );
