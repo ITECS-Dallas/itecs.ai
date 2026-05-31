@@ -13,6 +13,7 @@ import { Heritage } from "@/components/sections/Heritage";
 import { MethodologySteps } from "@/components/sections/MethodologySteps";
 import { OutcomesProof } from "@/components/sections/OutcomesProof";
 import { SecurityGovernanceBand } from "@/components/sections/SecurityGovernanceBand";
+import { Testimonials } from "@/components/sections/Testimonials";
 import { ManagedITReferral } from "@/components/sections/ManagedITReferral";
 import { StatsBar } from "@/components/sections/StatsBar";
 import { LocalFootprint } from "@/components/sections/LocalFootprint";
@@ -51,6 +52,7 @@ export default function HomePage() {
       <MethodologySteps />
       <OutcomesProof />
       <SecurityGovernanceBand />
+      <Testimonials />
       <FeatureShowcase features={HOMEPAGE_FEATURES} />
       <ManagedITReferral />
       <StatsBar />

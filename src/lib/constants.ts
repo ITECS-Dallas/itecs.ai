@@ -2551,6 +2551,47 @@ export const SECURITY_GOVERNANCE_BAND = {
 } as const;
 
 // ---------------------------------------------------------------------------
+// Homepage testimonials — public, sourced excerpts only
+// ---------------------------------------------------------------------------
+
+export const HOMEPAGE_TESTIMONIALS = {
+  eyebrow: "Client Voice",
+  title: "Public client commentary from ITECS case studies.",
+  description:
+    "These excerpts are sourced from published ITECS case studies. Where the source names only a role and company, the site preserves that attribution without inventing a person name.",
+  testimonials: [
+    {
+      quote:
+        "The ITECS team provided an innovative solution to what seemed like an impossible challenge.",
+      name: "Dan",
+      title: "CEO",
+      company: "Pegasus Foods, Inc.",
+      sourceHref:
+        "https://itecsonline.com/white-papers-case-studies/pegasus-foods-white-paper",
+      sourceLabel: "Pegasus Foods case study",
+    },
+    {
+      quote:
+        "Their team provides the technical expertise we need without the overhead of additional full-time staff.",
+      title: "IT Manager",
+      company: "Bob Evans Farms",
+      sourceHref:
+        "https://itecsonline.com/white-papers-case-studies/how-itecs-elevated-bob-evans-farms",
+      sourceLabel: "Bob Evans Farms case study",
+    },
+    {
+      quote:
+        "Their thorough analysis and practical recommendations gave us confidence in our technology decisions.",
+      title: "IT Director",
+      company: "Miller Brewing Company",
+      sourceHref:
+        "https://itecsonline.com/white-papers-case-studies/rds-implementation-planning-miller-brewings",
+      sourceLabel: "Miller Brewing case study",
+    },
+  ],
+} as const;
+
+// ---------------------------------------------------------------------------
 // Team
 // ---------------------------------------------------------------------------
 
