@@ -4,6 +4,7 @@ import { FAQ_ITEMS, HOMEPAGE_FEATURES } from "@/lib/constants";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Hero } from "@/components/sections/Hero";
 import { TrustBar } from "@/components/sections/TrustBar";
+import { ThirdPartyValidation } from "@/components/sections/ThirdPartyValidation";
 import { AIAdoptionUnderstanding } from "@/components/sections/AIAdoptionUnderstanding";
 import { AIPricingPreview } from "@/components/sections/AIPricingPreview";
 import { AIPracticeAreas } from "@/components/sections/AIPracticeAreas";
@@ -46,6 +47,7 @@ export default function HomePage() {
     <>
       <Hero />
       <TrustBar />
+      <ThirdPartyValidation />
       <AIAdoptionUnderstanding />
       <AIPricingPreview />
       <AIPracticeAreas />

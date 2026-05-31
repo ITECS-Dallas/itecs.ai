@@ -2657,6 +2657,56 @@ export const HOMEPAGE_TESTIMONIALS = {
 } as const;
 
 // ---------------------------------------------------------------------------
+// Third-party validation — surfaced only when public proof exists
+// ---------------------------------------------------------------------------
+
+export const THIRD_PARTY_VALIDATION = {
+  eyebrow: "Third-Party Validation",
+  title: "Independent proof signals buyers can verify.",
+  description:
+    "These badges and review metrics are sourced from public ITECS pages or third-party coverage, so procurement teams can inspect the proof behind the signal.",
+  items: [
+    {
+      label: "4.9/5",
+      title: "Google rating",
+      detail: "54+ local reviews surfaced on public ITECS managed IT pages.",
+      sourceHref: "https://itecsonline.com/collection/frontpage",
+      sourceLabel: "View Google review proof",
+    },
+    {
+      label: "4.9/5",
+      title: "G2 B2B reviews",
+      detail: "11 B2B reviews referenced on the public ITECS managed IT site.",
+      sourceHref: "https://itecsonline.com/",
+      sourceLabel: "View B2B review proof",
+    },
+    {
+      label: "PRNewswire",
+      title: "Anniversary coverage",
+      detail:
+        "Newswire coverage documents ITECS as a Dallas-Fort Worth managed-services provider founded in 2002.",
+      sourceHref:
+        "https://www.prnewswire.com/news-releases/dallas-it-firm-itecs-celebrates-23-years-of-technology-excellence-in-dallas-fort-worth-302630228.html",
+      sourceLabel: "Read PRNewswire coverage",
+    },
+    {
+      label: "Top MSP 2024",
+      title: "Public proof badge",
+      detail: "Public ITECS proof strip includes Top MSP 2024.",
+      sourceHref: "https://itecsonline.com/",
+      sourceLabel: "View public proof strip",
+    },
+    {
+      label: "BusinessRate Best of 2026",
+      title: "Public proof badge",
+      detail: "Public ITECS proof strip includes BusinessRate Best of 2026.",
+      sourceHref: "https://itecsonline.com/",
+      sourceLabel: "View public proof strip",
+    },
+  ],
+} as const;
+
+// ---------------------------------------------------------------------------
 // Team
 // ---------------------------------------------------------------------------
 
