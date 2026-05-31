@@ -2322,8 +2322,7 @@ export const INSIGHTS_FAQ = [
 export const STATS = [
   { value: 24, suffix: "+", label: "Years of IT Operations" },
   { value: 92, suffix: "%", label: "Client Retention Rate" },
-  { value: 500, suffix: "+", label: "Dallas Endpoints Managed" },
-  { value: 20, suffix: "+", label: "Hours Saved per Client Weekly" },
+  { value: 200, suffix: "+", label: "Client Engagements" },
 ] as const;
 
 // ---------------------------------------------------------------------------
@@ -2373,19 +2372,19 @@ export const FAQ_ITEMS = [
 // ---------------------------------------------------------------------------
 
 export const CLIENT_LOGOS = [
-  { name: "Ad Pages", src: "/images/clients/adpages.webp", width: 162, height: 28 },
   { name: "Phoenix Capital", src: "/images/clients/phoenix-capital.webp", width: 129, height: 35 },
-  { name: "Sterling Family Partners", src: "/images/clients/sterling-family-partners.webp", width: 154, height: 34 },
   { name: "First Choice Containers", src: "/images/clients/first-choice-containers.webp", width: 100, height: 44 },
   { name: "BURNCO", src: "/images/clients/burnco-logo.webp", width: 197, height: 32 },
+  { name: "Ad Pages", src: "/images/clients/adpages.webp", width: 162, height: 28 },
+  { name: "Sterling Family Partners", src: "/images/clients/sterling-family-partners.webp", width: 154, height: 34 },
 ] as const;
 
 export const PARTNER_LOGOS = [
-  { name: "Microsoft Azure", src: "/images/partners/azure.svg", width: 168, height: 32 },
   { name: "Microsoft", src: "/images/partners/microsoft.svg", width: 153, height: 32 },
+  { name: "Microsoft Azure", src: "/images/partners/azure.svg", width: 168, height: 32 },
+  { name: "Microsoft Copilot", src: "/images/partners/copilot.svg", width: 103, height: 32 },
   { name: "Claude", src: "/images/partners/claude.svg", width: 129, height: 32 },
   { name: "OpenAI", src: "/images/partners/openai.svg", width: 132, height: 32 },
-  { name: "Microsoft Copilot", src: "/images/partners/copilot.svg", width: 103, height: 32 },
   { name: "Sophos", src: "/images/partners/sophos.svg", width: 101, height: 32 },
 ] as const;
 
