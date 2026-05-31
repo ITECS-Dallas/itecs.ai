@@ -2391,39 +2391,58 @@ export const PARTNER_LOGOS = [
 export const CERTIFICATION_BADGES = [
   {
     label: "Microsoft Solutions Partner",
-    detail: "Microsoft ecosystem delivery and advisory partner.",
+    detail:
+      "Infrastructure and Digital & App Innovation workload status documented on the ITECS managed Azure page.",
+    sourceHref: "https://itecsonline.com/managed-cloud/managed-azure-cloud",
+    sourceLabel: "Verify Microsoft workloads",
   },
   {
     label: "Azure",
-    detail: "Microsoft Azure cloud and AI infrastructure experience.",
+    detail: "Microsoft Azure cloud, migration, and managed infrastructure experience.",
+    sourceHref: "https://itecsonline.com/managed-cloud/managed-azure-cloud",
+    sourceLabel: "Verify Azure expertise",
   },
   {
     label: "SOC 2 Type II",
-    detail: "Security and operational control framework.",
+    detail: "Security and operational control framework listed in ITECS certification proof.",
+    sourceHref:
+      "https://itecsonline.com/msp-industries/it-support-cybersecurity-manufacturing",
+    sourceLabel: "Verify SOC 2 listing",
   },
   {
     label: "CMMC",
-    detail: "Cybersecurity maturity model alignment.",
+    detail: "CMMC readiness and registered-provider compliance support.",
+    sourceHref: "https://itecsonline.com/cmmc-compliance",
+    sourceLabel: "Verify CMMC support",
   },
   {
     label: "ISO 27001",
-    detail: "Information security management framework.",
+    detail: "Information security management framework listed in ITECS certification proof.",
+    sourceHref:
+      "https://itecsonline.com/msp-industries/it-support-cybersecurity-manufacturing",
+    sourceLabel: "Verify ISO 27001 listing",
   },
   {
-    label: "Sophos",
-    detail: "Security platform partner.",
+    label: "Sophos Gold Partner",
+    detail: "Gold-tier security platform partner status surfaced on ITECS managed IT pages.",
+    sourceHref: "https://itecsonline.com/",
+    sourceLabel: "Verify Sophos status",
   },
   {
     label: "Veeam",
-    detail: "Backup and resilience platform partner.",
+    detail: "Backup and resilience platform used in the managed security stack.",
+    sourceHref: "https://itecsonline.com/it-services/backup-disaster-recovery",
+    sourceLabel: "Verify Veeam stack",
   },
   {
     label: "Fortinet",
-    detail: "Network security platform partner.",
+    detail: "Network security platform partner status listed on ITECS legal IT pages.",
+    sourceHref: "https://itecsonline.com/msp-industries/managed-it-services-lawfirms",
+    sourceLabel: "Verify Fortinet listing",
   },
   {
     label: "CompTIA",
-    detail: "IT industry certification ecosystem.",
+    detail: "IT industry certification ecosystem carried from confirmed ITECS credential list.",
   },
 ] as const;
 
