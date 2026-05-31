@@ -2,6 +2,7 @@ import {
   SITE_CONFIG,
   SERVICES,
   AI_SEO_TIERS,
+  MIP_DEFINITION_CAPABILITIES,
   type ServiceItem,
   type AISEOTier,
   type AISEOOverview,
@@ -152,8 +153,8 @@ export function generateOrganizationSchema() {
 
 // ---------------------------------------------------------------------------
 // LocalBusiness (global — injected in root layout)
-// Per Google SEO report: use LocalBusiness (not Corporation) for SMB proximity
-// citations, with parentOrganization tie to itecsonline.com for authority transfer
+// Per Google SEO report: use LocalBusiness (not Corporation) for DFW proximity
+// citations, with parentOrganization tie to itecsonline.com for authority transfer.
 // ---------------------------------------------------------------------------
 
 export function generateLocalBusinessSchema() {
@@ -166,7 +167,7 @@ export function generateLocalBusinessSchema() {
     alternateName: ["ITECS", "iTecs"],
     url: SITE_CONFIG.url,
     description:
-      "Practical AI automation, custom AI agent development, and AI consulting for small to medium businesses (SMBs) in Dallas, TX.",
+      "Practical AI automation, custom AI agent development, managed intelligence, and AI consulting for Dallas mid-market and enterprise organizations with 10-300 employees.",
     telephone: SITE_CONFIG.phoneE164,
     email: SITE_CONFIG.email,
     image: `${SITE_CONFIG.url}/images/logos/itecs-horizontal.svg`,
@@ -189,7 +190,8 @@ export function generateLocalBusinessSchema() {
       foundingDate: String(SITE_CONFIG.foundingYear),
     },
     knowsAbout: [
-      "Small Business AI Consulting",
+      "Managed Intelligence Provider",
+      "Enterprise AI Consulting",
       "Custom AI Agents for Business",
       "AI Workflow Automation",
       "Employee AI Training",
@@ -254,7 +256,7 @@ export function generateLocalBusinessSchema() {
     },
     hasOfferCatalog: {
       "@type": "OfferCatalog",
-      name: "Small Business AI Services",
+      name: "Managed AI Services",
       itemListElement: SERVICES.map((s) => ({
         "@type": "Offer",
         itemOffered: {
@@ -405,6 +407,49 @@ export function generateNationalServiceSchema(service: {
     },
     serviceType: service.shortTitle,
     category: service.keywords ?? ["Manufacturing AI"],
+  };
+}
+
+export function generateManagedIntelligenceProviderServiceSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": `${SITE_CONFIG.url}/managed-intelligence-provider#service`,
+    name: "Managed Intelligence Provider",
+    alternateName: ["MIP", "Managed AI Operations"],
+    description: MIP_DEFINITION_CAPABILITIES.definition,
+    url: `${SITE_CONFIG.url}/managed-intelligence-provider`,
+    provider: generateProviderReference(),
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${SITE_CONFIG.url}/managed-intelligence-provider`,
+    },
+    areaServed: [
+      { "@type": "City", name: "Dallas" },
+      { "@type": "City", name: "Plano" },
+      { "@type": "Place", name: "Dallas-Fort Worth" },
+      { "@type": "Country", name: "United States" },
+    ],
+    audience: {
+      "@type": "BusinessAudience",
+      audienceType:
+        "Mid-market and enterprise organizations with 10-300 employees",
+    },
+    serviceType: "Managed Intelligence Provider",
+    category: [
+      "Managed AI operations",
+      "AI governance",
+      "AI agent operations",
+      "Workflow automation",
+      "Executive AI reporting",
+    ],
+    offers: {
+      "@type": "Offer",
+      name: "AI Readiness Assessment",
+      url: `${SITE_CONFIG.url}/assessment`,
+      availability: "https://schema.org/InStock",
+      seller: generateProviderReference(),
+    },
   };
 }
 

@@ -26,7 +26,7 @@ const service = SERVICES.find((s) => s.slug === "automation")!;
 export const metadata = generatePageMetadata({
   title: "AI Workflow Automation for Small Business in Dallas",
   description:
-    "Automate lead follow-ups, data entry, and scheduling for your Dallas business. 40% cost reduction, 99.9% uptime. Managed by a 24-year MSP. From $2,500.",
+    "Automate lead follow-ups, data entry, and scheduling for your Dallas business with managed implementation support from a 24-year MSP. From $2,500.",
   path: service.href,
   keywords: service.keywords,
 });

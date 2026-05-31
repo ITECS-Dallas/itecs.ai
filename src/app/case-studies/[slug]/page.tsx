@@ -67,6 +67,7 @@ export default async function CaseStudyDetailPage({
       <article className="py-16 md:py-24">
         <div className="mx-auto max-w-5xl px-6 md:px-8">
           <SectionHeading
+            as="h1"
             eyebrow={caseStudy.label}
             title={`${caseStudy.client}: ${caseStudy.outcome}`}
             description={caseStudy.summary}

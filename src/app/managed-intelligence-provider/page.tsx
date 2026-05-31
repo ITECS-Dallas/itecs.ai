@@ -1,5 +1,8 @@
 import { generatePageMetadata } from "@/lib/metadata";
-import { generateFAQSchema } from "@/lib/seo";
+import {
+  generateFAQSchema,
+  generateManagedIntelligenceProviderServiceSchema,
+} from "@/lib/seo";
 import { MIP_ENTERPRISE_FAQ } from "@/lib/constants";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
@@ -75,6 +78,7 @@ export default function ManagedIntelligenceProviderPage() {
       <ConversionBand />
 
       {/* JSON-LD Schema — FAQPage with verbatim parity */}
+      <JsonLd data={generateManagedIntelligenceProviderServiceSchema()} />
       <JsonLd data={generateFAQSchema(MIP_ENTERPRISE_FAQ)} />
     </>
   );
