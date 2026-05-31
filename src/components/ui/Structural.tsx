@@ -71,8 +71,8 @@ export interface ComparisonRow {
 }
 
 interface ComparisonTableProps {
-  columns: ComparisonColumn[];
-  rows: ComparisonRow[];
+  columns: readonly ComparisonColumn[];
+  rows: readonly ComparisonRow[];
   caption?: ReactNode;
   className?: string;
 }
@@ -95,8 +95,8 @@ const eyebrowToneClasses: Record<Required<EyebrowProps>["tone"], string> = {
 const comparisonToneClasses: Record<ComparisonTone, string> = {
   default: "text-text-secondary",
   brand: "text-brand-hover",
-  success: "text-success",
-  muted: "text-text-disabled",
+  success: "text-[var(--success)]",
+  muted: "text-[var(--text-disabled)]",
 };
 
 function joinClasses(...classes: Array<string | false | null | undefined>) {
@@ -379,11 +379,11 @@ export function ComparisonTable({
 }: ComparisonTableProps) {
   return (
     <div className={joinClasses("overflow-x-auto rounded-lg border border-[var(--border-default)]", className)}>
-      <table className="min-w-full border-collapse bg-bg-surface text-left text-sm">
+      <table className="min-w-[720px] border-collapse bg-bg-surface text-left text-sm">
         {caption ? <caption className="sr-only">{caption}</caption> : null}
         <thead className="sticky top-0 z-10 bg-bg-elevated text-text-primary">
           <tr>
-            <th scope="col" className="border-b border-[var(--border-default)] px-5 py-4 font-semibold">
+            <th scope="col" className="sticky left-0 z-20 border-b border-[var(--border-default)] bg-bg-elevated px-5 py-4 font-semibold shadow-[1px_0_0_var(--border-default)]">
               Capability
             </th>
             {columns.map((column) => (
@@ -398,34 +398,41 @@ export function ComparisonTable({
           </tr>
         </thead>
         <tbody>
-          {rows.map((row, rowIndex) => (
-            <tr
-              key={rowIndex}
-              className={joinClasses(rowIndex % 2 === 0 ? "bg-bg-surface" : "bg-bg-sunken")}
-            >
-              <th scope="row" className="px-5 py-4 font-semibold text-text-primary">
-                {row.label}
-              </th>
-              {columns.map((column, columnIndex) => {
-                const cell = row.cells[columnIndex];
-                const structuredCell = isStructuredCell(cell);
-                const value = structuredCell ? cell.value : cell;
-                const tone = structuredCell ? cell.tone ?? "default" : "default";
+          {rows.map((row, rowIndex) => {
+            const rowBg = rowIndex % 2 === 0 ? "bg-bg-surface" : "bg-bg-sunken";
 
-                return (
-                  <td
-                    key={column.id}
-                    className={joinClasses(
-                      "px-5 py-4",
-                      comparisonToneClasses[tone],
-                    )}
-                  >
-                    {value}
-                  </td>
-                );
-              })}
-            </tr>
-          ))}
+            return (
+              <tr key={rowIndex} className={rowBg}>
+                <th
+                  scope="row"
+                  className={joinClasses(
+                    "sticky left-0 z-10 px-5 py-4 font-semibold text-text-primary shadow-[1px_0_0_var(--border-default)]",
+                    rowBg,
+                  )}
+                >
+                  {row.label}
+                </th>
+                {columns.map((column, columnIndex) => {
+                  const cell = row.cells[columnIndex];
+                  const structuredCell = isStructuredCell(cell);
+                  const value = structuredCell ? cell.value : cell;
+                  const tone = structuredCell ? cell.tone ?? "default" : "default";
+
+                  return (
+                    <td
+                      key={column.id}
+                      className={joinClasses(
+                        "px-5 py-4",
+                        comparisonToneClasses[tone],
+                      )}
+                    >
+                      {value}
+                    </td>
+                  );
+                })}
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </div>

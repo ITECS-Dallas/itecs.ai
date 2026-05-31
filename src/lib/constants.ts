@@ -3009,6 +3009,49 @@ export const MIP_DEFINITION_CAPABILITIES = {
   ],
 } as const;
 
+export const MIP_COMPARISON = {
+  eyebrow: "MSP vs. MIP",
+  title: "What changes when managed intelligence is added to the operating model.",
+  description:
+    "A traditional MSP keeps the technology estate healthy. A Managed Intelligence Provider adds the governance, operations, and executive visibility required to keep AI useful after launch.",
+  columns: [
+    { id: "msp", label: "Traditional MSP" },
+    { id: "mip", label: "Managed Intelligence Provider" },
+  ],
+  rows: [
+    {
+      label: "Infrastructure operations",
+      msp: { mark: "✓", detail: "Servers, endpoints, cloud, backup, helpdesk" },
+      mip: { mark: "✓", detail: "Included as the operating foundation" },
+    },
+    {
+      label: "Security operations",
+      msp: { mark: "✓", detail: "Often included or added through MSSP scope" },
+      mip: { mark: "✓", detail: "Built into AI policy, identity, and controls" },
+    },
+    {
+      label: "AI agent operations",
+      msp: { mark: "—", detail: "Usually outside the support model" },
+      mip: { mark: "✓", detail: "Agents are documented, monitored, and supported" },
+    },
+    {
+      label: "Model governance",
+      msp: { mark: "—", detail: "Tool choice is left to teams or vendors" },
+      mip: { mark: "✓", detail: "Approved models, prompts, and review cadence" },
+    },
+    {
+      label: "Workflow optimization",
+      msp: { mark: "—", detail: "Limited to tickets or application support" },
+      mip: { mark: "✓", detail: "AI workflows are tuned against business outcomes" },
+    },
+    {
+      label: "Reporting / vCIO",
+      msp: { mark: "✓", detail: "Technology roadmap and support reporting" },
+      mip: { mark: "✓", detail: "AI adoption, risk, spend, and opportunity reporting" },
+    },
+  ],
+} as const;
+
 // ---------------------------------------------------------------------------
 // Homepage: Local Dallas footprint — DFW metro cities for local SEO
 // ---------------------------------------------------------------------------

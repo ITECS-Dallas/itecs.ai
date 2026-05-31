@@ -6,6 +6,7 @@ import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { MIPHero } from "./MIPHero";
 import { MIPEvolutionDiagram } from "@/components/sections/MIPEvolutionDiagram";
 import { MIPDefinitionCapabilities } from "@/components/sections/MIPDefinitionCapabilities";
+import { MIPComparison } from "@/components/sections/MIPComparison";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { SecurityGuarantee } from "@/components/sections/SecurityGuarantee";
 import { StatsBar } from "@/components/sections/StatsBar";
@@ -164,16 +165,19 @@ export default function ManagedIntelligenceProviderPage() {
       {/* 3. What Managed Intelligence means */}
       <MIPDefinitionCapabilities />
 
-      {/* 4. How It Works — semantic ol/li numbered workflow */}
+      {/* 4. MSP vs. MIP comparison */}
+      <MIPComparison />
+
+      {/* 5. How It Works — semantic ol/li numbered workflow */}
       <HowItWorks
         steps={MIP_HOW_IT_WORKS}
         heading="How Managed Intelligence Works at ITECS"
       />
 
-      {/* 5. Company stats */}
+      {/* 6. Company stats */}
       <StatsBar />
 
-      {/* 6. Enterprise-Grade Security */}
+      {/* 7. Enterprise-Grade Security */}
       <SecurityGuarantee
         description="A managed intelligence provider handles your most sensitive business data — customer records, financial documents, internal SOPs. ITECS treats AI security with the same rigor we apply to network security, backed by 24 years of cybersecurity operations as a Dallas MSSP."
         points={[
@@ -192,10 +196,10 @@ export default function ManagedIntelligenceProviderPage() {
         }}
       />
 
-      {/* 7. FAQ */}
+      {/* 8. FAQ */}
       <FAQ items={MIP_FAQ} heading="Managed Intelligence Provider FAQ" />
 
-      {/* 8. Final CTA */}
+      {/* 9. Final CTA */}
       <CTASection />
 
       {/* JSON-LD Schema — FAQPage with verbatim parity */}
