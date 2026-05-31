@@ -32,11 +32,16 @@ export function ScrollReveal({
   amount = 0.3,
 }: ScrollRevealProps) {
   const offset = directionOffset[direction];
+  const visibleTransform = {
+    opacity: 1,
+    x: offset.x * distance * 0,
+    y: offset.y * distance * 0,
+  };
 
   return (
     <motion.div
-      initial={{ opacity: 1, x: offset.x * distance * 0, y: offset.y * distance * 0 }}
-      whileInView={{ opacity: 1, x: 0, y: 0 }}
+      initial={false}
+      whileInView={visibleTransform}
       viewport={{ once, amount }}
       transition={{ duration, delay, ease: [0.25, 0.1, 0.25, 1] as [number, number, number, number] }}
       className={className}
