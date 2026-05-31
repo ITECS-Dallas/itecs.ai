@@ -178,6 +178,7 @@ export function InsightArticleLayout({
                   width={1600}
                   height={900}
                   priority
+                  sizes="(min-width: 1024px) 896px, calc(100vw - 48px)"
                   className="aspect-video w-full object-cover"
                 />
               </div>
