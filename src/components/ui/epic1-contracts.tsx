@@ -15,6 +15,15 @@ import {
   TextAreaField,
   TextField,
 } from "@/components/ui/FormControls";
+import {
+  Accordion,
+  Badge,
+  ComparisonTable,
+  Eyebrow,
+  LiveIndicator,
+  SectionDivider,
+  Tabs,
+} from "@/components/ui/Structural";
 
 export function Epic1ComponentContracts() {
   return (
@@ -99,6 +108,37 @@ export function Epic1ComponentContracts() {
         required
       />
       <FormStatus tone="success" message="Your request was sent." />
+      <Eyebrow tone="brand">Dallas managed intelligence</Eyebrow>
+      <Badge tone="success">Governed</Badge>
+      <SectionDivider variant="grid" />
+      <LiveIndicator label="Live" />
+      <Accordion
+        items={[
+          { id: "security", title: "How is data protected?", content: "ITECS applies governed access and monitoring." },
+          { id: "ownership", title: "Who owns the workflow?", content: "The client retains approved business logic." },
+        ]}
+      />
+      <Tabs
+        items={[
+          { id: "solutions", label: "Solutions", content: "AI agents, automation, and governance." },
+          { id: "industries", label: "Industries", content: "Manufacturing, professional services, and healthcare." },
+        ]}
+      />
+      <ComparisonTable
+        columns={[
+          { id: "msp", label: "MSP" },
+          { id: "mip", label: "MIP" },
+        ]}
+        rows={[
+          {
+            label: "AI operations",
+            cells: [
+              { value: "Limited", tone: "muted" },
+              { value: "Managed", tone: "success" },
+            ],
+          },
+        ]}
+      />
     </div>
   );
 }
