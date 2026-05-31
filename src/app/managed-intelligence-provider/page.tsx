@@ -5,7 +5,7 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { MIPHero } from "./MIPHero";
 import { MIPEvolutionDiagram } from "@/components/sections/MIPEvolutionDiagram";
-import { ServiceJourneyDiagram } from "@/components/sections/ServiceJourneyDiagram";
+import { MIPDefinitionCapabilities } from "@/components/sections/MIPDefinitionCapabilities";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { SecurityGuarantee } from "@/components/sections/SecurityGuarantee";
 import { StatsBar } from "@/components/sections/StatsBar";
@@ -161,8 +161,8 @@ export default function ManagedIntelligenceProviderPage() {
       {/* 2. MSP → MSSP → MIP evolution */}
       <MIPEvolutionDiagram />
 
-      {/* 3. AI Services under the MIP umbrella */}
-      <ServiceJourneyDiagram />
+      {/* 3. What Managed Intelligence means */}
+      <MIPDefinitionCapabilities />
 
       {/* 4. How It Works — semantic ol/li numbered workflow */}
       <HowItWorks

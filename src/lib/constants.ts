@@ -2901,7 +2901,7 @@ export const MIP_PAGE_HERO = {
   },
   secondaryCta: {
     label: "Explore Managed AI",
-    href: "#mip-evolution",
+    href: "#what-managed-intelligence-means",
   },
   proof: [
     {
@@ -2967,6 +2967,47 @@ export const MIP_EVOLUTION_TIMELINE = [
     tone: "cyan",
   },
 ] as const;
+
+export const MIP_DEFINITION_CAPABILITIES = {
+  eyebrow: "Managed AI Workforce",
+  title: 'What Managed Intelligence means',
+  definition:
+    "Managed Intelligence is the operating model for putting AI agents, automations, data workflows, and model governance into production without handing business-critical decisions to unmanaged tools.",
+  workforce:
+    "The managed-AI workforce concept is practical: each AI workflow has an approved job, data boundary, owner, quality threshold, escalation path, and executive reporting loop.",
+  capabilities: [
+    {
+      title: "Agent operations",
+      description:
+        "Production agents are deployed with named owners, documented prompts, approved tools, release notes, and support paths.",
+    },
+    {
+      title: "Monitoring",
+      description:
+        "Usage, latency, errors, retrieval quality, cost, and exception patterns are reviewed so AI work remains visible.",
+    },
+    {
+      title: "Optimization",
+      description:
+        "Prompts, models, workflows, and integrations are tuned as business priorities, vendor capabilities, and user behavior change.",
+    },
+    {
+      title: "Governance",
+      description:
+        "Policies, approval thresholds, identity access, model selection, evidence trails, and review cadence are managed from the start.",
+    },
+    {
+      title: "Security",
+      description:
+        "Data boundaries, tenant isolation, vendor risk, retention, human review, and regulated-workflow controls are designed into delivery.",
+    },
+    {
+      title: "Reporting / vCIO",
+      description:
+        "Executives get plain-English visibility into adoption, risks, spend, workflow health, and where the next AI investment should go.",
+    },
+  ],
+} as const;
 
 // ---------------------------------------------------------------------------
 // Homepage: Local Dallas footprint — DFW metro cities for local SEO
