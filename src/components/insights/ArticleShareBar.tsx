@@ -72,7 +72,7 @@ export function ArticleShareBar({ title, url }: ArticleShareBarProps) {
               href={href}
               target={label === "Email" ? undefined : "_blank"}
               rel={label === "Email" ? undefined : "noopener noreferrer"}
-              className="inline-flex h-10 items-center gap-2 rounded-md border border-[var(--border-subtle)] px-3 text-sm text-text-secondary transition-colors hover:border-[var(--border-active)] hover:text-brand-accent"
+              className="inline-flex min-h-11 items-center gap-2 rounded-md border border-[var(--border-subtle)] px-3 text-sm text-text-secondary transition-colors hover:border-[var(--border-active)] hover:text-brand-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base"
               aria-label={`Share on ${label}`}
             >
               <Icon className="h-4 w-4" aria-hidden="true" />
@@ -83,7 +83,7 @@ export function ArticleShareBar({ title, url }: ArticleShareBarProps) {
           <button
             type="button"
             onClick={copyUrl}
-            className="inline-flex h-10 items-center gap-2 rounded-md border border-[var(--border-subtle)] px-3 text-sm text-text-secondary transition-colors hover:border-[var(--border-active)] hover:text-brand-accent"
+            className="inline-flex min-h-11 items-center gap-2 rounded-md border border-[var(--border-subtle)] px-3 text-sm text-text-secondary transition-colors hover:border-[var(--border-active)] hover:text-brand-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base"
             aria-label="Copy article link"
           >
             {copied ? (

@@ -7,7 +7,9 @@ custom AI agents, AI security compliance, and AI-optimized SEO services.
 
 ## Services
 - AI Consulting & Strategy — Readiness assessments, ROI modeling, governance
-- Managed AI Operations — 24/7 model monitoring, drift detection, MLOps
+- Managed Intelligence Provider — governed AI agents, automations, model
+  governance, monitoring, optimization, security, and executive reporting
+  URL: https://itecs.ai/managed-intelligence-provider
 - Custom AI Agents — Claude, ChatGPT, Codex, RAG, and workflow agents
 - AI Security & Compliance — HIPAA, SOX, FINRA alignment, PHI/PII redaction
 - AI-Optimized SEO & GEO — Generative engine optimization, AI search

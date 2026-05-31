@@ -23,13 +23,13 @@ const stages = [
     icon: BrainCircuit,
     label: "Analyze",
     detail: "Risks, gaps, opportunities",
-    color: "var(--brand-purple)",
+    color: "var(--brand-hover)",
   },
   {
     icon: FileCheck,
     label: "Report",
     detail: "Prioritized action items",
-    color: "var(--brand-purple)",
+    color: "var(--brand-hover)",
   },
   {
     icon: Users,
@@ -114,7 +114,7 @@ export function DataAuditDiagram() {
         position={{ top: "30%", left: "5%" }}
       />
       <GradientOrb
-        color="purple"
+        color="brand"
         size="sm"
         position={{ bottom: "20%", right: "10%" }}
       />

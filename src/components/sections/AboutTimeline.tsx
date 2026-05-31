@@ -81,7 +81,7 @@ function TimelineNode({
             className="absolute w-10 h-10 rounded-full"
             style={{
               background:
-                "radial-gradient(circle, rgba(6,182,212,0.3) 0%, transparent 70%)",
+                "radial-gradient(circle, var(--accent-cyan-subtle) 0%, transparent 70%)",
             }}
             animate={
               inView

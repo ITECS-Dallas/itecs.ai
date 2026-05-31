@@ -9,16 +9,16 @@ import { FAQ } from "@/components/sections/FAQ";
 import { CTASection } from "@/components/sections/CTASection";
 
 export const metadata = generatePageMetadata({
-  title: "AI Insights & Guides for Dallas Small Businesses",
+  title: "AI Insights & Guides for Dallas Business Leaders",
   description:
     "Practical AI guides for Dallas business owners with 10–300 employees. Learn how to use ChatGPT safely, automate lead follow-up, and deploy AI tools — written by IT veterans, not marketers.",
   path: "/insights",
   keywords: [
-    "AI guides for small business",
-    "how to use AI small business",
+    "AI guides for business leaders",
+    "how to use AI in business",
     "ChatGPT for business guide",
     "AI automation guide Dallas",
-    "small business AI tips",
+    "AI adoption guidance",
     "AI security for business",
   ],
 });

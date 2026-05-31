@@ -30,7 +30,7 @@ interface SecurityGuaranteeProps {
 const icons = [Shield, Lock, ServerCrash, Eye];
 
 export function SecurityGuarantee({
-  title = "Enterprise-Grade Security for SMB Data",
+  title = "Enterprise-Grade Security for Business Data",
   points,
   internalLink,
   externalLink,
@@ -85,7 +85,7 @@ export function SecurityGuarantee({
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-6 text-sm">
             <Link
               href={internalLink.href}
-              className="text-brand-accent hover:text-brand-accent-bright transition-colors"
+              className="inline-flex min-h-11 items-center text-brand-accent transition-colors hover:text-brand-accent-bright focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-surface"
             >
               {internalLink.text} &rarr;
             </Link>
@@ -94,7 +94,7 @@ export function SecurityGuarantee({
               href={externalLink.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-text-secondary hover:text-text-primary transition-colors"
+              className="inline-flex min-h-11 items-center text-text-secondary transition-colors hover:text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-surface"
             >
               {externalLink.text} &nearr;
             </a>

@@ -44,7 +44,7 @@ const phases = [
     phase: "02",
     label: "Build",
     tagline: "Deploy solutions",
-    color: "var(--brand-purple)",
+    color: "var(--brand-hover)",
     services: [
       {
         icon: Bot,
@@ -88,7 +88,7 @@ const phases = [
     phase: "03",
     label: "Scale",
     tagline: "Train your team",
-    color: "var(--brand-accent-bright, #22d3ee)",
+    color: "var(--brand-accent-bright, var(--accent-cyan))",
     services: [
       {
         icon: GraduationCap,

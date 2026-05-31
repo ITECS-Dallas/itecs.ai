@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import { Geist, Geist_Mono } from "next/font/google";
-import { AnnouncementBar } from "@/components/layout/AnnouncementBar";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { AnalyticsConsent } from "@/components/analytics/AnalyticsConsent";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { SITE_CONFIG } from "@/lib/constants";
 import {
@@ -23,7 +22,7 @@ const geistMono = Geist_Mono({
 });
 
 const defaultTitle =
-  "Dallas AI Consulting & Automation for Small Business | ITECS AI";
+  "Dallas Managed AI Consulting & Automation | ITECS AI";
 const defaultDescription = SITE_CONFIG.description;
 const defaultOgImage = `${SITE_CONFIG.url}/images/logos/itecs-horizontal.svg`;
 
@@ -36,7 +35,7 @@ export const metadata: Metadata = {
   },
   description: defaultDescription,
   keywords: [
-    "small business AI Dallas",
+    "managed AI consulting Dallas",
     "AI consulting Dallas",
     "custom AI agents Dallas",
     "AI automation Dallas",
@@ -85,18 +84,6 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} dark`}
     >
       <head>
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-J49FJ2JM1N"
-          strategy="afterInteractive"
-        />
-        <Script id="gtag-init" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-J49FJ2JM1N');
-          `}
-        </Script>
         <JsonLd data={generateOrganizationSchema()} />
         <JsonLd data={generateLocalBusinessSchema()} />
         <meta
@@ -150,12 +137,12 @@ export default function RootLayout({
         >
           Skip to content
         </a>
-        <AnnouncementBar />
         <Header />
         <main id="main-content" className="flex-1">
           {children}
         </main>
         <Footer />
+        <AnalyticsConsent />
       </body>
     </html>
   );

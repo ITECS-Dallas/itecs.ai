@@ -1,20 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { ArrowRight, ChevronDown } from "lucide-react";
+import { STATS } from "@/lib/constants";
 import { Button } from "@/components/ui/Button";
+import { AIOperationsConsole } from "@/components/ui/AIOperationsConsole";
 import { GridBackground } from "@/components/effects/GridBackground";
-import { CircuitTrace } from "@/components/effects/CircuitTrace";
 import { CursorGlow } from "@/components/effects/CursorGlow";
 
-const stagger = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.15, delayChildren: 0.2 } },
-};
-
 const fadeUp = (delay = 0) => ({
-  hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1,
     y: 0,
@@ -23,7 +17,6 @@ const fadeUp = (delay = 0) => ({
 });
 
 const fadeLeft = {
-  hidden: { opacity: 0, x: -20 },
   visible: {
     opacity: 1,
     x: 0,
@@ -33,22 +26,21 @@ const fadeLeft = {
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
+    <section className="relative flex min-h-screen items-center overflow-hidden py-28 md:py-32">
       {/* Background layers */}
       <div className="absolute inset-0">
         <GridBackground opacity={0.04} />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_30%,rgba(6,182,212,0.10),transparent_32%),radial-gradient(circle_at_15%_80%,rgba(16,185,129,0.08),transparent_28%)]" />
+        <div className="absolute inset-0 bg-[image:var(--glow-hero)]" />
         <CursorGlow />
       </div>
 
       {/* Content */}
-      <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-8 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-center">
-          {/* Text — 3/5 width on desktop */}
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-6 md:px-8">
+        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-5">
+          {/* Text - 3/5 width on desktop */}
           <motion.div
             className="lg:col-span-3"
-            variants={stagger}
-            initial="hidden"
+            initial={false}
             animate="visible"
           >
             {/* Eyebrow */}
@@ -57,30 +49,32 @@ export function Hero() {
               className="text-sm font-medium tracking-[0.05em] uppercase text-brand-accent mb-6 flex items-center gap-2"
             >
               <span className="inline-block w-8 h-px bg-brand-accent" />
-              AI Consulting, Training, Security &amp; DevOps
+              DALLAS MANAGED INTELLIGENCE · SINCE 2002
             </motion.p>
 
             {/* H1 */}
             <motion.h1
               variants={fadeUp()}
-              className="text-5xl md:text-7xl font-extralight tracking-normal leading-[1.05]"
+              className="text-[length:var(--fs-display-xl)] font-semibold tracking-normal leading-[1.04]"
             >
-              Secure AI
+              Managed Intelligence for
               <br />
-              <span className="bg-gradient-to-r from-brand-accent to-brand-purple bg-clip-text text-transparent">
-                Strategy, Training
+              <span className="bg-gradient-to-r from-brand to-cyan bg-clip-text text-transparent">
+                Secure AI Operations
               </span>
-              <br />
-              &amp; DevOps
             </motion.h1>
 
             {/* Zero-click block */}
             <motion.p
               variants={fadeUp(0.1)}
-              className="mt-6 text-lg md:text-xl text-text-secondary font-light max-w-xl leading-relaxed"
+              className="mt-6 text-[length:var(--fs-body-l)] text-text-secondary font-normal max-w-xl leading-relaxed"
             >
-              <strong className="text-text-primary font-normal">ITECS helps Dallas businesses turn AI ideas into secure, managed systems</strong>{" "}
-              with consulting, employee training, data protection, workflow automation, and production AI DevOps backed by 24 years of IT operations expertise.
+              <strong className="text-text-primary font-medium">
+                ITECS helps 10-300 employee organizations turn AI adoption into
+                governed, monitored operating systems.
+              </strong>{" "}
+              We combine strategy, training, automation, security, and AI
+              DevOps on top of 24 years of managed IT operations.
             </motion.p>
 
             {/* CTAs */}
@@ -88,59 +82,51 @@ export function Hero() {
               variants={fadeUp(0.2)}
               className="mt-8 flex flex-wrap gap-4"
             >
-              <Button href="/contact" size="lg" icon={<ArrowRight className="h-4 w-4" />}>
-                Schedule Consultation
+              <Button href="/assessment" size="lg" icon={<ArrowRight className="h-4 w-4" />}>
+                Book an AI Readiness Assessment
               </Button>
-              <Button href="/services" variant="secondary" size="lg">
-                Explore Services
+              <Button href="#managed-ai" variant="secondary" size="lg">
+                Explore Managed AI
               </Button>
+            </motion.div>
+
+            <motion.div
+              variants={fadeUp(0.25)}
+              aria-label="Approved ITECS proof points"
+              className="mt-8 grid max-w-2xl grid-cols-3 gap-2 rounded-lg border border-[var(--border-default)] bg-bg-surface/70 p-2 shadow-e1 [box-shadow:var(--elev-1-inset),var(--elev-1)]"
+            >
+              {STATS.map((stat) => (
+                <div
+                  key={stat.label}
+                  className="rounded-md border border-[var(--border-subtle)] bg-bg-elevated px-3 py-3 text-center"
+                >
+                  <p className="font-mono text-lg font-semibold leading-none text-brand-hover md:text-2xl">
+                    {stat.value}
+                    {stat.suffix}
+                  </p>
+                  <p className="mt-1 text-[0.68rem] font-medium uppercase leading-tight text-text-tertiary md:text-xs">
+                    {stat.label}
+                  </p>
+                </div>
+              ))}
             </motion.div>
           </motion.div>
 
-          {/* Image-backed operations visual — 2/5 width on desktop */}
+          {/* Operations console visual - 2/5 width on desktop */}
           <motion.div
             className="lg:col-span-2"
-            initial={{ opacity: 0, x: 28 }}
+            initial={false}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
           >
-            <div className="relative h-[320px] overflow-hidden rounded-lg border border-[var(--border-subtle)] bg-bg-surface shadow-2xl shadow-black/40 md:h-[420px] lg:h-[540px]">
-              <Image
-                src="/images/services/technology-desks.webp"
-                alt="ITECS AI operations workstation with monitored deployment pipelines"
-                fill
-                priority
-                className="object-cover object-center opacity-80"
-                sizes="(min-width: 1024px) 40vw, 100vw"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-bg-void via-bg-void/45 to-transparent" />
-              <CircuitTrace variant="hero" className="absolute inset-0 opacity-45" />
-
-              <div className="absolute inset-x-6 bottom-6 rounded-lg border border-white/10 bg-bg-void/80 p-5 backdrop-blur-xl">
-                <p className="text-xs font-medium uppercase tracking-[0.08em] text-emerald-300">
-                  Managed AI Operations
-                </p>
-                <div className="mt-4 grid grid-cols-3 gap-3">
-                  {[
-                    ["Assess", "roadmap"],
-                    ["Protect", "data"],
-                    ["Operate", "AI stack"],
-                  ].map(([label, value]) => (
-                    <div key={label} className="border-l border-brand-accent/40 pl-3">
-                      <p className="text-sm text-text-primary">{label}</p>
-                      <p className="mt-0.5 text-xs text-text-dim">{value}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
+            <AIOperationsConsole />
           </motion.div>
         </div>
       </div>
 
       {/* Scroll indicator */}
       <motion.div
-        initial={{ opacity: 0 }}
+        initial={false}
         animate={{ opacity: 1 }}
         transition={{ delay: 2 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2"

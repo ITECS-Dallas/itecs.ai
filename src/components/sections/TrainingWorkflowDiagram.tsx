@@ -29,13 +29,13 @@ const stages = [
     icon: Presentation,
     label: "Train",
     detail: "Hands-on workshops, real scenarios",
-    color: "var(--brand-purple)",
+    color: "var(--brand-hover)",
   },
   {
     icon: ShieldCheck,
     label: "Secure",
     detail: "AI usage policies, data safety",
-    color: "var(--brand-purple)",
+    color: "var(--brand-hover)",
   },
   {
     icon: RefreshCw,
@@ -120,7 +120,7 @@ export function TrainingWorkflowDiagram() {
         position={{ top: "25%", left: "5%" }}
       />
       <GradientOrb
-        color="purple"
+        color="brand"
         size="sm"
         position={{ bottom: "15%", right: "8%" }}
       />

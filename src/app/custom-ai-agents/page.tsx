@@ -48,7 +48,7 @@ export default function CustomAIAgentsPage() {
 
       <AIAdoptionUnderstanding />
 
-      {/* 2. SMB Pain Point — validate the DIY agent trap */}
+      {/* 2. Operating pain point — validate the DIY agent trap */}
       <PainPoint
         stat="73%"
         statLabel="of AI experiments never become reliable, governed business workflows"

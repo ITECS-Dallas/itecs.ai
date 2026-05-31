@@ -208,7 +208,7 @@ function ProposalDecisionForm({ decision }: { decision: ProposalDecision }) {
         isApproval
           ? "border-brand-accent/35 bg-brand-accent/5"
           : "border-red-400/30 bg-red-400/5"
-      } p-5 text-left shadow-[0_0_45px_rgba(6,182,212,0.08)] md:p-6`}
+      } p-5 text-left shadow-[0_0_45px_var(--accent-cyan-subtle)] md:p-6`}
     >
       <input type="hidden" name="proposalAction" value={fieldsValue(decision)} />
 
@@ -681,7 +681,7 @@ function StickyProposalDownload() {
       <a
         href={pdfHref}
         download
-        className="group flex items-center justify-center gap-2 rounded-xl border border-cyan-100/55 bg-cyan-300/95 px-3.5 py-2.5 text-xs font-semibold uppercase tracking-[0.1em] text-slate-950 shadow-[0_14px_44px_rgba(34,211,238,0.3)] backdrop-blur transition-all hover:-translate-y-0.5 hover:bg-cyan-200 focus:outline-none focus:ring-2 focus:ring-cyan-100 focus:ring-offset-2 focus:ring-offset-bg-void md:px-4"
+        className="group flex items-center justify-center gap-2 rounded-xl border border-cyan-100/55 bg-cyan-300/95 px-3.5 py-2.5 text-xs font-semibold uppercase tracking-[0.1em] text-slate-950 shadow-[0_14px_44px_var(--accent-cyan-subtle)] backdrop-blur transition-all hover:-translate-y-0.5 hover:bg-cyan-200 focus:outline-none focus:ring-2 focus:ring-cyan-100 focus:ring-offset-2 focus:ring-offset-bg-void md:px-4"
       >
         <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-slate-950/10 text-slate-950 transition-colors group-hover:bg-slate-950/15">
           <Download className="h-4 w-4" aria-hidden="true" />
@@ -705,7 +705,7 @@ export default function HasenClaudeWorkOrderProposal() {
           position={{ top: "-240px", right: "-160px" }}
         />
         <GradientOrb
-          color="purple"
+          color="brand"
           size="md"
           position={{ bottom: "-180px", left: "-120px" }}
         />
@@ -764,7 +764,7 @@ export default function HasenClaudeWorkOrderProposal() {
           </SlideIn>
 
           <SlideIn direction="right" delay={0.12}>
-            <div className="relative overflow-hidden rounded-3xl border border-[var(--border-subtle)] bg-bg-surface/50 p-3 shadow-2xl shadow-black/30">
+            <div className="relative overflow-hidden rounded-3xl border border-[var(--border-subtle)] bg-bg-surface/50 p-3 shadow-e2">
               <div className="relative aspect-[16/10] overflow-hidden rounded-2xl">
                 <Image
                   src="/images/proposals/hasen-claude-work-order-hero.png"
@@ -1125,7 +1125,7 @@ export default function HasenClaudeWorkOrderProposal() {
             return (
               <FadeIn key={item.title} delay={index * 0.04}>
                 <motion.article
-                  whileHover={{ y: -4, borderColor: "rgba(34,211,238,0.28)" }}
+                  whileHover={{ y: -4, borderColor: "var(--accent-cyan-subtle)" }}
                   className="h-full rounded-2xl border border-[var(--border-subtle)] bg-bg-surface/35 p-6"
                 >
                   <div className="mb-5 flex items-start gap-4">
@@ -1232,7 +1232,7 @@ export default function HasenClaudeWorkOrderProposal() {
             <FadeIn key={item.week} delay={index * 0.08}>
               <div className="grid gap-4 border-l border-brand-accent/25 pb-10 pl-6 last:pb-0 md:grid-cols-[160px_1fr]">
                 <div className="relative">
-                  <div className="absolute -left-[33px] flex h-4 w-4 rounded-full border border-brand-accent bg-bg-void shadow-[0_0_20px_rgba(34,211,238,0.4)]" />
+                  <div className="absolute -left-[33px] flex h-4 w-4 rounded-full border border-brand-accent bg-bg-void shadow-[0_0_20px_var(--accent-cyan-subtle)]" />
                   <div className="text-sm uppercase tracking-widest text-brand-accent-bright">
                     {item.week}
                   </div>

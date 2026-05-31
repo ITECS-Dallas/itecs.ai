@@ -241,6 +241,7 @@ export default function PPVAgentPage() {
               href={page.primaryCtaHref}
               size="lg"
               icon={<ArrowRight className="h-4 w-4" />}
+              className="w-full whitespace-normal text-center sm:w-auto"
             >
               {page.primaryCta}
             </Button>

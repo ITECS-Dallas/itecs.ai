@@ -28,7 +28,7 @@ const service = SERVICES.find((s) => s.slug === "consulting")!;
 // FAQ for AI-Optimized SEO so /consulting visitors find the related service.
 const consultingFaq = [
   ...service.faq.map((item) =>
-    item.question === "How much does AI consulting cost for a small business?"
+    item.question === "How much does AI consulting cost for a growing organization?"
       ? {
           ...item,
           answer: (
@@ -75,7 +75,7 @@ const consultingFaq = [
 ];
 
 export const metadata = generatePageMetadata({
-  title: "AI Consulting for Small Business in Dallas",
+  title: "AI Consulting for Growing Organizations in Dallas",
   description:
     "Practical AI adoption plans for Dallas businesses with 10–300 employees. ITECS helps you configure AI apps, train teams, secure data, and scope custom builds only when needed.",
   path: service.href,
@@ -99,10 +99,10 @@ export default function ConsultingPage() {
 
       <AIAdoptionUnderstanding />
 
-      {/* 2. SMB Pain Point — validate the analysis paralysis */}
+      {/* 2. Operating pain point — validate the analysis paralysis */}
       <PainPoint
         stat="40+"
-        statLabel="hours per month SMBs waste researching AI tools they never implement"
+        statLabel="hours per month teams waste researching AI tools they never implement"
         heading="Your Team Knows AI Could Help — But Nobody Knows Where to Start"
         paragraphs={[
           "Your managers subscribe to ChatGPT Plus, watch YouTube tutorials, and test free AI tools for a week before moving on. Three departments champion three different platforms. After months of evaluation, no AI runs in production. The problem is not the technology — it is the lack of a practical plan that maps AI to your specific workflows.",

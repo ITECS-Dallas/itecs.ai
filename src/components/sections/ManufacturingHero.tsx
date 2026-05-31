@@ -33,7 +33,7 @@ export function ManufacturingHero({
     <section className="relative overflow-hidden pt-32 pb-20">
       <GridBackground opacity={0.035} />
       <GradientOrb color="cyan" size="lg" position={{ top: "8%", right: "12%" }} />
-      <GradientOrb color="purple" size="sm" position={{ bottom: "12%", left: "6%" }} />
+      <GradientOrb color="brand" size="sm" position={{ bottom: "12%", left: "6%" }} />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-8">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-5 lg:items-center">

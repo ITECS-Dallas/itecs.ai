@@ -13,7 +13,7 @@ interface PainPointProps {
   heading: string;
   /** 1-2 short paragraphs validating the frustration */
   paragraphs: string[];
-  /** Optional specific SMB scenario for information gain */
+  /** Optional specific business scenario for information gain */
   scenario?: {
     business: string;
     problem: string;
@@ -31,7 +31,7 @@ export function PainPoint({
   return (
     <section className="relative py-24 md:py-32 overflow-hidden">
       <GradientOrb
-        color="purple"
+        color="brand"
         size="md"
         position={{ top: "20%", right: "5%" }}
       />
@@ -46,7 +46,7 @@ export function PainPoint({
               viewport={{ once: true, amount: 0.5 }}
               transition={{ duration: 0.5, ease: "easeOut" }}
             >
-              <span className="block text-6xl md:text-8xl font-extralight tracking-tight bg-gradient-to-r from-brand-accent to-brand-purple bg-clip-text text-transparent">
+              <span className="block text-6xl md:text-8xl font-extralight tracking-tight bg-gradient-to-r from-brand to-cyan bg-clip-text text-transparent">
                 {stat}
               </span>
               <span className="block mt-2 text-lg text-text-secondary font-light">
@@ -71,7 +71,7 @@ export function PainPoint({
           </ScrollReveal>
         ))}
 
-        {/* Specific SMB scenario — information gain */}
+        {/* Specific business scenario — information gain */}
         {scenario && (
           <ScrollReveal delay={0.25}>
             <div className="mt-8 p-6 rounded-xl border border-[var(--border-subtle)] bg-bg-surface/50">

@@ -1,58 +1,199 @@
 @import "tailwindcss";
 
 :root {
-  /* Backgrounds */
-  --bg-void: #030712;
-  --bg-surface: #0a1120;
-  --bg-elevated: #111827;
+  /* ---- Surfaces (cool ink ramp; elevation = lighter + hairline + inset) ---- */
+  --bg-base: #0A0E17;
+  --bg-sunken: #070A11;
+  --surface-1: #0F1623;
+  --surface-2: #161F30;
+  --surface-3: #1E2940;
 
-  /* Brand */
-  --brand-primary: #081821;
-  --brand-accent: #06b6d4;
-  --brand-accent-bright: #22d3ee;
-  --brand-purple: #8b5cf6;
+  --border-subtle: #1C2638;
+  --border-default: #2A3650;
+  --border-strong: #3A4866;
+  --overlay-scrim: rgba(5, 8, 13, 0.72);
 
-  /* Text */
-  --text-primary: #f1f5f9;
-  --text-secondary: #94a3b8;
-  --text-dim: #64748b;
+  /* ---- Text ---- */
+  --text-primary: #F4F7FB;
+  --text-secondary: #AEB9CC;
+  --text-tertiary: #7E8AA0;
+  --text-disabled: #55607A;
+  --text-on-accent: #06121F;
 
-  /* Effects */
-  --glow-cyan: rgba(6, 182, 212, 0.15);
-  --glow-purple: rgba(139, 92, 246, 0.10);
-  --border-subtle: rgba(255, 255, 255, 0.06);
-  --border-active: rgba(6, 182, 212, 0.3);
+  /* ---- Brand: enterprise blue (PRIMARY) ---- */
+  --brand: #2E6BFF;
+  --brand-hover: #4A82FF;
+  --brand-active: #1E54E0;
+  --brand-subtle: rgba(46, 107, 255, 0.12);
+  --brand-ring: rgba(74, 130, 255, 0.55);
 
-  /* Legacy compat */
-  --background: var(--bg-void);
+  /* ---- Accent: intelligence cyan (SPARINGLY) ---- */
+  --accent-cyan: #38D6E0;
+  --accent-cyan-subtle: rgba(56, 214, 224, 0.12);
+
+  /* ---- Heritage amber (VERY sparingly: "Since 2002", awards) ---- */
+  --heritage-amber: #F6B53C;
+
+  /* ---- Status ---- */
+  --success: #2BD46F;
+  --warning: #F6B53C;
+  --danger: #F2555F;
+
+  /* ---- Signature gradient (RARE: hero key line, primary CTA sheen, data viz) ---- */
+  --gradient-intelligence: linear-gradient(120deg, #2E6BFF 0%, #38D6E0 100%);
+
+  /* ---- Ambient hero glow (layer over --bg-base) ---- */
+  --glow-hero: radial-gradient(60% 50% at 70% 20%,
+      rgba(46, 107, 255, 0.18) 0%,
+      rgba(56, 214, 224, 0.06) 40%,
+      transparent 70%);
+
+  /* ---- Data-viz series (amber = single highlight) ---- */
+  --viz-1: #2E6BFF;
+  --viz-2: #38D6E0;
+  --viz-3: #7C9BFF;
+  --viz-4: #2BD46F;
+  --viz-5: #F6B53C;
+
+  /* ---- Typography ---- */
+  --font-display: "Geist", "Inter Tight", system-ui, sans-serif;
+  --font-body: "Geist", system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, "SFMono-Regular", monospace;
+
+  --fs-display-xl: clamp(2.5rem, 1.6rem + 3.8vw, 4.5rem);
+  --fs-display-l: clamp(2.125rem, 1.5rem + 2.7vw, 3.5rem);
+  --fs-h1: clamp(1.875rem, 1.4rem + 2vw, 2.75rem);
+  --fs-h2: clamp(1.625rem, 1.3rem + 1.4vw, 2.25rem);
+  --fs-h3: clamp(1.3125rem, 1.15rem + 0.7vw, 1.75rem);
+  --fs-h4: clamp(1.125rem, 1.05rem + 0.3vw, 1.375rem);
+  --fs-body-l: clamp(1.125rem, 1.1rem + 0.1vw, 1.1875rem);
+  --fs-body-m: 1rem;
+  --fs-body-s: 0.875rem;
+  --fs-caption: 0.8125rem;
+  --fs-eyebrow: clamp(0.75rem, 0.72rem + 0.1vw, 0.8125rem);
+  --fs-metric: clamp(2.5rem, 1.8rem + 3vw, 4rem);
+
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+
+  /* ---- Spacing (4px base) ---- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+  --space-32: 128px;
+  --space-40: 160px;
+
+  /* ---- Layout ---- */
+  --container-max: 1280px;
+  --gutter-desktop: 32px;
+  --gutter-tablet: 24px;
+  --gutter-mobile: 20px;
+
+  /* ---- Radius ---- */
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 16px;
+  --r-xl: 24px;
+  --r-pill: 999px;
+
+  /* ---- Elevation ---- */
+  --elev-1: 0 1px 2px rgba(0, 0, 0, 0.40);
+  --elev-1-inset: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  --elev-2: 0 8px 24px rgba(0, 0, 0, 0.45);
+  --elev-3: 0 16px 48px rgba(0, 0, 0, 0.55);
+
+  /* ---- Motion ---- */
+  --dur-fast: 120ms;
+  --dur-base: 200ms;
+  --dur-slow: 320ms;
+  --dur-slower: 560ms;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-inout: cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* Legacy utility remaps for existing Tailwind class names. */
+  --bg-void: var(--bg-base);
+  --bg-surface: var(--surface-1);
+  --bg-elevated: var(--surface-2);
+  --brand-primary: var(--bg-sunken);
+  --brand-accent: var(--accent-cyan);
+  --brand-accent-bright: var(--accent-cyan);
+  --text-dim: var(--text-tertiary);
+  --glow-cyan: var(--accent-cyan-subtle);
+  --border-active: var(--border-strong);
+  --background: var(--bg-base);
   --foreground: var(--text-primary);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-bg-base: var(--bg-base);
+  --color-bg-sunken: var(--bg-sunken);
   --color-bg-void: var(--bg-void);
   --color-bg-surface: var(--bg-surface);
   --color-bg-elevated: var(--bg-elevated);
   --color-brand-primary: var(--brand-primary);
+  --color-brand: var(--brand);
+  --color-brand-hover: var(--brand-hover);
+  --color-brand-active: var(--brand-active);
+  --color-brand-subtle: var(--brand-subtle);
   --color-brand-accent: var(--brand-accent);
   --color-brand-accent-bright: var(--brand-accent-bright);
-  --color-brand-purple: var(--brand-purple);
+  --color-cyan: var(--accent-cyan);
+  --color-cyan-subtle: var(--accent-cyan-subtle);
+  --color-amber: var(--heritage-amber);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
   --color-text-primary: var(--text-primary);
   --color-text-secondary: var(--text-secondary);
+  --color-text-tertiary: var(--text-tertiary);
   --color-text-dim: var(--text-dim);
+  --color-text-disabled: var(--text-disabled);
+  --color-text-onaccent: var(--text-on-accent);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-geist-sans);
+  --font-body: var(--font-geist-sans);
+  --radius-sm: var(--r-sm);
+  --radius-md: var(--r-md);
+  --radius-lg: var(--r-lg);
+  --radius-xl: var(--r-xl);
+  --radius-pill: var(--r-pill);
+  --shadow-e1: var(--elev-1);
+  --shadow-e2: var(--elev-2);
+  --shadow-e3: var(--elev-3);
 }
 
 body {
-  background: var(--bg-void);
+  background: var(--bg-base);
   color: var(--text-primary);
+  font-family: var(--font-body);
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
 html {
   overflow-x: hidden;
+}
+
+@supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  [class*="backdrop-blur"] {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    background-color: var(--surface-2) !important;
+  }
 }
 
 /* Ambient grain overlay */
@@ -72,22 +213,35 @@ body::before {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--bg-void);
+  background: var(--bg-base);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--border-subtle);
+  background: var(--border-default);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--border-active);
+  background: var(--border-strong);
 }
 
 /* Selection */
 ::selection {
-  background: rgba(6, 182, 212, 0.25);
+  background: var(--brand-subtle);
   color: var(--text-primary);
+}
+
+main :where(p, li) a:not([class]) {
+  color: var(--brand-hover);
+  text-decoration-line: underline;
+  text-decoration-color: var(--border-strong);
+  text-underline-offset: 0.18em;
+}
+
+:focus-visible {
+  outline: 2px solid var(--brand-ring);
+  outline-offset: 2px;
+  border-radius: 4px;
 }
 
 /* ---------------------------------------------------------------------------
@@ -154,5 +308,29 @@ body::before {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+
+  .animate-orb-float,
+  .animate-pulse-node,
+  .animate-grid-pulse,
+  .animate-bounce-subtle,
+  .animate-circuit-flow,
+  [class*="animate-ping"] {
+    animation: none !important;
+  }
+
+  [data-motion="parallax"],
+  [data-motion="scroll-reveal"],
+  [class*="hover:-translate"],
+  [class*="group-hover:translate"],
+  [class*="group-hover:scale"],
+  [class*="hover:scale"] {
+    transform: none !important;
+  }
+
+  [class*="before:-translate"]::before,
+  [class*="hover:before:translate"]::before {
+    opacity: 0 !important;
+    transform: none !important;
   }
 }

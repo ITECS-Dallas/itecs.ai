@@ -1,7 +1,6 @@
 "use client";
 
 import { StatCounter } from "@/components/ui/StatCounter";
-import { ScrollReveal } from "@/components/effects/ScrollReveal";
 import { GridBackground } from "@/components/effects/GridBackground";
 
 interface StatItem {
@@ -12,12 +11,15 @@ interface StatItem {
 
 export function AboutStats({ stats }: { stats: readonly StatItem[] }) {
   return (
-    <section className="relative py-20 md:py-24 bg-bg-surface">
+    <section className="relative bg-bg-surface py-20 md:py-24">
       <GridBackground opacity={0.03} />
       <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-8">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="grid gap-4 md:grid-cols-3">
           {stats.map((stat, i) => (
-            <ScrollReveal key={stat.label} delay={i * 0.1}>
+            <div
+              key={stat.label}
+              className="rounded-lg border border-[var(--border-default)] bg-bg-elevated p-6 shadow-e1 [box-shadow:var(--elev-1-inset),var(--elev-1)]"
+            >
               <div
                 className={
                   i < stats.length - 1
@@ -31,7 +33,7 @@ export function AboutStats({ stats }: { stats: readonly StatItem[] }) {
                   label={stat.label}
                 />
               </div>
-            </ScrollReveal>
+            </div>
           ))}
         </div>
       </div>

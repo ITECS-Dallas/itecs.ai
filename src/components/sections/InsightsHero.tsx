@@ -48,7 +48,7 @@ export function InsightsHero() {
           position={{ top: "10%", right: "5%" }}
         />
         <GradientOrb
-          color="purple"
+          color="brand"
           size="md"
           position={{ bottom: "15%", left: "3%" }}
         />
@@ -84,7 +84,7 @@ export function InsightsHero() {
             className="text-4xl md:text-6xl lg:text-7xl font-extralight tracking-[-0.03em] leading-[1.1] max-w-4xl"
           >
             AI Insights for{" "}
-            <span className="bg-gradient-to-r from-brand-accent to-brand-purple bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-brand to-cyan bg-clip-text text-transparent">
               Dallas Businesses
             </span>
           </motion.h1>

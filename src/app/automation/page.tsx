@@ -24,9 +24,9 @@ import { CTASection } from "@/components/sections/CTASection";
 const service = SERVICES.find((s) => s.slug === "automation")!;
 
 export const metadata = generatePageMetadata({
-  title: "AI Workflow Automation for Small Business in Dallas",
+  title: "AI Workflow Automation for Dallas Businesses",
   description:
-    "Automate lead follow-ups, data entry, and scheduling for your Dallas business. 40% cost reduction, 99.9% uptime. Managed by a 24-year MSP. From $2,500.",
+    "Automate lead follow-ups, data entry, and scheduling for your Dallas business with managed implementation support from a 24-year MSP. From $2,500.",
   path: service.href,
   keywords: service.keywords,
 });
@@ -48,10 +48,10 @@ export default function AutomationPage() {
 
       <AIAdoptionUnderstanding />
 
-      {/* 2. SMB Pain Point — validate the manual workflow drain */}
+      {/* 2. Operating pain point — validate the manual workflow drain */}
       <PainPoint
         stat="60%"
-        statLabel="of small business employee time goes to repetitive tasks AI handles in seconds"
+        statLabel="of employee time can disappear into repetitive tasks AI handles in seconds"
         heading="Your Team Spends Half the Day on Work a Machine Should Handle"
         paragraphs={[
           "Your office manager copies lead info from web forms into the CRM by hand. Your dispatcher assigns service calls from a spreadsheet and texts confirmations one at a time. Your bookkeeper re-enters invoice data from emails into QuickBooks every afternoon. These tasks run your business — but they drain the people doing them.",

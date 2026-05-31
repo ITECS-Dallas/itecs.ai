@@ -25,7 +25,7 @@ import { CTASection } from "@/components/sections/CTASection";
 const service = SERVICES.find((s) => s.slug === "data-audit")!;
 
 export const metadata = generatePageMetadata({
-  title: "AI Data Readiness Audit for Small Business",
+  title: "AI Data Readiness Audit for Growing Organizations",
   description:
     "Flat-fee Microsoft 365 and Google Workspace security audit delivered in 7 days. Identify data risks, compliance gaps, and AI opportunities — from $2,500.",
   path: service.href,
@@ -49,10 +49,10 @@ export default function DataAuditPage() {
 
       <AIAdoptionUnderstanding />
 
-      {/* 2. SMB Pain Point — validate the bleeding neck */}
+      {/* 2. Operating pain point — validate the data exposure risk */}
       <PainPoint
         stat="60%"
-        statLabel="of small businesses close within 6 months of a data breach"
+        statLabel="of breach-impacted companies face major disruption within 6 months"
         heading="You Don't Know What's Exposed in Your Cloud Environment"
         paragraphs={[
           "Your Microsoft 365 or Google Workspace has been accumulating permissions, shared links, and external access for years. Files shared with 'anyone with the link' from 2019 are still public. Former employees still have access. Sensitive data — client SSNs, financial records, stored credentials — sits in folders with no access controls.",
@@ -162,7 +162,7 @@ export default function DataAuditPage() {
             ai: "40+ page report with implementation roadmap",
           },
         ]}
-        roiStatement="The average data breach costs small businesses $120,000+. A $2,500–$8,500 audit identifies the gaps before attackers do."
+        roiStatement="The cost of a breach quickly exceeds the cost of prevention. A $2,500–$8,500 audit identifies the gaps before attackers do."
         pricingNotes={[
           "Essentials ($2,500): Core security scan for teams under 25 users",
           "Professional ($5,000): Full audit with compliance and AI opportunity mapping for 25–100 users",

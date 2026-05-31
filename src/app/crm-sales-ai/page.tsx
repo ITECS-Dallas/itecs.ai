@@ -24,7 +24,7 @@ import { CTASection } from "@/components/sections/CTASection";
 const service = SERVICES.find((s) => s.slug === "crm-sales-ai")!;
 
 export const metadata = generatePageMetadata({
-  title: "AI CRM & Sales Automation for Small Business",
+  title: "AI CRM & Sales Automation for Growing Teams",
   description:
     "Integrate AI into HubSpot or Salesforce to automate lead scoring, outreach, and data entry — saving reps 15+ hours/week. 24 years IT expertise.",
   path: service.href,
@@ -48,7 +48,7 @@ export default function CRMSalesAIPage() {
 
       <AIAdoptionUnderstanding />
 
-      {/* 2. SMB Pain Point — validate the bleeding neck */}
+      {/* 2. Operating pain point — validate the sales admin drain */}
       <PainPoint
         stat="68%"
         statLabel="of a sales rep's week is spent on non-selling activities"

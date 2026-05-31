@@ -19,24 +19,24 @@ const accentClasses: Record<
   cyan: {
     border: "border-[var(--border-subtle)] hover:border-brand-accent/60",
     accent: "text-brand-accent",
-    glow: "hover:shadow-[0_0_40px_rgba(6,182,212,0.18)]",
+    glow: "hover:shadow-[0_0_40px_var(--accent-cyan-subtle)]",
     ring: "bg-brand-accent/10",
     badge: "border-brand-accent/30 text-brand-accent bg-brand-accent/10",
   },
-  purple: {
-    border: "border-[var(--border-subtle)] hover:border-brand-purple/60",
-    accent: "text-brand-purple",
-    glow: "hover:shadow-[0_0_40px_rgba(139,92,246,0.18)]",
-    ring: "bg-brand-purple/10",
-    badge: "border-brand-purple/30 text-brand-purple bg-brand-purple/10",
+  brand: {
+    border: "border-[var(--border-subtle)] hover:border-brand/60",
+    accent: "text-brand",
+    glow: "hover:shadow-[0_0_40px_var(--brand-subtle)]",
+    ring: "bg-brand/10",
+    badge: "border-brand/30 text-brand bg-brand/10",
   },
   gradient: {
-    border: "border-brand-purple/30 hover:border-brand-purple/70",
+    border: "border-brand/30 hover:border-brand/70",
     accent: "text-text-primary",
-    glow: "hover:shadow-[0_0_50px_rgba(139,92,246,0.25)]",
-    ring: "bg-gradient-to-br from-brand-accent/15 to-brand-purple/15",
+    glow: "hover:shadow-[0_0_50px_var(--brand-subtle)]",
+    ring: "bg-gradient-to-br from-brand/15 to-cyan/15",
     badge:
-      "border-brand-purple/30 text-text-primary bg-gradient-to-r from-brand-accent/15 to-brand-purple/20",
+      "border-brand/30 text-text-primary bg-gradient-to-r from-brand/15 to-cyan/20",
   },
 };
 
@@ -62,7 +62,7 @@ export function SEOEngagementTiers({
                   className={`relative h-full rounded-xl border bg-bg-void p-6 transition-all duration-300 hover:-translate-y-1 flex flex-col ${c.border} ${c.glow}`}
                 >
                   {isFlagship && (
-                    <span className="absolute -top-3 left-6 px-2.5 py-1 rounded-full text-[10px] font-medium tracking-[0.1em] uppercase border bg-bg-elevated border-brand-purple/40 text-brand-purple">
+                    <span className="absolute -top-3 left-6 px-2.5 py-1 rounded-full text-[10px] font-medium tracking-[0.1em] uppercase border bg-bg-elevated border-brand/40 text-brand">
                       Most Aggressive
                     </span>
                   )}
@@ -104,7 +104,7 @@ export function SEOEngagementTiers({
 
                   <Link
                     href={tier.href}
-                    className={`mt-6 inline-flex items-center gap-1.5 text-sm font-medium transition-all hover:gap-2.5 ${c.accent}`}
+                    className={`mt-6 inline-flex min-h-11 items-center gap-1.5 text-sm font-medium transition-all hover:gap-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-surface ${c.accent}`}
                   >
                     Explore {tier.shortName}
                     <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />

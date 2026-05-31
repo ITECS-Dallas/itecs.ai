@@ -1,149 +1,167 @@
-import Link from "next/link";
 import Image from "next/image";
-import { SITE_CONFIG, SERVICES } from "@/lib/constants";
+import Link from "next/link";
+import { CERTIFICATION_BADGES, SITE_CONFIG, SERVICES } from "@/lib/constants";
 import {
+  FacebookIcon,
+  GitHubIcon,
   LinkedInIcon,
   XIcon,
-  FacebookIcon,
   YouTubeIcon,
-  GitHubIcon,
 } from "@/components/ui/SocialIcons";
+import { CertificationStrip } from "@/components/ui/CertificationStrip";
 
-const companyLinks = [
-  { label: "About", href: "/about" },
-  { label: "Services", href: "/services" },
-  { label: "Pricing", href: "/pricing" },
+type FooterLink = {
+  label: string;
+  href: string;
+  external?: boolean;
+};
+
+const solutionLinks: FooterLink[] = [
   { label: "Managed Intelligence", href: "/managed-intelligence-provider" },
-  { label: "Insights", href: "/insights" },
-  { label: "Contact", href: "/contact" },
-  { label: "ITECS MSP", href: SITE_CONFIG.mainSiteUrl, external: true },
-];
-
-const socialLinks = [
-  {
-    label: "LinkedIn",
-    href: SITE_CONFIG.social.linkedin,
-    icon: LinkedInIcon,
-  },
-  {
-    label: "X (Twitter)",
-    href: SITE_CONFIG.social.x,
-    icon: XIcon,
-  },
-  {
-    label: "Facebook",
-    href: SITE_CONFIG.social.facebook,
-    icon: FacebookIcon,
-  },
-  {
-    label: "YouTube",
-    href: SITE_CONFIG.social.youtube,
-    icon: YouTubeIcon,
-  },
-  {
-    label: "GitHub",
-    href: SITE_CONFIG.social.github,
-    icon: GitHubIcon,
-  },
-];
-
-const featuredServiceLinks = [
-  ...SERVICES.map((service) => ({
-    key: service.slug,
+  { label: "AI Consulting", href: "/consulting" },
+  { label: "Custom AI Agents", href: "/custom-ai-agents" },
+  { label: "Workflow Automation", href: "/automation" },
+  { label: "AI DevOps", href: "/ai-devops" },
+  { label: "AI Champion Program", href: "/services/ai-champion-program" },
+  ...SERVICES.slice(4, 8).map((service) => ({
     label: service.shortTitle,
     href: service.href,
   })),
-  {
-    key: "ai-champion-program",
-    label: "AI Champion Program",
-    href: "/services/ai-champion-program",
-  },
-  {
-    key: "ai-optimized-seo",
-    label: "AI-Optimized SEO",
-    href: "/ai-optimized-seo",
-  },
 ];
 
-const industryLinks = [
+const industryLinks: FooterLink[] = [
+  { label: "Manufacturing AI", href: "/manufacturing" },
+  { label: "PPV Agent", href: "/manufacturing/ppv-agent" },
   {
-    key: "manufacturing",
-    label: "Manufacturing AI",
-    href: "/manufacturing",
-  },
-  {
-    key: "ppv-agent",
-    label: "PPV Agent",
-    href: "/manufacturing/ppv-agent",
-  },
-  {
-    key: "demand-sop",
     label: "Demand & S&OP",
     href: "/manufacturing/demand-forecasting-sop-ai",
   },
   {
-    key: "predictive-maintenance",
     label: "Predictive Maintenance",
     href: "/manufacturing/predictive-maintenance-ai",
   },
   {
-    key: "inventory-working-capital",
-    label: "Inventory & Working Capital",
-    href: "/manufacturing/inventory-working-capital-ai",
-  },
-  {
-    key: "quality-traceability",
     label: "Quality & Traceability",
     href: "/manufacturing/quality-traceability-ai",
   },
   {
-    key: "customer-sku-profitability",
-    label: "Customer/SKU Profitability",
-    href: "/manufacturing/customer-sku-profitability-ai",
-  },
-  {
-    key: "production-planning",
-    label: "Production Planning",
-    href: "/manufacturing/production-scheduling-yield-ai",
-  },
-  {
-    key: "contract-recovery",
-    label: "Contract Recovery",
-    href: "/manufacturing/contract-pass-through-intelligence",
-  },
-  {
-    key: "energy-freight",
-    label: "Energy & Freight",
-    href: "/manufacturing/energy-freight-scope-3-ai",
-  },
-  {
-    key: "vendor-anomaly",
-    label: "Vendor Anomaly Detection",
-    href: "/manufacturing/vendor-payment-anomaly-ai",
+    label: "Inventory & Working Capital",
+    href: "/manufacturing/inventory-working-capital-ai",
   },
 ];
 
+const companyLinks: FooterLink[] = [
+  { label: "About", href: "/about" },
+  { label: "Pricing", href: "/pricing" },
+  { label: "Insights", href: "/insights" },
+  { label: "Contact", href: "/contact" },
+  { label: "ITECS MSP", href: SITE_CONFIG.mainSiteUrl, external: true },
+  {
+    label: "Customer Portal",
+    href: "https://portal.itecs.io/",
+    external: true,
+  },
+];
+
+const resourceLinks: FooterLink[] = [
+  { label: "CEO Guide to AI ROI", href: "/insights/ceo-guide-ai-roi" },
+  {
+    label: "Secure Business Data",
+    href: "/insights/secure-business-data-chatgpt",
+  },
+  {
+    label: "Agentic AI Workflows",
+    href: "/insights/agentic-ai-workflows-enterprise-operations",
+  },
+  {
+    label: "Whitepapers & Case Studies",
+    href: "https://itecsonline.com/white-papers-case-studies",
+    external: true,
+  },
+  {
+    label: "Experiencing a Breach?",
+    href: "https://itecsonline.com/experiencing-a-breach",
+    external: true,
+  },
+];
+
+const socialLinks = [
+  { label: "LinkedIn", href: SITE_CONFIG.social.linkedin, icon: LinkedInIcon },
+  { label: "X", href: SITE_CONFIG.social.x, icon: XIcon },
+  { label: "Facebook", href: SITE_CONFIG.social.facebook, icon: FacebookIcon },
+  { label: "YouTube", href: SITE_CONFIG.social.youtube, icon: YouTubeIcon },
+  { label: "GitHub", href: SITE_CONFIG.social.github, icon: GitHubIcon },
+];
+
+function FooterNavLink({ link }: { link: FooterLink }) {
+  const className =
+    "flex min-h-11 items-center text-sm text-text-tertiary transition-colors hover:text-brand-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-sunken";
+
+  if (link.external) {
+    return (
+      <a
+        href={link.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={className}
+      >
+        {link.label}
+      </a>
+    );
+  }
+
+  return (
+    <Link href={link.href} className={className}>
+      {link.label}
+    </Link>
+  );
+}
+
+function FooterColumn({
+  title,
+  links,
+}: {
+  title: string;
+  links: FooterLink[];
+}) {
+  return (
+    <div>
+      <h3 className="font-mono text-xs font-semibold uppercase text-text-primary">
+        {title}
+      </h3>
+      <ul className="mt-4 space-y-1">
+        {links.map((link) => (
+          <li key={`${title}-${link.href}-${link.label}`}>
+            <FooterNavLink link={link} />
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
 export function Footer() {
   return (
-    <footer className="bg-bg-surface border-t border-[var(--border-subtle)]">
-      <div className="mx-auto max-w-7xl px-6 md:px-8 py-16">
-        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-5">
-          {/* Brand + Address */}
+    <footer className="border-t border-[var(--border-subtle)] bg-bg-sunken">
+      <h2 className="sr-only">ITECS footer navigation</h2>
+      <div className="mx-auto max-w-7xl px-6 py-16 md:px-8">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 xl:grid-cols-[1.25fr_1fr_1fr_1fr_1fr]">
           <div>
-            <Link href="/" className="inline-block mb-4">
+            <Link href="/" className="inline-flex min-h-11 items-center">
               <Image
                 src="/images/logos/itecs-horizontal.svg"
                 alt="ITECS"
-                width={94}
-                height={28}
+                width={112}
+                height={34}
                 className="brightness-0 invert"
-                style={{ height: "28px", width: "auto" }}
+                style={{ height: "34px", width: "auto" }}
               />
             </Link>
-            <p className="text-sm text-text-dim leading-relaxed">
-              {SITE_CONFIG.tagline}
+            <p className="mt-4 max-w-sm text-sm leading-relaxed text-text-secondary">
+              {SITE_CONFIG.tagline} Built on the managed IT, cybersecurity, and
+              cloud operations foundation ITECS has operated since 2002.
             </p>
-            <address className="mt-4 text-sm text-text-dim not-italic leading-relaxed">
+            <address className="mt-5 text-sm leading-relaxed text-text-tertiary not-italic">
               {SITE_CONFIG.address.street}
               <br />
               {SITE_CONFIG.address.city}, {SITE_CONFIG.address.state}{" "}
@@ -151,168 +169,121 @@ export function Footer() {
             </address>
           </div>
 
-          {/* Company */}
-          <div>
-            <h4 className="text-sm font-medium tracking-[0.05em] uppercase text-text-primary mb-4">
-              Company
-            </h4>
-            <ul className="space-y-3">
-              {companyLinks.map((link) => (
-                <li key={link.href}>
-                  {"external" in link && link.external ? (
-                    <a
-                      href={link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-sm text-text-dim hover:text-brand-accent transition-colors"
-                    >
-                      {link.label}
-                    </a>
-                  ) : (
-                    <Link
-                      href={link.href}
-                      className="text-sm text-text-dim hover:text-brand-accent transition-colors"
-                    >
-                      {link.label}
-                    </Link>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </div>
+          <FooterColumn title="Solutions" links={solutionLinks} />
+          <FooterColumn title="Industries" links={industryLinks} />
+          <FooterColumn title="Company" links={companyLinks} />
+          <FooterColumn title="Resources" links={resourceLinks} />
+        </div>
 
-          {/* AI Services */}
-          <div>
-            <h4 className="text-sm font-medium tracking-[0.05em] uppercase text-text-primary mb-4">
-              AI Services
-            </h4>
-            <ul className="space-y-3">
-              {featuredServiceLinks.map((service) => (
-                <li key={service.key}>
-                  <Link
-                    href={service.href}
-                    className="text-sm text-text-dim hover:text-brand-accent transition-colors"
-                  >
-                    {service.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+        <section
+          aria-labelledby="footer-certifications"
+          className="mt-12 border-y border-[var(--border-subtle)] py-8"
+        >
+          <div className="flex flex-col gap-5 lg:flex-row lg:items-start lg:justify-between">
+            <div>
+              <h3
+                id="footer-certifications"
+                className="font-mono text-xs font-semibold uppercase text-text-primary"
+              >
+                Certifications & Partners
+              </h3>
+              <p className="mt-2 max-w-xl text-sm leading-relaxed text-text-tertiary">
+                Real security, cloud, and platform credentials supporting ITECS
+                managed intelligence delivery.
+              </p>
+            </div>
+            <CertificationStrip
+              badges={CERTIFICATION_BADGES}
+              className="lg:max-w-3xl"
+            />
           </div>
+        </section>
 
-          {/* Industries */}
+        <section
+          aria-labelledby="footer-contact"
+          className="mt-8 grid gap-6 md:grid-cols-[1fr_auto] md:items-end"
+        >
           <div>
-            <h4 className="text-sm font-medium tracking-[0.05em] uppercase text-text-primary mb-4">
-              Industries
-            </h4>
-            <ul className="space-y-3">
-              {industryLinks.map((industry) => (
-                <li key={industry.key}>
-                  <Link
-                    href={industry.href}
-                    className="text-sm text-text-dim hover:text-brand-accent transition-colors"
-                  >
-                    {industry.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Contact + Social */}
-          <div>
-            <h4 className="text-sm font-medium tracking-[0.05em] uppercase text-text-primary mb-4">
+            <h3
+              id="footer-contact"
+              className="font-mono text-xs font-semibold uppercase text-text-primary"
+            >
               Contact
-            </h4>
-            <ul className="space-y-3 text-sm text-text-dim">
-              <li>
-                <span className="block text-text-secondary text-xs uppercase tracking-wider mb-0.5">
-                  International
-                </span>
+            </h3>
+            <div className="mt-4 grid gap-4 text-sm text-text-tertiary sm:grid-cols-3">
+              <div>
+                <p className="text-text-secondary">Plano HQ</p>
+                <p className="mt-1 leading-relaxed">
+                  {SITE_CONFIG.address.city}, {SITE_CONFIG.address.state}
+                </p>
+              </div>
+              <div>
+                <p className="text-text-secondary">Phone</p>
                 <a
                   href={`tel:${SITE_CONFIG.phoneE164}`}
-                  className="hover:text-brand-accent transition-colors"
+                  className="mt-1 flex min-h-11 items-center font-mono transition-colors hover:text-brand-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-sunken"
                 >
                   {SITE_CONFIG.phone}
                 </a>
-              </li>
-              <li>
-                <span className="block text-text-secondary text-xs uppercase tracking-wider mb-0.5">
-                  Toll Free
-                </span>
+              </div>
+              <div>
+                <p className="text-text-secondary">Email</p>
                 <a
-                  href={`tel:${SITE_CONFIG.supportPhoneE164}`}
-                  className="hover:text-brand-accent transition-colors"
-                >
-                  {SITE_CONFIG.supportPhone}
-                </a>
-              </li>
-              <li>
-                <Link
-                  href="/contact"
-                  className="hover:text-brand-accent transition-colors"
+                  href={`mailto:${SITE_CONFIG.email}`}
+                  className="mt-1 flex min-h-11 items-center transition-colors hover:text-brand-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-sunken"
                 >
                   {SITE_CONFIG.email}
-                </Link>
-              </li>
-            </ul>
-
-            {/* Social icons */}
-            <div className="mt-6 flex items-center gap-3">
-              {socialLinks.map((social) => {
-                const Icon = social.icon;
-                return (
-                  <a
-                    key={social.label}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={social.label}
-                    className="flex items-center justify-center w-8 h-8 rounded-lg bg-bg-void/50 border border-[var(--border-subtle)] text-text-dim hover:text-brand-accent hover:border-[var(--border-active)] transition-colors"
-                  >
-                    <Icon className="h-4 w-4" />
-                  </a>
-                );
-              })}
+                </a>
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* Trust badge */}
-        <div className="mt-12 pt-6 border-t border-[var(--border-subtle)]">
-          <p className="text-sm text-text-dim text-center">
-            ITECS AI is a division of{" "}
-            <a
-              href={SITE_CONFIG.mainSiteUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-brand-accent hover:text-brand-accent-bright transition-colors"
-            >
-              ITECS
-            </a>
-            , providing trusted Dallas IT services since 2002.
-          </p>
-        </div>
+          <div className="flex items-center gap-2">
+            {socialLinks.map((social) => {
+              const Icon = social.icon;
 
-        {/* Bottom bar */}
-        <div className="mt-6 pt-6 border-t border-[var(--border-subtle)] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-text-dim">
+              return (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.label}
+                  className="flex h-11 w-11 items-center justify-center rounded-md border border-[var(--border-default)] bg-bg-surface text-text-tertiary transition-colors hover:border-[var(--border-strong)] hover:text-brand-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-sunken"
+                >
+                  <Icon aria-hidden="true" className="h-4 w-4" />
+                </a>
+              );
+            })}
+          </div>
+        </section>
+
+        <div className="mt-8 flex flex-col gap-4 border-t border-[var(--border-subtle)] pt-6 text-xs text-text-tertiary sm:flex-row sm:items-center sm:justify-between">
           <p>
             &copy; {new Date().getFullYear()} {SITE_CONFIG.legalName}. All
             rights reserved.
           </p>
-          <div className="flex gap-6">
+          <div className="flex flex-wrap gap-x-6 gap-y-2">
             <Link
               href="/sitemap.xml"
-              className="hover:text-brand-accent transition-colors"
+              className="flex min-h-11 items-center transition-colors hover:text-brand-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-sunken"
             >
               Sitemap
             </Link>
             <Link
               href="/ai.txt"
-              className="hover:text-brand-accent transition-colors"
+              className="flex min-h-11 items-center transition-colors hover:text-brand-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-sunken"
             >
               AI Policy
             </Link>
+            <a
+              href={SITE_CONFIG.mainSiteUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex min-h-11 items-center transition-colors hover:text-brand-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-sunken"
+            >
+              itecsonline.com
+            </a>
           </div>
         </div>
       </div>

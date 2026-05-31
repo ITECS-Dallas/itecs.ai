@@ -15,7 +15,7 @@ export function AboutHero() {
         position={{ top: "10%", right: "5%" }}
       />
       <GradientOrb
-        color="purple"
+        color="brand"
         size="sm"
         position={{ bottom: "20%", left: "10%" }}
       />
@@ -34,7 +34,7 @@ export function AboutHero() {
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-extralight tracking-[-0.03em] leading-[1.08] max-w-4xl">
             24 Years Serving Dallas Businesses.
             <br />
-            <span className="bg-gradient-to-r from-brand-accent to-brand-purple bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-brand to-cyan bg-clip-text text-transparent">
               Now Bringing Them AI.
             </span>
           </h1>
@@ -50,7 +50,7 @@ export function AboutHero() {
           <strong className="text-text-primary font-normal">
             ITECS is a Dallas-based IT services company founded in 2002 that
             now delivers practical AI consulting, automation, and custom AI agent
-            development for small and mid-sized businesses.
+            development for growth-stage and mid-market organizations.
           </strong>{" "}
           With 24+ years of managed IT operations, 500+ endpoints under
           management, and a 92% client retention rate, ITECS AI builds on a
@@ -67,13 +67,13 @@ export function AboutHero() {
         >
           <a
             href="#timeline"
-            className="text-brand-accent hover:text-brand-accent-bright transition-colors"
+            className="inline-flex min-h-11 items-center text-brand-accent transition-colors hover:text-brand-accent-bright focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base"
           >
             See our 24-year journey &darr;
           </a>
           <a
             href="/services"
-            className="text-text-secondary hover:text-text-primary transition-colors"
+            className="inline-flex min-h-11 items-center text-text-secondary transition-colors hover:text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base"
           >
             Explore AI services for your business &rarr;
           </a>

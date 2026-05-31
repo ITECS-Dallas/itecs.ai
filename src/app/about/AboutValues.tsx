@@ -24,7 +24,7 @@ export function AboutValues({ values }: { values: readonly ValueItem[] }) {
   return (
     <section className="relative py-24 md:py-32 overflow-hidden">
       <GradientOrb
-        color="purple"
+        color="brand"
         size="md"
         position={{ top: "30%", right: "0%" }}
       />
@@ -51,7 +51,7 @@ export function AboutValues({ values }: { values: readonly ValueItem[] }) {
                 >
                   {/* Hover glow */}
                   <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style={{
-                    background: "radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(6,182,212,0.06), transparent 40%)",
+                    background: "radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), var(--accent-cyan-subtle), transparent 40%)",
                   }} />
 
                   <div className="relative z-10">
@@ -83,7 +83,7 @@ export function AboutValues({ values }: { values: readonly ValueItem[] }) {
                 href="https://www.nist.gov/cyberframework"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-text-secondary hover:text-text-primary transition-colors underline underline-offset-4 decoration-[var(--border-subtle)]"
+                className="inline-flex min-h-11 items-center text-text-secondary underline decoration-[var(--border-subtle)] underline-offset-4 transition-colors hover:text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base"
               >
                 NIST Cybersecurity Framework
               </a>

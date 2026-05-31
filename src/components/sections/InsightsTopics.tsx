@@ -24,8 +24,8 @@ const TOPICS = [
       "Protect sensitive business data from public AI tools. Build private AI workflows, agent guardrails, and DLP policies.",
     hubLabel: "Explore Custom AI Agents",
     hubHref: "/custom-ai-agents",
-    color: "text-brand-purple" as const,
-    bgColor: "bg-brand-purple/10" as const,
+    color: "text-brand" as const,
+    bgColor: "bg-brand/10" as const,
   },
   {
     icon: Zap,
@@ -77,7 +77,7 @@ export function InsightsTopics() {
 
                   <Link
                     href={topic.hubHref}
-                    className="mt-6 inline-flex items-center gap-1.5 text-sm text-brand-accent hover:gap-2.5 transition-all"
+                    className="mt-6 inline-flex min-h-11 items-center gap-1.5 text-sm text-brand-accent transition-all hover:gap-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base"
                   >
                     {topic.hubLabel}
                     <ArrowRight className="h-3.5 w-3.5" />

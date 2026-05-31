@@ -2,6 +2,13 @@
 
 import { FormEvent, useCallback, useState } from "react";
 import { TurnstileWidget } from "@/components/forms/TurnstileWidget";
+import { Button } from "@/components/ui/Button";
+import {
+  FormStatus,
+  TextAreaField,
+  TextField,
+} from "@/components/ui/FormControls";
+import { ANALYTICS_EVENTS, trackConversionEvent } from "@/lib/analytics";
 
 type SubmissionState = "idle" | "submitting" | "success" | "error";
 
@@ -10,6 +17,7 @@ export function ContactForm() {
   const [message, setMessage] = useState("");
   const [turnstileToken, setTurnstileToken] = useState("");
   const [turnstileResetSignal, setTurnstileResetSignal] = useState(0);
+  const [formStarted, setFormStarted] = useState(false);
 
   const resetTurnstile = useCallback(() => {
     setTurnstileToken("");
@@ -39,7 +47,7 @@ export function ContactForm() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          formName: "Free AI Assessment Request",
+          formName: "ITECS Contact Request",
           sourcePath: window.location.pathname,
           turnstileToken,
           fields,
@@ -55,6 +63,9 @@ export function ContactForm() {
       form.reset();
       setState("success");
       setMessage("Your message was sent. The ITECS team will follow up shortly.");
+      trackConversionEvent(ANALYTICS_EVENTS.formComplete, {
+        form_id: "contact",
+      });
     } catch (error) {
       setState("error");
       setMessage(
@@ -67,8 +78,19 @@ export function ContactForm() {
     }
   }
 
+  function handleFormStart() {
+    if (formStarted) {
+      return;
+    }
+
+    setFormStarted(true);
+    trackConversionEvent(ANALYTICS_EVENTS.formStart, {
+      form_id: "contact",
+    });
+  }
+
   return (
-    <form onSubmit={handleSubmit} className="space-y-5">
+    <form onSubmit={handleSubmit} onFocusCapture={handleFormStart} className="space-y-5">
       <input
         type="text"
         name="website"
@@ -78,70 +100,46 @@ export function ContactForm() {
         aria-hidden="true"
       />
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <div>
-          <label htmlFor="name" className="block text-sm text-text-dim mb-1.5">
-            Name
-          </label>
-          <input
-            id="name"
-            name="name"
-            type="text"
-            required
-            className="w-full px-4 py-3 rounded-lg bg-bg-void border border-[var(--border-subtle)] text-text-primary placeholder:text-text-dim/50 focus:border-brand-accent focus:outline-none transition-colors"
-            placeholder="Your name"
-          />
-        </div>
-        <div>
-          <label htmlFor="company" className="block text-sm text-text-dim mb-1.5">
-            Company
-          </label>
-          <input
-            id="company"
-            name="company"
-            type="text"
-            className="w-full px-4 py-3 rounded-lg bg-bg-void border border-[var(--border-subtle)] text-text-primary placeholder:text-text-dim/50 focus:border-brand-accent focus:outline-none transition-colors"
-            placeholder="Company name"
-          />
-        </div>
-      </div>
-      <div>
-        <label htmlFor="email" className="block text-sm text-text-dim mb-1.5">
-          Email
-        </label>
-        <input
-          id="email"
-          name="email"
-          type="email"
+        <TextField
+          id="name"
+          name="name"
+          label="Name"
+          type="text"
           required
-          className="w-full px-4 py-3 rounded-lg bg-bg-void border border-[var(--border-subtle)] text-text-primary placeholder:text-text-dim/50 focus:border-brand-accent focus:outline-none transition-colors"
-          placeholder="you@company.com"
+          placeholder="Your name"
+        />
+        <TextField
+          id="company"
+          name="company"
+          label="Company"
+          type="text"
+          placeholder="Company name"
         />
       </div>
-      <div>
-        <label htmlFor="phone" className="block text-sm text-text-dim mb-1.5">
-          Phone
-        </label>
-        <input
-          id="phone"
-          name="phone"
-          type="tel"
-          className="w-full px-4 py-3 rounded-lg bg-bg-void border border-[var(--border-subtle)] text-text-primary placeholder:text-text-dim/50 focus:border-brand-accent focus:outline-none transition-colors"
-          placeholder="(555) 555-5555"
-        />
-      </div>
-      <div>
-        <label htmlFor="message" className="block text-sm text-text-dim mb-1.5">
-          How can we help?
-        </label>
-        <textarea
-          id="message"
-          name="message"
-          rows={4}
-          required
-          className="w-full px-4 py-3 rounded-lg bg-bg-void border border-[var(--border-subtle)] text-text-primary placeholder:text-text-dim/50 focus:border-brand-accent focus:outline-none transition-colors resize-none"
-          placeholder="Tell us about your AI goals..."
-        />
-      </div>
+      <TextField
+        id="email"
+        name="email"
+        label="Email"
+        type="email"
+        required
+        placeholder="you@company.com"
+      />
+      <TextField
+        id="phone"
+        name="phone"
+        label="Phone"
+        type="tel"
+        placeholder="(555) 555-5555"
+      />
+      <TextAreaField
+        id="message"
+        name="message"
+        label="How can we help?"
+        rows={4}
+        required
+        className="resize-none"
+        placeholder="Tell us about your AI goals..."
+      />
       <TurnstileWidget
         resetSignal={turnstileResetSignal}
         onTokenChange={(token) => {
@@ -152,30 +150,24 @@ export function ContactForm() {
           }
         }}
         onError={() => {
-          setState("error");
-          setMessage("Verification could not load. Please refresh and try again.");
+          setTurnstileToken("");
         }}
-        className="rounded-lg border border-[var(--border-subtle)] bg-bg-void px-4 py-3"
+        className="rounded-md border border-[var(--border-strong)] bg-bg-elevated px-4 py-3 shadow-[var(--elev-1-inset)]"
       />
       {message ? (
-        <p
-          className={
-            state === "success"
-              ? "rounded-lg border border-emerald-400/30 bg-emerald-400/10 px-4 py-3 text-sm text-emerald-200"
-              : "rounded-lg border border-red-400/30 bg-red-400/10 px-4 py-3 text-sm text-red-200"
-          }
-          role="status"
-        >
-          {message}
-        </p>
+        <FormStatus
+          tone={state === "success" ? "success" : "error"}
+          message={message}
+        />
       ) : null}
-      <button
+      <Button
         type="submit"
         disabled={state === "submitting"}
-        className="w-full py-3 rounded-lg bg-brand-accent text-bg-void font-medium text-sm tracking-wide uppercase hover:shadow-[0_0_30px_var(--glow-cyan)] transition-all disabled:cursor-not-allowed disabled:opacity-60"
+        size="lg"
+        className="w-full"
       >
         {state === "submitting" ? "Sending..." : "Send Message"}
-      </button>
+      </Button>
     </form>
   );
 }

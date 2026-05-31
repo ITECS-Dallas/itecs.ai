@@ -1,84 +1,119 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { GradientOrb } from "@/components/effects/GradientOrb";
 import { GridBackground } from "@/components/effects/GridBackground";
-import { CircuitTrace } from "@/components/effects/CircuitTrace";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, CheckCircle2, Layers3 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
-import { SITE_CONFIG } from "@/lib/constants";
+import { MIP_PAGE_HERO } from "@/lib/constants";
 
 export function MIPHero() {
   return (
-    <section className="relative pt-8 pb-24 md:pb-32 overflow-hidden">
-      <GridBackground opacity={0.03} />
-      <GradientOrb
-        color="cyan"
-        size="lg"
-        position={{ top: "5%", right: "5%" }}
-      />
-      <GradientOrb
-        color="purple"
-        size="md"
-        position={{ bottom: "15%", left: "10%" }}
+    <section className="relative overflow-hidden pt-8 pb-24 md:pb-32">
+      <GridBackground opacity={0.025} />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(58%_48%_at_72%_22%,var(--brand-subtle)_0%,transparent_72%)]"
       />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <p className="text-sm font-medium tracking-[0.05em] uppercase text-brand-accent mb-4 flex items-center gap-2">
-            <span className="inline-block w-8 h-px bg-brand-accent" />
-            Managed Intelligence Provider
-          </p>
-          <h1 className="text-4xl md:text-6xl font-extralight tracking-[-0.03em] leading-[1.1] max-w-4xl">
-            Dallas Managed Intelligence Provider — Managed AI Services for SMBs
-          </h1>
-
-          {/* GEO zero-click answer block */}
-          <p className="mt-6 text-lg md:text-xl text-text-primary font-medium max-w-2xl leading-relaxed">
-            <strong>
-              A Managed Intelligence Provider (MIP) deploys and manages AI
-              automation, custom AI agents, and data intelligence for your
-              business — the same way an MSP manages your IT infrastructure.
-              ITECS is Dallas&apos;s MIP for businesses with 10–300 employees,
-              backed by 24 years of managed IT and cybersecurity operations.
-            </strong>
-          </p>
-
-          <p className="mt-4 text-base text-text-secondary font-light max-w-2xl leading-relaxed">
-            Your MSP keeps your servers running. Your MSSP keeps your data safe.
-            A MIP makes your business smarter — with AI that automates
-            workflows, answers phones, qualifies leads, and trains your team. One
-            provider. One bill. One partner who manages your entire technology
-            stack from infrastructure to intelligence.
-          </p>
-        </motion.div>
-
-        {/* CTA row */}
-        <motion.div
-          className="mt-8 flex flex-wrap gap-4"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.35 }}
-        >
-          <Button
-            href="/contact"
-            size="lg"
-            icon={<ArrowRight className="h-4 w-4" />}
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(360px,0.48fr)] lg:items-center">
+          <motion.div
+            initial={false}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
           >
-            Get Your Free AI Assessment
-          </Button>
-          <Button href={`tel:${SITE_CONFIG.phoneE164}`} variant="ghost" size="lg">
-            Call {SITE_CONFIG.phone}
-          </Button>
-        </motion.div>
+            <p className="mb-5 flex items-center gap-3 font-mono text-[length:var(--fs-eyebrow)] font-semibold uppercase tracking-normal text-brand-accent">
+              <span className="inline-block h-px w-8 bg-brand-accent" />
+              {MIP_PAGE_HERO.eyebrow}
+            </p>
+            <h1 className="max-w-5xl text-[length:var(--fs-display-xl)] font-semibold leading-[var(--lh-display)] tracking-normal text-text-primary">
+              {MIP_PAGE_HERO.title}
+            </h1>
 
-        {/* Circuit trace accent */}
-        <div className="mt-12">
-          <CircuitTrace variant="section-divider" />
+            <p className="mt-6 max-w-3xl text-lg font-semibold leading-relaxed text-text-primary md:text-xl">
+              {MIP_PAGE_HERO.subhead}
+            </p>
+
+            <p className="mt-4 max-w-3xl text-base leading-relaxed text-text-secondary md:text-lg">
+              {MIP_PAGE_HERO.supporting}
+            </p>
+
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <Button
+                href={MIP_PAGE_HERO.primaryCta.href}
+                size="lg"
+                icon={<ArrowRight className="h-4 w-4" />}
+              >
+                {MIP_PAGE_HERO.primaryCta.label}
+              </Button>
+              <Button
+                href={MIP_PAGE_HERO.secondaryCta.href}
+                variant="secondary"
+                size="lg"
+              >
+                {MIP_PAGE_HERO.secondaryCta.label}
+              </Button>
+            </div>
+          </motion.div>
+
+          <aside
+            aria-label="Managed Intelligence operating layer"
+            className="rounded-lg border border-[var(--border-default)] bg-bg-surface/80 p-5 shadow-e2 [box-shadow:var(--elev-2-inset),var(--elev-2)]"
+          >
+            <div className="flex items-center justify-between gap-4 border-b border-[var(--border-subtle)] pb-4">
+              <div>
+                <p className="font-mono text-xs font-semibold uppercase text-accent-cyan">
+                  MIP operating layer
+                </p>
+                <h2 className="mt-2 text-lg font-semibold text-text-primary">
+                  Infrastructure to intelligence.
+                </h2>
+              </div>
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md bg-brand-subtle text-brand">
+                <Layers3 aria-hidden="true" className="h-5 w-5" />
+              </span>
+            </div>
+
+            <div className="mt-5 grid gap-3">
+              {MIP_PAGE_HERO.operatingLayer.map((layer) => (
+                <div
+                  key={layer.label}
+                  className="rounded-md border border-[var(--border-subtle)] bg-bg-base p-4"
+                >
+                  <div className="flex items-start gap-3">
+                    <CheckCircle2
+                      aria-hidden="true"
+                      className="mt-0.5 h-4 w-4 shrink-0 text-success"
+                    />
+                    <div>
+                      <h3 className="text-sm font-semibold text-text-primary">
+                        {layer.label}
+                      </h3>
+                      <p className="mt-1 text-xs leading-relaxed text-text-secondary">
+                        {layer.detail}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-5 grid gap-3 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
+              {MIP_PAGE_HERO.proof.map((proof) => (
+                <div
+                  key={proof.label}
+                  className="rounded-md border border-[var(--border-subtle)] bg-bg-sunken p-4"
+                >
+                  <p className="font-mono text-2xl font-semibold text-brand">
+                    {proof.value}
+                  </p>
+                  <p className="mt-2 text-xs leading-snug text-text-tertiary">
+                    {proof.label}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </aside>
         </div>
       </div>
     </section>

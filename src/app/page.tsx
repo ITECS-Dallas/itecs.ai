@@ -4,35 +4,41 @@ import { FAQ_ITEMS, HOMEPAGE_FEATURES } from "@/lib/constants";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Hero } from "@/components/sections/Hero";
 import { TrustBar } from "@/components/sections/TrustBar";
+import { ThirdPartyValidation } from "@/components/sections/ThirdPartyValidation";
 import { AIAdoptionUnderstanding } from "@/components/sections/AIAdoptionUnderstanding";
 import { AIPricingPreview } from "@/components/sections/AIPricingPreview";
 import { AIPracticeAreas } from "@/components/sections/AIPracticeAreas";
 import { ServicesGrid } from "@/components/sections/ServicesGrid";
 import { FeatureShowcase } from "@/components/sections/FeatureShowcase";
 import { Heritage } from "@/components/sections/Heritage";
+import { MethodologySteps } from "@/components/sections/MethodologySteps";
+import { OutcomesProof } from "@/components/sections/OutcomesProof";
+import { SecurityGovernanceBand } from "@/components/sections/SecurityGovernanceBand";
+import { Testimonials } from "@/components/sections/Testimonials";
+import { InsightsTeaser } from "@/components/sections/InsightsTeaser";
 import { ManagedITReferral } from "@/components/sections/ManagedITReferral";
 import { StatsBar } from "@/components/sections/StatsBar";
-import { PartnerLogos } from "@/components/sections/PartnerLogos";
 import { LocalFootprint } from "@/components/sections/LocalFootprint";
 import { FAQ } from "@/components/sections/FAQ";
-import { CTASection } from "@/components/sections/CTASection";
+import { ConversionBand } from "@/components/sections/ConversionBand";
 
 export const metadata = generatePageMetadata({
-  title: "Small Business AI Consulting & Automation in Dallas | ITECS",
+  title: "Managed Intelligence & Secure AI Operations in Dallas | ITECS",
   description:
-    "ITECS helps Dallas SMBs with 10–300 employees deploy secure AI consulting, training, automation, DevOps, and custom AI agents backed by 24 years of IT operations expertise.",
+    "ITECS helps Dallas mid-market and enterprise teams with 10-300 employees deploy secure AI consulting, training, automation, DevOps, and custom AI agents backed by 24 years of IT operations expertise.",
   path: "/",
   keywords: [
-    "small business AI consulting",
+    "managed intelligence provider",
     "Dallas AI consultants",
-    "SMB AI automation",
-    "AI IT services",
-    "AI consulting for small business",
+    "enterprise AI operations",
+    "mid-market AI consulting",
+    "AI IT services Dallas",
+    "AI readiness assessment",
     "AI automation Dallas",
     "custom AI agents for business",
     "AI consultant Dallas TX",
-    "how to automate small business with AI",
-    "secure AI companies for SMBs",
+    "secure AI operations",
+    "managed AI services Dallas",
   ],
 });
 
@@ -41,18 +47,23 @@ export default function HomePage() {
     <>
       <Hero />
       <TrustBar />
+      <ThirdPartyValidation />
       <AIAdoptionUnderstanding />
       <AIPricingPreview />
       <AIPracticeAreas />
       <ServicesGrid />
-      <FeatureShowcase features={HOMEPAGE_FEATURES} />
       <Heritage />
+      <MethodologySteps />
+      <OutcomesProof />
+      <SecurityGovernanceBand />
+      <Testimonials />
+      <InsightsTeaser />
+      <FeatureShowcase features={HOMEPAGE_FEATURES} />
       <ManagedITReferral />
       <StatsBar />
-      <PartnerLogos />
       <LocalFootprint />
       <FAQ items={FAQ_ITEMS} />
-      <CTASection />
+      <ConversionBand />
       <JsonLd data={generateFAQSchema(FAQ_ITEMS)} />
     </>
   );

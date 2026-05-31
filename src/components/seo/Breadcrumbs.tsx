@@ -20,7 +20,7 @@ export function Breadcrumbs({ items }: { items: BreadcrumbItem[] }) {
       <JsonLd data={generateBreadcrumbSchema(schemaItems)} />
       <nav
         aria-label="Breadcrumb"
-        className="flex items-center gap-2 text-sm text-text-dim py-4"
+        className="flex flex-wrap items-center gap-2 py-4 text-sm text-text-dim"
       >
         {items.map((item, index) => {
           const isLast = index === items.length - 1;
@@ -34,7 +34,7 @@ export function Breadcrumbs({ items }: { items: BreadcrumbItem[] }) {
               ) : (
                 <Link
                   href={item.href}
-                  className="hover:text-brand-accent transition-colors"
+                  className="inline-flex min-h-11 min-w-11 items-center transition-colors hover:text-brand-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base"
                 >
                   {item.label}
                 </Link>

@@ -32,7 +32,7 @@ export const metadata = generatePageMetadata({
   path: "/services/ai-champion-program",
   keywords: [
     "internal AI champion program",
-    "AI training for SMB",
+    "AI training for growing teams",
     "AI enablement",
     "internal AI lead",
     "AI champion certification",
@@ -276,7 +276,7 @@ const courseSchema = {
   timeRequired: "P6W",
   educationalCredentialAwarded: "Certificate of Completion",
   about: [
-    "AI training for SMB",
+    "AI training for growing teams",
     "AI enablement",
     "Prompt engineering",
     "AI governance",
@@ -376,7 +376,7 @@ export default function AIChampionProgramPage() {
         <GridBackground opacity={0.03} />
         <GradientOrb color="cyan" size="lg" position={{ top: "0", right: "5%" }} />
         <GradientOrb
-          color="purple"
+          color="brand"
           size="md"
           position={{ bottom: "10%", left: "8%" }}
         />
@@ -428,7 +428,7 @@ export default function AIChampionProgramPage() {
           </ScrollReveal>
 
           <ScrollReveal direction="left" delay={0.12}>
-            <div className="relative rounded-3xl border border-[var(--border-subtle)] bg-bg-surface/55 p-3 shadow-2xl shadow-black/30">
+            <div className="relative rounded-3xl border border-[var(--border-subtle)] bg-bg-surface/55 p-3 shadow-e2">
               <div className="relative aspect-[16/10] overflow-hidden rounded-2xl">
                 <Image
                   src="/images/team/team-office.webp"
@@ -489,7 +489,7 @@ export default function AIChampionProgramPage() {
           <ScrollReveal delay={0.1}>
             <div className="space-y-5 text-lg leading-relaxed text-text-secondary">
               <p>
-                Across SMB and mid-market organizations, AI tools are rolling
+                Across growth-stage and mid-market organizations, AI tools are rolling
                 out quickly. The harder question is who owns AI after the first
                 pilot, who keeps employees using it correctly, and who knows
                 when a new use case is worth investment.

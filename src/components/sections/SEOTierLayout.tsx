@@ -156,7 +156,7 @@ export function SEOTierLayout({ tier }: Props) {
                     <div
                       className={`relative h-full rounded-xl border p-6 bg-bg-void ${
                         featured
-                          ? "border-brand-accent/50 shadow-[0_0_30px_rgba(6,182,212,0.12)]"
+                          ? "border-brand-accent/50 shadow-[0_0_30px_var(--accent-cyan-subtle)]"
                           : "border-[var(--border-subtle)]"
                       }`}
                     >
@@ -550,7 +550,7 @@ export function SEOTierLayout({ tier }: Props) {
         <section className="py-20 md:py-24 bg-bg-surface">
           <div className="mx-auto max-w-4xl px-6 md:px-8">
             <ScrollReveal>
-              <div className="rounded-xl border border-brand-purple/30 bg-gradient-to-br from-brand-purple/10 to-brand-accent/5 p-8 md:p-10 text-center">
+              <div className="rounded-xl border border-brand/30 bg-gradient-to-br from-brand/10 to-brand-accent/5 p-8 md:p-10 text-center">
                 <h2 className="text-2xl md:text-3xl font-light text-text-primary">
                   {tier.upgradePath.headline}
                 </h2>
@@ -559,7 +559,7 @@ export function SEOTierLayout({ tier }: Props) {
                 </p>
                 <Link
                   href={`/ai-optimized-seo/${tier.upgradePath.targetSlug}`}
-                  className="mt-6 inline-flex items-center gap-2 text-brand-purple hover:text-brand-purple-bright transition-colors"
+                  className="mt-6 inline-flex min-h-11 items-center gap-2 text-brand transition-colors hover:text-brand-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-surface"
                 >
                   {tier.upgradePath.ctaText}
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />

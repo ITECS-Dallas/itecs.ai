@@ -132,9 +132,9 @@ export default function AIOptimizedSEOPage() {
             {overview.includes.map((cat, i) => {
               const Icon = i === 0 ? Cpu : Sparkles;
               const accent =
-                i === 0 ? "text-brand-accent" : "text-brand-purple";
+                i === 0 ? "text-brand-accent" : "text-brand";
               const bg =
-                i === 0 ? "bg-brand-accent/10" : "bg-brand-purple/10";
+                i === 0 ? "bg-brand-accent/10" : "bg-brand/10";
               return (
                 <ScrollReveal key={cat.category} delay={i * 0.1}>
                   <div className="h-full rounded-xl border border-[var(--border-subtle)] bg-bg-void p-6">
@@ -224,7 +224,7 @@ export default function AIOptimizedSEOPage() {
       <section className="py-24 md:py-28">
         <div className="mx-auto max-w-4xl px-6 md:px-8">
           <ScrollReveal>
-            <div className="rounded-xl border border-brand-accent/30 bg-gradient-to-br from-brand-accent/5 to-brand-purple/5 p-8 md:p-10">
+            <div className="rounded-xl border border-brand-accent/30 bg-gradient-to-br from-brand/5 to-cyan/5 p-8 md:p-10">
               <div className="flex items-start gap-4">
                 <ShieldCheck
                   className="h-6 w-6 text-brand-accent shrink-0 mt-0.5"
@@ -252,7 +252,7 @@ export default function AIOptimizedSEOPage() {
                   </p>
                   <Link
                     href="/about"
-                    className="mt-4 inline-flex items-center gap-1.5 text-sm text-brand-accent hover:text-brand-accent-bright transition-colors"
+                    className="mt-4 inline-flex min-h-11 items-center gap-1.5 text-sm text-brand-accent transition-colors hover:text-brand-accent-bright focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base"
                   >
                     Learn more about ITECS
                     <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />

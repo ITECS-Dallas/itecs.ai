@@ -27,8 +27,8 @@ const TOPIC_META: Record<
   },
   "custom-ai-agents": {
     icon: Shield,
-    color: "text-brand-purple",
-    bgColor: "bg-brand-purple/10",
+    color: "text-brand",
+    bgColor: "bg-brand/10",
   },
   automation: {
     icon: Zap,
@@ -37,8 +37,8 @@ const TOPIC_META: Record<
   },
   "ai-devops": {
     icon: Zap,
-    color: "text-brand-purple",
-    bgColor: "bg-brand-purple/10",
+    color: "text-brand",
+    bgColor: "bg-brand/10",
   },
 };
 

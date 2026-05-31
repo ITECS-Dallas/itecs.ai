@@ -24,7 +24,7 @@ export function ServicesHero() {
         position={{ top: "5%", right: "5%" }}
       />
       <GradientOrb
-        color="purple"
+        color="brand"
         size="md"
         position={{ bottom: "10%", left: "10%" }}
       />
@@ -57,7 +57,7 @@ export function ServicesHero() {
           <p className="mt-4 text-base text-text-secondary font-light max-w-2xl leading-relaxed">
             Every service is backed by ITECS — a Dallas-based IT operations firm
             with 24 years of experience managing infrastructure, security, and
-            compliance for small and mid-sized businesses. We build AI that fits
+            compliance for growth-stage and mid-market organizations. We build AI that fits
             your team, your tools, and your budget.
           </p>
         </motion.div>
@@ -96,7 +96,7 @@ export function ServicesHero() {
           >
             Get Your Free AI Assessment
           </Button>
-          <Button href={`tel:${SITE_CONFIG.phoneE164}`} variant="ghost" size="lg">
+          <Button href={`tel:${SITE_CONFIG.phoneE164}`} variant="tertiary" size="lg">
             Call {SITE_CONFIG.phone}
           </Button>
         </motion.div>

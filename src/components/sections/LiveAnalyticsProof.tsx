@@ -105,7 +105,7 @@ export function LiveAnalyticsProof({
                         <div
                           className={`h-full rounded-full ${
                             isAI
-                              ? "bg-gradient-to-r from-brand-accent to-brand-purple"
+                              ? "bg-gradient-to-r from-brand to-cyan"
                               : "bg-brand-accent/40"
                           }`}
                           style={{ width: `${pct}%` }}

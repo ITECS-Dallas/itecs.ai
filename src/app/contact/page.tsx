@@ -2,12 +2,12 @@ import { generatePageMetadata } from "@/lib/metadata";
 import { SITE_CONFIG } from "@/lib/constants";
 import { generateContactPageSchema } from "@/lib/seo";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
-import { GradientOrb } from "@/components/effects/GradientOrb";
 import { GridBackground } from "@/components/effects/GridBackground";
 import { ScrollReveal } from "@/components/effects/ScrollReveal";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { ContactForm } from "@/components/forms/ContactForm";
-import { Building2, ExternalLink, Mail, MapPin, Phone } from "lucide-react";
+import { Building2, Clock3, ExternalLink, Mail, MapPin, Phone } from "lucide-react";
+import { TrustBar } from "@/components/sections/TrustBar";
 import {
   LinkedInIcon,
   XIcon,
@@ -18,14 +18,14 @@ import {
 import Link from "next/link";
 
 export const metadata = generatePageMetadata({
-  title: "Contact ITECS — Free AI Assessment in Dallas",
+  title: "Contact ITECS — Dallas Managed AI Team",
   description:
-    "Contact ITECS for a free AI assessment. Visit our Plano corporate office or call our international line at (214) 444-7884 or toll-free at (877) 483-2710.",
+    "Contact ITECS for managed AI consulting, automation, governance, and AI Readiness Assessment conversations from the Plano corporate office serving Dallas-Fort Worth.",
   path: "/contact",
   keywords: [
     "contact AI consultant Dallas",
-    "free AI assessment Dallas",
-    "small business AI help Dallas",
+    "AI Readiness Assessment Dallas",
+    "managed AI consulting Dallas",
     "AI automation consultation Dallas",
   ],
 });
@@ -46,22 +46,23 @@ export default function ContactPage() {
 
       <section className="relative pt-8 pb-24 overflow-hidden">
         <GridBackground opacity={0.03} />
-        <GradientOrb color="cyan" size="md" position={{ top: "20%", right: "15%" }} />
 
         <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-8">
           <h1 className="text-4xl md:text-6xl font-extralight tracking-[-0.03em] leading-[1.1] max-w-3xl">
-            Let&apos;s Find Where AI Can{" "}
-            <span className="bg-gradient-to-r from-brand-accent to-brand-purple bg-clip-text text-transparent">
-              Save You Time & Money
+            Talk with the Dallas team that can make AI{" "}
+            <span className="bg-gradient-to-r from-brand to-cyan bg-clip-text text-transparent">
+              governed and useful
             </span>
           </h1>
           <p className="mt-6 text-lg text-text-secondary max-w-xl">
-            Start with a free AI assessment for your Dallas business. We&apos;ll
-            show you exactly which tasks AI can automate and how much time
-            you&apos;ll save — no commitments, no vendor lock-in.
+            Use this page for architect conversations, AI Readiness Assessment
+            follow-up, or direct contact with the ITECS team serving DFW from
+            Plano.
           </p>
         </div>
       </section>
+
+      <TrustBar />
 
       <section className="overflow-hidden pb-24">
         <div className="mx-auto max-w-7xl px-6 md:px-8 grid grid-cols-1 lg:grid-cols-2 gap-16">
@@ -76,20 +77,41 @@ export default function ContactPage() {
                   <h3 className="text-text-primary font-medium">Phone</h3>
                   <a
                     href={`tel:${SITE_CONFIG.phoneE164}`}
-                    className="text-text-secondary hover:text-brand-accent transition-colors block"
+                    className="flex min-h-11 items-center text-text-secondary transition-colors hover:text-brand-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base"
                   >
                     {SITE_CONFIG.phone}
                     <span className="text-text-dim text-xs ml-2">International</span>
                   </a>
                   <a
                     href={`tel:${SITE_CONFIG.supportPhoneE164}`}
-                    className="text-text-secondary hover:text-brand-accent transition-colors block mt-1"
+                    className="mt-1 flex min-h-11 items-center text-text-secondary transition-colors hover:text-brand-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base"
                   >
                     {SITE_CONFIG.supportPhone}
                     <span className="text-text-dim text-xs ml-2">
                       Toll Free
                     </span>
                   </a>
+                </div>
+              </div>
+
+              <div
+                id="response-time"
+                className="rounded-lg border border-[var(--border-default)] bg-bg-elevated p-5"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-brand/10">
+                    <Clock3 className="h-5 w-5 text-brand" aria-hidden="true" />
+                  </div>
+                  <div>
+                    <h3 className="font-medium text-text-primary">
+                      Response-time promise
+                    </h3>
+                    <p className="mt-2 text-sm leading-relaxed text-text-secondary">
+                      Assessment and architect requests route to the ITECS team
+                      by email. A qualified team member follows up on the next
+                      business day; urgent requests should call {SITE_CONFIG.phone}.
+                    </p>
+                  </div>
                 </div>
               </div>
 
@@ -137,9 +159,9 @@ export default function ContactPage() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={social.label}
-                      className="flex items-center justify-center w-9 h-9 rounded-lg bg-bg-surface border border-[var(--border-subtle)] text-text-dim hover:text-brand-accent hover:border-[var(--border-active)] transition-colors"
+                      className="flex h-11 w-11 items-center justify-center rounded-lg border border-[var(--border-subtle)] bg-bg-surface text-text-dim transition-colors hover:border-[var(--border-active)] hover:text-brand-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base"
                     >
-                      <Icon className="h-4 w-4" />
+                      <Icon aria-hidden="true" className="h-4 w-4" />
                     </a>
                   );
                 })}
@@ -153,13 +175,13 @@ export default function ContactPage() {
                 <div className="mt-4 flex gap-4">
                   <Link
                     href="/services"
-                    className="text-brand-accent hover:text-brand-accent-bright transition-colors text-sm"
+                    className="inline-flex min-h-11 items-center text-sm text-brand-accent transition-colors hover:text-brand-accent-bright focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base"
                   >
                     View our services &rarr;
                   </Link>
                   <Link
                     href="/about"
-                    className="text-brand-accent hover:text-brand-accent-bright transition-colors text-sm"
+                    className="inline-flex min-h-11 items-center text-sm text-brand-accent transition-colors hover:text-brand-accent-bright focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base"
                   >
                     About ITECS &rarr;
                   </Link>
@@ -172,7 +194,7 @@ export default function ContactPage() {
           <ScrollReveal direction="up" delay={0.1}>
             <div className="rounded-xl border border-[var(--border-subtle)] bg-bg-surface p-8">
               <h2 className="text-2xl font-light text-text-primary mb-6">
-                Request a Free Assessment
+                Contact ITECS
               </h2>
               <ContactForm />
             </div>
@@ -264,7 +286,7 @@ export default function ContactPage() {
                   href={SITE_CONFIG.googleMapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-brand-accent transition-colors hover:text-brand-accent-bright"
+                  className="mt-6 inline-flex min-h-11 items-center gap-2 text-sm font-medium text-brand-accent transition-colors hover:text-brand-accent-bright focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base"
                 >
                   View ITECS on Google Maps
                   <ExternalLink className="h-4 w-4" aria-hidden="true" />
@@ -274,7 +296,7 @@ export default function ContactPage() {
           </ScrollReveal>
 
           <ScrollReveal direction="up" delay={0.1}>
-            <div className="relative h-full min-h-[340px] overflow-hidden rounded-lg border border-[var(--border-subtle)] bg-bg-void shadow-[0_0_40px_rgba(6,182,212,0.08)] md:min-h-[430px]">
+            <div className="relative h-full min-h-[340px] overflow-hidden rounded-lg border border-[var(--border-subtle)] bg-bg-void shadow-[0_0_40px_var(--accent-cyan-subtle)] md:min-h-[430px]">
               <iframe
                 title="Google map showing ITECS corporate office in Plano, Texas"
                 src={SITE_CONFIG.googleMapsEmbedUrl}

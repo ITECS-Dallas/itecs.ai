@@ -30,13 +30,13 @@ const stages = [
     icon: BarChart3,
     label: "AI Scores Lead",
     detail: "Fit, intent, engagement",
-    color: "var(--brand-purple)",
+    color: "var(--brand-hover)",
   },
   {
     icon: Mail,
     label: "AI Drafts Outreach",
     detail: "Personalized from CRM data",
-    color: "var(--brand-purple)",
+    color: "var(--brand-hover)",
   },
   {
     icon: Handshake,
@@ -122,7 +122,7 @@ export function SalesPipelineDiagram() {
   return (
     <section className="relative py-24 md:py-32 overflow-hidden">
       <GradientOrb
-        color="purple"
+        color="brand"
         size="sm"
         position={{ top: "25%", right: "8%" }}
       />

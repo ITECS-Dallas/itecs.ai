@@ -7,6 +7,7 @@ import {
   MANUFACTURING_VERTICAL,
   MANUFACTURING_SPOKE_PAGES,
   PPV_AGENT_USE_CASE,
+  TRUST_CASE_STUDIES,
 } from "@/lib/constants";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -54,6 +55,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
   ];
 
+  const caseStudyPages = TRUST_CASE_STUDIES.map((caseStudy) => ({
+    url: `${base}${caseStudy.detailHref}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.75,
+  }));
+
   return [
     {
       url: base,
@@ -62,7 +70,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1.0,
     },
     ...hubPages,
+    ...caseStudyPages,
     ...manufacturingPages,
+    {
+      url: `${base}/managed-intelligence-provider`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
     {
       url: `${base}${AI_SEO_OVERVIEW.href}`,
       lastModified: new Date(),
@@ -106,6 +121,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.7,
+    },
+    {
+      url: `${base}/assessment`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
     },
   ];
 }
