@@ -10,6 +10,7 @@ import { AIPracticeAreas } from "@/components/sections/AIPracticeAreas";
 import { ServicesGrid } from "@/components/sections/ServicesGrid";
 import { FeatureShowcase } from "@/components/sections/FeatureShowcase";
 import { Heritage } from "@/components/sections/Heritage";
+import { MethodologySteps } from "@/components/sections/MethodologySteps";
 import { ManagedITReferral } from "@/components/sections/ManagedITReferral";
 import { StatsBar } from "@/components/sections/StatsBar";
 import { LocalFootprint } from "@/components/sections/LocalFootprint";
@@ -44,8 +45,9 @@ export default function HomePage() {
       <AIPricingPreview />
       <AIPracticeAreas />
       <ServicesGrid />
-      <FeatureShowcase features={HOMEPAGE_FEATURES} />
       <Heritage />
+      <MethodologySteps />
+      <FeatureShowcase features={HOMEPAGE_FEATURES} />
       <ManagedITReferral />
       <StatsBar />
       <LocalFootprint />
