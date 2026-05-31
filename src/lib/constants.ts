@@ -2885,6 +2885,90 @@ export const HOMEPAGE_HERITAGE = {
 } as const;
 
 // ---------------------------------------------------------------------------
+// Managed Intelligence Provider subpage
+// ---------------------------------------------------------------------------
+
+export const MIP_PAGE_HERO = {
+  eyebrow: "DALLAS'S FIRST MANAGED INTELLIGENCE PROVIDER",
+  title: "The MSP, Evolved into a Managed Intelligence Provider",
+  subhead:
+    "A Managed Intelligence Provider operates AI the way a mature MSP operates infrastructure: governed, monitored, documented, secured, and continually improved.",
+  supporting:
+    "ITECS extends its 24-year Dallas managed IT and cybersecurity foundation into the intelligence layer: agents, automations, model governance, data readiness, executive reporting, and the support path that keeps production AI dependable.",
+  primaryCta: {
+    label: "Book an AI Readiness Assessment",
+    href: "/contact",
+  },
+  secondaryCta: {
+    label: "Explore Managed AI",
+    href: "#mip-evolution",
+  },
+  proof: [
+    {
+      value: "24+",
+      label: "years operating client technology environments",
+    },
+    {
+      value: "92%",
+      label: "client retention rate",
+    },
+    {
+      value: "200+",
+      label: "client engagements",
+    },
+  ],
+  operatingLayer: [
+    {
+      label: "Managed IT",
+      detail: "Infrastructure, endpoint, cloud, backup, and support discipline.",
+    },
+    {
+      label: "Managed Security",
+      detail: "Identity, endpoint protection, monitoring, evidence, and risk controls.",
+    },
+    {
+      label: "Managed Intelligence",
+      detail: "Agents, automations, model governance, optimization, and reporting.",
+    },
+  ],
+} as const;
+
+export const MIP_EVOLUTION_TIMELINE = [
+  {
+    year: "2002",
+    title: "ITECS founded",
+    stage: "Dallas managed IT foundation",
+    description:
+      "ITECS begins operating business technology environments for Dallas-Fort Worth organizations.",
+    tone: "heritage",
+  },
+  {
+    year: "2000s-2010s",
+    title: "Managed IT",
+    stage: "MSP",
+    description:
+      "Infrastructure, devices, Microsoft environments, helpdesk, backup, and continuity move into an accountable managed-services model.",
+    tone: "muted",
+  },
+  {
+    year: "2015-2023",
+    title: "Managed Security",
+    stage: "MSSP",
+    description:
+      "Security operations, endpoint protection, identity controls, compliance support, and risk reporting become part of the operating layer.",
+    tone: "brand",
+  },
+  {
+    year: "2024+",
+    title: "Managed Intelligence",
+    stage: "MIP",
+    description:
+      "AI agents, workflow automation, model governance, prompt operations, and executive intelligence reporting are managed with the same discipline.",
+    tone: "cyan",
+  },
+] as const;
+
+// ---------------------------------------------------------------------------
 // Homepage: Local Dallas footprint — DFW metro cities for local SEO
 // ---------------------------------------------------------------------------
 
