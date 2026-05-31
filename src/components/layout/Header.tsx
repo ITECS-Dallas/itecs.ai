@@ -42,8 +42,55 @@ const CATEGORY_ICONS: Record<string, MenuIcon> = {
   Company: Building2,
 };
 
+const desktopNavLinks = [
+  { label: "Home", href: "/" },
+  {
+    label: "Solutions",
+    href: "/services",
+    match: [
+      "/services",
+      "/consulting",
+      "/custom-ai-agents",
+      "/automation",
+      "/training",
+      "/ai-receptionist",
+      "/crm-sales-ai",
+      "/ai-knowledge-base",
+      "/data-audit",
+      "/ai-devops",
+      "/ai-optimized-seo",
+      "/managed-intelligence-provider",
+    ],
+  },
+  {
+    label: "Industries",
+    href: "/manufacturing",
+    match: ["/manufacturing"],
+  },
+  { label: "About", href: "/about" },
+  { label: "Insights", href: "/insights" },
+  { label: "Contact", href: "/contact" },
+] as const;
+
 function routeMatches(pathname: string, link: MegaMenuLink) {
   return !link.external && pathname === link.href;
+}
+
+function desktopRouteMatches(
+  pathname: string,
+  link: (typeof desktopNavLinks)[number],
+) {
+  if (link.href === "/") {
+    return pathname === "/";
+  }
+
+  if ("match" in link) {
+    return link.match.some(
+      (href) => pathname === href || pathname.startsWith(`${href}/`),
+    );
+  }
+
+  return pathname === link.href || pathname.startsWith(`${link.href}/`);
 }
 
 function findCategoryIndex(pathname: string) {
@@ -498,8 +545,9 @@ export function Header() {
   const pathname = usePathname();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    const onScroll = () => setScrolled(window.scrollY > 24);
     window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
@@ -520,11 +568,9 @@ export function Header() {
   return (
     <>
       <header
-        className={`fixed left-0 right-0 z-50 h-[72px] border-b transition-[top,background-color,backdrop-filter,border-color] duration-300 ease-out ${
-          scrolled || menuOpen ? "top-0" : "top-8"
-        } ${
+        className={`fixed left-0 right-0 top-0 z-50 h-16 border-b transition-[background-color,backdrop-filter,border-color] duration-300 ease-out lg:h-[72px] ${
           scrolled || menuOpen
-            ? "bg-bg-elevated/80 backdrop-blur-xl border-[var(--border-subtle)]"
+            ? "bg-bg-elevated/80 backdrop-blur-md border-[var(--border-subtle)]"
             : "bg-transparent border-transparent"
         }`}
       >
@@ -542,15 +588,45 @@ export function Header() {
             />
           </Link>
 
-          {/* Right side — CTA + menu toggle */}
+          <nav
+            aria-label="Primary navigation"
+            className="hidden items-center gap-1 lg:flex"
+          >
+            {desktopNavLinks.map((link) => {
+              const isActive = desktopRouteMatches(pathname, link);
+
+              return (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  aria-current={isActive ? "page" : undefined}
+                  className={`relative px-3 py-2 text-sm font-medium transition-colors duration-[var(--dur-base)] ease-[var(--ease-out)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base ${
+                    isActive
+                      ? "text-text-primary after:absolute after:inset-x-3 after:bottom-0 after:h-0.5 after:bg-brand"
+                      : "text-text-secondary hover:text-text-primary"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
+          </nav>
+
+          {/* Right side — phone + CTA + mobile menu toggle */}
           <div className="flex items-center gap-2.5">
-            <div className="hidden sm:block">
+            <div className="hidden items-center gap-4 lg:flex">
+              <a
+                href={`tel:${SITE_CONFIG.phoneE164}`}
+                className="font-mono text-sm text-text-secondary transition-colors hover:text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base"
+              >
+                {SITE_CONFIG.phone}
+              </a>
               <Button href="/contact" size="sm">
-                Get Started
+                Book AI Assessment
               </Button>
             </div>
             <button
-              className={`relative z-50 flex h-10 w-10 items-center justify-center rounded-lg border border-[var(--border-subtle)] bg-bg-surface text-text-primary transition-colors hover:border-brand-accent hover:text-brand-accent ${REDUCE_MOTION}`}
+              className={`relative z-50 flex h-10 w-10 items-center justify-center rounded-lg border border-[var(--border-default)] bg-bg-surface text-text-primary transition-colors hover:border-[var(--border-strong)] hover:text-brand-accent lg:hidden ${REDUCE_MOTION}`}
               onClick={() => setMenuOpen((v) => !v)}
               aria-label={menuOpen ? "Close menu" : "Open menu"}
               aria-expanded={menuOpen}
