@@ -123,7 +123,7 @@ function buildEmailHtml(input: SendContactEmailInput) {
               <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="max-width:720px;background:#ffffff;border:1px solid #d9e2ec;border-radius:12px;overflow:hidden;">
                 <tr>
                   <td style="background:#08111f;padding:26px 30px;">
-                    <div style="color:#67e8f9;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;">ITECS AI Website</div>
+                    <div style="color:#A78BFA;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;">ITECS AI Website</div>
                     <h1 style="margin:10px 0 0;color:#ffffff;font-size:24px;font-weight:400;line-height:1.3;">New form submission</h1>
                   </td>
                 </tr>

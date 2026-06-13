@@ -76,7 +76,7 @@ export function ManufacturingHero({
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.15, duration: 0.6 }}
           >
-            <div className="rounded-xl border border-[var(--border-subtle)] bg-bg-surface/70 p-5 shadow-2xl shadow-cyan-950/20 backdrop-blur">
+            <div className="rounded-xl border border-[var(--border-subtle)] bg-bg-surface/70 p-5 shadow-2xl shadow-violet-950/20 backdrop-blur">
               <div className="mb-6 flex items-center justify-between border-b border-[var(--border-subtle)] pb-4">
                 <div className="flex items-center gap-3">
                   <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-brand-accent/20 bg-brand-accent/10">

@@ -27,9 +27,10 @@
   --brand-subtle: rgba(46, 107, 255, 0.12);
   --brand-ring: rgba(74, 130, 255, 0.55);
 
-  /* ---- Accent: intelligence cyan (SPARINGLY) ---- */
-  --accent-cyan: #38D6E0;
-  --accent-cyan-subtle: rgba(56, 214, 224, 0.12);
+  /* ---- Accent: intelligence violet (SPARINGLY) ---- */
+  --accent-cyan: #8B5CF6;
+  --accent-cyan-bright: #A78BFA;
+  --accent-cyan-subtle: rgba(139, 92, 246, 0.14);
 
   /* ---- Heritage amber (VERY sparingly: "Since 2002", awards) ---- */
   --heritage-amber: #F6B53C;
@@ -40,17 +41,17 @@
   --danger: #F2555F;
 
   /* ---- Signature gradient (RARE: hero key line, primary CTA sheen, data viz) ---- */
-  --gradient-intelligence: linear-gradient(120deg, #2E6BFF 0%, #38D6E0 100%);
+  --gradient-intelligence: linear-gradient(120deg, #2E6BFF 0%, #8B5CF6 100%);
 
   /* ---- Ambient hero glow (layer over --bg-base) ---- */
   --glow-hero: radial-gradient(60% 50% at 70% 20%,
       rgba(46, 107, 255, 0.18) 0%,
-      rgba(56, 214, 224, 0.06) 40%,
+      rgba(139, 92, 246, 0.06) 40%,
       transparent 70%);
 
   /* ---- Data-viz series (amber = single highlight) ---- */
   --viz-1: #2E6BFF;
-  --viz-2: #38D6E0;
+  --viz-2: #8B5CF6;
   --viz-3: #7C9BFF;
   --viz-4: #2BD46F;
   --viz-5: #F6B53C;
@@ -127,7 +128,7 @@
   --bg-elevated: var(--surface-2);
   --brand-primary: var(--bg-sunken);
   --brand-accent: var(--accent-cyan);
-  --brand-accent-bright: var(--accent-cyan);
+  --brand-accent-bright: var(--accent-cyan-bright);
   --text-dim: var(--text-tertiary);
   --glow-cyan: var(--accent-cyan-subtle);
   --border-active: var(--border-strong);

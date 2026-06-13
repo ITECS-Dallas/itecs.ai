@@ -57,7 +57,7 @@ function buildAccessEmailHtml(input: {
                 </tr>
                 <tr>
                   <td style="padding:34px 30px 12px;">
-                    <div style="color:#22d3ee;font-size:12px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:14px;">Private Proposal Access</div>
+                    <div style="color:#A78BFA;font-size:12px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:14px;">Private Proposal Access</div>
                     <h1 style="margin:0;color:#f8fafc;font-size:30px;line-height:1.2;font-weight:400;">${escapeHtml(input.title)}</h1>
                     <p style="margin:18px 0 0;color:#a8b3c7;font-size:16px;line-height:1.7;">${escapeHtml(input.greeting)}</p>
                     <p style="margin:12px 0 0;color:#a8b3c7;font-size:16px;line-height:1.7;">Use the button below to open your private proposal link. This link is valid for ${proposalMagicLinkTtlMinutes()} minutes.</p>
@@ -65,7 +65,7 @@ function buildAccessEmailHtml(input: {
                 </tr>
                 <tr>
                   <td align="center" style="padding:22px 30px 34px;">
-                    <a href="${escapeHtml(input.magicLink)}" style="display:inline-block;background:#22d3ee;color:#03111d;text-decoration:none;border-radius:10px;padding:15px 24px;font-size:14px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;">Open Private Proposal</a>
+                    <a href="${escapeHtml(input.magicLink)}" style="display:inline-block;background:#8B5CF6;color:#ffffff;text-decoration:none;border-radius:10px;padding:15px 24px;font-size:14px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;">Open Private Proposal</a>
                     <div style="margin-top:16px;color:#7f8ba3;font-size:13px;line-height:1.6;word-break:break-all;">${escapeHtml(input.magicLink)}</div>
                   </td>
                 </tr>

@@ -404,7 +404,7 @@ function StickyProposalDownload() {
       <a
         href={pdfHref}
         download
-        className="group flex items-center justify-center gap-2 rounded-xl border border-cyan-100/55 bg-cyan-300/95 px-3.5 py-2.5 text-xs font-semibold uppercase tracking-[0.1em] text-slate-950 shadow-[0_14px_44px_var(--accent-cyan-subtle)] backdrop-blur transition-all hover:-translate-y-0.5 hover:bg-cyan-200 focus:outline-none focus:ring-2 focus:ring-cyan-100 focus:ring-offset-2 focus:ring-offset-bg-void md:px-4"
+        className="group flex items-center justify-center gap-2 rounded-xl border border-violet-200/55 bg-violet-400/95 px-3.5 py-2.5 text-xs font-semibold uppercase tracking-[0.1em] text-slate-950 shadow-[0_14px_44px_var(--accent-cyan-subtle)] backdrop-blur transition-all hover:-translate-y-0.5 hover:bg-violet-300 focus:outline-none focus:ring-2 focus:ring-violet-200 focus:ring-offset-2 focus:ring-offset-bg-void md:px-4"
       >
         <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-slate-950/10 text-slate-950 transition-colors group-hover:bg-slate-950/15">
           <Download className="h-4 w-4" aria-hidden="true" />
