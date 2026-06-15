@@ -1489,6 +1489,89 @@ export interface InsightItem {
 
 export const INSIGHTS: InsightItem[] = [
   {
+    slug: "self-hosted-ai-agents-seafile",
+    title:
+      "Self-Hosted AI Agents: How ITECS Shares Codex and Cowork Agents Across the Team",
+    description:
+      "ITECS runs a self-hosted Seafile server to share Codex and Claude Cowork AI agents across the team — and keep every client's data inside our security boundary.",
+    href: "/insights/self-hosted-ai-agents-seafile",
+    publishedDate: "2026-06-15",
+    hubSlug: "custom-ai-agents",
+    hubLabel: "Custom AI Agents",
+    hubHref: "/custom-ai-agents",
+    keywords: [
+      "self-hosted ai agents",
+      "share ai agents across a team",
+      "seafile self-hosted file sync",
+      "codex ai agents",
+      "claude cowork agents",
+      "docbot documentation agent",
+      "keep client data in-house ai",
+      "open source ai agent sharing",
+      "self-hosted ai for msp",
+      "ai agent file sync windows macos",
+    ],
+    h1: "Self-Hosted AI Agents: How ITECS Shares Codex and Cowork Agents Without Sending Client Data to the Cloud",
+    content: [
+      "Most teams that want everyone using the same AI agent reach for a cloud drive — Dropbox, Google Drive, OneDrive — drop the agent files in a shared folder, and sync. It works, but it ships your prompts, your configurations, and often your clients' data through a third party you do not control. ITECS took a different path. We run our own file-sync server and use it to share the same [custom AI agents](/custom-ai-agents) with every employee, without a single client file leaving our security boundary.",
+      "**ITECS shares App-enabled AI agents — the kind that run natively inside Codex and Claude Cowork — by syncing them through a self-hosted Seafile server in our own datacenter. Every employee on Windows or macOS gets the same agents in their project folders automatically, and no client data ever touches a public cloud file service like Dropbox.**",
+      "**The Problem With Sharing AI Agents Through a Cloud Drive**",
+      "An AI agent is only useful to a company if everyone can use the same one. When one technician builds a strong documentation agent, the whole team should inherit it the next morning — not rebuild it from scratch. The obvious way to distribute it is a shared cloud folder. That convenience carries a quiet cost.",
+      "Consider a 60-person managed services firm that supports dozens of clients. An engineer builds an AI agent that reads a client's network documentation and drafts the missing runbooks. To share it, the team drops the agent — and the client documentation it reads — into a Dropbox folder. Now a third-party vendor stores network diagrams, admin procedures, and onboarding notes for every client. One misconfigured share link or vendor breach exposes data the firm contractually promised to protect.",
+      "That is the trade most teams never examine. The agent files are not the sensitive part — the client data they touch is. Sync that through a public cloud and you have moved your clients' information outside your control to save a few minutes of setup.",
+      "**What ITECS Built: One Shared Library of AI Agents**",
+      "ITECS solved this with infrastructure we own end to end. The core is [Seafile](https://www.seafile.com/en/home/), an open-source file-sync platform, running on a Linux server inside our Dallas datacenter. It does what Dropbox does — keep folders identical across many computers — except we host it, we hold the encryption keys, and the data stays on our hardware.",
+      "Three pieces work together. **Seafile** handles secure file sync and version history across the workforce. **Codex and Claude Cowork** are the AI tools our employees run locally; both support App-enabled agents, meaning an agent is defined by files — instructions, skills, and scripts — that live in a project folder. **The Seafile client** on each Windows and macOS machine keeps those project folders identical for everyone. If your team is new to these tools, start with our guide to [Claude Cowork for small business](/insights/claude-cowork-for-small-business).",
+      "When an engineer improves an agent on their laptop, Seafile syncs the change to our server, then out to every other endpoint. The next time a colleague opens Codex or Cowork in that project folder, they run the updated agent — no install, no copying, no manual versioning. The whole company shares one evolving library of AI agents the same way a team shares a set of documents. We covered the broader pattern in [building a shared repository of agentic skills](/insights/enterprise-agentic-skills-repo).",
+      "**Meet DOCBOT: The Agent That Manages Client Documentation**",
+      "The clearest example is an agent we call DOCBOT. It manages client documentation — the runbooks, standard operating procedures, onboarding and offboarding checklists, and knowledge-base articles a managed services team lives on. DOCBOT lives in a synced project folder, so every technician runs the same version.",
+      "A technician asks DOCBOT to do three kinds of work. It **adds** new documentation, turning a finished project or a support ticket into a clean SOP. It **updates** existing records when a client's environment changes, so the docs match reality. And it **discovers** gaps, flagging the runbooks, onboarding steps, and knowledge-base articles a client should have but does not. Documentation stops being the task everyone skips and becomes a prompt away.",
+      "In practice, a technician finishing a firewall replacement tells DOCBOT what changed. DOCBOT drafts the updated network runbook, adds the offboarding step for the old device, and checks whether the client's onboarding guide still references hardware that no longer exists. A human reviews and approves. The documentation that used to lag weeks behind the work now keeps pace with it. DOCBOT is one pattern of the [AI knowledge base](/ai-knowledge-base) work we deliver for clients, applied to our own operations.",
+      "**How the Shared-Agent System Works**",
+      "Setting up shared, self-hosted AI agents follows four steps. ITECS runs the same playbook for clients who want their own private version.",
+      "**Step 1: Stand up a self-hosted sync server.** We install Seafile on a hardened Linux server inside the datacenter, behind the firewall, with encrypted storage and scheduled backups. Nothing depends on a third-party cloud.",
+      "**Step 2: Define agents as files in project folders.** Each AI agent — its instructions, skills, and scripts — lives in a versioned project folder. Because Codex and Claude Cowork read agents from the folder, the folder is the agent.",
+      "**Step 3: Sync to every endpoint.** The Seafile client on each Windows and macOS machine keeps those folders identical. New hires get the full agent library on day one by signing in.",
+      "**Step 4: Govern changes like code.** Edits sync with version history, so we can see who changed an agent and roll back a bad update. Sensitive actions still require human review before they run.",
+      "**Why Seafile, and Why Self-Hosted**",
+      "We chose Seafile deliberately. It is **open-source**, so we can audit exactly how it handles our data instead of trusting a closed vendor black box. It is **self-hosted**, so the server, the storage, and the encryption keys are ours. And it keeps **client data inside our boundary**, which is the whole point for a firm that signs confidentiality agreements with every client.",
+      "Public cloud sync tools like Dropbox, Google Drive, and OneDrive are excellent products, but they place a third party between us and our clients' data. For a managed services provider, that is a contractual and security liability we choose not to carry. Self-hosting trades a little convenience for full custody of sensitive information.",
+      "**Security and Data Boundaries**",
+      "Keeping data in-house is not automatically secure — it has to be operated that way. We treat the agent platform like any production system: scoped access per employee, encrypted storage, audited changes, network segmentation, and human approval gates on anything that touches client data. We align the controls to the [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework), the U.S. standard most enterprise auditors now use for AI accountability. Before any client's data feeds an agent, we run a [data and AI readiness audit](/data-audit) to confirm it is classified, access-controlled, and safe to use.",
+      "This is the same discipline behind ITECS' [custom AI agents](/custom-ai-agents) for clients — private environments, no third-party model training on your data, and the backing of a cybersecurity practice ITECS has run since 2002. For teams adopting these tools, [structured AI training](/training) makes sure people actually use the approval gates instead of working around them.",
+      "**What It Costs and the ROI of Shared Agents**",
+      "The economics are straightforward. A self-hosted sync server runs on hardware most firms already own, plus the open-source Seafile software, which carries no per-seat license. The real return is operational: one engineer's best agent becomes every engineer's tool overnight, and documentation that used to be skipped gets done.",
+      "ITECS builds these systems on its standard model — hourly consulting or prepaid retainer hours with tracked usage, no minimum monthly commitment and no expiration, plus a flat fee for scoped builds like a private agent platform or a custom [workflow automation](/automation). The ROI shows up as hours returned to billable work and as risk removed, because client data never leaves your control. When you want the same setup for your team, [talk to the ITECS team](/contact).",
+    ],
+    faq: [
+      {
+        question: "What are App-enabled AI agents?",
+        answer:
+          "App-enabled AI agents run natively inside tools like Codex and Claude Cowork, defined by files — instructions, skills, and scripts — that live in a project folder. Because the folder defines the agent, syncing the folder shares the agent with everyone on the team.",
+      },
+      {
+        question: "Why does ITECS use Seafile instead of Dropbox or Google Drive?",
+        answer:
+          "Seafile is open-source and self-hosted, so ITECS owns the server, storage, and encryption keys and keeps client data inside its own security boundary. Public cloud sync tools like Dropbox or Google Drive place a third party between the firm and its clients' sensitive data, a liability a managed services provider chooses not to carry.",
+      },
+      {
+        question: "What is DOCBOT?",
+        answer:
+          "DOCBOT is an ITECS AI agent that manages client documentation. Technicians use it to add new SOPs, update runbooks when an environment changes, and discover missing onboarding, offboarding, and knowledge-base content — all from a synced project folder so everyone runs the same version.",
+      },
+      {
+        question: "How do shared AI agents stay in sync across Windows and macOS?",
+        answer:
+          "The Seafile client on each Windows and macOS computer keeps the agent project folders identical. When one employee improves an agent, the change syncs to the self-hosted server and out to every other endpoint, so the whole team runs the updated agent with no manual copying.",
+      },
+      {
+        question: "Can ITECS build a self-hosted AI agent system for my business?",
+        answer:
+          "Yes. ITECS sets up self-hosted file sync, defines agents as versioned project folders, and aligns the controls to the NIST AI Risk Management Framework, with a data readiness audit before any sensitive data is used. The work runs on hourly consulting or prepaid retainer hours, with a flat fee for scoped platform builds.",
+      },
+    ],
+  },
+  {
     slug: "claude-fable-5-release",
     title:
       "Claude Fable 5 Is Here: Benchmarks, Real-World Performance, and the Usage-Limit Backlash",
