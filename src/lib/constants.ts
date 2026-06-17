@@ -1487,7 +1487,190 @@ export interface InsightItem {
   faq: { question: string; answer: string }[];
 }
 
+// Side-by-side feature matrix for the Claude plan comparison insight article.
+// Rendered by the PlanComparisonTable component. Plan facts verified against
+// claude.com/pricing and the Claude Help Center (June 2026).
+export interface PlanComparison {
+  caption: string;
+  plans: { name: string; tagline: string; highlight?: boolean }[];
+  rows: { feature: string; values: string[] }[];
+}
+
+export const CLAUDE_PLAN_COMPARISON: PlanComparison = {
+  caption:
+    "Claude plan comparison — Free, Pro, Max, Team, and Enterprise pricing, usage, and features (June 2026)",
+  plans: [
+    { name: "Free", tagline: "Try Claude" },
+    { name: "Pro", tagline: "Solo professionals" },
+    { name: "Max", tagline: "Heavy daily use" },
+    { name: "Team", tagline: "Small companies", highlight: true },
+    { name: "Enterprise", tagline: "Security at scale" },
+  ],
+  rows: [
+    {
+      feature: "Price per user / month",
+      values: [
+        "$0",
+        "$20 ($17 annual)",
+        "$100 (5x) or $200 (20x)",
+        "$25 Standard / $125 Premium",
+        "From $20/seat + usage, or custom",
+      ],
+    },
+    {
+      feature: "Usage vs Pro",
+      values: [
+        "Limited daily",
+        "Baseline",
+        "5x or 20x more per session",
+        "More than Pro; Premium highest",
+        "Highest, negotiated",
+      ],
+    },
+    {
+      feature: "Models",
+      values: [
+        "Default model only",
+        "Opus, Sonnet, Fable 5",
+        "Opus, Sonnet, Fable 5 (priority)",
+        "Opus, Sonnet, Fable 5",
+        "All models, expanded",
+      ],
+    },
+    {
+      feature: "Claude Code",
+      values: ["—", "Included", "Included, more usage", "Premium seats", "Included"],
+    },
+    {
+      feature: "Projects",
+      values: ["Limited", "Unlimited", "Unlimited", "Unlimited, shared", "Unlimited, shared"],
+    },
+    {
+      feature: "Context window",
+      values: ["200K", "200K", "200K", "200K", "Up to 500K (some models)"],
+    },
+    {
+      feature: "Integrations",
+      values: [
+        "Google Workspace, Slack, MCP",
+        "+ Microsoft 365 / Outlook",
+        "+ Microsoft 365 / Outlook",
+        "+ enterprise search",
+        "+ enterprise search, custom",
+      ],
+    },
+    {
+      feature: "Central billing & admin",
+      values: ["—", "—", "—", "Admin console", "RBAC console"],
+    },
+    {
+      feature: "SSO / SCIM / audit logs",
+      values: ["—", "—", "—", "SSO + admin controls", "SSO, SCIM, audit logs"],
+    },
+    {
+      feature: "HIPAA / advanced security",
+      values: ["—", "—", "—", "—", "HIPAA-ready (BAA), IP allowlisting"],
+    },
+    {
+      feature: "Your data trains models?",
+      values: [
+        "Off by default (opt-in)",
+        "Off by default (opt-in)",
+        "Off by default (opt-in)",
+        "Never, by default",
+        "Never",
+      ],
+    },
+  ],
+};
+
 export const INSIGHTS: InsightItem[] = [
+  {
+    slug: "claude-plan-comparison",
+    title:
+      "Claude Plan Comparison: Free, Pro, Max, Team, and Enterprise Side by Side",
+    description:
+      "Compare Claude's Free, Pro, Max, Team, and Enterprise plans side by side — pricing, usage limits, Claude Code, security, and the right plan for your business.",
+    href: "/insights/claude-plan-comparison",
+    publishedDate: "2026-06-17",
+    hubSlug: "consulting",
+    hubLabel: "AI Consulting",
+    hubHref: "/consulting",
+    keywords: [
+      "claude plan comparison",
+      "claude free vs pro vs max",
+      "claude team vs enterprise",
+      "claude pricing plans",
+      "which claude plan",
+      "claude max worth it",
+      "best claude plan for business",
+      "claude pro price",
+      "claude enterprise features",
+      "claude team plan seats",
+    ],
+    h1: "Claude Plan Comparison: Free vs Pro vs Max vs Team vs Enterprise",
+    content: [
+      "Anthropic offers five ways to pay for Claude: Free, Pro, Max, Team, and Enterprise. They range from a $0 trial to a negotiated enterprise contract, and the gap between them is not just price — it is usage limits, security controls, and who manages the account. Pick the wrong tier and you either waste money or throttle your team. This guide compares all five side by side and shows which one fits a growing business. For a tailored recommendation, ITECS offers [AI consulting and Claude plan selection](/consulting).",
+      "**Claude Free is $0 for light personal use. Pro is $20 per month for individual professionals. Max is $100 or $200 per month for heavy daily users and Claude Code. Team starts at $25 per seat with central billing and single sign-on. Enterprise adds SCIM, audit logs, HIPAA readiness, and a 500K context window for organizations that need control.**",
+      "**Claude's Five Plans at a Glance**",
+      "Claude's lineup splits into two groups. The **individual plans** — Free, Pro, and Max — bill one person and scale by usage. The **business plans** — Team and Enterprise — bill by seat and add the admin, billing, and security controls a company needs. The table below compares every plan on the factors that actually drive the decision.",
+      "Two numbers change most often: price and usage limits. The figures here reflect Anthropic's published pricing as of June 2026. Always confirm current limits in your account before you commit a budget.",
+      "[[COMPARISON_TABLE]]",
+      "A quick read of the table: most solo users belong on Pro, most small companies on Team, and only organizations with compliance or identity requirements need Enterprise. The sections below explain each plan and who it fits.",
+      "**Free: Try Claude With No Commitment**",
+      "The Free plan costs nothing and runs on the web, desktop, and mobile apps. You get chat, web search, file analysis, code execution, extended thinking, and connections to Google Workspace, Slack, and remote MCP tools. It is enough to judge whether Claude helps your work.",
+      "Two limits define Free. Usage is capped at a small daily allotment that resets on a rolling window, and you cannot use Claude Code, the terminal and IDE coding agent. Treat Free as a trial, not a workhorse.",
+      "**Pro: The Default for Individual Professionals**",
+      "Pro costs $20 per month, or $17 per month billed annually. It lifts the usage limit well above Free and unlocks the tools most professionals want: Claude Code, Claude Cowork, Claude Design, unlimited projects, the Research feature, and a choice of models including Opus, Sonnet, and the newer Fable 5. It also adds Microsoft 365 and Outlook integration.",
+      "For a single knowledge worker — a consultant, developer, analyst, or marketer — Pro is the right default. The one caveat is heavy automation. If you run long agentic sessions, Pro's limits arrive fast, which is exactly what Max solves. Our [guide to Claude Cowork for business](/insights/claude-cowork-for-small-business) shows the kind of workflows that push those limits.",
+      "**Max: For Heavy Daily Users and Claude Code**",
+      "Max comes in two tiers. Max 5x costs $100 per month and gives five times Pro's usage per session. Max 20x costs $200 per month and gives twenty times Pro's usage. Both add higher output limits, priority access during peak traffic, and early access to new features.",
+      "Max exists for one reason: usage. Anthropic meters paid plans against a rolling five-hour window plus weekly caps, and the premium Fable 5 model burns through them quickly. A developer who lives in Claude Code, or an analyst running long document jobs, will hit Pro's ceiling daily. We break down that dynamic in our [analysis of Fable 5's usage limits](/insights/claude-fable-5-release).",
+      "**Team: Shared Billing and Admin for Small Companies**",
+      "Team is Claude's first real business plan. It requires a minimum of five seats and offers two seat types: Standard at $25 per month and Premium at $125 per month, each cheaper billed annually. Premium seats carry far more usage and the full Claude Code, Cowork, and Design toolset. You can mix seat types across the team.",
+      "Team adds what individuals do not need: central billing, an admin console, single sign-on, enterprise search across your workspace, and a default policy that your content does not train Anthropic's models. For a 10-to-50-person company standardizing on Claude, Team is usually the answer.",
+      "**Enterprise: Security, SSO, and Compliance at Scale**",
+      "Enterprise is for organizations with security, identity, or compliance requirements. A self-serve option starts around $20 per seat plus usage-based costs; larger deployments use a negotiated contract. Enterprise adds role-based access control, SCIM provisioning, audit logs, IP allowlisting, spend controls, and an expanded context window up to 500K tokens on some models.",
+      "The deciding features are usually compliance and identity. Enterprise offers a HIPAA-ready configuration under a Business Associate Agreement, plus the Claude Security tooling regulated businesses need. If you must provision users through SCIM or sign a BAA, Enterprise is the only tier that qualifies.",
+      "**How to Choose the Right Claude Plan**",
+      "Match the plan to the work, not the logo. Consider a 30-person Dallas accounting firm. Its partners want Claude for research and client memos, three analysts run heavy document review, and the firm handles regulated financial data. The right answer is not one plan — it is a mix.",
+      "We would put the partners and staff on Team Standard seats for shared billing and single sign-on, give the three heavy analysts Team Premium seats for the extra usage, and evaluate Enterprise only if a client contract requires a signed BAA or SCIM provisioning. That sizing keeps cost down while covering the real workloads. ITECS builds exactly this kind of plan, paired with [team AI training](/training) so people actually adopt it.",
+      "A simple rule covers most cases. One person: Pro, or Max if you live in Claude Code. A small company: Team, with Premium seats for power users. A regulated or identity-managed organization: Enterprise. When the choice is unclear, an [AI readiness and consulting engagement](/consulting) sizes it against your real usage.",
+      "**Security, Data Privacy, and Compliance**",
+      "Plan choice is also a security decision. On the business plans, Anthropic does not train its models on your content by default, and Enterprise adds the controls auditors expect: SSO, SCIM, audit logs, and a HIPAA-ready option. Anthropic documents its certifications and data handling in the [Anthropic Trust Center](https://trust.anthropic.com). Before any business connects Claude to sensitive systems, confirm where your data flows and who can see it.",
+      "The controls that matter most are the ones you operate. Scope which tools and data each seat can reach, require approval on actions that touch customer records, and classify your data before connecting it. ITECS runs a [data and AI readiness audit](/data-audit) to do exactly that, and applies the same governance behind its [custom AI agents](/custom-ai-agents) — the discipline of a cybersecurity practice ITECS has run since 2002. For teams worried about exposure, our guide to [keeping business data safe in AI tools](/insights/secure-business-data-chatgpt) is a useful starting point.",
+      "**What It Costs to Roll Out Claude With ITECS**",
+      "The license is only part of the cost. The rest is setup: choosing seats, configuring single sign-on and spend caps, connecting tools safely, and training people to use Claude well. Done wrong, companies overbuy Enterprise seats nobody needs or underbuy Team seats that throttle their best people.",
+      "ITECS prices this work transparently — hourly consulting or prepaid retainer hours with tracked usage, no minimum monthly commitment and no expiration, plus a flat fee for scoped rollouts. The ROI is concrete: right-sized seats, governed usage, and a team that adopts the tool instead of fighting its limits. When you are ready to choose and deploy the right Claude plan, [talk to the ITECS team](/contact).",
+    ],
+    faq: [
+      {
+        question: "How much does each Claude plan cost?",
+        answer:
+          "Claude Free is $0. Pro is $20 per month, or $17 per month billed annually. Max is $100 per month for the 5x tier and $200 per month for the 20x tier. Team is $25 per month for a Standard seat and $125 for a Premium seat, with a five-seat minimum. Enterprise starts around $20 per seat plus usage, or a custom contract.",
+      },
+      {
+        question: "What is the difference between Claude Pro and Max?",
+        answer:
+          "Pro and Max include the same features, but Max gives far more usage. Max 5x provides five times Pro's per-session usage for $100 per month, and Max 20x provides twenty times for $200 per month. Choose Max if you run long Claude Code sessions or heavy document jobs that exhaust Pro's limits.",
+      },
+      {
+        question: "Which Claude plan is best for a small business?",
+        answer:
+          "Most small companies should use the Team plan. It requires five seats, adds central billing, single sign-on, and an admin console, and keeps your content out of model training by default. Assign Premium seats to power users who need more usage and Standard seats to everyone else.",
+      },
+      {
+        question: "When does a business need Claude Enterprise instead of Team?",
+        answer:
+          "Choose Enterprise when you need SCIM user provisioning, audit logs, a HIPAA Business Associate Agreement, IP allowlisting, or a context window beyond 200K tokens. Team covers billing, SSO, and admin for most small companies, but only Enterprise adds the compliance and identity controls regulated organizations require.",
+      },
+      {
+        question: "Does Claude train its AI on my business data?",
+        answer:
+          "On the Team and Enterprise plans, Anthropic does not train its models on your content by default. On the Free, Pro, and Max individual plans, training is governed by an account setting you can turn off. For sensitive data, ITECS recommends the business plans and a data readiness review before connecting Claude to internal systems.",
+      },
+    ],
+  },
   {
     slug: "self-hosted-ai-agents-seafile",
     title:

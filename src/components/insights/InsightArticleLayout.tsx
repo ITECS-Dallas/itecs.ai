@@ -8,6 +8,7 @@ import {
   ShieldCheck,
   UserRound,
 } from "lucide-react";
+import type { ReactNode } from "react";
 import { SITE_CONFIG, type InsightItem } from "@/lib/constants";
 import { generateArticleSchema, generateFAQSchema } from "@/lib/seo";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -36,6 +37,9 @@ interface InsightArticleLayoutProps {
   publishedDate: string;
   modifiedDate?: string;
   readTime?: string;
+  // Optional rich block (e.g. a comparison table) injected into the article
+  // body wherever the content array contains the "[[COMPARISON_TABLE]]" marker.
+  tableNode?: ReactNode;
 }
 
 function formatDate(date: string) {
@@ -106,6 +110,7 @@ export function InsightArticleLayout({
   publishedDate,
   modifiedDate,
   readTime = "5 min read",
+  tableNode,
 }: InsightArticleLayoutProps) {
   const canonicalUrl = `${SITE_CONFIG.url}${insight.href}`;
   const imageUrl = heroImage
@@ -197,7 +202,9 @@ export function InsightArticleLayout({
           <div className="space-y-6">
             {insight.content.map((paragraph, index) => (
               <ScrollReveal key={index} delay={index * 0.03}>
-                {isStandaloneHeading(paragraph) ? (
+                {paragraph === "[[COMPARISON_TABLE]]" && tableNode ? (
+                  tableNode
+                ) : isStandaloneHeading(paragraph) ? (
                   <h2 className="pt-4 text-2xl font-light leading-tight text-text-primary">
                     {paragraph.slice(2, -2)}
                   </h2>
