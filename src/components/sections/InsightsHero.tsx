@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { GradientOrb } from "@/components/effects/GradientOrb";
 import { GridBackground } from "@/components/effects/GridBackground";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { INSIGHTS } from "@/lib/constants";
@@ -42,16 +41,6 @@ export function InsightsHero() {
       {/* Background layers */}
       <div className="absolute inset-0">
         <GridBackground opacity={0.04} />
-        <GradientOrb
-          color="cyan"
-          size="lg"
-          position={{ top: "10%", right: "5%" }}
-        />
-        <GradientOrb
-          color="brand"
-          size="md"
-          position={{ bottom: "15%", left: "3%" }}
-        />
       </div>
 
       {/* Content */}
@@ -70,29 +59,23 @@ export function InsightsHero() {
           className="mt-6"
         >
           {/* Eyebrow */}
-          <motion.p
-            variants={fadeLeft}
-            className="text-sm font-medium tracking-[0.05em] uppercase text-brand-accent mb-6 flex items-center gap-2"
-          >
-            <span className="inline-block w-8 h-px bg-brand-accent" />
+          <motion.p variants={fadeLeft} className="eyebrow mb-6">
             Practical AI Guides
           </motion.p>
 
           {/* H1 */}
           <motion.h1
             variants={fadeUp()}
-            className="text-4xl md:text-6xl lg:text-7xl font-extralight tracking-[-0.03em] leading-[1.1] max-w-4xl"
+            className="font-display text-4xl md:text-6xl lg:text-7xl font-medium tracking-[-0.025em] leading-[1.05] max-w-4xl text-ink"
           >
             AI Insights for{" "}
-            <span className="bg-gradient-to-r from-brand to-cyan bg-clip-text text-transparent">
-              Dallas Businesses
-            </span>
+            <span className="text-itecs-blue">Dallas Businesses</span>
           </motion.h1>
 
           {/* Description */}
           <motion.p
             variants={fadeUp(0.1)}
-            className="mt-6 text-lg md:text-xl text-text-secondary font-light max-w-2xl leading-relaxed"
+            className="mt-6 text-lg md:text-xl text-ink-body max-w-2xl leading-relaxed"
           >
             Actionable guides on using AI to save time, cut costs, and grow your
             business. Written by IT operations veterans for business owners with
@@ -105,24 +88,24 @@ export function InsightsHero() {
             className="mt-10 flex flex-wrap gap-8 md:gap-12"
           >
             <div>
-              <span className="block text-3xl md:text-4xl font-extralight tracking-tight text-brand-accent">
+              <span className="block font-display text-3xl md:text-4xl font-semibold tracking-[-0.01em] text-itecs-blue">
                 24+
               </span>
-              <span className="text-sm text-text-dim">Years IT Experience</span>
+              <span className="text-sm text-ink-muted">Years IT Experience</span>
             </div>
-            <div className="w-px bg-[var(--border-subtle)] hidden md:block" />
+            <div className="w-px bg-[var(--card-line)] hidden md:block" />
             <div>
-              <span className="block text-3xl md:text-4xl font-extralight tracking-tight text-text-primary">
+              <span className="block font-display text-3xl md:text-4xl font-semibold tracking-[-0.01em] text-ink">
                 {INSIGHTS.length}
               </span>
-              <span className="text-sm text-text-dim">In-Depth Guides</span>
+              <span className="text-sm text-ink-muted">In-Depth Guides</span>
             </div>
-            <div className="w-px bg-[var(--border-subtle)] hidden md:block" />
+            <div className="w-px bg-[var(--card-line)] hidden md:block" />
             <div>
-              <span className="block text-3xl md:text-4xl font-extralight tracking-tight text-text-primary">
+              <span className="block font-display text-3xl md:text-4xl font-semibold tracking-[-0.01em] text-ink">
                 5 min
               </span>
-              <span className="text-sm text-text-dim">Average Read Time</span>
+              <span className="text-sm text-ink-muted">Average Read Time</span>
             </div>
           </motion.div>
         </motion.div>

@@ -1,8 +1,18 @@
 "use client";
 
+import type { CSSProperties } from "react";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { SITE_CONFIG } from "@/lib/site-config";
+
+// Navy utility strip; re-scope tokens so child text/border utilities read on-dark.
+const barDarkScope = {
+  background: "var(--itecs-navy)",
+  "--text-primary": "#ffffff",
+  "--text-secondary": "#aebfcb",
+  "--text-tertiary": "rgba(255,255,255,0.35)",
+  "--border-subtle": "rgba(255,255,255,0.10)",
+} as CSSProperties;
 
 const utilityLinks = [
   { label: "Experiencing a Breach?", href: "https://itecsonline.com/experiencing-a-breach", external: true },
@@ -27,7 +37,8 @@ export function AnnouncementBar() {
     <div
       data-site-announcement-bar
       aria-hidden={hidden}
-      className={`fixed top-0 left-0 right-0 z-[60] h-8 border-b border-[var(--border-subtle)] bg-bg-sunken text-text-secondary text-xs transition-transform duration-300 ease-out ${
+      style={barDarkScope}
+      className={`fixed top-0 left-0 right-0 z-[60] h-8 border-b border-[var(--border-subtle)] text-text-secondary text-xs transition-transform duration-300 ease-out ${
         hidden ? "-translate-y-full pointer-events-none" : "translate-y-0"
       }`}
     >

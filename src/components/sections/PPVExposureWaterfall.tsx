@@ -178,7 +178,7 @@ export function PPVExposureWaterfall({
                         <p className="text-sm text-text-secondary">
                           {window.label}
                         </p>
-                        <p className="font-mono text-2xl font-thin">
+                        <p className="font-mono text-2xl font-semibold">
                           {window.exposure}
                         </p>
                       </div>

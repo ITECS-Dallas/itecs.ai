@@ -13,14 +13,14 @@ export function Integrations({
     <section className="py-16">
       <div className="mx-auto max-w-4xl px-6 md:px-8">
         <ScrollReveal>
-          <h2 className="text-2xl font-light text-text-primary mb-6">
+          <h2 className="text-2xl font-semibold text-ink mb-6">
             {heading}
           </h2>
           <ul className="flex flex-wrap gap-3">
             {tools.map((tool) => (
               <li
                 key={tool}
-                className="px-4 py-2 rounded-lg border border-[var(--border-subtle)] bg-bg-surface/50 text-sm text-text-secondary hover:border-[var(--border-active)] hover:text-brand-accent transition-colors"
+                className="chamfer-sm px-4 py-2 border border-[var(--card-line)] bg-card text-sm text-ink-body hover:border-itecs-blue hover:text-itecs-blue transition-colors"
               >
                 {tool}
               </li>

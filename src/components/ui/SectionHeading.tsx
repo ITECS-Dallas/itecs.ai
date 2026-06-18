@@ -19,17 +19,13 @@ export function SectionHeading({
 
   return (
     <div className={`${alignment} ${className}`}>
-      {eyebrow && (
-        <p className="text-sm font-medium tracking-[0.05em] uppercase text-brand-accent mb-4">
-          {eyebrow}
-        </p>
-      )}
-      <Tag className="text-3xl md:text-5xl font-light tracking-[-0.02em] text-text-primary">
+      {eyebrow && <p className="eyebrow mb-4">{eyebrow}</p>}
+      <Tag className="font-display text-3xl md:text-[2.75rem] font-semibold leading-[1.04] tracking-[-0.02em] text-ink">
         {title}
       </Tag>
       {description && (
         <p
-          className={`mt-4 text-lg text-text-secondary max-w-2xl ${align === "center" ? "mx-auto" : ""}`}
+          className={`mt-4 text-lg text-ink-body max-w-2xl ${align === "center" ? "mx-auto" : ""}`}
         >
           {description}
         </p>

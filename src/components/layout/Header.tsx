@@ -30,7 +30,6 @@ type NavLink = {
 };
 
 const desktopNavLinks: readonly NavLink[] = [
-  { label: "Home", href: "/" },
   {
     label: "Solutions",
     href: "/services",
@@ -167,8 +166,7 @@ export function Header() {
               width={148}
               height={44}
               priority
-              className="brightness-0 invert"
-              style={{ height: "44px", width: "auto" }}
+              style={{ height: "40px", width: "auto" }}
             />
           </Link>
 

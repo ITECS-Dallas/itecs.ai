@@ -30,7 +30,7 @@ export function AISEOMethodology({ title, intro, steps }: Props) {
                   {/* Step number watermark */}
                   <span
                     aria-hidden="true"
-                    className="absolute -top-2 -right-2 text-[120px] font-thin text-brand-accent/5 leading-none select-none"
+                    className="absolute -top-2 -right-2 text-[120px] font-semibold text-brand-accent/5 leading-none select-none"
                   >
                     {step.number}
                   </span>

@@ -5,7 +5,13 @@ import type {
   ReactNode,
 } from "react";
 
-type ButtonVariant = "primary" | "secondary" | "tertiary" | "icon";
+type ButtonVariant =
+  | "primary"
+  | "secondary"
+  | "tertiary"
+  | "icon"
+  | "ondark"
+  | "ghost";
 type ButtonSize = "sm" | "md" | "lg";
 
 interface ButtonBaseProps {
@@ -30,17 +36,26 @@ type ButtonLinkProps = ButtonBaseProps &
 export type ButtonProps = NativeButtonProps | ButtonLinkProps;
 
 const baseClasses =
-  "group/button relative inline-flex shrink-0 items-center justify-center gap-2 overflow-hidden rounded-md font-semibold tracking-normal transition-[transform,background-color,border-color,color,box-shadow] duration-[var(--dur-base)] ease-[var(--ease-out)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base disabled:pointer-events-none disabled:cursor-not-allowed disabled:border-[var(--border-default)] disabled:bg-bg-elevated disabled:text-text-disabled disabled:shadow-none motion-reduce:transition-none motion-reduce:hover:translate-y-0 motion-reduce:active:translate-y-0";
+  "group/button relative inline-flex shrink-0 items-center justify-center gap-2 overflow-hidden rounded-[10px] font-semibold tracking-normal transition-[transform,background-color,border-color,color,box-shadow] duration-[var(--dur-base)] ease-[var(--ease-out)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base disabled:pointer-events-none disabled:cursor-not-allowed disabled:border-[var(--border-default)] disabled:bg-bg-elevated disabled:text-text-disabled disabled:shadow-none motion-reduce:transition-none motion-reduce:hover:translate-y-0 motion-reduce:active:translate-y-0";
 
 const variantClasses: Record<ButtonVariant, string> = {
+  // PRIMARY — solid ITECS blue, white text, soft brand-tinted shadow.
   primary:
-    "border border-transparent bg-brand text-white shadow-[0_8px_24px_var(--brand-subtle)] before:pointer-events-none before:absolute before:inset-0 before:-translate-x-full before:opacity-0 before:transition-[transform,opacity] before:duration-[var(--dur-slow)] before:ease-[var(--ease-out)] before:[background:var(--gradient-intelligence)] hover:-translate-y-0.5 hover:bg-brand-hover hover:text-white hover:shadow-[0_12px_32px_var(--brand-subtle)] hover:before:translate-x-0 hover:before:opacity-20 active:translate-y-0 active:bg-brand-active active:text-white motion-reduce:before:hidden",
+    "border border-transparent bg-itecs-blue text-white shadow-[0_12px_28px_rgba(0,71,117,0.28)] hover:-translate-y-0.5 hover:shadow-[0_14px_32px_rgba(0,71,117,0.34)] active:translate-y-0 active:bg-[var(--brand-active)]",
+  // SECONDARY (on light) — outline; hover tints toward the canvas band.
   secondary:
-    "border border-[var(--border-strong)] bg-transparent text-text-primary hover:-translate-y-0.5 hover:border-[var(--text-tertiary)] hover:bg-bg-elevated active:translate-y-0 active:bg-[var(--surface-3)]",
+    "border border-[var(--border-strong)] bg-transparent text-ink hover:-translate-y-0.5 hover:border-itecs-steel hover:bg-canvas-sunken active:translate-y-0",
+  // TERTIARY — the demoted text-link CTA.
   tertiary:
-    "border border-transparent bg-transparent px-0 text-brand-hover hover:text-text-primary active:text-brand",
+    "border border-transparent bg-transparent px-0 text-itecs-blue hover:text-ink active:text-[var(--brand-active)]",
   icon:
-    "border border-[var(--border-default)] bg-bg-elevated text-text-primary shadow-[var(--elev-1-inset)] hover:-translate-y-0.5 hover:border-[var(--border-strong)] hover:bg-[var(--surface-3)] active:translate-y-0",
+    "border border-[var(--card-line)] bg-card text-ink shadow-[var(--elev-1-inset)] hover:-translate-y-0.5 hover:border-[var(--border-strong)] hover:bg-canvas-sunken active:translate-y-0",
+  // ON-DARK — white fill, ITECS-blue text (for the blue CTA band).
+  ondark:
+    "border border-transparent bg-white text-itecs-blue shadow-[0_14px_30px_rgba(0,0,0,0.22)] hover:-translate-y-0.5 hover:bg-[#f3f6f9] active:translate-y-0",
+  // GHOST (on dark) — transparent, hairline white border.
+  ghost:
+    "border border-white/40 bg-transparent text-white hover:-translate-y-0.5 hover:border-white/70 hover:bg-white/5 active:translate-y-0",
 };
 
 const sizeClasses: Record<ButtonSize, string> = {

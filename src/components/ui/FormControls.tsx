@@ -83,7 +83,7 @@ interface FormStatusProps {
 }
 
 const baseControlClasses =
-  "w-full rounded-md border-[1.5px] bg-bg-elevated px-4 py-3 text-base text-text-primary shadow-[var(--elev-1-inset)] transition-[border-color,box-shadow,background-color] duration-[var(--dur-base)] ease-[var(--ease-out)] placeholder:text-text-tertiary focus:border-brand focus:outline-none focus:ring-2 focus:ring-[var(--brand-ring)] disabled:cursor-not-allowed disabled:border-[var(--border-default)] disabled:bg-bg-surface disabled:text-text-disabled";
+  "w-full rounded-none border-[1.5px] bg-card px-4 py-3 text-base text-ink transition-[border-color,box-shadow,background-color] duration-[var(--dur-base)] ease-[var(--ease-out)] placeholder:text-ink-faint focus:border-itecs-blue focus:outline-none focus:ring-2 focus:ring-[var(--brand-ring)] disabled:cursor-not-allowed disabled:border-[var(--border-default)] disabled:bg-canvas-sunken disabled:text-text-disabled";
 
 const toneClasses: Record<FieldTone, string> = {
   default: "border-[var(--border-strong)]",
@@ -315,7 +315,7 @@ export function CheckboxField({
           aria-invalid={tone === "error" || undefined}
           aria-required={required || undefined}
           className={joinClasses(
-            "mt-0.5 h-5 w-5 shrink-0 rounded-sm border-[1.5px] bg-bg-elevated text-brand accent-brand focus:outline-none focus:ring-2 focus:ring-[var(--brand-ring)] focus:ring-offset-2 focus:ring-offset-bg-base",
+            "mt-0.5 h-5 w-5 shrink-0 rounded-none border-[1.5px] bg-card text-itecs-blue accent-[var(--itecs-blue)] focus:outline-none focus:ring-2 focus:ring-[var(--brand-ring)] focus:ring-offset-2 focus:ring-offset-bg-base",
             toneClasses[tone],
             className,
           )}
@@ -353,7 +353,7 @@ export function FormStatus({ tone, message, id, className }: FormStatusProps) {
     <p
       id={id}
       className={joinClasses(
-        "rounded-md border bg-bg-elevated px-4 py-3 text-sm leading-relaxed shadow-[var(--elev-1-inset)]",
+        "chamfer-sm border bg-card px-4 py-3 text-sm leading-relaxed",
         messageClasses[tone],
         className,
       )}

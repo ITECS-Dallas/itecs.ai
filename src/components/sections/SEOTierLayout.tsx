@@ -168,7 +168,7 @@ export function SEOTierLayout({ tier }: Props) {
                       <h3 className="text-xl font-medium text-text-primary">
                         {t.name}
                       </h3>
-                      <p className="mt-3 text-3xl font-thin text-brand-accent">
+                      <p className="mt-3 text-3xl font-semibold text-brand-accent">
                         {t.price}
                       </p>
                       <p className="mt-1 text-xs text-text-dim tracking-[0.04em] uppercase">

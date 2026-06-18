@@ -82,7 +82,7 @@ export function ManufacturingAssessment({
           {steps.map((step, index) => (
             <ScrollReveal key={step.title} delay={index * 0.08}>
               <div className="flex h-full gap-5 rounded-xl border border-[var(--border-subtle)] bg-bg-void/50 p-6">
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[var(--border-active)] bg-brand-accent/10 font-mono text-lg font-thin text-brand-accent">
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[var(--border-active)] bg-brand-accent/10 font-mono text-lg font-semibold text-brand-accent">
                   {index + 1}
                 </span>
                 <div>

@@ -35,16 +35,13 @@ export function ServicesHero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <p className="text-sm font-medium tracking-[0.05em] uppercase text-brand-accent mb-4 flex items-center gap-2">
-            <span className="inline-block w-8 h-px bg-brand-accent" />
-            AI Services
-          </p>
-          <h1 className="text-4xl md:text-6xl font-extralight tracking-[-0.03em] leading-[1.1] max-w-4xl">
+          <p className="eyebrow mb-4">AI Services</p>
+          <h1 className="font-display text-4xl md:text-6xl font-medium tracking-[-0.025em] leading-[1.05] max-w-4xl text-ink">
             AI Services for Dallas Businesses with 10–300 Employees
           </h1>
 
           {/* GEO zero-click answer block */}
-          <p className="mt-6 text-lg md:text-xl text-text-primary font-medium max-w-2xl leading-relaxed">
+          <p className="mt-6 text-lg md:text-xl text-ink font-medium max-w-2xl leading-relaxed">
             <strong>
               ITECS delivers 10 managed AI services — from consulting and
               workflow automation to custom AI agents, employee training,
@@ -54,7 +51,7 @@ export function ServicesHero() {
             </strong>
           </p>
 
-          <p className="mt-4 text-base text-text-secondary font-light max-w-2xl leading-relaxed">
+          <p className="mt-4 text-base text-ink-body max-w-2xl leading-relaxed">
             Every service is backed by ITECS — a Dallas-based IT operations firm
             with 24 years of experience managing infrastructure, security, and
             compliance for growth-stage and mid-market organizations. We build AI that fits
@@ -72,12 +69,12 @@ export function ServicesHero() {
           {stats.map((s) => (
             <div
               key={s.label}
-              className="flex items-center gap-3 px-5 py-3 rounded-xl border border-[var(--border-subtle)] bg-bg-surface/50"
+              className="chamfer-sm flex items-center gap-3 px-5 py-3 border border-[var(--card-line)] bg-card"
             >
-              <span className="text-2xl font-extralight tracking-tight text-brand-accent">
+              <span className="font-display text-2xl font-semibold tracking-[-0.01em] text-itecs-blue">
                 {s.value}
               </span>
-              <span className="text-sm text-text-secondary">{s.label}</span>
+              <span className="text-sm text-ink-body">{s.label}</span>
             </div>
           ))}
         </motion.div>

@@ -31,12 +31,11 @@ export function AboutHero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
         >
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-extralight tracking-[-0.03em] leading-[1.08] max-w-4xl">
+          <p className="eyebrow mb-6">About ITECS</p>
+          <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-medium tracking-[-0.025em] leading-[1.05] max-w-4xl text-ink">
             24 Years Serving Dallas Businesses.
             <br />
-            <span className="bg-gradient-to-r from-brand to-cyan bg-clip-text text-transparent">
-              Now Bringing Them AI.
-            </span>
+            <span className="text-itecs-blue">Now Bringing Them AI.</span>
           </h1>
         </motion.div>
 

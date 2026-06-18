@@ -1,13 +1,3 @@
-"use client";
-
-const sizeMap = { sm: 200, md: 400, lg: 600 } as const;
-
-const colorMap = {
-  cyan: "var(--brand-accent)",
-  brand: "var(--brand)",
-  mixed: "var(--brand-accent)",
-} as const;
-
 interface GradientOrbProps {
   color?: "cyan" | "brand" | "mixed";
   size?: "sm" | "md" | "lg";
@@ -15,30 +5,13 @@ interface GradientOrbProps {
   className?: string;
 }
 
-export function GradientOrb({
-  color = "cyan",
-  size = "md",
-  position = {},
-  className = "",
-}: GradientOrbProps) {
-  const px = sizeMap[size];
-  const clr = colorMap[color];
-
-  return (
-    <div
-      aria-hidden="true"
-      className={`pointer-events-none absolute rounded-full animate-orb-float ${className}`}
-      style={{
-        width: px,
-        height: px,
-        ...position,
-        background:
-          color === "mixed"
-            ? `radial-gradient(circle, var(--brand-accent) 0%, var(--brand) 50%, transparent 70%)`
-            : `radial-gradient(circle, ${clr} 0%, transparent 70%)`,
-        opacity: 0.15,
-        filter: `blur(${px / 5}px)`,
-      }}
-    />
-  );
+/* ---------------------------------------------------------------------------
+   RETIRED. The ITECS "Intelligence" system bans soft rounded blobs.
+   This component is intentionally a no-op so existing call sites keep
+   compiling while the ambient-glow motif is removed site-wide. Use the
+   angular FacetedBackdrop / faceted shards for decoration instead.
+   --------------------------------------------------------------------------- */
+export function GradientOrb(props: GradientOrbProps) {
+  void props;
+  return null;
 }

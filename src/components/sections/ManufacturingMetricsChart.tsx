@@ -93,7 +93,7 @@ export function ManufacturingMetricsChart({
                     className={`rounded-xl border p-5 ${kpiToneClasses[kpi.tone]}`}
                   >
                     <p className="text-sm text-text-secondary">{kpi.label}</p>
-                    <p className="mt-2 font-mono text-3xl font-thin">
+                    <p className="mt-2 font-mono text-3xl font-semibold">
                       {kpi.value}
                     </p>
                     <p className="mt-2 text-xs leading-relaxed text-text-dim">

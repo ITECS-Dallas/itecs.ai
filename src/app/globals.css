@@ -1,65 +1,98 @@
 @import "tailwindcss";
 
 :root {
-  /* ---- Surfaces (cool ink ramp; elevation = lighter + hairline + inset) ---- */
-  --bg-base: #0A0E17;
-  --bg-sunken: #070A11;
-  --surface-1: #0F1623;
-  --surface-2: #161F30;
-  --surface-3: #1E2940;
+  /* ============================================================
+     ITECS "INTELLIGENCE" DESIGN SYSTEM
+     Light canvas · ITECS blue · angular motifs.
+     Canonical contract: docs/redesign-intelligence/.
+     ============================================================ */
 
-  --border-subtle: #1C2638;
-  --border-default: #2A3650;
-  --border-strong: #3A4866;
-  --overlay-scrim: rgba(5, 8, 13, 0.72);
+  /* ---- BRAND CORE (sampled from the ITECS logo + hero) ---- */
+  --itecs-navy: #0A1622;        /* darkest — hero text, dark sections, footer */
+  --itecs-navy-2: #08182a;      /* panel fill behind the AI core */
+  --itecs-navy-3: #06314c;      /* crease-fold facet on the deep-blue blade */
+  --itecs-blue: #004775;        /* PRIMARY brand blue — wordmark, primary CTA, links */
+  --itecs-blue-bright: #3288B6; /* ACCENT — eyebrows, diamonds, crease lines */
+  --itecs-blue-light: #5BA8D8;  /* AI-core strokes / glow */
+  --itecs-blue-pale: #7fb4d8;   /* on-dark accent text */
+  --itecs-steel: #326189;       /* tertiary blue (logo icon) */
 
-  /* ---- Text ---- */
-  --text-primary: #F4F7FB;
-  --text-secondary: #AEB9CC;
-  --text-tertiary: #7E8AA0;
-  --text-disabled: #55607A;
-  --text-on-accent: #06121F;
+  /* ---- LIGHT SURFACES ---- */
+  --canvas: #F3F6F9;            /* page canvas — never pure white */
+  --canvas-sunken: #E9EFF5;     /* recessed / tinted band */
+  --card: #FFFFFF;             /* cards lift off the canvas */
+  --hairline: #dbe3eb;         /* dividers */
+  --card-line: #e0e8f0;        /* card borders */
 
-  /* ---- Brand: enterprise blue (PRIMARY) ---- */
-  --brand: #2E6BFF;
-  --brand-hover: #4A82FF;
-  --brand-active: #1E54E0;
-  --brand-subtle: rgba(46, 107, 255, 0.12);
-  --brand-ring: rgba(74, 130, 255, 0.55);
+  /* ---- INK (text) ---- */
+  --ink: #0A1622;              /* headings */
+  --ink-body: #566876;        /* body copy */
+  --ink-muted: #62717e;       /* secondary body */
+  --ink-faint: #879199;       /* mono labels / meta */
 
-  /* ---- Accent: intelligence violet (SPARINGLY) ---- */
-  --accent-cyan: #8B5CF6;
-  --accent-cyan-bright: #A78BFA;
-  --accent-cyan-subtle: rgba(139, 92, 246, 0.14);
+  /* ============================================================
+     LEGACY SEMANTIC TOKENS — re-pointed to Intelligence values.
+     Existing components consume these; roles preserved, light-mode
+     values substituted so they cascade automatically.
+     ============================================================ */
+  --bg-base: var(--canvas);     /* page background */
+  --bg-sunken: var(--canvas-sunken);
+  --surface-1: var(--card);     /* card surface */
+  --surface-2: var(--card);     /* elevated card */
+  --surface-3: var(--canvas-sunken);
+
+  --border-subtle: var(--card-line);
+  --border-default: var(--hairline);
+  --border-strong: #cbd6e0;
+  --overlay-scrim: rgba(10, 22, 34, 0.55);
+
+  /* ---- Text (legacy → ink ramp) ---- */
+  --text-primary: var(--ink);
+  --text-secondary: var(--ink-body);
+  --text-tertiary: var(--ink-muted);
+  --text-disabled: var(--ink-faint);
+  --text-on-accent: #FFFFFF;    /* text on the blue CTA fill */
+
+  /* ---- Brand (legacy → ITECS blue) ---- */
+  --brand: var(--itecs-blue);
+  --brand-hover: #0a5e96;
+  --brand-active: #003a61;
+  --brand-subtle: rgba(0, 71, 117, 0.10);
+  --brand-ring: rgba(50, 136, 182, 0.55);
+
+  /* ---- Accent (legacy "cyan" → ITECS bright blue) ---- */
+  --accent-cyan: var(--itecs-blue-bright);
+  --accent-cyan-bright: var(--itecs-blue-light);
+  --accent-cyan-subtle: rgba(50, 136, 182, 0.12);
 
   /* ---- Heritage amber (VERY sparingly: "Since 2002", awards) ---- */
-  --heritage-amber: #F6B53C;
+  --heritage-amber: #C8862B;
 
   /* ---- Status ---- */
-  --success: #2BD46F;
-  --warning: #F6B53C;
-  --danger: #F2555F;
+  --success: #1F9D57;
+  --warning: #C8862B;
+  --danger: #C8433C;
 
-  /* ---- Signature gradient (RARE: hero key line, primary CTA sheen, data viz) ---- */
-  --gradient-intelligence: linear-gradient(120deg, #2E6BFF 0%, #8B5CF6 100%);
+  /* ---- Signature gradient (RARE — kept on-brand for legacy refs) ---- */
+  --gradient-intelligence: linear-gradient(120deg, #004775 0%, #3288B6 100%);
 
-  /* ---- Ambient hero glow (layer over --bg-base) ---- */
+  /* ---- Ambient hero glow (faint, cool) ---- */
   --glow-hero: radial-gradient(60% 50% at 70% 20%,
-      rgba(46, 107, 255, 0.18) 0%,
-      rgba(139, 92, 246, 0.06) 40%,
+      rgba(50, 136, 182, 0.08) 0%,
+      rgba(0, 71, 117, 0.04) 40%,
       transparent 70%);
 
-  /* ---- Data-viz series (amber = single highlight) ---- */
-  --viz-1: #2E6BFF;
-  --viz-2: #8B5CF6;
-  --viz-3: #7C9BFF;
-  --viz-4: #2BD46F;
-  --viz-5: #F6B53C;
+  /* ---- Data-viz series ---- */
+  --viz-1: #004775;
+  --viz-2: #3288B6;
+  --viz-3: #5BA8D8;
+  --viz-4: #1F9D57;
+  --viz-5: #326189;
 
   /* ---- Typography ---- */
-  --font-display: "Geist", "Inter Tight", system-ui, sans-serif;
-  --font-body: "Geist", system-ui, sans-serif;
-  --font-mono: "Geist Mono", ui-monospace, "SFMono-Regular", monospace;
+  --font-display: var(--font-space-grotesk), "Space Grotesk", sans-serif;
+  --font-body: var(--font-ibm-plex-sans), "IBM Plex Sans", sans-serif;
+  --font-mono: var(--font-ibm-plex-mono), "IBM Plex Mono", monospace;
 
   --fs-display-xl: clamp(2.5rem, 1.6rem + 3.8vw, 4.5rem);
   --fs-display-l: clamp(2.125rem, 1.5rem + 2.7vw, 3.5rem);
@@ -163,10 +196,30 @@
   --color-text-dim: var(--text-dim);
   --color-text-disabled: var(--text-disabled);
   --color-text-onaccent: var(--text-on-accent);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-display: var(--font-geist-sans);
-  --font-body: var(--font-geist-sans);
+
+  /* ---- ITECS Intelligence palette (preferred for new work) ---- */
+  --color-itecs-navy: var(--itecs-navy);
+  --color-itecs-navy-2: var(--itecs-navy-2);
+  --color-itecs-navy-3: var(--itecs-navy-3);
+  --color-itecs-blue: var(--itecs-blue);
+  --color-itecs-blue-bright: var(--itecs-blue-bright);
+  --color-itecs-blue-light: var(--itecs-blue-light);
+  --color-itecs-blue-pale: var(--itecs-blue-pale);
+  --color-itecs-steel: var(--itecs-steel);
+  --color-canvas: var(--canvas);
+  --color-canvas-sunken: var(--canvas-sunken);
+  --color-card: var(--card);
+  --color-hairline: var(--hairline);
+  --color-card-line: var(--card-line);
+  --color-ink: var(--ink);
+  --color-ink-body: var(--ink-body);
+  --color-ink-muted: var(--ink-muted);
+  --color-ink-faint: var(--ink-faint);
+
+  --font-sans: var(--font-body);
+  --font-mono: var(--font-mono);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
   --radius-sm: var(--r-sm);
   --radius-md: var(--r-md);
   --radius-lg: var(--r-lg);
@@ -185,6 +238,12 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Display headings use Space Grotesk system-wide (utilities can still override). */
+h1, h2, h3 {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
 html {
   overflow-x: hidden;
 }
@@ -194,23 +253,6 @@ html {
     -webkit-backdrop-filter: none !important;
     backdrop-filter: none !important;
     background-color: var(--surface-2) !important;
-  }
-}
-
-/* Ambient grain overlay */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  pointer-events: none;
-  opacity: 0.03;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-}
-
-@media (max-width: 767px) {
-  body::before {
-    display: none;
   }
 }
 
@@ -256,6 +298,48 @@ main :where(p, li) a:not([class]) {
   outline: 2px solid var(--brand-ring);
   outline-offset: 2px;
   border-radius: 4px;
+}
+
+/* ---------------------------------------------------------------------------
+   MOTIF UTILITIES — the load-bearing visual language.
+   Angular only. No circles, no rounded blobs. Reuse relentlessly.
+   --------------------------------------------------------------------------- */
+
+/* CHAMFER: the signature notched corner (one corner sliced at 45°). */
+.chamfer-sm { clip-path: polygon(0 0, 100% 0, 100% 100%, 14px 100%, 0 calc(100% - 14px)); }
+.chamfer-md { clip-path: polygon(0 0, 100% 0, 100% 100%, 18px 100%, 0 calc(100% - 18px)); }
+.chamfer-lg { clip-path: polygon(0 0, 100% 0, 100% 100%, 24px 100%, 0 calc(100% - 24px)); }
+/* Top-right variant (mirror) for paired layouts. */
+.chamfer-tr { clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 18px, 100% 100%, 0 100%); }
+
+/* DIAMOND: rotated square — the universal bullet / list marker. */
+.diamond { width: 8px; height: 8px; background: var(--itecs-blue-bright); transform: rotate(45deg); flex: none; }
+.diamond.sm { width: 7px; height: 7px; }
+
+/* HEX: the AI / "intelligence" mark — hard-edged six planes. */
+.hex { clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%); }
+
+/* EYEBROW: mono, wide-tracked, uppercase. Precedes headlines. */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--itecs-blue-bright);
+}
+
+/* OPS GRID: faint command/NOC texture for dark panels. */
+.ops-grid {
+  background-image:
+    linear-gradient(rgba(120, 170, 210, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(120, 170, 210, 0.06) 1px, transparent 1px);
+  background-size: 34px 34px;
+}
+
+/* The AI Core glow pulse (3s, respects prefers-reduced-motion). */
+@keyframes coreGlow {
+  0%, 100% { opacity: 0.45; transform: scale(1); }
+  50% { opacity: 0.9; transform: scale(1.06); }
 }
 
 /* ---------------------------------------------------------------------------

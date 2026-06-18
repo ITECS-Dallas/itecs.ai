@@ -47,7 +47,7 @@ export function LiveAnalyticsProof({
                       className="absolute top-4 right-4 h-4 w-4 text-brand-accent/40"
                       aria-hidden="true"
                     />
-                    <p className="text-4xl md:text-5xl font-thin tracking-[-0.02em] text-text-primary">
+                    <p className="text-4xl md:text-5xl font-semibold tracking-[-0.02em] text-text-primary">
                       {stat.value}
                     </p>
                     <p className="mt-2 text-xs text-text-dim tracking-[0.04em] uppercase leading-relaxed">

@@ -22,44 +22,44 @@ export function PricingTable() {
           {DATA_AUDIT_PRICING.map((tier, i) => (
             <ScrollReveal key={tier.tier} delay={i * 0.1}>
               <motion.div
-                className={`relative flex flex-col h-full rounded-2xl border p-8 transition-colors ${
+                className={`chamfer-md relative flex flex-col h-full border p-8 transition-colors ${
                   tier.highlighted
-                    ? "border-brand-accent bg-brand-accent/5"
-                    : "border-[var(--border-subtle)] bg-bg-surface/50 hover:border-[var(--border-active)]"
+                    ? "border-itecs-blue bg-brand-subtle"
+                    : "border-[var(--card-line)] bg-card hover:border-itecs-steel"
                 }`}
                 whileHover={{ y: -4 }}
                 transition={{ duration: 0.2 }}
               >
                 {tier.highlighted && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-brand-accent text-bg-void text-xs font-medium tracking-wide">
+                  <div className="chamfer-sm absolute top-4 right-4 px-3 py-1 bg-itecs-blue text-white font-mono text-xs font-semibold uppercase tracking-wide">
                     Most Popular
                   </div>
                 )}
 
                 <div className="mb-6">
-                  <h3 className="text-lg font-medium text-text-primary">
+                  <h3 className="text-lg font-semibold text-ink">
                     {tier.tier}
                   </h3>
-                  <p className="mt-1 text-sm text-text-secondary">
+                  <p className="mt-1 text-sm text-ink-body">
                     {tier.description}
                   </p>
                 </div>
 
                 <div className="mb-6">
-                  <span className="text-4xl font-extralight tracking-tight text-text-primary">
+                  <span className="font-display text-4xl font-semibold tracking-[-0.01em] text-itecs-blue">
                     {tier.price}
                   </span>
-                  <span className="ml-2 text-sm text-text-dim">flat fee</span>
-                  <p className="mt-1 text-xs text-text-dim">{tier.users}</p>
+                  <span className="ml-2 text-sm text-ink-faint">flat fee</span>
+                  <p className="mt-1 text-xs text-ink-faint">{tier.users}</p>
                 </div>
 
                 <ul className="flex-1 space-y-3 mb-8">
                   {tier.features.map((feature) => (
                     <li
                       key={feature}
-                      className="flex items-start gap-2 text-sm text-text-secondary"
+                      className="flex items-start gap-2 text-sm text-ink-body"
                     >
-                      <Check className="h-4 w-4 mt-0.5 shrink-0 text-brand-accent" />
+                      <Check className="h-4 w-4 mt-0.5 shrink-0 text-itecs-blue-bright" />
                       <span>{feature}</span>
                     </li>
                   ))}
@@ -67,10 +67,10 @@ export function PricingTable() {
 
                 <a
                   href="/contact"
-                  className={`inline-flex items-center justify-center rounded-lg px-6 py-3 text-sm font-medium transition-colors ${
+                  className={`inline-flex items-center justify-center rounded-[10px] px-6 py-3 text-sm font-semibold transition-colors ${
                     tier.highlighted
-                      ? "bg-brand-accent text-bg-void hover:bg-brand-accent-bright"
-                      : "border border-[var(--border-subtle)] text-text-primary hover:border-brand-accent hover:text-brand-accent"
+                      ? "bg-itecs-blue text-white hover:bg-[var(--brand-active)]"
+                      : "border border-[var(--border-strong)] text-ink hover:border-itecs-blue hover:text-itecs-blue"
                   }`}
                 >
                   Get Started

@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { CERTIFICATION_BADGES, SITE_CONFIG, SERVICES } from "@/lib/constants";
@@ -140,9 +141,25 @@ function FooterColumn({
   );
 }
 
+// The footer is a navy dark section (handover spec). We re-scope the design
+// tokens to on-dark values here so every existing text-/border-/accent utility
+// inside the footer reads correctly against navy without per-element rewrites.
+const footerDarkScope = {
+  background: "var(--itecs-navy)",
+  "--text-primary": "#ffffff",
+  "--text-secondary": "#aebfcb",
+  "--text-tertiary": "#8497a6",
+  "--border-subtle": "rgba(255,255,255,0.10)",
+  "--border-default": "rgba(255,255,255,0.14)",
+  "--border-strong": "rgba(255,255,255,0.28)",
+  "--bg-surface": "rgba(255,255,255,0.04)",
+  "--bg-sunken": "var(--itecs-navy)",
+  "--brand-accent": "var(--itecs-blue-pale)",
+} as CSSProperties;
+
 export function Footer() {
   return (
-    <footer className="border-t border-[var(--border-subtle)] bg-bg-sunken">
+    <footer style={footerDarkScope}>
       <h2 className="sr-only">ITECS footer navigation</h2>
       <div className="mx-auto max-w-7xl px-6 py-16 md:px-8">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-2 xl:grid-cols-[1.25fr_1fr_1fr_1fr_1fr]">

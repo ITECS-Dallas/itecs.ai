@@ -1,250 +1,112 @@
-# ITECS.AI — Design Schematic
+# ITECS.AI — Design Schematic ("Intelligence" System)
+
+> Canonical visual contract: `docs/redesign-intelligence/HANDOVER.md` +
+> `docs/redesign-intelligence/itecs-intelligence-reference.html`.
+> This document is the working summary; the reference HTML wins any conflict.
 
 ## Identity
 
-**itecs.ai** is ITECS's AI-vertical website — not a sub-brand, but a dedicated showcase for ITECS's AI service offerings. The parent company (itecsonline.com) is a Dallas-based MSP established in 2002. This site positions ITECS as a forward-looking AI consultancy embedded within a battle-tested IT operations firm.
+**itecs.ai** is ITECS's AI-vertical website — a dedicated showcase for ITECS's AI
+service offerings. The parent company (itecsonline.com) is a Dallas-based MSP/MSSP
+established in 2002, HQ in Plano TX. Positioning line: **"Business Strategist
+Technologists."** Strategic thesis: ITECS is evolving **MSP → MSSP → MIP (Managed
+Intelligence Provider)** — embedding AI across managed IT, security, and cloud.
 
-### Logo
-- ITECS shield icon: circuit-trace nodes emerging from a shield silhouette
-- Primary icon color: `#081821` (deep navy-black) with white strokes
-- SVG assets: `/home/itecs/itecs-icon-white-blkback.svg` and `.png`
-- On dark backgrounds: white icon on transparent or `#081821` fill
+## Prime directives
 
----
+1. **Angular, never round.** Chamfered corners, diamonds, hexagons, faceted blades,
+   straight crease lines. **No circles, no rounded blobs, no soft organic shapes.**
+   Radius is reserved: **10px** on CTA buttons, **16px** (`--r-section`) on large
+   section cards. Everything else is chamfered (`clip-path`) or square.
+2. **Light canvas.** Page background is `--canvas` (`#F3F6F9`), never pure white.
+   Cards are pure white (`--card`) to lift off it. Dark sections use `--itecs-navy`.
+3. **Brand blue is earned.** `#004775` is primary (CTAs, links, wordmark);
+   `#3288B6` is the bright accent (eyebrows, diamonds, crease lines) — a spice, not
+   a base. Don't flood large fills with the bright accent.
+4. **Three fonts, fixed roles.** Space Grotesk (display/headings/numbers),
+   IBM Plex Sans (body/UI), IBM Plex Mono (eyebrows/tags/meta). Never substitute.
+5. **Every section opens with a mono eyebrow** (`.eyebrow`) — the system's rhythm anchor.
 
-## Visual Direction
+## Color tokens (defined in `src/app/globals.css`)
 
-**Reference sites:** Palantir, SentinelOne, Apple
-**Mood:** Futuristic, aggressive, authoritative — not corporate-sterile. Think command-center aesthetics, not SaaS landing pages.
+```
+--itecs-navy #0A1622   --itecs-blue #004775 (PRIMARY)   --itecs-blue-bright #3288B6 (ACCENT)
+--itecs-navy-2 #08182a --itecs-blue-light #5BA8D8        --itecs-blue-pale #7fb4d8 (on-dark text)
+--itecs-navy-3 #06314c --itecs-steel #326189
+--canvas #F3F6F9  --canvas-sunken #E9EFF5  --card #FFFFFF  --hairline #dbe3eb  --card-line #e0e8f0
+--ink #0A1622 (headings)  --ink-body #566876  --ink-muted #62717e  --ink-faint #879199 (mono meta)
+```
 
-### Core Principles
-1. **Dark-first** — Deep blacks and near-blacks dominate. Light elements are surgical, never backgrounds.
-2. **Motion as meaning** — Animations convey intelligence, precision, autonomy. Nothing decorative.
-3. **Sparse typography** — Thin/light weights. Headlines breathe. No bold walls of text.
-4. **Depth through light** — Subtle glows, gradients, and translucency create layering without clutter.
-
----
-
-## Color System
-
-### Backgrounds
-| Token | Hex | Usage |
-|---|---|---|
-| `--bg-void` | `#030712` | Primary page background (near-black) |
-| `--bg-surface` | `#0a1120` | Card/section surfaces |
-| `--bg-elevated` | `#111827` | Elevated panels, modals, nav |
-
-### Brand Colors
-| Token | Hex | Usage |
-|---|---|---|
-| `--brand-primary` | `#081821` | ITECS deep navy — logo fills, anchoring elements |
-| `--brand-accent` | `#06b6d4` | Cyan — primary accent, CTAs, active states, glows |
-| `--brand-accent-bright` | `#22d3ee` | Bright cyan — hover states, emphasis |
-| `--brand-purple` | `#8b5cf6` | Violet — secondary accent, gradients, tags |
-
-### Text
-| Token | Hex | Usage |
-|---|---|---|
-| `--text-primary` | `#f1f5f9` | Primary text (slate-100) |
-| `--text-secondary` | `#94a3b8` | Secondary/muted text (slate-400) |
-| `--text-dim` | `#64748b` | Tertiary labels, captions (slate-500) |
-
-### Effects
-| Token | Hex | Usage |
-|---|---|---|
-| `--glow-cyan` | `rgba(6, 182, 212, 0.15)` | Ambient glow behind CTAs, icons |
-| `--glow-purple` | `rgba(139, 92, 246, 0.10)` | Secondary glow for gradient overlays |
-| `--border-subtle` | `rgba(255, 255, 255, 0.06)` | Card borders, dividers |
-| `--border-active` | `rgba(6, 182, 212, 0.3)` | Active/hover borders |
-
----
+Legacy semantic tokens (`--bg-base`, `--text-primary`, `--brand`, `--brand-accent`,
+`--surface-*`, `--border-*`, …) are **re-pointed** to Intelligence values so existing
+token-driven components cascade to the light system automatically. Prefer the new
+Tailwind utilities for new work: `bg-canvas`, `bg-card`, `bg-canvas-sunken`,
+`text-ink` / `text-ink-body` / `text-ink-muted` / `text-ink-faint`,
+`bg-itecs-blue`, `text-itecs-blue`, `text-itecs-blue-bright`, `bg-itecs-navy`.
 
 ## Typography
 
-### Font Stack
-- **Primary (display + body):** Geist Sans (already loaded via `next/font/google`)
-- **Monospace (code, data, stats):** Geist Mono
+- H1 (hero): Space Grotesk ~74px / **500**, `leading-[1.0]`, `tracking-[-0.025em]`; scales down on mobile.
+- H2 (section): Space Grotesk 40–44px / **600**, `tracking-[-0.02em]`.
+- H3 (card): Space Grotesk 17–20px / **600**.
+- Body: IBM Plex Sans 14–19px / 400, `leading-relaxed`, `--ink-body`.
+- **Eyebrow** (`.eyebrow`): IBM Plex Mono 12.5px, `letter-spacing:.22em`, UPPERCASE, `--itecs-blue-bright`.
+- Headlines are tight and often **two-tone**: payoff phrase in `--itecs-blue` (light)
+  or `--itecs-blue-pale` (dark), the rest in ink/white. **Never gradient text.**
+- A global rule in `globals.css` sets `h1,h2,h3 { font-family: var(--font-display) }`.
 
-### Scale & Weight
-| Element | Size | Weight | Tracking |
-|---|---|---|---|
-| Hero headline | `text-5xl` → `text-7xl` | 200 (extralight) | `-0.03em` |
-| Section headline | `text-3xl` → `text-5xl` | 300 (light) | `-0.02em` |
-| Subheadline | `text-xl` → `text-2xl` | 300 (light) | Normal |
-| Body | `text-base` → `text-lg` | 350–400 | Normal |
-| Caption / label | `text-sm` | 400 | `0.05em` (uppercase) |
-| Stat / number | `text-6xl` → `text-8xl` | 100 (thin) | `-0.04em` |
+## Motifs (utilities in `globals.css`, components in `src/components/ui/`)
 
-**Key rule:** Headlines never exceed `font-weight: 300`. Body text stays at 350–400. Bold (`600+`) is reserved for tiny labels and micro-interactions only.
+- **Chamfer** — the signature notched corner. `.chamfer-sm/-md/-lg` (clip-path) or the
+  `<Chamfer>` component. Apply to every card, chip, tag, and stat tile. A `border`
+  (often `border-l-2 border-itecs-blue` or a top rule) shows through the clip to color the edge.
+  Chamfer clips drop-shadows, so chamfered cards rely on **border + canvas contrast**, not shadow.
+- **Diamond** — rotated square (`.diamond`, `<Diamond>`). The universal bullet / list marker. Replaces every round dot.
+- **Hex** — `.hex` / `<Hex>`. The AI mark: step badges, avatar frames, icon chips. Never a circle.
+- **AI Core** — `<AICore>` (`src/components/ui/AICore.tsx`): faceted-hex SVG with facet lines,
+  node dots, glowing center, slow `coreGlow` pulse. The brand's AI signifier; monochrome-blue on navy.
+- **Faceted backdrop** — `<FacetedBackdrop>`: diagonal dark plate + bright crease sliver +
+  faint `.ops-grid` + AI Core. Used by the Evolution band and every sub-page hero.
+- **Faceted blades / crease lines** — large off-canvas `clip-path` polygons in `--itecs-blue`
+  with a `--itecs-navy-3` fold facet; thin straight `polyline`s (1.5px `--itecs-blue-bright`,
+  ~0.5 opacity) with node dots. The homepage hero backdrop. Never curves.
 
----
+## Heroes (the two canonical patterns)
 
-## Animation & Motion
+- **Homepage hero** (`src/components/sections/Hero.tsx`): light faceted block —
+  off-canvas blue blade bleeding top-right, knocked-out white shield
+  (`/images/logos/itecs-icon-darkblue.svg` + `brightness(0) invert(1)`), crease polyline +
+  nodes, mono eyebrow, two-tone Space Grotesk H1, **one** primary CTA + a demoted text link, stat row.
+- **Sub-page heroes** (`ServiceHero`, `ManufacturingHero`, Evolution band): the dark
+  **navy "Managed intelligence" panel** — `--itecs-navy` rounded plate, diagonal split,
+  bright crease sliver, `.ops-grid` texture, and the hex **AI Core** on the right.
 
-### Stack
-- **Framer Motion** — scroll-triggered reveals, layout animations, gesture responses
-- **CSS animations** — ambient effects (glows, pulses, gradients)
-- **SVG path animations** — circuit traces, shield icon, data-flow visualizations
+## Buttons (`src/components/ui/Button.tsx`)
 
-### Animation Patterns
+`primary` (solid `--itecs-blue`, white text, soft brand shadow, r=10) · `secondary`
+(outline on light) · `tertiary` (demoted text link + arrow) · `ondark` (white fill, blue
+text — for the blue CTA band) · `ghost` (transparent, hairline white border — on dark) · `icon`.
 
-**1. Scroll Reveals (Framer Motion)**
-- Fade-up with slight Y translation (`y: 30 → 0, opacity: 0 → 1`)
-- Staggered children with `0.1s` delay between items
-- `viewport: { once: true, amount: 0.3 }` — trigger at 30% visibility, don't re-trigger
+## Layout & motion
 
-**2. Parallax Layers**
-- Background elements move at `0.3x` scroll speed
-- Foreground content at `1x` (normal)
-- Floating orbs/glows at `0.5x` — creates depth without being distracting
-- Implement via Framer Motion `useScroll()` + `useTransform()`
+- Content max-width `max-w-7xl`; horizontal padding 24px mobile / 32px desktop.
+- Section rhythm ~`py-24 md:py-32`. Card grids: 4-col → 2-col `<1100px` → 1-col mobile.
+- Layout with flex/grid + `gap`. Decorative faceted art is `hidden lg:block` (hides on mobile).
+- Framer Motion for scroll reveals/parallax; CSS `coreGlow` for the AI core. Respect
+  `prefers-reduced-motion`. Keep interactions < 400ms (Doherty).
 
-**3. Ambient Effects (CSS)**
-- Slow-rotating gradient orbs behind sections (`animation: rotate 20s linear infinite`)
-- Pulsing glow behind the ITECS shield icon
-- Grid-line backgrounds that subtly shift on scroll
-- Grain/noise texture overlay at 2–4% opacity for depth
+## Hard "don'ts"
 
-**4. SVG Animations**
-- Circuit trace paths draw on scroll (`pathLength` animation)
-- Shield icon assembles on first load
-- Data-flow lines connecting service cards
-- Node-pulse animations at circuit intersections
+- ❌ No circles, rounded blobs, or soft organic shapes (`GradientOrb` is retired to a no-op).
+- ❌ No gradient-soup backgrounds, no glassmorphism for its own sake, **no gradient text**.
+- ❌ No font substitutions (no Geist/Inter/Roboto/Arial).
+- ❌ No emoji.
+- ❌ Don't flood large areas with the bright accent `#3288B6`.
+- ❌ Don't ship the reference demo's visible `◇` UX-law annotation chips.
 
-**5. Micro-interactions**
-- Buttons: scale `1.02` on hover + glow intensifies
-- Cards: subtle `translateY(-2px)` + border glow on hover
-- Navigation links: underline slides in from left
-- Cursor-following glow on hero section (optional, performant via CSS `radial-gradient`)
+## Laws of UX (preserve the intent when extending)
 
-### Performance Rules
-- All animations use `transform` and `opacity` only (GPU-composited)
-- `will-change` only on actively animating elements
-- `prefers-reduced-motion` media query disables all motion
-- Lazy-load below-fold animations via Intersection Observer
-
----
-
-## Layout & Spacing
-
-### Grid
-- Max content width: `1280px` (Tailwind `max-w-7xl`)
-- Horizontal padding: `px-6` mobile → `px-8` desktop
-- Section vertical spacing: `py-24` → `py-32` (generous whitespace, Apple-style)
-
-### Section Architecture
-```
-[Full-bleed hero — viewport height, parallax bg]
-[Services grid — 3-col, staggered reveal]
-[Feature deep-dive — alternating left/right with parallax images]
-[Stats bar — large thin numerals, count-up animation]
-[Testimonials / Trust logos — subtle carousel]
-[CTA section — centered, glow backdrop]
-[Footer — minimal, dark]
-```
-
----
-
-## Component Patterns
-
-### Navigation
-- Fixed top, transparent → `backdrop-blur-xl` + `bg-surface/80` on scroll
-- Logo left, links center, CTA right
-- Slim height: `h-16`
-- Mobile: slide-in overlay (not dropdown), full-screen dark
-
-### Hero Section
-- Full viewport height (`min-h-screen`)
-- Centered or left-aligned text
-- Animated gradient mesh or particle field background
-- Single strong headline (extralight), one sentence subline, one CTA
-- Shield icon animated in
-
-### Cards
-- `bg-surface` with `border-subtle` border
-- `rounded-xl` corners
-- Hover: border transitions to `border-active`, subtle glow, slight lift
-- Icon (lucide-react) at top, light weight text below
-
-### Buttons
-- Primary: `bg-brand-accent text-void` — solid cyan, dark text
-- Secondary: `border border-brand-accent text-brand-accent` — ghost button
-- Both: `rounded-lg px-6 py-3 text-sm font-medium tracking-wide uppercase`
-- Hover: glow halo + slight scale
-
-### Stats / Metrics
-- Large thin numerals (`font-weight: 100, text-7xl`)
-- Count-up animation on scroll entry
-- Label below in small uppercase (`text-dim`)
-- Examples: "92% compliance rate", "3.2x ROI", "45% faster deployment"
-
----
-
-## Page Structure (Sitemap)
-
-```
-/                   — Homepage (hero, services overview, stats, CTA)
-/services           — All AI services
-/services/[slug]    — Individual service detail
-/about              — ITECS AI story, team, mission
-/contact            — Contact form, consultation booking
-```
-
-### Service Categories (from itecsonline.com AI offerings)
-1. **AI Consulting & Strategy** — Readiness assessments, ROI modeling, governance
-2. **Custom AI Development** — ML models, copilots, RAG systems
-3. **AI Integration** — Azure OpenAI, Microsoft Fabric, Databricks, legacy modernization
-4. **AI Security & Compliance** — HIPAA, FINRA, SOX alignment, PHI/PII redaction
-5. **AI-Optimized SEO / GEO** — Generative engine optimization
-
----
-
-## File Organization
-
-```
-src/
-├── app/
-│   ├── layout.tsx              # Root layout, fonts, global providers
-│   ├── page.tsx                # Homepage
-│   ├── services/
-│   │   ├── page.tsx            # Services listing
-│   │   └── [slug]/page.tsx     # Service detail
-│   ├── about/page.tsx
-│   └── contact/page.tsx
-├── components/
-│   ├── layout/
-│   │   ├── Header.tsx          # Fixed nav
-│   │   └── Footer.tsx
-│   ├── ui/
-│   │   ├── Button.tsx
-│   │   ├── Card.tsx
-│   │   ├── SectionHeading.tsx
-│   │   └── StatCounter.tsx
-│   ├── sections/               # Page-level sections
-│   │   ├── Hero.tsx
-│   │   ├── ServicesGrid.tsx
-│   │   ├── StatsBar.tsx
-│   │   ├── FeatureShowcase.tsx
-│   │   └── CTASection.tsx
-│   └── effects/
-│       ├── ParallaxWrapper.tsx
-│       ├── ScrollReveal.tsx
-│       ├── GradientOrb.tsx
-│       ├── GridBackground.tsx
-│       └── CircuitTrace.tsx    # SVG circuit animation
-└── lib/
-    └── constants.ts            # Service data, stats, nav links
-```
-
----
-
-## Dependencies
-
-| Package | Purpose |
-|---|---|
-| `next` 16 | Framework |
-| `react` 19 | UI |
-| `tailwindcss` v4 | Styling |
-| `framer-motion` | Scroll animations, parallax, gestures |
-| `lucide-react` | Icons |
-| `geist` (via next/font) | Typography |
+Nav → Hick's (≤5 top-level) · Hero → Aesthetic-Usability + Von Restorff (one dominant CTA) ·
+Evolution → Serial Position (ends on MIP) · Services → Miller/Chunking + Common Region (≈4 cards) ·
+Advantage → Similarity · Proof → Peak-End · CTA → Fitts + Goal-Gradient (big target + 3-step path).
+Also: Jakob's (conventional patterns), Tesler's/Postel's (forms ask minimum, accept liberally).

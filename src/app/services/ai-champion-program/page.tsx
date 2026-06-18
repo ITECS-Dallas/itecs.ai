@@ -387,7 +387,7 @@ export default function AIChampionProgramPage() {
               <span className="h-px w-8 bg-brand-accent" />
               Internal AI Champion Program
             </p>
-            <h1 className="max-w-4xl text-4xl font-extralight leading-[1.05] tracking-[-0.03em] text-text-primary md:text-6xl lg:text-7xl">
+            <h1 className="max-w-4xl text-4xl font-semibold leading-[1.05] tracking-[-0.03em] text-text-primary md:text-6xl lg:text-7xl">
               Build the AI capability your business will rely on for the next
               decade.
             </h1>
@@ -416,7 +416,7 @@ export default function AIChampionProgramPage() {
                   key={stat.label}
                   className="rounded-xl border border-[var(--border-subtle)] bg-bg-surface/55 p-3 sm:p-5"
                 >
-                  <div className="text-2xl font-extralight text-brand-accent-bright sm:text-3xl">
+                  <div className="text-2xl font-semibold text-brand-accent-bright sm:text-3xl">
                     {stat.value}
                   </div>
                   <div className="mt-2 text-[0.62rem] uppercase leading-snug tracking-[0.12em] text-text-dim sm:text-xs sm:tracking-[0.16em]">
@@ -665,7 +665,7 @@ export default function AIChampionProgramPage() {
                     <p className="mt-2 text-text-dim">{option.duration}</p>
                   </div>
                   <div className="text-left sm:text-right">
-                    <p className="text-4xl font-extralight text-brand-accent-bright">
+                    <p className="text-4xl font-semibold text-brand-accent-bright">
                       {option.price}
                     </p>
                     <p className="mt-1 text-xs uppercase tracking-[0.15em] text-text-dim">

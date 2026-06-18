@@ -403,7 +403,6 @@ export function MobileNavDrawer({
               alt="ITECS"
               width={132}
               height={40}
-              className="brightness-0 invert"
               style={{ height: "40px", width: "auto" }}
             />
           </Link>

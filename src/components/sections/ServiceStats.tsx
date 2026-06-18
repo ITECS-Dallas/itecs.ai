@@ -11,7 +11,7 @@ export function ServiceStats({
   if (stats.length === 0) return null;
 
   return (
-    <section className="py-24 md:py-32 bg-bg-surface">
+    <section className="py-24 md:py-32 bg-canvas-sunken">
       <div className="mx-auto max-w-7xl px-6 md:px-8">
         <div
           className={`grid gap-8 ${

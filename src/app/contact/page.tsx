@@ -48,13 +48,12 @@ export default function ContactPage() {
         <GridBackground opacity={0.03} />
 
         <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-8">
-          <h1 className="text-4xl md:text-6xl font-extralight tracking-[-0.03em] leading-[1.1] max-w-3xl">
+          <p className="eyebrow mb-6">Contact ITECS</p>
+          <h1 className="font-display text-4xl md:text-6xl font-medium tracking-[-0.025em] leading-[1.05] max-w-3xl text-ink">
             Talk with the Dallas team that can make AI{" "}
-            <span className="bg-gradient-to-r from-brand to-cyan bg-clip-text text-transparent">
-              governed and useful
-            </span>
+            <span className="text-itecs-blue">governed and useful</span>
           </h1>
-          <p className="mt-6 text-lg text-text-secondary max-w-xl">
+          <p className="mt-6 text-lg text-ink-body max-w-xl">
             Use this page for architect conversations, AI Readiness Assessment
             follow-up, or direct contact with the ITECS team serving DFW from
             Plano.
@@ -223,10 +222,8 @@ export default function ContactPage() {
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-6 md:px-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-stretch">
           <ScrollReveal direction="up">
             <div className="h-full">
-              <p className="text-xs font-medium uppercase tracking-[0.12em] text-brand-accent">
-                Corporate Office
-              </p>
-              <h2 className="mt-3 max-w-2xl text-3xl font-extralight tracking-[-0.03em] text-text-primary md:text-5xl">
+              <p className="eyebrow">Corporate Office</p>
+              <h2 className="mt-3 max-w-2xl text-3xl font-semibold tracking-[-0.02em] text-ink md:text-5xl">
                 ITECS corporate office in Plano, Texas
               </h2>
               <p className="mt-5 max-w-2xl text-base leading-relaxed text-text-secondary md:text-lg">

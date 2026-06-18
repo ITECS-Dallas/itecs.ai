@@ -235,7 +235,7 @@ export default function PricingPage() {
                 key={stat.label}
                 className="rounded-2xl border border-[var(--border-subtle)] bg-bg-surface/60 p-6"
               >
-                <div className="text-3xl font-extralight text-brand-accent-bright">
+                <div className="text-3xl font-semibold text-brand-accent-bright">
                   {stat.value}
                 </div>
                 <div className="mt-2 text-xs font-medium uppercase tracking-[0.15em] text-text-dim">
@@ -337,7 +337,7 @@ export default function PricingPage() {
                           {offering.name}
                         </h4>
                         <div className="mt-4">
-                          <span className="text-3xl font-extralight text-text-primary">
+                          <span className="text-3xl font-semibold text-text-primary">
                             {offering.price}
                           </span>
                         </div>
@@ -428,7 +428,7 @@ export default function PricingPage() {
                 <h3 className="text-xl font-medium text-text-primary">{tier.tier}</h3>
                 <p className="mt-2 text-sm text-text-dim">{tier.users}</p>
                 <div className="mt-6">
-                  <span className="text-4xl font-extralight text-text-primary">
+                  <span className="text-4xl font-semibold text-text-primary">
                     {tier.price}
                   </span>
                 </div>
@@ -491,7 +491,7 @@ export default function PricingPage() {
                     </p>
                   </div>
                   <div className="text-left md:text-right">
-                    <div className="text-2xl font-extralight text-text-primary">
+                    <div className="text-2xl font-semibold text-text-primary">
                       {rate.rate}
                     </div>
                   </div>

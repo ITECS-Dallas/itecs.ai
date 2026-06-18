@@ -18,12 +18,12 @@ export function ServiceFeatures({
           <SectionHeading eyebrow="Capabilities" title={title} />
         </ScrollReveal>
 
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-5 max-w-4xl mx-auto">
           {features.map((feature, i) => (
             <ScrollReveal key={i} delay={i * 0.08}>
-              <div className="flex items-start gap-4 p-4 rounded-lg border border-[var(--border-subtle)] bg-bg-surface/50">
-                <Check className="h-5 w-5 text-brand-accent mt-0.5 shrink-0" />
-                <span className="text-text-secondary">{feature}</span>
+              <div className="chamfer-sm flex items-start gap-4 p-5 border border-[var(--card-line)] bg-card h-full">
+                <Check className="h-5 w-5 text-itecs-blue-bright mt-0.5 shrink-0" />
+                <span className="text-ink-body">{feature}</span>
               </div>
             </ScrollReveal>
           ))}

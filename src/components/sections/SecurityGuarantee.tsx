@@ -37,7 +37,7 @@ export function SecurityGuarantee({
   description,
 }: SecurityGuaranteeProps) {
   return (
-    <section className="relative py-24 md:py-32 bg-bg-surface overflow-hidden">
+    <section className="relative py-24 md:py-32 bg-canvas-sunken overflow-hidden">
       <CircuitTrace variant="background" />
 
       <div className="relative z-10 mx-auto max-w-4xl px-6 md:px-8">
@@ -62,16 +62,16 @@ export function SecurityGuarantee({
             return (
               <ScrollReveal key={i} delay={i * 0.08}>
                 <motion.div
-                  className="flex items-start gap-4 p-5 rounded-xl border border-[var(--border-subtle)] bg-bg-void/50"
+                  className="chamfer-md flex items-start gap-4 p-5 border border-[var(--card-line)] bg-card"
                   whileHover={{
-                    borderColor: "var(--border-active)",
+                    borderColor: "var(--itecs-steel)",
                     transition: { duration: 0.2 },
                   }}
                 >
-                  <div className="flex items-center justify-center shrink-0 w-10 h-10 rounded-lg bg-brand-accent/10 border border-brand-accent/20">
-                    <Icon className="h-5 w-5 text-brand-accent" />
+                  <div className="hex flex items-center justify-center shrink-0 w-10 h-10 bg-brand-subtle text-itecs-blue">
+                    <Icon className="h-5 w-5" />
                   </div>
-                  <span className="text-text-secondary leading-relaxed">
+                  <span className="text-ink-body leading-relaxed">
                     {point}
                   </span>
                 </motion.div>

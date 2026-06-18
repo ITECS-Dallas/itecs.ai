@@ -204,7 +204,7 @@ export function ManufacturingSpokeMetricsChart({
                 <p className="text-sm text-text-secondary">
                   {chart.summaryMetric.label}
                 </p>
-                <p className="mt-2 font-mono text-4xl font-thin text-brand-accent">
+                <p className="mt-2 font-mono text-4xl font-semibold text-brand-accent">
                   {chart.summaryMetric.value}
                 </p>
                 <p className="mt-2 text-xs leading-relaxed text-text-dim">

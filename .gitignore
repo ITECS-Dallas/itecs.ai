@@ -64,3 +64,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Local design-spec working material (not part of the site)
+itecs-ai-website/

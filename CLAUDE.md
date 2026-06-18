@@ -94,20 +94,29 @@ Every page uses `generatePageMetadata()` from `src/lib/metadata.ts` for OpenGrap
 
 ## Design
 
-Full design schematic is in `DESIGN.md`. Key points:
+The site uses the **ITECS "Intelligence" design system**. Full schematic in `DESIGN.md`;
+canonical visual contract in `docs/redesign-intelligence/` (HANDOVER.md + reference HTML). Key points:
 
-- **Dark mode only** — `#030712` void background, no light theme.
-- **Brand accent**: Cyan `#06b6d4` primary, Violet `#8b5cf6` secondary. ITECS navy `#081821`.
-- **Typography**: Extralight/light headlines (weight 200–300), never bold walls of text.
-- **Motion**: Framer Motion for scroll reveals and parallax. CSS for ambient glows. SVG path animations for circuit traces.
-- **Style references**: Palantir, SentinelOne, Apple — futuristic, aggressive, sparse.
+- **Light canvas, angular geometry.** Page background `--canvas` `#F3F6F9` (never pure white);
+  white cards lift off it; dark sections use `--itecs-navy` `#0A1622`. **No circles / rounded blobs /
+  soft shapes** — use chamfered corners, diamonds, hexagons, faceted blades, straight crease lines.
+  Radius is reserved: 10px buttons, 16px (`--r-section`) large section cards; everything else chamfered or square.
+- **Brand**: `--itecs-blue` `#004775` is primary (CTAs, links); `--itecs-blue-bright` `#3288B6` is the
+  accent (eyebrows, diamonds, crease lines) used sparingly. Never gradient text; headlines are two-tone instead.
+- **Typography**: Space Grotesk (display/headings/numbers, weight 500–600), IBM Plex Sans (body),
+  IBM Plex Mono (eyebrows/tags/meta). Every section opens with a mono `.eyebrow`.
+- **Two hero patterns**: homepage = light faceted blade + knocked-out shield (`Hero.tsx`);
+  sub-pages = navy "Managed intelligence" panel + hex AI Core (`ServiceHero`, `ManufacturingHero`, Evolution band).
+- **Motifs/components**: `.chamfer-*`, `.diamond`, `.hex`, `.eyebrow`, `.ops-grid` (globals.css);
+  `Chamfer/Diamond/Hex/Eyebrow` (`ui/Motifs.tsx`), `AICore`, `FacetedBackdrop`. `GradientOrb` is retired (no-op).
+- **Motion**: Framer Motion for scroll reveals/parallax; CSS `coreGlow` for the AI core. Respect `prefers-reduced-motion`.
 
 ## Key Conventions
 
 - **Icons**: Use `lucide-react` for all icons.
-- **Styling**: Tailwind CSS v4 via `@tailwindcss/postcss`. Global styles in `src/app/globals.css`. CSS custom properties define the color system, bridged to Tailwind via `@theme inline` block (e.g., `bg-bg-void`, `text-brand-accent`).
+- **Styling**: Tailwind CSS v4 via `@tailwindcss/postcss`. Global styles in `src/app/globals.css`. CSS custom properties define the color system, bridged to Tailwind via `@theme inline`. Prefer Intelligence utilities for new work (`bg-canvas`, `bg-card`, `bg-canvas-sunken`, `text-ink`/`-body`/`-muted`/`-faint`, `bg-itecs-blue`, `text-itecs-blue`, `text-itecs-blue-bright`, `bg-itecs-navy`); legacy tokens (`bg-bg-void`, `text-brand-accent`, …) are re-pointed to Intelligence values and still work.
 - **Animations**: Use `framer-motion` for scroll-triggered and layout animations. Use CSS for ambient/looping effects (keyframes defined in `globals.css`). Respect `prefers-reduced-motion`.
-- **Fonts**: Geist Sans (display + body) and Geist Mono (code/data) loaded via `next/font/google`.
+- **Fonts**: Space Grotesk (display), IBM Plex Sans (body), IBM Plex Mono (eyebrows/labels/meta) loaded via `next/font/google` in `layout.tsx`.
 - **Content data**: All structured content (services, insights, stats, nav links, site config) lives in `src/lib/constants.ts`. Pages and components import from there — never hardcode content in components.
 - **Output mode**: `next.config.ts` uses `output: "standalone"` for Docker builds.
 - **SSL**: Cloudflare DNS API token in `.env` (`CLOUDFLARE_DNS_API_TOKEN`). Cert lives in `infra/certbot/letsencrypt/`. Renewal runs via systemd timer twice daily.

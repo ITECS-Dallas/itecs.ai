@@ -3,6 +3,7 @@ import { generateFAQSchema } from "@/lib/seo";
 import { FAQ_ITEMS, HOMEPAGE_FEATURES } from "@/lib/constants";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Hero } from "@/components/sections/Hero";
+import { EvolutionBand } from "@/components/sections/EvolutionBand";
 import { TrustBar } from "@/components/sections/TrustBar";
 import { ThirdPartyValidation } from "@/components/sections/ThirdPartyValidation";
 import { AIAdoptionUnderstanding } from "@/components/sections/AIAdoptionUnderstanding";
@@ -46,6 +47,7 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+      <EvolutionBand />
       <TrustBar />
       <ThirdPartyValidation />
       <AIAdoptionUnderstanding />

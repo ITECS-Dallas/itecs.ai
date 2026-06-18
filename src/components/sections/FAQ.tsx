@@ -22,20 +22,20 @@ export function FAQ({
       <div className="mx-auto max-w-3xl px-6 md:px-8">
         <SectionHeading eyebrow="FAQ" title={heading} />
 
-        <div className="mt-12 rounded-lg border border-[var(--border-default)] bg-bg-surface">
+        <div className="mt-12 rounded-[var(--r-section)] border border-[var(--card-line)] bg-card overflow-hidden">
           {items.map((item) => (
             <details
               key={item.question}
-              className="group border-[var(--border-subtle)] open:bg-bg-elevated/40 [&:not(:first-child)]:border-t"
+              className="group border-[var(--card-line)] open:bg-canvas-sunken/60 [&:not(:first-child)]:border-t"
             >
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 text-left text-base font-semibold text-text-primary transition-colors duration-[var(--dur-base)] ease-[var(--ease-out)] hover:bg-bg-elevated focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-inset [&::-webkit-details-marker]:hidden">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 text-left text-base font-semibold text-ink transition-colors duration-[var(--dur-base)] ease-[var(--ease-out)] hover:bg-canvas-sunken focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-inset [&::-webkit-details-marker]:hidden">
                 <span>{item.question}</span>
                 <ChevronDown
                   aria-hidden="true"
-                  className="h-5 w-5 shrink-0 text-text-tertiary transition-transform duration-[var(--dur-base)] ease-[var(--ease-out)] group-open:rotate-180 motion-reduce:transition-none"
+                  className="h-5 w-5 shrink-0 text-itecs-blue-bright transition-transform duration-[var(--dur-base)] ease-[var(--ease-out)] group-open:rotate-180 motion-reduce:transition-none"
                 />
               </summary>
-              <div className="px-5 pb-5 text-sm leading-relaxed text-text-secondary">
+              <div className="px-5 pb-5 text-sm leading-relaxed text-ink-body">
                 <p>{item.answer}</p>
               </div>
             </details>

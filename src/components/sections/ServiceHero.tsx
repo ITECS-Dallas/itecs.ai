@@ -1,56 +1,53 @@
-"use client";
-
-import { motion } from "framer-motion";
-import { GradientOrb } from "@/components/effects/GradientOrb";
-import { GridBackground } from "@/components/effects/GridBackground";
-import type { ServiceItem } from "@/lib/constants";
 import type { ReactNode } from "react";
+import type { ServiceItem } from "@/lib/constants";
+import { Eyebrow } from "@/components/ui/Motifs";
+import { FacetedBackdrop } from "@/components/ui/FacetedBackdrop";
 
 interface ServiceHeroProps {
   service: ServiceItem;
+  /** @deprecated retained for caller compatibility; the AI Core motif is used instead. */
   circuit?: ReactNode;
 }
 
-export function ServiceHero({ service, circuit }: ServiceHeroProps) {
+/* ---------------------------------------------------------------------------
+   SERVICE HERO — the sub-page hero treatment.
+   The dark navy "Managed intelligence" panel: a faceted plate, an ops-grid
+   texture, the hex AI Core, an answer-first summary, and the page H1.
+   --------------------------------------------------------------------------- */
+export function ServiceHero({ service }: ServiceHeroProps) {
   return (
-    <section className="relative pt-32 pb-20 overflow-hidden">
-      <GridBackground opacity={0.03} />
-      <GradientOrb color="cyan" size="md" position={{ top: "10%", right: "10%" }} />
-      <GradientOrb color="brand" size="sm" position={{ bottom: "20%", left: "5%" }} />
+    <section className="mx-auto max-w-7xl px-6 pt-28 pb-12 md:px-8 md:pt-32 md:pb-16">
+      <div
+        className="relative grid overflow-hidden rounded-[var(--r-section)] lg:grid-cols-[1fr_0.74fr]"
+        style={{ background: "var(--itecs-navy)", minHeight: "440px" }}
+      >
+        {/* Left: eyebrow + H1 + answer-first summary */}
+        <div className="relative z-[3] flex flex-col justify-center p-8 md:p-14">
+          <Eyebrow className="mb-5 !text-itecs-blue-pale">
+            {service.shortTitle}
+          </Eyebrow>
 
-      <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-center">
-          {/* Text — 3/5 on desktop, full on mobile */}
-          <motion.div
-            className={circuit ? "lg:col-span-3" : "lg:col-span-5 max-w-3xl"}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <p className="text-sm font-medium tracking-[0.05em] uppercase text-brand-accent mb-4 flex items-center gap-2">
-              <span className="inline-block w-8 h-px bg-brand-accent" />
-              {service.shortTitle}
-            </p>
-            <h1 className="text-4xl md:text-6xl font-extralight tracking-[-0.03em] leading-[1.1]">
-              {service.h1}
-            </h1>
+          <h1 className="font-display text-[clamp(2.25rem,1.6rem+2.4vw,3.25rem)] font-medium leading-[1.05] tracking-[-0.025em] text-white">
+            {service.h1}
+          </h1>
 
-            {/* Above-the-fold ROI summary — bold, GEO-extractable */}
-            <p className="mt-6 text-lg md:text-xl text-text-primary font-medium max-w-2xl leading-relaxed">
-              <strong>{service.heroSummary}</strong>
-            </p>
+          {/* answer-first ROI summary — GEO-extractable */}
+          <p className="mt-6 max-w-2xl text-lg font-medium leading-relaxed text-itecs-blue-pale">
+            {service.heroSummary}
+          </p>
 
-            <p className="mt-4 text-base text-text-secondary font-light max-w-2xl leading-relaxed">
-              {service.longDescription}
-            </p>
-          </motion.div>
+          <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-[#aebfcb]">
+            {service.longDescription}
+          </p>
+        </div>
 
-          {/* Circuit trace — 2/5 on desktop, hidden on mobile */}
-          {circuit && (
-            <div className="hidden lg:block lg:col-span-2">
-              {circuit}
-            </div>
-          )}
+        {/* Right: AI Core panel (decorative, hidden on mobile) */}
+        <div className="relative hidden lg:block">
+          <FacetedBackdrop
+            coreSize={240}
+            clip="polygon(22% 0, 100% 0, 100% 100%, 4% 100%)"
+            creaseClip="polygon(22% 0, 24% 0, 6% 100%, 4% 100%)"
+          />
         </div>
       </div>
     </section>

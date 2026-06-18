@@ -14,12 +14,12 @@ export function StatCounter({
 }: StatCounterProps) {
   return (
     <div className="text-center">
-      <div className="font-mono text-[length:var(--fs-metric)] font-semibold tracking-normal text-brand">
+      <div className="font-display text-[length:var(--fs-metric)] font-semibold tracking-[-0.01em] text-itecs-blue">
         {prefix}
         {value}
         {suffix}
       </div>
-      <div className="mt-2 text-sm font-medium tracking-[0.05em] uppercase text-text-dim">
+      <div className="mt-2 text-sm font-medium text-ink-muted">
         {label}
       </div>
     </div>

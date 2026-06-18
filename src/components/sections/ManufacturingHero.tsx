@@ -1,10 +1,9 @@
 "use client";
 
-import { ArrowRight, Factory, ShieldCheck } from "lucide-react";
+import { Factory, ShieldCheck } from "lucide-react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
-import { GradientOrb } from "@/components/effects/GradientOrb";
-import { GridBackground } from "@/components/effects/GridBackground";
+import { Eyebrow, Hex } from "@/components/ui/Motifs";
 
 interface ManufacturingHeroProps {
   eyebrow: string;
@@ -30,41 +29,43 @@ export function ManufacturingHero({
   stats,
 }: ManufacturingHeroProps) {
   return (
-    <section className="relative overflow-hidden pt-32 pb-20">
-      <GridBackground opacity={0.035} />
-      <GradientOrb color="cyan" size="lg" position={{ top: "8%", right: "12%" }} />
-      <GradientOrb color="brand" size="sm" position={{ bottom: "12%", left: "6%" }} />
-
-      <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-8">
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-5 lg:items-center">
+    <section className="mx-auto max-w-7xl px-6 pt-28 pb-12 md:px-8 md:pt-32 md:pb-16">
+      <div
+        className="relative overflow-hidden rounded-[var(--r-section)] ops-grid"
+        style={{ background: "var(--itecs-navy)" }}
+      >
+        {/* bright crease sliver */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-y-0 right-0 hidden w-[36%] lg:block"
+          style={{
+            background: "var(--itecs-blue-bright)",
+            clipPath: "polygon(2% 0, 4% 0, 0 100%, 0% 100%)",
+            opacity: 0.5,
+          }}
+        />
+        <div className="relative z-10 grid grid-cols-1 gap-10 p-8 md:p-14 lg:grid-cols-5 lg:items-center">
           <motion.div
             className="lg:col-span-3"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <p className="mb-4 flex items-center gap-2 text-sm font-medium uppercase tracking-[0.05em] text-brand-accent">
-              <span className="inline-block h-px w-8 bg-brand-accent" />
-              {eyebrow}
-            </p>
-            <h1 className="text-4xl font-extralight leading-[1.08] tracking-[-0.03em] md:text-6xl">
+            <Eyebrow className="mb-5 !text-itecs-blue-pale">{eyebrow}</Eyebrow>
+            <h1 className="font-display text-4xl font-medium leading-[1.05] tracking-[-0.025em] text-white md:text-6xl">
               {h1}
             </h1>
-            <p className="mt-6 max-w-2xl text-lg font-medium leading-relaxed text-text-primary md:text-xl">
-              <strong>{heroSummary}</strong>
+            <p className="mt-6 max-w-2xl text-lg font-medium leading-relaxed text-itecs-blue-pale md:text-xl">
+              {heroSummary}
             </p>
-            <p className="mt-4 max-w-2xl text-base font-light leading-relaxed text-text-secondary">
+            <p className="mt-4 max-w-2xl text-base leading-relaxed text-[#aebfcb]">
               {longDescription}
             </p>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-              <Button
-                href={primaryCtaHref}
-                size="lg"
-                icon={<ArrowRight className="h-4 w-4" />}
-              >
+              <Button href={primaryCtaHref} size="lg">
                 {primaryCta}
               </Button>
-              <Button href={secondaryCtaHref} variant="secondary" size="lg">
+              <Button href={secondaryCtaHref} variant="ghost" size="lg">
                 {secondaryCta}
               </Button>
             </div>
@@ -76,36 +77,37 @@ export function ManufacturingHero({
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.15, duration: 0.6 }}
           >
-            <div className="rounded-xl border border-[var(--border-subtle)] bg-bg-surface/70 p-5 shadow-2xl shadow-violet-950/20 backdrop-blur">
-              <div className="mb-6 flex items-center justify-between border-b border-[var(--border-subtle)] pb-4">
+            <div
+              className="chamfer-md border p-5"
+              style={{ background: "var(--itecs-navy-2)", borderColor: "rgba(255,255,255,0.10)" }}
+            >
+              <div
+                className="mb-6 flex items-center justify-between border-b pb-4"
+                style={{ borderColor: "rgba(255,255,255,0.10)" }}
+              >
                 <div className="flex items-center gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-brand-accent/20 bg-brand-accent/10">
-                    <Factory className="h-5 w-5 text-brand-accent" />
-                  </div>
+                  <Hex className="h-10 w-10 bg-itecs-blue text-white">
+                    <Factory className="h-5 w-5" />
+                  </Hex>
                   <div>
-                    <p className="text-sm font-medium text-text-primary">
+                    <p className="text-sm font-medium text-white">
                       Manufacturing signal map
                     </p>
-                    <p className="text-xs uppercase tracking-[0.05em] text-text-dim">
+                    <p className="font-mono text-xs uppercase tracking-[0.05em] text-[#8497a6]">
                       Finance + operations + IT
                     </p>
                   </div>
                 </div>
-                <ShieldCheck className="h-5 w-5 text-brand-accent" />
+                <ShieldCheck className="h-5 w-5 text-itecs-blue-pale" />
               </div>
 
-              <div className="divide-y divide-[var(--border-subtle)]">
+              <div className="divide-y divide-white/10">
                 {stats.map((stat) => (
-                  <div
-                    key={stat.label}
-                    className="py-4 first:pt-0 last:pb-0"
-                  >
-                    <p className="font-mono text-2xl font-thin text-brand-accent">
+                  <div key={stat.label} className="py-4 first:pt-0 last:pb-0">
+                    <p className="font-display text-2xl font-semibold text-itecs-blue-pale">
                       {stat.value}
                     </p>
-                    <p className="mt-1 text-sm text-text-secondary">
-                      {stat.label}
-                    </p>
+                    <p className="mt-1 text-sm text-[#aebfcb]">{stat.label}</p>
                   </div>
                 ))}
               </div>

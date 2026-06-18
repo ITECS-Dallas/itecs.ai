@@ -119,7 +119,7 @@ function PhaseCard({
         {/* Phase header */}
         <div className="flex items-center gap-3 mb-5">
           <span
-            className="text-4xl font-extralight tracking-tight"
+            className="text-4xl font-semibold tracking-tight"
             style={{ color: phase.color }}
           >
             {phase.phase}

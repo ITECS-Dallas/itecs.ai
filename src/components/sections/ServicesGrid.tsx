@@ -80,13 +80,7 @@ type ServiceCardItem = {
   external?: boolean;
 };
 
-function ServiceCard({
-  item,
-  distinct = false,
-}: {
-  item: ServiceCardItem;
-  distinct?: boolean;
-}) {
+function ServiceCard({ item }: { item: ServiceCardItem }) {
   const Icon = item.icon;
 
   if (item.external) {
@@ -95,16 +89,16 @@ function ServiceCard({
         href={item.href}
         target="_blank"
         rel="noopener noreferrer"
-        className="group flex h-full flex-col rounded-lg border border-dashed border-[var(--border-strong)] bg-brand-subtle p-6 transition-[transform,border-color,box-shadow] duration-[var(--dur-base)] ease-[var(--ease-out)] hover:-translate-y-0.5 hover:border-brand hover:shadow-e2"
+        className="group chamfer-md flex h-full flex-col border border-dashed border-[var(--border-strong)] bg-brand-subtle p-6 transition-[transform,border-color] duration-[var(--dur-base)] ease-[var(--ease-out)] hover:-translate-y-0.5 hover:border-itecs-blue"
       >
-        <CardContent item={item} icon={Icon} distinct={distinct} />
+        <CardContent item={item} icon={Icon} />
       </a>
     );
   }
 
   return (
     <Card href={item.href} className="flex h-full flex-col">
-      <CardContent item={item} icon={Icon} distinct={distinct} />
+      <CardContent item={item} icon={Icon} />
     </Card>
   );
 }
@@ -112,26 +106,20 @@ function ServiceCard({
 function CardContent({
   item,
   icon: Icon,
-  distinct,
 }: {
   item: ServiceCardItem;
   icon: LucideIcon;
-  distinct: boolean;
 }) {
   return (
     <>
-      <div
-        className={`mb-5 flex h-12 w-12 items-center justify-center rounded-md ${
-          distinct ? "bg-brand-subtle text-brand" : "bg-brand-subtle text-brand"
-        }`}
-      >
+      <div className="chamfer-sm mb-5 flex h-12 w-12 items-center justify-center bg-brand-subtle text-itecs-blue">
         <Icon aria-hidden="true" className="h-6 w-6" />
       </div>
-      <h3 className="text-lg font-semibold text-text-primary">{item.title}</h3>
-      <p className="mt-3 flex-1 text-sm leading-relaxed text-text-secondary">
+      <h3 className="text-lg font-semibold text-ink">{item.title}</h3>
+      <p className="mt-3 flex-1 text-sm leading-relaxed text-ink-body">
         {item.description}
       </p>
-      <div className="mt-5 flex items-center gap-2 text-sm font-semibold text-brand-accent transition-colors group-hover/card:text-brand">
+      <div className="mt-5 flex items-center gap-2 text-sm font-semibold text-itecs-blue-bright transition-colors group-hover/card:text-itecs-blue">
         {item.cta ?? "Learn more"}
         <ArrowRight aria-hidden="true" className="h-4 w-4" />
       </div>
@@ -201,11 +189,7 @@ export function ServicesGrid({
 
         <div className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {cards.map((item) => (
-            <ServiceCard
-              key={`${item.href}-${item.title}`}
-              item={item}
-              distinct={item.external}
-            />
+            <ServiceCard key={`${item.href}-${item.title}`} item={item} />
           ))}
         </div>
       </div>

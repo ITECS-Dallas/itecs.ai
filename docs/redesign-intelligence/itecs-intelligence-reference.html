@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ITECS — Intelligence Design System · Reference Implementation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     ITECS "INTELLIGENCE" DESIGN SYSTEM — REFERENCE IMPLEMENTATION
+     Plain HTML/CSS. No build step. Framework-agnostic.
+     This is the canonical visual contract for the itecs.ai refactor.
+     ============================================================ */
+
+  :root{
+    /* ---- BRAND CORE (sampled from the real ITECS logo + hero) ---- */
+    --itecs-navy:        #0A1622;  /* darkest — hero text, dark sections, footer */
+    --itecs-navy-2:      #08182a;  /* panel fill behind the AI core */
+    --itecs-navy-3:      #06314c;  /* crease-fold facet on the deep-blue blade */
+    --itecs-blue:        #004775;  /* PRIMARY brand blue — wordmark color, primary CTA */
+    --itecs-blue-bright: #3288B6;  /* ACCENT — eyebrows, diamonds, crease lines */
+    --itecs-blue-light:  #5BA8D8;  /* AI-core strokes / glow */
+    --itecs-blue-pale:   #7fb4d8;  /* on-dark accent text */
+    --itecs-steel:       #326189;  /* tertiary blue (logo icon) */
+
+    /* ---- LIGHT SURFACES ---- */
+    --surface-0: #FFFFFF;  /* cards */
+    --surface-1: #F3F6F9;  /* page canvas */
+    --surface-2: #E9EFF5;  /* tinted band (advantage) */
+    --hairline:  #dbe3eb;  /* dividers */
+    --card-line: #e0e8f0;  /* card borders */
+
+    /* ---- TEXT ---- */
+    --ink:        #0A1622;  /* headings */
+    --ink-body:   #566876;  /* body copy */
+    --ink-muted:  #62717e;  /* secondary body */
+    --ink-faint:  #879199;  /* mono labels / meta */
+
+    /* ---- TYPE ---- */
+    --font-display: 'Space Grotesk', sans-serif;  /* headings, stats, numbers */
+    --font-body:    'IBM Plex Sans', sans-serif;  /* paragraphs, nav, UI */
+    --font-mono:    'IBM Plex Mono', monospace;   /* eyebrows, tags, meta, years */
+
+    /* ---- RADIUS (used ONLY on pills/CTAs and large section cards) ---- */
+    --r-cta: 10px;
+    --r-section: 16px;
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:var(--surface-1);
+    color:var(--ink-body);
+    font-family:var(--font-body);
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* ---- MOTION ---- */
+  @keyframes coreGlow{0%,100%{opacity:.45;transform:scale(1)}50%{opacity:.9;transform:scale(1.06)}}
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important;}
+  }
+
+  /* ---- LAYOUT PRIMITIVES ---- */
+  .wrap{max-width:1440px;margin:0 auto;}
+  .pad{padding-left:60px;padding-right:60px;}
+
+  /* ============================================================
+     MOTIF UTILITIES — the load-bearing visual language.
+     Reuse these everywhere. Do NOT introduce rounded blobs/circles.
+     ============================================================ */
+
+  /* CHAMFER: the signature notched corner. A rectangle with one
+     corner sliced at 45°. Apply to every card, chip, and tag. */
+  .chamfer-sm{clip-path:polygon(0 0,100% 0,100% 100%,14px 100%,0 calc(100% - 14px));}
+  .chamfer-md{clip-path:polygon(0 0,100% 0,100% 100%,18px 100%,0 calc(100% - 18px));}
+
+  /* DIAMOND: a rotated square. The universal bullet / list marker.
+     Echoes the circuit-nodes on the ITECS shield. NEVER a round dot. */
+  .diamond{width:8px;height:8px;background:var(--itecs-blue-bright);transform:rotate(45deg);flex:none;}
+  .diamond.sm{width:7px;height:7px;}
+
+  /* HEX: the AI / "intelligence" mark. Used for the core graphic and
+     step badges. Hard-edged, six planes — never a circle. */
+  .hex{clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);}
+
+  /* EYEBROW: mono, wide-tracked, uppercase. Precedes every headline. */
+  .eyebrow{font-family:var(--font-mono);font-size:12.5px;letter-spacing:.22em;color:var(--itecs-blue-bright);}
+
+  /* HEADINGS */
+  h1,h2,h3{font-family:var(--font-display);color:var(--ink);margin:0;letter-spacing:-.02em;font-weight:600;}
+  h1{font-size:74px;line-height:1.0;font-weight:500;letter-spacing:-.025em;}
+  h2{font-size:44px;line-height:1.04;}
+  h3{font-size:20px;line-height:1.18;}
+
+  /* CTA BUTTONS — large hit targets (Fitts's Law) */
+  .btn{display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:16px;
+       border-radius:var(--r-cta);white-space:nowrap;cursor:pointer;text-decoration:none;
+       border:none;line-height:1;transition:transform .15s ease, box-shadow .15s ease;}
+  .btn:hover{transform:translateY(-2px);}
+  .btn-primary{background:var(--itecs-blue);color:#fff;padding:17px 32px;box-shadow:0 12px 28px rgba(0,71,117,.28);}
+  .btn-ondark{background:#fff;color:var(--itecs-blue);padding:19px 38px;box-shadow:0 14px 30px rgba(0,0,0,.22);font-size:17px;}
+  .btn-ghost-dark{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4);padding:18px 30px;}
+  .btn-text{color:var(--ink-body);font-weight:500;font-size:16px;}
+
+  /* DARK SECTION text resets */
+  .on-dark h1,.on-dark h2,.on-dark h3{color:#fff;}
+
+  /* RESPONSIVE: below 1100px the multi-col grids stack. */
+  @media (max-width:1100px){
+    .pad{padding-left:28px;padding-right:28px;}
+    h1{font-size:48px;} h2{font-size:34px;}
+    .grid-4{grid-template-columns:repeat(2,1fr) !important;}
+    .split{grid-template-columns:1fr !important;}
+    .hero-art{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<!-- =================================================================
+     NAV  ·  Hick's Law (few top-level choices)
+     ================================================================= -->
+<header class="wrap pad" style="display:flex;align-items:center;justify-content:space-between;padding-top:24px;padding-bottom:24px;position:relative;z-index:6;">
+  <img src="https://itecsonline.com/images/logos/itecs-horizontal-logo.svg" alt="ITECS" style="height:32px;">
+  <nav style="display:flex;align-items:center;gap:34px;font-size:14px;font-weight:500;color:#3c4a57;">
+    <a href="#" style="color:inherit;text-decoration:none;">Services</a>
+    <a href="#" style="color:inherit;text-decoration:none;">Cybersecurity</a>
+    <a href="#" style="color:inherit;text-decoration:none;">Intelligence</a>
+    <a href="#" style="color:inherit;text-decoration:none;">Industries</a>
+    <a href="#" style="color:inherit;text-decoration:none;">Company</a>
+  </nav>
+  <a href="#cta" class="btn btn-primary" style="padding:12px 24px;font-size:14px;box-shadow:none;">Get a Free Assessment</a>
+</header>
+
+<!-- =================================================================
+     HERO  ·  Aesthetic-Usability · Von Restorff · Hick's Law
+     One elevated primary action; secondary demoted to a text link.
+     ================================================================= -->
+<section class="pad" style="position:relative;overflow:hidden;padding-top:74px;padding-bottom:92px;">
+  <!-- MOTIF: faceted brand blade (deep-blue), bleeding off top-right -->
+  <div class="hero-art" style="position:absolute;top:-130px;right:-150px;width:790px;height:720px;background:var(--itecs-blue);clip-path:polygon(32% 0,100% 0,100% 100%,57% 100%,2% 45%);"></div>
+  <div class="hero-art" style="position:absolute;top:-130px;right:-150px;width:790px;height:720px;background:var(--itecs-navy-3);clip-path:polygon(32% 0,48% 0,11% 54%,2% 45%);"></div>
+  <!-- MOTIF: bright accent shard -->
+  <div class="hero-art" style="position:absolute;top:286px;right:404px;width:128px;height:120px;background:var(--itecs-blue-bright);clip-path:polygon(0 18%,100% 0,100% 82%,0 100%);"></div>
+  <!-- MOTIF: angular crease line + circuit node -->
+  <svg class="hero-art" viewBox="0 0 1440 760" preserveAspectRatio="xMidYMid slice" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;">
+    <polyline points="-60,580 700,452 1540,320" fill="none" stroke="#3288B6" stroke-width="1.5" stroke-opacity="0.5" vector-effect="non-scaling-stroke"></polyline>
+    <circle cx="700" cy="452" r="5.5" fill="#004775"></circle>
+    <circle cx="1318" cy="353" r="4" fill="#3288B6"></circle>
+  </svg>
+  <!-- ITECS shield, knocked out to white on the blue blade -->
+  <img class="hero-art" src="https://itecsonline.com/images/logos/itecs-icon-darkblue.svg" alt="" style="position:absolute;top:30px;right:104px;height:286px;filter:brightness(0) invert(1);z-index:2;">
+
+  <div class="wrap" style="position:relative;z-index:3;padding:0;">
+    <div style="max-width:720px;">
+      <div class="eyebrow" style="margin-bottom:22px;">BUSINESS STRATEGIST TECHNOLOGISTS</div>
+      <h1 style="margin-bottom:26px;">Your IT, secured.<br>Your business,<br><span style="color:var(--itecs-blue);">made intelligent.</span></h1>
+      <p style="font-size:19px;line-height:1.6;color:var(--ink-body);max-width:540px;margin:0 0 36px;">Since 2002, ITECS has owned every layer of the technology stack for Dallas businesses — managed IT, cybersecurity, and cloud. Now we're embedding AI into all of it, so you move ahead of the curve instead of chasing it.</p>
+      <div style="display:flex;gap:16px;align-items:center;margin-bottom:46px;">
+        <a href="#cta" class="btn btn-primary">Get a Free IT Assessment</a>
+        <a href="#services" class="btn btn-text">or explore services →</a>
+      </div>
+      <!-- stat row -->
+      <div style="display:flex;gap:46px;padding-top:32px;border-top:1px solid #d4dde6;">
+        <div><div style="font-family:var(--font-display);font-size:38px;font-weight:600;color:var(--ink);letter-spacing:-.01em;">22+</div><div style="font-size:13px;color:#6a7884;margin-top:3px;">Years in DFW</div></div>
+        <div><div style="font-family:var(--font-display);font-size:38px;font-weight:600;color:var(--ink);letter-spacing:-.01em;">30 min</div><div style="font-size:13px;color:#6a7884;margin-top:3px;">Remote response SLA</div></div>
+        <div><div style="font-family:var(--font-display);font-size:38px;font-weight:600;color:var(--ink);letter-spacing:-.01em;">4.9/5</div><div style="font-size:13px;color:#6a7884;margin-top:3px;">54+ reviews</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================================================================
+     EVOLUTION (dark + AI core)  ·  Serial Position Effect
+     The MSP→MSSP→MIP journey ends on the most memorable item (MIP).
+     ================================================================= -->
+<section class="wrap pad" style="padding-bottom:70px;">
+  <div class="on-dark" style="position:relative;background:var(--itecs-navy);border-radius:var(--r-section);overflow:hidden;display:grid;grid-template-columns:1fr .82fr;min-height:430px;">
+    <div class="split-l" style="padding:56px 0 56px 56px;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:3;">
+      <div class="eyebrow" style="margin-bottom:20px;">THE NEXT EVOLUTION · MSP → MSSP → MIP</div>
+      <h2 style="margin-bottom:30px;">Beyond managed services.<br><span style="color:var(--itecs-blue-pale);">Managed intelligence.</span></h2>
+      <div style="display:flex;align-items:stretch;gap:0;max-width:560px;">
+        <div style="flex:1;border-top:2px solid #2a3b4a;padding:15px 20px 0 0;">
+          <div style="font-family:var(--font-mono);font-size:11px;color:#6d7c89;margin-bottom:7px;">2002</div>
+          <div style="font-family:var(--font-display);font-size:20px;font-weight:600;color:#7c8a96;">MSP</div>
+          <div style="font-size:12px;color:#7a8794;margin-top:5px;line-height:1.4;">Proactive IT &amp; uptime.</div>
+        </div>
+        <div style="align-self:flex-start;color:#566876;font-size:16px;padding:13px 2px 0;">→</div>
+        <div style="flex:1;border-top:2px solid #2a3b4a;padding:15px 20px 0;">
+          <div style="font-family:var(--font-mono);font-size:11px;color:#6d7c89;margin-bottom:7px;">2018</div>
+          <div style="font-family:var(--font-display);font-size:20px;font-weight:600;color:#7c8a96;">MSSP</div>
+          <div style="font-size:12px;color:#7a8794;margin-top:5px;line-height:1.4;">Detection &amp; response.</div>
+        </div>
+        <div style="align-self:flex-start;color:var(--itecs-blue-bright);font-size:16px;padding:13px 2px 0;">→</div>
+        <!-- LAST item is highlighted: brand-blue rule, white text -->
+        <div style="flex:1;border-top:2px solid var(--itecs-blue-bright);padding:15px 0 0 20px;">
+          <div style="font-family:var(--font-mono);font-size:11px;color:var(--itecs-blue-pale);margin-bottom:7px;">2026</div>
+          <div style="font-family:var(--font-display);font-size:20px;font-weight:600;color:#fff;">MIP</div>
+          <div style="font-size:12px;color:#aebfcb;margin-top:5px;line-height:1.4;">AI agents &amp; intelligent ops.</div>
+        </div>
+      </div>
+    </div>
+    <!-- AI CORE panel: angular dark plate with a bright crease + faint ops grid -->
+    <div class="hero-art" style="position:relative;">
+      <div style="position:absolute;inset:0;background:var(--itecs-navy-2);clip-path:polygon(28% 0,100% 0,100% 100%,6% 100%);"></div>
+      <div style="position:absolute;inset:0;background:var(--itecs-blue-bright);clip-path:polygon(28% 0,30% 0,8% 100%,6% 100%);"></div>
+      <div style="position:absolute;inset:0;clip-path:polygon(28% 0,100% 0,100% 100%,6% 100%);background-image:linear-gradient(rgba(120,170,210,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(120,170,210,.06) 1px,transparent 1px);background-size:34px 34px;"></div>
+      <!-- THE AI CORE: faceted hexagon. Reusable as a brand mark. -->
+      <div style="position:absolute;top:50%;right:16%;transform:translateY(-50%);z-index:2;">
+        <svg viewBox="0 0 420 420" style="width:268px;height:268px;display:block;overflow:visible;">
+          <circle cx="210" cy="210" r="150" fill="none" stroke="#5BA8D8" stroke-width="1" stroke-opacity="0.18" style="transform-origin:210px 210px;animation:coreGlow 3s ease-in-out infinite;"></circle>
+          <polygon points="50,210 130,72 290,72 370,210 290,348 130,348" fill="rgba(91,168,216,0.05)" stroke="#5BA8D8" stroke-width="2"></polygon>
+          <polygon points="130,210 170,141 250,141 290,210 250,279 170,279" fill="none" stroke="#2f6f9e" stroke-width="1.2" stroke-opacity="0.75"></polygon>
+          <line x1="210" y1="210" x2="130" y2="72" stroke="#5BA8D8" stroke-width="1.4" stroke-opacity="0.55"></line>
+          <line x1="210" y1="210" x2="370" y2="210" stroke="#5BA8D8" stroke-width="1.4" stroke-opacity="0.55"></line>
+          <line x1="210" y1="210" x2="130" y2="348" stroke="#5BA8D8" stroke-width="1.4" stroke-opacity="0.55"></line>
+          <circle cx="130" cy="72" r="5" fill="#5BA8D8"></circle>
+          <circle cx="370" cy="210" r="5" fill="#5BA8D8"></circle>
+          <circle cx="130" cy="348" r="5" fill="#5BA8D8"></circle>
+          <circle cx="210" cy="210" r="13" fill="none" stroke="#fff" stroke-width="1.5" stroke-opacity="0.45" style="transform-origin:210px 210px;animation:coreGlow 3s ease-in-out infinite;"></circle>
+          <circle cx="210" cy="210" r="7" fill="#fff"></circle>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================================================================
+     SERVICES  ·  Chunking / Miller's Law + Law of Common Region
+     Four digestible groups, each sealed inside its own bordered card.
+     ================================================================= -->
+<section id="services" class="wrap pad" style="padding-bottom:80px;">
+  <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:32px;">
+    <h2 style="font-size:32px;letter-spacing:-.01em;">One accountable team. Every layer.</h2>
+    <span style="font-family:var(--font-mono);font-size:12px;color:var(--ink-faint);letter-spacing:.1em;">SUPPORT · SECURITY · CLOUD · INTELLIGENCE</span>
+  </div>
+  <div class="grid-4" style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;">
+    <!-- CARD pattern ×4 -->
+    <article class="chamfer-md" style="background:var(--surface-0);border:1px solid var(--card-line);padding:28px 26px 30px;display:flex;flex-direction:column;min-height:268px;">
+      <div style="display:flex;align-items:center;gap:9px;margin-bottom:22px;"><span class="diamond sm"></span><span style="font-family:var(--font-mono);font-size:12px;color:var(--ink-faint);">01</span></div>
+      <h3 style="margin-bottom:12px;">Managed IT</h3>
+      <p style="font-size:14px;line-height:1.58;color:var(--ink-muted);margin:0 0 20px;flex:1;">Proactive maintenance, 24/7 support, and strategic guidance that keeps you running.</p>
+      <a href="#" style="font-size:13.5px;font-weight:600;color:var(--itecs-blue);text-decoration:none;">Explore →</a>
+    </article>
+    <article class="chamfer-md" style="background:var(--surface-0);border:1px solid var(--card-line);padding:28px 26px 30px;display:flex;flex-direction:column;min-height:268px;">
+      <div style="display:flex;align-items:center;gap:9px;margin-bottom:22px;"><span class="diamond sm"></span><span style="font-family:var(--font-mono);font-size:12px;color:var(--ink-faint);">02</span></div>
+      <h3 style="margin-bottom:12px;">Cybersecurity</h3>
+      <p style="font-size:14px;line-height:1.58;color:var(--ink-muted);margin:0 0 20px;flex:1;">Managed security controls and response planning against ransomware and phishing.</p>
+      <a href="#" style="font-size:13.5px;font-weight:600;color:var(--itecs-blue);text-decoration:none;">Explore →</a>
+    </article>
+    <article class="chamfer-md" style="background:var(--surface-0);border:1px solid var(--card-line);padding:28px 26px 30px;display:flex;flex-direction:column;min-height:268px;">
+      <div style="display:flex;align-items:center;gap:9px;margin-bottom:22px;"><span class="diamond sm"></span><span style="font-family:var(--font-mono);font-size:12px;color:var(--ink-faint);">03</span></div>
+      <h3 style="margin-bottom:12px;">Cloud Solutions</h3>
+      <p style="font-size:14px;line-height:1.58;color:var(--ink-muted);margin:0 0 20px;flex:1;">Secure Azure, AWS, or Private Cloud — migration and management handled end to end.</p>
+      <a href="#" style="font-size:13.5px;font-weight:600;color:var(--itecs-blue);text-decoration:none;">Explore →</a>
+    </article>
+    <article class="chamfer-md" style="background:var(--surface-0);border:1px solid var(--card-line);padding:28px 26px 30px;display:flex;flex-direction:column;min-height:268px;">
+      <div style="display:flex;align-items:center;gap:9px;margin-bottom:22px;"><span class="diamond sm"></span><span style="font-family:var(--font-mono);font-size:12px;color:var(--ink-faint);">04</span></div>
+      <h3 style="margin-bottom:12px;">AI &amp; Intelligence</h3>
+      <p style="font-size:14px;line-height:1.58;color:var(--ink-muted);margin:0 0 20px;flex:1;">Automation, agents, and intelligent operations that put you ahead of the curve.</p>
+      <a href="#" style="font-size:13.5px;font-weight:600;color:var(--itecs-blue);text-decoration:none;">Explore →</a>
+    </article>
+  </div>
+</section>
+
+<!-- =================================================================
+     ADVANTAGE (tinted band)  ·  Law of Similarity
+     Identical card treatment = "these all belong together".
+     ================================================================= -->
+<section style="position:relative;background:var(--surface-2);overflow:hidden;">
+  <img src="https://itecsonline.com/images/logos/itecs-icon-darkblue.svg" alt="" style="position:absolute;bottom:-90px;right:-30px;height:420px;opacity:.05;">
+  <div style="position:absolute;top:-110px;left:-120px;width:440px;height:400px;background:rgba(50,136,182,.07);clip-path:polygon(0 0,68% 0,100% 58%,42% 100%,0 70%);"></div>
+  <div class="wrap pad" style="position:relative;padding-top:72px;padding-bottom:72px;">
+    <div class="split" style="display:grid;grid-template-columns:.8fr 1.2fr;gap:60px;align-items:start;">
+      <div>
+        <div class="eyebrow" style="letter-spacing:.2em;margin-bottom:20px;">THE ITECS ADVANTAGE</div>
+        <h2 style="font-size:40px;margin-bottom:20px;">Not a vendor.<br>Your IT department.</h2>
+        <p style="font-size:16px;line-height:1.6;color:var(--ink-body);margin:0;max-width:340px;">We don't just manage your technology — we own it alongside you. Here's what that looks like.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;">
+        <!-- identical cards ×4 — top rule in brand blue -->
+        <div class="chamfer-sm" style="background:#fff;border-top:2px solid var(--itecs-blue);padding:22px 22px 24px;"><div style="font-family:var(--font-mono);font-size:12px;color:var(--itecs-blue-bright);margin-bottom:10px;">01</div><h3 style="font-size:17px;margin-bottom:8px;">A true partnership</h3><p style="font-size:13.5px;line-height:1.55;color:var(--ink-muted);margin:0;">Shaped around your priorities, your pace, your leadership style.</p></div>
+        <div class="chamfer-sm" style="background:#fff;border-top:2px solid var(--itecs-blue);padding:22px 22px 24px;"><div style="font-family:var(--font-mono);font-size:12px;color:var(--itecs-blue-bright);margin-bottom:10px;">02</div><h3 style="font-size:17px;margin-bottom:8px;">Proactive, not reactive</h3><p style="font-size:13.5px;line-height:1.55;color:var(--ink-muted);margin:0;">Issues resolved before they ever reach your team.</p></div>
+        <div class="chamfer-sm" style="background:#fff;border-top:2px solid var(--itecs-blue);padding:22px 22px 24px;"><div style="font-family:var(--font-mono);font-size:12px;color:var(--itecs-blue-bright);margin-bottom:10px;">03</div><h3 style="font-size:17px;margin-bottom:8px;">Reliability you count on</h3><p style="font-size:13.5px;line-height:1.55;color:var(--ink-muted);margin:0;">Documented workflows and SLAs you can plan around.</p></div>
+        <div class="chamfer-sm" style="background:#fff;border-top:2px solid var(--itecs-blue);padding:22px 22px 24px;"><div style="font-family:var(--font-mono);font-size:12px;color:var(--itecs-blue-bright);margin-bottom:10px;">04</div><h3 style="font-size:17px;margin-bottom:8px;">In-house expertise</h3><p style="font-size:13.5px;line-height:1.55;color:var(--ink-muted);margin:0;">Certified engineers across Microsoft, Sophos, Cisco — never offshore.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================================================================
+     PROOF  ·  Peak-End Rule
+     A high-emotion testimonial peak immediately before the close.
+     ================================================================= -->
+<section class="wrap pad" style="padding-top:64px;padding-bottom:70px;">
+  <div class="split" style="display:grid;grid-template-columns:1.25fr .75fr;gap:40px;align-items:stretch;">
+    <div class="on-dark" style="background:var(--itecs-navy);border-radius:var(--r-section);padding:48px 48px 44px;position:relative;overflow:hidden;">
+      <div style="position:absolute;top:0;right:0;width:300px;height:100%;background:var(--itecs-blue-bright);opacity:.08;clip-path:polygon(40% 0,100% 0,100% 100%,0 100%);"></div>
+      <div style="position:relative;">
+        <p style="font-family:var(--font-display);font-size:26px;line-height:1.4;font-weight:500;color:#fff;margin:0 0 28px;max-width:620px;">"ITECS doesn't feel like an outside vendor. They know our business, they answer fast, and they've quietly kept us secure for years."</p>
+        <div style="display:flex;align-items:center;gap:14px;">
+          <div class="hex" style="width:44px;height:44px;background:var(--itecs-blue-bright);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:600;color:#fff;font-size:16px;">DF</div>
+          <div><div style="font-size:14.5px;font-weight:600;color:#fff;">Operations Director</div><div style="font-size:13px;color:#8497a6;">Dallas-Fort Worth manufacturing client</div></div>
+        </div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-rows:1fr 1fr;gap:20px;">
+      <div class="chamfer-sm" style="background:#fff;border:1px solid var(--card-line);padding:26px 28px;display:flex;flex-direction:column;justify-content:center;"><div style="font-family:var(--font-display);font-size:40px;font-weight:600;color:var(--itecs-blue);letter-spacing:-.01em;">4.9/5</div><div style="font-size:13.5px;color:var(--ink-muted);margin-top:4px;">Across 54+ Google &amp; G2 reviews</div></div>
+      <div class="chamfer-sm" style="background:#fff;border:1px solid var(--card-line);padding:26px 28px;display:flex;flex-direction:column;justify-content:center;"><div style="font-family:var(--font-display);font-size:40px;font-weight:600;color:var(--itecs-blue);letter-spacing:-.01em;">22+ yrs</div><div style="font-size:13.5px;color:var(--ink-muted);margin-top:4px;">Trusted across DFW since 2002</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- =================================================================
+     CTA  ·  Fitts's Law + Goal-Gradient Effect
+     Large unmissable target + a 3-step path that feels nearly done.
+     ================================================================= -->
+<section id="cta" class="on-dark" style="position:relative;background:var(--itecs-blue);overflow:hidden;">
+  <img src="https://itecsonline.com/images/logos/itecs-icon-darkblue.svg" alt="" style="position:absolute;top:50%;right:64px;transform:translateY(-50%);height:230px;filter:brightness(0) invert(1);opacity:.12;">
+  <div style="position:absolute;top:-130px;left:-120px;width:470px;height:430px;background:rgba(50,136,182,.22);clip-path:polygon(0 0,64% 0,100% 54%,46% 100%,0 66%);"></div>
+  <div class="wrap pad" style="position:relative;padding-top:70px;padding-bottom:70px;">
+    <div style="max-width:760px;">
+      <h2 style="margin-bottom:24px;">Ready to see where your IT can improve?</h2>
+      <!-- GOAL-GRADIENT: visible 3-step path -->
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:32px;flex-wrap:wrap;">
+        <div style="display:flex;align-items:center;gap:10px;"><span class="hex" style="width:24px;height:24px;background:var(--itecs-blue-pale);color:#012;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:12px;font-weight:600;">1</span><span style="font-size:14px;color:#cfe0ec;font-weight:500;">Book a call</span></div>
+        <div style="display:flex;align-items:center;gap:10px;"><span class="hex" style="width:24px;height:24px;background:var(--itecs-blue-pale);color:#012;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:12px;font-weight:600;">2</span><span style="font-size:14px;color:#cfe0ec;font-weight:500;">Free assessment</span></div>
+        <div style="display:flex;align-items:center;gap:10px;"><span class="hex" style="width:24px;height:24px;background:var(--itecs-blue-pale);color:#012;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:12px;font-weight:600;">3</span><span style="font-size:14px;color:#cfe0ec;font-weight:500;">Your roadmap</span></div>
+      </div>
+      <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;">
+        <a href="#" class="btn btn-ondark">Request your free IT assessment</a>
+        <a href="tel:+12144447884" class="btn btn-ghost-dark">Call (214) 444-7884 →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================================================================
+     FOOTER
+     ================================================================= -->
+<footer style="background:var(--itecs-navy);">
+  <div class="wrap pad" style="display:flex;align-items:center;justify-content:space-between;padding-top:34px;padding-bottom:34px;flex-wrap:wrap;gap:16px;">
+    <img src="https://itecsonline.com/images/logos/itecs-horizontal-logo.svg" alt="ITECS" style="height:26px;filter:brightness(0) invert(1);">
+    <span style="font-family:var(--font-mono);font-size:11.5px;letter-spacing:.06em;color:#6d7c89;">PLANO HQ · SERVING DALLAS–FORT WORTH SINCE 2002</span>
+  </div>
+</footer>
+
+</body>
+</html>

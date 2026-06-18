@@ -149,7 +149,7 @@ export function InsightArticleLayout({
         <div className="relative z-10 mx-auto max-w-5xl px-6 md:px-8">
           <div className="max-w-3xl">
             <div className="mb-5 flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.12em] text-text-dim">
-              <span className="inline-flex items-center gap-2 rounded-full border border-[var(--border-subtle)] px-3 py-1 text-brand-accent">
+              <span className="chamfer-sm inline-flex items-center gap-2 border border-[var(--card-line)] bg-card px-3 py-1 text-brand-accent">
                 {insight.hubLabel}
               </span>
               <span className="inline-flex items-center gap-1.5">
@@ -162,7 +162,7 @@ export function InsightArticleLayout({
               </span>
             </div>
 
-            <h1 className="text-3xl font-extralight leading-[1.08] text-text-primary md:text-5xl">
+            <h1 className="font-display text-3xl font-medium leading-[1.06] tracking-[-0.025em] text-ink md:text-5xl">
               {insight.h1}
             </h1>
             <p className="mt-5 text-base leading-relaxed text-text-secondary md:text-lg">
@@ -205,7 +205,7 @@ export function InsightArticleLayout({
                 {paragraph === "[[COMPARISON_TABLE]]" && tableNode ? (
                   tableNode
                 ) : isStandaloneHeading(paragraph) ? (
-                  <h2 className="pt-4 text-2xl font-light leading-tight text-text-primary">
+                  <h2 className="pt-4 text-2xl font-semibold leading-tight text-ink">
                     {paragraph.slice(2, -2)}
                   </h2>
                 ) : (
@@ -221,8 +221,8 @@ export function InsightArticleLayout({
           </div>
 
           <ScrollReveal>
-            <div className="rounded-lg border border-[var(--border-active)] bg-brand-accent/5 p-6">
-              <p className="font-medium leading-relaxed text-text-primary">
+            <div className="chamfer-md border-l-2 border-itecs-blue bg-brand-subtle p-6">
+              <p className="font-medium leading-relaxed text-ink">
                 {ctaText}{" "}
                 <Link
                   href={insight.hubHref}
@@ -248,8 +248,8 @@ export function InsightArticleLayout({
               className="border-t border-[var(--border-subtle)] pt-8"
             >
               <div className="flex items-start gap-4">
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md border border-[var(--border-subtle)] bg-bg-surface">
-                  <UserRound className="h-5 w-5 text-brand-accent" aria-hidden="true" />
+                <div className="hex flex h-11 w-11 shrink-0 items-center justify-center bg-brand-subtle">
+                  <UserRound className="h-5 w-5 text-itecs-blue" aria-hidden="true" />
                 </div>
                 <div>
                   <h2

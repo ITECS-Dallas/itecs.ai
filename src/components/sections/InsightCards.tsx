@@ -13,7 +13,6 @@ import {
 import { INSIGHTS } from "@/lib/constants";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ScrollReveal } from "@/components/effects/ScrollReveal";
-import { GradientOrb } from "@/components/effects/GradientOrb";
 import type { LucideIcon } from "lucide-react";
 
 const TOPIC_META: Record<
@@ -22,23 +21,23 @@ const TOPIC_META: Record<
 > = {
   consulting: {
     icon: Lightbulb,
-    color: "text-brand-accent",
-    bgColor: "bg-brand-accent/10",
+    color: "text-itecs-blue-bright",
+    bgColor: "bg-brand-subtle",
   },
   "custom-ai-agents": {
     icon: Shield,
-    color: "text-brand",
-    bgColor: "bg-brand/10",
+    color: "text-itecs-blue",
+    bgColor: "bg-brand-subtle",
   },
   automation: {
     icon: Zap,
-    color: "text-brand-accent",
-    bgColor: "bg-brand-accent/10",
+    color: "text-itecs-blue-bright",
+    bgColor: "bg-brand-subtle",
   },
   "ai-devops": {
     icon: Zap,
-    color: "text-brand",
-    bgColor: "bg-brand/10",
+    color: "text-itecs-blue",
+    bgColor: "bg-brand-subtle",
   },
 };
 
@@ -53,13 +52,7 @@ export function InsightCards() {
   const FeaturedIcon = featuredMeta.icon;
 
   return (
-    <section className="relative py-24 md:py-32 bg-bg-surface">
-      <GradientOrb
-        color="mixed"
-        size="sm"
-        position={{ top: "30%", right: "10%" }}
-      />
-
+    <section className="relative py-24 md:py-32">
       <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-8">
         <ScrollReveal>
           <SectionHeading
@@ -73,24 +66,24 @@ export function InsightCards() {
         <ScrollReveal delay={0.1}>
           <Link
             href={featured.href}
-            className="group mt-16 block rounded-xl border border-[var(--border-subtle)] bg-bg-void p-8 md:p-10 transition-all duration-300 hover:border-[var(--border-active)] hover:shadow-[0_0_40px_var(--glow-cyan)]"
+            className="group chamfer-lg mt-16 block border border-[var(--card-line)] bg-card p-8 md:p-10 transition-[transform,border-color] duration-300 hover:border-itecs-steel hover:-translate-y-0.5"
           >
             <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-center">
               {/* Text — 3/5 */}
               <div className="lg:col-span-3">
                 <div className="flex items-center gap-3 mb-4">
                   <span
-                    className={`inline-flex items-center gap-1.5 text-xs font-medium tracking-[0.05em] uppercase px-3 py-1 rounded-full border border-[var(--border-subtle)] ${featuredMeta.color}`}
+                    className={`chamfer-sm inline-flex items-center gap-1.5 text-xs font-medium tracking-[0.05em] uppercase px-3 py-1 border border-[var(--card-line)] bg-canvas-sunken ${featuredMeta.color}`}
                   >
                     <Tag className="h-3 w-3" aria-hidden="true" />
                     {featured.hubLabel}
                   </span>
-                  <span className="inline-flex items-center gap-1 text-xs text-text-dim">
+                  <span className="inline-flex items-center gap-1 text-xs text-ink-faint">
                     <Clock className="h-3 w-3" aria-hidden="true" />5 min read
                   </span>
                 </div>
 
-                <h2 className="text-2xl md:text-3xl font-light tracking-[-0.02em] text-text-primary group-hover:text-brand-accent transition-colors">
+                <h2 className="text-2xl md:text-3xl font-semibold tracking-[-0.02em] text-ink group-hover:text-itecs-blue transition-colors">
                   {featured.title}
                 </h2>
 
@@ -111,7 +104,7 @@ export function InsightCards() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true, amount: 0.5 }}
                   transition={{ duration: 0.6, ease: "easeOut" }}
-                  className={`w-32 h-32 rounded-2xl ${featuredMeta.bgColor} flex items-center justify-center`}
+                  className={`hex w-32 h-32 ${featuredMeta.bgColor} flex items-center justify-center`}
                 >
                   <FeaturedIcon
                     className={`h-16 w-16 ${featuredMeta.color} opacity-80`}
@@ -133,11 +126,11 @@ export function InsightCards() {
               <ScrollReveal key={insight.slug} delay={0.15 + i * 0.1}>
                 <Link
                   href={insight.href}
-                  className="group block h-full rounded-xl border border-[var(--border-subtle)] bg-bg-void p-6 md:p-8 transition-all duration-300 hover:border-[var(--border-active)] hover:-translate-y-0.5 hover:shadow-[0_0_30px_var(--glow-cyan)]"
+                  className="group chamfer-md block h-full border border-[var(--card-line)] bg-card p-6 md:p-8 transition-[transform,border-color] duration-300 hover:border-itecs-steel hover:-translate-y-0.5"
                 >
                   <div className="flex items-start gap-5">
                     <div
-                      className={`shrink-0 w-12 h-12 rounded-lg ${meta.bgColor} flex items-center justify-center`}
+                      className={`hex shrink-0 w-12 h-12 ${meta.bgColor} flex items-center justify-center`}
                     >
                       <Icon
                         className={`h-6 w-6 ${meta.color}`}
@@ -153,13 +146,13 @@ export function InsightCards() {
                           <Tag className="h-2.5 w-2.5" aria-hidden="true" />
                           {insight.hubLabel}
                         </span>
-                        <span className="inline-flex items-center gap-1 text-xs text-text-dim">
+                        <span className="inline-flex items-center gap-1 text-xs text-ink-faint">
                           <Clock className="h-2.5 w-2.5" aria-hidden="true" />5
                           min
                         </span>
                       </div>
 
-                      <h2 className="text-lg font-medium text-text-primary group-hover:text-brand-accent transition-colors">
+                      <h2 className="text-lg font-semibold text-ink group-hover:text-itecs-blue transition-colors">
                         {insight.title}
                       </h2>
 

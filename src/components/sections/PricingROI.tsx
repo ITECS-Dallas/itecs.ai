@@ -51,14 +51,14 @@ export function PricingROI({
 
         {/* Comparison table */}
         <ScrollReveal delay={0.15}>
-          <div className="mt-12 overflow-hidden rounded-xl border border-[var(--border-subtle)]">
+          <div className="mt-12 overflow-hidden rounded-[var(--r-section)] border border-[var(--card-line)] bg-card">
             {/* Header */}
-            <div className="grid grid-cols-3 bg-bg-surface">
-              <div className="p-4 text-sm font-medium text-text-dim" />
-              <div className="p-4 text-center text-sm font-medium text-text-secondary border-l border-[var(--border-subtle)]">
+            <div className="grid grid-cols-3 bg-canvas-sunken">
+              <div className="p-4 text-sm font-medium text-ink-faint" />
+              <div className="p-4 text-center text-sm font-medium text-ink-body border-l border-[var(--card-line)]">
                 {traditionalLabel}
               </div>
-              <div className="p-4 text-center text-sm font-medium text-brand-accent border-l border-[var(--border-subtle)]">
+              <div className="p-4 text-center font-mono text-sm font-medium uppercase tracking-wide text-itecs-blue border-l border-[var(--card-line)]">
                 {aiLabel}
               </div>
             </div>
@@ -67,19 +67,19 @@ export function PricingROI({
             {comparison.map((row, i) => (
               <motion.div
                 key={i}
-                className="grid grid-cols-3 border-t border-[var(--border-subtle)]"
+                className="grid grid-cols-3 border-t border-[var(--card-line)]"
                 initial={{ opacity: 0, x: -10 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 + i * 0.05, duration: 0.4 }}
               >
-                <div className="p-4 text-sm text-text-primary font-medium">
+                <div className="p-4 text-sm text-ink font-medium">
                   {row.label}
                 </div>
-                <div className="p-4 text-center text-sm text-text-secondary border-l border-[var(--border-subtle)]">
+                <div className="p-4 text-center text-sm text-ink-muted border-l border-[var(--card-line)]">
                   {row.traditional}
                 </div>
-                <div className="p-4 text-center text-sm text-text-primary border-l border-[var(--border-subtle)]">
+                <div className="p-4 text-center text-sm text-ink font-medium border-l border-[var(--card-line)] bg-brand-subtle">
                   {row.ai}
                 </div>
               </motion.div>
@@ -89,8 +89,8 @@ export function PricingROI({
 
         {/* ROI callout */}
         <ScrollReveal delay={0.3}>
-          <div className="mt-8 p-6 rounded-xl border border-brand-accent/20 bg-brand-accent/5 text-center">
-            <p className="text-lg text-text-primary font-medium">
+          <div className="chamfer-md mt-8 p-6 border-l-2 border-itecs-blue bg-brand-subtle text-center">
+            <p className="text-lg text-ink font-medium">
               {roiStatement}
             </p>
           </div>

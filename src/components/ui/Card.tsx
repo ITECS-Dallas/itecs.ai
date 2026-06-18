@@ -78,10 +78,10 @@ interface TierCardProps {
 }
 
 const interactiveCardClasses =
-  "group group/card relative overflow-hidden rounded-lg border border-[var(--border-default)] bg-bg-surface p-7 shadow-e1 [box-shadow:var(--elev-1-inset),var(--elev-1)] transition-[transform,border-color,box-shadow] duration-[var(--dur-base)] ease-[var(--ease-out)] before:pointer-events-none before:absolute before:inset-x-0 before:top-0 before:h-px before:opacity-0 before:transition-opacity before:duration-[var(--dur-base)] before:ease-[var(--ease-out)] before:[background:var(--gradient-intelligence)] hover:-translate-y-0.5 hover:border-[var(--border-strong)] hover:[box-shadow:var(--elev-1-inset),var(--elev-2)] hover:before:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base motion-reduce:transition-none motion-reduce:hover:translate-y-0";
+  "group group/card chamfer-md relative overflow-hidden border border-[var(--card-line)] bg-card p-7 transition-[transform,border-color] duration-[var(--dur-base)] ease-[var(--ease-out)] before:pointer-events-none before:absolute before:inset-x-0 before:top-0 before:h-0.5 before:opacity-0 before:transition-opacity before:duration-[var(--dur-base)] before:ease-[var(--ease-out)] before:bg-itecs-blue hover:-translate-y-0.5 hover:border-itecs-steel hover:before:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base motion-reduce:transition-none motion-reduce:hover:translate-y-0";
 
 const staticCardClasses =
-  "relative overflow-hidden rounded-lg border border-[var(--border-default)] bg-bg-surface p-7 shadow-e1 [box-shadow:var(--elev-1-inset),var(--elev-1)]";
+  "chamfer-md relative overflow-hidden border border-[var(--card-line)] bg-card p-7";
 
 const accentTextClasses: Record<CardAccent, string> = {
   brand: "text-brand",
@@ -165,7 +165,7 @@ export function ServiceCard({
       className={joinClasses("flex h-full flex-col", className)}
     >
       {icon ? (
-        <div className="mb-5 inline-flex h-11 w-11 items-center justify-center rounded-md bg-brand-subtle text-brand">
+        <div className="chamfer-sm mb-5 inline-flex h-11 w-11 items-center justify-center bg-brand-subtle text-itecs-blue">
           {icon}
         </div>
       ) : null}
@@ -194,7 +194,7 @@ export function StatCard({
 
   return (
     <Card hover={false} className={joinClasses("h-full", className)}>
-      <div className="font-mono text-[length:var(--fs-metric)] font-semibold leading-none tracking-normal text-text-primary">
+      <div className="font-display text-[length:var(--fs-metric)] font-semibold leading-none tracking-[-0.01em] text-itecs-blue">
         {value}
         {unit ? (
           <span className={joinClasses("ml-1 align-baseline text-[0.45em]", accentTextClasses[accent])}>
@@ -245,12 +245,12 @@ export function CaseStudyCard({
             {logo ?? clientName ?? "Anonymized client"}
           </span>
           {industry ? (
-            <span className="rounded-pill border border-[var(--border-default)] bg-bg-elevated px-3 py-1 font-mono text-xs uppercase text-text-tertiary">
+            <span className="chamfer-sm border border-[var(--card-line)] bg-canvas-sunken px-3 py-1 font-mono text-xs uppercase text-text-tertiary">
               {industry}
             </span>
           ) : null}
           {anonymized ? (
-            <span className="rounded-pill border border-[var(--border-default)] bg-bg-elevated px-3 py-1 font-mono text-xs uppercase text-text-tertiary">
+            <span className="chamfer-sm border border-[var(--card-line)] bg-canvas-sunken px-3 py-1 font-mono text-xs uppercase text-text-tertiary">
               Anonymized
             </span>
           ) : null}
@@ -290,7 +290,7 @@ export function InsightCard({
       </div>
       <div className="flex flex-1 flex-col p-7">
         <div className="flex flex-wrap items-center gap-3">
-          <span className="rounded-pill border border-[var(--border-default)] bg-bg-elevated px-3 py-1 font-mono text-xs uppercase text-brand-accent">
+          <span className="chamfer-sm border border-[var(--card-line)] bg-canvas-sunken px-3 py-1 font-mono text-xs uppercase text-brand-accent">
             {category}
           </span>
           <span className="text-xs text-text-tertiary">
@@ -368,7 +368,7 @@ export function TierCard({
       )}
     >
       {recommended ? (
-        <span className="absolute right-5 top-5 rounded-pill bg-amber px-3 py-1 font-mono text-xs font-semibold uppercase text-bg-sunken">
+        <span className="chamfer-sm absolute right-5 top-5 bg-itecs-blue px-3 py-1 font-mono text-xs font-semibold uppercase text-white">
           Recommended
         </span>
       ) : null}
@@ -401,7 +401,7 @@ export function TierCard({
   }
 
   return (
-    <div className="h-full rounded-lg p-px [background:var(--gradient-intelligence)]">
+    <div className="chamfer-md h-full bg-itecs-blue p-px">
       {card}
     </div>
   );
