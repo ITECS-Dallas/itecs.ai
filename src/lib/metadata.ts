@@ -14,7 +14,7 @@ export function generatePageMetadata({
   description,
   path,
   keywords = [],
-  ogImage = "/images/logos/itecs-horizontal.svg",
+  ogImage = "/images/og/itecs-og.png",
 }: PageMetaInput): Metadata {
   const url = `${SITE_CONFIG.url}${path}`;
   const imageUrl = ogImage.startsWith("http")

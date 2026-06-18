@@ -14,13 +14,12 @@ const barDarkScope = {
   "--border-subtle": "rgba(255,255,255,0.10)",
 } as CSSProperties;
 
+// Focused cross-site/utility links only — primary nav (Insights, Contact) and
+// the parent MSP's security-incident CTA live where they belong, not here.
 const utilityLinks = [
-  { label: "Experiencing a Breach?", href: "https://itecsonline.com/experiencing-a-breach", external: true },
-  { label: "Insights", href: "/insights", external: false },
-  { label: "Whitepapers", href: "https://itecsonline.com/white-papers-case-studies", external: true },
-  { label: "MSP", href: "https://itecsonline.com", external: true },
   { label: "Customer Portal", href: "https://portal.itecs.io/", external: true },
-  { label: "Contact ITECS", href: "/contact", external: false },
+  { label: "Whitepapers", href: "https://itecsonline.com/white-papers-case-studies", external: true },
+  { label: "ITECS MSP", href: "https://itecsonline.com", external: true },
 ] as const;
 
 export function AnnouncementBar() {

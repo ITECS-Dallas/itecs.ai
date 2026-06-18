@@ -294,6 +294,22 @@ export function Footer() {
               AI Policy
             </Link>
             <a
+              href={`${SITE_CONFIG.mainSiteUrl}/privacy-policy`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex min-h-11 items-center transition-colors hover:text-brand-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-sunken"
+            >
+              Privacy Policy
+            </a>
+            <a
+              href={`${SITE_CONFIG.mainSiteUrl}/terms`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex min-h-11 items-center transition-colors hover:text-brand-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-sunken"
+            >
+              Terms
+            </a>
+            <a
               href={SITE_CONFIG.mainSiteUrl}
               target="_blank"
               rel="noopener noreferrer"

@@ -147,29 +147,37 @@ export function AnalyticsConsent() {
 
       {consent === null ? (
         <div
-          className="fixed bottom-4 left-4 right-4 z-[120] mx-auto max-w-3xl rounded-lg border border-[var(--border-strong)] bg-bg-surface p-4 shadow-e3 [box-shadow:var(--elev-1-inset),var(--elev-3)] md:left-auto md:right-6 md:max-w-xl"
+          className="chamfer-md fixed bottom-4 left-4 right-4 z-[120] mx-auto max-w-2xl border border-[var(--border-strong)] bg-card p-3.5 shadow-e3 md:left-auto md:right-6 md:max-w-md"
           role="dialog"
           aria-label="Analytics consent"
           data-consent-key={ITECS_ANALYTICS_CONSENT}
         >
-          <div className="grid gap-4 md:grid-cols-[1fr_auto] md:items-center">
-            <p className="text-sm leading-relaxed text-text-secondary">
-              ITECS uses privacy-conscious site analytics to understand which
-              pages and calls to action are useful. We do not send form details
-              or personal identifiers to analytics providers.
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+            <p className="text-[13px] leading-relaxed text-ink-body">
+              We use privacy-conscious analytics — no form details or personal
+              identifiers are sent to analytics providers. See our{" "}
+              <a
+                href="https://itecsonline.com/privacy-policy"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-itecs-blue underline underline-offset-2 hover:text-itecs-blue-bright"
+              >
+                Privacy Policy
+              </a>
+              .
             </p>
-            <div className="flex flex-col gap-2 sm:flex-row md:justify-end">
+            <div className="flex shrink-0 gap-2">
               <button
                 type="button"
                 onClick={() => chooseConsent("granted")}
-                className="min-h-11 rounded-md bg-brand px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-brand-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base"
+                className="min-h-10 rounded-[10px] bg-itecs-blue px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-[var(--brand-active)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base"
               >
-                Allow analytics
+                Allow
               </button>
               <button
                 type="button"
                 onClick={() => chooseConsent("denied")}
-                className="min-h-11 rounded-md border border-[var(--border-strong)] bg-bg-elevated px-4 py-2 text-sm font-semibold text-text-primary transition-colors hover:border-[var(--text-tertiary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base"
+                className="min-h-10 rounded-[10px] border border-[var(--border-strong)] bg-card px-4 py-2 text-sm font-semibold text-ink transition-colors hover:border-itecs-steel focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base"
               >
                 Decline
               </button>

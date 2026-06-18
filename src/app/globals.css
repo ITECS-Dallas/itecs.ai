@@ -248,6 +248,12 @@ h1, h2, h3 {
   letter-spacing: -0.02em;
 }
 
+/* Normalize bold emphasis to 600 so we don't ship the 700 font weights
+   (utility classes like font-medium still override this). */
+strong, b {
+  font-weight: 600;
+}
+
 html {
   overflow-x: hidden;
 }
