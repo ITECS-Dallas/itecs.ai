@@ -39,7 +39,7 @@ export function ThirdPartyValidation() {
                   </span>
                   <ArrowUpRight
                     aria-hidden="true"
-                    className="h-4 w-4 text-text-tertiary transition-colors duration-[var(--dur-base)] group-hover:text-accent-cyan"
+                    className="h-4 w-4 text-text-tertiary transition-colors duration-[var(--dur-base)] group-hover:text-itecs-blue"
                   />
                 </div>
                 <p className="mt-5 font-mono text-2xl font-semibold text-text-primary">

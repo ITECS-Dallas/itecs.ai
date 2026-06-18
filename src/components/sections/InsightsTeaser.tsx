@@ -42,7 +42,7 @@ export function InsightsTeaser() {
           />
           <Link
             href="/insights"
-            className="inline-flex min-h-11 w-fit items-center gap-2 text-sm font-semibold text-brand-hover transition-colors duration-[var(--dur-base)] hover:text-accent-cyan focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base"
+            className="inline-flex min-h-11 w-fit items-center gap-2 text-sm font-semibold text-brand-hover transition-colors duration-[var(--dur-base)] hover:text-itecs-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base"
           >
             View all insights
             <ArrowRight aria-hidden="true" className="h-4 w-4" />

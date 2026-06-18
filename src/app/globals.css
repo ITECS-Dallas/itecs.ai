@@ -165,7 +165,11 @@
   --bg-elevated: var(--surface-2);
   --brand-primary: var(--bg-sunken);
   --brand-accent: var(--accent-text);
-  --brand-accent-bright: var(--accent-cyan-bright);
+  /* On light surfaces the "bright" accent (#5BA8D8) fails contrast as text and
+     as a hover target. Point the legacy alias at the primary blue so accent
+     text reads and hover states DARKEN (the AI-core art uses --itecs-blue-light
+     / --itecs-blue-bright directly, so it is unaffected). */
+  --brand-accent-bright: var(--itecs-blue);
   --text-dim: var(--text-tertiary);
   --glow-cyan: var(--accent-cyan-subtle);
   --border-active: var(--border-strong);

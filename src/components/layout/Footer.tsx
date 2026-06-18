@@ -153,6 +153,8 @@ const footerDarkScope = {
   "--border-default": "rgba(255,255,255,0.14)",
   "--border-strong": "rgba(255,255,255,0.28)",
   "--bg-surface": "rgba(255,255,255,0.04)",
+  "--bg-elevated": "rgba(255,255,255,0.10)",
+  "--surface-3": "rgba(255,255,255,0.14)",
   "--bg-sunken": "var(--itecs-navy)",
   "--brand-accent": "var(--itecs-blue-pale)",
 } as CSSProperties;
