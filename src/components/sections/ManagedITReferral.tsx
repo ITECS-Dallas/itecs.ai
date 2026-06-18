@@ -80,7 +80,7 @@ export function ManagedITReferral() {
             aria-label="Open the main ITECS website"
             className="group block"
           >
-            <div className="relative overflow-hidden rounded-lg border border-[var(--border-subtle)] bg-bg-surface shadow-[0_0_40px_var(--accent-cyan-subtle)]">
+            <div className="relative overflow-hidden chamfer-md border border-[var(--card-line)] bg-card">
               <div className="relative aspect-[16/9]">
                 <Image
                   src="/images/sections/itecsonline-homepage-top.png"
@@ -89,8 +89,7 @@ export function ManagedITReferral() {
                   sizes="(min-width: 1024px) 50vw, 100vw"
                   className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.02]"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-bg-void/30 via-transparent to-transparent" />
-                <div className="absolute left-4 top-4 rounded-full border border-white/10 bg-bg-void/80 px-3 py-1 text-xs font-medium text-text-primary backdrop-blur">
+                <div className="absolute left-4 top-4 chamfer-sm border border-[var(--card-line)] bg-card/95 px-3 py-1 text-xs font-medium text-ink backdrop-blur">
                   itecsonline.com
                 </div>
               </div>

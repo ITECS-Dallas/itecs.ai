@@ -96,11 +96,11 @@ export function AIDevOpsWorkflowDiagram() {
           <ScrollReveal delay={0.45}>
             <div className="mt-8 rounded-lg border border-[var(--border-subtle)] bg-bg-void/80 p-5 font-mono text-sm">
               <div className="flex flex-wrap items-center gap-3">
-                <span className="text-text-dim">$ deploy ai-stack</span>
-                <span className="rounded bg-emerald-400/10 px-2 py-1 text-emerald-300">
+                <span className="text-ink-muted">$ deploy ai-stack</span>
+                <span className="rounded bg-emerald-400/10 px-2 py-1 text-emerald-700">
                   checks passed
                 </span>
-                <span className="rounded bg-brand-accent/10 px-2 py-1 text-brand-accent">
+                <span className="rounded bg-brand-subtle px-2 py-1 text-itecs-blue">
                   production healthy
                 </span>
               </div>

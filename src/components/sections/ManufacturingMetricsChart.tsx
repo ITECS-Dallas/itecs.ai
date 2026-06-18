@@ -6,11 +6,12 @@ import { ScrollReveal } from "@/components/effects/ScrollReveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import type { ManufacturingMetricChart } from "@/lib/constants";
 
+// Dark text shades on light tints for WCAG-AA contrast (light theme).
 const kpiToneClasses = {
-  risk: "border-rose-400/25 bg-rose-400/10 text-rose-200",
-  recoverable: "border-brand-accent/25 bg-brand-accent/10 text-brand-accent",
-  watch: "border-amber-300/25 bg-amber-300/10 text-amber-200",
-  stable: "border-emerald-300/25 bg-emerald-300/10 text-emerald-200",
+  risk: "border-rose-400/30 bg-rose-400/10 text-rose-700",
+  recoverable: "border-[var(--itecs-blue-bright)]/30 bg-brand-subtle text-itecs-blue",
+  watch: "border-amber-400/30 bg-amber-300/10 text-amber-700",
+  stable: "border-emerald-500/30 bg-emerald-400/10 text-emerald-700",
 } as const;
 
 const barToneClasses = {
@@ -48,7 +49,7 @@ export function ManufacturingMetricsChart({
                   </h3>
                 </div>
                 <div className="hidden items-center gap-2 text-xs text-text-dim sm:flex">
-                  <TrendingUp className="h-4 w-4 text-rose-300" />
+                  <TrendingUp className="h-4 w-4 text-rose-600" />
                   Risk
                   <TrendingDown className="ml-3 h-4 w-4 text-brand-accent" />
                   Recoverable

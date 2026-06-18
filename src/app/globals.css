@@ -68,9 +68,9 @@
   /* ---- Heritage amber (VERY sparingly: "Since 2002", awards) ---- */
   --heritage-amber: #C8862B;
 
-  /* ---- Status ---- */
-  --success: #1F9D57;
-  --warning: #C8862B;
+  /* ---- Status (darkened for WCAG-AA as small text on light) ---- */
+  --success: #15803D;
+  --warning: #B45309;
   --danger: #C8433C;
 
   /* ---- Signature gradient (RARE — kept on-brand for legacy refs) ---- */

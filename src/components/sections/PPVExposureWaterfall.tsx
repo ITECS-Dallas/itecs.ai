@@ -6,37 +6,38 @@ import { ScrollReveal } from "@/components/effects/ScrollReveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import type { PPVExposureWaterfall as PPVExposureWaterfallContent } from "@/lib/constants";
 
+// Dark text shades on light tints for WCAG-AA contrast (light theme).
 const stageToneClasses = {
   risk: {
     bar: "from-rose-400 to-amber-300",
-    text: "text-rose-200",
-    border: "border-rose-400/25 bg-rose-400/10",
-    icon: "text-rose-300",
+    text: "text-rose-700",
+    border: "border-rose-400/30 bg-rose-400/10",
+    icon: "text-rose-700",
   },
   watch: {
-    bar: "from-amber-300 to-brand-accent",
-    text: "text-amber-200",
-    border: "border-amber-300/25 bg-amber-300/10",
-    icon: "text-amber-200",
+    bar: "from-amber-300 to-[var(--itecs-blue-bright)]",
+    text: "text-amber-700",
+    border: "border-amber-400/30 bg-amber-300/10",
+    icon: "text-amber-700",
   },
   recoverable: {
-    bar: "from-brand-accent to-emerald-300",
-    text: "text-brand-accent",
-    border: "border-brand-accent/25 bg-brand-accent/10",
-    icon: "text-brand-accent",
+    bar: "from-[var(--itecs-blue-bright)] to-emerald-300",
+    text: "text-itecs-blue",
+    border: "border-[var(--itecs-blue-bright)]/30 bg-brand-subtle",
+    icon: "text-itecs-blue",
   },
   controlled: {
     bar: "from-emerald-300 to-slate-300",
-    text: "text-emerald-200",
-    border: "border-emerald-300/25 bg-emerald-300/10",
-    icon: "text-emerald-200",
+    text: "text-emerald-700",
+    border: "border-emerald-500/30 bg-emerald-400/10",
+    icon: "text-emerald-700",
   },
 } as const;
 
 const windowToneClasses = {
-  risk: "border-rose-400/25 bg-rose-400/10 text-rose-200",
-  watch: "border-amber-300/25 bg-amber-300/10 text-amber-200",
-  recoverable: "border-brand-accent/25 bg-brand-accent/10 text-brand-accent",
+  risk: "border-rose-400/30 bg-rose-400/10 text-rose-700",
+  watch: "border-amber-400/30 bg-amber-300/10 text-amber-700",
+  recoverable: "border-[var(--itecs-blue-bright)]/30 bg-brand-subtle text-itecs-blue",
 } as const;
 
 export function PPVExposureWaterfall({
@@ -69,11 +70,11 @@ export function PPVExposureWaterfall({
                 </div>
                 <div className="flex items-center gap-4 text-xs text-text-dim">
                   <span className="flex items-center gap-1.5">
-                    <ArrowUpRight className="h-4 w-4 text-rose-300" />
+                    <ArrowUpRight className="h-4 w-4 text-rose-600" />
                     Exposure added
                   </span>
                   <span className="flex items-center gap-1.5">
-                    <ArrowDownRight className="h-4 w-4 text-brand-accent" />
+                    <ArrowDownRight className="h-4 w-4 text-itecs-blue" />
                     Exposure reduced
                   </span>
                 </div>

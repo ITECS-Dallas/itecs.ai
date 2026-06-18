@@ -73,26 +73,27 @@ export function AIPracticeAreas() {
           </ScrollReveal>
 
           <ScrollReveal direction="right" delay={0.1}>
-            <div className="relative min-h-[340px] overflow-hidden rounded-lg border border-[var(--border-subtle)] bg-bg-void">
+            <div className="relative min-h-[340px] overflow-hidden rounded-lg border border-[var(--card-line)] bg-itecs-navy">
               <Image
                 src="/images/services/cybersecurity.webp"
                 alt="ITECS command center monitoring secure AI, automation, and infrastructure operations"
                 fill
-                className="object-cover opacity-75"
+                className="object-cover"
                 sizes="(min-width: 1024px) 45vw, 100vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-bg-void via-bg-void/55 to-bg-void/10" />
+              {/* dark bottom scrim so overlaid copy stays legible over the photo */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[var(--itecs-navy)] via-[color-mix(in_srgb,var(--itecs-navy)_55%,transparent)] to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-6">
-                <p className="text-xs font-medium uppercase tracking-[0.08em] text-emerald-300">
+                <p className="font-mono text-xs font-semibold uppercase tracking-[0.12em] text-itecs-blue-pale">
                   Built on ITECS managed IT
                 </p>
                 <div className="mt-4 flex flex-wrap gap-2">
                   {operatingFlow.map((step, index) => (
                     <span
                       key={step}
-                      className="inline-flex items-center gap-2 rounded-md border border-white/10 bg-white/[0.04] px-3 py-2 text-xs text-text-secondary"
+                      className="chamfer-sm inline-flex items-center gap-2 border border-white/20 bg-white/10 px-3 py-2 text-xs text-white/90"
                     >
-                      <span className="font-mono text-brand-accent">
+                      <span className="font-mono text-itecs-blue-pale">
                         {String(index + 1).padStart(2, "0")}
                       </span>
                       {step}

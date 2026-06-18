@@ -31,9 +31,9 @@ export function Heritage() {
               className="object-cover"
               sizes="(min-width: 1024px) 46vw, 100vw"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-bg-sunken via-bg-sunken/35 to-transparent" />
-            <div className="absolute left-5 top-5 rounded-md border border-[var(--border-default)] bg-bg-sunken/85 px-4 py-3 shadow-e1 backdrop-blur-md">
-              <p className="font-mono text-[0.68rem] font-semibold uppercase text-brand-accent">
+            <div className="absolute inset-0 bg-gradient-to-t from-[var(--itecs-navy)] via-[color-mix(in_srgb,var(--itecs-navy)_45%,transparent)] to-transparent" />
+            <div className="absolute left-5 top-5 chamfer-sm border border-[var(--card-line)] bg-card/95 px-4 py-3 backdrop-blur-md">
+              <p className="font-mono text-[0.68rem] font-semibold uppercase text-itecs-blue">
                 {HOMEPAGE_HERITAGE.badge.eyebrow}
               </p>
               <p className="mt-1 text-xl font-semibold text-text-primary">
@@ -44,10 +44,10 @@ export function Heritage() {
               </p>
             </div>
             <div className="absolute bottom-0 left-0 right-0 p-6">
-              <p className="font-mono text-xs font-semibold uppercase text-brand-accent">
+              <p className="font-mono text-xs font-semibold uppercase text-itecs-blue-pale">
                 Plano HQ · Dallas-Fort Worth
               </p>
-              <p className="mt-2 max-w-lg text-sm leading-relaxed text-text-secondary">
+              <p className="mt-2 max-w-lg text-sm leading-relaxed text-white/90">
                 The AI division is backed by the same local engineers, security
                 process, and infrastructure discipline that power ITECS managed
                 IT.

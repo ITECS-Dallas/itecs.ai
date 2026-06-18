@@ -6,26 +6,27 @@ import { ScrollReveal } from "@/components/effects/ScrollReveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import type { ManufacturingSpokeChart } from "@/lib/constants";
 
+// Dark text shades on light tints for WCAG-AA contrast (light theme).
 const toneClasses = {
   risk: {
-    card: "border-rose-400/25 bg-rose-400/10 text-rose-200",
+    card: "border-rose-400/30 bg-rose-400/10 text-rose-700",
     bar: "bg-gradient-to-r from-rose-400 to-amber-300",
-    text: "text-rose-200",
+    text: "text-rose-700",
   },
   watch: {
-    card: "border-amber-300/25 bg-amber-300/10 text-amber-200",
-    bar: "bg-gradient-to-r from-amber-300 to-brand-accent",
-    text: "text-amber-200",
+    card: "border-amber-400/30 bg-amber-300/10 text-amber-700",
+    bar: "bg-gradient-to-r from-amber-300 to-[var(--itecs-blue-bright)]",
+    text: "text-amber-700",
   },
   recoverable: {
-    card: "border-brand-accent/25 bg-brand-accent/10 text-brand-accent",
-    bar: "bg-gradient-to-r from-brand-accent to-emerald-300",
-    text: "text-brand-accent",
+    card: "border-[var(--itecs-blue-bright)]/30 bg-brand-subtle text-itecs-blue",
+    bar: "bg-gradient-to-r from-[var(--itecs-blue-bright)] to-emerald-300",
+    text: "text-itecs-blue",
   },
   stable: {
-    card: "border-emerald-300/25 bg-emerald-300/10 text-emerald-200",
-    bar: "bg-gradient-to-r from-emerald-300 to-brand-accent",
-    text: "text-emerald-200",
+    card: "border-emerald-500/30 bg-emerald-400/10 text-emerald-700",
+    bar: "bg-gradient-to-r from-emerald-300 to-[var(--itecs-blue-bright)]",
+    text: "text-emerald-700",
   },
 } as const;
 
