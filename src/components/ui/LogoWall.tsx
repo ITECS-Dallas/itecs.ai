@@ -29,7 +29,7 @@ export function LogoWall({ logos, columns = "clients" }: LogoWallProps) {
               width={logo.width}
               height={logo.height}
               loading="lazy"
-              className="max-h-10 w-auto object-contain opacity-60 brightness-0 transition-[filter,opacity,transform] duration-[var(--dur-base)] ease-[var(--ease-out)] group-hover:scale-[1.03] group-hover:opacity-100 group-hover:brightness-100 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
+              className="max-h-10 w-auto object-contain opacity-60 brightness-0 transition-[opacity,transform] duration-[var(--dur-base)] ease-[var(--ease-out)] group-hover:scale-[1.03] group-hover:opacity-100 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
               style={{ width: "auto" }}
             />
           </div>
