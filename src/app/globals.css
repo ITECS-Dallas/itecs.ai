@@ -16,6 +16,10 @@
   --itecs-blue-light: #5BA8D8;  /* AI-core strokes / glow */
   --itecs-blue-pale: #7fb4d8;   /* on-dark accent text */
   --itecs-steel: #326189;       /* tertiary blue (logo icon) */
+  /* Accent TEXT on light surfaces — a darker vivid blue that meets WCAG AA
+     (4.5:1) for small text. The bright #3288B6 is kept for graphics/diamonds/
+     hero crease (3:1 graphical threshold) and on-dark use. */
+  --accent-text: #1A6691;
 
   /* ---- LIGHT SURFACES ---- */
   --canvas: #F3F6F9;            /* page canvas — never pure white */
@@ -160,7 +164,7 @@
   --bg-surface: var(--surface-1);
   --bg-elevated: var(--surface-2);
   --brand-primary: var(--bg-sunken);
-  --brand-accent: var(--accent-cyan);
+  --brand-accent: var(--accent-text);
   --brand-accent-bright: var(--accent-cyan-bright);
   --text-dim: var(--text-tertiary);
   --glow-cyan: var(--accent-cyan-subtle);
@@ -202,7 +206,7 @@
   --color-itecs-navy-2: var(--itecs-navy-2);
   --color-itecs-navy-3: var(--itecs-navy-3);
   --color-itecs-blue: var(--itecs-blue);
-  --color-itecs-blue-bright: var(--itecs-blue-bright);
+  --color-itecs-blue-bright: var(--accent-text);
   --color-itecs-blue-light: var(--itecs-blue-light);
   --color-itecs-blue-pale: var(--itecs-blue-pale);
   --color-itecs-steel: var(--itecs-steel);
@@ -325,7 +329,7 @@ main :where(p, li) a:not([class]) {
   font-size: 12.5px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--itecs-blue-bright);
+  color: var(--accent-text);
 }
 
 /* OPS GRID: faint command/NOC texture for dark panels. */
