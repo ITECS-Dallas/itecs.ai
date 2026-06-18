@@ -16,14 +16,14 @@ export function Hero() {
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 hidden lg:block"
       >
-        {/* faceted brand blade (deep-blue) bleeding off top-right */}
+        {/* faceted brand blade (deep-blue) bleeding off the right, below the nav */}
         <div
           className="absolute"
           style={{
-            top: "-130px",
+            top: "118px",
             right: "-150px",
             width: "790px",
-            height: "720px",
+            height: "760px",
             background: "var(--itecs-blue)",
             clipPath: "polygon(32% 0, 100% 0, 100% 100%, 57% 100%, 2% 45%)",
           }}
@@ -32,10 +32,10 @@ export function Hero() {
         <div
           className="absolute"
           style={{
-            top: "-130px",
+            top: "118px",
             right: "-150px",
             width: "790px",
-            height: "720px",
+            height: "760px",
             background: "var(--itecs-navy-3)",
             clipPath: "polygon(32% 0, 48% 0, 11% 54%, 2% 45%)",
           }}
@@ -44,7 +44,7 @@ export function Hero() {
         <div
           className="absolute"
           style={{
-            top: "286px",
+            top: "504px",
             right: "404px",
             width: "128px",
             height: "120px",
@@ -76,7 +76,7 @@ export function Hero() {
           alt=""
           className="absolute z-[2]"
           style={{
-            top: "30px",
+            top: "248px",
             right: "104px",
             height: "286px",
             filter: "brightness(0) invert(1)",
