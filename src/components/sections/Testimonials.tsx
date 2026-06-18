@@ -24,7 +24,7 @@ export function Testimonials() {
           {testimonials.map((testimonial) => (
             <figure
               key={`${testimonial.company}-${testimonial.sourceLabel}`}
-              className="flex h-full flex-col rounded-lg border border-[var(--border-default)] bg-bg-surface p-6 shadow-e1 [box-shadow:var(--elev-1-inset),var(--elev-1)]"
+              className="chamfer-md flex h-full flex-col border border-[var(--card-line)] bg-card p-6"
             >
               <Quote aria-hidden="true" className="h-7 w-7 text-brand" />
 

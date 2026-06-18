@@ -3,6 +3,7 @@ import { SITE_CONFIG } from "@/lib/constants";
 import { generateContactPageSchema } from "@/lib/seo";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { GridBackground } from "@/components/effects/GridBackground";
+import { HeroGlyph } from "@/components/ui/HeroGlyph";
 import { ScrollReveal } from "@/components/effects/ScrollReveal";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { ContactForm } from "@/components/forms/ContactForm";
@@ -47,17 +48,22 @@ export default function ContactPage() {
       <section className="relative pt-8 pb-24 overflow-hidden">
         <GridBackground opacity={0.03} />
 
-        <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-8">
-          <p className="eyebrow mb-6">Contact ITECS</p>
-          <h1 className="font-display text-4xl md:text-6xl font-medium tracking-[-0.025em] leading-[1.05] max-w-3xl text-ink">
-            Talk with the Dallas team that can make AI{" "}
-            <span className="text-itecs-blue">governed and useful</span>
-          </h1>
-          <p className="mt-6 text-lg text-ink-body max-w-xl">
-            Use this page for architect conversations, AI Readiness Assessment
-            follow-up, or direct contact with the ITECS team serving DFW from
-            Plano.
-          </p>
+        <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6 md:px-8 lg:grid-cols-[1.1fr_0.9fr]">
+          <div>
+            <p className="eyebrow mb-6">Contact ITECS</p>
+            <h1 className="font-display text-4xl md:text-6xl font-medium tracking-[-0.025em] leading-[1.05] text-ink">
+              Talk with the Dallas team that can make AI{" "}
+              <span className="text-itecs-blue">governed and useful</span>
+            </h1>
+            <p className="mt-6 text-lg text-ink-body max-w-xl">
+              Use this page for architect conversations, AI Readiness Assessment
+              follow-up, or direct contact with the ITECS team serving DFW from
+              Plano.
+            </p>
+          </div>
+          <div className="hidden justify-center lg:flex">
+            <HeroGlyph size={400} />
+          </div>
         </div>
       </section>
 

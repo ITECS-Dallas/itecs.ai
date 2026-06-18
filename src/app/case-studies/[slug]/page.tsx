@@ -77,9 +77,9 @@ export default async function CaseStudyDetailPage({
             {caseStudy.metrics.map((metric) => (
               <div
                 key={metric.label}
-                className="rounded-lg border border-[var(--border-default)] bg-bg-surface p-5 shadow-e1 [box-shadow:var(--elev-1-inset),var(--elev-1)]"
+                className="chamfer-md border border-[var(--card-line)] bg-card p-5"
               >
-                <p className="font-mono text-3xl font-semibold text-brand">
+                <p className="font-display text-3xl font-semibold tracking-[-0.01em] text-itecs-blue">
                   {metric.value}
                 </p>
                 <p className="mt-2 text-sm text-text-secondary">
@@ -97,7 +97,7 @@ export default async function CaseStudyDetailPage({
             ].map(([label, body]) => (
               <section
                 key={label}
-                className="rounded-lg border border-[var(--border-default)] bg-bg-surface p-6 shadow-e1 [box-shadow:var(--elev-1-inset),var(--elev-1)]"
+                className="chamfer-md border border-[var(--card-line)] bg-card p-6"
               >
                 <div className="flex items-start gap-3">
                   <CheckCircle2
@@ -117,7 +117,7 @@ export default async function CaseStudyDetailPage({
             ))}
           </div>
 
-          <div className="mt-10 rounded-lg border border-[var(--border-default)] bg-bg-sunken p-6">
+          <div className="chamfer-md mt-10 border border-[var(--card-line)] bg-canvas-sunken p-6">
             <p className="font-mono text-xs font-semibold uppercase text-text-tertiary">
               Source: {caseStudy.sourceDate}
             </p>
