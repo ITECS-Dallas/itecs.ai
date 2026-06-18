@@ -10,7 +10,7 @@ export const SITE_CONFIG = {
   phoneE164: "+1-214-444-7884",
   supportPhone: "(877) 483-2710",
   supportPhoneE164: "+1-877-483-2710",
-  email: "sales@itecsonline.com",
+  email: "sales-inquiry@itecsonline.com",
   foundingYear: 2002,
   address: {
     street: "500 N Central Expy, Suite 455",

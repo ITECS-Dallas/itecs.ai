@@ -58,9 +58,9 @@ export function SEOTierLayout({ tier }: Props) {
               {tier.heroSubline}
             </p>
 
-            {/* Pricing pill */}
-            <div className="mt-6 inline-flex items-center gap-3 rounded-full border border-[var(--border-subtle)] bg-bg-surface/80 px-4 py-2">
-              <span className="text-xl font-light text-text-primary">
+            {/* Pricing chip */}
+            <div className="chamfer-sm mt-6 inline-flex items-center gap-3 border border-[var(--card-line)] bg-card px-4 py-2">
+              <span className="font-display text-xl font-semibold text-itecs-blue">
                 {tier.priceLabel}
               </span>
               {tier.minimumTerm && (

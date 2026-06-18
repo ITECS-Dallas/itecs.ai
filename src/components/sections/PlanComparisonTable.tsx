@@ -8,18 +8,20 @@ export function PlanComparisonTable() {
   const { caption, plans, rows } = CLAUDE_PLAN_COMPARISON;
 
   return (
-    <div className="not-prose">
+    // On wide desktops the table breaks out of the narrow article column and
+    // centers on the viewport so all five plans fit without horizontal scroll.
+    <div className="not-prose xl:ml-[50%] xl:w-[min(1120px,calc(100vw-4rem))] xl:-translate-x-1/2">
       <p className="mb-2 text-xs text-text-dim md:hidden" aria-hidden="true">
         Swipe the table sideways to compare all five plans →
       </p>
-      <div className="overflow-x-auto rounded-lg border border-[var(--border-default)] bg-bg-surface">
+      <div className="overflow-x-auto rounded-lg border border-[var(--card-line)] bg-card">
         <table className="w-full min-w-[760px] border-collapse text-left text-sm">
           <caption className="sr-only">{caption}</caption>
           <thead>
             <tr className="border-b border-[var(--border-default)]">
               <th
                 scope="col"
-                className="sticky left-0 z-10 bg-bg-surface px-4 py-3 font-medium text-text-dim"
+                className="sticky left-0 z-10 bg-card px-4 py-3 font-medium text-text-dim"
               >
                 Plan
               </th>
@@ -53,7 +55,7 @@ export function PlanComparisonTable() {
               >
                 <th
                   scope="row"
-                  className="sticky left-0 z-10 bg-bg-surface px-4 py-3 font-medium text-text-secondary"
+                  className="sticky left-0 z-10 bg-card px-4 py-3 font-medium text-text-secondary"
                 >
                   {row.feature}
                 </th>
