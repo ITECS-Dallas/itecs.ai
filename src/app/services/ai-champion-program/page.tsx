@@ -212,7 +212,7 @@ const faqs = [
   {
     question: "Is the program delivered onsite or virtually?",
     answer:
-      "The program can be delivered virtually, onsite, or as a mix of both. Virtual delivery usually happens through Microsoft Teams or Zoom. Onsite sessions beyond a 20-mile radius from the Plano office may include travel costs.",
+      "The program can be delivered virtually, onsite, or as a mix of both. Virtual delivery usually happens through Microsoft Teams or Zoom. Onsite sessions beyond a 20-mile radius from the Dallas office may include travel costs.",
   },
   {
     question: "How is this different from sending an employee to an online AI course?",
@@ -432,7 +432,7 @@ export default function AIChampionProgramPage() {
               <div className="relative aspect-[16/10] overflow-hidden rounded-2xl">
                 <Image
                   src="/images/team/team-office.webp"
-                  alt="The ITECS team collaborating in the Plano office"
+                  alt="The ITECS team collaborating in the Dallas office"
                   fill
                   priority
                   sizes="(min-width: 1024px) 50vw, 92vw"
@@ -706,7 +706,7 @@ export default function AIChampionProgramPage() {
             },
             {
               title: "What is not included",
-              text: "AI platform licensing, custom agent development, MCP development, full workforce training rollouts, and travel beyond a 20-mile radius from the Plano office are scoped separately.",
+              text: "AI platform licensing, custom agent development, MCP development, full workforce training rollouts, and travel beyond a 20-mile radius from the Dallas office are scoped separately.",
             },
           ].map((item) => (
             <div

@@ -8,13 +8,13 @@
 
 - Name: Itecs Outsourcing, LLC
 - Founded: 2002
-- Location: Plano, TX (serving Dallas-Fort Worth)
+- Location: Dallas, TX (serving Dallas-Fort Worth)
 - Website: https://itecs.ai
 - Main website: https://itecsonline.com
 - International phone: (214) 444-7884
 - Toll-free phone: (877) 483-2710
-- Address: 500 N Central Expy, Suite 455, Plano, TX 75074
-- Google Maps: https://g.page/r/CQoNZt8x7nlmEBM
+- Address: 17304 Preston Rd Ste 460, Dallas, TX 75252
+- Google Maps: https://www.google.com/maps/search/?api=1&query=17304%20Preston%20Rd%20Ste%20460%2C%20Dallas%2C%20TX%2075252
 - Specialization: AI Consulting, Managed IT, Cybersecurity, Cloud
 
 ## AI Services

@@ -18,7 +18,7 @@
 
 ## 1. Brand foundation
 
-ITECS — MSP/MSSP and Managed Cloud Provider since 2002, HQ in Plano TX, serving Dallas–Fort Worth. Positioning line: **"Business Strategist Technologists."** The strategic thesis driving this redesign: ITECS is becoming a **Managed Intelligence Provider (MIP)** — embedding AI across managed IT, security, and cloud — and wants to be there *before* the rest of the MSP industry realizes it has to be.
+ITECS — MSP/MSSP and Managed Cloud Provider since 2002, HQ in Dallas TX, serving Dallas–Fort Worth. Positioning line: **"Business Strategist Technologists."** The strategic thesis driving this redesign: ITECS is becoming a **Managed Intelligence Provider (MIP)** — embedding AI across managed IT, security, and cloud — and wants to be there *before* the rest of the MSP industry realizes it has to be.
 
 **Tone:** authoritative, enterprise, consultative. Audience: SMB / mid-market decision-makers. Confident but not hype-y; "we own it alongside you," not "revolutionary synergy."
 

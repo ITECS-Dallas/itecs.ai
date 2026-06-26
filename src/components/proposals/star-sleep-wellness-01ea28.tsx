@@ -622,7 +622,7 @@ const whyItecs = [
   {
     icon: MapPin,
     title: "Local Dallas partnership",
-    text: "Headquartered in Plano, Texas — minutes from the Star Sleep & Wellness Dallas corporate facility. Supports in-person QBRs and ad hoc executive cadence.",
+    text: "Headquartered in Dallas, Texas — minutes from the Star Sleep & Wellness Dallas corporate facility. Supports in-person QBRs and ad hoc executive cadence.",
   },
   {
     icon: BadgeCheck,
@@ -672,7 +672,7 @@ const hourlyRates = [
 
 const assumptions = [
   "Recurring monthly investment is based on the asset profile discussed during the May 22, 2026 discovery call. Final counts and pricing are confirmed during onboarding within plus or minus fifteen percent.",
-  "Onsite support is included within a 20-mile radius of the ITECS Plano office. Locations beyond 20 miles, especially beyond 100 miles, may incur travel surcharges per ITECS policy.",
+  "Onsite support is included within a 20-mile radius of the ITECS Dallas office. Locations beyond 20 miles, especially beyond 100 miles, may incur travel surcharges per ITECS policy.",
   "Multi-state locations outside the DFW service radius rely on a combination of remote support, the internal field technician, and pre-arranged onsite dispatch.",
   "A HIPAA Business Associate Agreement will be executed alongside the Master Services Agreement before any protected health information is accessed.",
   "Hardware and software procurement, third-party licensing not specifically listed, structured cabling, ISP and telecommunications contracts, EHR vendor support, and any work outside agreed scope are quoted separately.",
@@ -681,7 +681,7 @@ const assumptions = [
 
 const nextSteps = [
   "Review this proposal with Star Sleep & Wellness leadership, including the Chief Financial Officer.",
-  "Schedule a follow-up working session — preferred format is an in-person meeting at ITECS HQ in Plano with the CFO in attendance.",
+  "Schedule a follow-up working session — preferred format is an in-person meeting at ITECS HQ in Dallas with the CFO in attendance.",
   "Confirm preferred term length (1, 3, or 5 years) and any adjustments to the asset profile or Phase 1 project priorities.",
   "Optional technical deep-dive with an ITECS engineer to refine asset counts and project scope before contract execution.",
   "Execute the ITECS Master Services Agreement, Exhibit A (Scope of Services and Compensation), and HIPAA Business Associate Agreement.",

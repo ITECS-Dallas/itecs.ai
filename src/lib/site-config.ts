@@ -13,16 +13,17 @@ export const SITE_CONFIG = {
   email: "sales-inquiry@itecsonline.com",
   foundingYear: 2002,
   address: {
-    street: "500 N Central Expy, Suite 455",
-    city: "Plano",
+    street: "17304 Preston Rd Ste 460",
+    city: "Dallas",
     state: "TX",
-    zip: "75074",
+    zip: "75252",
     country: "US",
   },
-  geo: { lat: 33.0198, lng: -96.6989 },
-  googleMapsUrl: "https://g.page/r/CQoNZt8x7nlmEBM",
+  geo: { lat: 32.987046344992, lng: -96.803103829427 },
+  googleMapsUrl:
+    "https://www.google.com/maps/search/?api=1&query=17304%20Preston%20Rd%20Ste%20460%2C%20Dallas%2C%20TX%2075252",
   googleMapsEmbedUrl:
-    "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13391.854690743687!2d-96.8023315!3d32.9519685!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x6679ee31df660d0a!2siTecs!5e0!3m2!1sen!2sus!4v1675527511387!5m2!1sen!2sus",
+    "https://www.google.com/maps?q=17304%20Preston%20Rd%20Ste%20460%2C%20Dallas%2C%20TX%2075252&output=embed",
   social: {
     linkedin: "https://www.linkedin.com/company/itecsonline",
     facebook: "https://www.facebook.com/itecscorp",
