@@ -81,6 +81,50 @@ export const PROPOSAL_ACCESS: Record<string, ProposalAccessConfig> = {
     heroImageUrl: "https://itecs.ai/images/proposals/star-sleep-wellness-hero.png",
     pdfFileName: "star-sleep-wellness-01ea28.pdf",
   },
+  "regulus-cmmc-l2-readiness-c4a5f9": {
+    slug: "regulus-cmmc-l2-readiness-c4a5f9",
+    title: "Regulus Industries CMMC Level 2 Readiness Project Proposal",
+    clientName: "Regulus Industries",
+    clientGreeting: "Hi Max,",
+    accessEyebrow: "Private Proposal · CMMC Level 2 Readiness",
+    accessHeading: "Check your email to open the Regulus Industries proposal.",
+    accessDescription:
+      "Enter your business email and we will send a private access link for the CMMC Level 2 Readiness project proposal prepared for Regulus Industries.",
+    allowedEmails: [
+      "bdesmot@itecsonline.com",
+      "bdesmot@gmail.com",
+      "mdunbar@itecsmsp.com",
+      "jemerle@itecsmsp.com",
+    ],
+    // Anyone with a @regulus.industries address is authorized to use the magic link.
+    allowedDomains: ["regulus.industries", "itecsonline.com", "itecsmsp.com"],
+    fromEmail: "bdesmot@itecsonline.com",
+    heroImageUrl:
+      "https://itecs.ai/images/proposals/regulus-cmmc-l2-readiness-hero.png",
+    pdfFileName: "regulus-cmmc-l2-readiness-c4a5f9.pdf",
+  },
+  "ai-adoption-agents-arg-3aab89": {
+    slug: "ai-adoption-agents-arg-3aab89",
+    title: "ARG Companies — AI Adoption & Agent Development Proposal",
+    clientName: "ARG Companies",
+    clientGreeting: "Hi team,",
+    accessEyebrow: "Private Proposal · AI Adoption & Agents",
+    accessHeading: "Check your email to open the ARG Companies proposal.",
+    accessDescription:
+      "Enter your business email and we will send a private access link for the AI Adoption & Custom Agent Development proposal prepared for ARG Companies.",
+    allowedEmails: [
+      "bdesmot@itecsonline.com",
+      "bdesmot@gmail.com",
+      "mdunbar@itecsmsp.com",
+      "jemerle@itecsmsp.com",
+    ],
+    // Anyone with an @argpartners.com address is authorized to use the magic link.
+    allowedDomains: ["argpartners.com", "itecsonline.com", "itecsmsp.com"],
+    fromEmail: "bdesmot@itecsonline.com",
+    heroImageUrl:
+      "https://itecs.ai/images/proposals/ai-adoption-agents-arg-hero.png",
+    pdfFileName: "ai-adoption-agents-arg-3aab89.pdf",
+  },
 };
 
 function requiredEnv(name: string) {

@@ -413,7 +413,7 @@ export const AI_PRICING_CATEGORIES: AIPricingCategory[] = [
       },
       {
         name: "AI Pilot Implementation - Production",
-        price: "$18,500",
+        price: "$21,500",
         scope: "10-25 users, 2-3 use cases, 60 days",
         description:
           "A production-ready AI rollout with the role-based libraries, audit-trail documentation, training, and support required for a real department deployment.",
@@ -434,31 +434,75 @@ export const AI_PRICING_CATEGORIES: AIPricingCategory[] = [
     eyebrow: "Specialize",
     title: "Custom Build",
     description:
-      "For teams that need custom agents, platform connectors, AI-enabled workflows, or internal AI capability beyond standard tool configuration.",
+      "For teams that need phased custom agents, platform connectors, AI-enabled workflows, or internal AI capability beyond standard tool configuration.",
     offerings: [
       {
-        name: "Custom AI Agent, Connector and Integration Development",
-        price: "$8,000-$25,000 per agent",
+        name: "Agent Discovery & Technical Specification",
+        price: "$4,500-$7,500",
+        scope: "Discovery, credited toward build",
         description:
-          "Custom-built AI agents, connectors, and integrations across major platforms including Claude, OpenAI, Gemini, Procore, Sage, internal MCP servers, and workflow agents.",
+          "A focused specification engagement for a custom agent or workflow before production engineering begins. The fee is credited toward the build if the client proceeds.",
         included: [
-          "Detailed specification and architecture",
-          "Build, test, and deploy",
+          "Current workflow, data source, and integration review",
+          "Use-case specification with success criteria",
+          "Architecture, risk, and human-review model",
+          "Fixed-fee build estimate for the next phase",
+        ],
+        bestFor:
+          "Teams with a defined AI workflow that need a credible build plan before committing to engineering.",
+      },
+      {
+        name: "Proof of Concept / Prototype",
+        price: "$8,000-$18,000",
+        scope: "One data source or workflow",
+        description:
+          "A bounded prototype that proves technical feasibility and workflow fit before a production commitment.",
+        included: [
+          "One primary workflow or data source",
+          "Limited user group and controlled test scope",
+          "Feasibility build without production SLA",
+          "Documented path to production",
+        ],
+        bestFor:
+          "Organizations that need evidence before funding a production agent.",
+      },
+      {
+        name: "Single-Workflow Production Agent",
+        price: "$18,000-$35,000 per agent",
+        description:
+          "A production agent for one primary workflow, deployed with documentation, human-in-the-loop review, and staff handoff.",
+        included: [
+          "One primary workflow deployed to production",
+          "Human-in-the-loop review path",
           "Documentation and runbook",
           "Handoff to your team",
         ],
         bestFor:
-          "Organizations with a defined workflow that needs secure custom automation or system integration.",
+          "Light or bounded assistants such as recurring research, drafting, executive briefing, or comparable workflow support.",
       },
       {
-        name: "AI-Augmented Business Process Redesign",
-        price: "$25,000-$75,000",
+        name: "Integrated / Financial Workpaper Agent",
+        price: "$35,000-$75,000 per agent",
         description:
-          "End-to-end redesign of a major workflow such as estimating, proposal generation, project closeout, or billing review, using AI as a force multiplier across the process.",
+          "A more complex production agent for multi-source ingestion, reconciliation, audit trails, validation, exception handling, and reviewer workflows.",
+        included: [
+          "Multi-source data ingestion and reconciliation",
+          "Audit trail and validation controls",
+          "Exception handling and reviewer workflow",
+          "Documentation and operational handoff",
+        ],
+        bestFor:
+          "Line-of-business and finance workflows where accuracy, review evidence, and system integration are central.",
+      },
+      {
+        name: "Multi-Agent System / AI-Augmented Process Redesign",
+        price: "$55,000-$120,000",
+        description:
+          "An orchestrated multi-agent system or end-to-end redesign of a major workflow with integrations, monitoring, and rollout enablement.",
         included: [
           "Senior strategy and workflow discovery",
-          "Process redesign around measurable business outcomes",
-          "Custom engineering where the workflow requires it",
+          "Multi-agent or process redesign around measurable outcomes",
+          "Custom engineering with integrations and monitoring",
           "Rollout enablement and documentation",
         ],
         bestFor:
@@ -525,6 +569,21 @@ export const MANAGED_AI_TIERS = [
     ],
   },
 ] as const;
+
+export const MANAGED_AI_AGENT_OPERATIONS = {
+  tier: "Managed AI - Agent Operations",
+  users: "Per production-agent footprint",
+  price: "$2,500-$6,500/mo",
+  includedHours: "Scoped operations retainer",
+  description:
+    "Ongoing operations for production agents after launch, separate from adoption and advisory retainers.",
+  features: [
+    "Agent monitoring and evaluations",
+    "Quality and drift checks",
+    "Data-refresh and exception triage",
+    "Production tuning based on usage and review SLA",
+  ],
+} as const;
 
 export const AI_HOURLY_RATES = [
   {
@@ -2130,6 +2189,7 @@ export const INSIGHTS: InsightItem[] = [
       "How to take agentic AI workflows from pilot to production in finance, procurement, and HR — a four-stage blueprint with governance, security, and ROI math for Dallas enterprises.",
     href: "/insights/agentic-ai-workflows-enterprise-operations",
     publishedDate: "2026-05-21",
+    modifiedDate: "2026-06-27",
     hubSlug: "custom-ai-agents",
     hubLabel: "Custom AI Agents",
     hubHref: "/custom-ai-agents",
@@ -2168,7 +2228,7 @@ export const INSIGHTS: InsightItem[] = [
       "Concretely, that means every agent has a documented purpose, a defined input and output schema, an identity-bound credential model, an immutable audit log, a model version pin, a human approval path for high-impact actions, a rollback procedure, and a quarterly governance review. Sensitive data flows through Azure OpenAI on a private endpoint or through an equivalent governed runtime — never through a consumer AI tool. For regulated industries, ITECS configures DLP policies that block PHI, PII, payment data, and privileged legal content from leaving the agent's permitted scope.",
       "The right way to think about agentic AI security is the way a 24-year-old Dallas managed IT firm thinks about user account management — least privilege, full logging, regular review, and clear ownership of every credential. Agents are simply another class of identity that needs governance.",
       "**Pricing And ROI For Enterprise Agentic AI Workflows**",
-      "ITECS prices agentic AI workflow builds the same way it has priced complex IT projects for two decades: a scoped flat fee for the build, hourly consulting or prepaid retainer hours for tuning and operations, and a separate line for the underlying model and infrastructure cost. A first production workflow typically runs $30,000 to $90,000 to build and $1,500 to $4,500 per month to operate, depending on volume and complexity. Retainer hours carry transparent tracking, no minimum monthly usage, and no expiration.",
+      "ITECS prices agentic AI workflow builds the same way it has priced complex IT projects for two decades: scoped flat fees for discovery, prototype, and production build phases, a separate managed operations line after launch, and a separate pass-through for underlying model and infrastructure cost. Agent Discovery and Technical Specification runs $4,500 to $7,500 and is credited toward the build when the client proceeds. Proof of Concept / Prototype work runs $8,000 to $18,000, Single-Workflow Production Agents run $18,000 to $35,000 per agent, Integrated / Financial Workpaper Agents run $35,000 to $75,000 per agent, and Multi-Agent System / AI-Augmented Process Redesign engagements run $55,000 to $120,000. Production-agent operations are billed separately under Managed AI - Agent Operations at $2,500 to $6,500 per month, depending on volume, data-refresh cadence, review SLA, and complexity.",
       "ROI math is more direct than most AI initiatives. The finance workflow above eliminated roughly 1,400 hours of manual processing in its first year — at a fully loaded cost of $65,000 — against a build cost in the same range. The agent paid for itself in eleven months and now compounds: every new supplier, region, or business unit added to the workflow extends the same payback ratio. Procurement and HR workflows tend to deliver softer ROI through risk reduction (avoided lien filings, reduced regulatory exposure, faster offer-to-accept cycles) but generally clear payback inside 18 months.",
       "What governs the math is whether your business already carries the data, identity, and integration discipline to absorb an agent. Companies that do not should start with a structured [data and AI readiness audit](/data-audit) before scoping any agentic build. Companies that do can move directly to a [custom AI agent build](/custom-ai-agents), pair it with [workflow automation](/automation) for the surrounding routing work, and back it with [employee AI training](/training) so the workflow's human reviewers operate the agent confidently from day one.",
     ],
@@ -2206,7 +2266,7 @@ export const INSIGHTS: InsightItem[] = [
       {
         question: "What does an enterprise agentic AI workflow cost?",
         answer:
-          "A first production workflow typically runs $30,000 to $90,000 to build and $1,500 to $4,500 per month to operate, depending on volume and complexity. Ongoing tuning runs on hourly consulting or prepaid retainer hours with transparent tracking, no minimum monthly usage, and no expiration.",
+          "ITECS scopes agentic AI work in phases: Agent Discovery and Technical Specification is $4,500 to $7,500, Proof of Concept / Prototype work is $8,000 to $18,000, Single-Workflow Production Agents are $18,000 to $35,000 per agent, Integrated / Financial Workpaper Agents are $35,000 to $75,000 per agent, and Multi-Agent System / AI-Augmented Process Redesign engagements are $55,000 to $120,000. Production-agent operations run $2,500 to $6,500 per month under Managed AI - Agent Operations.",
       },
     ],
   },

@@ -18,7 +18,8 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ```bash
 npm run lint
 npm run build
-docker compose up -d --build --remove-orphans web
+docker compose up -d --build web
+docker compose -f /home/itecs/website/docker-compose.yml up -d --force-recreate nginx
 ```
 
 ## Documentation
@@ -46,5 +47,6 @@ hardened client portal. See [docs/proposals.md](./docs/proposals.md).
 Production runs in Docker Compose behind nginx on the shared ITECS server:
 
 ```bash
-docker compose up -d --build --remove-orphans web
+docker compose up -d --build web
+docker compose -f /home/itecs/website/docker-compose.yml up -d --force-recreate nginx
 ```
