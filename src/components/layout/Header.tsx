@@ -151,7 +151,7 @@ export function Header() {
           }
         }}
         className={`fixed left-0 right-0 z-50 border-b transition-[top,background-color,backdrop-filter,border-color] duration-300 ease-out ${
-          scrolled || menuOpen || solutionsOpen ? "top-0" : "top-8"
+          scrolled || menuOpen ? "top-0" : "top-8"
         } ${
           scrolled || menuOpen || solutionsOpen
             ? "border-[var(--border-subtle)] bg-bg-elevated/80 backdrop-blur-md"

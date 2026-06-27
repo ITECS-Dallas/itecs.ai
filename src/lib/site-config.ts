@@ -13,7 +13,7 @@ export const SITE_CONFIG = {
   email: "sales-inquiry@itecsonline.com",
   foundingYear: 2002,
   address: {
-    street: "17304 Preston Rd Ste 460",
+    street: "17304 Preston Rd. Ste 460",
     city: "Dallas",
     state: "TX",
     zip: "75252",
@@ -21,9 +21,9 @@ export const SITE_CONFIG = {
   },
   geo: { lat: 32.987046344992, lng: -96.803103829427 },
   googleMapsUrl:
-    "https://www.google.com/maps/search/?api=1&query=17304%20Preston%20Rd%20Ste%20460%2C%20Dallas%2C%20TX%2075252",
+    "https://www.google.com/maps/search/?api=1&query=17304%20Preston%20Rd.%20Ste%20460%2C%20Dallas%2C%20TX%2075252",
   googleMapsEmbedUrl:
-    "https://www.google.com/maps?q=17304%20Preston%20Rd%20Ste%20460%2C%20Dallas%2C%20TX%2075252&output=embed",
+    "https://www.google.com/maps?q=17304%20Preston%20Rd.%20Ste%20460%2C%20Dallas%2C%20TX%2075252&output=embed",
   social: {
     linkedin: "https://www.linkedin.com/company/itecsonline",
     facebook: "https://www.facebook.com/itecscorp",

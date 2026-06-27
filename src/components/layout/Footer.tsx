@@ -232,9 +232,12 @@ export function Footer() {
             <div className="mt-4 grid gap-4 text-sm text-text-tertiary sm:grid-cols-3">
               <div>
                 <p className="text-text-secondary">Dallas HQ</p>
-                <p className="mt-1 leading-relaxed">
-                  {SITE_CONFIG.address.city}, {SITE_CONFIG.address.state}
-                </p>
+                <address className="mt-1 leading-relaxed not-italic">
+                  {SITE_CONFIG.address.street}
+                  <br />
+                  {SITE_CONFIG.address.city}, {SITE_CONFIG.address.state}{" "}
+                  {SITE_CONFIG.address.zip}
+                </address>
               </div>
               <div>
                 <p className="text-text-secondary">Phone</p>
