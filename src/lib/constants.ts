@@ -3203,7 +3203,7 @@ export const ABOUT_FAQ = [
   {
     question: "Where is ITECS located?",
     answer:
-      "ITECS is headquartered at 500 N Central Expy, Suite 455, Plano, TX 75074 — serving the entire Dallas-Fort Worth area including Dallas, Plano, Frisco, Richardson, and surrounding cities.",
+      "ITECS is headquartered at 17304 Preston Rd Ste 460, Dallas, TX 75252 — serving the entire Dallas-Fort Worth area including Dallas, Plano, Frisco, Richardson, and surrounding cities.",
   },
 ] as const;
 

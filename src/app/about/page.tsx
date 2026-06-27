@@ -105,7 +105,7 @@ export default function AboutPage() {
               />
             </div>
             <figcaption className="mt-4 text-center text-sm text-text-dim">
-              The ITECS team at our Plano, TX headquarters — serving Dallas-Fort
+              The ITECS team at our Dallas, TX headquarters — serving Dallas-Fort
               Worth businesses since 2002.
             </figcaption>
           </figure>

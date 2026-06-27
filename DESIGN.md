@@ -8,7 +8,7 @@
 
 **itecs.ai** is ITECS's AI-vertical website — a dedicated showcase for ITECS's AI
 service offerings. The parent company (itecsonline.com) is a Dallas-based MSP/MSSP
-established in 2002, HQ in Plano TX. Positioning line: **"Business Strategist
+established in 2002, HQ in Dallas TX. Positioning line: **"Business Strategist
 Technologists."** Strategic thesis: ITECS is evolving **MSP → MSSP → MIP (Managed
 Intelligence Provider)** — embedding AI across managed IT, security, and cloud.
 

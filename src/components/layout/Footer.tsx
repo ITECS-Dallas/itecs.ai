@@ -231,7 +231,7 @@ export function Footer() {
             </h3>
             <div className="mt-4 grid gap-4 text-sm text-text-tertiary sm:grid-cols-3">
               <div>
-                <p className="text-text-secondary">Plano HQ</p>
+                <p className="text-text-secondary">Dallas HQ</p>
                 <p className="mt-1 leading-relaxed">
                   {SITE_CONFIG.address.city}, {SITE_CONFIG.address.state}
                 </p>

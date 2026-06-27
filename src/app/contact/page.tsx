@@ -21,7 +21,7 @@ import Link from "next/link";
 export const metadata = generatePageMetadata({
   title: "Contact ITECS — Dallas Managed AI Team",
   description:
-    "Contact ITECS for managed AI consulting, automation, governance, and AI Readiness Assessment conversations from the Plano corporate office serving Dallas-Fort Worth.",
+    "Contact ITECS for managed AI consulting, automation, governance, and AI Readiness Assessment conversations from the Dallas corporate office serving Dallas-Fort Worth.",
   path: "/contact",
   keywords: [
     "contact AI consultant Dallas",
@@ -58,7 +58,7 @@ export default function ContactPage() {
             <p className="mt-6 text-lg text-ink-body max-w-xl">
               Use this page for architect conversations, AI Readiness Assessment
               follow-up, or direct contact with the ITECS team serving DFW from
-              Plano.
+              Dallas.
             </p>
           </div>
           <div className="hidden justify-center lg:flex">
@@ -230,11 +230,11 @@ export default function ContactPage() {
             <div className="h-full">
               <p className="eyebrow">Corporate Office</p>
               <h2 className="mt-3 max-w-2xl text-3xl font-semibold tracking-[-0.02em] text-ink md:text-5xl">
-                ITECS corporate office in Plano, Texas
+                ITECS corporate office in Dallas, Texas
               </h2>
               <p className="mt-5 max-w-2xl text-base leading-relaxed text-text-secondary md:text-lg">
                 ITECS AI serves Dallas-Fort Worth businesses from the ITECS
-                corporate office in Plano. Use this page to confirm our official
+                corporate office in Dallas. Use this page to confirm our official
                 office location, Google Maps listing, and phone lines for AI
                 consulting, training, security, and DevOps conversations.
               </p>
@@ -301,7 +301,7 @@ export default function ContactPage() {
           <ScrollReveal direction="up" delay={0.1}>
             <div className="relative h-full min-h-[340px] overflow-hidden rounded-lg border border-[var(--border-subtle)] bg-bg-void shadow-[0_0_40px_var(--accent-cyan-subtle)] md:min-h-[430px]">
               <iframe
-                title="Google map showing ITECS corporate office in Plano, Texas"
+                title="Google map showing ITECS corporate office in Dallas, Texas"
                 src={SITE_CONFIG.googleMapsEmbedUrl}
                 className="h-[340px] w-full border-0 md:h-[430px] lg:h-full lg:min-h-[500px]"
                 loading="lazy"

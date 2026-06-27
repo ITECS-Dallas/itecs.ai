@@ -282,7 +282,7 @@ export function generateContactPageSchema() {
     url: `${SITE_CONFIG.url}/contact`,
     name: "Contact ITECS AI",
     description:
-      "Contact ITECS AI at the ITECS corporate office in Plano, Texas for AI consulting, training, security, and DevOps services for Dallas-Fort Worth businesses.",
+      "Contact ITECS AI at the ITECS corporate office in Dallas, Texas for AI consulting, training, security, and DevOps services for Dallas-Fort Worth businesses.",
     about: {
       "@id": `${SITE_CONFIG.url}/#localbusiness`,
     },

@@ -26,7 +26,7 @@ export function Heritage() {
           <div className="relative min-h-[390px] overflow-hidden rounded-lg border border-[var(--border-default)] bg-bg-surface shadow-e2 [box-shadow:var(--elev-1-inset),var(--elev-2)]">
             <Image
               src="/images/team/team-office.webp"
-              alt="ITECS team at the Plano office supporting Dallas businesses"
+              alt="ITECS team at the Dallas office supporting Dallas businesses"
               fill
               className="object-cover"
               sizes="(min-width: 1024px) 46vw, 100vw"
@@ -45,7 +45,7 @@ export function Heritage() {
             </div>
             <div className="absolute bottom-0 left-0 right-0 p-6">
               <p className="font-mono text-xs font-semibold uppercase text-itecs-blue-pale">
-                Plano HQ · Dallas-Fort Worth
+                Dallas HQ · Dallas-Fort Worth
               </p>
               <p className="mt-2 max-w-lg text-sm leading-relaxed text-white/90">
                 The AI division is backed by the same local engineers, security
