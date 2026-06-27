@@ -18,6 +18,7 @@ import {
   AI_LOYALTY_DISCOUNTS,
   AI_PRICING_CATEGORIES,
   AI_RATE_MULTIPLIERS,
+  MANAGED_AI_AGENT_OPERATIONS,
   MANAGED_AI_TIERS,
   SITE_CONFIG,
 } from "@/lib/constants";
@@ -142,6 +143,17 @@ const offerCatalogSchema = {
         description: `Managed AI services for ${tier.users.toLowerCase()}.`,
       },
     })),
+    {
+      ...priceSchemaFor(
+        MANAGED_AI_AGENT_OPERATIONS.tier,
+        MANAGED_AI_AGENT_OPERATIONS.price,
+      ),
+      itemOffered: {
+        "@type": "Service",
+        name: MANAGED_AI_AGENT_OPERATIONS.tier,
+        description: MANAGED_AI_AGENT_OPERATIONS.description,
+      },
+    },
   ],
 };
 
@@ -455,6 +467,43 @@ export default function PricingPage() {
             rate below, with loyalty discounts for eligible ITECS managed IT
             clients.
           </p>
+
+          <div className="mt-10 rounded-2xl border border-brand-accent/20 bg-bg-surface/55 p-6 md:p-8">
+            <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+              <div>
+                <p className="text-xs font-medium uppercase tracking-[0.16em] text-brand-accent-bright">
+                  Production Agent Operations
+                </p>
+                <h3 className="mt-3 text-2xl font-light text-text-primary">
+                  {MANAGED_AI_AGENT_OPERATIONS.tier}
+                </h3>
+                <p className="mt-2 text-sm text-text-dim">
+                  {MANAGED_AI_AGENT_OPERATIONS.users}
+                </p>
+                <div className="mt-5 text-4xl font-semibold text-text-primary">
+                  {MANAGED_AI_AGENT_OPERATIONS.price}
+                </div>
+                <p className="mt-3 text-sm font-medium text-brand-accent-bright">
+                  {MANAGED_AI_AGENT_OPERATIONS.includedHours}
+                </p>
+                <p className="mt-4 text-sm leading-relaxed text-text-secondary">
+                  {MANAGED_AI_AGENT_OPERATIONS.description}
+                </p>
+              </div>
+
+              <ul className="grid gap-3 sm:grid-cols-2">
+                {MANAGED_AI_AGENT_OPERATIONS.features.map((feature) => (
+                  <li
+                    key={feature}
+                    className="flex items-start gap-2 text-sm leading-relaxed text-text-secondary"
+                  >
+                    <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-brand-accent" />
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -581,8 +630,8 @@ export default function PricingPage() {
             </a>
           </div>
           <p className="mt-6 text-xs leading-relaxed text-text-dim">
-            Pricing effective May 2026. ITECS reserves the right to scope custom
-            engagements to fit unique requirements. All productized offerings
+            Pricing effective June 27, 2026. ITECS reserves the right to scope
+            custom engagements to fit unique requirements. All productized offerings
             include the deliverables listed on this page; out-of-scope work is
             billed at the applicable hourly rate.
           </p>
