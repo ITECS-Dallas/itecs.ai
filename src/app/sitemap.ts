@@ -7,6 +7,9 @@ import {
   MANUFACTURING_VERTICAL,
   MANUFACTURING_SPOKE_PAGES,
   PPV_AGENT_USE_CASE,
+  FINANCIAL_SERVICES_VERTICAL,
+  FINANCIAL_SERVICES_SPOKE_PAGES,
+  FIELD_EXAM_ANALYZER_USE_CASE,
   TRUST_CASE_STUDIES,
 } from "@/lib/constants";
 
@@ -55,6 +58,27 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
   ];
 
+  const financialServicesPages = [
+    {
+      url: `${base}${FINANCIAL_SERVICES_VERTICAL.href}`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.9,
+    },
+    {
+      url: `${base}${FIELD_EXAM_ANALYZER_USE_CASE.href}`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.85,
+    },
+    ...FINANCIAL_SERVICES_SPOKE_PAGES.map((page) => ({
+      url: `${base}${page.href}`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.82,
+    })),
+  ];
+
   const caseStudyPages = TRUST_CASE_STUDIES.map((caseStudy) => ({
     url: `${base}${caseStudy.detailHref}`,
     lastModified: new Date(),
@@ -72,6 +96,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...hubPages,
     ...caseStudyPages,
     ...manufacturingPages,
+    ...financialServicesPages,
     {
       url: `${base}/managed-intelligence-provider`,
       lastModified: new Date(),

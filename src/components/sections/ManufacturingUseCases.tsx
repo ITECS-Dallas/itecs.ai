@@ -4,14 +4,25 @@ import Link from "next/link";
 import {
   Activity,
   BadgeDollarSign,
+  BookOpenCheck,
   Boxes,
+  Calculator,
   ChartNoAxesCombined,
+  Coins,
   FileSearch,
+  Gauge,
+  Landmark,
   LineChart,
+  Network,
+  PackageSearch,
+  Scale,
   ScanSearch,
+  ScrollText,
   ShieldCheck,
+  TrendingUp,
   Truck,
   UsersRound,
+  Workflow,
   type LucideIcon,
 } from "lucide-react";
 import { motion } from "framer-motion";
@@ -22,29 +33,46 @@ import type { ManufacturingUseCase } from "@/lib/constants";
 const iconMap: Record<string, LucideIcon> = {
   Activity,
   BadgeDollarSign,
+  BookOpenCheck,
   Boxes,
+  Calculator,
   ChartNoAxesCombined,
+  Coins,
   FileSearch,
+  Gauge,
+  Landmark,
   LineChart,
+  Network,
+  PackageSearch,
+  Scale,
   ScanSearch,
+  ScrollText,
   ShieldCheck,
+  TrendingUp,
   Truck,
   UsersRound,
+  Workflow,
 };
 
 export function ManufacturingUseCases({
   useCases,
+  eyebrow = "Manufacturing use cases",
+  title = "Where AI Creates Measurable Value",
+  description = "Start with the operating questions where better signals change a finance, operations, quality, or supply-chain decision.",
 }: {
   useCases: readonly ManufacturingUseCase[];
+  eyebrow?: string;
+  title?: string;
+  description?: string;
 }) {
   return (
     <section className="py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-6 md:px-8">
         <ScrollReveal>
           <SectionHeading
-            eyebrow="Manufacturing use cases"
-            title="Where AI Creates Measurable Value"
-            description="Start with the operating questions where better signals change a finance, operations, quality, or supply-chain decision."
+            eyebrow={eyebrow}
+            title={title}
+            description={description}
           />
         </ScrollReveal>
 

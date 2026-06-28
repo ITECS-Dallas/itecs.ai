@@ -18,6 +18,11 @@ const SolutionsMegaMenu = dynamic(
   { ssr: false },
 );
 
+const IndustriesMenu = dynamic(
+  () => import("./HeaderMenus").then((mod) => mod.IndustriesMenu),
+  { ssr: false },
+);
+
 const MobileNavDrawer = dynamic(
   () => import("./HeaderMenus").then((mod) => mod.MobileNavDrawer),
   { ssr: false },
@@ -51,7 +56,7 @@ const desktopNavLinks: readonly NavLink[] = [
   {
     label: "Industries",
     href: "/manufacturing",
-    match: ["/manufacturing"],
+    match: ["/manufacturing", "/financial-services"],
   },
   { label: "About", href: "/about" },
   { label: "Insights", href: "/insights" },
@@ -82,8 +87,10 @@ export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [solutionsOpen, setSolutionsOpen] = useState(false);
+  const [industriesOpen, setIndustriesOpen] = useState(false);
   const chromeRef = useRef<HTMLElement>(null);
   const solutionsTriggerRef = useRef<HTMLButtonElement>(null);
+  const industriesTriggerRef = useRef<HTMLButtonElement>(null);
   const mobileTriggerRef = useRef<HTMLButtonElement>(null);
   const pathname = usePathname();
 
@@ -98,6 +105,7 @@ export function Header() {
     const frame = requestAnimationFrame(() => {
       setMenuOpen(false);
       setSolutionsOpen(false);
+      setIndustriesOpen(false);
     });
 
     return () => cancelAnimationFrame(frame);
@@ -111,18 +119,25 @@ export function Header() {
   }, [menuOpen]);
 
   useEffect(() => {
-    if (!solutionsOpen) return;
+    if (!solutionsOpen && !industriesOpen) return;
 
     const onPointerDown = (event: PointerEvent) => {
       if (!isNodeInside(chromeRef.current, event.target)) {
         setSolutionsOpen(false);
+        setIndustriesOpen(false);
       }
     };
 
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        setSolutionsOpen(false);
-        solutionsTriggerRef.current?.focus();
+        if (solutionsOpen) {
+          setSolutionsOpen(false);
+          solutionsTriggerRef.current?.focus();
+        }
+        if (industriesOpen) {
+          setIndustriesOpen(false);
+          industriesTriggerRef.current?.focus();
+        }
       }
     };
 
@@ -133,7 +148,7 @@ export function Header() {
       document.removeEventListener("pointerdown", onPointerDown);
       document.removeEventListener("keydown", onKeyDown);
     };
-  }, [solutionsOpen]);
+  }, [solutionsOpen, industriesOpen]);
 
   function closeMobileMenu() {
     setMenuOpen(false);
@@ -144,16 +159,20 @@ export function Header() {
     <>
       <header
         ref={chromeRef}
-        onMouseLeave={() => setSolutionsOpen(false)}
+        onMouseLeave={() => {
+          setSolutionsOpen(false);
+          setIndustriesOpen(false);
+        }}
         onBlur={(event) => {
           if (!isNodeInside(event.currentTarget, event.relatedTarget)) {
             setSolutionsOpen(false);
+            setIndustriesOpen(false);
           }
         }}
         className={`fixed left-0 right-0 z-50 border-b transition-[top,background-color,backdrop-filter,border-color] duration-300 ease-out ${
           scrolled || menuOpen ? "top-0" : "top-8"
         } ${
-          scrolled || menuOpen || solutionsOpen
+          scrolled || menuOpen || solutionsOpen || industriesOpen
             ? "border-[var(--border-subtle)] bg-bg-elevated/80 backdrop-blur-md"
             : "border-transparent bg-transparent"
         }`}
@@ -186,13 +205,54 @@ export function Header() {
                     aria-current={active ? "page" : undefined}
                     aria-expanded={solutionsOpen}
                     aria-controls="solutions-mega-menu"
-                    onMouseEnter={() => setSolutionsOpen(true)}
-                    onFocus={() => setSolutionsOpen(true)}
+                    onMouseEnter={() => {
+                      setSolutionsOpen(true);
+                      setIndustriesOpen(false);
+                    }}
+                    onFocus={() => {
+                      setSolutionsOpen(true);
+                      setIndustriesOpen(false);
+                    }}
                     onClick={() => setSolutionsOpen((current) => !current)}
                     onKeyDown={(event) => {
                       if (event.key === "Enter" || event.key === " ") {
                         event.preventDefault();
                         setSolutionsOpen(true);
+                      }
+                    }}
+                    className={`relative px-3 py-2 text-sm font-medium transition-colors duration-[var(--dur-base)] ease-[var(--ease-out)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base ${
+                      active
+                        ? "text-text-primary after:absolute after:inset-x-3 after:bottom-0 after:h-0.5 after:bg-brand"
+                        : "text-text-secondary hover:text-text-primary"
+                    }`}
+                  >
+                    {link.label}
+                  </button>
+                );
+              }
+
+              if (link.label === "Industries") {
+                return (
+                  <button
+                    key={link.label}
+                    ref={industriesTriggerRef}
+                    type="button"
+                    aria-current={active ? "page" : undefined}
+                    aria-expanded={industriesOpen}
+                    aria-controls="industries-menu"
+                    onMouseEnter={() => {
+                      setIndustriesOpen(true);
+                      setSolutionsOpen(false);
+                    }}
+                    onFocus={() => {
+                      setIndustriesOpen(true);
+                      setSolutionsOpen(false);
+                    }}
+                    onClick={() => setIndustriesOpen((current) => !current)}
+                    onKeyDown={(event) => {
+                      if (event.key === "Enter" || event.key === " ") {
+                        event.preventDefault();
+                        setIndustriesOpen(true);
                       }
                     }}
                     className={`relative px-3 py-2 text-sm font-medium transition-colors duration-[var(--dur-base)] ease-[var(--ease-out)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base ${
@@ -253,6 +313,13 @@ export function Header() {
           <SolutionsMegaMenu
             pathname={pathname}
             onNavigate={() => setSolutionsOpen(false)}
+          />
+        ) : null}
+
+        {industriesOpen ? (
+          <IndustriesMenu
+            pathname={pathname}
+            onNavigate={() => setIndustriesOpen(false)}
           />
         ) : null}
       </header>

@@ -8,17 +8,23 @@ import type { ManufacturingProofGroup } from "@/lib/constants";
 
 export function ManufacturingPressure({
   groups,
+  eyebrow = "Operating pressure",
+  title = "Manufacturing AI Starts With Margin, Throughput, and Risk",
+  description = "The first step is not picking a model. It is identifying the operating decisions where finance and plant signals are late, fragmented, or too manual to trust at speed.",
 }: {
   groups: readonly ManufacturingProofGroup[];
+  eyebrow?: string;
+  title?: string;
+  description?: string;
 }) {
   return (
     <section className="py-24 md:py-32 bg-bg-surface">
       <div className="mx-auto max-w-7xl px-6 md:px-8">
         <ScrollReveal>
           <SectionHeading
-            eyebrow="Operating pressure"
-            title="Manufacturing AI Starts With Margin, Throughput, and Risk"
-            description="The first step is not picking a model. It is identifying the operating decisions where finance and plant signals are late, fragmented, or too manual to trust at speed."
+            eyebrow={eyebrow}
+            title={title}
+            description={description}
           />
         </ScrollReveal>
 
@@ -116,17 +122,23 @@ export function ManufacturingAssessment({
 
 export function ManufacturingGovernance({
   groups,
+  eyebrow = "Governance",
+  title = "Built for Manufacturing Controls",
+  description = "ITECS designs manufacturing AI around the client's existing IT, security, approval, and finance control boundaries.",
 }: {
   groups: readonly ManufacturingProofGroup[];
+  eyebrow?: string;
+  title?: string;
+  description?: string;
 }) {
   return (
     <section className="py-24 md:py-32">
       <div className="mx-auto max-w-6xl px-6 md:px-8">
         <ScrollReveal>
           <SectionHeading
-            eyebrow="Governance"
-            title="Built for Manufacturing Controls"
-            description="ITECS designs manufacturing AI around the client's existing IT, security, approval, and finance control boundaries."
+            eyebrow={eyebrow}
+            title={title}
+            description={description}
           />
         </ScrollReveal>
 

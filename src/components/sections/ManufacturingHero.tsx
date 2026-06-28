@@ -1,9 +1,16 @@
 "use client";
 
-import { Factory, ShieldCheck } from "lucide-react";
+import { Factory, Landmark, ShieldCheck, type LucideIcon } from "lucide-react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { Eyebrow, Hex } from "@/components/ui/Motifs";
+
+// Icon is resolved by name so server components can select it without passing
+// a function component across the server/client boundary.
+const heroIconMap: Record<string, LucideIcon> = {
+  Factory,
+  Landmark,
+};
 
 interface ManufacturingHeroProps {
   eyebrow: string;
@@ -15,6 +22,9 @@ interface ManufacturingHeroProps {
   secondaryCta: string;
   secondaryCtaHref: string;
   stats: readonly { value: string; label: string }[];
+  iconName?: string;
+  signalLabel?: string;
+  signalSublabel?: string;
 }
 
 export function ManufacturingHero({
@@ -27,7 +37,11 @@ export function ManufacturingHero({
   secondaryCta,
   secondaryCtaHref,
   stats,
+  iconName = "Factory",
+  signalLabel = "Manufacturing signal map",
+  signalSublabel = "Finance + operations + IT",
 }: ManufacturingHeroProps) {
+  const Icon = heroIconMap[iconName] ?? Factory;
   return (
     <section className="mx-auto max-w-7xl px-6 pt-28 pb-12 md:px-8 md:pt-32 md:pb-16">
       <div
@@ -87,14 +101,14 @@ export function ManufacturingHero({
               >
                 <div className="flex items-center gap-3">
                   <Hex className="h-10 w-10 bg-itecs-blue text-white">
-                    <Factory className="h-5 w-5" />
+                    <Icon className="h-5 w-5" />
                   </Hex>
                   <div>
                     <p className="text-sm font-medium text-white">
-                      Manufacturing signal map
+                      {signalLabel}
                     </p>
                     <p className="font-mono text-xs uppercase tracking-[0.05em] text-[#8497a6]">
-                      Finance + operations + IT
+                      {signalSublabel}
                     </p>
                   </div>
                 </div>

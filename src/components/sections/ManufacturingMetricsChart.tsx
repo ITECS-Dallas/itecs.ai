@@ -22,8 +22,12 @@ const barToneClasses = {
 
 export function ManufacturingMetricsChart({
   chart,
+  bridgeEyebrow = "Exposure bridge",
+  bridgeTitle = "PPV and margin drivers",
 }: {
   chart: ManufacturingMetricChart;
+  bridgeEyebrow?: string;
+  bridgeTitle?: string;
 }) {
   return (
     <section className="py-24 md:py-32">
@@ -42,10 +46,10 @@ export function ManufacturingMetricsChart({
               <div className="mb-6 flex items-center justify-between border-b border-[var(--border-subtle)] pb-4">
                 <div>
                   <p className="font-mono text-xs uppercase tracking-[0.05em] text-text-dim">
-                    Exposure bridge
+                    {bridgeEyebrow}
                   </p>
                   <h3 className="mt-1 text-xl font-light text-text-primary">
-                    PPV and margin drivers
+                    {bridgeTitle}
                   </h3>
                 </div>
                 <div className="hidden items-center gap-2 text-xs text-text-dim sm:flex">

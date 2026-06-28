@@ -16,10 +16,15 @@ import {
   Brain,
   Building2,
   ChevronDown,
+  Coins,
   Database,
   Factory,
+  FileSearch,
+  Gauge,
   GraduationCap,
   Headset,
+  Landmark,
+  LineChart,
   Search,
   ServerCog,
   ShieldCheck,
@@ -145,30 +150,72 @@ const solutionsMegaColumns: MenuColumn[] = [
   },
 ];
 
-const industryLinks: MenuItem[] = [
+const industryColumns: MenuColumn[] = [
   {
-    label: "Manufacturing AI",
-    href: "/manufacturing",
+    title: "Manufacturing",
     description: "Finance, plant, supply chain, and operating intelligence.",
-    icon: Factory,
+    items: [
+      {
+        label: "Manufacturing AI",
+        href: "/manufacturing",
+        description: "Finance, plant, supply chain, and operating intelligence.",
+        icon: Factory,
+      },
+      {
+        label: "PPV Agent",
+        href: "/manufacturing/ppv-agent",
+        description: "Purchase price variance and commodity cost intelligence.",
+        icon: Database,
+      },
+      {
+        label: "Demand & S&OP",
+        href: "/manufacturing/demand-forecasting-sop-ai",
+        description: "Forecasting and planning workflows for manufacturers.",
+        icon: Workflow,
+      },
+      {
+        label: "Quality & Traceability",
+        href: "/manufacturing/quality-traceability-ai",
+        description: "Root-cause and traceability intelligence.",
+        icon: ShieldCheck,
+      },
+    ],
   },
   {
-    label: "PPV Agent",
-    href: "/manufacturing/ppv-agent",
-    description: "Purchase price variance and commodity cost intelligence.",
-    icon: Database,
-  },
-  {
-    label: "Demand & S&OP",
-    href: "/manufacturing/demand-forecasting-sop-ai",
-    description: "Forecasting and planning workflows for manufacturers.",
-    icon: Workflow,
-  },
-  {
-    label: "Quality & Traceability",
-    href: "/manufacturing/quality-traceability-ai",
-    description: "Root-cause and traceability intelligence.",
-    icon: ShieldCheck,
+    title: "Financial Services",
+    description: "Lending, advisory, and restructuring intelligence.",
+    items: [
+      {
+        label: "Financial Services AI",
+        href: "/financial-services",
+        description: "Governed AI for lenders and advisory firms.",
+        icon: Landmark,
+      },
+      {
+        label: "Field Exam Analyzer",
+        href: "/financial-services/field-examination-analyzer",
+        description: "Collateral roll-forward and working-capital exams.",
+        icon: FileSearch,
+      },
+      {
+        label: "Cash Flow Modeling",
+        href: "/financial-services/cash-flow-model-builder",
+        description: "Comprehensive forecasts from exam output.",
+        icon: LineChart,
+      },
+      {
+        label: "Portfolio Monitoring",
+        href: "/financial-services/portfolio-monitoring-covenant-ai",
+        description: "Covenant and collateral early-warning.",
+        icon: Gauge,
+      },
+      {
+        label: "AR Collections",
+        href: "/financial-services/ar-collections-receivables-ai",
+        description: "Receivables intelligence and reconciliation.",
+        icon: Coins,
+      },
+    ],
   },
 ];
 
@@ -291,6 +338,68 @@ export function SolutionsMegaMenu({
             </div>
           </div>
         </aside>
+      </div>
+    </div>
+  );
+}
+
+export function IndustriesMenu({
+  pathname,
+  onNavigate,
+}: {
+  pathname: string;
+  onNavigate: () => void;
+}) {
+  return (
+    <div
+      id="industries-menu"
+      role="region"
+      aria-label="Industries menu"
+      className="absolute left-0 top-full hidden w-full border-y border-[var(--border-subtle)] bg-bg-elevated/95 shadow-e3 backdrop-blur-md lg:block"
+    >
+      <div className="mx-auto grid max-w-7xl grid-cols-2 gap-8 px-8 py-6">
+        {industryColumns.map((column) => (
+          <section key={column.title}>
+            <p className="font-mono text-xs uppercase text-brand-accent">
+              {column.title}
+            </p>
+            <p className="mt-2 text-sm leading-relaxed text-text-tertiary">
+              {column.description}
+            </p>
+            <div className="mt-5 grid grid-cols-1 gap-1.5 sm:grid-cols-2">
+              {column.items.map((item) => {
+                const Icon = item.icon;
+                const active = routeMatches(pathname, item.href);
+
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={onNavigate}
+                    aria-current={active ? "page" : undefined}
+                    className={`group/item grid min-h-[72px] grid-cols-[2.75rem_1fr] gap-3 rounded-md border px-3 py-3 transition-[background-color,border-color,color] duration-[var(--dur-base)] ease-[var(--ease-out)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-elevated ${
+                      active
+                        ? "border-[var(--border-strong)] bg-brand-subtle text-text-primary"
+                        : "border-transparent text-text-secondary hover:border-[var(--border-default)] hover:bg-bg-surface hover:text-text-primary"
+                    }`}
+                  >
+                    <span className="flex h-11 w-11 items-center justify-center rounded-md bg-brand-subtle text-brand">
+                      <Icon aria-hidden="true" className="h-5 w-5" />
+                    </span>
+                    <span>
+                      <span className="block text-sm font-semibold">
+                        {item.label}
+                      </span>
+                      <span className="mt-1 block text-xs leading-relaxed text-text-tertiary">
+                        {item.description}
+                      </span>
+                    </span>
+                  </Link>
+                );
+              })}
+            </div>
+          </section>
+        ))}
       </div>
     </div>
   );
@@ -503,14 +612,16 @@ export function MobileNavDrawer({
               hidden={!openSections.industries}
               className="grid gap-2 border-t border-[var(--border-subtle)] p-3"
             >
-              {industryLinks.map((item) => (
-                <MobileMenuItem
-                  key={item.href}
-                  item={item}
-                  pathname={pathname}
-                  onNavigate={onClose}
-                />
-              ))}
+              {industryColumns
+                .flatMap((column) => column.items)
+                .map((item) => (
+                  <MobileMenuItem
+                    key={item.href}
+                    item={item}
+                    pathname={pathname}
+                    onNavigate={onClose}
+                  />
+                ))}
             </div>
           </div>
         </nav>

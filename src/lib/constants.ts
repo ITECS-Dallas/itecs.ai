@@ -7852,3 +7852,1491 @@ export function getManufacturingSpokePage(
   }
   return page;
 }
+
+/* ----------------------------------------------------------------------------
+ * Financial Services vertical
+ *
+ * Vertical-neutral aliases let the financial-services pages reuse the same
+ * typed content model and prop-driven section components as manufacturing.
+ * ------------------------------------------------------------------------- */
+
+export type VerticalPageContent = ManufacturingPageContent;
+export type VerticalSpokePageContent = ManufacturingSpokePageContent;
+export type FlagshipUseCaseContent = PPVAgentUseCaseContent;
+
+export const FINANCIAL_SERVICES_SIGNAL_CHART: ManufacturingMetricChart = {
+  eyebrow: "Example portfolio signal board",
+  title: "The Metrics a Financial-Services AI System Should Make Visible",
+  description:
+    "A financial-services AI program should give principals a daily view of collateral availability, covenant headroom, recoverable items, and where senior capacity is being spent. These example figures are illustrative; discovery replaces them with the firm's actual borrower, portfolio, and engagement data.",
+  kpis: [
+    {
+      label: "Collateral availability at risk",
+      value: "$2.4M",
+      detail: "Borrowers trending toward over-advance in the next 30 days",
+      tone: "risk",
+    },
+    {
+      label: "Recoverable or correctable items",
+      value: "$640K",
+      detail: "Ineligibles likely to clear with documentation or follow-up",
+      tone: "recoverable",
+    },
+    {
+      label: "Covenant headroom",
+      value: "0.4x",
+      detail: "Tightest fixed-charge cushion across the active book",
+      tone: "watch",
+    },
+    {
+      label: "Senior capacity freed",
+      value: "38%",
+      detail: "Exam and model assembly time shifted to review and judgment",
+      tone: "stable",
+    },
+  ],
+  drivers: [
+    {
+      label: "Borrower collateral erosion",
+      value: "+$1.40M",
+      width: 90,
+      tone: "risk",
+    },
+    {
+      label: "Dilution and ineligibles",
+      value: "+$520K",
+      width: 60,
+      tone: "risk",
+    },
+    {
+      label: "Aging receivables drift",
+      value: "+$240K",
+      width: 38,
+      tone: "watch",
+    },
+    {
+      label: "Concentration reserve relief",
+      value: "-$180K",
+      width: 30,
+      tone: "recoverable",
+    },
+    {
+      label: "Recoverable ineligible recapture",
+      value: "-$420K",
+      width: 58,
+      tone: "recoverable",
+    },
+  ],
+  notes: [
+    "Ties exposure to borrower, collateral type, and covenant terms",
+    "Separates true collateral erosion from recoverable or correctable items",
+    "Routes advance-rate, reserve, and reporting actions for human approval",
+  ],
+};
+
+export const FIELD_EXAM_COLLATERAL_WATERFALL: PPVExposureWaterfall = {
+  eyebrow: "Collateral roll-forward model",
+  title: "From Borrower Collateral to Lender Availability",
+  description:
+    "This illustrative roll-forward shows how the analyzer moves from gross pledged collateral to net borrowing availability, separating true ineligibles from recoverable items and surfacing over-advance risk before funding.",
+  stages: [
+    {
+      label: "Gross AR and inventory pledged",
+      value: "$12.4M",
+      detail: "Borrower-reported collateral before exam adjustments",
+      height: 92,
+      direction: "increase",
+      tone: "watch",
+    },
+    {
+      label: "Ineligibles and past-due",
+      value: "-$2.1M",
+      detail: "Cross-age, foreign, intercompany, and aged balances removed",
+      height: 60,
+      direction: "decrease",
+      tone: "risk",
+    },
+    {
+      label: "Dilution and concentration reserves",
+      value: "-$1.3M",
+      detail: "Credit memos, returns, and customer concentration limits",
+      height: 44,
+      direction: "decrease",
+      tone: "risk",
+    },
+    {
+      label: "Recoverable or correctable items",
+      value: "+$640K",
+      detail: "Ineligibles likely to clear with documentation or follow-up",
+      height: 50,
+      direction: "increase",
+      tone: "recoverable",
+    },
+    {
+      label: "Advance rate applied",
+      value: "-$1.9M",
+      detail: "Eligible collateral stepped down to contractual advance rates",
+      height: 56,
+      direction: "decrease",
+      tone: "controlled",
+    },
+    {
+      label: "Net borrowing availability",
+      value: "$7.7M",
+      detail: "Defensible availability after exam adjustments and reserves",
+      height: 78,
+      direction: "increase",
+      tone: "controlled",
+    },
+  ],
+  windows: [
+    {
+      label: "Current availability",
+      exposure: "$7.7M",
+      detail: "Net of ineligibles, reserves, and advance-rate haircuts",
+      tone: "watch",
+    },
+    {
+      label: "Over-advance risk",
+      exposure: "$480K",
+      detail: "Projected shortfall if aging and dilution trends continue",
+      tone: "risk",
+    },
+    {
+      label: "Recoverable review",
+      exposure: "$640K",
+      detail: "Ineligible items finance and the borrower may be able to clear",
+      tone: "recoverable",
+    },
+  ],
+  decisions: [
+    {
+      action: "Validate ineligible classifications",
+      owner: "Field examiner",
+      timing: "This week",
+      detail:
+        "Confirm cross-age, concentration, and past-due treatments against the loan agreement before the report is issued.",
+    },
+    {
+      action: "Recompute advance rates and reserves",
+      owner: "Credit / underwriting",
+      timing: "48 hours",
+      detail:
+        "Reconcile the agent's eligible-collateral math against the borrowing base certificate and approved advance rates.",
+    },
+    {
+      action: "Confirm availability before funding",
+      owner: "Portfolio manager",
+      timing: "Before next draw",
+      detail:
+        "Review net availability and over-advance risk so the next funding decision is backed by current collateral.",
+    },
+  ],
+};
+
+export const FINANCIAL_SERVICES_VERTICAL: VerticalPageContent = {
+  title: "AI Solutions for Financial Services Firms",
+  shortTitle: "Financial Services AI",
+  description:
+    "Secure financial-services AI for lenders, asset-based lenders, and advisory and restructuring firms—governed agents that turn borrower, collateral, portfolio, and engagement data into faster, defensible analysis.",
+  href: "/financial-services",
+  h1: "AI Solutions for Financial Services",
+  eyebrow: "Financial Services AI from the ITECS Dallas team",
+  heroSummary:
+    "ITECS helps lenders, asset-based lenders, and advisory firms turn borrower financials, collateral data, portfolio reporting, and engagement files into governed AI workflows that free senior capacity, speed turnaround, and surface risk earlier—without sending confidential data outside a protected boundary.",
+  longDescription:
+    "Financial-services leaders do not need generic AI demos. They need systems that can read messy borrower files, explain collateral and covenant movement, respect approval controls, and keep every figure traceable to its source—built for confidential, audit-sensitive work where the output may be examined by lenders, courts, or in litigation support.",
+  primaryCta: "Financial Services AI Readiness Assessment",
+  primaryCtaHref: "/contact",
+  secondaryCta: "Explore the Field Examination Analyzer",
+  secondaryCtaHref: "/financial-services/field-examination-analyzer",
+  keywords: [
+    "financial services AI solutions",
+    "AI for asset-based lending",
+    "AI for lenders",
+    "AI for restructuring advisory",
+    "financial services AI readiness assessment",
+    "AI for commercial lending",
+    "financial services AI consulting",
+  ],
+  stats: [
+    { value: "Borrower", label: "Financials, collateral, and exam data" },
+    { value: "Portfolio", label: "Covenant, risk, and monitoring signals" },
+    { value: "Engagement", label: "Workpapers, models, and reporting" },
+  ],
+  metricChart: FINANCIAL_SERVICES_SIGNAL_CHART,
+  pressureGroups: [
+    {
+      title: "Credit and collateral pressure",
+      description:
+        "Lending and credit teams are asked to defend availability and risk while collateral, dilution, concentrations, and covenant headroom move faster than periodic reporting.",
+      points: [
+        "Over-advance and ineligible-collateral risk between exams",
+        "Dilution, cross-age, and concentration effects on the borrowing base",
+        "Covenant headroom eroding before the next reporting cycle",
+        "Troubled credits detected late in the monitoring process",
+      ],
+    },
+    {
+      title: "Advisory throughput pressure",
+      description:
+        "Advisory, turnaround, and finance professionals bill senior judgment, yet much of their time is spent assembling exams, models, appraisals, and recurring reports.",
+      points: [
+        "Field exams and collateral roll-forwards rebuilt by hand each engagement",
+        "Cash flow models reassembled when most inputs already exist",
+        "13-week models and wind-down schedules maintained manually",
+        "Proposals and engagement letters re-drafted from scratch",
+      ],
+    },
+    {
+      title: "Data and confidentiality pressure",
+      description:
+        "AI only becomes useful in financial services when distressed-borrower, lender-collateral, and bankruptcy-sensitive data can be trusted, governed, and kept inside a protected boundary.",
+      points: [
+        "Borrower agings, GL, inventory, and bank-statement data in mixed formats",
+        "Prior workpapers, models, and appraisals scattered across engagements",
+        "Confidential, audit-sensitive output that must stay traceable to source",
+        "Role-based access, audit logs, and human-approval boundaries",
+      ],
+    },
+  ],
+  useCases: [
+    {
+      title: "Field Examination & Collateral Roll-Forward",
+      description:
+        "Ingest borrower agings, inventory, GL, and bank statements and produce the standard working-capital exam—roll-forward, dilution, turnover, ineligibles, and a first-draft executive report.",
+      outcome: "Faster exams and freed senior capacity",
+      icon: "FileSearch",
+      href: "/financial-services/field-examination-analyzer",
+      ctaLabel: "View field exam use case",
+    },
+    {
+      title: "Comprehensive Cash Flow Modeling",
+      description:
+        "Assemble the full financial-statement forecast—balance sheet, P&L with EBITDA, working-capital roll-forward, and borrowing-base availability—from exam output and prior reports.",
+      outcome: "Hours to a defensible first draft, not days",
+      icon: "LineChart",
+      href: "/financial-services/cash-flow-model-builder",
+      ctaLabel: "View cash flow modeling use case",
+    },
+    {
+      title: "Portfolio Monitoring & Covenant Early-Warning",
+      description:
+        "Continuously watch borrower reporting for negative trends, covenant-breach risk, and deteriorating collateral so periodic review becomes continuous signal.",
+      outcome: "Troubled credits surfaced earlier",
+      icon: "Gauge",
+      href: "/financial-services/portfolio-monitoring-covenant-ai",
+      ctaLabel: "View monitoring use case",
+    },
+    {
+      title: "AR Collections & Receivables Intelligence",
+      description:
+        "Benchmark collection days, surface systemic credit and process issues, prioritize accounts, and maintain the weekly receivables roll-forward and reconciliation.",
+      outcome: "Faster diagnosis and cleaner reconciliation",
+      icon: "Coins",
+      href: "/financial-services/ar-collections-receivables-ai",
+      ctaLabel: "View collections use case",
+    },
+    {
+      title: "Borrowing Base & Eligibility Validation",
+      description:
+        "Validate borrower-submitted borrowing base certificates against underlying detail, recompute eligible collateral and advance rates, and flag over-advances and formula errors.",
+      outcome: "Over-advance risk caught on a recurring cadence",
+      icon: "BadgeDollarSign",
+    },
+    {
+      title: "13-Week Cash Flow & Restructuring Scenarios",
+      description:
+        "Build and maintain the 13-week model used in CRO, CFO, and bankruptcy engagements, and model restructuring options—refinance, asset sale, right-size, or wind-down.",
+      outcome: "Defensible scenarios for stakeholders",
+      icon: "Workflow",
+    },
+    {
+      title: "Appraisal & Asset-Recovery (NOLV) Intelligence",
+      description:
+        "Structure inventory and equipment listings, research comparables, run gross-margin and recovery analysis, and accelerate NOLV, FLV, OLV, and FMV opinions.",
+      outcome: "Less appraisal prep, appraiser stays central",
+      icon: "PackageSearch",
+    },
+    {
+      title: "Wind-Down & Liquidation Reporting",
+      description:
+        "Draft the recurring reporting wind-downs generate—DIP and cash-collateral budgets, budget-to-plan tracking, loan-to-value tracking, and bankruptcy schedules.",
+      outcome: "Lower reporting effort during wind-downs",
+      icon: "ScrollText",
+    },
+    {
+      title: "Engagement Knowledge Base & Proposal Drafter",
+      description:
+        "A searchable, permissioned memory across past exams, models, and appraisals, plus an assistant that drafts scoped proposals and engagement letters from a short brief.",
+      outcome: "Less time re-finding work, faster proposals",
+      icon: "BookOpenCheck",
+    },
+    {
+      title: "Commodity & Market Report Drafting",
+      description:
+        "Gather pricing, compute trailing trends, and draft recurring commodity or market reports for client distribution—turning a standing production task into a reviewed draft.",
+      outcome: "Consistent reports with less monthly effort",
+      icon: "TrendingUp",
+    },
+    {
+      title: "Executive & Portfolio Briefing",
+      description:
+        "A governed daily or weekly digest across active engagements—borrowers trending negative, upcoming deadlines, covenant and collateral risks—with every figure traceable.",
+      outcome: "Less principal time, faster decisions",
+      icon: "Network",
+    },
+    {
+      title: "Finance & Payment Anomaly Detection",
+      description:
+        "Surface duplicate payments, vendor master drift, unusual terms, and approval exceptions across borrower or firm finance data before they become problems.",
+      outcome: "Cleaner finance operations and fewer leakage points",
+      icon: "ShieldCheck",
+    },
+  ],
+  assessment: {
+    eyebrow: "Start here",
+    title: "Financial Services AI Readiness Assessment",
+    description:
+      "ITECS starts by mapping the business case, data readiness, integration path, and governance model before recommending an agent build.",
+    steps: [
+      {
+        title: "Map senior priorities",
+        description:
+          "Identify the lending, credit, advisory, and finance decisions where freeing senior judgment or faster turnaround would change outcomes.",
+      },
+      {
+        title: "Review the data landscape",
+        description:
+          "Assess borrower agings, GL, inventory, bank statements, prior workpapers, models, and contracts for ownership, cleanliness, access, and gaps.",
+      },
+      {
+        title: "Rank use cases by economics",
+        description:
+          "Prioritize use cases by senior hours freed, turnaround, risk reduction, and implementation feasibility—starting where data already arrives.",
+      },
+      {
+        title: "Define the governed path",
+        description:
+          "Document security, approval, audit, deployment, and confidentiality requirements before any production AI system is built.",
+      },
+    ],
+  },
+  governance: [
+    {
+      title: "Read broadly, act carefully",
+      description:
+        "Financial-services AI can read across borrower and engagement data, but sensitive actions need explicit human approval and audit history.",
+      points: [
+        "No autonomous client communications, collateral-record changes, or finalized valuations",
+        "Role-based access aligned to the firm's identity provider",
+        "Recommendation logs that preserve assumptions, source data, and reviewer decisions",
+      ],
+    },
+    {
+      title: "Built for confidential financial work",
+      description:
+        "ITECS designs around the systems financial firms already run, on a managed-security foundation built for distressed-company and lender-collateral data.",
+      points: [
+        "Business and enterprise tiers that contractually isolate firm data and never train on it",
+        "Audit-ready output for work that may be examined by lenders, courts, or in litigation support",
+        "Delivered on ITECS's SOC 2 Type II, ISO 27001, and CMMC-aligned practice",
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: "What types of financial-services firms can use ITECS AI services?",
+      answer:
+        "ITECS works with lenders, asset-based lenders, commercial finance groups, and advisory, turnaround, and restructuring firms. The hub examples cover field exams, collateral roll-forwards, cash flow models, portfolio monitoring, appraisals, AR management, and recurring reporting.",
+    },
+    {
+      question: "Is this only for firms in Dallas?",
+      answer:
+        "No. The offer is national. Dallas is used as a credibility signal because ITECS is a Dallas-based MSP with more than two decades of infrastructure, cybersecurity, and managed-security experience.",
+    },
+    {
+      question: "How do you handle confidential borrower and engagement data?",
+      answer:
+        "Everything is built for confidential financial work. ITECS uses business and enterprise tiers that contractually isolate the firm's data and never train on it, with role-based access, audit logs, and human approval before sensitive actions, on a SOC 2 Type II and ISO 27001 foundation.",
+    },
+    {
+      question: "Do we need clean, integrated data before starting?",
+      answer:
+        "No. The readiness assessment determines whether existing borrower agings, GL, inventory, bank statements, prior workpapers, and contracts are enough for a pilot, or whether targeted cleanup should happen first.",
+    },
+    {
+      question: "What is the best first AI use case for a financial firm?",
+      answer:
+        "The best first use case is the one with clean enough data, a senior owner, and measurable payback. For many asset-based lenders and advisory firms, the field examination analyzer is a strong first candidate because the data already arrives and the output feeds the cash flow model.",
+    },
+  ],
+};
+
+export const FIELD_EXAM_ANALYZER_USE_CASE: FlagshipUseCaseContent = {
+  title: "Field Examination Analyzer & Collateral Roll-Forward",
+  shortTitle: "Field Exam Analyzer",
+  description:
+    "Governed field examination analyzer for asset-based lending—collateral roll-forward, dilution, turnover, ineligibles, borrowing-base availability, and first-draft executive reports.",
+  href: "/financial-services/field-examination-analyzer",
+  h1: "Field Examination Analyzer for Asset-Based Lending",
+  eyebrow: "Collateral Roll-Forward and Working-Capital Exam Intelligence",
+  heroSummary:
+    "The field examination analyzer ingests borrower agings, inventory, GL, and bank statements and produces the standard working-capital exam—roll-forward, dilution, turnover, ineligibles, concentrations, and a first-draft executive report—so examiners move straight to findings and judgment.",
+  longDescription:
+    "Built for asset-based lenders and advisory firms, the analyzer turns raw borrower data and prior workpapers into traceable collateral analysis and net borrowing availability. It drafts; the examiner reviews, adjusts, and signs—and every figure traces back to its source document.",
+  primaryCta: "Schedule a Field Exam Analyzer Workshop",
+  primaryCtaHref: "/contact",
+  secondaryCta: "Start with a Financial Services AI Readiness Assessment",
+  secondaryCtaHref: "/financial-services",
+  keywords: [
+    "field examination analyzer",
+    "asset-based lending AI",
+    "collateral roll-forward AI",
+    "borrowing base AI",
+    "field exam automation",
+    "ABL field exam software",
+    "working capital exam AI",
+  ],
+  stats: [
+    { value: "Borrower", label: "Agings, inventory, GL, and bank data" },
+    { value: "Hours", label: "To a first-draft executive report" },
+    { value: "Human", label: "Review before the exam is issued" },
+  ],
+  exposureWaterfall: FIELD_EXAM_COLLATERAL_WATERFALL,
+  capabilities: [
+    {
+      title: "Collateral roll-forward automation",
+      description:
+        "Normalize borrower data and run the standard working-capital exam so examiners start from findings instead of data prep.",
+      points: [
+        "AR collateral roll-forward, turnover, and dilution analysis",
+        "Ineligibles, past-dues, cross-age, and concentration testing",
+        "Inventory turnover and gross-margin testing with source traceability",
+      ],
+    },
+    {
+      title: "Availability and over-advance detection",
+      description:
+        "Step eligible collateral down to advance rates and surface over-advance risk before the next funding decision.",
+      points: [
+        "Eligible-collateral and advance-rate recomputation",
+        "Borrowing-base certificate validation against underlying detail",
+        "Over-advance and reserve-adequacy flags with supporting evidence",
+      ],
+    },
+    {
+      title: "Exam-to-report and model handoff",
+      description:
+        "Produce a structured workpaper set and a first-draft executive report that also feeds the comprehensive cash flow model.",
+      points: [
+        "First-draft executive report in the firm's format",
+        "Structured workpaper set ready for reviewer adjustment",
+        "Clean exam output that shortens the downstream cash flow model",
+      ],
+    },
+  ],
+  dataInputs: [
+    {
+      label: "AR and AP agings",
+      description:
+        "Detailed receivable and payable agings with customer, terms, cross-age, and past-due detail.",
+    },
+    {
+      label: "Inventory listings",
+      description:
+        "Raw, WIP, and finished-goods detail with categories, valuation method, and slow-moving or obsolete flags.",
+    },
+    {
+      label: "General ledger",
+      description:
+        "Trial balance and GL detail to reconcile collateral against the borrower's books.",
+    },
+    {
+      label: "Bank statements",
+      description:
+        "Cash activity and collections to support dilution, turnover, and collateral-to-cash reconciliation.",
+    },
+    {
+      label: "Prior workpapers",
+      description:
+        "Previous exams, eligibility definitions, and report formats that supply most of the structure for the next exam.",
+    },
+    {
+      label: "Borrowing base certificates",
+      description:
+        "Borrower-submitted certificates and loan-agreement terms for eligibility, advance rates, and reserves.",
+    },
+  ],
+  scenario: {
+    title: "Anonymized asset-based lending exam scenario",
+    problem:
+      "An asset-based lender and its advisory partner want to standardize working-capital field exams across a portfolio, reproduce the roll-forward, dilution, and ineligible analysis consistently, and see availability risk before the next funding.",
+    outcome:
+      "ITECS scopes a governed field examination analyzer that connects borrower agings, inventory, GL, bank statements, and prior workpapers into a structured exam, a first-draft executive report, and net availability with over-advance flags for examiner review.",
+  },
+  workflow: [
+    {
+      title: "Ingest",
+      description:
+        "Read approved borrower agings, inventory, GL, bank statements, and prior workpapers without altering any records.",
+    },
+    {
+      title: "Normalize",
+      description:
+        "Standardize formats, map eligibility definitions, and reconcile collateral against the general ledger and cash.",
+    },
+    {
+      title: "Analyze",
+      description:
+        "Run the roll-forward, dilution, turnover, ineligible, and concentration tests with traceable assumptions.",
+    },
+    {
+      title: "Draft",
+      description:
+        "Produce the structured workpaper set, net availability, and a first-draft executive report in the firm's format.",
+    },
+    {
+      title: "Approve",
+      description:
+        "Route the exam to the examiner to review, adjust, and sign before anything is issued to the lender.",
+    },
+  ],
+  roadmap: [
+    {
+      step: "Discovery workshop",
+      description:
+        "Confirm exam methodology, eligibility definitions, report format, data sources, and the approval matrix.",
+    },
+    {
+      step: "Historical exam reproduction",
+      description:
+        "Rebuild recent exams and reconcile the analyzer's output against issued reports and workpapers.",
+    },
+    {
+      step: "Availability and over-advance model",
+      description:
+        "Add advance-rate logic, reserves, and trend signals so examiners see availability risk before funding.",
+    },
+    {
+      step: "Recommendation and review workflow",
+      description:
+        "Add human-in-the-loop review, executive-report drafting, and the handoff into the cash flow model.",
+    },
+  ],
+  comparison: [
+    {
+      label: "Exam turnaround",
+      traditional: "Days of manual data prep per exam",
+      ai: "First-draft exam in hours, examiner reviews findings",
+    },
+    {
+      label: "Consistency",
+      traditional: "Varies by examiner and engagement",
+      ai: "Standardized roll-forward, dilution, and ineligible tests",
+    },
+    {
+      label: "Availability visibility",
+      traditional: "Known at exam time only",
+      ai: "Recomputed with over-advance and reserve flags",
+    },
+    {
+      label: "Reporting",
+      traditional: "Executive report written from scratch",
+      ai: "First-draft report in the firm's format",
+    },
+    {
+      label: "Governance",
+      traditional: "Assumptions live in spreadsheets",
+      ai: "Versioned assumptions and source-traceable workpapers",
+    },
+  ],
+  governance: [
+    "The analyzer is read-heavy and write-controlled: it can analyze, draft, flag, and recommend.",
+    "It does not finalize valuations, alter collateral records, or issue reports without examiner review.",
+    "All output preserves source data, assumptions, eligibility logic, and the reviewer's decision.",
+    "Built for confidential work that may be examined by lenders, courts, or in litigation support.",
+  ],
+  faq: [
+    {
+      question: "What is a field examination in asset-based lending?",
+      answer:
+        "A field examination is a periodic review of a borrower's collateral and financial records—receivables, inventory, payables, and cash—used to validate the borrowing base, test eligibility, and confirm a lender's collateral position.",
+    },
+    {
+      question: "What does the field examination analyzer do?",
+      answer:
+        "It reads approved borrower agings, inventory, GL, and bank statements to produce the standard working-capital exam—roll-forward, dilution, turnover, ineligibles, and a first-draft executive report—for examiner review and approval.",
+    },
+    {
+      question: "Does it replace the field examiner?",
+      answer:
+        "No. The analyzer drafts the exam and surfaces findings; the examiner reviews, adjusts, and signs. Every figure traces back to its source document, and no report is issued without human approval.",
+    },
+    {
+      question: "How does it connect to the cash flow model?",
+      answer:
+        "A clean, structured exam supplies most of the inputs for the comprehensive cash flow model, so the same output that validates collateral also shortens the downstream forecast work.",
+    },
+    {
+      question: "Is our borrower data kept confidential?",
+      answer:
+        "Yes. The analyzer runs on business or enterprise tiers that contractually isolate the firm's data and never train on it, with role-based access, audit logs, and a SOC 2 Type II and ISO 27001 foundation.",
+    },
+    {
+      question: "What data is needed for a discovery workshop?",
+      answer:
+        "ITECS typically asks for exam methodology, eligibility definitions, sample reports and workpapers, AR and AP agings, inventory listings, GL detail, bank statements, and borrowing base certificates.",
+    },
+  ],
+};
+
+export const FINANCIAL_SERVICES_SPOKE_PAGES: VerticalSpokePageContent[] = [
+  {
+    slug: "cash-flow-model-builder",
+    title: "Cash Flow Modeling AI for Lenders & Advisory Firms",
+    shortTitle: "Cash Flow Modeling",
+    description:
+      "AI that assembles full financial-statement forecasts—balance sheet, P&L, EBITDA, working-capital roll-forward, and borrowing-base availability—from borrower data and prior workpapers.",
+    href: "/financial-services/cash-flow-model-builder",
+    h1: "Comprehensive Cash Flow Modeling for Financial Services",
+    eyebrow: "Financial-services AI for forecast speed",
+    heroSummary:
+      "ITECS helps lenders and advisory firms assemble comprehensive cash flow models—balance sheet, P&L with EBITDA, working-capital roll-forward, and borrowing-base availability—in hours instead of days, because a completed field exam and prior reports already supply most of the inputs.",
+    longDescription:
+      "The goal is not a prettier spreadsheet. It is a governed modeling workflow that turns existing exam output and borrower financials into a defensible forecast professionals review and sign, so senior judgment goes to the findings instead of the data assembly.",
+    primaryCta: "Plan a Cash Flow Modeling Workshop",
+    primaryCtaHref: "/contact",
+    secondaryCta: "Return to Financial Services AI",
+    secondaryCtaHref: "/financial-services",
+    keywords: [
+      "cash flow modeling AI",
+      "financial forecast automation",
+      "borrowing base availability model",
+      "advisory cash flow model",
+      "AI financial statement forecast",
+    ],
+    stats: [
+      { value: "~80%", label: "of inputs already exist after an exam" },
+      { value: "Hours", label: "to a first-draft model" },
+      { value: "Human", label: "review before delivery" },
+    ],
+    pain: {
+      eyebrow: "Modeling pressure",
+      title: "Model Assembly Buries the Senior Judgment Clients Pay For",
+      description:
+        "Advisory and lending teams often rebuild comprehensive models by hand each engagement, even when a fresh field exam and prior reports already contain most of the inputs. The assembly work crowds out the analysis.",
+      proof:
+        "A governed modeling agent should assemble the statements, reconcile the math, and flag assumptions so professionals start from a defensible draft and move straight to scenarios and findings.",
+    },
+    chart: {
+      mode: "matrix",
+      eyebrow: "Illustrative model readiness",
+      title: "How Much of the Model Already Exists",
+      description:
+        "Most of a comprehensive model is derivable from exam output and prior reports; the remaining inputs are where senior judgment belongs.",
+      summaryMetric: {
+        label: "Model build time",
+        value: "~70% less",
+        detail: "Assembly shifted to review when exam output is clean",
+      },
+      signals: [
+        {
+          label: "Field exam output",
+          value: "Ready",
+          detail: "Roll-forward, dilution, and eligibility already structured",
+          score: 90,
+          tone: "recoverable",
+        },
+        {
+          label: "Historical financials",
+          value: "Ready",
+          detail: "Balance sheet, P&L, and EBITDA history available",
+          score: 82,
+          tone: "recoverable",
+        },
+        {
+          label: "Working-capital roll-forward",
+          value: "Derived",
+          detail: "AR, inventory, and AP assembled from exam detail",
+          score: 72,
+          tone: "watch",
+        },
+        {
+          label: "Forward assumptions",
+          value: "Input needed",
+          detail: "Where professionals apply judgment and scenarios",
+          score: 44,
+          tone: "risk",
+        },
+      ],
+      notes: [
+        "Reuses exam output and prior reports instead of rebuilding from scratch",
+        "Keeps assumptions visible and source-traceable for review",
+        "Separates derivable assembly from the judgment that needs a human",
+      ],
+    },
+    capabilities: [
+      {
+        title: "Statement forecast assembly",
+        description:
+          "Build the integrated balance sheet, P&L with EBITDA, and working-capital roll-forward from exam output and historical financials.",
+        points: [
+          "Integrated three-statement structure with traceable inputs",
+          "Working-capital roll-forward derived from exam detail",
+          "First-draft model in the firm's format for review",
+        ],
+      },
+      {
+        title: "Borrowing-base and availability math",
+        description:
+          "Connect the forecast to eligible collateral and advance rates so availability moves with the model.",
+        points: [
+          "Borrowing-base availability tied to forecast collateral",
+          "Covenant and liquidity checks across the projection",
+          "Reconciliation against the field exam and prior reports",
+        ],
+      },
+      {
+        title: "Scenario and sensitivity",
+        description:
+          "Turn the base model into scenarios stakeholders can interrogate without rebuilding the workbook.",
+        points: [
+          "Upside, downside, and stress scenarios with shared assumptions",
+          "Sensitivity on margin, collections, and advance rates",
+          "Draft commentary with source-backed rationale",
+        ],
+      },
+    ],
+    scenario: {
+      title: "Anonymized cash flow modeling scenario",
+      description:
+        "An advisory firm needs to deliver a comprehensive model quickly after a field exam, without rebuilding the statements by hand each time.",
+      startingPoint:
+        "Models are reassembled in spreadsheets per engagement, even though the recent exam and prior reports already contain most of the inputs.",
+      scopedOutcome:
+        "ITECS scopes a modeling agent that assembles the statements from exam output, reconciles the math, flags assumptions, and produces a first-draft model and scenarios for professional review.",
+    },
+    dataInputs: [
+      {
+        label: "Field exam output",
+        description:
+          "Collateral roll-forward, dilution, eligibility, and turnover detail from the most recent exam.",
+      },
+      {
+        label: "Historical financials",
+        description:
+          "Balance sheet, P&L, EBITDA, and trial-balance history for the borrower or company.",
+      },
+      {
+        label: "Working-capital detail",
+        description:
+          "AR, inventory, and AP detail used to build the roll-forward and liquidity view.",
+      },
+      {
+        label: "Debt and borrowing base",
+        description:
+          "Debt schedule, advance rates, reserves, and covenant terms from the loan agreement.",
+      },
+      {
+        label: "Management assumptions",
+        description:
+          "Forward revenue, margin, capex, and collections assumptions provided by professionals.",
+      },
+    ],
+    workflow: [
+      {
+        title: "Ingest",
+        description:
+          "Read approved exam output, historical financials, and working-capital detail.",
+      },
+      {
+        title: "Assemble",
+        description:
+          "Build the integrated statements and working-capital roll-forward with traceable inputs.",
+      },
+      {
+        title: "Reconcile",
+        description:
+          "Tie the model back to the field exam, prior reports, and the borrowing base.",
+      },
+      {
+        title: "Model",
+        description:
+          "Generate scenarios and sensitivities with shared, source-backed assumptions.",
+      },
+      {
+        title: "Approve",
+        description:
+          "Route the draft model and commentary to professionals for review and sign-off.",
+      },
+    ],
+    governance: [
+      "The agent assembles and recommends, but professionals own and sign the model.",
+      "It does not deliver a model or commentary to clients without human review.",
+      "All assumptions, inputs, and reconciliations remain visible and source-traceable.",
+      "Role-based access separates engagement, credit, and client-facing views.",
+    ],
+    roadmap: [
+      {
+        step: "Model method review",
+        description:
+          "Document the firm's model structure, conventions, and the exam-to-model handoff.",
+      },
+      {
+        step: "Historical reproduction",
+        description:
+          "Rebuild a recent model and reconcile against the issued version.",
+      },
+      {
+        step: "Scenario cockpit",
+        description:
+          "Add scenarios, sensitivities, and borrowing-base availability logic.",
+      },
+      {
+        step: "Review workflow",
+        description:
+          "Embed assumptions, commentary drafts, and sign-off into the engagement cadence.",
+      },
+    ],
+    comparison: [
+      {
+        label: "Model build",
+        traditional: "Reassembled by hand each engagement",
+        ai: "Assembled from exam output with traceable inputs",
+      },
+      {
+        label: "Time to first draft",
+        traditional: "Days of spreadsheet work",
+        ai: "Hours, then professional review",
+      },
+      {
+        label: "Scenarios",
+        traditional: "Separate workbooks and versions",
+        ai: "Shared assumptions with sensitivity views",
+      },
+      {
+        label: "Governance",
+        traditional: "Assumptions buried in cells",
+        ai: "Versioned, source-traceable, and reviewed",
+      },
+    ],
+    roiStatement:
+      "The value is speed from engagement to advice: a defensible model in hours, more engagements per professional, and senior time spent on findings instead of assembly.",
+    pricingNotes: [
+      "Discovery starts with the firm's model structure and exam-to-model handoff",
+      "The first proof point is reproducing a recent model and reconciling it",
+      "Client delivery remains human-reviewed and human-signed",
+    ],
+    security: {
+      description:
+        "Cash flow models contain confidential borrower and company financials. ITECS scopes access so each role sees only the engagements and data it is permitted to use.",
+      points: [
+        "Business and enterprise tiers that isolate firm data and never train on it",
+        "Versioned assumptions and source-traceable inputs",
+        "No autonomous client delivery of models or commentary",
+        "Audit history for model versions, assumptions, and approvals",
+      ],
+    },
+    relatedHrefs: [
+      "/financial-services/field-examination-analyzer",
+      "/financial-services/portfolio-monitoring-covenant-ai",
+      "/financial-services/ar-collections-receivables-ai",
+    ],
+    faq: [
+      {
+        question: "How is this different from a modeling template?",
+        answer:
+          "A template still has to be filled in by hand. The agent assembles the statements and working-capital roll-forward from exam output and historical financials, reconciles the math, and flags assumptions, so professionals start from a defensible draft.",
+      },
+      {
+        question: "Does it replace the analyst or advisor?",
+        answer:
+          "No. It removes the assembly work so professionals spend time on scenarios, findings, and judgment. Professionals own, review, and sign every model.",
+      },
+      {
+        question: "Why does so much of the model already exist?",
+        answer:
+          "Once a field exam is complete, the roll-forward, eligibility, and working-capital detail supply most of the inputs a comprehensive model needs, so the model is largely an assembly and reconciliation task.",
+      },
+      {
+        question: "Can it produce scenarios for stakeholders?",
+        answer:
+          "Yes. The agent builds upside, downside, and stress scenarios on shared assumptions, with sensitivity on margin, collections, and advance rates, and draft commentary for review.",
+      },
+      {
+        question: "What is needed for a modeling pilot?",
+        answer:
+          "A focused pilot typically starts with the firm's model structure, a recent field exam, historical financials, the debt and borrowing-base terms, and the forward assumptions professionals normally apply.",
+      },
+    ],
+  },
+  {
+    slug: "portfolio-monitoring-covenant-ai",
+    title: "Portfolio Monitoring & Covenant Early-Warning AI",
+    shortTitle: "Portfolio Monitoring",
+    description:
+      "AI that continuously watches borrower reporting for negative trends, covenant-breach risk, and deteriorating collateral so periodic review becomes continuous signal.",
+    href: "/financial-services/portfolio-monitoring-covenant-ai",
+    h1: "Portfolio Monitoring and Covenant Early-Warning",
+    eyebrow: "Financial-services AI for continuous risk",
+    heroSummary:
+      "ITECS helps lenders turn periodic borrower reporting into continuous monitoring—surfacing covenant-breach risk, collateral deterioration, and negative trends early enough to act, with every alert traceable to its source.",
+    longDescription:
+      "Monitoring is not useful when it only produces a stack of reports. It becomes valuable when it ranks borrowers by risk, explains what changed, and surfaces the enhanced-scope trigger before a credit becomes a problem.",
+    primaryCta: "Plan a Portfolio Monitoring Workshop",
+    primaryCtaHref: "/contact",
+    secondaryCta: "Return to Financial Services AI",
+    secondaryCtaHref: "/financial-services",
+    keywords: [
+      "portfolio monitoring AI",
+      "covenant compliance AI",
+      "credit early warning system",
+      "borrower risk monitoring",
+      "AI loan portfolio monitoring",
+    ],
+    stats: [
+      { value: "Continuous", label: "borrower risk signal" },
+      { value: "Covenant", label: "headroom and breach tracking" },
+      { value: "Human", label: "review before action" },
+    ],
+    pain: {
+      eyebrow: "Monitoring pressure",
+      title: "Troubled Credits Are Usually Visible Before They Default",
+      description:
+        "Negative trends often show up across borrowing-base reporting, agings, and financials before a covenant breach, but periodic review can miss them until the next cycle.",
+      proof:
+        "A monitoring agent should rank borrowers by risk, explain what changed, and surface covenant and collateral deterioration early instead of waiting for the next reporting period.",
+    },
+    chart: {
+      mode: "matrix",
+      eyebrow: "Illustrative borrower risk matrix",
+      title: "Portfolio Risk by Borrower and Signal",
+      description:
+        "A monitoring view should show which borrowers deserve attention first because they combine covenant pressure with collateral or trend deterioration.",
+      summaryMetric: {
+        label: "Exposure on watch",
+        value: "$6.1M",
+        detail: "Commitment tied to borrowers trending negative",
+      },
+      signals: [
+        {
+          label: "Borrower A",
+          value: "High",
+          detail: "Covenant headroom and dilution both deteriorating",
+          score: 88,
+          tone: "risk",
+        },
+        {
+          label: "Borrower B",
+          value: "Watch",
+          detail: "Aging drift and slowing collections",
+          score: 62,
+          tone: "watch",
+        },
+        {
+          label: "Borrower C",
+          value: "Stable",
+          detail: "Reporting within expected ranges",
+          score: 30,
+          tone: "stable",
+        },
+        {
+          label: "Recoverable items",
+          value: "$540K",
+          detail: "Ineligibles that may clear with documentation",
+          score: 58,
+          tone: "recoverable",
+        },
+      ],
+      notes: [
+        "Ranks borrowers by covenant pressure and collateral trend",
+        "Explains what changed instead of just flagging a value",
+        "Surfaces the enhanced-scope trigger before the next cycle",
+      ],
+    },
+    capabilities: [
+      {
+        title: "Continuous trend detection",
+        description:
+          "Watch borrowing-base reporting, agings, and financials for negative movement between exams.",
+        points: [
+          "Dilution, aging, and turnover drift detection",
+          "Collateral deterioration and concentration shifts",
+          "Plain-language explanation of what changed and why",
+        ],
+      },
+      {
+        title: "Covenant early-warning",
+        description:
+          "Track covenant headroom across the book and flag borrowers approaching a breach.",
+        points: [
+          "Fixed-charge, leverage, and liquidity covenant tracking",
+          "Headroom trend and projected breach timing",
+          "Enhanced-scope and reappraisal triggers",
+        ],
+      },
+      {
+        title: "Portfolio prioritization",
+        description:
+          "Rank borrowers by risk and exposure so review time goes where it matters first.",
+        points: [
+          "Risk-and-exposure ranking across the active book",
+          "Draft watch-list updates and review notes",
+          "Source-traceable evidence for every alert",
+        ],
+      },
+    ],
+    scenario: {
+      title: "Anonymized portfolio monitoring scenario",
+      description:
+        "A lender wants earlier warning on deteriorating credits without adding headcount to review every borrower report manually.",
+      startingPoint:
+        "Borrower reporting arrives on different cadences and is reviewed periodically, so negative trends can go unnoticed until the next exam.",
+      scopedOutcome:
+        "ITECS scopes a monitoring agent that ingests borrowing-base reporting and financials, ranks borrowers by risk, tracks covenant headroom, and drafts watch-list updates for credit review.",
+    },
+    dataInputs: [
+      {
+        label: "Borrowing-base reporting",
+        description:
+          "Recurring borrowing-base certificates, agings, and collateral detail by borrower.",
+      },
+      {
+        label: "Borrower financials",
+        description:
+          "Periodic financial statements, compliance certificates, and covenant calculations.",
+      },
+      {
+        label: "Loan agreement terms",
+        description:
+          "Covenant definitions, advance rates, reserves, and reporting requirements.",
+      },
+      {
+        label: "Exam and appraisal history",
+        description:
+          "Prior field exams and appraisals used as a baseline for trend detection.",
+      },
+      {
+        label: "Watch-list and notes",
+        description:
+          "Existing watch-list status, review notes, and risk ratings where available.",
+      },
+    ],
+    workflow: [
+      {
+        title: "Ingest",
+        description:
+          "Read approved borrowing-base reporting, financials, and covenant calculations.",
+      },
+      {
+        title: "Detect",
+        description:
+          "Identify negative trends, covenant pressure, and collateral deterioration.",
+      },
+      {
+        title: "Prioritize",
+        description:
+          "Rank borrowers by risk and exposure with supporting evidence.",
+      },
+      {
+        title: "Explain",
+        description:
+          "Draft watch-list updates and review notes that explain what changed.",
+      },
+      {
+        title: "Review",
+        description:
+          "Route alerts and recommendations to credit and portfolio managers for action.",
+      },
+    ],
+    governance: [
+      "The agent monitors and recommends, but credit officers decide and act.",
+      "It does not change risk ratings, send borrower communications, or alter loan terms.",
+      "Every alert preserves its source data, calculation, and the reviewer's decision.",
+      "Access is scoped by borrower, portfolio, and credit role.",
+    ],
+    roadmap: [
+      {
+        step: "Monitoring scope review",
+        description:
+          "Document reporting cadences, covenant definitions, and current watch-list process.",
+      },
+      {
+        step: "Historical backtest",
+        description:
+          "Replay prior deterioration to confirm the agent would have flagged it earlier.",
+      },
+      {
+        step: "Early-warning signals",
+        description:
+          "Add covenant headroom, trend, and collateral deterioration signals.",
+      },
+      {
+        step: "Review workflow",
+        description:
+          "Embed watch-list updates, alerts, and approvals into the credit cadence.",
+      },
+    ],
+    comparison: [
+      {
+        label: "Review cadence",
+        traditional: "Periodic, report-by-report",
+        ai: "Continuous with risk-ranked alerts",
+      },
+      {
+        label: "Time to detection",
+        traditional: "Found at the next exam or cycle",
+        ai: "Surfaced as trends deteriorate",
+      },
+      {
+        label: "Covenant tracking",
+        traditional: "Checked at reporting dates",
+        ai: "Headroom tracked with projected breach timing",
+      },
+      {
+        label: "Evidence",
+        traditional: "Reassembled for each review",
+        ai: "Source-traceable behind every alert",
+      },
+    ],
+    roiStatement:
+      "The value is earlier intervention: troubled credits surfaced before default, lower loss given default, and senior time focused on the borrowers that matter.",
+    pricingNotes: [
+      "Discovery starts with reporting cadences and covenant definitions",
+      "The first proof point is a backtest against credits that previously deteriorated",
+      "Risk decisions and actions remain with credit officers",
+    ],
+    security: {
+      description:
+        "Portfolio monitoring touches confidential borrower reporting and credit data. ITECS scopes access so each role sees only the borrowers and portfolios it is permitted to review.",
+      points: [
+        "Business and enterprise tiers that isolate firm data and never train on it",
+        "Source-traceable evidence behind every alert",
+        "No autonomous borrower communications or rating changes",
+        "Audit history for alerts, reviews, and approvals",
+      ],
+    },
+    relatedHrefs: [
+      "/financial-services/field-examination-analyzer",
+      "/financial-services/cash-flow-model-builder",
+      "/financial-services/ar-collections-receivables-ai",
+    ],
+    faq: [
+      {
+        question: "How is AI monitoring different from a covenant report?",
+        answer:
+          "A covenant report shows status at a point in time. The monitoring agent watches reporting continuously, ranks borrowers by risk, explains what changed, and surfaces covenant and collateral deterioration before the next cycle.",
+      },
+      {
+        question: "Does it make credit decisions?",
+        answer:
+          "No. The agent monitors, ranks, and drafts watch-list updates. Credit officers make decisions and take action; the agent keeps every alert traceable to its source.",
+      },
+      {
+        question: "Can it give earlier warning than periodic review?",
+        answer:
+          "Yes. Because it reads reporting as it arrives and tracks trends and covenant headroom continuously, it can surface deterioration earlier than a periodic, report-by-report review.",
+      },
+      {
+        question: "Does it work across different reporting cadences?",
+        answer:
+          "Yes. The agent normalizes borrowing-base reporting and financials that arrive on different cadences so the portfolio can be compared on a consistent basis.",
+      },
+      {
+        question: "What is needed for a monitoring pilot?",
+        answer:
+          "A focused pilot typically starts with recurring borrowing-base reporting, borrower financials, covenant definitions, prior exam history, and the current watch-list process.",
+      },
+    ],
+  },
+  {
+    slug: "ar-collections-receivables-ai",
+    title: "AR Collections & Receivables Intelligence AI",
+    shortTitle: "AR Collections",
+    description:
+      "AI that benchmarks collection days, surfaces systemic credit and process issues, prioritizes accounts, and maintains the weekly receivables roll-forward and reconciliation.",
+    href: "/financial-services/ar-collections-receivables-ai",
+    h1: "AR Collections and Receivables Intelligence",
+    eyebrow: "Financial-services AI for receivables",
+    heroSummary:
+      "ITECS helps lenders and advisory firms turn receivables data into collections intelligence—benchmarking collection days, surfacing systemic issues, prioritizing accounts, and maintaining the weekly roll-forward and collateral-to-cash reconciliation.",
+    longDescription:
+      "Collections work is often reactive and manual, especially when a legacy accounting system is gone. The goal is a governed receivables workflow that diagnoses what is slowing cash, prioritizes the accounts that matter, and keeps the reconciliation clean.",
+    primaryCta: "Plan a Receivables Intelligence Workshop",
+    primaryCtaHref: "/contact",
+    secondaryCta: "Return to Financial Services AI",
+    secondaryCtaHref: "/financial-services",
+    keywords: [
+      "AR collections AI",
+      "receivables intelligence",
+      "collections analytics AI",
+      "ledgered receivables reconciliation",
+      "accounts receivable AI",
+    ],
+    stats: [
+      { value: "DSO", label: "benchmarked against peers" },
+      { value: "Weekly", label: "roll-forward and reconciliation" },
+      { value: "Human", label: "approval before outreach" },
+    ],
+    pain: {
+      eyebrow: "Collections pressure",
+      title: "Cash Is Slow and the Reason Is Buried in the Ledger",
+      description:
+        "Collections teams often work the loudest accounts instead of the most systemic ones, and reconciliation gets harder when the original accounting system is no longer available.",
+      proof:
+        "A receivables agent should index collection days against benchmarks, surface systemic credit and process issues, prioritize accounts, and keep the weekly roll-forward reconciled to cash.",
+    },
+    chart: {
+      mode: "timeline",
+      eyebrow: "Illustrative collections signal",
+      title: "Where Receivables Cash Is Stuck",
+      description:
+        "A collections view should separate aging drift from systemic credit issues and show which accounts to work first.",
+      summaryMetric: {
+        label: "Cash tied up",
+        value: "$3.4M",
+        detail: "Past-due receivables above the expected DSO band",
+      },
+      signals: [
+        {
+          label: "Past-due concentration",
+          value: "$1.6M",
+          detail: "A few accounts driving most of the overdue balance",
+          score: 86,
+          tone: "risk",
+        },
+        {
+          label: "DSO vs. benchmark",
+          value: "+11 days",
+          detail: "Collection days above the peer benchmark",
+          score: 64,
+          tone: "watch",
+        },
+        {
+          label: "Dispute and deduction drag",
+          value: "$420K",
+          detail: "Balances stalled in disputes and short-pays",
+          score: 52,
+          tone: "watch",
+        },
+        {
+          label: "Recoverable quick-wins",
+          value: "$610K",
+          detail: "Accounts likely to pay with prioritized outreach",
+          score: 60,
+          tone: "recoverable",
+        },
+      ],
+      notes: [
+        "Benchmarks collection days against peers and history",
+        "Separates systemic credit issues from one-off late payers",
+        "Keeps the weekly roll-forward reconciled to cash",
+      ],
+    },
+    capabilities: [
+      {
+        title: "Collections diagnosis",
+        description:
+          "Index collection days against benchmarks and surface the systemic credit and process issues behind slow cash.",
+        points: [
+          "DSO and collection-days benchmarking by customer and segment",
+          "Systemic issue detection across credit terms and processes",
+          "Dispute, deduction, and short-pay pattern analysis",
+        ],
+      },
+      {
+        title: "Account prioritization",
+        description:
+          "Rank accounts by recoverable balance and likelihood so teams work the highest-value accounts first.",
+        points: [
+          "Priority queue by balance, age, and recovery likelihood",
+          "Draft outreach summaries for collector review",
+          "Recoverable quick-win identification",
+        ],
+      },
+      {
+        title: "Receivables reconciliation",
+        description:
+          "Maintain the weekly receivables roll-forward and the collateral-to-cash reconciliation, even without the original system.",
+        points: [
+          "Weekly AR roll-forward with traceable movement",
+          "Collateral-to-cash reconciliation for lender reporting",
+          "Reconstructed ledger views when legacy systems are gone",
+        ],
+      },
+    ],
+    scenario: {
+      title: "Anonymized receivables scenario",
+      description:
+        "A company in a workout needs to accelerate collections and keep the receivables reconciliation clean for its lender, but the original accounting system is no longer available.",
+      startingPoint:
+        "Collections are worked reactively from spreadsheets, and the weekly roll-forward is rebuilt manually for lender reporting.",
+      scopedOutcome:
+        "ITECS scopes a receivables agent that benchmarks collection days, prioritizes accounts, drafts outreach summaries, and maintains the weekly roll-forward and collateral-to-cash reconciliation for review.",
+    },
+    dataInputs: [
+      {
+        label: "AR agings and history",
+        description:
+          "Detailed receivable agings, payment history, terms, and customer detail.",
+      },
+      {
+        label: "Cash application",
+        description:
+          "Cash receipts and application detail to reconcile collections to the ledger.",
+      },
+      {
+        label: "Disputes and deductions",
+        description:
+          "Dispute, deduction, short-pay, and credit-memo detail where available.",
+      },
+      {
+        label: "Credit terms",
+        description:
+          "Customer credit terms, limits, and historical payment behavior.",
+      },
+      {
+        label: "Lender reporting context",
+        description:
+          "Collateral-to-cash reporting requirements and prior roll-forward formats.",
+      },
+    ],
+    workflow: [
+      {
+        title: "Ingest",
+        description:
+          "Read approved AR agings, cash application, and dispute detail.",
+      },
+      {
+        title: "Diagnose",
+        description:
+          "Benchmark collection days and surface systemic credit and process issues.",
+      },
+      {
+        title: "Prioritize",
+        description:
+          "Rank accounts by recoverable balance and likelihood of payment.",
+      },
+      {
+        title: "Draft",
+        description:
+          "Prepare outreach summaries and the weekly roll-forward for review.",
+      },
+      {
+        title: "Approve",
+        description:
+          "Route prioritized accounts and outreach to collectors before any contact.",
+      },
+    ],
+    governance: [
+      "The agent diagnoses, prioritizes, and drafts, but collectors approve outreach.",
+      "It does not contact customers or change credit terms autonomously.",
+      "The roll-forward and reconciliation preserve source data and movement.",
+      "Access is scoped by customer, engagement, and collections role.",
+    ],
+    roadmap: [
+      {
+        step: "Receivables review",
+        description:
+          "Document AR data sources, reconciliation needs, and lender reporting format.",
+      },
+      {
+        step: "Diagnostic baseline",
+        description:
+          "Benchmark DSO and identify systemic issues against historical data.",
+      },
+      {
+        step: "Prioritization workflow",
+        description:
+          "Add the account priority queue and draft outreach summaries.",
+      },
+      {
+        step: "Reconciliation cadence",
+        description:
+          "Automate the weekly roll-forward and collateral-to-cash reconciliation.",
+      },
+    ],
+    comparison: [
+      {
+        label: "Account focus",
+        traditional: "Loudest accounts worked first",
+        ai: "Highest recoverable balance prioritized",
+      },
+      {
+        label: "Diagnosis",
+        traditional: "Anecdotal and manual",
+        ai: "Benchmarked DSO and systemic-issue detection",
+      },
+      {
+        label: "Reconciliation",
+        traditional: "Rebuilt by hand each week",
+        ai: "Maintained roll-forward, even without the legacy system",
+      },
+      {
+        label: "Governance",
+        traditional: "Outreach decisions undocumented",
+        ai: "Reviewed, approved, and source-traceable",
+      },
+    ],
+    roiStatement:
+      "The value is faster cash and cleaner reporting: lower DSO, prioritized recovery, and a weekly reconciliation the lender can trust.",
+    pricingNotes: [
+      "Discovery starts with AR data availability and reconciliation needs",
+      "The first proof point is a DSO benchmark and systemic-issue diagnosis",
+      "Customer outreach remains human-approved",
+    ],
+    security: {
+      description:
+        "Receivables work exposes customer, credit, and payment data. ITECS scopes access so each role sees only the accounts and engagements it is permitted to work.",
+      points: [
+        "Business and enterprise tiers that isolate firm data and never train on it",
+        "Source-traceable roll-forward and reconciliation",
+        "No autonomous customer contact or credit-term changes",
+        "Audit history for prioritization, outreach, and approvals",
+      ],
+    },
+    relatedHrefs: [
+      "/financial-services/field-examination-analyzer",
+      "/financial-services/cash-flow-model-builder",
+      "/financial-services/portfolio-monitoring-covenant-ai",
+    ],
+    faq: [
+      {
+        question: "How is this different from a collections report?",
+        answer:
+          "A report lists what is overdue. The agent benchmarks collection days, surfaces the systemic credit and process issues behind slow cash, prioritizes accounts by recoverable balance, and keeps the weekly roll-forward reconciled.",
+      },
+      {
+        question: "Does it contact our customers automatically?",
+        answer:
+          "No. The agent drafts prioritized outreach summaries for collector review. Customer contact and credit-term changes require human approval.",
+      },
+      {
+        question: "Can it work if our old accounting system is gone?",
+        answer:
+          "Yes. The agent can reconstruct ledgered-receivable views and maintain the roll-forward and collateral-to-cash reconciliation from available agings, cash application, and history.",
+      },
+      {
+        question: "How does it prioritize accounts?",
+        answer:
+          "It ranks accounts by recoverable balance, age, and likelihood of payment so collectors work the highest-value accounts first instead of the loudest ones.",
+      },
+      {
+        question: "What is needed for a receivables pilot?",
+        answer:
+          "A focused pilot typically starts with AR agings and payment history, cash application detail, dispute and deduction data, credit terms, and the lender reporting format.",
+      },
+    ],
+  },
+];
+
+export function getFinancialServicesSpokePage(
+  href: string
+): VerticalSpokePageContent {
+  const page = FINANCIAL_SERVICES_SPOKE_PAGES.find((item) => item.href === href);
+  if (!page) {
+    throw new Error(`Unknown financial-services spoke page: ${href}`);
+  }
+  return page;
+}

@@ -42,8 +42,12 @@ const windowToneClasses = {
 
 export function PPVExposureWaterfall({
   waterfall,
+  bridgeEyebrow = "Illustrative 90-day waterfall",
+  bridgeTitle = "From gross PPV exposure to unresolved margin risk",
 }: {
   waterfall: PPVExposureWaterfallContent;
+  bridgeEyebrow?: string;
+  bridgeTitle?: string;
 }) {
   return (
     <section className="py-24 md:py-32">
@@ -62,10 +66,10 @@ export function PPVExposureWaterfall({
               <div className="flex flex-col gap-4 border-b border-[var(--border-subtle)] pb-5 sm:flex-row sm:items-start sm:justify-between">
                 <div>
                   <p className="font-mono text-xs uppercase tracking-[0.05em] text-text-dim">
-                    Illustrative 90-day waterfall
+                    {bridgeEyebrow}
                   </p>
                   <h3 className="mt-2 text-xl font-light text-text-primary">
-                    From gross PPV exposure to unresolved margin risk
+                    {bridgeTitle}
                   </h3>
                 </div>
                 <div className="flex items-center gap-4 text-xs text-text-dim">
