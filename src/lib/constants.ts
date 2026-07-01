@@ -2840,6 +2840,7 @@ export const CLIENT_LOGOS = [
   { name: "First Choice Containers", src: "/images/clients/first-choice-containers.webp", width: 100, height: 44 },
   { name: "BURNCO", src: "/images/clients/burnco-logo.webp", width: 197, height: 32 },
   { name: "Ad Pages", src: "/images/clients/adpages.webp", width: 162, height: 28 },
+  { name: "Pegasus Food Group", src: "/images/clients/pegasus-food-group.webp", width: 75, height: 40 },
 ] as const;
 
 export const PARTNER_LOGOS = [
