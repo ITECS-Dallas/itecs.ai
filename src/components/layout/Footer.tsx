@@ -28,6 +28,9 @@ const solutionLinks: FooterLink[] = [
     label: service.shortTitle,
     href: service.href,
   })),
+  { label: "Claude Cowork Training", href: "/claude-cowork-training" },
+  { label: "ChatGPT Codex Training", href: "/chatgpt-codex-training" },
+  { label: "Microsoft Copilot Training", href: "/copilot-training" },
 ];
 
 const industryLinks: FooterLink[] = [

@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import {
   SERVICES,
+  TRAINING_SERVICES,
   INSIGHTS,
   AI_SEO_OVERVIEW,
   AI_SEO_TIERS,
@@ -21,6 +22,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(),
     changeFrequency: "weekly" as const,
     priority: 0.9,
+  }));
+
+  const trainingPages = TRAINING_SERVICES.map((s) => ({
+    url: `${base}${s.href}`,
+    lastModified: new Date(),
+    changeFrequency: "weekly" as const,
+    priority: 0.85,
   }));
 
   const insightPages = INSIGHTS.map((i) => ({
@@ -94,6 +102,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1.0,
     },
     ...hubPages,
+    ...trainingPages,
     ...caseStudyPages,
     ...manufacturingPages,
     ...financialServicesPages,

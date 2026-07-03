@@ -28,6 +28,8 @@ import {
   Search,
   ServerCog,
   ShieldCheck,
+  Sparkles,
+  Terminal,
   Workflow,
   X,
 } from "lucide-react";
@@ -102,6 +104,24 @@ const solutionsMegaColumns: MenuColumn[] = [
         href: "/training",
         description: "Teach teams how to use AI safely and productively.",
         icon: ShieldCheck,
+      },
+      {
+        label: "Claude Cowork Training",
+        href: "/claude-cowork-training",
+        description: "Delegate real projects to Anthropic's agentic workspace.",
+        icon: Bot,
+      },
+      {
+        label: "ChatGPT Codex Training",
+        href: "/chatgpt-codex-training",
+        description: "Ship faster with OpenAI's governed coding agent.",
+        icon: Terminal,
+      },
+      {
+        label: "Microsoft Copilot Training",
+        href: "/copilot-training",
+        description: "Roll out Copilot across Microsoft 365 safely.",
+        icon: Sparkles,
       },
     ],
   },

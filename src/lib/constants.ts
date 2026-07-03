@@ -1475,6 +1475,310 @@ export const SERVICES: ServiceItem[] = [
 ];
 
 // ---------------------------------------------------------------------------
+// Tool-specific AI Training & Implementation pages.
+// These reuse the ServiceItem shape and every hub-page section component, but
+// live in their own array so they do NOT appear in the /services grid or the
+// Organization schema. They are surfaced through the "AI Consulting & Strategy"
+// nav dropdown, the footer, and their own sitemap entries.
+// ---------------------------------------------------------------------------
+
+export const TRAINING_SERVICES: ServiceItem[] = [
+  {
+    slug: "claude-cowork-training",
+    title: "Claude Cowork Training & Implementation in Dallas",
+    shortTitle: "Claude Cowork Training",
+    description:
+      "Claude Cowork training and implementation for Dallas teams. ITECS sets up, secures, and teaches your staff to delegate real projects to Anthropic's agentic AI workspace.",
+    longDescription:
+      "Claude Cowork lets your team hand entire projects to Claude — research, documents, spreadsheets, and multi-step tasks — inside a shared, agentic workspace. The tool only pays off when people know how to delegate work well and your data stays governed. ITECS handles both: we implement Claude Cowork on the right plan, connect it to your tools securely, and train your staff to get production-quality output instead of dead ends.",
+    heroSummary:
+      "ITECS trains and implements Claude Cowork for Dallas teams — Anthropic's agentic AI workspace where employees delegate full projects to Claude. Hands-on workshops and secure setup get your staff producing real work in days, not months, with company data governed the whole way.",
+    href: "/claude-cowork-training",
+    icon: "Users",
+    keywords: [
+      "Claude Cowork training",
+      "Claude Cowork implementation",
+      "Claude Cowork for business",
+      "Anthropic Claude training Dallas",
+      "Claude AI workspace setup",
+      "agentic AI training",
+      "Claude for teams Dallas",
+    ],
+    h1: "Claude Cowork Training & Implementation",
+    features: [
+      "Guided Claude Cowork setup — the right plan, workspace structure, and project folders for your team",
+      "Hands-on delegation workshops — teach staff to brief Claude like a capable teammate, not a search box",
+      "Secure connections to Google Workspace, Microsoft 365, Slack, and your file storage",
+      "Reusable project templates and prompt patterns for your most common workflows",
+      "Data-safety guardrails — control what Claude can access and keep sensitive records out of reach",
+      "Role-based playbooks for operations, marketing, finance, HR, and support teams",
+    ],
+    howItWorksHeading: "How we roll out Claude Cowork for your team",
+    howItWorks: [
+      {
+        step: "Map the work worth delegating",
+        description:
+          "We interview your teams, identify the repetitive, high-effort projects Claude Cowork handles best, and choose the plan and workspace structure that fit how you actually work.",
+      },
+      {
+        step: "Implement and connect securely",
+        description:
+          "We set up Claude Cowork, connect it to your Microsoft 365, Google Workspace, Slack, and file storage, and configure access controls so Claude only touches the data it should.",
+      },
+      {
+        step: "Train your team hands-on",
+        description:
+          "Your staff practice on real projects — briefing Claude, reviewing its work, and iterating. We teach delegation habits, prompt patterns, and when to keep a human in the loop.",
+      },
+      {
+        step: "Reinforce and scale",
+        description:
+          "We build reusable templates, run refresher sessions as Claude evolves, and expand adoption to new teams using prepaid retainer hours with no monthly minimum.",
+      },
+    ],
+    integrations: [
+      "Claude",
+      "Claude Cowork",
+      "Anthropic API",
+      "Microsoft 365",
+      "Google Workspace",
+      "Slack",
+      "Notion",
+      "Google Drive",
+      "SharePoint",
+    ],
+    stats: [
+      { value: 12, suffix: "hrs", label: "Avg. Weekly Hours Saved per Team" },
+      { value: 2, suffix: " wks", label: "To Team Proficiency" },
+      { value: 90, suffix: "%", label: "Employee Adoption Rate" },
+    ],
+    faq: [
+      {
+        question:
+          "What is Claude Cowork and how is it different from the Claude chatbot?",
+        answer:
+          "Claude Cowork is Anthropic's agentic workspace where Claude completes whole projects — drafting documents, analyzing spreadsheets, and running multi-step tasks — instead of just answering single questions. ITECS trains your team to delegate real work to it and implements it securely on the right plan.",
+      },
+      {
+        question: "How long does Claude Cowork implementation and training take?",
+        answer:
+          "Most Dallas teams are proficient within two weeks. We implement Claude Cowork and connect your tools in the first sessions, then run hands-on workshops on your real projects. Ongoing refreshers use prepaid retainer hours with no monthly minimum.",
+      },
+      {
+        question: "Is our company data safe when we use Claude Cowork?",
+        answer:
+          "Yes, when it is configured correctly. On Anthropic's business plans, your content is not used to train models by default. ITECS sets access controls so Claude only reaches approved data and runs a data readiness review before connecting sensitive systems.",
+      },
+      {
+        question: "Which Claude plan do we need for Cowork?",
+        answer:
+          "Claude Cowork is available on paid Claude plans, and the right tier depends on team size and usage. ITECS helps you choose between Pro, Max, Team, and Enterprise, and configures billing and admin controls so costs stay predictable.",
+      },
+      {
+        question: "Do our employees need technical skills to use Claude Cowork?",
+        answer:
+          "No. Claude Cowork is built for everyday business users. Our training focuses on how to brief Claude clearly, review its output, and delegate the right tasks — no coding or prompt-engineering background required.",
+      },
+    ],
+  },
+  {
+    slug: "chatgpt-codex-training",
+    title: "ChatGPT Codex Training & Implementation in Dallas",
+    shortTitle: "ChatGPT Codex Training",
+    description:
+      "ChatGPT Codex training and implementation for Dallas engineering teams. ITECS helps developers adopt OpenAI's coding agent to ship faster — with secure setup, guardrails, and hands-on workshops.",
+    longDescription:
+      "ChatGPT Codex is OpenAI's software-engineering agent — it reads your codebase, writes and edits code, runs tasks in a sandbox, and opens pull requests. Used well, it compresses days of engineering into hours. Used carelessly, it introduces risk. ITECS implements Codex in your environment, sets the right guardrails and approvals, and trains your developers to drive it effectively.",
+    heroSummary:
+      "ITECS trains and implements ChatGPT Codex for Dallas engineering teams — OpenAI's agentic coding tool that reads your codebase, writes code, and opens pull requests. Secure setup, sandboxed runs, and hands-on training get your developers shipping faster without sacrificing control.",
+    href: "/chatgpt-codex-training",
+    icon: "Terminal",
+    keywords: [
+      "ChatGPT Codex training",
+      "OpenAI Codex implementation",
+      "Codex agent for developers",
+      "Codex training Dallas",
+      "AI coding assistant training",
+      "agentic coding training",
+      "ChatGPT for software teams",
+    ],
+    h1: "ChatGPT Codex Training & Implementation",
+    features: [
+      "Codex setup in your stack — CLI, IDE extension, and cloud agent configured for your repositories",
+      "Sandboxed execution and approval gates so agent runs never touch production unchecked",
+      "Hands-on developer workshops — task scoping, prompting, and reviewing agent-written code",
+      "Guardrails for secrets, dependencies, and code review before anything merges",
+      "Team workflows for delegating refactors, tests, migrations, and bug fixes to Codex",
+      "Cost and usage controls so agent runs stay within a predictable budget",
+    ],
+    howItWorksHeading: "How we implement ChatGPT Codex for your engineers",
+    howItWorks: [
+      {
+        step: "Assess your codebase and workflow",
+        description:
+          "We review your repositories, CI/CD, and code-review process to find where Codex delivers the most value — refactors, tests, migrations, and routine fixes — and where humans must stay in control.",
+      },
+      {
+        step: "Implement Codex with guardrails",
+        description:
+          "We configure the Codex CLI, IDE integration, and cloud agent with sandboxed execution, scoped credentials, spending caps, and approval gates so agent work is safe and auditable.",
+      },
+      {
+        step: "Train your developers hands-on",
+        description:
+          "Your engineers practice scoping tasks, prompting Codex, and reviewing its pull requests on real tickets. We teach the habits that turn an agent into a reliable teammate, not a liability.",
+      },
+      {
+        step: "Govern and optimize",
+        description:
+          "We set code-review standards for agent output, monitor usage and cost, and tune the workflow as your team scales — with support delivered through prepaid retainer hours.",
+      },
+    ],
+    integrations: [
+      "ChatGPT",
+      "OpenAI Codex",
+      "OpenAI API",
+      "GitHub",
+      "GitLab",
+      "VS Code",
+      "Git",
+      "Azure OpenAI",
+      "Slack",
+    ],
+    stats: [
+      { value: 55, suffix: "%", label: "Faster Routine Engineering" },
+      { value: 3, suffix: "x", label: "More Tickets Cleared per Sprint" },
+      { value: 100, suffix: "%", label: "Agent Code Human-Reviewed" },
+    ],
+    faq: [
+      {
+        question: "What is ChatGPT Codex?",
+        answer:
+          "ChatGPT Codex is OpenAI's agentic coding tool. It reads your codebase, writes and edits code, runs commands in a sandbox, and opens pull requests for review. It runs in the terminal, your IDE, and the cloud, letting developers delegate real engineering tasks.",
+      },
+      {
+        question: "Is it safe to let Codex write code in our repositories?",
+        answer:
+          "Yes, with the right guardrails. ITECS configures sandboxed execution, scoped credentials, and approval gates so Codex never merges to production unchecked. Every change is human-reviewed, and we set spending caps so agent runs stay within budget.",
+      },
+      {
+        question: "Do our developers need to change how they work?",
+        answer:
+          "They adopt new habits, not a new job. We train engineers to scope tasks well, prompt Codex clearly, and review agent-written pull requests. Codex handles routine refactors, tests, and fixes so your developers focus on harder problems.",
+      },
+      {
+        question: "How much does ChatGPT Codex cost to run?",
+        answer:
+          "Codex bills through ChatGPT plans and the OpenAI API depending on how you deploy it. ITECS models your real usage, configures spending caps, and helps you choose the most cost-effective setup so agent runs stay predictable.",
+      },
+      {
+        question: "How long does Codex implementation and training take?",
+        answer:
+          "Most teams run governed Codex workflows within two to three weeks. We set up the tooling and guardrails first, then train developers on live tickets. Ongoing tuning uses prepaid retainer hours with no monthly minimum.",
+      },
+    ],
+  },
+  {
+    slug: "copilot-training",
+    title: "Microsoft Copilot Training & Implementation in Dallas",
+    shortTitle: "Microsoft Copilot Training",
+    description:
+      "Microsoft 365 Copilot training and implementation for Dallas businesses. ITECS rolls out Copilot across Word, Excel, Outlook, and Teams and trains your team to use it safely and productively.",
+    longDescription:
+      "Microsoft 365 Copilot puts AI inside the tools your team already uses — Word, Excel, Outlook, Teams, and PowerPoint. Licenses alone do not drive adoption, and Copilot inherits whatever data-access mess exists in your tenant. ITECS implements Copilot the right way: we clean up permissions, configure governance, and train every department to use it for real work.",
+    heroSummary:
+      "ITECS trains and implements Microsoft 365 Copilot for Dallas businesses — AI built into Word, Excel, Outlook, Teams, and PowerPoint. We fix data-access risks, configure governance, and train each department so your Copilot licenses turn into real productivity, not shelfware.",
+    href: "/copilot-training",
+    icon: "Sparkles",
+    keywords: [
+      "Microsoft Copilot training",
+      "Microsoft 365 Copilot implementation",
+      "Copilot training Dallas",
+      "Copilot rollout for business",
+      "M365 Copilot adoption",
+      "Copilot governance setup",
+      "Copilot consulting Dallas",
+    ],
+    h1: "Microsoft Copilot Training & Implementation",
+    features: [
+      "Copilot readiness check — clean up Microsoft 365 permissions before Copilot exposes them",
+      "Guided rollout across Word, Excel, PowerPoint, Outlook, and Teams",
+      "Role-specific training for sales, finance, HR, operations, and leadership",
+      "Governance and data-loss controls with Microsoft Purview and sensitivity labels",
+      "Prompt libraries and templates for your most common documents and reports",
+      "Adoption tracking and refresher sessions so usage sticks",
+    ],
+    howItWorksHeading: "How we roll out Microsoft Copilot for your business",
+    howItWorks: [
+      {
+        step: "Run a Copilot readiness assessment",
+        description:
+          "Copilot surfaces whatever a user can already access. We audit your Microsoft 365 permissions, oversharing, and sensitivity labels so Copilot does not expose data it should not.",
+      },
+      {
+        step: "Configure governance and licensing",
+        description:
+          "We assign licenses to the right people, set up Microsoft Purview data controls and sensitivity labels, and configure the admin settings that keep Copilot compliant.",
+      },
+      {
+        step: "Train every department hands-on",
+        description:
+          "Your teams practice using Copilot in Word, Excel, Outlook, and Teams on their real work. We deliver role-specific sessions and prompt libraries so each department gets immediate value.",
+      },
+      {
+        step: "Drive adoption and measure ROI",
+        description:
+          "We track usage, run refresher workshops, and expand Copilot to new workflows. Ongoing support uses prepaid retainer hours with no monthly minimum or expiration.",
+      },
+    ],
+    integrations: [
+      "Microsoft 365 Copilot",
+      "Microsoft 365",
+      "Word",
+      "Excel",
+      "PowerPoint",
+      "Outlook",
+      "Microsoft Teams",
+      "Microsoft Purview",
+      "SharePoint",
+      "Copilot Studio",
+    ],
+    stats: [
+      { value: 30, suffix: "%", label: "Faster Document & Email Work" },
+      { value: 40, suffix: "%", label: "Higher License Utilization" },
+      { value: 14, suffix: " days", label: "To Company-Wide Rollout" },
+    ],
+    faq: [
+      {
+        question: "What is Microsoft 365 Copilot?",
+        answer:
+          "Microsoft 365 Copilot is AI built into Word, Excel, PowerPoint, Outlook, and Teams. It drafts documents, analyzes spreadsheets, summarizes meetings, and manages email using your organization's own data. ITECS implements it securely and trains your team to use it well.",
+      },
+      {
+        question: "Why do we need help rolling out Copilot?",
+        answer:
+          "Copilot can access any data a user already can, so a messy permission setup becomes a security risk the moment it goes live. ITECS audits and fixes oversharing, configures governance, and trains staff — turning licenses into adoption instead of shelfware.",
+      },
+      {
+        question: "Is Microsoft Copilot secure with our business data?",
+        answer:
+          "Copilot respects your existing Microsoft 365 permissions and does not use your data to train foundation models. The real risk is oversharing inside your tenant. ITECS runs a readiness assessment and configures Microsoft Purview controls before rollout.",
+      },
+      {
+        question: "How much does Microsoft Copilot cost?",
+        answer:
+          "Microsoft 365 Copilot is licensed per user per month on top of your existing Microsoft 365 plan. ITECS helps you right-size which employees need licenses first and prices implementation and training transparently, with retainer hours for ongoing support.",
+      },
+      {
+        question: "How long does a Copilot rollout take?",
+        answer:
+          "Most Dallas businesses reach company-wide rollout in about two weeks. We run the readiness assessment and governance setup first, then deliver department training. Refreshers and new-workflow onboarding use prepaid retainer hours.",
+      },
+    ],
+  },
+];
+
+// ---------------------------------------------------------------------------
 // Data Audit pricing tiers (for PricingTable component)
 // ---------------------------------------------------------------------------
 
