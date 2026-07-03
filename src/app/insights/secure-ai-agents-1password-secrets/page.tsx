@@ -9,7 +9,7 @@ const insight = INSIGHTS.find(
 const heroImage = "/images/insights/secure-ai-agents-1password-hero.png";
 
 export const metadata = generatePageMetadata({
-  title: "How to Use 1Password With Cowork, Codex & AI Agent CLIs | ITECS",
+  title: "How to Use 1Password With Cowork, Codex & AI Agent CLIs",
   description: insight.description,
   path: insight.href,
   keywords: insight.keywords,

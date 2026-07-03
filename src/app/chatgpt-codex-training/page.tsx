@@ -24,7 +24,7 @@ const service = TRAINING_SERVICES.find((s) => s.slug === "chatgpt-codex-training
 const heroImage = "/images/services/chatgpt-codex-training.png";
 
 export const metadata = generatePageMetadata({
-  title: "ChatGPT Codex Training & Implementation in Dallas | ITECS",
+  title: "ChatGPT Codex Training & Implementation in Dallas",
   description:
     "ITECS trains and implements OpenAI's ChatGPT Codex for Dallas engineering teams — secure, sandboxed setup with guardrails and hands-on developer workshops.",
   path: service.href,

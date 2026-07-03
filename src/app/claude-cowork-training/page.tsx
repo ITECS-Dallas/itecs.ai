@@ -24,7 +24,7 @@ const service = TRAINING_SERVICES.find((s) => s.slug === "claude-cowork-training
 const heroImage = "/images/services/claude-cowork-training.png";
 
 export const metadata = generatePageMetadata({
-  title: "Claude Cowork Training & Implementation in Dallas | ITECS",
+  title: "Claude Cowork Training & Implementation in Dallas",
   description:
     "ITECS trains and implements Claude Cowork for Dallas teams — Anthropic's agentic AI workspace. Secure setup, hands-on workshops, and real adoption in weeks.",
   path: service.href,

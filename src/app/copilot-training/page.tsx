@@ -24,7 +24,7 @@ const service = TRAINING_SERVICES.find((s) => s.slug === "copilot-training")!;
 const heroImage = "/images/services/copilot-training.png";
 
 export const metadata = generatePageMetadata({
-  title: "Microsoft Copilot Training & Implementation in Dallas | ITECS",
+  title: "Microsoft Copilot Training & Implementation in Dallas",
   description:
     "ITECS rolls out Microsoft 365 Copilot across Word, Excel, Outlook, and Teams for Dallas businesses — permission cleanup, governance, and role-specific training.",
   path: service.href,
