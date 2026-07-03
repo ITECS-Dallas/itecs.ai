@@ -40,6 +40,10 @@ interface InsightArticleLayoutProps {
   // Optional rich block (e.g. a comparison table) injected into the article
   // body wherever the content array contains the "[[COMPARISON_TABLE]]" marker.
   tableNode?: ReactNode;
+  // Optional named rich blocks injected wherever the content array contains a
+  // matching "[[KEY]]" marker (KEY = A-Z, 0-9, underscore). Lets an article
+  // drop multiple diagrams/visuals at precise points in the body.
+  blocks?: Record<string, ReactNode>;
 }
 
 function formatDate(date: string) {
@@ -111,6 +115,7 @@ export function InsightArticleLayout({
   modifiedDate,
   readTime = "5 min read",
   tableNode,
+  blocks,
 }: InsightArticleLayoutProps) {
   const canonicalUrl = `${SITE_CONFIG.url}${insight.href}`;
   const imageUrl = heroImage
@@ -204,6 +209,9 @@ export function InsightArticleLayout({
               <ScrollReveal key={index} delay={index * 0.03}>
                 {paragraph === "[[COMPARISON_TABLE]]" && tableNode ? (
                   tableNode
+                ) : /^\[\[[A-Z0-9_]+\]\]$/.test(paragraph) &&
+                  blocks?.[paragraph.slice(2, -2)] ? (
+                  blocks[paragraph.slice(2, -2)]
                 ) : isStandaloneHeading(paragraph) ? (
                   <h2 className="pt-4 text-2xl font-semibold leading-tight text-ink">
                     {paragraph.slice(2, -2)}
