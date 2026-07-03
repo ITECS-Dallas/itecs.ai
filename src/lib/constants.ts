@@ -1949,6 +1949,92 @@ export const CLAUDE_PLAN_COMPARISON: PlanComparison = {
 
 export const INSIGHTS: InsightItem[] = [
   {
+    slug: "secure-ai-agents-1password-secrets",
+    title:
+      "Secure AI Agents With 1Password: Give Tools Secrets Without Exposing Them to the LLM",
+    description:
+      "Use the 1Password CLI to inject vault secrets into AI agents, your CLI, and IDE — never exposed to the LLM, gated by biometric approval. See how ITECS's DOCBOT works.",
+    href: "/insights/secure-ai-agents-1password-secrets",
+    publishedDate: "2026-07-03",
+    hubSlug: "custom-ai-agents",
+    hubLabel: "Custom AI Agents",
+    hubHref: "/custom-ai-agents",
+    keywords: [
+      "secure AI agents with 1Password",
+      "1Password CLI AI agents",
+      "1Password secret references",
+      "keep API keys out of LLM",
+      "AI agent secrets management",
+      "biometric secret access",
+      "human in the loop secrets",
+      "1Password op run",
+      "AI agent credential security",
+      "DOCBOT ITECS agent",
+    ],
+    h1: "How to Give AI Agents Secrets Without Exposing Them to the LLM — Using 1Password",
+    content: [
+      "AI agents are only useful when they can do real work — call your APIs, query your systems, and act on your data. That requires secrets: API keys, tokens, and passwords. The dangerous shortcut is to paste those secrets into a config file, an environment variable, or worse, straight into a prompt. There is a better way. Configured correctly, **1Password** hands secrets to your agents, CLI, and IDE without the AI model ever seeing them — and gates every access behind your fingerprint. This is the architecture ITECS builds into every [custom AI agent](/custom-ai-agents) we deploy.",
+      "**With the 1Password CLI enabled, your AI agents, terminal, and IDE pull secrets from your vault at runtime using secret references — so the API key is injected into the tool, never printed into the LLM's prompt or context. Every access can require a biometric approval, and agents can write new secrets back into 1Password, keeping generated credentials governed instead of scattered in plaintext.**",
+      "**The Problem: AI Agents Need Secrets, but LLMs Should Never See Them**",
+      "An AI coding agent that opens pull requests needs a Git token. An agent that checks your tickets needs your PSA's API key. An agent that reads a hypervisor needs its credentials. The moment those secrets live in a plaintext file, a shell history, or a prompt, they are one screenshot, one log line, or one leaked context window away from exposure.",
+      "The specific risk with AI is the model itself. Language models are non-deterministic, their inputs get logged, and their context can be retained or leaked. 1Password states the principle plainly: secrets should not be exchanged over a channel driven by an AI model. The fix is to keep the secret out of that channel entirely.",
+      "[[SECRETS_FLOW]]",
+      "**How 1Password Injects Secrets Without the LLM Ever Seeing Them**",
+      "The 1Password command-line tool, op, replaces stored secrets with references — short pointers that look like op://vault/item/field. Your config files hold the reference, not the secret. At runtime, op run confirms the CLI is authorized and swaps each reference for the real value, injecting it as an environment variable into the process that needs it.",
+      "That distinction is the whole point. The secret lands in the tool's process — the CLI command, the IDE task, the agent's API call — not in the model's prompt. Claude Code, ChatGPT Codex, GitHub Copilot, and VS Code all read secrets from the environment, so 1Password feeds them directly. The LLM decides what to do; 1Password supplies the credential to do it. The model never holds the key. This is the same discipline we teach in our [Claude Cowork](/claude-cowork-training) and [ChatGPT Codex training](/chatgpt-codex-training) programs.",
+      "**The Human-in-the-Loop: Biometric Approval on Every Access**",
+      "Injecting a secret automatically is convenient, but not always safe. 1Password adds a human gate. With the desktop app integration turned on, the CLI authenticates with Touch ID on macOS or Windows Hello on Windows. When an agent reaches for a secret, you approve it with your fingerprint.",
+      "That approval is the difference between an agent that can silently use every credential you own and one that must ask permission each time it touches something sensitive. For an MSP or any regulated business, that human-in-the-loop step is not a nicety — it is the control that makes autonomous tooling auditable and safe.",
+      "**The Reciprocal Pipeline: Agents That Write Secrets Back**",
+      "The flow runs both directions. Agents do not just read secrets — they can create them. When an agent provisions a new service, generates an API key, or rotates a token, it can write that secret straight into 1Password using the CLI or the 1Password SDK.",
+      "This closes the loop. Instead of a freshly generated key ending up pasted in a chat or a notes file, it is stored, encrypted, and governed the moment it exists. Every credential the agent produces lands in the same vault, under the same access controls and the same biometric gate. Secrets sprawl stops before it starts.",
+      "**Case Study: How ITECS's DOCBOT Agent Uses This**",
+      "DOCBOT is the AI agent ITECS built for our own team. It gives our technicians an LLM interface to review, update, and create SOPs, knowledge-base articles, and documentation — the [self-hosted agent architecture we described here](/insights/self-hosted-ai-agents-seafile), extended to live operations.",
+      "A technician can ask DOCBOT what tickets are open, what a project's status is, or which licenses a client holds. To answer, DOCBOT reaches into our real systems: our PSA for tickets and projects, our datacenter hypervisors for infrastructure, and PAX8 for license inquiries. Each of those calls needs an API secret.",
+      "Here is the part that matters. DOCBOT never stores those secrets, and the LLM never sees them. When DOCBOT calls a system, it pulls the credential from 1Password at runtime — and the technician must approve the access with 1Password biometrics before the call proceeds. Our documentation agent has full operational reach and zero standing access to raw credentials. That is the pattern we build for clients, too.",
+      "**How ITECS Architects Secure AI Agent Workflows**",
+      "We deploy this pattern as a repeatable engagement. The steps are consistent whether it is one developer's IDE or a fleet of production agents.",
+      "**Step 1: Inventory the secrets.** We find every API key, token, and password your tools and agents use — including the ones already pasted in plaintext — and move them into 1Password.",
+      "**Step 2: Convert to secret references.** We replace every hardcoded secret in configs and scripts with 1Password references, so nothing sensitive sits in a file or a repository.",
+      "**Step 3: Enable biometric approval.** We turn on the desktop app integration so each agent's access to a secret requires Touch ID or Windows Hello sign-off.",
+      "**Step 4: Close the loop and govern.** We wire agents to write generated secrets back into 1Password, set vault access controls per role, and enable audit logging so every secret access is recorded.",
+      "**Security and Governance**",
+      "This architecture is built on 1Password's own developer tooling. Their [documentation on secret references](https://developer.1password.com/docs/cli/secret-references/) details how the CLI resolves secrets at runtime without writing them to disk. We combine that with vault-level access controls, per-role permissions, and audit logs so you can prove who accessed which secret and when. Before we connect any agent to sensitive systems, we run a [data and AI readiness audit](/data-audit) to classify what the agent may touch.",
+      "None of this is theoretical for us. ITECS has run a Dallas cybersecurity practice since 2002, and we have watched ungoverned AI tooling turn into incidents — the [OpenClaw agent security crisis](/insights/openclaw-security-crisis) is a recent example. Secrets management is where agent security either holds or fails, and it is the first thing we lock down.",
+      "**What This Costs and Why It Pays Off**",
+      "The tooling is inexpensive. 1Password is a per-seat subscription your team may already have, and the CLI is included. The value is in the architecture — configuring secret references, biometric approval, write-back, and access controls so the whole system is secure by default rather than secure only if everyone remembers to be careful.",
+      "ITECS prices this the way we price all engineering work: hourly consulting or prepaid retainer hours with tracked usage, no monthly minimum and no expiration, plus a flat fee for a scoped secrets-and-agent build. The return is avoided breaches, provable compliance, and developers who move fast without leaking keys. When you want AI agents that are powerful and governed, [talk to the ITECS team](/contact).",
+    ],
+    faq: [
+      {
+        question:
+          "Can AI agents use my API keys without exposing them to the LLM?",
+        answer:
+          "Yes. With the 1Password CLI enabled, secrets are stored as references like op://vault/item/field and resolved at runtime into the tool's process, not the model's prompt. The agent decides what to do and 1Password supplies the credential, so the LLM never sees the raw secret.",
+      },
+      {
+        question: "What is a 1Password secret reference?",
+        answer:
+          "A secret reference is a pointer in the format op://vault/item/field that stands in for a real secret. You put the reference in config files and scripts, and the 1Password CLI replaces it with the actual value at runtime — so no plaintext secret is stored on disk or in a repository.",
+      },
+      {
+        question: "How does biometric approval work for AI agents?",
+        answer:
+          "When the 1Password desktop app integration is enabled, the CLI authenticates with Touch ID on macOS or Windows Hello on Windows. Each time an agent needs a secret, the user approves the access with their fingerprint, adding a human-in-the-loop checkpoint to autonomous tooling.",
+      },
+      {
+        question: "Can AI agents write new secrets back into 1Password?",
+        answer:
+          "Yes. Using the 1Password CLI or SDK, an agent can create and update vault items. When it generates or rotates an API key, it writes the secret straight into 1Password, so new credentials are stored, encrypted, and governed instead of pasted into a file or chat.",
+      },
+      {
+        question: "What is the ITECS DOCBOT agent?",
+        answer:
+          "DOCBOT is ITECS's internal AI agent for documentation and operations. Technicians use it to create and update SOPs and knowledge-base articles and to query open tickets, projects, hypervisors, and PAX8 licensing. It pulls the required API secrets from 1Password at runtime, gated by biometric approval, so credentials are never exposed to the model.",
+      },
+    ],
+  },
+  {
     slug: "ai-governance-training-dallas-businesses",
     title:
       "AI Governance & Training for Dallas Businesses: Secure the Tools Your Team Already Uses",
