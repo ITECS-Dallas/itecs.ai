@@ -46,13 +46,9 @@ export function AIRiskGovernedDiagram() {
               </h3>
             </div>
             <ul className="space-y-3">
-              {ungoverned.map((item, i) => (
-                <motion.li
+              {ungoverned.map((item) => (
+                <li
                   key={item}
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.1 + i * 0.06, duration: 0.3 }}
                   className="flex items-start gap-3 text-sm leading-relaxed text-ink-body"
                 >
                   <X
@@ -60,7 +56,7 @@ export function AIRiskGovernedDiagram() {
                     aria-hidden="true"
                   />
                   <span>{item}</span>
-                </motion.li>
+                </li>
               ))}
             </ul>
           </motion.div>
@@ -82,13 +78,9 @@ export function AIRiskGovernedDiagram() {
               </h3>
             </div>
             <ul className="space-y-3">
-              {governed.map((item, i) => (
-                <motion.li
+              {governed.map((item) => (
+                <li
                   key={item}
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.2 + i * 0.06, duration: 0.3 }}
                   className="flex items-start gap-3 text-sm leading-relaxed text-ink-body"
                 >
                   <Check
@@ -96,7 +88,7 @@ export function AIRiskGovernedDiagram() {
                     aria-hidden="true"
                   />
                   <span>{item}</span>
-                </motion.li>
+                </li>
               ))}
             </ul>
           </motion.div>
