@@ -72,6 +72,30 @@ export function hasAnalyticsConsent() {
   return getStoredConsent() === "granted";
 }
 
+export function isPrivacyRestricted() {
+  return typeof window === "undefined" || honorsGlobalPrivacyControl();
+}
+
+// Returns a queue-safe gtag. Google Consent Mode v2 governs what actually
+// gets stored/sent — events fired while analytics_storage is denied go out
+// as cookieless pings. GPC users get nothing at all.
+export function ensureGtag() {
+  if (isPrivacyRestricted()) {
+    return null;
+  }
+
+  if (typeof window.gtag !== "function") {
+    window.dataLayer = window.dataLayer || [];
+    // gtag.js only replays queued commands pushed as `arguments` objects.
+    window.gtag = function gtag() {
+      // eslint-disable-next-line prefer-rest-params
+      window.dataLayer?.push(arguments);
+    };
+  }
+
+  return window.gtag;
+}
+
 export function setAnalyticsConsent(value: AnalyticsConsent) {
   window.localStorage.setItem(ITECS_ANALYTICS_CONSENT, value);
 }
@@ -88,11 +112,13 @@ export function trackConversionEvent(
   eventName: AnalyticsEventName,
   payload: AnalyticsPayload = {},
 ) {
-  if (!hasAnalyticsConsent() || typeof window.gtag !== "function") {
+  const gtag = ensureGtag();
+
+  if (!gtag) {
     return;
   }
 
-  window.gtag("event", eventName, {
+  gtag("event", eventName, {
     event_category: "conversion",
     ...sanitizePayload(payload),
   });

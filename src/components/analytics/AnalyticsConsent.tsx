@@ -5,9 +5,9 @@ import { usePathname } from "next/navigation";
 import { useEffect, useMemo, useSyncExternalStore } from "react";
 import {
   ANALYTICS_EVENTS,
+  ensureGtag,
   GA_MEASUREMENT_ID,
   getAnalyticsConsent,
-  hasAnalyticsConsent,
   ITECS_ANALYTICS_CONSENT,
   setAnalyticsConsent,
   trackConversionEvent,
@@ -43,21 +43,21 @@ export function AnalyticsConsent() {
   );
   const pagePath = useMemo(() => pathname || "/", [pathname]);
 
+  // Consent Mode v2: analytics_storage flips to granted the moment the
+  // visitor allows; events fired while denied go out as cookieless pings.
   useEffect(() => {
-    if (consent !== "granted" || typeof window.gtag !== "function") {
+    if (consent !== "granted") {
       return;
     }
 
-    window.gtag("config", GA_MEASUREMENT_ID, {
-      page_path: pagePath,
-      send_page_view: true,
-    });
-  }, [consent, pagePath]);
+    ensureGtag()?.("consent", "update", { analytics_storage: "granted" });
+  }, [consent]);
 
   useEffect(() => {
-    if (consent !== "granted" || !hasAnalyticsConsent()) {
-      return;
-    }
+    ensureGtag()?.("event", "page_view", { page_path: pagePath });
+  }, [pagePath]);
+
+  useEffect(() => {
 
     const sent = new Set<number>();
     const thresholds = [25, 50, 75, 100];
@@ -87,13 +87,9 @@ export function AnalyticsConsent() {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [consent, pagePath]);
+  }, [pagePath]);
 
   useEffect(() => {
-    if (consent !== "granted" || !hasAnalyticsConsent()) {
-      return;
-    }
-
     function handleCtaClick(event: MouseEvent) {
       if (event.defaultPrevented || !(event.target instanceof Element)) {
         return;
@@ -119,7 +115,7 @@ export function AnalyticsConsent() {
     return () => {
       document.removeEventListener("click", handleCtaClick);
     };
-  }, [consent, pagePath]);
+  }, [pagePath]);
 
   function chooseConsent(value: "granted" | "denied") {
     setAnalyticsConsent(value);
@@ -128,22 +124,29 @@ export function AnalyticsConsent() {
 
   return (
     <>
-      {consent === "granted" ? (
-        <>
-          <Script
-            src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
-            strategy="afterInteractive"
-          />
-          <Script id="itecs-analytics-init" strategy="afterInteractive">
-            {`
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', '${GA_MEASUREMENT_ID}', { send_page_view: false });
-            `}
-          </Script>
-        </>
-      ) : null}
+      <Script
+        src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+        strategy="afterInteractive"
+      />
+      <Script id="itecs-analytics-init" strategy="afterInteractive">
+        {`
+          if (!navigator.globalPrivacyControl) {
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            window.gtag = window.gtag || gtag;
+            var itecsConsent = null;
+            try { itecsConsent = localStorage.getItem('${ITECS_ANALYTICS_CONSENT}'); } catch (e) {}
+            gtag('consent', 'default', {
+              ad_storage: 'denied',
+              ad_user_data: 'denied',
+              ad_personalization: 'denied',
+              analytics_storage: itecsConsent === 'granted' ? 'granted' : 'denied'
+            });
+            gtag('js', new Date());
+            gtag('config', '${GA_MEASUREMENT_ID}', { send_page_view: false });
+          }
+        `}
+      </Script>
 
       {consent === null ? (
         <div

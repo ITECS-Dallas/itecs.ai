@@ -6,7 +6,7 @@
  *
  * Credentials: service account key at /home/itecs/.google-seo/itecs-seo-bot.json
  * (itecs-seo-bot@itecs-ai.iam.gserviceaccount.com — Full user on GSC domain
- * property sc-domain:itecs.ai, Viewer on GA4 property 333719828).
+ * property sc-domain:itecs.ai, Editor on the GA account).
  *
  * Output: /home/itecs/.google-seo/reports/audit-<date>.json plus a stdout summary.
  * --no-inspect skips the per-URL index-coverage inspection (slow, quota 2000/day).
@@ -17,7 +17,8 @@ import { createSign } from "node:crypto";
 const KEY_PATH = "/home/itecs/.google-seo/itecs-seo-bot.json";
 const REPORT_DIR = "/home/itecs/.google-seo/reports";
 const GSC_SITE = "sc-domain:itecs.ai";
-const GA4_PROPERTY = "333719828";
+// itecs.ai property (532729301, stream G-J49FJ2JM1N). NOT 333719828 — that is itecsonline.com.
+const GA4_PROPERTY = "532729301";
 const SITEMAP_URL = "https://itecs.ai/sitemap.xml";
 const INSPECT = !process.argv.includes("--no-inspect");
 
