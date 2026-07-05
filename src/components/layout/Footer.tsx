@@ -52,6 +52,15 @@ const industryLinks: FooterLink[] = [
     label: "Inventory & Working Capital",
     href: "/manufacturing/inventory-working-capital-ai",
   },
+  { label: "Financial Services AI", href: "/financial-services" },
+  {
+    label: "Field Examination Analyzer",
+    href: "/financial-services/field-examination-analyzer",
+  },
+  {
+    label: "Portfolio & Covenant Monitoring",
+    href: "/financial-services/portfolio-monitoring-covenant-ai",
+  },
 ];
 
 const companyLinks: FooterLink[] = [
