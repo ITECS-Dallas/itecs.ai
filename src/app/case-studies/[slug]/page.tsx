@@ -6,11 +6,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { FAQ } from "@/components/sections/FAQ";
 import { CTASection } from "@/components/sections/CTASection";
 import { generatePageMetadata } from "@/lib/metadata";
-import {
-  generateArticleSchema,
-  generateBreadcrumbSchema,
-  generateFAQSchema,
-} from "@/lib/seo";
+import { generateArticleSchema, generateFAQSchema } from "@/lib/seo";
 import { SITE_CONFIG, TRUST_CASE_STUDIES } from "@/lib/constants";
 
 type CaseStudyPageProps = {
@@ -299,14 +295,6 @@ export default async function CaseStudyDetailPage({
         })}
       />
       <JsonLd data={generateFAQSchema(caseStudy.detailFaq)} />
-      <JsonLd
-        data={generateBreadcrumbSchema(
-          breadcrumbItems.map((item) => ({
-            name: item.label,
-            url: `${SITE_CONFIG.url}${item.href}`,
-          })),
-        )}
-      />
     </>
   );
 }
