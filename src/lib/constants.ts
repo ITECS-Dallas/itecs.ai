@@ -3415,6 +3415,89 @@ export const TRUST_CASE_STUDIES = [
       { value: "Zero", label: "Data loss incidents" },
       { value: "$2.1M", label: "Revenue loss prevented" },
     ],
+    heroSummary:
+      "**ITECS relocated Pegasus Foods' entire IT environment 1,200 miles — from Los Angeles to Rockwall, Texas — with 100% uptime, zero data loss, and $2.1M in prevented downtime losses. Virtualization, real-time replication, and a staged cutover kept 24/7 food manufacturing running through the whole move.**",
+    stakesHeading: "Why Zero Downtime Was Non-Negotiable",
+    stakes: [
+      "In food manufacturing, downtime does not just mean lost productivity. It means spoiled inventory, missed deliveries, broken supply chains, and damaged customer relationships. Pegasus Foods operated 24/7 across multiple production facilities, and ITECS estimated the cost of a system outage at **$1,467 per minute** in lost revenue and operational disruption.",
+      "Four system families had to stay online through the entire move: production lines reading the real-time inventory management system, quality-control systems mandated by food safety regulations, financial systems processing thousands of daily transactions, and supply chain coordination across multiple distribution centers. A traditional relocation — back up, truck the servers, restore — would have taken these systems down for days.",
+    ],
+    approachHeading: "How ITECS Delivered the Migration",
+    approach: [
+      {
+        step: "Comprehensive infrastructure assessment",
+        description:
+          "ITECS audited the full environment and mapped every system, application, and data dependency before anything moved. The assessment surfaced 127 critical business applications requiring zero-downtime treatment, more than 50TB of production data needing real-time synchronization, complex interdependencies between manufacturing systems and ERP platforms, and food-safety data retention requirements.",
+      },
+      {
+        step: "Virtualized replica with real-time replication",
+        description:
+          "The team built a complete replica of the Pegasus Foods environment in ITECS data centers using server, storage, network, and application virtualization. Real-time data replication kept the replica current, and automatic failover protected against interruption at every stage.",
+      },
+      {
+        step: "Staged, monitored cutover",
+        description:
+          "The transition ran under 24/7 monitoring with staged application testing to validate functionality, bandwidth optimization for efficient data transfer, and daily executive briefings so leadership tracked progress against the plan.",
+      },
+      {
+        step: "Post-migration operations",
+        description:
+          "The migration established disaster recovery with recovery time objectives measured in minutes, plus ongoing monitoring, performance optimization, and strategic technology guidance. What began as a migration project became a standing operations partnership.",
+      },
+    ],
+    securityHeading: "Security Through the Transition",
+    security: [
+      "Moving 50TB of live production data across the country expands the attack surface, so migration security ran as its own workstream: end-to-end encryption for all data in transit, multi-factor authentication on administrative access, continuous security monitoring and threat detection, and a segmented network architecture that isolated migration traffic from production. These are the same control families the [NIST Cybersecurity Framework](https://www.nist.gov/cyberframework) formalizes — protect, detect, respond — applied to a moving target.",
+    ],
+    resultsHeading: "Measured Results",
+    resultsGroups: [
+      {
+        title: "Operational",
+        points: [
+          "Zero production delays during the transition",
+          "100% order fulfillment maintained",
+          "No impact to customer deliveries",
+          "Zero data loss incidents across 50TB+ of replicated data",
+        ],
+      },
+      {
+        title: "Financial",
+        points: [
+          "$2.1M in prevented downtime losses",
+          "$150K saved in expedited shipping costs",
+          "$80K reduction in IT labor costs",
+          "$200K annual savings from the modernized infrastructure",
+        ],
+      },
+    ],
+    quote: {
+      text: "The ITECS team provided an innovative solution to what seemed like an impossible challenge. Their virtual migration approach ensured our operations continued without interruption while eliminating the risks associated with physically moving our critical IT infrastructure.",
+      attribution: "Dan, CEO, Pegasus Foods, Inc.",
+    },
+    aiBridge:
+      "The discipline behind this migration — dependency mapping, replication, staged rollout, 24/7 monitoring — is the same discipline ITECS now applies to [AI agents for manufacturing operations](/manufacturing). Manufacturers whose production runs on live ERP and inventory data start with a [data readiness audit](/data-audit) before any AI build touches those systems.",
+    detailFaq: [
+      {
+        question: "How did ITECS move 50TB of production data without downtime?",
+        answer:
+          "ITECS built a virtualized replica of the entire environment in its data centers and kept it synchronized with real-time replication. Cutover happened only after staged application testing validated every critical system.",
+      },
+      {
+        question: "What would downtime have cost Pegasus Foods?",
+        answer:
+          "ITECS estimated the cost at $1,467 per minute in lost revenue and operational disruption. The zero-downtime approach prevented an estimated $2.1M in downtime losses.",
+      },
+      {
+        question: "Which systems had to stay online during the relocation?",
+        answer:
+          "Production lines using real-time inventory management, food-safety quality-control systems, financial systems processing thousands of daily transactions, and supply chain coordination across distribution centers. All ran continuously through the move.",
+      },
+      {
+        question: "Did the engagement end after the migration?",
+        answer:
+          "No. The project evolved into a standing partnership covering disaster recovery with minutes-level recovery objectives, continuous monitoring and optimization, and ongoing technology guidance.",
+      },
+    ],
     sourceHref:
       "https://itecsonline.com/white-papers-case-studies/pegasus-foods-white-paper",
     sourceLabel: "Read Pegasus Foods case study",
@@ -3440,6 +3523,79 @@ export const TRUST_CASE_STUDIES = [
       { value: "52+", label: "Weeks of on-site support" },
       { value: "30%", label: "Response-time reduction" },
     ],
+    heroSummary:
+      "**ITECS provides OpenText's Dallas office a dedicated on-site IT specialist — 52+ consecutive weeks delivered — holding 99.8% system uptime across all workstations and cutting IT support response time 30%. The program extends OpenText's central IT without the overhead of building a new internal department.**",
+    stakesHeading: "The Challenge: IT Support That Could Not Keep Pace With Growth",
+    stakes: [
+      "OpenText, a global leader in Enterprise Information Management, was expanding its Dallas branch — and its distributed IT support model struggled to keep up with day-to-day operational needs. Routine issues sat in queues, and response times dragged on employee productivity.",
+      "Growth exposed four specific gaps: inconsistent new-hire hardware provisioning that delayed onboarding, no on-site technical expertise for immediate hardware and network troubleshooting, coordination friction between central IT and the Dallas office, and increasing strain on existing IT resources as headcount grew.",
+    ],
+    approachHeading: "How the On-Site Program Works",
+    approach: [
+      {
+        step: "Dedicated weekly on-site specialist",
+        description:
+          "A consistent ITECS specialist works on-site weekly, building continuity of service and working knowledge of OpenText's environment rather than rotating unfamiliar technicians through the office.",
+      },
+      {
+        step: "Complete new-hire provisioning",
+        description:
+          "ITECS manages end-to-end setup for new employees — computer builds, software installation, network configuration, and user account creation — so every onboarding follows the same standard.",
+      },
+      {
+        step: "Hardware refresh and deployment coordination",
+        description:
+          "The specialist coordinates with OpenText's central IT for scheduled hardware refreshes and rollouts, providing on-site hands during deployments to keep disruption near zero.",
+      },
+      {
+        step: "Proactive maintenance on every visit",
+        description:
+          "Regular system checks, software updates, and preventive maintenance run during each visit, resolving developing issues before they reach a ticket queue.",
+      },
+    ],
+    securityHeading: "Operating Inside Enterprise Governance",
+    security: [
+      "An embedded specialist only works if the program operates inside the client's rules. ITECS on-site engagements run under the client's identity, access, and change-management standards — least-privilege accounts, documented provisioning checklists, and coordination with central IT on every deployment. ITECS brings the same security posture it has run as a Dallas managed services and cybersecurity firm since 2002, aligned to the control families in the [NIST Cybersecurity Framework](https://www.nist.gov/cyberframework).",
+    ],
+    resultsHeading: "Measured Results",
+    resultsGroups: [
+      {
+        title: "Reliability and responsiveness",
+        points: [
+          "99.8% system uptime maintained across all workstations",
+          "30% reduction in IT support response time",
+          "52+ weeks of uninterrupted on-site support delivered",
+        ],
+      },
+      {
+        title: "Onboarding and deployments",
+        points: [
+          "24 new-hire computer setups completed",
+          "100% on-time new-hire setup completion rate",
+          "24+ technology deployments coordinated with central IT",
+          "Zero business disruption during major rollouts",
+        ],
+      },
+    ],
+    aiBridge:
+      "This operating rhythm — a named specialist, a weekly cadence, proactive review, coordination with internal IT — is the model ITECS now applies to AI systems as a [Managed Intelligence Provider](/managed-intelligence-provider). Teams extending the same pattern to their people pair it with [hands-on AI training](/training) delivered on the same cadence.",
+    detailFaq: [
+      {
+        question: "What does the OpenText on-site support program include?",
+        answer:
+          "A dedicated ITECS specialist on-site weekly, complete new-hire provisioning, hardware refresh and deployment coordination with central IT, and proactive maintenance during every visit.",
+      },
+      {
+        question: "How does on-site support coordinate with OpenText's central IT?",
+        answer:
+          "The specialist works under OpenText's standards and schedules — coordinating hardware refreshes, deployments, and escalations with the central team rather than around it. Rollouts completed with zero business disruption.",
+      },
+      {
+        question: "Why use an MSP instead of hiring internal IT staff for a branch office?",
+        answer:
+          "A dedicated on-site program delivers consistent local coverage without recruiting, managing, and backfilling an internal department. OpenText gained 99.8% uptime and 30% faster response times on a weekly-visit model.",
+      },
+    ],
     sourceHref:
       "https://itecsonline.com/white-papers-case-studies/opentext-success-story",
     sourceLabel: "Read OpenText case study",
@@ -3464,6 +3620,78 @@ export const TRUST_CASE_STUDIES = [
       { value: "99.9%", label: "System uptime" },
       { value: "5", label: "Subsidiaries supported" },
       { value: "40%", label: "Disruption reduction" },
+    ],
+    heroSummary:
+      "**ITECS manages IT transitions for PepsiCo's newly acquired subsidiaries — five supported to date on roughly 12-month timelines — holding 99.9% system uptime, cutting transition-related IT disruptions 40%, and maintaining 100% compliance with PepsiCo's corporate IT governance standards.**",
+    stakesHeading: "The Challenge: The Gap Between Acquisition and Integration",
+    stakes: [
+      "PepsiCo expands through strategic acquisitions, and every acquired company enters a transition window: it must keep operating today while preparing to merge into PepsiCo's corporate systems tomorrow. That window is where IT risk concentrates.",
+      "Five problems recur in that window: maintaining business continuity while integration is prepared, balancing immediate operational needs against PepsiCo's strict IT governance frameworks, absorbing acquired companies with very different levels of IT maturity and compliance, buying technology that serves today without conflicting with tomorrow's integration, and supporting employees through the change with minimal disruption.",
+    ],
+    approachHeading: "The Transition Management Program",
+    approach: [
+      {
+        step: "Compliant interim infrastructure",
+        description:
+          "ITECS stands up interim IT infrastructure that serves day-to-day operations while complying with PepsiCo's governance frameworks from day one — so nothing built during transition has to be torn out at integration.",
+      },
+      {
+        step: "Strategic technology procurement",
+        description:
+          "All transition-period procurement runs through ITECS, selecting hardware and software that meets immediate business needs while aligning with PepsiCo's long-term IT strategy and easing eventual migration.",
+      },
+      {
+        step: "Risk management and compliance",
+        description:
+          "ITECS conducts risk assessments, implements controls that meet PepsiCo's security and compliance standards, and delivers regular compliance documentation throughout the transition.",
+      },
+      {
+        step: "Comprehensive managed IT services",
+        description:
+          "Help desk support, network monitoring, security management, and system maintenance run under ITECS for the full transition period, with proactive resolution before issues reach operations.",
+      },
+    ],
+    securityHeading: "Governance and Compliance Discipline",
+    security: [
+      "Acquired companies arrive with uneven security postures; the transition program's job is to raise each one to PepsiCo's standard and prove it. Risk assessments, implemented controls, and recurring compliance documentation kept all five subsidiaries at 100% compliance with PepsiCo's IT governance requirements. ITECS maps this work to the control structure of the [NIST Cybersecurity Framework](https://www.nist.gov/cyberframework), the same reference model U.S. enterprises and auditors use.",
+    ],
+    resultsHeading: "Measured Results",
+    resultsGroups: [
+      {
+        title: "Continuity and compliance",
+        points: [
+          "99.9% system uptime maintained during transition periods",
+          "40% reduction in transition-related IT disruptions",
+          "100% compliance with PepsiCo's IT governance standards",
+        ],
+      },
+      {
+        title: "Speed and scale",
+        points: [
+          "Five subsidiaries supported through transition",
+          "12-month average transition support timeline",
+          "30% decrease in integration timeline and costs",
+        ],
+      },
+    ],
+    aiBridge:
+      "Enterprises now face the same transition problem with AI: new tools arrive faster than governance can absorb them, and the gap is where risk lives. ITECS applies this acquisition-transition discipline to [AI consulting and governance for growing organizations](/consulting) and runs the resulting systems long-term as a [Managed Intelligence Provider](/managed-intelligence-provider).",
+    detailFaq: [
+      {
+        question: "What does transition IT management mean in an acquisition?",
+        answer:
+          "It is the specialized IT support an acquired company needs between deal close and full integration — compliant interim infrastructure, aligned procurement, risk management, and managed services that keep the business running while integration is prepared.",
+      },
+      {
+        question: "How does ITECS keep acquired subsidiaries compliant with PepsiCo governance?",
+        answer:
+          "Through risk assessments, controls that meet PepsiCo's security and compliance standards, and regular compliance documentation across the transition. The program has maintained 100% compliance across five subsidiaries.",
+      },
+      {
+        question: "How long does a subsidiary IT transition take?",
+        answer:
+          "The program averages 12 months of transition support per subsidiary. The structured approach has cut integration timeline and costs by 30%.",
+      },
     ],
     sourceHref:
       "https://itecsonline.com/white-papers-case-studies/pepsico-success-story-itecs-manages-it-transitions",
