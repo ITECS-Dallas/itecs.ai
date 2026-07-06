@@ -1947,7 +1947,162 @@ export const CLAUDE_PLAN_COMPARISON: PlanComparison = {
   ],
 };
 
+// Vendor-neutral side-by-side matrix for the OpenAI Codex vs Claude Code
+// comparison article. Specs verified against openai.com/codex, the GPT-5.5
+// model docs, and the Claude Opus 4.8 platform docs (July 2026).
+export const CODING_AGENT_COMPARISON: PlanComparison = {
+  caption:
+    "OpenAI Codex (GPT-5.5) versus Claude Code (Opus 4.8) — enterprise coding agent comparison across model, context, autonomy, security, tooling, surfaces, pricing, and best fit (July 2026)",
+  plans: [
+    { name: "OpenAI Codex", tagline: "GPT-5.5" },
+    { name: "Claude Code", tagline: "Opus 4.8" },
+  ],
+  rows: [
+    {
+      feature: "Underlying model",
+      values: ["GPT-5.5", "Claude Opus 4.8 (4.7, 4.6 selectable)"],
+    },
+    {
+      feature: "Context window",
+      values: ["~1.05M tokens", "1M tokens (Claude Code, paid plans)"],
+    },
+    {
+      feature: "Max output",
+      values: ["128K tokens", "128K tokens"],
+    },
+    {
+      feature: "Autonomy model",
+      values: [
+        "Parallel worktrees + cloud sandboxes",
+        "Workflows: plan → fan out subagents → merge",
+      ],
+    },
+    {
+      feature: "Sandboxing & security",
+      values: [
+        "OS sandbox: directory + network scopes",
+        "Permission model + MCP-scoped tool access",
+      ],
+    },
+    {
+      feature: "Tooling & protocol",
+      values: [
+        "Hosted shell, apply patch, MCP",
+        "MCP (created by Anthropic), deep integrations",
+      ],
+    },
+    {
+      feature: "Surfaces",
+      values: [
+        "Codex app, CLI, IDE, cloud, ChatGPT",
+        "Claude Code CLI, IDE, cloud, Cowork",
+      ],
+    },
+    {
+      feature: "API pricing (in / out per M)",
+      values: ["$5 / $30", "$5 / $25"],
+    },
+    {
+      feature: "Analyst standing",
+      values: [
+        "OpenAI: Leader, 2026 Gartner MQ",
+        "Anthropic: frontier reasoning models",
+      ],
+    },
+    {
+      feature: "Best-fit use case",
+      values: [
+        "Parallel autonomous tasks, broad ecosystem",
+        "Deep whole-repo reasoning, MCP-connected tooling",
+      ],
+    },
+  ],
+};
+
 export const INSIGHTS: InsightItem[] = [
+  {
+    slug: "openai-codex-vs-claude-code",
+    title:
+      "OpenAI Codex (GPT-5.5) vs. Claude Code (Opus 4.8): Enterprise Coding Agents Compared",
+    description:
+      "OpenAI Codex (GPT-5.5) vs Claude Code (Opus 4.8), compared for CTOs across autonomy, sandboxing, context, MCP, governance, and cost. A vendor-neutral enterprise guide.",
+    href: "/insights/openai-codex-vs-claude-code",
+    publishedDate: "2026-07-03",
+    hubSlug: "custom-ai-agents",
+    hubLabel: "Custom AI Agents",
+    hubHref: "/custom-ai-agents",
+    keywords: [
+      "OpenAI Codex vs Claude Code",
+      "GPT-5.5 vs Opus 4.8",
+      "enterprise AI coding agents",
+      "Codex vs Claude Code comparison",
+      "best AI coding agent enterprise",
+      "Claude Code Opus 4.8",
+      "OpenAI Codex GPT-5.5",
+      "Model Context Protocol coding agent",
+      "AI coding agent security",
+      "coding agent for CTOs",
+    ],
+    h1: "OpenAI Codex (GPT-5.5) vs. Claude Code (Opus 4.8): Enterprise Coding Agents Compared",
+    content: [
+      "For CTOs and engineering leaders, the AI coding question has changed. It is no longer whether to adopt an agent — it is which one, and how to govern it. The two frontier options are OpenAI's **Codex**, powered by **GPT-5.5**, and Anthropic's **Claude Code**, powered by **Claude Opus 4.8**. Both can plan, write, test, and merge code across a repository. They differ in architecture, security model, and ecosystem. This is a vendor-neutral comparison for enterprise buyers — and ITECS helps teams [select and deploy either one securely](/custom-ai-agents).",
+      "**OpenAI Codex (GPT-5.5) and Claude Code (Opus 4.8) are the two frontier enterprise coding agents. Codex leads on parallel autonomy and OS-level sandboxing; Claude Code leads on deep reasoning and the Model Context Protocol it created. Context is no longer the divide — both offer roughly a million tokens. The right choice depends on your workflow, security posture, and existing stack.**",
+      "**Why This Comparison Matters Now**",
+      "Gartner formalized the shift. Its 2026 Magic Quadrant renamed the category from AI code assistants to Enterprise AI Coding Agents — tools that plan, execute, and verify multistep work, not just autocomplete lines. In that report, Gartner named OpenAI a Leader. Anthropic's Claude Opus models sit at the frontier of coding benchmarks. For a CTO, this is now a platform decision with security, cost, and workflow consequences, not a plugin choice.",
+      "Both vendors ship the same core promise: an agent that takes a task and returns reviewed, working code. The difference is how each gets there — and which one fits how your engineers already work.",
+      "[[COMPARISON_TABLE]]",
+      "**OpenAI Codex (GPT-5.5): Parallel Autonomy and OS-Level Sandboxing**",
+      "Codex is built around parallelism. With built-in worktrees and cloud environments, it runs multiple tasks at once — drafting docs from a diff, refactoring a module, and running a test suite in three separate sandboxes while an engineer reviews and merges. GPT-5.5 carries a context window of roughly 1.05 million tokens and 128,000 tokens of output.",
+      "Its security model is the OS sandbox. Codex controls exactly which directories and network access the agent can use, with approve-once or approve-for-session permissions and full auditability. For teams that want autonomous agents running safely on real infrastructure, that sandbox is the headline feature. It is also part of why OpenAI landed in Gartner's Leaders quadrant. We train engineering teams to run it safely in our [ChatGPT Codex training and implementation](/chatgpt-codex-training).",
+      "**Claude Code (Opus 4.8): Deep Reasoning, 1M Context, and MCP**",
+      "Claude Code leads with reasoning and integration. Claude Opus 4.8, released in May 2026, supports a 1-million-token context window in Claude Code on paid plans, so the agent can hold an entire large repository in view while it works. Its Workflows primitive lets one agent plan a task, fan out into hundreds of parallel subagents, and merge the result inside a single session.",
+      "Its integration advantage is the Model Context Protocol. Anthropic created MCP, the open standard that connects agents to tools, data, and services — and the wider industry, including OpenAI, has adopted it. For enterprises that want an agent wired into internal systems through a governed protocol, Claude Code's native MCP support is the draw. Our [Claude Cowork training](/claude-cowork-training) extends the same model to non-engineering teams.",
+      "**Where They Actually Differ (and Where They Don't)**",
+      "Start with what is no longer a differentiator: context. Both agents now hold roughly a million tokens, enough for whole-repository work. The marketing battle over context length is effectively over. The real differences are structural.",
+      "Codex optimizes for parallel throughput and a hardened OS sandbox — many tasks, running safely at once. Claude Code optimizes for depth and connectivity — deep reasoning over a large context, wired into your systems through MCP. One is a fleet of sandboxed workers; the other is a deeply integrated senior engineer. Most enterprises benefit from both, matched to different jobs.",
+      "Pricing is close. GPT-5.5 runs $5 per million input tokens and $30 per million output; Claude Opus 4.8 runs $5 input and $25 output. At scale, the cost driver is not the rate — it is how much each agent thinks and retries, which governance controls.",
+      "**How to Choose: An Enterprise Decision Framework**",
+      "ITECS uses a four-step framework to match the agent to the organization, not the hype.",
+      "**Step 1: Map the work.** Parallel, well-scoped tasks — refactors, tests, migrations — favor Codex. Deep, cross-system reasoning over a large codebase favors Claude Code.",
+      "**Step 2: Weigh the security model.** If you need a strict OS sandbox with directory and network controls, Codex leads. If you need governed tool access through MCP, Claude Code leads.",
+      "**Step 3: Check the existing stack.** Teams standardized on ChatGPT Enterprise and the OpenAI ecosystem integrate Codex fastest. Teams invested in Anthropic and MCP-connected tooling integrate Claude Code fastest.",
+      "**Step 4: Govern before you scale.** Whichever you choose, put secrets management, sandboxing, spend caps, and human review in place first. That is the work most teams skip — and the work ITECS leads with.",
+      "**Security and Governance for Either Agent**",
+      "The model matters less than the guardrails around it. An autonomous coding agent has write access to your codebase and reach into your systems — the same risks the [OWASP Top 10 for Large Language Model Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/) catalogs, from excessive agency to insecure output handling. The controls that contain them are the same for both agents: sandboxed execution, scoped credentials, mandatory human review, and audit logging.",
+      "One control matters most: secrets. Neither agent should ever hold your API keys in its context. We wire both to pull credentials at runtime from a vault, gated by biometric approval, in the pattern described in our guide to [keeping secrets out of the LLM with 1Password](/insights/secure-ai-agents-1password-secrets). Before any agent touches production, we run a [data and AI readiness audit](/data-audit) and align the deployment to enterprise policy.",
+      "**Cost and ROI at Enterprise Scale**",
+      "Per-token rates are nearly identical, so ROI is decided by governance, not vendor. An ungoverned agent retries endlessly, burns tokens, and ships code nobody reviewed. A governed one clears real work at a predictable cost. The difference is the architecture around the agent, not the badge on it. For a fuller view of Anthropic's plan tiers, see our [Claude plan comparison](/insights/claude-plan-comparison).",
+      "ITECS prices this vendor-neutrally: hourly consulting or prepaid retainer hours with tracked usage, no monthly minimum and no expiration, plus a flat fee for a scoped agent selection and rollout. We help you pilot both, measure real throughput and cost, and standardize on the right mix — with the [AI consulting and governance](/consulting) to make it stick. When you are choosing between Codex and Claude Code, [talk to the ITECS team](/contact).",
+    ],
+    faq: [
+      {
+        question:
+          "Is OpenAI Codex or Claude Code better for enterprise development?",
+        answer:
+          "Neither is universally better. OpenAI Codex (GPT-5.5) leads on parallel task execution and OS-level sandboxing, and OpenAI was named a Leader in Gartner's 2026 Magic Quadrant for Enterprise AI Coding Agents. Claude Code (Opus 4.8) leads on deep reasoning over large context and native Model Context Protocol integration. The right choice depends on your workflows, security model, and existing stack.",
+      },
+      {
+        question: "What is the context window for GPT-5.5 vs Claude Opus 4.8?",
+        answer:
+          "Both are roughly a million tokens. GPT-5.5 has about a 1.05-million-token context window, and Claude Opus 4.8 supports a 1-million-token context window in Claude Code on paid plans. Both allow up to 128,000 output tokens, so context length is no longer a meaningful differentiator between them.",
+      },
+      {
+        question: "How much do OpenAI Codex and Claude Code cost?",
+        answer:
+          "By API tokens, GPT-5.5 is $5 per million input tokens and $30 per million output; Claude Opus 4.8 is $5 input and $25 output. Both are also available through subscription plans. At enterprise scale, total cost is driven more by governance and how much each agent reasons than by the per-token rate.",
+      },
+      {
+        question: "What is the Model Context Protocol and does it matter?",
+        answer:
+          "The Model Context Protocol, or MCP, is an open standard Anthropic created to connect AI agents to tools, data, and services. Claude Code supports it natively, and the broader industry, including OpenAI, has adopted it. For enterprises that want agents governed through a common tool-connection standard, MCP support is a meaningful advantage.",
+      },
+      {
+        question: "How does ITECS help us choose between Codex and Claude Code?",
+        answer:
+          "ITECS is vendor-neutral. We map your workflows and security requirements, pilot both agents, measure real throughput and cost, and put secrets management, sandboxing, and human review in place before scaling. We help you standardize on the right agent, or the right mix, and govern it to enterprise standards.",
+      },
+    ],
+  },
   {
     slug: "secure-ai-agents-1password-secrets",
     title:
