@@ -24,9 +24,9 @@ import { CTASection } from "@/components/sections/CTASection";
 const service = SERVICES.find((s) => s.slug === "automation")!;
 
 export const metadata = generatePageMetadata({
-  title: "AI Workflow Automation for Dallas Businesses",
+  title: "AI Automation Services in Dallas — Business Workflow Automation",
   description:
-    "Automate lead follow-ups, data entry, and scheduling for your Dallas business with managed implementation support from a 24-year MSP. From $2,500.",
+    "AI automation services for Dallas businesses — automate lead follow-up, data entry, and scheduling with managed implementation from a 24-year MSP. From $2,500.",
   path: service.href,
   keywords: service.keywords,
 });

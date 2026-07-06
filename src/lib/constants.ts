@@ -2378,9 +2378,9 @@ export const INSIGHTS: InsightItem[] = [
   {
     slug: "claude-fable-5-release",
     title:
-      "Claude Fable 5 Is Here: Benchmarks, Real-World Performance, and the Usage-Limit Backlash",
+      "Claude Fable 5 Usage Limits: Why Fable Draws Down Usage 2× Faster",
     description:
-      "Anthropic released Claude Fable 5 on June 9, 2026 — its most powerful public model yet. Here are the benchmarks, what users report, and why the usage limits are frustrating teams.",
+      "Seeing “Fable is the most capable model and draws down usage 2× faster”? What Claude's warning means, how each plan's limits work, and the benchmarks behind the June 9, 2026 release.",
     href: "/insights/claude-fable-5-release",
     publishedDate: "2026-06-11",
     hubSlug: "consulting",
@@ -4370,6 +4370,16 @@ export const MIP_METHODOLOGY_STEPS = [
 ] as const;
 
 export const MIP_ENTERPRISE_FAQ = [
+  {
+    question: "What is a Managed Intelligence Provider?",
+    answer:
+      "A Managed Intelligence Provider (MIP) is a firm that operates AI for a business the way an MSP operates IT infrastructure — running AI agents, automations, model governance, security controls, and outcome reporting as an ongoing managed service rather than a one-time project. ITECS operates this model from Dallas for organizations with 10–300 employees.",
+  },
+  {
+    question: "What do managed intelligence services include?",
+    answer:
+      "Managed intelligence services cover the full operating lifecycle of business AI: use-case selection, data boundaries and governance, agent and automation build-out, integration with systems like Microsoft 365 and CRM, model selection and cost control, security review, and monthly reporting on outcomes. The provider remains accountable for keeping AI working, governed, and measurable.",
+  },
   {
     question: "How does data security work in a Managed Intelligence Provider engagement?",
     answer:

@@ -19,7 +19,7 @@ import { ConversionBand } from "@/components/sections/ConversionBand";
 export const metadata = generatePageMetadata({
   title: "Managed Intelligence Provider — Enterprise AI Operations",
   description:
-    "ITECS is Dallas's Managed Intelligence Provider (MIP), operating AI agents, automations, governance, and reporting for organizations with 10–300 employees.",
+    "What is a Managed Intelligence Provider? ITECS delivers managed intelligence services from Dallas — operating AI agents, automations, governance, and reporting for 10–300-employee organizations.",
   path: "/managed-intelligence-provider",
   keywords: [
     "managed intelligence provider",
