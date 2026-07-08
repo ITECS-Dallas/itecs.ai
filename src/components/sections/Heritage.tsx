@@ -84,23 +84,7 @@ export function Heritage() {
           </div>
         </div>
 
-        <div className="mt-6 grid gap-4 md:grid-cols-[1fr_auto] md:items-center">
-          <div className="grid gap-4 sm:grid-cols-3">
-            {HOMEPAGE_HERITAGE.stats.map((stat) => (
-              <div
-                key={stat.label}
-                className="rounded-lg border border-[var(--border-default)] bg-bg-elevated p-5 text-center shadow-e1 [box-shadow:var(--elev-1-inset),var(--elev-1)]"
-              >
-                <p className="font-mono text-2xl font-semibold tracking-normal text-brand md:text-3xl">
-                  {stat.value}
-                </p>
-                <p className="mt-1 text-xs font-medium uppercase tracking-normal text-text-tertiary">
-                  {stat.label}
-                </p>
-              </div>
-            ))}
-          </div>
-
+        <div className="mt-6 flex justify-end">
           <a
             href={HOMEPAGE_HERITAGE.parentLink.href}
             target="_blank"

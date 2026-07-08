@@ -1,9 +1,4 @@
-import {
-  CERTIFICATION_BADGES,
-  CLIENT_LOGOS,
-  PARTNER_LOGOS,
-} from "@/lib/constants";
-import { CertificationStrip } from "@/components/ui/CertificationStrip";
+import { CLIENT_LOGOS, PARTNER_LOGOS } from "@/lib/constants";
 import { LogoWall } from "@/components/ui/LogoWall";
 
 export function TrustBar() {
@@ -36,24 +31,6 @@ export function TrustBar() {
             </p>
           </div>
           <LogoWall logos={PARTNER_LOGOS} columns="partners" />
-        </div>
-
-        <div className="mt-10 border-t border-[var(--border-subtle)] pt-10">
-          <div className="mb-5 flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
-            <div>
-              <p className="font-mono text-xs font-semibold uppercase text-brand-accent">
-                Certifications & Governance
-              </p>
-              <h3 className="mt-2 text-lg font-semibold text-text-primary">
-                Security and compliance posture visible from the first scroll.
-              </h3>
-            </div>
-            <p className="max-w-md text-sm leading-relaxed text-text-tertiary">
-              Only confirmed ITECS credentials and platform relationships are
-              shown.
-            </p>
-          </div>
-          <CertificationStrip badges={CERTIFICATION_BADGES} />
         </div>
       </div>
     </section>

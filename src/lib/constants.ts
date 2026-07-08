@@ -3436,7 +3436,7 @@ export const FAQ_ITEMS = [
   {
     question: "What makes ITECS different from other AI companies in Dallas?",
     answer:
-      "We're not a startup that discovered AI last year. ITECS has been managing IT infrastructure for Dallas businesses since 2002. That means your AI tools are built by people who already understand networks, security, compliance, and the realities of running a business with 10–300 employees.",
+      "We're not a startup that discovered AI last year. ITECS has been managing IT infrastructure for Dallas businesses since 2002. That means your AI tools are built by people who already understand networks, security, compliance, and the realities of running an organization with 50–300 employees — big enough that ungoverned AI is a real risk, not big enough to staff an internal AI team.",
   },
   {
     question: "How do I know if AI is right for my organization?",
@@ -3456,12 +3456,12 @@ export const FAQ_ITEMS = [
   {
     question: "Can you build custom AI agents for my business?",
     answer:
-      "Yes. We build custom AI agents and governed workflows using the right tools for the job, including Claude, ChatGPT, Gemini, Copilot, Codex, RAG pipelines, APIs, and CLI workflows. Agents can answer questions, retrieve company context, update approved systems, and escalate to a human with full context when judgment is required.",
+      "Yes — and we build two different kinds. Enterprise hosted agents are engineered by ITECS AI engineers, connect to your ERP, CRM, and finance systems, and run in a governed hosted environment with a human-in-the-loop review portal and audit trails. Personal desktop agents are built with your employees inside Claude Cowork, Codex, and Microsoft Copilot on their own machines — role-specific skills and workflows rolled out through hands-on training. Most clients start with personal agents and graduate their highest-value workflow into an enterprise build.",
   },
   {
     question: "Do you work with businesses outside of Dallas?",
     answer:
-      "Yes. While our office is in Plano and most of our clients are in the Dallas-Fort Worth area, we work with businesses across Texas and the US. Our consulting, automation, and chatbot services can be delivered remotely.",
+      "Yes. While our office is in Dallas and most of our clients are in the Dallas-Fort Worth area, we work with businesses across Texas and the US. Our consulting, automation, and chatbot services can be delivered remotely.",
   },
 ] as const;
 

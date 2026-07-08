@@ -87,29 +87,32 @@ export function Hero() {
       {/* ---- Content ---- */}
       <div className="relative z-[3] mx-auto w-full max-w-7xl px-6 md:px-8">
         <div className="max-w-[720px]">
-          <Eyebrow className="mb-6">Business Strategist Technologists</Eyebrow>
+          <Eyebrow className="mb-6">
+            Managed Intelligence · For 50–300 Employee Organizations
+          </Eyebrow>
 
           <h1 className="text-[clamp(2.75rem,1.6rem+4.6vw,4.625rem)] font-medium leading-[1.0] tracking-[-0.025em] text-ink">
-            Your IT, secured.
+            Your team already
             <br />
-            Your business,
+            uses AI.
             <br />
-            <span className="text-itecs-blue">made intelligent.</span>
+            <span className="text-itecs-blue">Make it pay off.</span>
           </h1>
 
           <p className="mt-6 max-w-[540px] text-[length:var(--fs-body-l)] leading-relaxed text-ink-body">
-            Since 2002, ITECS has owned every layer of the technology stack for
-            Dallas businesses — managed IT, cybersecurity, and cloud. Now we
-            embed AI into all of it, so you move ahead of the curve instead of
-            chasing it.
+            Copilot, Claude, and ChatGPT are already in your employees&apos;
+            hands. ITECS makes them governed, secure, and worth the spend —
+            then builds what comes next: personal agents on every desktop and
+            enterprise agents wired into your core systems. Backed by 24 years
+            of managed IT and cybersecurity.
           </p>
 
           <div className="mt-9 flex flex-wrap items-center gap-4">
             <Button href="/assessment" size="lg">
               Get a Free AI Assessment
             </Button>
-            <Button href="/services" variant="tertiary" size="lg">
-              or explore services
+            <Button href="#ai-agents" variant="tertiary" size="lg">
+              or see the two kinds of agents
             </Button>
           </div>
 

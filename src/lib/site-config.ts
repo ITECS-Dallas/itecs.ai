@@ -5,7 +5,7 @@ export const SITE_CONFIG = {
   mainSiteUrl: "https://itecsonline.com",
   tagline: "Practical AI for Dallas Businesses.",
   description:
-    "ITECS helps Dallas mid-market and enterprise teams with 10-300 employees deploy secure AI automation, custom AI agents, and hands-on AI consulting. 24+ years of IT operations expertise.",
+    "ITECS helps mid-market organizations with 50-300 employees govern Copilot, Claude, and ChatGPT, deploy secure AI automation, and build custom AI agents — from personal desktop agents to enterprise hosted agents. 24+ years of IT operations expertise.",
   phone: "(214) 444-7884",
   phoneE164: "+1-214-444-7884",
   supportPhone: "(877) 483-2710",
