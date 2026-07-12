@@ -2021,6 +2021,90 @@ export const CODING_AGENT_COMPARISON: PlanComparison = {
 
 export const INSIGHTS: InsightItem[] = [
   {
+    slug: "eu-ai-act-transparency-rules-checklist",
+    title: "EU AI Act Transparency Rules: Business Checklist",
+    description:
+      "EU AI Act Article 50 transparency rules apply August 2, 2026. What chatbots, deepfakes, and AI content must disclose — plus a practical business compliance checklist.",
+    href: "/insights/eu-ai-act-transparency-rules-checklist",
+    publishedDate: "2026-07-03",
+    hubSlug: "consulting",
+    hubLabel: "AI Consulting",
+    hubHref: "/consulting",
+    keywords: [
+      "EU AI Act transparency rules",
+      "EU AI Act Article 50",
+      "AI Act August 2 2026",
+      "AI generated content labeling",
+      "chatbot disclosure EU",
+      "deepfake labeling law",
+      "AI Act compliance checklist",
+      "EU AI Act for US business",
+      "Code of Practice AI transparency",
+      "AI content marking requirements",
+    ],
+    h1: "EU AI Act Transparency Rules: A Business Checklist for Article 50",
+    content: [
+      "If your business uses generative AI to run a chatbot, publish marketing content, or create images and video, a new European rule now applies to you. On **August 2, 2026**, the transparency obligations of the **EU AI Act — Article 50** take effect. They require you to tell people when they are talking to AI and to label AI-generated content. The rules reach beyond Europe: they apply to any provider or deployer whose AI output is used in the EU, including US and Dallas companies. This is a practical checklist for getting ready — and where [AI governance and compliance readiness](/consulting) fits in.",
+      "**EU AI Act Article 50 transparency rules apply on August 2, 2026. Chatbots must tell users they are AI. AI-generated images, audio, video, and text must be marked as artificial. Deepfakes must be labeled. The rules cover any business whose AI output reaches EU users. Signing the EU's voluntary Code of Practice helps, but it does not replace real governance.**",
+      "**What Changed: The Transparency Code and the August 2 Deadline**",
+      "Two things converged in mid-2026. First, the EU AI Act's transparency obligations became imminent: after the law's staged rollout, Article 50 applies from August 2, 2026. Second, the European Commission's AI Office published a Code of Practice on Transparency of AI-Generated Content on June 10, 2026, to spell out how to meet the marking and labeling rules in practice.",
+      "The Code is voluntary. Providers and deployers were encouraged to sign by July 22, 2026, to appear on the first published list of signatories before the rules apply. After a positive adequacy assessment — a Commission opinion issued after consulting the AI Board — signatories can use the Code to demonstrate compliance across the EU. That is a benefit, not a shortcut. The binding law is Article 50; the Code is one way to show you meet part of it.",
+      "[[USECASE_TABLE]]",
+      "**The Four Transparency Obligations, in Plain English**",
+      "Article 50 sets four duties, split between the companies that build AI systems (providers) and the companies that use them (deployers).",
+      "**Chatbots and AI agents must identify themselves.** If a system talks to people, it has to tell them they are dealing with AI, at the first point of contact — unless it is already obvious.",
+      "**AI-generated content must be marked.** Providers of generative AI must mark synthetic audio, image, video, and text in a machine-readable format so it can be detected as artificially generated.",
+      "**Deepfakes must be labeled.** Anyone deploying AI to create realistic fake images, audio, or video must disclose it. This applies even with no intent to deceive, and even if the person shown is not real.",
+      "**AI-written public-interest text must be disclosed.** Text published to inform the public on matters of public interest must be flagged as AI-generated, unless a human reviewed it and took editorial responsibility. A separate duty covers emotion recognition and biometric categorization: tell people when those systems are used.",
+      "**Does This Apply to a US or Dallas Business?**",
+      "Often, yes. Article 50 follows the output, not the office. If your AI system's results are used in the EU — an EU customer chats with your bot, or your AI-generated marketing runs in an EU market — you are in scope, wherever you are based. A Dallas company serving European clients cannot assume the rule stops at the Atlantic.",
+      "Consider a Dallas e-commerce brand that sells across Europe. It runs an AI support chatbot, generates product images with AI, and publishes AI-drafted blog posts. Under Article 50, the chatbot must announce it is AI, the images must carry machine-readable AI marking, and the posts need disclosure unless an editor owns them. None of that is optional after August 2, and the brand's US headquarters does not change the answer.",
+      "[[CHECKLIST_DIAGRAM]]",
+      "**Your Article 50 Compliance Checklist**",
+      "Readiness is a project, not a policy memo. ITECS runs it in four steps.",
+      "**Step 1: Inventory your AI-generated content.** Find every place generative AI touches customers — chatbots, marketing copy, images, video, product descriptions, and any deepfake-style media. You cannot label what you have not mapped.",
+      "**Step 2: Decide where labeling or marking is required.** Match each use to its Article 50 obligation using the table above. Some uses need a visible disclosure; others need machine-readable marking; some need both.",
+      "**Step 3: Document your compliance choices.** Record what you decided, why, and how you implemented it — the marking method, the disclosure wording, and who signed off. Documentation is what turns a claim of compliance into a defensible one. A [data and AI readiness audit](/data-audit) produces exactly this record.",
+      "**Step 4: Govern it over time.** Assign an owner, review AI outputs on a schedule, and update the program as your tools and the guidance change. This is the same discipline we cover in our guide to [AI governance and staff training](/insights/ai-governance-training-dallas-businesses).",
+      "**Why Signing the Code Is Not the Same as Compliance**",
+      "The most common mistake will be treating a signature as a finish line. Signing the Code of Practice can give a presumption of conformity for the marking and labeling rules — but only if you actually implement its measures. And the Code does not cover everything: chatbot disclosure, deepfake labeling, and emotion-recognition notices are binding under Article 50 whether or not you sign anything.",
+      "A voluntary commitment with no operational change behind it is worse than nothing, because it documents an intent you did not meet. Real compliance is governance: an inventory, decisions, technical controls, records, and an owner. That is the difference between looking compliant and being compliant.",
+      "**Governance, Penalties, and Getting This Right**",
+      "The stakes are concrete. The AI Act sets fines of up to €15 million or 3% of global annual turnover for transparency violations, enforced by national authorities. The European Commission's [official Code of Practice on transparency](https://digital-strategy.ec.europa.eu/en/policies/code-practice-ai-generated-content) is the primary reference for the marking and labeling rules, and we build compliance programs around it plus the binding text of Article 50. Before anything ships, we [audit your data and AI use](/data-audit) and design the controls your obligations require.",
+      "This article is general information, not legal advice — confirm your specific obligations with qualified counsel. What ITECS provides is the operational side: the inventory, the governance, the [custom AI agents](/custom-ai-agents) configured to disclose and mark by default, and the [AI consulting](/consulting) to keep it defensible.",
+      "**How ITECS Helps You Get Ready**",
+      "Most businesses discover they have more AI in production than they realized, and no record of how it is labeled. ITECS closes that gap fast: we inventory your AI-generated content, map each use to its obligation, implement disclosure and marking, and stand up the governance to keep it current.",
+      "We price this the way we price all advisory work — hourly consulting or prepaid retainer hours with tracked usage, no monthly minimum and no expiration, plus a flat fee for a scoped compliance-readiness project. The value is avoided fines, provable diligence, and AI you can keep using in Europe with confidence. When August 2 is on your calendar, [talk to the ITECS team](/contact).",
+    ],
+    faq: [
+      {
+        question: "When do the EU AI Act transparency rules take effect?",
+        answer:
+          "The EU AI Act's Article 50 transparency obligations apply from August 2, 2026. From that date, chatbots must disclose they are AI, AI-generated content must be marked as artificial, and deepfakes must be labeled. The European Commission published a supporting Code of Practice on Transparency of AI-Generated Content on June 10, 2026.",
+      },
+      {
+        question: "Does the EU AI Act apply to US or Dallas businesses?",
+        answer:
+          "It can. Article 50 applies to any provider or deployer whose AI system output is used in the EU, regardless of where the company is based. A US or Dallas business that serves EU customers with an AI chatbot or AI-generated content is generally in scope and should prepare for the August 2, 2026 obligations.",
+      },
+      {
+        question: "What must be labeled under EU AI Act Article 50?",
+        answer:
+          "Chatbots and AI agents must tell users they are AI. Generative AI outputs — images, audio, video, and text — must be marked as artificially generated in a machine-readable format. Deepfakes must be disclosed, and AI-written text on matters of public interest must be flagged unless a human took editorial responsibility.",
+      },
+      {
+        question: "Is signing the EU Code of Practice enough for compliance?",
+        answer:
+          "No. Signing the voluntary Code of Practice can provide a presumption of conformity for the marking and labeling rules, but only if you implement its measures. Chatbot disclosure, deepfake labeling, and other Article 50 duties are binding regardless. Real compliance requires an inventory, documented decisions, technical controls, and ongoing governance.",
+      },
+      {
+        question: "What are the penalties for breaking the AI Act transparency rules?",
+        answer:
+          "The EU AI Act sets fines of up to €15 million or 3% of global annual turnover, whichever is higher, for transparency violations, enforced by national market surveillance authorities. Beyond fines, non-compliance creates legal and reputational risk in every EU market where your AI content or chatbots appear.",
+      },
+    ],
+  },
+  {
     slug: "openai-codex-vs-claude-code",
     title:
       "OpenAI Codex (GPT-5.5) vs. Claude Code (Opus 4.8): Enterprise Coding Agents Compared",
