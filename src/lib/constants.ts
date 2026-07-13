@@ -2021,6 +2021,91 @@ export const CODING_AGENT_COMPARISON: PlanComparison = {
 
 export const INSIGHTS: InsightItem[] = [
   {
+    slug: "chatgpt-work-secure-admin-checklist",
+    title: "ChatGPT Work for Business: Secure Admin Checklist",
+    description:
+      "OpenAI launched ChatGPT Work (GPT-5.6) on July 9, 2026. Before you let the agent touch your files and apps, work through this secure admin checklist and pilot plan.",
+    href: "/insights/chatgpt-work-secure-admin-checklist",
+    publishedDate: "2026-07-13",
+    hubSlug: "custom-ai-agents",
+    hubLabel: "Custom AI Agents",
+    hubHref: "/custom-ai-agents",
+    keywords: [
+      "ChatGPT Work",
+      "ChatGPT Work admin controls",
+      "ChatGPT Work security",
+      "GPT-5.6",
+      "ChatGPT Work for business",
+      "ChatGPT Work connectors",
+      "ChatGPT agent security",
+      "ChatGPT Work enterprise",
+      "secure AI agent adoption",
+      "ChatGPT Work pilot",
+    ],
+    h1: "ChatGPT Work for Business: A Secure Admin Checklist for GPT-5.6 Agents",
+    content: [
+      "On July 9, 2026, OpenAI launched **ChatGPT Work**, an AI agent powered by the new **GPT-5.6** model. It does not just answer questions — it works. Given a goal, it gathers context from your connected apps and files, breaks the job into steps, and produces finished documents, spreadsheets, presentations, reports, and even websites. That reach is the value, and the risk. Before you let an agent act across your business, you need admin controls in place. This is the secure admin checklist — and where [governed AI agent deployment](/custom-ai-agents) fits in.",
+      "**ChatGPT Work, launched July 9, 2026 on GPT-5.6, is an agent that acts across your files, connected apps, browser, and scheduled tasks to produce finished work. Before enabling it, lock down connector permissions, require approval on write actions, control who can publish Sites, set data boundaries and audit logging, and run a small read-only pilot first. Grant access in stages, not all at once.**",
+      "**What Launched: ChatGPT Work and GPT-5.6**",
+      "ChatGPT Work is OpenAI's push into workplace automation. It runs on GPT-5.6, which ships in three variants: Sol, the most powerful; Luna, tuned for speed; and Terra, balanced for everyday use. The agent can run for hours on a complex project, translating a broad goal into completed documents, spreadsheets, decks, reports, and published Sites.",
+      "It reaches your data through connectors to apps like Google Workspace, Microsoft 365, and Slack, and it can browse the web and run scheduled tasks. It rolled out first to Pro, Enterprise, and Edu users, then to Business and Plus. For business leaders, the question is not whether it is capable — it is. The question is what it can touch, and who approved that.",
+      "**Why an Agent With This Much Reach Needs Guardrails**",
+      "A chatbot answers. An agent acts. When ChatGPT Work has connector access, it can read and change real business data — edit a spreadsheet, send a message, publish a page. That is powerful when scoped and dangerous when not. An over-permissioned agent running unattended is a security incident waiting to happen.",
+      "Three properties raise the stakes. It runs continuously, so actions happen without someone watching. It publishes, so internal content can become public. And it connects to your systems, so a prompt-injection or a misread instruction reaches production data. The good news: OpenAI ships real admin controls for exactly these risks. You have to configure them.",
+      "[[CAPABILITY_TABLE]]",
+      "**Your ChatGPT Work Secure Admin Checklist**",
+      "Work through these controls before you widen access. ITECS runs this as a checklist with clients adopting ChatGPT Work.",
+      "**Set RBAC and admin controls first.** Use role-based access control to decide who can use Work, manage settings, and build, publish, schedule, or share reusable agents. Do not let everyone build agents on day one.",
+      "**Scope connector permissions.** Enable only the connectors you need. Use action controls to allow read-only access or a custom set of actions, not full read-write, until a workflow has earned it.",
+      "**Require approval on write actions.** Configure agents so any action that writes, sends, or changes data pauses for human approval. Connector action constraints let you limit what each connector can do inside an agent.",
+      "**Control public publishing and Sites.** Decide who can publish agent-generated Sites and keep them private by default. Review any page before it goes public, so internal drafts never leak to the open web.",
+      "**Set data boundaries.** On Enterprise and Business plans, confirm your content is not used to train models, and scope which data each connector and user can reach. Sensitive systems stay out of scope until reviewed.",
+      "**Turn on auditability.** Enable audit logs and review agent activity — what it accessed, what it changed, and when. If you cannot see what the agent did, you cannot govern it.",
+      "**Choose the model tier deliberately.** Match GPT-5.6's Sol, Luna, or Terra to the task, and set spend controls so long agent runs do not surprise you. Default to the efficient tier for routine work.",
+      "[[PILOT_DIAGRAM]]",
+      "**A Low-Risk Pilot Plan That Proves Value**",
+      "Do not flip ChatGPT Work on for the whole company. Prove value with a contained pilot, then expand as trust is earned. ITECS runs a four-phase rollout.",
+      "Consider a 90-person Dallas professional-services firm. It wants ChatGPT Work to draft proposals and reports from data in Google Workspace. Instead of granting full access, we start locked down: Work enabled for one five-person team, connectors read-only, publishing off, every write requiring approval. The team runs real proposal drafts for two weeks.",
+      "The pilot proves the time savings and surfaces exactly which actions the agent actually needs. Only then do we grant write approvals for those specific workflows, widen the group, and turn on scheduled tasks — each step reviewed against the audit logs. The firm gets the productivity without ever handing an untested agent the keys.",
+      "**Model Tier and Reasoning-Cost Choices**",
+      "GPT-5.6's three variants are a governance lever, not just a menu. Sol delivers the deepest reasoning for hard, high-value work. Luna is fast for quick tasks. Terra balances the two for everyday use. Sending every job to the most powerful model wastes money; routing by task controls cost.",
+      "Agentic runs can be long, and long runs consume tokens. Set spend controls, default routine work to the efficient tier, and reserve the powerful tier for the work that justifies it. This is the same discipline we teach engineering teams in our [ChatGPT Codex training](/chatgpt-codex-training).",
+      "**Security, Data Boundaries, and Auditability**",
+      "Enabling an agent is a security decision. Keep sensitive data on Enterprise or Business tiers where your content is not used to train models, scope connector and user access tightly, and require human review on anything touching customer records. OpenAI documents its enterprise data handling in its [enterprise privacy commitments](https://openai.com/enterprise-privacy/), and we build controls on top of them. One control matters most: the agent should never hold raw API keys — we inject secrets at runtime with biometric approval, the pattern in our guide to [keeping secrets out of the LLM with 1Password](/insights/secure-ai-agents-1password-secrets).",
+      "Before any agent touches production, ITECS runs a [data and AI readiness audit](/data-audit) to classify what it may reach, and aligns the deployment to your governance policy — the same approach in our [AI governance and training guide](/insights/ai-governance-training-dallas-businesses).",
+      "**How ITECS Helps You Deploy ChatGPT Work Safely**",
+      "This is guidance, not a security guarantee — your configuration is yours to own. What ITECS provides is the operational discipline: we set the admin controls and RBAC, scope connectors, define approval points, lock down publishing, turn on auditing, and run the phased pilot so value is proven before access is widened.",
+      "We price this the way we price all advisory work — hourly consulting or prepaid retainer hours with tracked usage, no monthly minimum and no expiration, plus a flat fee for a scoped ChatGPT Work rollout. The return is an agent that produces real work without becoming a liability. When you are ready to deploy ChatGPT Work safely, [talk to the ITECS team](/contact).",
+    ],
+    faq: [
+      {
+        question: "What is ChatGPT Work and when did it launch?",
+        answer:
+          "ChatGPT Work is OpenAI's workplace AI agent, launched July 9, 2026, and powered by the GPT-5.6 model. It works across your connected apps, files, and workflows to produce finished documents, spreadsheets, presentations, reports, and websites, and it can run for hours on complex projects.",
+      },
+      {
+        question: "What are the three GPT-5.6 models?",
+        answer:
+          "GPT-5.6 ships in three variants: Sol, the most powerful for deep reasoning; Luna, optimized for speed; and Terra, balanced for everyday use. Choosing the right tier per task controls both quality and reasoning cost, so routine work does not run on the most expensive model.",
+      },
+      {
+        question: "What admin controls does ChatGPT Work offer?",
+        answer:
+          "Admins use role-based access control to decide who can use Work and build, publish, schedule, or share agents. They enable specific connectors, set action controls for read-only or custom action sets, require approval on write actions, and review activity through audit logs.",
+      },
+      {
+        question: "How do we let an agent use our data safely?",
+        answer:
+          "Grant access in stages. Start with a small pilot group, read-only connectors, and publishing off, and require approval on every write action. Confirm your data is not used to train models on Enterprise or Business plans, enable audit logging, and expand only the workflows the pilot proved you need.",
+      },
+      {
+        question: "Should we let ChatGPT Work publish public websites?",
+        answer:
+          "Not by default. ChatGPT Work can create and publish Sites, which means internal content could become public. Control who can publish, keep Sites private until reviewed, and require human sign-off before any agent-generated page goes live to the open web.",
+      },
+    ],
+  },
+  {
     slug: "eu-ai-act-transparency-rules-checklist",
     title: "EU AI Act Transparency Rules: Business Checklist",
     description:
