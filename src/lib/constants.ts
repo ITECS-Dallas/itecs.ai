@@ -2365,11 +2365,12 @@ export const INSIGHTS: InsightItem[] = [
   {
     slug: "claude-fable-5-id-verification-return",
     title:
-      "Claude Fable 5 and ID Verification: Could Identity Checks Bring the Banned Model Back?",
+      "Claude Fable 5 Is Back: Mythos 5 Reopens as ID Verification Lands",
     description:
-      "Anthropic's most powerful model, Claude Fable 5, was suspended by a US export order. New ID verification could be the path back — here is what it means for business.",
+      "Claude Fable 5 returned July 1, 2026; Mythos 5 reopened to approved US organizations. How ID verification and a new safety classifier ended the export ban.",
     href: "/insights/claude-fable-5-id-verification-return",
     publishedDate: "2026-06-30",
+    modifiedDate: "2026-07-13",
     hubSlug: "custom-ai-agents",
     hubLabel: "Custom AI Agents",
     hubHref: "/custom-ai-agents",
@@ -2382,13 +2383,15 @@ export const INSIGHTS: InsightItem[] = [
       "claude fable 5 export control",
       "anthropic distillation attack",
       "claude mythos 5",
+      "claude fable 5 mythos reopen",
+      "claude fable 5 restored",
       "frontier ai identity governance",
       "claude fable 5 news",
     ],
-    h1: "Claude Fable 5 and Identity Verification: Could ID Checks Bring Anthropic's Banned Model Back?",
+    h1: "Claude Fable 5 Is Back: How Identity Verification and Export Relief Reopened Anthropic's Banned Model",
     content: [
       "Anthropic launched Claude Fable 5 on June 9, 2026, as the most powerful model the public could buy. Three days later, it was gone. A US export-control order pulled Fable 5 and its sibling Mythos 5 offline for every foreign national worldwide. Now Anthropic is rolling out mandatory identity verification for consumer accounts — and analysts are asking whether verified identity is the key that reopens the door. This guide separates what is confirmed from what is speculation, and what it means for your business. ITECS helps companies deploy frontier AI safely through [secure custom AI agents and governance](/custom-ai-agents).",
-      "**The US government suspended Claude Fable 5 on June 12, 2026, over foreign-access national security concerns. Separately, Anthropic disclosed a 16-million-exchange model-distillation campaign run through roughly 24,000 fake accounts. Its new identity verification — live for consumer plans on July 8, 2026 — attacks the anonymous access behind both problems. Whether it brings Fable 5 back is still speculation.**",
+      "**Updated July 13, 2026: the door reopened. The US Commerce Department lifted the export-control order on June 30, and Anthropic restored Claude Fable 5 worldwide on July 1 — paired with a new safety classifier and mandatory consumer identity verification, live since July 8. Claude Mythos 5 reopened on June 26 to a set of approved US organizations only. The identity layer attacks the anonymous access behind both the export order and the 16-million-exchange distillation campaign Anthropic disclosed in June.**",
       "**What Happened: Fable 5 Launched, Then Vanished in Three Days**",
       "Anthropic released Fable 5 and the restricted Mythos 5 on June 9, 2026. On June 12, the US Commerce Department's Bureau of Industry and Security ordered Anthropic to suspend all access to both models by any foreign national, anywhere — including Anthropic's own foreign-national employees. The order used authority under the Export Control Reform Act.",
       "The trigger was security, not sales. An NSA red-team review found a jailbreak that could turn the models into unrestricted cyber tools. NSA Director General Joshua Rudd later testified that Mythos autonomously breached nearly all classified systems it was tested against within hours. Anthropic publicly disagreed with recalling a model used by hundreds of millions, but it complied. We covered the model's debut in our [Claude Fable 5 release analysis](/insights/claude-fable-5-release).",
@@ -2399,8 +2402,8 @@ export const INSIGHTS: InsightItem[] = [
       "On July 8, 2026, Anthropic begins requiring identity verification for consumer Claude accounts — Free, Pro, and Max. Users submit a government-issued photo ID and a live selfie, and a third-party vendor, Persona, checks them. Anthropic states it does not use this identity data to train its models, and Persona holds the documents rather than Anthropic. The verification has run in limited form since April 2026.",
       "Two facts shape what this means for business. First, the requirement covers consumer plans only — **Team, Enterprise, and the developer API are exempt**. Second, the data is biometric: Anthropic collects facial geometry templates, which it acknowledges may count as biometric data in some jurisdictions. Anthropic's stated reason is plain — knowing who uses powerful AI helps prevent abuse and enforce its policies. For how the tiers differ, see our [Claude plan comparison](/insights/claude-plan-comparison).",
       "**The Thesis: Could ID Verification Reopen Fable 5?**",
-      "Here the confirmed facts end and informed speculation begins. Anthropic has not announced that identity verification will restore Fable 5. But several analysts have connected the dots, and the logic is worth understanding.",
-      "The export order's core concern is foreign access. If Anthropic can prove that only verified US persons reach its most powerful model, it may satisfy that concern without a full government agreement. Identity verification is the tool that makes such proof possible. Reporting in late June noted Fable 5 resurfacing in limited forms as testimony reshaped the ban. **Treat the verified-US-access path as a credible theory, not a confirmed plan — the Commerce Department has not endorsed it.**",
+      "When this article first ran on June 30, the confirmed facts ended here and informed speculation began. Anthropic had not announced that identity verification would restore Fable 5, but several analysts had connected the dots, and the logic held up.",
+      "The export order's core concern was foreign access. If Anthropic could prove that only verified US persons reach its most powerful model, it could satisfy that concern without a full government agreement. Identity verification is the tool that makes such proof possible. **The theory resolved within a day of publication: the Commerce Department lifted the export-control order on June 30, 2026, and Anthropic restored Fable 5 access worldwide on July 1, pairing the reopening with a dedicated safety classifier that blocks the reported jailbreak technique. Mythos 5 had already reopened on June 26 — but only to a set of approved US organizations.**",
       "**How Identity Verification Actually Helps**",
       "Identity verification addresses both of Anthropic's recent problems through one mechanism: it removes anonymity. ITECS sees three ways that matters.",
       "**It raises the cost of fake-account farming.** The distillation campaign depended on roughly 24,000 fraudulent accounts. Government-ID verification makes mass fake-account creation far harder and more expensive.",
@@ -2429,9 +2432,14 @@ export const INSIGHTS: InsightItem[] = [
           "Starting July 8, 2026, Anthropic requires consumer Claude users on the Free, Pro, and Max plans to verify identity with a government-issued photo ID and a live selfie, processed by the vendor Persona. Team, Enterprise, and API customers are exempt, and Anthropic says it does not use the identity data to train its models.",
       },
       {
-        question: "Will ID verification bring Claude Fable 5 back?",
+        question: "Have Claude Fable 5 and Mythos 5 reopened?",
         answer:
-          "It might, but that is not confirmed. Anthropic has not announced that identity verification will restore Fable 5. Analysts argue that proving only verified US persons can access the model could satisfy the export order's foreign-access concern, but the Commerce Department has not endorsed that path.",
+          "Yes, with different scopes. The US Commerce Department lifted the export-control order on June 30, 2026, and Anthropic restored Claude Fable 5 worldwide on July 1 alongside a new safety classifier that blocks the reported jailbreak technique. Claude Mythos 5 reopened on June 26 to a set of approved US organizations only — Anthropic has not published the qualification criteria.",
+      },
+      {
+        question: "Did ID verification bring Claude Fable 5 back?",
+        answer:
+          "It was part of the package rather than the single key. The restoration followed the Commerce Department lifting the export order on June 30, 2026, and Anthropic paired the reopening with a dedicated safety classifier plus mandatory consumer identity verification from July 8 — giving it the jurisdiction and accountability controls the order's foreign-access concern demanded.",
       },
       {
         question: "What was the Claude distillation attack?",
@@ -2706,9 +2714,10 @@ export const INSIGHTS: InsightItem[] = [
     title:
       "The OpenClaw Security Crisis: What Every Business Should Learn Before Deploying an AI Agent",
     description:
-      "Four chainable CVEs, 245,000 exposed instances, 1,184 malicious marketplace skills — what the OpenClaw crisis teaches every business deploying AI agents in 2026.",
+      "Four chainable CVEs, 245,000 exposed instances, ClawHavoc campaign IOCs — what the OpenClaw crisis teaches every business deploying AI agents in 2026.",
     href: "/insights/openclaw-security-crisis",
     publishedDate: "2026-05-28",
+    modifiedDate: "2026-07-13",
     hubSlug: "custom-ai-agents",
     hubLabel: "Custom AI Agents",
     hubHref: "/custom-ai-agents",
@@ -2717,6 +2726,7 @@ export const INSIGHTS: InsightItem[] = [
       "openclaw vulnerabilities",
       "claw chain cve",
       "clawhavoc supply chain attack",
+      "clawhavoc campaign iocs",
       "ai agent security 2026",
       "agentic ai risk",
       "openclaw cve-2026-44112",
@@ -2773,6 +2783,11 @@ export const INSIGHTS: InsightItem[] = [
         question: "What was ClawHavoc?",
         answer:
           "ClawHavoc is the coordinated supply-chain attack on ClawHub, OpenClaw's official skill marketplace. Koi Security identified 341 malicious skills in February 2026 — about 12 percent of the catalog — and Antiy CERT later raised the count to at least 1,184 packages across 12 publisher accounts, delivering Atomic macOS Stealer, Windows infostealers, and reverse shells.",
+      },
+      {
+        question: "Where can I find ClawHavoc campaign IOCs?",
+        answer:
+          "The primary public sources of ClawHavoc indicators of compromise are Koi Security's ClawHavoc report and Antiy CERT's post-incident marketplace sweep, which together document the 12 publisher accounts, the malicious ClawHub skill packages, and the payload families involved — Atomic macOS Stealer on macOS, and VMProtect-packed infostealers, keyloggers, and reverse shells on Windows. Defenders should hunt for unsanctioned OpenClaw installs, skills added from ClawHub before publisher screening began on March 26, 2026, and unexpected outbound connections from agent hosts.",
       },
       {
         question: "Are all the OpenClaw vulnerabilities patched?",
