@@ -2021,6 +2021,93 @@ export const CODING_AGENT_COMPARISON: PlanComparison = {
 
 export const INSIGHTS: InsightItem[] = [
   {
+    slug: "ai-insurance-gaps-review-coverage",
+    title: "AI Insurance Gaps: Review Coverage Before Agents",
+    description:
+      "Silent AI coverage is ending. New exclusions hit 2026 renewals, and autonomous agents fall in the widest gap. Review cyber, E&O, D&O, and crime cover before you deploy.",
+    href: "/insights/ai-insurance-gaps-review-coverage",
+    publishedDate: "2026-07-14",
+    hubSlug: "consulting",
+    hubLabel: "AI Consulting",
+    hubHref: "/consulting",
+    keywords: [
+      "AI insurance gaps",
+      "AI exclusions insurance",
+      "silent AI coverage",
+      "AI liability insurance",
+      "cyber insurance AI exclusion",
+      "tech E&O AI coverage",
+      "AI agent liability",
+      "affirmative AI coverage",
+      "AI insurance checklist",
+      "insurance before AI agents",
+    ],
+    h1: "AI Insurance Gaps: Review Your Coverage Before You Deploy Agents",
+    content: [
+      "Before you deploy an AI agent that can touch customer data, send messages, or move money, ask a question most leaders skip: does your insurance still cover it? For years, AI risk was mostly **silently covered** — carriers wrote cyber and technology errors and omissions policies that never mentioned AI, so claims were argued under existing wording. That era is closing. Insurers are adding AI exclusions, and autonomous agents sit in the widest gap of all. This is an executive checklist for reviewing coverage before you grant an agent access — and where [AI governance and readiness](/consulting) fits in.",
+      "**Silent AI coverage is ending. Carriers added generative-AI exclusion endorsements to standard commercial general liability forms at January 2026 renewals, and policy language now varies widely by insurer. Autonomous AI agents are the least-covered category of all. Review your cyber, tech E&O, professional liability, D&O, EPLI, crime, and general liability policies before an agent goes live.**",
+      "**Silent AI Coverage Is Ending**",
+      "For years, AI risk was covered by accident. Policies did not mention AI, so a claim involving an AI system was argued under whatever wording existed. Insurers call this silent AI, and they are eliminating it — the same way the market eliminated silent cyber a decade ago.",
+      "The clearest signal came from standard forms. The Insurance Services Office introduced generative-AI exclusion endorsements — including forms CG 40 47 and CG 40 48 — attachable to commercial general liability policies at renewals effective January 1, 2026. The broad version bars coverage for harms tied to generative AI outputs across bodily injury, property damage, and advertising injury. The narrower version excludes only personal and advertising injury.",
+      "Do not expect one obvious exclusion page. Analysis of the 2026 renewal cycle describes narrowing showing up in revised base forms, new definitions, application questions, underwriting positions, and carve-backs — not a single conspicuous clause. Some carriers are clarifying AI coverage through endorsements; others are quietly removing it. The result is fragmentation: two businesses with similar-looking policies can have very different AI protection.",
+      "**Why Agents Are the Real Gap**",
+      "Most of the new policy language was written with chatbots and generative content in mind. Autonomous agents are a different problem, and the market knows it. Underwriters have noted that current endorsements address AI-enabled chatbots and generative AI but do not cleanly address AI agents — the fastest-growing deployment category, and the one most likely to raise attribution questions.",
+      "Attribution is the crux. When an agent with connector access edits a record, sends a message, or moves money, who caused the loss — the vendor, the model, your configuration, or the employee who approved it? That question decides which policy responds, and whether any of them do. An agent acting across your systems can plausibly implicate cyber, tech E&O, crime, and general liability at once — and fall between all four.",
+      "[[CLAIM_TABLE]]",
+      "**How Agent Permissions and Audit Logs Affect Insurability**",
+      "Here is the part most leaders miss: your technical controls are now underwriting inputs. A small affirmative AI-coverage market is emerging, including offerings associated with Lloyd's syndicates and specialty carriers, and reporting indicates these markets grant and price coverage on documented governance evidence.",
+      "Carriers are asking practical questions. Is a human reviewing AI output before it goes public? What can each agent actually access? Can you produce a log of what the agent did? The better documented your review process, the better the underwriting outcome. In other words, scoped permissions and audit logs are not just security hygiene — they are insurable evidence.",
+      "That is a governance problem, not an insurance problem, and it is squarely what ITECS builds: a scoped permission model for every [custom AI agent](/custom-ai-agents), human approval gates on sensitive actions, and audit logging that shows exactly what an agent touched.",
+      "[[REVIEW_DIAGRAM]]",
+      "**Your Executive Coverage Review Checklist**",
+      "Run this before the agent gets access, not after a claim.",
+      "**Step 1: Inventory every AI use.** List each AI system, who uses it, what data it reaches, and what it can do — read only, write, send, publish, or transact. Autonomy and reach are what underwriters care about. This is the same inventory required for [AI governance and staff training](/insights/ai-governance-training-dallas-businesses).",
+      "**Step 2: Map likely claims to policies.** For each AI use, write down the realistic failure — a data leak, bad advice, a discriminatory screening result, a fraudulent transfer — and which policy would respond. Use the table above as your starting grid.",
+      "**Step 3: Ask your broker specific questions.** Generic reassurance is not an answer. Bring the questions below in writing, and ask for the actual policy language.",
+      "**Step 4: Decide on endorsements or dedicated cover.** Based on the answers, you either accept the gap, buy an affirmative AI endorsement, pursue dedicated AI liability coverage, or reduce the agent's permissions until the exposure matches your coverage.",
+      "**Questions to Ask Your Broker**",
+      "Take these to your renewal conversation, and ask for the policy wording rather than a summary.",
+      "**Does any policy contain an AI or generative-AI exclusion, and which forms?** Ask specifically about the ISO endorsements on your general liability policy.",
+      "**How do our policies define artificial intelligence?** Broad definitions can sweep in ordinary software and automation you already rely on.",
+      "**If an autonomous agent causes the loss, which policy responds?** Push for a written position on agent attribution, not a verbal assurance.",
+      "**Is affirmative AI coverage or an endorsement available to us, and what governance evidence would it require?** The answer tells you exactly what to build.",
+      "**Will our AI use trigger new application questions or warranties at renewal?** An inaccurate answer on an application can jeopardize coverage later.",
+      "**Governance Is Now an Insurance Asset**",
+      "The market shift is well documented. Legal analysis of the trend — including [Fenwick's review of emerging AI exclusions and coverage fragmentation](https://www.fenwick.com/insights/publications/end-silent-ai-emerging-ai-exclusions-coverage-fragmentation-and-practical-implications) — describes exactly this move away from silent AI. Businesses that can show an AI inventory, scoped permissions, human review, and audit logs are in a materially better position, both at renewal and at claim time.",
+      "**This article is general information, not insurance or legal advice.** Coverage depends entirely on your specific policy wording, carrier, and jurisdiction. ITECS is not an insurance broker or advisor — confirm your coverage with a licensed broker and qualified counsel. What ITECS provides is the technical evidence they will ask you for.",
+      "**How ITECS Helps You Get Underwriting-Ready**",
+      "Most companies cannot answer an underwriter's questions because nobody has mapped their AI. ITECS closes that gap: we inventory every AI system and what it can reach, scope agent permissions to the minimum, put human approval gates on sensitive actions, and turn on the audit logging that proves what happened. A [data and AI readiness audit](/data-audit) produces the documentation record.",
+      "We price this the way we price all advisory work — hourly consulting or prepaid retainer hours with tracked usage, no monthly minimum and no expiration, plus a flat fee for a scoped governance build. The payoff is twofold: fewer incidents, and a defensible file when your broker or carrier asks what your agents can do. If you deploy agents into the EU, pair this with our [EU AI Act transparency checklist](/insights/eu-ai-act-transparency-rules-checklist). When you want AI you can actually insure, [talk to the ITECS team](/contact).",
+    ],
+    faq: [
+      {
+        question: "What is silent AI coverage?",
+        answer:
+          "Silent AI describes the practice of implicitly covering AI risk under policies, such as cyber and technology E&O, that never mention AI. Claims were argued under existing wording. Insurers are ending that ambiguity by adding AI-specific exclusions and endorsements, so businesses can no longer assume AI risk is covered by default.",
+      },
+      {
+        question: "Do I need to review my insurance before deploying AI agents?",
+        answer:
+          "Yes. Autonomous agents can act on data, customers, vendors, and money, and current policy language often addresses chatbots and generative content rather than agents. Review your cyber, technology E&O, professional liability, D&O, EPLI, crime, and general liability policies before granting an agent access.",
+      },
+      {
+        question: "What AI exclusions were added to insurance policies in 2026?",
+        answer:
+          "The Insurance Services Office introduced generative-AI exclusion endorsements, including forms CG 40 47 and CG 40 48, attachable to commercial general liability policies at renewals effective January 1, 2026. The broad form bars coverage tied to generative AI outputs, while the narrower form excludes only personal and advertising injury.",
+      },
+      {
+        question: "How do agent permissions and audit logs affect insurance?",
+        answer:
+          "Carriers offering affirmative AI coverage increasingly grant and price it based on documented governance. They ask whether humans review AI output, what each agent can access, and whether you can produce logs of what it did. Scoped permissions and audit logs improve your underwriting position and your position at claim time.",
+      },
+      {
+        question: "Is ITECS an insurance advisor?",
+        answer:
+          "No. ITECS is not an insurance broker or advisor, and this is general information rather than insurance or legal advice. ITECS provides the technical governance your insurer asks about — an AI inventory, scoped agent permissions, human approval gates, and audit logging. Confirm your coverage with a licensed broker and qualified counsel.",
+      },
+    ],
+  },
+  {
     slug: "chatgpt-work-secure-admin-checklist",
     title: "ChatGPT Work for Business: Secure Admin Checklist",
     description:
