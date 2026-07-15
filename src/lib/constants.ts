@@ -2021,6 +2021,88 @@ export const CODING_AGENT_COMPARISON: PlanComparison = {
 
 export const INSIGHTS: InsightItem[] = [
   {
+    slug: "ai-bill-of-materials-inventory-agents",
+    title: "AI Bill of Materials: Inventory Agents Before Production",
+    description:
+      "AI Bills of Materials are the new inventory layer for moving AI agents to production. Google's k8s-aibom and the CISA/G7 minimum elements explained — with a leader's checklist.",
+    href: "/insights/ai-bill-of-materials-inventory-agents",
+    publishedDate: "2026-07-14",
+    hubSlug: "custom-ai-agents",
+    hubLabel: "Custom AI Agents",
+    hubHref: "/custom-ai-agents",
+    keywords: [
+      "AI Bill of Materials",
+      "AI-BOM",
+      "AIBOM",
+      "AI SBOM",
+      "k8s-aibom",
+      "CISA G7 AI SBOM",
+      "ML-BOM",
+      "AI inventory before production",
+      "shadow AI discovery",
+      "AI supply chain transparency",
+    ],
+    h1: "AI Bill of Materials: Inventory Your Agents and Models Before Production",
+    content: [
+      "Every business knows what software runs its operations — or it should. Ask the same question about AI, and most cannot answer. Which models are in production? What data feeds them? Which agents can act, and on what? An **AI Bill of Materials** answers those questions. It is the inventory layer that lets a company move AI from a pilot on someone's laptop to a governed production system. As agents start acting on customer data and real infrastructure, that inventory stops being optional. This is what leaders should understand — and where [governed AI agent deployment](/custom-ai-agents) begins.",
+      "**An AI Bill of Materials (AI-BOM) is an inventory of every model, dataset, agent framework, vector database, dependency, and piece of infrastructure in an AI system. Google's new open-source k8s-aibom discovers these components at runtime, and CISA and G7 partners have published minimum elements for AI SBOMs. Before an AI system touches customer data or production, you need this inventory — and a way to keep it current.**",
+      "**What an AI Bill of Materials Actually Is**",
+      "A traditional software bill of materials lists the components inside an application, so you know what you are running and what to patch. An AI Bill of Materials extends that idea to AI systems. It is also called an AI-BOM, AIBOM, ML-BOM, or AI SBOM, and it inventories the parts a normal software list misses: the models, the datasets that trained or feed them, the agent frameworks, the vector databases, and the infrastructure they run on.",
+      "Think of it as the ingredients list for an AI system. Without it, you cannot answer basic governance questions — what is running, where the data goes, which components carry risk, and whether anything changed since last week. With it, AI becomes something you can audit, insure, and defend.",
+      "**Why It Matters Now: Pilots Are Becoming Production**",
+      "AI adoption happened bottom-up. A developer spun up a model, a team wired an agent to a data source, someone added a vector database — none of it registered anywhere. That is fine in a pilot. It is a liability in production. The moment an AI system touches customer data, a regulated workflow, or core infrastructure, unknown components become unmanaged risk.",
+      "Two forces are turning the AI-BOM from a nice-to-have into a baseline. Regulators and standards bodies now expect AI supply-chain transparency, and the tooling to produce it has arrived. The same inventory underpins the [AI governance](/insights/ai-governance-training-dallas-businesses) work we do, the admin controls in our [ChatGPT Work security guide](/insights/chatgpt-work-secure-admin-checklist), and even the evidence insurers now ask for in our [AI insurance coverage guide](/insights/ai-insurance-gaps-review-coverage).",
+      "[[COMPONENT_TABLE]]",
+      "**Google's k8s-aibom: Runtime Discovery of Shadow AI**",
+      "In 2026, Google Cloud open-sourced k8s-aibom, a tool that tackles the hardest part of the problem: finding AI you did not know you were running. It is an unprivileged Kubernetes controller that watches live cluster activity rather than scanning artifacts before deployment. It observes resources like Deployments, StatefulSets, Jobs, and KServe services, and detects AI runtimes that were deployed with no formal registration.",
+      "As it discovers workloads, k8s-aibom generates CycloneDX 1.6 ML-BOM documents at runtime — covering inference services, agent stacks, RAG pipelines, training jobs, and evaluation harnesses, with auditor-traceable evidence for each. The point is shadow AI. A static, hand-maintained list is wrong the moment someone deploys a new model. Runtime discovery catches what the spreadsheet misses. Google notes the output can support evidence for frameworks like the EU AI Act, the NIST AI Risk Management Framework, and ISO/IEC 42001.",
+      "**The CISA and G7 Minimum Elements for AI SBOMs**",
+      "The standards side moved too. In 2026, the US Cybersecurity and Infrastructure Security Agency and G7 partners — including Canada, France, Germany, Italy, Japan, the United Kingdom, and the European Union — released joint guidance titled Software Bill of Materials for AI: Minimum Elements. It is the first G7 guidance on SBOMs for AI, produced by the G7 Cybersecurity Working Group.",
+      "The guidance organizes AI SBOM elements into seven clusters: metadata, models, dataset properties, system-level properties, infrastructure, security properties, and key performance indicators. In plain terms, it says an AI inventory must capture more than code — it must document the models, the data across their lifecycle, where the system runs, and how it is secured. These elements are supplemental to a normal SBOM, not a replacement, and the guidance is a consensus baseline rather than a mandate. Expect it to harden over time.",
+      "[[READINESS_DIAGRAM]]",
+      "**The Business Decision: What to Ask Before Production**",
+      "You do not need to run the tooling yourself to lead here. You need to ask the right questions before an AI system goes live, of both your vendors and your internal teams. ITECS runs this as a gate.",
+      "**Ask what is actually running.** Require a current AI-BOM before any AI system reaches production — the models, datasets, agent frameworks, vector databases, dependencies, and infrastructure. No inventory, no go-live.",
+      "**Ask where the data goes.** For each component, confirm what data it can reach, whether that includes regulated or customer records, and where retrieval and training data are stored.",
+      "**Ask what the agent can do.** Autonomy is the risk. Confirm what each agent can access, execute, send, or publish, and what requires human approval.",
+      "**Ask how the inventory stays current.** A one-time list is worthless. Confirm how drift is detected — new models, new versions, new connections — and who owns keeping the AI-BOM live.",
+      "**Ask vendors for their AI-BOM.** When you buy an AI product, request its bill of materials the way you would a security questionnaire. A vendor that cannot produce one is telling you something.",
+      "**Governance, Drift, and Auditability**",
+      "The reason static inventories fail is drift. AI systems change constantly — a new model version, a re-indexed vector store, a new tool connection — and yesterday's document is already wrong. That is why runtime discovery matters, and why the AI-BOM has to be a living record, not a launch-day artifact. The authoritative baseline for what it should contain is CISA's [Software Bill of Materials for AI minimum elements](https://www.cisa.gov/resources-tools/resources/software-bill-materials-ai-minimum-elements), which we map every engagement to.",
+      "An AI-BOM is also the backbone of accountability. It tells you who owns each component, what it touches, and what changed — the evidence auditors, regulators, and insurers increasingly expect. Before any AI system connects to sensitive data, ITECS runs a [data and AI readiness audit](/data-audit) that produces exactly this record.",
+      "**How ITECS Builds Your AI-BOM Before Production**",
+      "Most companies cannot inventory their AI because it grew without a map. ITECS builds that map: we discover what is actually running — including the shadow AI nobody registered — document it as an AI-BOM aligned to the CISA and G7 elements, assess each component for risk, and stand up the governance to keep it current as your systems change.",
+      "We price this the way we price all advisory work — hourly consulting or prepaid retainer hours with tracked usage, no monthly minimum and no expiration, plus a flat fee for a scoped AI-BOM and governance build. The payoff is AI you can move to production with confidence, and evidence you can hand to any auditor, regulator, or insurer. When you are ready to inventory your agents before they reach production, [talk to the ITECS team](/contact).",
+    ],
+    faq: [
+      {
+        question: "What is an AI Bill of Materials?",
+        answer:
+          "An AI Bill of Materials, or AI-BOM, is an inventory of every component in an AI system — the models, datasets, agent frameworks, vector databases, software dependencies, and infrastructure. It extends the software bill of materials concept to AI so a business can audit what it is running, where its data goes, and what carries risk.",
+      },
+      {
+        question: "What is Google's k8s-aibom?",
+        answer:
+          "k8s-aibom is an open-source tool Google Cloud released that discovers AI workloads on Kubernetes at runtime. It runs as an unprivileged controller, watches live cluster resources, and generates CycloneDX ML-BOM documents for inference services, agent stacks, RAG pipelines, and training jobs — including AI that was deployed without registration.",
+      },
+      {
+        question: "What are the CISA and G7 minimum elements for AI SBOMs?",
+        answer:
+          "In 2026, CISA and G7 partners published joint guidance titled Software Bill of Materials for AI: Minimum Elements. It organizes AI inventory into seven clusters — metadata, models, dataset properties, system-level properties, infrastructure, security properties, and key performance indicators — as a supplement to a normal SBOM. It is a consensus baseline, not a mandate.",
+      },
+      {
+        question: "Why does my business need an AI-BOM before production?",
+        answer:
+          "Because unknown AI components become unmanaged risk once a system touches customer data or production infrastructure. An AI-BOM tells you which models and agents are running, what data they reach, and what changed. It is the inventory that makes AI auditable, governable, insurable, and defensible.",
+      },
+      {
+        question: "How is an AI-BOM kept accurate over time?",
+        answer:
+          "Through runtime discovery, not a one-time list. AI systems drift constantly as models, versions, and connections change, so a static document is quickly wrong. Tools like k8s-aibom observe live workloads, and governance assigns an owner to keep the inventory current as the system evolves.",
+      },
+    ],
+  },
+  {
     slug: "ai-insurance-gaps-review-coverage",
     title: "AI Insurance Gaps: Review Coverage Before Agents",
     description:
