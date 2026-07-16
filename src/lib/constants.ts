@@ -2021,6 +2021,87 @@ export const CODING_AGENT_COMPARISON: PlanComparison = {
 
 export const INSIGHTS: InsightItem[] = [
   {
+    slug: "agentic-ai-infrastructure-production-readiness",
+    title: "Agentic AI Infrastructure: Production Readiness",
+    description:
+      "83% of organizations need infrastructure upgrades for production agentic AI. Assess your compute, agent permissions, data, edge, and cost visibility before agents go live.",
+    href: "/insights/agentic-ai-infrastructure-production-readiness",
+    publishedDate: "2026-07-16",
+    hubSlug: "ai-devops",
+    hubLabel: "AI DevOps",
+    hubHref: "/ai-devops",
+    keywords: [
+      "agentic AI infrastructure",
+      "AI infrastructure production readiness",
+      "production-grade agentic AI",
+      "agentic AI compute",
+      "AI infrastructure upgrades",
+      "inference tax",
+      "AI agent production",
+      "State of AI Infrastructure report",
+      "agentic AI readiness",
+      "AI infrastructure checklist",
+    ],
+    h1: "Agentic AI Infrastructure: Is Your Business Ready for Production?",
+    content: [
+      "Your AI pilot worked. A small agent, a controlled task, an impressed demo. Then you tried to put it into production — running long, acting across systems, serving real customers — and the ground shifted. Autonomous agents do not stress your business like a chatbot. They stress your **infrastructure**: compute, data, network, governance, and cost. In 2026, that infrastructure is the gate between a pilot and production. This is what executives and IT leaders should evaluate before long-running agents touch real workflows — and where an honest [AI infrastructure and DevOps readiness](/ai-devops) review starts.",
+      "**Agentic AI does not fail in the demo — it fails at scale. In its 2026 State of AI Infrastructure report, Google Cloud found that 83% of organizations say they need infrastructure upgrades for production-grade agentic AI. A single agent prompt can trigger hundreds of downstream actions. Before you deploy, confirm you have elastic compute, scoped agent permissions, audit trails, unified data access, the right edge or hybrid placement, and real cost and power visibility.**",
+      "**Why Infrastructure Is the New Gate Between Pilot and Production**",
+      "A pilot hides the hard part. It runs briefly, on a small task, with a human watching. Production is the opposite: agents run for hours, chain hundreds of steps, act across live systems, and do it without supervision. The gap between those two states is not a model problem. It is an infrastructure problem.",
+      "Legacy environments were built for predictable, human-paced workloads. Agents are neither predictable nor human-paced. One request can fan out into a storm of API calls, data reads, and tool invocations. Run that on infrastructure sized for last year's traffic, and you get slow agents, surprise bills, and outages. The businesses that reach production first are the ones that fixed the infrastructure first.",
+      "**What Google Cloud's 2026 Agentic AI Infrastructure Report Found**",
+      "The numbers are stark. In its 2026 report on infrastructure in the agentic AI era, Google Cloud reported that 83% of organizations say they require infrastructure upgrades to support production-grade agentic AI. The core reason: a single prompt can trigger hundreds of downstream actions and demand large context held in memory, and running those continuous reasoning loops on legacy architecture is financially unsustainable.",
+      "Cost and power are now front and center. The report found that 62% of leaders face a significant inference tax — driven by data egress fees, storage growth, and underused specialized hardware — and 81% cited operational complexity as a hidden cost of scaling AI. Strikingly, 91% now factor power consumption into hardware decisions. Compute, cost, and energy have become boardroom infrastructure questions, not backroom ones.",
+      "[[DIMENSION_TABLE]]",
+      "**Where Agents Break Legacy Infrastructure**",
+      "Three pressure points break first. Compute is the obvious one: fixed capacity cannot absorb an agent that suddenly fans out into hundreds of parallel actions, so you either over-provision and waste money or under-provision and stall. Governance is the quiet one: an agent acting across systems needs a scoped identity and centrally managed permissions, or every integration becomes a way in. Data is the persistent one: agents need governed, consistent access to information that usually lives in disconnected silos.",
+      "Consider a 200-person logistics company that piloted an agent to reconcile shipping invoices. In the pilot it processed ten invoices flawlessly. In production it triggered thousands of API calls an hour against systems never sized for it, ran up unexpected data-egress charges, and — because it used one shared credential — tripped a security review. The agent worked. The infrastructure underneath it did not, and nobody had checked before go-live.",
+      "None of those failures were about the model. They were about compute elasticity, agent identity, and data access — the things a readiness assessment catches before they become an incident.",
+      "[[READINESS_DIAGRAM]]",
+      "**Your Agentic AI Production-Readiness Checklist**",
+      "Before a long-running agent touches a real workflow, an executive should be able to answer yes to each of these. ITECS runs this as a gate.",
+      "**Fluid, elastic compute.** Confirm compute scales up and down with unpredictable agent bursts, so you neither stall nor over-provision. Fixed capacity is a trap for agentic workloads.",
+      "**Centralized agent identity and permissions.** Every agent needs its own scoped identity and centrally managed access — not a shared credential. This is the same discipline behind our [custom AI agents](/custom-ai-agents).",
+      "**Audit trails and observability.** You must be able to see and log every action an agent takes, end to end. If you cannot trace it, you cannot govern it — the point of an [AI Bill of Materials](/insights/ai-bill-of-materials-inventory-agents).",
+      "**Unified, governed data access.** Agents need consistent, permissioned access to the data they use. Scattered silos produce wrong answers and leaks.",
+      "**Edge or hybrid placement.** Decide where each workload runs based on latency, data residency, and cost — not by default. Not everything belongs in one cloud.",
+      "**Power and cost visibility.** Instrument per-agent cost and power before you scale, so the inference tax shows up on a dashboard, not a surprise invoice.",
+      "**Governance and Cost Are Infrastructure, Too**",
+      "Treating governance and cost as afterthoughts is what turns a promising pilot into an expensive stall. They are infrastructure. Google Cloud's [State of AI Infrastructure report](https://cloud.google.com/blog/products/compute/state-of-ai-infrastructure-report-overview/) makes the case in its own data: power, inference tax, and operational complexity are now primary constraints. The controls that contain them — scoped identities, audit logging, cost instrumentation, and a current inventory of what is running — are the same ones we build in our [AI DevOps](/ai-devops) and [data readiness](/data-audit) work.",
+      "This connects directly to how agents are permissioned and secured. The admin controls in our [ChatGPT Work security guide](/insights/chatgpt-work-secure-admin-checklist) and the discipline in our [AI governance guide](/insights/ai-governance-training-dallas-businesses) are the operational layer on top of sound infrastructure. Readiness is all of it together.",
+      "**How ITECS Assesses Your Agentic AI Readiness**",
+      "Most companies discover their infrastructure gaps in production, when it is expensive to fix. ITECS finds them first. We benchmark your compute elasticity, agent identity and permissions, observability, data access, workload placement, and cost visibility against the real demands of the agents you want to run — then close the gaps before anything goes live.",
+      "We do this vendor-neutrally: hourly consulting or prepaid retainer hours with tracked usage, no monthly minimum and no expiration, plus a flat fee for a scoped readiness assessment and remediation plan. The payoff is agents that reach production without runaway cost, security gaps, or outages. When you are ready to move agents from pilot to production safely, [talk to the ITECS team](/contact).",
+    ],
+    faq: [
+      {
+        question: "What is agentic AI infrastructure?",
+        answer:
+          "Agentic AI infrastructure is the compute, data, network, governance, and cost foundation that autonomous AI agents need to run in production. Because a single agent can trigger hundreds of downstream actions and run for hours, it stresses systems differently than a chatbot, which is why most organizations need infrastructure upgrades before deploying agents.",
+      },
+      {
+        question: "Why do AI agents require infrastructure upgrades?",
+        answer:
+          "In its 2026 State of AI Infrastructure report, Google Cloud found 83% of organizations say they need upgrades for production-grade agentic AI. A single prompt can fan out into hundreds of actions and large in-memory context, and running those continuous reasoning loops on legacy architecture is financially unsustainable.",
+      },
+      {
+        question: "What is the AI inference tax?",
+        answer:
+          "The inference tax is the hidden ongoing cost of running AI at scale — data egress fees, storage growth, and underused specialized hardware. Google Cloud's 2026 report found 62% of leaders face a significant inference tax, and 81% cited operational complexity as a hidden cost, which is why per-agent cost visibility matters before scaling.",
+      },
+      {
+        question: "What should we check before deploying AI agents to production?",
+        answer:
+          "Confirm you have elastic compute, centralized agent identity and permissions, end-to-end audit trails, unified and governed data access, deliberate edge or hybrid placement, and per-agent cost and power visibility. Each is a readiness gate — long-running agents stress all of them in ways a pilot never reveals.",
+      },
+      {
+        question: "How does ITECS assess agentic AI readiness?",
+        answer:
+          "ITECS benchmarks your compute elasticity, agent permissions, observability, data access, workload placement, and cost visibility against the agents you plan to run, then closes the gaps before production. It is vendor-neutral advisory work, priced as hourly consulting or prepaid retainer hours with no monthly minimum.",
+      },
+    ],
+  },
+  {
     slug: "ai-bill-of-materials-inventory-agents",
     title: "AI Bill of Materials: Inventory Agents Before Production",
     description:
