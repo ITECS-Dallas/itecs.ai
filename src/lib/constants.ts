@@ -2021,6 +2021,83 @@ export const CODING_AGENT_COMPARISON: PlanComparison = {
 
 export const INSIGHTS: InsightItem[] = [
   {
+    slug: "copilot-teams-on-call-scheduling-agent",
+    title:
+      "How ITECS Built a Copilot Agent for On-Call Scheduling in Teams",
+    description:
+      "ITECS built a Microsoft Copilot agent in Teams that manages our on-call schedule — checking coverage, creating events, and automating shift-swap approvals, tied into our PSA.",
+    href: "/insights/copilot-teams-on-call-scheduling-agent",
+    publishedDate: "2026-07-17",
+    modifiedDate: "2026-07-17",
+    hubSlug: "custom-ai-agents",
+    hubLabel: "Custom AI Agents",
+    hubHref: "/custom-ai-agents",
+    keywords: [
+      "Microsoft Copilot agent",
+      "Copilot agent Teams",
+      "AI on-call scheduling",
+      "custom Copilot agent",
+      "Teams AI agent",
+      "on-call coverage automation",
+      "AI agent PSA integration",
+      "MSP AI agent",
+      "Copilot Teams app",
+      "AI scheduling agent",
+    ],
+    h1: "How ITECS Built a Microsoft Copilot Agent for On-Call Scheduling in Teams",
+    content: [
+      "Every managed services team runs an on-call rotation, and every on-call rotation has the same weak point: the handoff. Someone needs coverage, so they start messaging colleagues one by one, hoping the right person is free. It is slow, it is error-prone, and when it fails, a support window goes uncovered. So ITECS built an AI agent to fix it — a **Microsoft Copilot agent, running as an app inside Microsoft Teams**, that manages our on-call schedule and automates coverage swaps. Here is how it works, and why it is a template for the kind of [custom AI agent](/custom-ai-agents) we build for other businesses.",
+      "**ITECS built a Microsoft Copilot agent, surfaced as an app in Microsoft Teams, that manages our on-call schedule and support calendars. Staff check coverage, create events, and request shift swaps in plain language. When someone needs coverage, the agent checks who is available and messages those technicians to approve or reject taking the event — the requester is covered the moment one accepts. It is also tied into our PSA, so techs can reference ticket numbers and events in the same conversation.**",
+      "**The Problem: On-Call Swaps Ran on Chat Messages and Guesswork**",
+      "On-call scheduling is not hard to set up. Keeping it covered is. A technician gets sick, has a conflict, or simply needs a night off, and the scramble begins: who is free, who has done it recently, who will say yes. That coordination happened in scattered chat messages, with no view of the full team's availability and no record of who agreed to what.",
+      "The cost of a missed handoff is real — an uncovered support window, a slow response, an unhappy client. We were spending management time chasing coverage that software should handle. The rotation lived in a calendar; the availability lived in everyone's calendars; the tickets lived in our PSA. Nothing talked to anything. That gap is exactly where a well-built agent earns its keep.",
+      "**What We Built: A Copilot Agent Inside Microsoft Teams**",
+      "We built the agent on Microsoft Copilot and published it as an app in Microsoft Teams — the tool our technicians already live in all day. There is nothing new to learn and no new window to open. A technician opens the agent in Teams and talks to it in plain language.",
+      "The agent has secure access to our on-call schedule, rotation, and support calendars. From a single conversation, staff can check who is on call, look at the support calendar, create a new calendar event, or ask for someone else to take a scheduled event. Because it lives in Teams and reads live calendars, the answer is always current — not a screenshot from yesterday.",
+      "[[CAPABILITY_TABLE]]",
+      "**How the Coverage-Swap Approval Flow Works**",
+      "The coverage swap is where the agent does its best work, because it replaces a manual scramble with an automated, auditable flow. It runs in five steps, all inside Teams.",
+      "A technician asks the agent to hand off a scheduled event. The agent checks the team's availability for that specific event window — it already knows everyone's calendars. It then messages every available technician, asking each one to approve or reject taking the event. Technicians respond in a single tap, right in the Teams conversation. The moment one person approves, the event is reassigned to them, the original technician is covered, and everyone involved is notified. No group chat, no chasing, no gaps.",
+      "[[WORKFLOW_DIAGRAM]]",
+      "**Tied Into Our PSA for Tickets and Events**",
+      "Scheduling does not happen in a vacuum. On-call work maps to real tickets and events in our professional services automation platform. So we connected the agent to our PSA as well. A technician can reference a ticket number or an event in the same Teams conversation, and the agent pulls the relevant details without anyone leaving the chat or logging into another system.",
+      "That link is what turns the agent from a calendar tool into an operations tool. Coverage, availability, and the actual work are finally in one place. It is the same integration philosophy behind [DOCBOT, the documentation agent we built](/insights/self-hosted-ai-agents-seafile) — meet people in the tools they already use, and connect the systems that were never talking.",
+      "**Why Copilot and Teams, and How We Keep It Governed**",
+      "We chose Microsoft Copilot and Teams deliberately. Adoption is the hardest part of any internal tool, and an agent that lives where staff already work gets used. Copilot also grounds the agent in our Microsoft 365 environment and respects the permissions already in place, which Microsoft documents in its [Microsoft 365 Copilot data privacy commitments](https://learn.microsoft.com/en-us/copilot/microsoft-365/microsoft-365-copilot-privacy). Governance is built in, not bolted on.",
+      "We scope what the agent can access, keep its actions inside our tenant, and require human approval for the decisions that matter — a technician has to accept a coverage request before anything changes. That is the same discipline we apply to any agent that acts on real systems, and the same care we cover in our guide to [securing an AI agent's admin controls](/insights/chatgpt-work-secure-admin-checklist). A rollout like this usually starts with our [Microsoft Copilot training and implementation](/copilot-training).",
+      "**What This Means for Your Business**",
+      "The on-call agent is one workflow, but the pattern is general. Any coordination that runs on chat messages and tribal knowledge — approvals, scheduling, dispatch, handoffs — is a candidate for a governed Copilot or Teams agent that does the legwork and keeps a record. The value is not novelty. It is hours returned to your team and a process that no longer depends on someone remembering to chase it.",
+      "This is what ITECS builds for other businesses: custom AI agents that automate a real workflow inside the tools your staff already use, connected to the systems that hold your data, and governed so they are safe to run. We price it the way we price all engineering work — hourly consulting or prepaid retainer hours with tracked usage, no monthly minimum and no expiration, plus a flat fee for a scoped agent build. If you have a workflow that runs on manual coordination, we can turn it into a [workflow automation](/automation) that runs itself. When you are ready, [talk to the ITECS team](/contact).",
+    ],
+    faq: [
+      {
+        question: "What does the ITECS on-call scheduling agent do?",
+        answer:
+          "It is a Microsoft Copilot agent, available as an app in Microsoft Teams, that manages the ITECS on-call schedule, rotation, and support calendars. Staff use it to check coverage, create calendar events, and request that someone else take over a scheduled event, all in plain language inside Teams.",
+      },
+      {
+        question: "How does the coverage-swap approval work?",
+        answer:
+          "When a technician requests a handoff, the agent checks the team's availability for that event window and messages every available technician to approve or reject taking it. Technicians respond in one tap in Teams, and the moment one accepts, the event is reassigned and the original technician is covered.",
+      },
+      {
+        question: "Is the agent connected to the PSA system?",
+        answer:
+          "Yes. The agent is tied into the ITECS PSA, so technicians can reference ticket numbers and events from the PSA in the same Teams conversation. That connects the on-call schedule, team availability, and the actual support work in one place.",
+      },
+      {
+        question: "Why build the agent on Microsoft Copilot and Teams?",
+        answer:
+          "Because staff already work in Teams every day, so adoption is immediate and there is nothing new to learn. Copilot grounds the agent in the Microsoft 365 environment and respects existing permissions, so governance and data controls are built in rather than added later.",
+      },
+      {
+        question: "Can ITECS build a custom Copilot or Teams agent for my business?",
+        answer:
+          "Yes. ITECS designs and builds custom AI agents that automate real workflows inside the tools your staff already use, connected to your systems and governed for safe operation. Common candidates include scheduling, approvals, dispatch, and handoffs that currently run on manual chat coordination.",
+      },
+    ],
+  },
+  {
     slug: "ai-agent-recovery-plan-protect-backups",
     title: "AI Agent Recovery Plan: Protect Backups First",
     description:
