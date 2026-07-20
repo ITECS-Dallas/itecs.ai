@@ -2026,6 +2026,81 @@ export const CODING_AGENT_COMPARISON: PlanComparison = {
 
 export const INSIGHTS: InsightItem[] = [
   {
+    slug: "ai-platform-spend-controls-visibility",
+    title: "AI Platform Spend Controls: Buy With Visibility",
+    description:
+      "AI platform spend is up 63% and moving to usage-based pricing. Learn how to compare platforms on visibility, spend limits, and cost per outcome before budgets scale.",
+    href: "/insights/ai-platform-spend-controls-visibility",
+    publishedDate: "2026-07-21",
+    hubSlug: "consulting",
+    hubLabel: "AI Consulting",
+    hubHref: "/consulting",
+    keywords: [
+      "AI platform spend controls",
+      "AI spend governance",
+      "AI cost visibility",
+      "usage-based AI pricing",
+      "AI spend limits",
+      "cost per outcome AI",
+      "AI budget governance",
+      "AI platform evaluation",
+      "Gartner AI spending",
+      "AI cost management",
+    ],
+    h1: "AI Platform Spend Controls: How to Buy AI With Visibility",
+    content: [
+      "For a while, AI spending was easy to budget. You bought seats, paid a flat monthly fee, and knew the number. That era is ending. Buyers are moving from chat subscriptions to usage-based pricing, agents, and platforms — where a single automated workflow can consume as many tokens in an afternoon as a team used all month. The bill is now variable, and without the right controls, it is unpredictable. This is how executives, finance, and IT should buy AI with visibility, before budgets scale — and where an [AI consulting and cost-governance engagement](/consulting) starts.",
+      "**AI platform spending is accelerating and getting harder to govern as buyers move from flat subscriptions to usage-based pricing and agents. Gartner projects worldwide spending on AI platforms and models will reach 64 billion dollars in 2026, up more than 63 percent. Before budgets scale, compare platforms on usage visibility, cost transparency, spend limits, review workflows, and cost per accepted business outcome — not the sticker price.**",
+      "**The Shift: From Flat Subscriptions to Usage-Based AI**",
+      "A per-seat subscription is predictable by design. You know the headcount, you know the price. Usage-based AI is the opposite. You pay for tokens, calls, and compute, and consumption scales with how hard your people — and increasingly your agents — use the tools. An autonomous agent does not take breaks. It can run for hours, retry endlessly, and chain hundreds of calls, each one metered.",
+      "That changes who owns the risk. In the subscription era, procurement negotiated a fixed number. In the usage era, every workflow is a variable cost, and the meter runs whether or not the output was any good. Finance cannot forecast it, IT cannot cap it, and nobody can tie it to value — unless the platform gives you the visibility to do so. That visibility is now the product decision.",
+      "**What the Market Signals Are Telling Buyers**",
+      "The numbers show why this matters now. In a forecast released July 20, 2026, Gartner projected that worldwide end-user spending on AI platforms and models will reach 64 billion dollars in 2026 — up 63.4 percent from 39 billion in 2025. Within that, Gartner expects generative AI model spending to grow about 117 percent, and AI platform spending to rise about 37 percent. Separately, Gartner has warned that 234 billion dollars in enterprise application software spend is at risk from agentic AI. Budgets are moving fast, and the ground under them is shifting.",
+      "The vendors see it too. OpenAI recently added usage analytics and updated spend controls to ChatGPT Enterprise — a global admin console that brings usage into one view, a unified cost API, and spend limits that admins can set at the workspace, group, and individual level, with employees able to see their budget and request more. That is the market admitting the obvious: usage-based AI is unbuyable without visibility and caps. The lesson for buyers is to demand those controls as a purchase criterion, not hope for them later.",
+      "[[CRITERIA_TABLE]]",
+      "**Buy on Visibility, Not the Sticker Price**",
+      "The cheapest per-token rate is not the cheapest platform. A platform with an attractive rate but no usage breakdown, no caps, and no cost API will cost you more, because you cannot see or stop waste. The right comparison is not price per unit — it is how much control the platform gives you over what you spend and whether that spend produced value.",
+      "Practically, that means insisting on a few things before you sign. You want usage visibility down to the user, model, and task. You want hard spend limits you can set and enforce. You want a review workflow so overspend meets a human before it meets your invoice. And you want the data through an API, so it flows into your own dashboards. The same routing discipline we cover in our [Claude plan comparison](/insights/claude-plan-comparison) applies across every platform: match the model to the task, and cap the rest.",
+      "[[GOVERNANCE_DIAGRAM]]",
+      "**Measure Cost Per Accepted Business Outcome**",
+      "Here is the metric that changes the conversation: cost per accepted business outcome. Not cost per token, not cost per call — cost per unit of work a human actually accepted and used. An agent that drafts fifty documents cheaply is expensive if forty-five get thrown away. A pricier model that gets it right the first time can be the bargain.",
+      "Measuring this requires two things the platform should support: evals, so you can tell whether the output was good, and usage data you can join to outcomes. Add model routing — sending easy work to a cheap model and hard work to a capable one — and you optimize for value, not volume. This is the same efficiency thinking behind sound [agentic AI infrastructure](/insights/agentic-ai-infrastructure-production-readiness): spend where it pays, cap where it does not.",
+      "**Governance: Guardrails Before Budgets Scale**",
+      "Guardrails are cheapest to install before spend scales, not after the overage. Set hard limits, require approvals for increases, and instrument usage from day one. OpenAI's [enterprise usage analytics and spend controls](https://openai.com/index/chatgpt-enterprise-spend-controls/) are a useful template for what good looks like — per-user visibility, tiered caps, and an approval path for more budget. Whatever platform you choose, require the equivalent, and confirm you have an inventory of every AI tool already in use. That inventory is the same one behind an [AI Bill of Materials](/insights/ai-bill-of-materials-inventory-agents).",
+      "None of this is about spending less on AI. It is about spending deliberately. Before you connect a workflow to a metered platform, ITECS runs a [data and AI readiness audit](/data-audit) and stands up the cost instrumentation, and we operate the ongoing controls through our [AI DevOps](/ai-devops) practice. The goal is simple: every dollar visible, every workflow capped, and every spend tied to an outcome.",
+      "**How ITECS Sets Up AI Spend Visibility and Guardrails**",
+      "Most companies discover their AI spend problem on an invoice. ITECS finds it first. We inventory every AI tool and its pricing model, turn on usage analytics and cost APIs, set hard spend limits and approval workflows, route models by task, and put a cost-per-outcome measure in place — vendor-neutral, across whatever platforms you use.",
+      "We price this the way we price all advisory work — hourly consulting or prepaid retainer hours with tracked usage, no monthly minimum and no expiration, plus a flat fee for a scoped spend-governance build. The payoff is an AI budget you can forecast, defend, and tie to value as it grows. When you want to buy and run AI with visibility, [talk to the ITECS team](/contact).",
+    ],
+    faq: [
+      {
+        question: "Why is AI platform spending getting harder to govern?",
+        answer:
+          "Because buyers are moving from flat per-seat subscriptions to usage-based pricing, agents, and platforms. Consumption now scales with how hard people and autonomous agents use the tools, so costs are variable and unpredictable. Without usage visibility, spend limits, and approval workflows, the bill runs ahead of the budget.",
+      },
+      {
+        question: "How much is AI platform spending growing?",
+        answer:
+          "In a forecast released July 20, 2026, Gartner projected worldwide spending on AI platforms and models will reach 64 billion dollars in 2026, up 63.4 percent from 2025. Gartner expects generative AI model spending to grow about 117 percent and AI platform spending about 37 percent in the same year.",
+      },
+      {
+        question: "What should I compare when buying an AI platform?",
+        answer:
+          "Compare usage visibility, cost transparency, evals, latency, reliability, model routing, spend limits, and review workflows — and above all, cost per accepted business outcome. The lowest per-token rate is not the cheapest platform if you cannot see, cap, or tie your spend to value.",
+      },
+      {
+        question: "What is cost per accepted business outcome?",
+        answer:
+          "It is the cost of a unit of work a human actually accepted and used, rather than cost per token or per call. A cheap model that produces output people discard is expensive; a pricier model that is right the first time can cost less overall. Measuring it requires evals and usage data joined to outcomes.",
+      },
+      {
+        question: "How does ITECS help control AI spend?",
+        answer:
+          "ITECS inventories every AI tool and its pricing, turns on usage analytics and cost APIs, sets hard spend limits and approval workflows, routes models by task, and measures cost per accepted outcome. It is vendor-neutral advisory work priced as hourly consulting or prepaid retainer hours with no monthly minimum.",
+      },
+    ],
+  },
+  {
     slug: "copilot-teams-on-call-scheduling-agent",
     title:
       "How ITECS Built a Copilot Agent for On-Call Scheduling in Teams",
