@@ -9,6 +9,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "test:intelligence": "node --test tests/intelligence-os.test.mjs tests/intelligence-backend.test.cjs",
     "seo:audit": "node scripts/seo-audit.mjs",
     "start": "next start",
     "lint": "eslint"
