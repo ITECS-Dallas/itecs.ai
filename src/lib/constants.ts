@@ -2026,6 +2026,87 @@ export const CODING_AGENT_COMPARISON: PlanComparison = {
 
 export const INSIGHTS: InsightItem[] = [
   {
+    slug: "ai-enabled-app-inventory-govern-software",
+    title: "AI-Enabled App Inventory: Govern Software That Acts",
+    description:
+      "The apps you already approved are gaining agentic powers. Gartner says 40% of enterprise apps will have task-specific AI agents by end of 2026. Here is the governance checklist.",
+    href: "/insights/ai-enabled-app-inventory-govern-software",
+    publishedDate: "2026-07-22",
+    hubSlug: "consulting",
+    hubLabel: "AI Consulting",
+    hubHref: "/consulting",
+    keywords: [
+      "AI-enabled app inventory",
+      "govern software that acts",
+      "task-specific AI agents",
+      "agentic capabilities SaaS",
+      "AI app governance",
+      "MCP server security",
+      "shadow AI agents",
+      "AI-enabled applications security",
+      "Gartner AI agents enterprise",
+      "software that acts",
+    ],
+    h1: "AI-Enabled App Inventory: How to Govern Software That Acts",
+    content: [
+      "You vetted the software. It passed security review, it went on the approved list, and it did what it was supposed to: show information and wait for a human. Now that same software is starting to act. SaaS platforms, browsers, developer tools, plugins, MCP servers, and internal apps are quietly gaining agentic capabilities — the ability to take actions, not just display them — often through a vendor update you never opted into. Your approved-software list is now full of things that can do, and most companies have no inventory of what. This is how to govern software that acts, and where an [AI governance and readiness engagement](/consulting) begins.",
+      "**The business software you already approved is gaining the ability to act on its own. SaaS apps, browsers, developer tools, plugins, and MCP servers are adding agentic features, often through silent vendor updates. Gartner projects that 40 percent of enterprise applications will feature task-specific AI agents by the end of 2026, up from under 5 percent. Before your software starts acting autonomously, inventory what is AI-enabled, map what each can do, and control it.**",
+      "**Your Approved Software Is Starting to Act**",
+      "For decades, application security had a comforting property: software was passive. It displayed data, ran reports, and waited for a person to click. The threat model was about who could log in and what they could see. Agentic capabilities break that assumption. An app that can send an email, edit a record, move money, or call another system on its own is no longer passive — it is an actor in your environment.",
+      "The unsettling part is how it arrives. You do not usually choose it. A SaaS vendor ships an update that adds an AI assistant with the power to take actions. A browser gains an agent that fills forms and clicks buttons. A developer tool starts running code on its own. The capability appears inside software you already trust, under permissions it already has. That is a governance gap, not a new procurement.",
+      "**The Signal: 40% of Apps, and a New Security Category**",
+      "The scale is not hypothetical. Gartner projects that 40 percent of enterprise applications will feature task-specific AI agents by the end of 2026, up from less than 5 percent in 2025. In other words, within a year, nearly half of your business software may be able to act on your behalf. The tools evolved from assistants that suggest into agents that do.",
+      "The security market is responding. In July 2026, a company called Neo emerged from stealth with 100 million dollars in funding, built by veterans of SentinelOne, Wiz, and Palo Alto Networks, to give security teams inventory, attribution, and policy control over AI agents, AI-enabled applications, browsers, and traditional software that has gained agentic capabilities. When well-funded founders build a category around a problem, the problem is real. The takeaway for every business, not just the largest, is the same: you cannot govern what you have not inventoried.",
+      "[[CAPABILITY_TABLE]]",
+      "**Why This Breaks Traditional App Governance**",
+      "Three properties make AI-enabled software hard to secure with old methods. First, inherited permissions: an agent inside an approved app acts with that app's existing access, so it can reach whatever the app could — often more than anyone intended for an autonomous actor. Second, data movement: an agent may send your data to a model, another service, or the open web, and the flow is invisible unless you look for it. Third, silent change: a vendor update can turn a passive tool into an active one overnight, with no new contract and no review.",
+      "Consider a 150-person firm that approved a popular SaaS suite years ago. A quarterly vendor update adds an AI agent that can read and act across the whole workspace. No one re-reviewed it — it was already approved. Weeks later, the agent, prompted by a cleverly worded document, takes an action nobody authorized, using permissions the app always had. The software did not change vendors. It changed behavior. That is the gap an AI-enabled app inventory closes.",
+      "[[GOVERNANCE_DIAGRAM]]",
+      "**Your AI-Enabled App Governance Checklist**",
+      "You do not need to ban agentic software — you need to see and govern it. ITECS runs this as a checklist before AI-enabled apps run unmanaged.",
+      "**Inventory your AI-enabled apps.** List every SaaS app, browser, developer tool, plugin, MCP server, and internal app that has, or could gain, agentic capabilities. This is the same discipline as an [AI Bill of Materials](/insights/ai-bill-of-materials-inventory-agents).",
+      "**Identify what each one can do.** For every AI-enabled app, document the actions it can take — read, write, send, publish, execute, or transact — not just the data it can see.",
+      "**Map inherited permissions and data movement.** Trace what access each agent inherits from its host app, and where its outputs and your data flow. Assume nothing is contained until you have checked.",
+      "**Assign an owner.** Every AI-enabled app needs a named person accountable for its behavior, its permissions, and its reviews. Unowned software is ungoverned software.",
+      "**Require attribution logs.** Insist on logs that show which agent took which action, and when. If you cannot attribute an action to an actor, you cannot investigate or recover.",
+      "**Block risky tool calls.** Restrict the actions agents can take on sensitive systems, and require human approval for anything destructive or irreversible.",
+      "**Review vendor updates before they act.** Treat AI feature releases like the material changes they are. Review new agentic capabilities before you let them loose, not after.",
+      "**Governance, Attribution, and Vendor Review**",
+      "The controls above are not exotic security research. They are application governance updated for software that acts. The hardest new habit is vendor review: agentic features arrive through routine updates, so someone has to watch for them and decide before they run. Gartner's own [forecast on task-specific agents in enterprise apps](https://www.gartner.com/en/newsroom/press-releases/2025-08-26-gartner-predicts-40-percent-of-enterprise-apps-will-feature-task-specific-ai-agents-by-2026-up-from-less-than-5-percent-in-2025) is the signal to start now, while the number is still climbing. The same admin discipline we cover for [securing an AI agent's controls](/insights/chatgpt-work-secure-admin-checklist) applies to every app that gains an agent.",
+      "Attribution is the control that ties it together. When every AI action maps to an app, an owner, and a log, an incident becomes something you can investigate rather than guess at. Before any AI-enabled app touches sensitive systems, ITECS runs a [data and AI readiness audit](/data-audit) to map its reach, and pairs it with the staff [AI governance and training](/insights/ai-governance-training-dallas-businesses) that keeps the inventory honest.",
+      "**How ITECS Builds and Governs Your AI-Enabled App Inventory**",
+      "Most companies cannot answer a simple question: which of our approved apps can now act on their own? ITECS answers it. We inventory every AI-enabled app, browser, plugin, and MCP server, document what each can do and what it can reach, assign owners, require attribution logs, and set the controls that keep agentic software inside its lane — vendor-neutral, across your whole stack.",
+      "We price this the way we price all advisory work — hourly consulting or prepaid retainer hours with tracked usage, no monthly minimum and no expiration, plus a flat fee for a scoped AI-enabled app inventory and governance build. The payoff is simple: you know what your software can do before it does it. When you want to govern the software that acts, [talk to the ITECS team](/contact).",
+    ],
+    faq: [
+      {
+        question: "What is an AI-enabled app inventory?",
+        answer:
+          "It is a catalog of every business application — SaaS apps, browsers, developer tools, plugins, MCP servers, and internal apps — that has gained, or could gain, agentic capabilities, along with what each can do, what it can access, and who owns it. It is the foundation for governing software that acts rather than just displays information.",
+      },
+      {
+        question: "Why is approved software becoming harder to secure?",
+        answer:
+          "Because agentic features arrive through routine vendor updates, turning passive apps into actors that can send, edit, execute, or transact. These agents inherit the host app's existing permissions and can move data invisibly. Traditional app governance assumed software was passive, so an inventory of what is now AI-enabled is essential.",
+      },
+      {
+        question: "How many enterprise apps will have AI agents?",
+        answer:
+          "Gartner projects that 40 percent of enterprise applications will feature task-specific AI agents by the end of 2026, up from less than 5 percent in 2025. That means within a year, nearly half of typical business software may be able to take actions on a user's behalf, which is why inventory and governance are now urgent.",
+      },
+      {
+        question: "What should the AI-enabled app governance checklist include?",
+        answer:
+          "Inventory AI-enabled apps, identify what each can do, map inherited permissions and data movement, assign an owner to each, require attribution logs, block risky tool calls, and review vendor updates before new agentic features act. The goal is to see and control what your software can do before it does it.",
+      },
+      {
+        question: "How does ITECS help govern AI-enabled software?",
+        answer:
+          "ITECS inventories every AI-enabled app, browser, plugin, and MCP server, documents what each can do and reach, assigns owners, requires attribution logs, and sets controls on risky actions. It is vendor-neutral advisory work priced as hourly consulting or prepaid retainer hours with no monthly minimum.",
+      },
+    ],
+  },
+  {
     slug: "ai-platform-spend-controls-visibility",
     title: "AI Platform Spend Controls: Buy With Visibility",
     description:
