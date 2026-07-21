@@ -298,6 +298,25 @@ export const MEGA_MENU_CATEGORIES: MegaMenuCategory[] = [
 // Public AI Pricing
 // ---------------------------------------------------------------------------
 
+export const AI_ASSESSMENT_INTAKE = {
+  href: "/assessment",
+  costLabel: "No-cost intake form",
+  purpose:
+    "Collect basic organization details, employee range, and the visitor's top AI goal so ITECS can route follow-up by email.",
+  formalAssessmentDelivered: false,
+} as const;
+
+export const AI_SERVICE_PAGE_ESTIMATES = {
+  receptionist: {
+    setup: "$3,000–$6,000",
+    ongoing: "$300–$800/month",
+  },
+  crmSalesAi: {
+    setup: "$5,000–$15,000",
+    ongoing: "$500/month",
+  },
+} as const;
+
 export interface AIPricingOffering {
   name: string;
   price: string;
@@ -1178,8 +1197,7 @@ export const SERVICES: ServiceItem[] = [
     faq: [
       {
         question: "How much does an AI receptionist cost for a growing organization?",
-        answer:
-          "Setup starts at $3,000–$6,000 depending on call complexity and integrations. Monthly service runs $300–$800/month — compared to $1,500–$4,000/month for a human receptionist or traditional answering service. Most Dallas businesses save $3,000+ per month from day one.",
+        answer: `Setup starts at ${AI_SERVICE_PAGE_ESTIMATES.receptionist.setup} depending on call complexity and integrations. Monthly service runs ${AI_SERVICE_PAGE_ESTIMATES.receptionist.ongoing} — compared to $1,500–$4,000/month for a human receptionist or traditional answering service. Most Dallas businesses save $3,000+ per month from day one.`,
       },
       {
         question: "Does the AI receptionist sound robotic?",
@@ -1263,8 +1281,7 @@ export const SERVICES: ServiceItem[] = [
     faq: [
       {
         question: "How much does AI CRM integration cost for a growing organization?",
-        answer:
-          "Setup ranges from $5,000–$15,000 depending on your CRM platform, number of integrations, and team size. Ongoing optimization and support starts at $500/month. Most Dallas businesses see the investment pay for itself within 60 days through increased close rates and time savings.",
+        answer: `Setup ranges from ${AI_SERVICE_PAGE_ESTIMATES.crmSalesAi.setup} depending on your CRM platform, number of integrations, and team size. Ongoing optimization and support starts at ${AI_SERVICE_PAGE_ESTIMATES.crmSalesAi.ongoing}. Most Dallas businesses see the investment pay for itself within 60 days through increased close rates and time savings.`,
       },
       {
         question: "Does this work with HubSpot Free or do I need a paid plan?",

@@ -6,20 +6,37 @@ import {
   OUT_OF_SCOPE_MESSAGE,
   type IntelligenceStreamEvent,
 } from "@/lib/intelligence/contract";
-import { retrieveItecsKnowledge } from "@/lib/intelligence/knowledge";
+import {
+  buildIntelligenceRetrievalQuery,
+  retrieveItecsKnowledge,
+} from "@/lib/intelligence/knowledge";
 import {
   classifyIntelligenceScope,
   createPseudonymousClientId,
   generateVerifiedIntelligenceAnswer,
   getIntelligenceApiKey,
+  IntelligenceProviderError,
 } from "@/lib/intelligence/provider";
 import { checkIntelligenceRateLimit } from "@/lib/intelligence/rate-limit";
+import { buildIntelligencePrecisionAnswer } from "@/lib/intelligence/precision";
 import { validateIntelligenceChatRequest } from "@/lib/intelligence/validation";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 const encoder = new TextEncoder();
+const SAFE_UNEXPECTED_ERROR_NAMES = new Set([
+  "AbortError",
+  "RangeError",
+  "SyntaxError",
+  "TypeError",
+]);
+
+function safeUnexpectedErrorName(error: unknown) {
+  return error instanceof Error && SAFE_UNEXPECTED_ERROR_NAMES.has(error.name)
+    ? error.name
+    : "UnknownError";
+}
 
 function ipAddress(request: NextRequest) {
   return (
@@ -137,14 +154,15 @@ export async function POST(request: NextRequest) {
     }
   }
 
-  const retrievalQuery = [
-    ...chat.history
-      .filter((message) => message.role === "user")
-      .slice(-2)
-      .map((message) => message.content),
+  const retrievalQuery = buildIntelligenceRetrievalQuery(
+    chat.history,
     chat.message,
-  ].join("\n");
-  const knowledge = retrieveItecsKnowledge(retrievalQuery, chat.pagePath);
+  );
+  const knowledge = retrieveItecsKnowledge(
+    retrievalQuery,
+    chat.pagePath,
+    chat.message,
+  );
 
   let cancelled = false;
   const providerAbortController = new AbortController();
@@ -233,28 +251,37 @@ export async function POST(request: NextRequest) {
           });
           send({ type: "resources", resources: knowledge.resources });
           send({ type: "suggestions", suggestions: knowledge.suggestions });
+          const precisionAnswer = buildIntelligencePrecisionAnswer({
+            history: chat.history,
+            message: chat.message,
+          });
+
           send({
             type: "status",
             stage: "thinking",
-            label: "Building a grounded recommendation",
+            label: precisionAnswer
+              ? "Assembling current published pricing"
+              : "Building a grounded recommendation",
           });
 
-          const verifiedAnswer = await generateVerifiedIntelligenceAnswer({
-            apiKey,
-            clientId,
-            history: chat.history,
-            message: chat.message,
-            pagePath: chat.pagePath,
-            trustedContext: knowledge.context,
-            signal: providerAbortController.signal,
-            onVerificationStart: () => {
-              send({
-                type: "status",
-                stage: "thinking",
-                label: "Verifying scope, evidence, and pricing",
-              });
-            },
-          });
+          const verifiedAnswer =
+            precisionAnswer?.answer ??
+            (await generateVerifiedIntelligenceAnswer({
+              apiKey,
+              clientId,
+              history: chat.history,
+              message: chat.message,
+              pagePath: chat.pagePath,
+              trustedContext: knowledge.context,
+              signal: providerAbortController.signal,
+              onVerificationStart: () => {
+                send({
+                  type: "status",
+                  stage: "thinking",
+                  label: "Verifying scope, evidence, and pricing",
+                });
+              },
+            }));
 
           for (const [index, text] of answerChunks(verifiedAnswer).entries()) {
             providerAbortController.signal.throwIfAborted();
@@ -270,10 +297,19 @@ export async function POST(request: NextRequest) {
         } catch (error) {
           if (cancelled || providerAbortController.signal.aborted) return;
 
+          const providerError =
+            error instanceof IntelligenceProviderError ? error : null;
+
           console.error("ITECS Intelligence provider unavailable", {
             requestId,
             clientId,
-            errorName: error instanceof Error ? error.name : "UnknownError",
+            stage: providerError?.stage ?? "unknown",
+            code: providerError?.code ?? "unexpected_error",
+            errorName: providerError?.name ?? safeUnexpectedErrorName(error),
+            failureCategory: providerError?.failureCategory ?? null,
+            failedChecks: providerError?.failedChecks ?? [],
+            httpStatus: providerError?.httpStatus ?? null,
+            documentIds: knowledge.documentIds,
           });
           send({ type: "unavailable", text: CHAT_UNAVAILABLE_MESSAGE });
           send({ type: "resources", resources: knowledge.resources });

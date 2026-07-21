@@ -1,4 +1,5 @@
 import {
+  AI_ASSESSMENT_INTAKE,
   AI_HOURLY_RATES,
   AI_LOYALTY_DISCOUNTS,
   AI_PRICING_CATEGORIES,
@@ -24,7 +25,7 @@ import {
   TRAINING_SERVICES,
   TRUST_CASE_STUDIES,
 } from "@/lib/constants";
-import type { IntelligenceResource } from "./contract";
+import type { IntelligenceChatMessage, IntelligenceResource } from "./contract";
 
 interface KnowledgeDocument {
   id: string;
@@ -83,7 +84,7 @@ const SEARCH_EXPANSIONS: Array<[RegExp, string]> = [
   [/\b(search|seo|rank|ranking|google|visibility|answer engine)\b/i, "AI optimized SEO GEO search visibility Foundation Momentum Velocity"],
   [/\b(safe|safety|security|secure|risk|governance|compliance|shadow ai)\b/i, "AI governance security policy data audit human review"],
   [/\b(train|training|adoption|learn|workshop|champion|enablement)\b/i, "AI training rollout champion program Claude Copilot ChatGPT"],
-  [/\b(build|agent|agents|automate|automation|workflow|integration)\b/i, "custom AI agents production automation integration managed operations"],
+  [/\b(build|agent|agents|automate|automation|workflow|integration)\b/i, "custom AI agents production automation workflow integration human review"],
 ];
 
 function slugify(value: string) {
@@ -283,6 +284,43 @@ function servicePagePricingDocuments(): KnowledgeDocument[] {
 }
 
 function pricingDocuments(): KnowledgeDocument[] {
+  const categoryOverviews = AI_PRICING_CATEGORIES.map((category) => ({
+    id: `pricing:category-${slugify(category.title)}`,
+    title: `${category.title} pricing overview`,
+    href: "/pricing",
+    tags: [
+      "pricing",
+      "cost",
+      "comparison",
+      category.eyebrow,
+      category.title,
+      ...category.offerings.map((offering) => offering.name),
+    ],
+    body: compact([
+      `Approved public ${category.title} pricing:`,
+      ...category.offerings.map((offering) =>
+        compact([
+          `${offering.name}: ${offering.price}.`,
+          offering.duration ? `Typical duration: ${offering.duration}.` : null,
+          offering.scope ? `Published scope: ${offering.scope}.` : null,
+          safeMarketingText(offering.description),
+          `Included: ${offering.included.join("; ")}`,
+          offering.bestFor ? `Best for: ${offering.bestFor}` : null,
+        ]),
+      ),
+      "These are published planning prices, starting points, or ranges—not fixed or firm quotes. Custom scope is confirmed before work begins.",
+    ]),
+    resource: resource({
+      id: `pricing:category-${slugify(category.title)}`,
+      kind: "pricing",
+      eyebrow: category.eyebrow,
+      title: `${category.title} options`,
+      summary: safeMarketingText(category.description),
+      href: "/pricing",
+      meta: `${category.offerings.length} published offerings`,
+    }),
+  })) satisfies KnowledgeDocument[];
+
   const productized = AI_PRICING_CATEGORIES.flatMap((category) =>
     category.offerings.map((offering) => {
       const id = `pricing:${slugify(offering.name)}`;
@@ -368,6 +406,31 @@ function pricingDocuments(): KnowledgeDocument[] {
     }),
   };
 
+  const managedOverview: KnowledgeDocument = {
+    id: "pricing:managed-ai-overview",
+    title: "Managed AI retainers and production agent operations",
+    href: "/pricing#managed",
+    tags: [
+      "managed AI",
+      "adoption",
+      "advisory",
+      "retainer",
+      "agent operations",
+      "production agent",
+      ...MANAGED_AI_TIERS.map((tier) => tier.tier),
+    ],
+    body: compact([
+      "Managed AI adoption and advisory retainers are distinct from production-agent operations.",
+      ...MANAGED_AI_TIERS.map(
+        (tier) =>
+          `${tier.tier}: ${tier.price}; ${tier.users}; ${tier.includedHours}. Included: ${tier.features.join("; ")}.`,
+      ),
+      `${MANAGED_AI_AGENT_OPERATIONS.tier}: ${MANAGED_AI_AGENT_OPERATIONS.price}; ${MANAGED_AI_AGENT_OPERATIONS.users}; ${MANAGED_AI_AGENT_OPERATIONS.includedHours}. ${MANAGED_AI_AGENT_OPERATIONS.description} Included: ${MANAGED_AI_AGENT_OPERATIONS.features.join("; ")}.`,
+      "Published monthly amounts are planning prices or ranges. Final scope is confirmed before work begins.",
+    ]),
+    resource: null,
+  };
+
   const hourly: KnowledgeDocument = {
     id: "pricing:hourly-rates",
     title: "AI hourly rates and service conditions",
@@ -384,6 +447,7 @@ function pricingDocuments(): KnowledgeDocument[] {
         (item) =>
           `${item.plan}: ${item.hourlyDiscount} off eligible Tier 1 and Tier 2 hourly work and ${item.productizedDiscount} off eligible productized offerings`,
       ).join("; ")}. Tier 3 strategist rates are not discounted.`,
+      "The public pricing does not specify whether loyalty discounts and rate multipliers combine or the order in which they would be applied. Do not calculate a combined effective rate; quote each published component and recommend confirmation for the billed rate.",
     ]),
     resource: resource({
       id: "pricing:hourly-rates",
@@ -419,7 +483,15 @@ function pricingDocuments(): KnowledgeDocument[] {
     } satisfies KnowledgeDocument;
   });
 
-  return [...productized, ...managed, agentOperations, hourly, ...dataAudit];
+  return [
+    ...categoryOverviews,
+    managedOverview,
+    ...productized,
+    ...managed,
+    agentOperations,
+    hourly,
+    ...dataAudit,
+  ];
 }
 
 function seoDocuments(): KnowledgeDocument[] {
@@ -727,10 +799,11 @@ const COMPANY_DOCUMENTS: KnowledgeDocument[] = [
   {
     id: "guide:assessment-intake",
     title: "Free intake form versus paid AI Readiness Assessment",
-    href: "/assessment",
+    href: AI_ASSESSMENT_INTAKE.href,
     tags: ["assessment", "free", "intake", "readiness", "starting point", "consultation"],
-    body:
-      "The /assessment page is a no-cost intake/request form that collects a visitor's organization, employee range, and top AI goal so ITECS can route follow-up by email. It does not itself deliver the formal assessment. The separate, formal AI Readiness Assessment in the public pricing catalog is a paid $6,500, 1–2 week engagement with a current-state audit, prioritized use-case map, platform recommendation, 12-month roadmap, executive deliverable, and leadership workshop. Clearly distinguish these two when answering.",
+    body: `${AI_ASSESSMENT_INTAKE.costLabel}: ${AI_ASSESSMENT_INTAKE.purpose} It ${
+      AI_ASSESSMENT_INTAKE.formalAssessmentDelivered ? "does" : "does not"
+    } itself deliver the formal assessment. The separate, formal AI Readiness Assessment in the public pricing catalog is a paid $6,500, 1–2 week engagement with a current-state audit, prioritized use-case map, platform recommendation, 12-month roadmap, executive deliverable, and leadership workshop. Clearly distinguish these two when answering.`,
     resource: resource({
       id: "guide:assessment-intake",
       kind: "guide",
@@ -738,7 +811,7 @@ const COMPANY_DOCUMENTS: KnowledgeDocument[] = [
       title: "Request an AI readiness conversation",
       summary:
         "Share your top AI goal and company size so ITECS can route the right follow-up. The formal assessment is a separate paid engagement.",
-      href: "/assessment",
+      href: AI_ASSESSMENT_INTAKE.href,
       meta: "Initial intake · no sensitive data",
     }),
   },
@@ -819,6 +892,131 @@ const INDEXED_KNOWLEDGE_DOCUMENTS = KNOWLEDGE_DOCUMENTS.map((document) => ({
   normalizedTags: document.tags.join(" ").toLowerCase(),
   normalizedBody: document.body.toLowerCase(),
 }));
+
+const KNOWLEDGE_BY_ID = new Map(
+  KNOWLEDGE_DOCUMENTS.map((document) => [document.id, document]),
+);
+
+const MAX_RANKED_DOCUMENTS = 8;
+const MAX_PINNED_DOCUMENTS = 6;
+
+function pinnedKnowledgeDocumentIds(query: string, pagePath: string) {
+  const ids: string[] = [];
+  const pin = (...candidates: string[]) => {
+    for (const id of candidates) {
+      if (!ids.includes(id) && KNOWLEDGE_BY_ID.has(id)) ids.push(id);
+    }
+  };
+  const pricingIntent =
+    /\b(cost|costs|price|prices|pricing|budget|quote|estimate|investment|rate|rates|fee|fees|cheaper|expensive)\b|\$/i.test(
+      query,
+    );
+
+  if (/\b(assessment|readiness intake|intake form)\b/i.test(query)) {
+    pin("guide:assessment-intake", "pricing:ai-readiness-assessment");
+  }
+
+  if (/\b(pilot|rollout|role-based prompt librar|start smaller)\b/i.test(query)) {
+    pin(
+      "pricing:category-production-foundation",
+      "pricing:ai-pilot-implementation-small",
+      "pricing:ai-pilot-implementation-production",
+    );
+  }
+
+  if (
+    /\b(custom (?:ai )?(?:agent|assistant|build)|agent discovery|technical specification|proof of concept|prototype|single-workflow|workpaper agent|multi-agent|process redesign)\b/i.test(
+      query,
+    )
+  ) {
+    pin("pricing:category-custom-build");
+  }
+
+  if (/\b(proof of concept|prototype|poc)\b/i.test(query)) {
+    pin("pricing:proof-of-concept-prototype");
+  }
+
+  if (/\b(agent discovery|technical specification)\b/i.test(query)) {
+    pin("pricing:agent-discovery-technical-specification");
+  }
+
+  if (/\b(single-workflow|single workflow production agent)\b/i.test(query)) {
+    pin("pricing:single-workflow-production-agent");
+  }
+
+  if (/\b(integrated|financial workpaper|workpaper agent)\b/i.test(query)) {
+    pin("pricing:integrated-financial-workpaper-agent");
+  }
+
+  if (/\b(multi-agent|process redesign)\b/i.test(query)) {
+    pin("pricing:multi-agent-system-ai-augmented-process-redesign");
+  }
+
+  if (
+    /\b(managed ai|managed intelligence|agent operations|production-agent operations|operate (?:our|a|the) production agent|adoption retainer|advisory retainer)\b/i.test(
+      query,
+    )
+  ) {
+    pin("pricing:managed-ai-overview");
+  }
+
+  if (/\bmanaged ai standard\b/i.test(query)) {
+    pin("pricing:managed-ai-standard");
+  }
+
+  if (/\b(agent operations|operate (?:our|a|the) production agent)\b/i.test(query)) {
+    pin("pricing:managed-ai-agent-operations");
+  }
+
+  if (/\b(tier [123]|hourly|after.hours|msp elite|msp complete|multiplier)\b/i.test(query)) {
+    pin("pricing:hourly-rates");
+  }
+
+  if (/\bprofessional data audit\b/i.test(query)) {
+    pin("pricing:data-audit-professional");
+  }
+
+  if (/\b(ai receptionist|receptionist|missed calls?)\b/i.test(query)) {
+    pin("pricing:service-page-ai-receptionist");
+  }
+
+  if (/\b(crm|sales ai|lead follow-up)\b/i.test(query)) {
+    pin("pricing:service-page-crm-sales-ai");
+  }
+
+  if (/\bseo\b/i.test(query) && /\b(foundation|momentum|velocity)\b/i.test(query)) {
+    pin("pricing:seo-foundation", "pricing:seo-momentum", "pricing:seo-velocity");
+  }
+
+  if (pricingIntent) {
+    const currentPageEstimate = KNOWLEDGE_DOCUMENTS.find(
+      (document) =>
+        document.id.startsWith("pricing:service-page-") &&
+        document.href === pagePath,
+    );
+    if (currentPageEstimate) pin(currentPageEstimate.id);
+    pin("catalog:pricing");
+  }
+
+  return ids.slice(0, MAX_PINNED_DOCUMENTS);
+}
+
+export function buildIntelligenceRetrievalQuery(
+  history: IntelligenceChatMessage[],
+  message: string,
+) {
+  const needsEarlierContext =
+    /\b(that|those|these|it|its|this one|that one|the former|the latter|same one|start smaller|too|as well)\b/i.test(
+      message,
+    );
+
+  return [
+    ...(needsEarlierContext
+      ? history.slice(-4).map((item) => item.content)
+      : []),
+    message,
+  ].join("\n");
+}
 
 export function auditIntelligenceKnowledgeDocuments() {
   return KNOWLEDGE_DOCUMENTS.map((document) => ({
@@ -910,6 +1108,7 @@ function suggestionsFor(documents: KnowledgeDocument[]) {
 export function retrieveItecsKnowledge(
   query: string,
   pagePath: string,
+  currentMessage = query,
 ): KnowledgeSelection {
   const expanded = expandedQuery(query);
   const queryTokens = [...new Set(tokenize(expanded))];
@@ -917,8 +1116,22 @@ export function retrieveItecsKnowledge(
     document: indexed.document,
     score: scoreDocument(indexed, query, queryTokens, pagePath),
   })).sort((left, right) => right.score - left.score);
-
-  let selected = ranked.filter((item) => item.score > 0).slice(0, 6).map((item) => item.document);
+  const pinnedDocumentIds = [
+    ...pinnedKnowledgeDocumentIds(currentMessage, pagePath),
+    ...pinnedKnowledgeDocumentIds(query, pagePath),
+  ]
+    .filter((id, index, ids) => ids.indexOf(id) === index)
+    .slice(0, MAX_PINNED_DOCUMENTS);
+  const pinned = pinnedDocumentIds
+    .map((id) => KNOWLEDGE_BY_ID.get(id))
+    .filter((document): document is KnowledgeDocument => Boolean(document));
+  const pinnedIds = new Set(pinned.map((document) => document.id));
+  let selected = [
+    ...pinned,
+    ...ranked
+      .filter((item) => item.score > 0 && !pinnedIds.has(item.document.id))
+      .map((item) => item.document),
+  ].slice(0, MAX_RANKED_DOCUMENTS);
 
   if (!selected.length) {
     selected = KNOWLEDGE_DOCUMENTS.filter((document) =>
