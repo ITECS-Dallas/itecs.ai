@@ -10,7 +10,7 @@ import {
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { Activity, Command, X } from "lucide-react";
 import { ConfiguratorApp } from "./ConfiguratorApp";
-import { INCIDENT_DURATION_MS, OS_APPS } from "./data";
+import { OS_APPS } from "./data";
 import styles from "./intelligence-os.module.css";
 import { ResourceVaultApp } from "./ResourceVaultApp";
 import { SOCApp } from "./SOCApp";
@@ -48,7 +48,7 @@ const MIN_WINDOW_HEIGHT = 250;
 const BOOT_LINES = [
   "VERIFYING EXPERIENCE BOUNDARY",
   "LOADING PUBLIC ITECS KNOWLEDGE",
-  "ARMING SCRIPTED INCIDENT LAB",
+  "ARMING MANAGED RESPONSE LAB",
   "INITIALIZING INTELLIGENCE OS",
 ] as const;
 
@@ -215,13 +215,15 @@ export function IntelligenceOS({
 
   useEffect(() => {
     const workArea = workAreaRef.current;
-    if (!workArea || !desktop) return;
-    const observer = new ResizeObserver(([entry]) => {
-      const next = { width: entry.contentRect.width, height: entry.contentRect.height };
+    if (!open || !workArea || !desktop) return;
+
+    const applyLayout = (next: WorkAreaBounds) => {
+      if (next.width <= 0 || next.height <= 0) return;
+      const shouldTilePrimaryApps = firstLayoutRef.current;
       setBounds(next);
       setWindows((current) =>
         current.map((windowState) => {
-          if (firstLayoutRef.current && (windowState.id === "soc" || windowState.id === "terminal")) {
+          if (shouldTilePrimaryApps && (windowState.id === "soc" || windowState.id === "terminal")) {
             return { ...windowState, frame: tileFrame(windowState.id, next) };
           }
           if (windowState.maximized) {
@@ -231,10 +233,22 @@ export function IntelligenceOS({
         }),
       );
       firstLayoutRef.current = false;
+    };
+
+    applyLayout({
+      width: workArea.clientWidth,
+      height: workArea.clientHeight,
+    });
+
+    const observer = new ResizeObserver(([entry]) => {
+      applyLayout({
+        width: entry.contentRect.width,
+        height: entry.contentRect.height,
+      });
     });
     observer.observe(workArea);
     return () => observer.disconnect();
-  }, [desktop]);
+  }, [desktop, open]);
 
   useEffect(() => {
     if (!open) return;
@@ -358,15 +372,15 @@ export function IntelligenceOS({
     setWindows((current) => {
       const maxZ = Math.max(...current.map((item) => item.zIndex));
       return current.map((item) => {
-        if (item.id === "soc" || item.id === "terminal") {
+        if (item.id === "soc") {
           return {
             ...item,
             open: true,
             minimized: false,
-            maximized: false,
-            restoreFrame: null,
-            zIndex: maxZ + (item.id === "terminal" ? 2 : 1),
-            frame: tileFrame(item.id, bounds),
+            maximized: true,
+            restoreFrame: item.maximized ? item.restoreFrame : item.frame,
+            zIndex: maxZ + 1,
+            frame: { x: 4, y: 4, width: bounds.width - 8, height: bounds.height - 8 },
           };
         }
         return { ...item, minimized: item.open ? true : item.minimized };
@@ -391,8 +405,6 @@ export function IntelligenceOS({
         return <ResourceVaultApp />;
     }
   };
-
-  const mobileIncidentView = !desktop && incident.running;
 
   return (
     <AnimatePresence onExitComplete={onExited}>
@@ -430,7 +442,7 @@ export function IntelligenceOS({
               }
             }}
           >
-            <header className="relative z-20 flex h-11 shrink-0 items-center justify-between gap-3 border-b border-[#7fb4d8]/25 bg-[#061728]/95 pl-3 sm:pl-4">
+            <header className="relative z-20 flex h-12 shrink-0 items-center justify-between gap-3 border-b border-[#7fb4d8]/25 bg-[#061728]/95 pl-3 sm:pl-4">
               <div className="flex min-w-0 items-center gap-2.5">
                 <span className={`${styles.hex} flex h-7 w-7 shrink-0 items-center justify-center border border-[#5ba8d8] bg-[#0a2134]`} aria-hidden="true">
                   <Command className="h-3.5 w-3.5 text-[#a9d5f1]" />
@@ -446,7 +458,7 @@ export function IntelligenceOS({
                   Experience online
                 </span>
                 <span className="hidden border-l border-[#7fb4d8]/15 px-3 font-mono text-[9px] tabular-nums text-slate-400 sm:block">{clock}</span>
-                <button type="button" onClick={onRequestClose} className="flex h-full min-w-12 items-center justify-center border-l border-[#7fb4d8]/15 text-slate-400 hover:bg-red-500/15 hover:text-red-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-red-300" aria-label="Close Intelligence OS">
+                <button type="button" onClick={onRequestClose} className="flex h-full min-h-12 min-w-12 items-center justify-center border-l border-[#7fb4d8]/15 text-slate-400 hover:bg-red-500/15 hover:text-red-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-red-300" aria-label="Close Intelligence OS">
                   <X className="h-4 w-4" aria-hidden="true" />
                 </button>
               </div>
@@ -469,15 +481,6 @@ export function IntelligenceOS({
                       {renderApp(windowState.id)}
                     </WindowFrame>
                   ))
-                ) : mobileIncidentView ? (
-                  <div className={`${styles.scrollArea} grid h-full min-h-0 grid-rows-[minmax(330px,1.2fr)_minmax(260px,.8fr)] gap-2 overflow-y-auto p-2`}>
-                    <section className={`${styles.window} relative min-h-[330px] overflow-hidden p-2`} aria-label="Synchronized SOC incident view">
-                      <SOCApp incident={incident} onRun={runIncident} compact />
-                    </section>
-                    <section className={`${styles.window} relative min-h-[260px] overflow-hidden p-2`} aria-label="Synchronized incident terminal">
-                      <TerminalApp incident={incident} compact />
-                    </section>
-                  </div>
                 ) : (
                   <main className="h-full min-h-0 overflow-hidden p-2 sm:p-3" aria-label={`${OS_APPS.find((app) => app.id === mobileApp)?.label} mobile application`}>
                     <div className={`${styles.window} relative h-full min-h-0 overflow-hidden p-2.5 sm:p-3`}>
@@ -508,7 +511,13 @@ export function IntelligenceOS({
                   );
                 })}
                 <div className="ml-auto hidden items-center border-l border-[#7fb4d8]/15 pl-3 font-mono text-[8px] uppercase tracking-wide text-slate-600 lg:flex">
-                  {incident.running ? `SIM ${Math.round(incident.elapsedMs / 1_000)} / ${INCIDENT_DURATION_MS / 1_000}s` : "PUBLIC DEMO MODE"}
+                  {incident.awaitingApproval
+                    ? "HUMAN AUTHORIZATION REQUIRED"
+                    : incident.paused
+                      ? "RESPONSE LOOP PAUSED"
+                      : incident.running
+                        ? "RESPONSE LOOP ACTIVE"
+                        : "PUBLIC DEMO MODE"}
                 </div>
               </nav>
             </div>

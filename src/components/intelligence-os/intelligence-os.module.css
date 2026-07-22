@@ -86,13 +86,184 @@
   background: rgba(127, 180, 216, 0.45);
 }
 
-.threatPath {
-  animation: threat-flow 1.15s linear infinite;
-  stroke-dasharray: 7 7;
+.socRoot {
+  container-type: inline-size;
 }
 
-.pulse {
-  animation: angular-pulse 1.4s ease-in-out infinite;
+.socHeader {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 12px;
+  align-items: center;
+}
+
+.socHeaderActions {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.socHeaderActions button {
+  flex: 1 1 0;
+}
+
+.socStageRail {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 4px;
+  margin-top: 8px;
+}
+
+.socStage {
+  display: flex;
+  min-width: 0;
+  min-height: 40px;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 8px;
+  border: 1px solid rgba(127, 180, 216, 0.16);
+  background: rgba(6, 23, 40, 0.72);
+  color: #94a3b8;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.socStageActive {
+  border-color: rgba(91, 168, 216, 0.75);
+  background: rgba(50, 136, 182, 0.17);
+  color: #f8fafc;
+  box-shadow: inset 0 2px 0 #5ba8d8;
+}
+
+.socStageComplete {
+  border-color: rgba(110, 231, 183, 0.27);
+  color: #d1fae5;
+}
+
+.socStageMarker {
+  display: inline-flex;
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(127, 180, 216, 0.35);
+  color: #c8e4f5;
+  font-size: 9px;
+  line-height: 1;
+  transform: rotate(45deg);
+}
+
+.socStageMarker > * {
+  transform: rotate(-45deg);
+}
+
+.socStageComplete .socStageMarker {
+  border-color: rgba(110, 231, 183, 0.55);
+  background: rgba(16, 185, 129, 0.14);
+  color: #d1fae5;
+}
+
+.socWorkspace {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.socDecisionRow {
+  display: grid;
+  grid-template-columns: minmax(112px, 0.34fr) minmax(0, 1fr);
+  gap: 12px;
+  align-items: start;
+  padding: 10px 0;
+}
+
+.socControlRow {
+  display: flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 0;
+}
+
+.socResponsibility {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 7px;
+  color: #cbd5e1;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+.socResponsibility span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.socResponsibilityArrow {
+  width: 12px;
+  height: 12px;
+  color: #5ba8d8;
+}
+
+.socOutcome {
+  box-shadow: inset 3px 0 0 rgba(110, 231, 183, 0.7);
+}
+
+@container (min-width: 520px) {
+  .socStageRail {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+}
+
+@container (min-width: 570px) {
+  .socHeader {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .socHeaderActions {
+    width: auto;
+  }
+
+  .socHeaderActions button {
+    flex: 0 0 auto;
+  }
+
+  .socWorkspace {
+    grid-template-columns: minmax(0, 1.25fr) minmax(210px, 0.75fr);
+  }
+}
+
+@container (max-width: 419px) {
+  .socDecisionRow {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 4px;
+  }
+
+  .socControlRow {
+    align-items: flex-start;
+  }
+
+  .socControlRow dd {
+    max-width: 58%;
+  }
+
+  .socResponsibilityArrow {
+    display: none;
+  }
 }
 
 .bootCursor {
@@ -113,24 +284,6 @@
   animation: progress-scan 1.1s linear infinite;
 }
 
-@keyframes threat-flow {
-  to {
-    stroke-dashoffset: -28;
-  }
-}
-
-@keyframes angular-pulse {
-  0%,
-  100% {
-    opacity: 0.55;
-    transform: scale(0.92) rotate(45deg);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.08) rotate(45deg);
-  }
-}
-
 @keyframes cursor-blink {
   50% {
     opacity: 0;
@@ -144,8 +297,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .threatPath,
-  .pulse,
   .bootCursor,
   .progressSheen::after {
     animation: none;

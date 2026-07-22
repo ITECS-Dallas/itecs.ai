@@ -8,9 +8,15 @@ routes under `/p`.
 
 - The AI Terminal uses a real server-side OpenAI Responses API connection for
   free-form questions about ITECS AI.
-- The security incident is deterministic theater. Its topology, event feed,
-  response narration, counters, and timing are demo data and must never be
-  described as a live client incident.
+- SOC Response Command is a deterministic guided rehearsal. Its synthetic
+  identity and governed-workflow scenario demonstrates how ITECS correlates a
+  signal, presents a human authorization gate, contains only the risky path,
+  verifies scope, and prepares an accountable review packet. Its scenario,
+  decisions, controls, evidence, and sequencing are demo data and must never be
+  described as live telemetry or a client incident.
+- Starting the rehearsal keeps the visitor in SOC Response Command. The
+  optional AI Terminal response trace remains available from the dock, but it
+  is not auto-opened or duplicated on mobile.
 - The Solution Configurator is a deterministic React calculator driven by the
   current public pricing catalog. It provides starting points and ranges, not a
   contract or firm quote.

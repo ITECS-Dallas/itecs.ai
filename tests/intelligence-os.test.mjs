@@ -25,6 +25,7 @@ const intelligenceFiles = {
   stream: "src/components/intelligence-os/stream.ts",
   chat: "src/components/intelligence-os/useIntelligenceChat.ts",
   incident: "src/components/intelligence-os/useIncident.ts",
+  window: "src/components/intelligence-os/WindowFrame.tsx",
   styles: "src/components/intelligence-os/intelligence-os.module.css",
 };
 
@@ -302,11 +303,23 @@ describe("ITECS Intelligence OS streaming and deterministic apps", () => {
     const soc = requireSource(intelligenceFiles.soc);
     const configurator = requireSource(intelligenceFiles.configurator);
 
-    assert.match(data, /export const INCIDENT_DURATION_MS\s*=\s*30_000/);
+    assert.match(data, /export const INCIDENT_DURATION_MS\s*=\s*17_000/);
+    assert.match(data, /export const INCIDENT_REVIEW_GATE_MS\s*=\s*7_000/);
+    assert.match(data, /export const INCIDENT_CONTAINMENT_MS\s*=\s*9_500/);
     assert.match(data, /export const INCIDENT_STEPS/);
     assert.match(data, /All telemetry below is scripted demo data/);
     assert.match(incident, /INCIDENT_STEPS/);
-    assert.match(soc, /Scripted demo · not live telemetry/);
+    assert.match(incident, /awaitingApproval/);
+    assert.match(incident, /approvedRef/);
+    assert.match(soc, /Guided demo · synthetic scenario/);
+    assert.match(soc, /No client data or live systems are connected/);
+    assert.match(soc, /Authorize containment/);
+    assert.match(soc, /Business value/);
+    assert.match(soc, /Client policy/);
+    assert.match(soc, /Synthetic evidence packet contents/);
+    assert.match(soc, /Scope this operating model/);
+    assert.doesNotMatch(soc, /Demo signal map|Endpoint topology|FIN-WS-27|96% confidence/);
+    assert.doesNotMatch(shell, /mobileIncidentView|Synchronized SOC incident view/);
     assert.match(data, /export function buildConfiguratorRecommendation/);
     assert.match(data, /BUILD_BANDS/);
     assert.match(configurator, /buildConfiguratorRecommendation/);
@@ -321,14 +334,18 @@ describe("ITECS Intelligence OS streaming and deterministic apps", () => {
     const soc = read(intelligenceFiles.soc);
     const terminal = read(intelligenceFiles.terminal);
     const vault = requireSource(intelligenceFiles.vault);
+    const window = requireSource(intelligenceFiles.window);
     const styles = read(intelligenceFiles.styles);
-    const allUi = `${mount}\n${shell}\n${soc}\n${terminal}\n${vault}`;
+    const allUi = `${mount}\n${shell}\n${soc}\n${terminal}\n${vault}\n${window}`;
 
     assert.match(vault, /PROOF_CASE_STUDIES/);
     assert.match(vault, /sourceDate/);
     assert.match(vault, /source/i);
     assert.match(shell, /useReducedMotion\(\)/);
+    assert.match(window, /useReducedMotion\(\)/);
     assert.match(shell, /window\.matchMedia\(["']\(min-width: 900px\)["']\)/);
+    assert.match(shell, /const shouldTilePrimaryApps\s*=\s*firstLayoutRef\.current/);
+    assert.match(shell, /shouldTilePrimaryApps\s*&&\s*\(windowState\.id === "soc"/);
     assert.match(styles, /@media\s*\(prefers-reduced-motion:\s*reduce\)/);
     assert.match(shell, /role=["']dialog["']/);
     assert.match(shell, /aria-modal=(?:["']true["']|\{true\})/);
