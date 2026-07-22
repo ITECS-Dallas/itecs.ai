@@ -4,6 +4,7 @@ import { AnnouncementBar } from "@/components/layout/AnnouncementBar";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { AnalyticsConsent } from "@/components/analytics/AnalyticsConsent";
+import { IntelligenceOSMount } from "@/components/intelligence-os";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { SITE_CONFIG } from "@/lib/constants";
 import {
@@ -165,6 +166,7 @@ export default function RootLayout({
         </main>
         <Footer />
         <AnalyticsConsent />
+        <IntelligenceOSMount />
       </body>
     </html>
   );
