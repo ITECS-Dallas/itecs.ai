@@ -2043,6 +2043,87 @@ export const CODING_AGENT_COMPARISON: PlanComparison = {
 
 export const INSIGHTS: InsightItem[] = [
   {
+    slug: "ai-customer-service-agents-guardrails",
+    title: "AI Customer Service Agents: Guardrails Before Launch",
+    description:
+      "Customer-facing AI agents fail in public, on trust and compliance. Learn the guardrails — one job, limited access, escalation rules, testing — to set before launch.",
+    href: "/insights/ai-customer-service-agents-guardrails",
+    publishedDate: "2026-07-23",
+    hubSlug: "custom-ai-agents",
+    hubLabel: "Custom AI Agents",
+    hubHref: "/custom-ai-agents",
+    keywords: [
+      "AI customer service agents",
+      "customer-facing AI agent guardrails",
+      "AI agent guardrails",
+      "AI voice agent guardrails",
+      "AI agent escalation rules",
+      "test AI agent before launch",
+      "OpenAI Presence",
+      "AI customer support agent",
+      "AI agent human review",
+      "CX AI agent",
+    ],
+    h1: "AI Customer Service Agents: Set Guardrails Before You Launch",
+    content: [
+      "An internal AI agent that makes a mistake embarrasses your team. A customer-facing AI agent that makes a mistake does it in public — on a call, in a chat, in front of the person whose trust you are trying to keep. When an AI agent answers phones, resolves billing, supports an insurance claim, closes a sale, or works an IT ticket, the failure mode is not a bad demo. It is lost trust, a compliance violation, or a refund that should never have gone out. That is why guardrails come before launch, not after — and where a governed [customer-facing AI agent build](/custom-ai-agents) begins.",
+      "**Customer-facing AI agents fail in public, where the cost is trust, compliance, and revenue. Before an agent answers calls, resolves billing, handles claims, works sales, or fields IT requests, give it guardrails: one job per agent, limited knowledge and access, written escalation rules, simulation testing, human review for high-risk actions, live monitoring, and approval on every update. Even OpenAI built its new customer-service platform around exactly these controls.**",
+      "**The Failure Mode Is Public: Trust, Compliance, Revenue**",
+      "Customer service is a trust business. Every interaction either builds confidence or spends it. An AI agent scales that exposure — one deployment can touch thousands of customers a day — which means a single behavioral flaw scales too. An agent that hallucinates a policy, mishandles regulated data, or approves something it should not is not a private bug. It is a public incident with a customer on the other end.",
+      "The stakes rise with the job. A billing agent moves money. An insurance-claim agent touches regulated, sensitive data. A sales agent makes representations your business is bound by. An IT service agent can change accounts and access. Each of those is a place where a wrong answer becomes a real liability. The point of pre-launch guardrails is simple: contain what the agent can do before it does it, in front of your customers.",
+      "**Even OpenAI Ships Presence With Guardrails**",
+      "The industry's own moves make the case. On July 22, 2026, OpenAI launched Presence, an enterprise platform for building and running customer-service voice and chat agents. What is telling is how it is built. According to OpenAI, Presence combines model reasoning with company-defined policies, guardrails, and escalation rules, and OpenAI deploys it hands-on — identifying workflows, connecting systems, setting permissions, and testing the agent before launch, rather than handing customers a self-serve toggle.",
+      "The results OpenAI reports underline why the discipline matters. OpenAI says it used Presence to run its own English-language phone support, that the system met or exceeded the quality benchmarks used to grade human agents within weeks, and that it now resolves roughly 75 percent of inbound issues. The lesson for any business is not the model — it is the method. Even the company that makes the model wraps it in policies, escalation rules, testing, and human oversight before it touches a customer. You should too.",
+      "[[GUARDRAIL_TABLE]]",
+      "**One Agent, One Job**",
+      "The most common mistake is asking one agent to do everything — answer any question, take any action, across every system. A broad agent is a broad attack surface and a broad failure surface. The agents that succeed in production are narrow: one job, one defined scope, one clear set of things it may and may not do.",
+      "Narrow scope makes every other guardrail easier. An agent with one job needs only the knowledge for that job and only the system access that job requires. It is simpler to test, simpler to monitor, and simpler to escalate out of when it hits its limits. Our [AI receptionist](/ai-receptionist) and [CRM and sales AI](/crm-sales-ai) work follows the same rule: define the job first, then give the agent exactly what that job needs and nothing more.",
+      "[[READINESS_DIAGRAM]]",
+      "**Your Pre-Launch Guardrail Checklist**",
+      "Before a customer-facing agent goes live, an executive should be able to confirm each of these. ITECS runs this as a launch gate.",
+      "**Define one job per agent.** Give each agent a single, clear responsibility, with an explicit list of what it may and may not do. Resist the urge to make it do everything.",
+      "**Limit knowledge and system access.** Feed the agent only the knowledge its job requires, and grant only the system access that job needs. Least privilege applies to agents too.",
+      "**Write escalation rules.** Define exactly when the agent hands off to a human — by topic, by risk, by customer frustration, or by its own uncertainty. A good agent knows when to stop.",
+      "**Test with simulations and automated graders.** Run realistic conversations and automated grading before any customer sees the agent. If you cannot measure quality, you cannot ship responsibly.",
+      "**Require human review for high-risk actions.** Refunds, claim decisions, account changes, and commitments should pause for human approval. Machine speed is fine for answers, not for irreversible actions.",
+      "**Monitor production sessions.** Behavior drifts once real customers arrive. Monitor live sessions, sample transcripts for quality, and catch problems while they are small.",
+      "**Approve updates before they launch.** Treat every change to the agent — a new prompt, a new data source, a new capability — as a release that gets reviewed and approved before it reaches customers.",
+      "**Testing, Escalation, and Human Review**",
+      "Three guardrails do the heaviest lifting, and they reinforce each other. Testing tells you the agent is good enough to launch. Escalation gives it a safe exit when it is not sure. Human review keeps the irreversible actions under a person's control. OpenAI's [introduction of Presence](https://openai.com/index/introducing-openai-presence/) describes the same triad — policies and escalation rules, thorough testing, and hands-on support after launch — as the way to keep an agent accurate as products and policies change. It is a good template, whatever platform you use.",
+      "The habit most teams skip is the last one: approving updates. A customer-facing agent is never finished — prompts change, knowledge updates, capabilities expand. Each change can quietly alter behavior in front of customers. The same admin discipline in our [ChatGPT Work security guide](/insights/chatgpt-work-secure-admin-checklist) and the inventory behind an [AI Bill of Materials](/insights/ai-bill-of-materials-inventory-agents) apply here: know what changed, and approve it before it ships.",
+      "**How ITECS Launches Customer-Facing AI Agents Safely**",
+      "Most companies rush a customer-facing agent to launch and discover the guardrails they needed after a customer finds the gap. ITECS builds it the other way around. We scope each agent to one job, limit its knowledge and access, write its escalation rules, test it with simulations and graders, require human review on high-risk actions, and monitor it in production — vendor-neutral, whether you build on OpenAI, another platform, or a custom stack. This is the same governance discipline in our [AI adoption and training work](/insights/ai-governance-training-dallas-businesses).",
+      "We price this the way we price all engineering work — hourly consulting or prepaid retainer hours with tracked usage, no monthly minimum and no expiration, plus a flat fee for a scoped agent design, test, and launch. The payoff is a customer-facing agent you can trust in front of customers, because you proved it before you launched it. When you are ready to launch an AI agent your customers can rely on, [talk to the ITECS team](/contact).",
+    ],
+    faq: [
+      {
+        question: "What guardrails do customer-facing AI agents need before launch?",
+        answer:
+          "Define one job per agent, limit its knowledge and system access, write escalation rules, test with simulations and automated graders, require human review for high-risk actions, monitor production sessions, and approve every update before it ships. The goal is to contain what the agent can do before it does it in front of customers.",
+      },
+      {
+        question: "Why are customer-facing AI agents riskier than internal ones?",
+        answer:
+          "Because they fail in public. A customer-facing agent that hallucinates a policy, mishandles regulated data, or approves a refund does so live, in front of the customer, at scale. The failure mode is lost trust, compliance violations, and revenue, not a private bug, which is why guardrails must come before launch.",
+      },
+      {
+        question: "What is OpenAI Presence?",
+        answer:
+          "OpenAI Presence is an enterprise platform launched July 22, 2026, for building and running customer-service voice and chat agents. According to OpenAI, it combines model reasoning with company-defined policies, guardrails, and escalation rules, and OpenAI deploys it hands-on with testing before launch rather than as a self-serve product.",
+      },
+      {
+        question: "Should a human review AI agent decisions?",
+        answer:
+          "For high-risk actions, yes. Answers can move at machine speed, but irreversible actions — refunds, claim decisions, account changes, and binding commitments — should pause for human approval. Combined with escalation rules, human review keeps the costly mistakes under a person's control.",
+      },
+      {
+        question: "How does ITECS launch customer-facing AI agents safely?",
+        answer:
+          "ITECS scopes each agent to one job, limits its knowledge and access, writes escalation rules, tests with simulations and graders, requires human review on high-risk actions, and monitors production sessions. It is vendor-neutral advisory and engineering work priced as hourly consulting or prepaid retainer hours with no monthly minimum.",
+      },
+    ],
+  },
+  {
     slug: "ai-enabled-app-inventory-govern-software",
     title: "AI-Enabled App Inventory: Govern Software That Acts",
     description:
