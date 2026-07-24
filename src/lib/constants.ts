@@ -2043,6 +2043,85 @@ export const CODING_AGENT_COMPARISON: PlanComparison = {
 
 export const INSIGHTS: InsightItem[] = [
   {
+    slug: "ai-bot-traffic-allow-search-block-abuse",
+    title: "AI Bot Traffic: Allow Search, Block Agent Abuse",
+    description:
+      "AI bot traffic needs a policy, not a blanket allow or block. Learn to separate Search, Agent, Training, and Transact traffic — and protect ad and checkout pages.",
+    href: "/insights/ai-bot-traffic-allow-search-block-abuse",
+    publishedDate: "2026-07-24",
+    hubSlug: "consulting",
+    hubLabel: "AI Consulting",
+    hubHref: "/consulting",
+    keywords: [
+      "AI bot traffic",
+      "AI crawler policy",
+      "block AI bots",
+      "Cloudflare AI Crawl Control",
+      "agentic commerce fraud",
+      "verify AI crawler",
+      "AI bot management",
+      "allow search block agents",
+      "pay per crawl",
+      "AI bot policy business",
+    ],
+    h1: "AI Bot Traffic: How to Allow Search and Block Agent Abuse",
+    content: [
+      "For twenty years, bot management was a binary: allow the good crawlers, block the bad ones. AI broke that model. The bots hitting your site now serve wildly different purposes. One indexes your pages and sends you customers. One answers a user's question using your content and sends nobody. One harvests your work to train a model. One is an AI shopping agent trying to check out. Treat them all the same — allow everything or block everything — and you either bleed value or block your own customers. AI bot traffic now needs a policy, and this is how to build one, with the [AI governance](/consulting) to back it.",
+      "**AI bots are not one thing, so a blanket allow or block rule is the wrong tool. Some bots send customers, some scrape, some train on your content, and some try to check out. Cloudflare now classifies traffic as Search, Agent, and Training, and from September 15, 2026, blocks Training and Agent crawlers by default on ad pages. The right move is a policy: separate the traffic types, verify identity, protect the pages that make money, and monitor the rest.**",
+      "**Why Allow-All and Block-All Both Fail**",
+      "Block everything, and you shut out the search crawlers that put you in results and the AI agents that refer real customers. Your traffic and revenue fall. Allow everything, and you let training bots harvest your content for free, let scrapers run up your infrastructure bill, and let automated agents probe your checkout and login pages. Either extreme trades one problem for another.",
+      "The middle path is a policy that treats each kind of bot on its merits. Some AI traffic is an asset — it sends visitors, answers questions with attribution, or completes a legitimate purchase. Some is a cost or a threat — it extracts value, inflates your bills, or hunts for fraud. You cannot tell which is which with one rule, because the bots do not behave the same or want the same thing.",
+      "**The Traffic Is Real: What the 2026 Data Shows**",
+      "This is not a future problem. In its 2026 State of AI Traffic and Cyberthreat Benchmark Report, HUMAN Security found that agentic AI traffic grew 7,851 percent year over year in 2025, and that automated traffic is now growing about eight times faster than human traffic. The report also found that a small set of operators dominates: it attributed roughly 69 percent of observed AI bot traffic to OpenAI, about 16 percent to Meta, and about 11 percent to Anthropic.",
+      "Where that traffic lands matters for policy. HUMAN Security reported that in 2025, around 77 percent of agentic AI activity hit product and search pages, with smaller shares on account pages, authentication flows, and checkout. The infrastructure providers responded. Cloudflare rolled out AI Crawl Control in early July 2026, letting sites classify crawlers as Search, Agent, or Training and set a different policy for each, and on July 1 proposed a Pay Per Use model that pays publishers when their content appears in an answer. From September 15, 2026, Cloudflare blocks Training and Agent crawlers by default on ad-monetized pages, while leaving Search allowed. The tooling to run a real policy now exists.",
+      "[[TRAFFIC_TABLE]]",
+      "**Verify Identity, Not Just the User-Agent**",
+      "A policy is only as good as your ability to tell bots apart, and the old method no longer works. A user-agent string is just text the client sends — anything can claim to be a search crawler or a well-behaved AI assistant. Malicious bots spoof the identity of the good ones precisely because so many sites trust the string. If your rules key off user-agent alone, they are trivially bypassed.",
+      "Verification has to go deeper. Confirm a crawler through cryptographic signals and signed-agent standards, verified IP ranges, and behavioral analysis — not a name it typed. This matters most for the hardest case in the data: HUMAN Security notes that an AI agent rapidly browsing and checking out may be a customer's shopping assistant or an automated fraud operation, and the behavior looks identical. The question has shifted from bot or not to trust or not, and only real verification answers it.",
+      "[[POLICY_DIAGRAM]]",
+      "**Your AI Bot Policy Checklist**",
+      "A workable AI bot policy comes down to a handful of decisions. ITECS sets these up and tunes them as the traffic changes.",
+      "**Separate the five traffic types.** Distinguish Search, Agent, Training, Transact, and data-collection traffic, and write a different rule for each. One policy for all bots is no policy.",
+      "**Protect the pages that make money.** Guard ad-supported pages and, especially, checkout and login flows. These are where scraping costs you revenue and where agentic fraud does its damage.",
+      "**Verify identity beyond the user-agent.** Use cryptographic verification and signed-agent signals, not a spoofable string, to decide who gets through. Trust the proof, not the label.",
+      "**Monitor cost, referrals, fraud, and logins.** Watch what bot traffic does to your infrastructure bill, whether AI agents actually refer customers, and whether your account and checkout pages are seeing automated abuse.",
+      "**Decide help versus abuse, per agent.** Allow the search and agent traffic that sends you customers, gate the agents that only extract, and block or charge the training and scraping that gives you nothing back.",
+      "**Monitoring and the Business Decision**",
+      "Setting the policy is the start; monitoring is what keeps it honest, because the traffic mix changes weekly. Track your infrastructure cost against bot volume, measure whether AI agents send real referrals or just take, and watch account and checkout pages for the automated abuse that hides inside normal-looking activity. HUMAN Security's [2026 benchmark on AI traffic](https://www.humansecurity.com/newsroom/2026-state-of-ai-traffic-cyberthreat-benchmark-report/) found that only about half a percent separates benign from malicious automation — which is why continuous monitoring, not a one-time rule, is the real control.",
+      "This connects to the broader inventory of what acts in your environment. Knowing which AI systems reach your site is part of the same discipline as an [AI-enabled app inventory](/insights/ai-enabled-app-inventory-govern-software) and an [AI Bill of Materials](/insights/ai-bill-of-materials-inventory-agents). Before we set a policy, ITECS runs a [data and AI readiness review](/data-audit), and we align the search side with your [AI-optimized SEO](/ai-optimized-seo) so blocking abuse never costs you legitimate discovery.",
+      "**How ITECS Sets Your AI Bot Policy**",
+      "Most businesses are running the default — allow-all by habit or block-all by fear — and paying for it in either lost customers or wasted spend. ITECS replaces the guesswork with a policy. We classify your AI bot traffic, set verification that spoofers cannot fake, protect your ad and checkout pages, and stand up the monitoring that tells you which agents help and which abuse — using Cloudflare and the tools you already run, vendor-neutral.",
+      "We price this the way we price all advisory work — hourly consulting or prepaid retainer hours with tracked usage, no monthly minimum and no expiration, plus a flat fee for a scoped bot-policy and monitoring build. The payoff is search traffic and legitimate agents welcomed, abuse and fraud kept out, and a bill you can explain. When you are ready to allow search and block agent abuse, [talk to the ITECS team](/contact).",
+    ],
+    faq: [
+      {
+        question: "Should I block all AI bots?",
+        answer:
+          "No. A blanket block shuts out search crawlers that send you customers and AI agents that can refer real buyers. A blanket allow lets training bots and scrapers harvest your content and run up costs. The right approach is a policy that separates Search, Agent, Training, Transact, and data-collection traffic and treats each differently.",
+      },
+      {
+        question: "What is Cloudflare changing on September 15, 2026?",
+        answer:
+          "According to Cloudflare, from September 15, 2026 its platform blocks Training and Agent crawlers by default on ad-monetized pages, while leaving Search crawlers allowed. Operators who want to keep the current behavior on ad pages must actively opt out. Cloudflare's AI Crawl Control lets sites classify and set policy per crawler type.",
+      },
+      {
+        question: "How fast is AI bot traffic growing?",
+        answer:
+          "In its 2026 State of AI Traffic and Cyberthreat Benchmark Report, HUMAN Security reported that agentic AI traffic grew 7,851 percent year over year in 2025 and that automated traffic is now growing roughly eight times faster than human traffic. A few operators, led by OpenAI, account for most observed AI bot traffic.",
+      },
+      {
+        question: "Why isn't the user-agent string enough to identify a bot?",
+        answer:
+          "Because a user-agent is just text the client sends and anything can spoof it, so malicious bots impersonate trusted crawlers. Reliable identification needs cryptographic verification, signed-agent signals, verified IP ranges, and behavioral analysis. HUMAN Security notes benign and malicious automation now look nearly identical, shifting the question from bot or not to trust or not.",
+      },
+      {
+        question: "How does ITECS help manage AI bot traffic?",
+        answer:
+          "ITECS classifies your AI bot traffic, sets verification that resists spoofing, protects ad and checkout pages, and monitors cost, referrals, fraud, and login behavior. It decides which agents to allow, gate, or block, using Cloudflare and your existing tools. It is vendor-neutral advisory work priced as hourly consulting or prepaid retainer hours.",
+      },
+    ],
+  },
+  {
     slug: "ai-customer-service-agents-guardrails",
     title: "AI Customer Service Agents: Guardrails Before Launch",
     description:
