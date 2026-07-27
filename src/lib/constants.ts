@@ -3286,9 +3286,9 @@ export const INSIGHTS: InsightItem[] = [
   {
     slug: "claude-plan-comparison",
     title:
-      "Claude Plan Comparison: Free, Pro, Max, Team, and Enterprise Side by Side",
+      "Claude Plans Compared 2026: Pricing, Limits & Best Tier",
     description:
-      "Compare Claude's Free, Pro, Max, Team, and Enterprise plans side by side — pricing, usage limits, Claude Code, security, and the right plan for your business.",
+      "Claude plans compared for 2026 — Free, Pro, Max, Team, and Enterprise. See pricing, usage limits, Claude Code access, and which tier fits your business.",
     href: "/insights/claude-plan-comparison",
     publishedDate: "2026-06-17",
     hubSlug: "consulting",
