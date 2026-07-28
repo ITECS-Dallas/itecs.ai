@@ -2043,6 +2043,88 @@ export const CODING_AGENT_COMPARISON: PlanComparison = {
 
 export const INSIGHTS: InsightItem[] = [
   {
+    slug: "ai-cyber-models-pick-right-model-security",
+    title: "AI Cyber Models: Pick the Right Model for Security",
+    description:
+      "Cybersecurity AI is splitting into small, frontier, and agentic models. Learn to pick the right one per task — by privacy, cost, sandboxing, and whether it patches.",
+    href: "/insights/ai-cyber-models-pick-right-model-security",
+    publishedDate: "2026-07-28",
+    hubSlug: "consulting",
+    hubLabel: "AI Consulting",
+    hubHref: "/consulting",
+    keywords: [
+      "AI cyber models",
+      "security AI model selection",
+      "cybersecurity AI models",
+      "Cisco Antares",
+      "MAI-Cyber-1-Flash",
+      "Gemini 3.5 Flash Cyber",
+      "AI vulnerability detection",
+      "agentic security AI",
+      "open-weight security model",
+      "AI patch generation",
+    ],
+    h1: "AI Cyber Models: How to Pick the Right Model for Security",
+    content: [
+      "For a few years, buying security AI meant picking a model — one large, general system to scan code, triage alerts, and answer questions. That era is ending. In a single week of July 2026, three of the biggest names in technology shipped cybersecurity AI that works nothing like a single general model: Cisco released tiny open-weight models that only locate bugs, Microsoft launched a specialized model wired into an agentic remediation system, and Google put out a lightweight model that autonomously verifies and patches vulnerabilities. The business question is no longer which model. It is which model for which task — a decision worth getting right, with [vendor-neutral AI strategy](/consulting) behind it.",
+      "**Cybersecurity AI is splitting into three tiers: small local models, specialized frontier models, and agentic systems that verify and patch. No single model wins every task. Choose by the job — locating a bug, confirming it, or fixing it — and by code privacy, false-positive rate, cost per scan, sandboxing, auditability, and human review. The biggest line is capability: some tools only find vulnerabilities, while others generate and apply the patch.**",
+      "**One Model Is Over: Small, Frontier, and Agentic**",
+      "The shift is from one general model to a system that routes work across model classes. Three shapes are emerging, and each fits a different job. Small models are compact and cheap enough to run on your own hardware, ideal for scanning code at volume. Frontier models are large and specialized, built to top the hardest security benchmarks. Agentic systems chain models together to reason, act, and remediate at machine speed, with a human in the loop.",
+      "No single class wins. A small model that runs locally protects your source code but only points at a problem. A frontier model catches what smaller ones miss but costs more per scan. An agentic system can fix a bug end to end, but a system that acts on your code needs the tightest controls of all. Picking well means matching the class to the task, not standardizing on one tool — the same discipline behind a sound [AI Bill of Materials](/insights/ai-bill-of-materials-inventory-agents).",
+      "**Three July Launches, Three Different Jobs**",
+      "The July 2026 launches make the split concrete, and each occupies a different point on the map.",
+      "**Cisco Antares — small, local, locate-only.** On July 21, 2026, Cisco released Antares, a family of open-weight security small language models — Antares-350M and Antares-1B — on Hugging Face under an Apache 2.0 license. According to Cisco, they are purpose-built to pinpoint where known vulnerabilities exist in a codebase, and they are compact enough to run locally, so sensitive source never leaves your environment. Cisco positions them for vulnerability localization specifically, not code generation or patching. This is the privacy-first, high-volume triage tool.",
+      "**Microsoft MAI-Cyber-1-Flash — specialized and benchmark-topping.** On July 27, 2026, Microsoft introduced MAI-Cyber-1-Flash, which it describes as its first model built specifically for cybersecurity, inside MDASH, a multi-agent identification and remediation system. Microsoft reports that pairing the model with GPT-5.4 scored 95.95 percent on the CyberGym benchmark — which measures generating working proof-of-concept exploits for known vulnerabilities — versus roughly 83 percent for the competing models it named. Microsoft also claims the pairing delivers that performance at about half the cost of leading models, and says the model passed AI Red Team and outside review. Its agentic layer, Project Perception, enters public preview August 3, 2026.",
+      "**Google Gemini 3.5 Flash Cyber — agentic, sandboxed, and patching.** Also on July 21, 2026, Google introduced Gemini 3.5 Flash Cyber, a lightweight model built for security work. Per Google, inside its CodeMender agent the model autonomously builds exploit code to confirm a vulnerability in a sandbox, then automatically generates a patch. Google reports it found 55 confirmed unique bugs in Chrome's V8 engine, ten of which other models missed. Notably, Google is gating it — an initial limited-access pilot for governments and trusted partners — citing the dual-use risk of a model that can write working exploits.",
+      "[[SELECTION_TABLE]]",
+      "**Locate the Bug, or Also Fix It?**",
+      "The single most important line in this market runs between models that find vulnerabilities and models that fix them. Cisco's Antares deliberately stops at localization: it tells you where a known weakness lives. Google's Gemini 3.5 Flash Cyber, inside CodeMender, goes all the way — it confirms the bug by building an exploit in a sandbox, then writes a patch. Those are different products with different risk profiles, and buying one when you needed the other is a costly mistake.",
+      "A tool that only locates is safe to run widely; the worst it does is cry wolf. A tool that generates and applies patches is powerful and dangerous — an automated fix pushed to production without review can break more than it repairs. Google's own decision to restrict access to a model that writes exploits is the tell. If you adopt a patching system, you need sandboxing so exploit code stays isolated, and a human sign-off before any fix ships. [Google DeepMind's description of Gemini 3.5 Flash Cyber](https://deepmind.google/blog/introducing-gemini-3-5-flash-cyber/) is explicit that the model verifies in a sandbox — treat that as the minimum bar, not a bonus feature.",
+      "**Benchmarks Are Marketing Until You Map Them**",
+      "Every vendor in this space leads with a benchmark, and every benchmark is run by the vendor. Microsoft's 95.95 percent on CyberGym and Google's 55 bugs in V8 are real claims worth noting — but they measure the vendor's chosen test, not your codebase. CyberGym rewards generating exploits for known vulnerabilities; if your real risk is misconfigured cloud infrastructure, that score tells you little. The business skill is not reading the benchmark. It is asking whether the benchmark resembles your stack.",
+      "Two numbers matter more than any leaderboard: false positives and cost per scan. A model that flags a hundred issues where three are real does not save analyst time — it burns it. And a frontier model priced per token can cost more to run across a large repository than the vulnerabilities it finds are worth. Before adopting any security model, ITECS tests it against a slice of your real code, measures its precision and its true cost per scan, and checks it against the broader [AI-enabled app inventory](/insights/ai-enabled-app-inventory-govern-software) so you know exactly what is running where.",
+      "[[ROUTING_DIAGRAM]]",
+      "**Your Security-AI Model Selection Checklist**",
+      "Choosing a security model comes down to a short set of questions. ITECS runs this before adopting any tool.",
+      "**Match the model to the task.** Use small local models for high-volume triage, frontier models for the hardest analysis, and agentic systems only where you want action, not just findings.",
+      "**Protect your code and data.** Prefer models that run in your environment when the source is sensitive, and know exactly what leaves your network on every scan.",
+      "**Judge the benchmark by your stack.** Treat vendor scores as marketing until you confirm the test resembles your code and the threats you actually face.",
+      "**Measure false positives and cost per scan.** Test on a slice of your own repository, and price the model per repository scanned, not per token in a demo.",
+      "**Sandbox anything that runs exploit code.** If a model builds or executes proof-of-concept exploits, isolate it so nothing escapes into production.",
+      "**Demand auditability and human review.** Require a traceable log of what the model found and did, and put a person between any generated patch and your live systems.",
+      "**How ITECS Selects and Governs Your Security Models**",
+      "The security-AI market now moves in weekly launches, and no single model is the answer. ITECS is vendor-neutral by design: we do not sell you a model, we help you choose and govern the right ones. We map your security tasks, match each to the appropriate small, frontier, or agentic model, sandbox the ones that run exploits, and put human review and audit logging around anything that can change your code. It is the same governance discipline we apply to [agentic AI infrastructure](/insights/agentic-ai-infrastructure-production-readiness) and to building an emergency stop for any [autonomous agent that can act on your systems](/insights/ai-kill-switch-plan-emergency-stops).",
+      "We price this the way we price all advisory work — hourly consulting or prepaid retainer hours with tracked usage, no monthly minimum and no expiration, plus a flat fee for a scoped security-AI selection and governance build. The payoff is simple: the right model on each task, sensitive code kept where it belongs, and no automated fix reaching production without a human's sign-off. We begin every engagement with a [data and AI readiness audit](/data-audit). When you are ready to pick the right models for security, [talk to the ITECS team](/contact).",
+    ],
+    faq: [
+      {
+        question: "Should I use one AI model for all security work?",
+        answer:
+          "No. As of mid-2026, cybersecurity AI has split into three classes: small local models for high-volume triage, specialized frontier models for the hardest analysis, and agentic systems that verify and patch. Each does a different job, so the right approach routes each task to the model class that fits it rather than standardizing on one tool.",
+      },
+      {
+        question: "What is the difference between Cisco Antares, Microsoft MAI-Cyber-1-Flash, and Google Gemini 3.5 Flash Cyber?",
+        answer:
+          "By their vendors' descriptions: Cisco Antares is a pair of small open-weight models that locate vulnerabilities and run locally; Microsoft MAI-Cyber-1-Flash is a specialized model inside an agentic remediation system that Microsoft says tops the CyberGym benchmark; and Google Gemini 3.5 Flash Cyber, inside CodeMender, autonomously confirms bugs in a sandbox and generates patches. They occupy different points on the locate-to-patch spectrum.",
+      },
+      {
+        question: "Is an AI model that patches vulnerabilities safer than one that only finds them?",
+        answer:
+          "Not automatically — it is more powerful and more dangerous. A locate-only model's worst case is a false alarm. A patching model can push a fix to production that breaks more than it repairs, and often runs exploit code to confirm bugs. If you adopt one, require sandboxing so exploits stay isolated and human review before any patch ships.",
+      },
+      {
+        question: "How do I evaluate a security AI model's benchmark claims?",
+        answer:
+          "Treat vendor benchmarks as marketing until you map them to your stack. A high CyberGym or bug-count score reflects the vendor's chosen test, not your code or your real threats. Test the model on a slice of your own repository, measure its false-positive rate and true cost per scan, and confirm the benchmark resembles the risks you actually face.",
+      },
+      {
+        question: "How does ITECS help choose security AI models?",
+        answer:
+          "ITECS is vendor-neutral and does not sell a model. We map your security tasks, match each to the right small, frontier, or agentic model, sandbox anything that runs exploit code, and add human review and audit logging around tools that can change your code. It is advisory and engineering work priced as hourly consulting or prepaid retainer hours with no monthly minimum.",
+      },
+    ],
+  },
+  {
     slug: "ai-kill-switch-plan-emergency-stops",
     title: "AI Kill Switch Plan: Emergency Stops for Agents",
     description:
