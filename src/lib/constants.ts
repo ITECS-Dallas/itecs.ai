@@ -2043,6 +2043,87 @@ export const CODING_AGENT_COMPARISON: PlanComparison = {
 
 export const INSIGHTS: InsightItem[] = [
   {
+    slug: "ai-payment-agents-control-money-movement",
+    title: "AI Payment Agents: Control Money Movement Before Launch",
+    description:
+      "AI payment agents now initiate virtual cards, supplier payments, and FX. Learn to control money movement before launch — identity, scope, approvals, and audit trails.",
+    href: "/insights/ai-payment-agents-control-money-movement",
+    publishedDate: "2026-07-29",
+    hubSlug: "consulting",
+    hubLabel: "AI Consulting",
+    hubHref: "/consulting",
+    keywords: [
+      "AI payment agents",
+      "agentic payments",
+      "control AI agent payments",
+      "AI payment agent security",
+      "Corpay Agent Card",
+      "Visa Intelligent Commerce",
+      "AP2 protocol",
+      "agentic commerce fraud",
+      "AI accounts payable agent",
+      "payment agent governance",
+    ],
+    h1: "AI Payment Agents: Control Money Movement Before You Launch",
+    content: [
+      "For a couple of years, AI payment agents were a demo: a shopping assistant that could check out a cart. That is no longer the ceiling. In July 2026, Corpay introduced Agent Card, which lets AI agents generate controlled virtual cards to pay for approved business transactions. Sunrate and Mastercard published a white paper mapping thirteen high-value payment-agent use cases across the B2B lifecycle. Visa's Intelligent Commerce is building rails where agents carry their own payment credentials. Payment agents are moving from checkout helpers into workflows that issue cards, pay suppliers, buy ads, book travel, make FX decisions, and reconcile the books. Before you let one move money, you control how — with [governed AI agents](/custom-ai-agents) built for the job.",
+      "**AI payment agents now do more than check out a cart — they can issue virtual cards, pay suppliers, buy ads, book travel, make FX calls, and reconcile. Vendors like Corpay, Mastercard, and Visa are building the rails, but the payment protocols themselves are being defeated by prompt injection in red-team tests. Before launch, verify agent identity and intent, restrict payment scope, set approval thresholds, separate duties, preserve auditable trails, test fraud controls, and decide whether each agent may recommend, initiate, or complete a payment.**",
+      "**From Checkout Helper to Money Mover**",
+      "The signal is not one product; it is a whole industry retooling for agents that pay. In July 2026, Corpay introduced Agent Card, a capability that, in Corpay's description, lets trusted AI agents create controlled virtual cards to complete approved business transactions under the same authorization, control, and visibility rules Corpay applies to virtual cards. That moves an agent from suggesting a purchase to holding a usable payment instrument.",
+      "The scope is broader than cards. In a July 2026 white paper titled Beyond Automation: Defining Agentic Global Payments, Sunrate and Mastercard mapped sixteen pain points across the B2B payment lifecycle and described thirteen high-value agent use cases — among them supplier onboarding, payment routing, FX management, compliance screening, and fraud detection. Their framing is the important part: they describe a shift to a stage they call autonomy, where agents plan and execute payment and treasury workflows on their own, but explicitly within defined governance frameworks. In their model the governance is not optional. It is the precondition.",
+      "**The Rails Now Assume Agents Pay**",
+      "The card networks are building for this directly. Visa's Intelligent Commerce is a set of tools and APIs that let AI agents make payments on a user's behalf, using tokenized credentials that Visa binds to a specific agent and that work only in the context of that agent acting for that user. Per Visa, the model authenticates the user when they instruct the agent, and adds controls meant to keep the agent's payment actions aligned with the user's original, authenticated instruction. Visa also lists support for emerging agent payment protocols, a sign the plumbing is standardizing.",
+      "This is genuine progress, and it is the right instinct: bind identity to the agent, tokenize the credential, and constrain the action. But rails-level controls protect the payment mechanism, not your business logic. Visa can ensure a token belongs to an agent. It cannot know that your ad-buying agent should never wire a supplier, or that a booking over a threshold needs your controller's sign-off. Those rules are yours to build — the same lesson behind an [AI-enabled app inventory](/insights/ai-enabled-app-inventory-govern-software) and sound [agentic AI infrastructure](/insights/agentic-ai-infrastructure-production-readiness).",
+      "[[CONTROL_TABLE]]",
+      "**Signed Mandates Are Not Enough**",
+      "Here is the finding every finance and security leader should absorb before launch. The Agent Payments Protocol, AP2, secures agent purchases with cryptographically signed mandates — a strong-sounding guarantee. Yet a 2026 red-teaming study of AP2, titled Whispers of Wealth, found that the signatures do not protect the layer that actually decides: the model's reasoning. The researchers reported that prompt-injection attacks bypassed mandate-level constraints, with success rates of roughly 90 to 100 percent in their adversarial tests.",
+      "The attacks are instructive. One technique the researchers describe, a branded whisper, uses adversarial content to manipulate which product an agent ranks and buys. Another, a vault whisper, coaxes an agent into disclosing another user's confidential data. Separately, security researchers have shown that agent-to-agent handoffs can carry injected instructions inside the agent's own credentials, and that a valid cryptographic signature does nothing to stop it. The lesson is not that these protocols are bad. It is that a signed mandate secures the transaction, not the decision to make it — so you cannot outsource control of money movement to the rails. The [AP2 red-team study](https://arxiv.org/html/2601.22569) is worth reading before you trust an agent with a card.",
+      "**Recommend, Initiate, or Complete?**",
+      "The most useful control is also the simplest: decide, per workflow, how far the agent goes. There are three rungs. An agent can recommend a payment and leave a human to execute it. It can initiate a payment that then waits for approval. Or it can complete a payment end to end with no human in the loop. These are wildly different risk levels, and the mistake is granting the top rung by default.",
+      "Match the rung to the stakes. An FX-timing agent can recommend a conversion while a treasurer pulls the trigger. An accounts-payable agent can initiate a virtual card for a known supplier under a set limit, then hold for approval above it. Only a narrow, well-tested, low-value workflow — a recurring ad spend with a hard monthly cap — belongs anywhere near full completion. The same discipline governs any agent that can act on your systems, which is why we pair this with an emergency stop, as in our guide to an [AI kill switch plan](/insights/ai-kill-switch-plan-emergency-stops).",
+      "[[READINESS_DIAGRAM]]",
+      "**Your Payment-Agent Control Checklist**",
+      "Before an agent touches money, an executive should be able to confirm each of these. ITECS runs this as a launch gate.",
+      "**Verify agent identity and intent.** Tie every payment to a known agent and a specific, authorized purpose, not just a valid token. Know who is paying and why before money moves.",
+      "**Restrict payment scope.** Cap each agent by payee, amount, currency, and payment type. An agent that buys ads should have no path to wire a supplier.",
+      "**Require approval thresholds.** Set value and risk thresholds that force a human to approve. Machine speed is fine for small, routine payments and wrong for large or unusual ones.",
+      "**Separate duties.** Do not let the agent that initiates a payment also approve and reconcile it. Split the steps across different agents or people, as you would for human staff.",
+      "**Preserve auditable trails.** Log every payment action to an immutable record the agent cannot alter, so you can reconstruct and investigate any transaction later.",
+      "**Test fraud controls.** Red-team the agent against prompt injection and manipulated inputs before launch, because attackers target the reasoning layer, not the signature.",
+      "**Decide recommend, initiate, or complete.** Set an explicit ceiling for each workflow, and grant full completion only where the value is low and the testing is thorough.",
+      "**How ITECS Governs Your Payment Agents**",
+      "AI payment agents are arriving fast, and the vendors building the rails are the first to say the governance is your job. ITECS is vendor-neutral: we do not sell you a payment product, we build the controls around whichever one you use — Corpay, Mastercard, Visa, or your bank's own agent tooling. We verify agent identity and intent, scope each agent to a narrow payment lane, set approval thresholds, enforce separation of duties, wire up audit trails, and red-team the workflow against the prompt-injection attacks the research is now documenting.",
+      "We price this the way we price all advisory work — hourly consulting or prepaid retainer hours with tracked usage, no monthly minimum and no expiration, plus a flat fee for a scoped payment-agent governance build. We begin every engagement with a [data and AI readiness audit](/data-audit) and align it with your broader [AI strategy](/consulting). The payoff is the ability to let agents handle payments at all — with the confidence that none of them can move money you did not authorize. When you are ready to control money movement before launch, [talk to the ITECS team](/contact).",
+    ],
+    faq: [
+      {
+        question: "What can AI payment agents actually do now?",
+        answer:
+          "Beyond checking out a cart, AI payment agents can now issue controlled virtual cards, pay suppliers, buy advertising, book travel, make FX decisions, run compliance checks, and reconcile transactions. Vendors including Corpay, Mastercard, and Visa launched agent payment capabilities in 2026, moving agents from recommending purchases to initiating and completing real business payments within defined controls.",
+      },
+      {
+        question: "Are agent payment protocols like AP2 secure?",
+        answer:
+          "They add real protections, such as cryptographically signed mandates, but they are not sufficient alone. A 2026 red-teaming study of the Agent Payments Protocol, AP2, reported prompt-injection attacks bypassing mandate-level constraints with roughly 90 to 100 percent success. Signatures secure the transaction, not the model's decision to make it, so businesses must add their own scope, approval, and audit controls.",
+      },
+      {
+        question: "What is the difference between an agent that recommends, initiates, or completes a payment?",
+        answer:
+          "A recommending agent suggests a payment and leaves a human to execute it. An initiating agent starts a payment that then waits for human approval. A completing agent pays end to end with no human in the loop. These carry very different risk levels, so grant full completion only for narrow, low-value, well-tested workflows and keep a human in the loop for the rest.",
+      },
+      {
+        question: "How do I control what an AI payment agent can spend?",
+        answer:
+          "Restrict each agent by payee, amount, currency, and payment type, and set approval thresholds that force human review above a limit. Separate the initiate, approve, and reconcile steps so no single agent completes a payment alone, preserve immutable audit trails, and red-team the agent against prompt injection before it goes live.",
+      },
+      {
+        question: "How does ITECS help govern AI payment agents?",
+        answer:
+          "ITECS is vendor-neutral and builds controls around whichever payment platform you use. We verify agent identity and intent, scope each agent to a narrow payment lane, set approval thresholds, enforce separation of duties, wire up audit trails, and red-team the workflow against prompt-injection fraud. It is advisory and engineering work priced as hourly consulting or prepaid retainer hours with no monthly minimum.",
+      },
+    ],
+  },
+  {
     slug: "ai-cyber-models-pick-right-model-security",
     title: "AI Cyber Models: Pick the Right Model for Security",
     description:
