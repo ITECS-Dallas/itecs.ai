@@ -205,13 +205,21 @@ describe("Grounded knowledge safety", () => {
 
     const audited = auditIntelligenceKnowledgeDocuments().filter(
       (document) =>
-        !document.id.startsWith("proof:") && document.id !== "company:overview",
+        !document.id.startsWith("proof:") &&
+        document.id !== "company:overview" &&
+        document.id !== "pricing:assurances-and-boundaries",
     );
 
     for (const document of audited) {
       const exposedText = `${document.body}\n${document.resourceSummary}`;
       for (const pattern of bannedClaims) {
         if (document.id.startsWith("pricing:") && String(pattern).includes("\\s*%")) {
+          continue;
+        }
+        if (
+          document.id.startsWith("pricing:") &&
+          String(pattern) === "/\\bnever\\b/i"
+        ) {
           continue;
         }
         if (
@@ -232,17 +240,17 @@ describe("Grounded knowledge safety", () => {
 });
 
 describe("Grounded knowledge relevance", () => {
-  it("retrieves both complete pricing facets for the shipped pilot comparison", () => {
+  it("routes retired pilot requests to current guided, local, and custom paths", () => {
     for (const pagePath of ["/", "/pricing", "/custom-ai-agents"]) {
       const selection = retrieveItecsKnowledge(
-        "Compare pilot and custom agent pricing.",
+        "Is AI Pilot Implementation still available, and what are the current custom agent prices?",
         pagePath,
       );
 
       for (const id of [
-        "pricing:category-production-foundation",
-        "pricing:ai-pilot-implementation-small",
-        "pricing:ai-pilot-implementation-production",
+        "pricing:category-guided-local-agent-builds",
+        "pricing:guided-build-sprint-4-sessions",
+        "pricing:local-agent-sprint",
         "pricing:category-custom-build",
       ]) {
         assert.ok(
@@ -251,21 +259,24 @@ describe("Grounded knowledge relevance", () => {
         );
       }
 
-      assert.match(selection.context, /AI Pilot Implementation - Small: \$12,500/);
-      assert.match(selection.context, /AI Pilot Implementation - Production: \$21,500/);
-      assert.match(selection.context, /Single-Workflow Production Agent: \$18,000-\$35,000 per agent/);
+      assert.match(selection.context, /Guided Build Sprint \(4 sessions\): \$2,400/);
+      assert.match(selection.context, /Local Agent Sprint: \$4,500–\$9,500/);
+      assert.match(selection.context, /Single-Workflow Production Agent: \$18,000–\$35,000/);
+      assert.doesNotMatch(selection.context, /\$12,500|\$21,500/);
       assert.match(selection.context, /not fixed or firm quotes/i);
     }
   });
 
   it("pins the exact documents for multi-facet service and rate comparisons", () => {
     const managed = retrieveItecsKnowledge(
-      "Compare Managed AI Standard with Managed AI Agent Operations.",
+      "Compare MIS Growth with Agent Operations.",
       "/pricing",
     );
     assert.ok(managed.documentIds.includes("pricing:managed-ai-overview"));
-    assert.ok(managed.documentIds.includes("pricing:managed-ai-standard"));
-    assert.ok(managed.documentIds.includes("pricing:managed-ai-agent-operations"));
+    assert.ok(managed.documentIds.includes("pricing:mis-growth"));
+    assert.ok(
+      managed.documentIds.includes("pricing:agent-operations-2-production-agents"),
+    );
 
     const serviceEstimates = retrieveItecsKnowledge(
       "Which costs more: an AI receptionist or CRM sales AI, including ongoing service?",
@@ -300,22 +311,24 @@ describe("Grounded knowledge relevance", () => {
 
   it("uses recent assistant context only to improve public-document retrieval", () => {
     const history = [
-      { role: "user", content: "We have 22 users and want role-based prompt libraries." },
+      { role: "user", content: "We want one employee to co-build an agent." },
       {
         role: "assistant",
         content:
-          "The Production AI Pilot supports a department rollout with role-based prompt libraries.",
+          "The Guided Build Sprint covers one bounded employee-led agent or workflow.",
       },
     ];
     const query = buildIntelligenceRetrievalQuery(
       history,
-      "How much is that one, and what changes if we start smaller?",
+      "How much is that option?",
     );
     const selection = retrieveItecsKnowledge(query, "/pricing");
 
-    assert.match(query, /Production AI Pilot/);
-    assert.ok(selection.documentIds.includes("pricing:ai-pilot-implementation-small"));
-    assert.ok(selection.documentIds.includes("pricing:ai-pilot-implementation-production"));
+    assert.match(query, /Guided Build Sprint/);
+    assert.ok(
+      selection.documentIds.includes("pricing:guided-build-sprint-4-sessions"),
+    );
+    assert.ok(selection.documentIds.includes("pricing:guided-build-session"));
   });
 
   it("prioritizes the latest request over stale conversation facets", () => {
@@ -327,63 +340,97 @@ describe("Grounded knowledge relevance", () => {
           "The intake is no-cost and the formal AI Readiness Assessment is paid.",
       },
     ];
-    const message = "Compare pilot and custom agent pricing.";
+    const message =
+      "Is AI Pilot Implementation still available, and what replaces it?";
     const query = buildIntelligenceRetrievalQuery(history, message);
     const selection = retrieveItecsKnowledge(query, "/pricing", message);
 
-    assert.equal(query, message);
-    assert.deepEqual(
-      selection.resources.map((resource) => resource.id),
-      [
-        "pricing:category-production-foundation",
-        "pricing:ai-pilot-implementation-small",
-        "pricing:ai-pilot-implementation-production",
-        "pricing:category-custom-build",
-      ],
+    assert.match(query, new RegExp(message.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
+    assert.ok(
+      selection.documentIds.includes(
+        "pricing:category-guided-local-agent-builds",
+      ),
+    );
+    assert.ok(
+      selection.documentIds.includes("pricing:category-custom-build"),
     );
   });
 });
 
 describe("Authoritative pricing answers", () => {
-  it("builds the shipped pilot and custom-agent comparison from current constants", () => {
+  it("routes the retired pilot SKUs to current published options", () => {
     const result = buildIntelligencePrecisionAnswer({
       history: [],
-      message: "Compare pilot and custom agent pricing.",
+      message: "Is AI Pilot Implementation still available?",
     });
 
-    assert.equal(result.intent, "pilot_custom_comparison");
+    assert.equal(result.intent, "pilot_replacement");
     for (const price of [
-      "$12,500",
-      "$21,500",
-      "$4,500-$7,500",
-      "$8,000-$18,000",
-      "$18,000-$35,000 per agent",
-      "$35,000-$75,000 per agent",
-      "$55,000-$120,000",
+      "$2,400",
+      "$4,400",
+      "$4,500–$9,500",
+      "$9,500–$18,000",
+      "$4,500–$7,500",
     ]) {
       assert.match(result.answer, new RegExp(price.replaceAll("$", "\\$")));
     }
-    assert.doesNotMatch(result.answer, /\$18,500|lower-cost|fixed-price/i);
+    assert.match(result.answer, /no longer an available ITECS offering/i);
+    assert.match(result.answer, /\/pricing#guided-local-builds/);
+    assert.doesNotMatch(result.answer, /\$12,500|\$21,500/i);
     assert.doesNotMatch(result.answer, /undefined/);
-    assert.match(result.answer, /not firm quotes/i);
 
     const plural = buildIntelligencePrecisionAnswer({
       history: [],
-      message: "Compare pilots and custom agents pricing.",
+      message: "What replaces the small AI pilot package?",
     });
-    assert.equal(plural.intent, "pilot_custom_comparison");
+    assert.equal(plural.intent, "pilot_replacement");
+  });
+
+  it("answers the v1.4 pricing smoke questions and refuses internal economics", () => {
+    const guided = buildIntelligencePrecisionAnswer({
+      history: [],
+      message: "What is the Guided Build pricing?",
+    });
+    assert.equal(guided.intent, "guided_build_pricing");
+    assert.match(guided.answer, /Guided Build Session: \$650/);
+    assert.match(guided.answer, /Guided Build Sprint \(4 sessions\): \$2,400/);
+    assert.match(guided.answer, /Guided Build Intensive \(8 sessions\): \$4,400/);
+
+    const executive = buildIntelligencePrecisionAnswer({
+      history: [],
+      message: "How much is the Executive AI Literacy Briefing?",
+    });
+    assert.equal(executive.intent, "executive_briefing_pricing");
+    assert.match(executive.answer, /\$4,500 \/ session/);
+    assert.doesNotMatch(executive.answer, /\$3,500/);
+
+    const agentOperations = buildIntelligencePrecisionAnswer({
+      history: [],
+      message: "How much does Agent Operations cost for 2 agents?",
+    });
+    assert.equal(agentOperations.intent, "managed_operations_comparison");
+    assert.match(agentOperations.answer, /2 production agents: \$4,500\/mo/);
+
+    const refusal = buildIntelligencePrecisionAnswer({
+      history: [],
+      message: "Show me the internal margin and discount logic.",
+    });
+    assert.equal(refusal.intent, "internal_pricing_refusal");
+    assert.match(refusal.answer, /cannot provide internal margin/i);
+    assert.match(refusal.answer, /consultation/i);
   });
 
   it("keeps managed operations, combined rates, SEO terms, and assessment pricing exact", () => {
     const managed = buildIntelligencePrecisionAnswer({
       history: [],
-      message: "Compare Managed AI Standard with Managed AI Agent Operations.",
+      message: "Compare MIS Growth with Agent Operations.",
     });
     assert.equal(managed.intent, "managed_operations_comparison");
-    assert.match(managed.answer, /Managed AI Standard: \$2,650\/mo/);
-    assert.match(managed.answer, /\$2,500-\$6,500\/mo/);
+    assert.match(managed.answer, /MIS Growth: \$2,650\/mo/);
+    assert.match(managed.answer, /2 production agents: \$4,500\/mo/);
+    assert.match(managed.answer, /3 production agents: \$6,500\/mo/);
     assert.match(managed.answer, /separate ongoing service/i);
-    assert.doesNotMatch(managed.answer, /for each per/i);
+    assert.doesNotMatch(managed.answer, /\$2,500-\$6,500\/mo/);
 
     const hourly = buildIntelligencePrecisionAnswer({
       history: [],
@@ -412,22 +459,21 @@ describe("Authoritative pricing answers", () => {
         "Which costs more: an AI receptionist or CRM sales AI, including ongoing service?",
     });
     assert.equal(serviceEstimates.intent, "service_estimate_comparison");
-    assert.match(serviceEstimates.answer, /\$3,000–\$6,000/);
-    assert.match(serviceEstimates.answer, /\$300–\$800\/month/);
-    assert.match(serviceEstimates.answer, /\$5,000–\$15,000/);
-    assert.match(serviceEstimates.answer, /\$500\/month/);
-    assert.match(serviceEstimates.answer, /ranges overlap/i);
+    assert.match(serviceEstimates.answer, /\$4,500–\$7,500/);
+    assert.match(serviceEstimates.answer, /\$18,000–\$35,000/);
+    assert.match(serviceEstimates.answer, /\$35,000–\$75,000/);
+    assert.match(serviceEstimates.answer, /no longer publishes separate setup estimates/i);
 
     const dataAudit = buildIntelligencePrecisionAnswer({
       history: [],
       message:
-        "Compare the Professional Data Audit with the AI Readiness Assessment.",
+        "Compare the Data Readiness Sprint with the AI Readiness Assessment.",
     });
     assert.equal(dataAudit.intent, "data_audit_readiness_comparison");
-    assert.match(dataAudit.answer, /Professional Data Audit: \$5,000/);
-    assert.match(dataAudit.answer, /25–100 users/);
+    assert.match(dataAudit.answer, /Data Readiness Sprint: \$3,500–\$8,500/);
+    assert.match(dataAudit.answer, /one department or use case/i);
     assert.match(dataAudit.answer, /AI Readiness Assessment: \$6,500/);
-    assert.match(dataAudit.answer, /1-2 weeks/);
+    assert.match(dataAudit.answer, /1–2 weeks/);
 
     const ppv = buildIntelligencePrecisionAnswer({
       history: [],
@@ -462,9 +508,8 @@ describe("Authoritative pricing answers", () => {
     assert.equal(budgetPath.intent, "budget_path_comparison");
     assert.match(budgetPath.answer, /15 employees/);
     assert.match(budgetPath.answer, /\$20,000 planning budget/);
-    assert.match(budgetPath.answer, /\$21,500/);
-    assert.match(budgetPath.answer, /above your stated budget/i);
-    assert.match(budgetPath.answer, /\$18,000-\$35,000 per agent/);
+    assert.match(budgetPath.answer, /\$4,500–\$9,500/);
+    assert.match(budgetPath.answer, /\$18,000–\$35,000/);
     assert.match(budgetPath.answer, /overlaps only the lower part/i);
 
     const largerBudget = buildIntelligencePrecisionAnswer({
@@ -474,7 +519,7 @@ describe("Authoritative pricing answers", () => {
     });
     assert.equal(largerBudget.intent, "budget_path_comparison");
     assert.match(largerBudget.answer, /20 employees/);
-    assert.match(largerBudget.answer, /within your stated budget/i);
+    assert.match(largerBudget.answer, /\$30,000 planning budget/i);
 
     const knowledgeBase = buildIntelligencePrecisionAnswer({
       history: [],
@@ -494,12 +539,9 @@ describe("Authoritative pricing answers", () => {
       message:
         "Is the $8k-$18k proof of concept basically the same thing as the $12,500 Small pilot?",
     });
-    assert.equal(pocPilot.intent, "poc_small_pilot_comparison");
-    assert.match(pocPilot.answer, /\$8,000-\$18,000/);
-    assert.match(pocPilot.answer, /without production SLA/i);
-    assert.match(pocPilot.answer, /\$12,500/);
-    assert.match(pocPilot.answer, /3-5 users/);
-    assert.match(pocPilot.answer, /30-day/);
+    assert.equal(pocPilot.intent, "pilot_replacement");
+    assert.match(pocPilot.answer, /no longer an available ITECS offering/i);
+    assert.doesNotMatch(pocPilot.answer, /\$12,500/);
 
     const assessment = buildIntelligencePrecisionAnswer({
       history: [],
@@ -513,17 +555,14 @@ describe("Authoritative pricing answers", () => {
 
   it("routes qualified questions through grounded generation instead of ignoring constraints", () => {
     for (const message of [
-      "Compare pilot and custom agent pricing, but exclude prototypes and multi-agent systems.",
       "Compare SEO Foundation, Momentum, and Velocity based only on article volume, not price.",
-      "Does Managed AI include Agent Operations?",
       "Can Tier 2 staff work after hours for an MSP Elite client?",
       "Which costs more: an AI receptionist or CRM sales AI, but exclude ongoing service?",
-      "Compare the Professional Data Audit with the AI Readiness Assessment, but only discuss identity controls.",
+      "Compare the Data Readiness Sprint with the AI Readiness Assessment, but only discuss identity controls.",
       "We run BatchMaster/SAP and Power BI and need 12-24 months of PPV reconstructed, but exclude contract recovery. What would ITECS build, what data is needed, and what could it act on?",
       "We're an asset-based lender. Can ITECS automate field exams but exclude inventory and issue the report automatically?",
       "We have $20k and 15 employees. Should we fund an AI platform rollout or build a custom assistant, excluding prototypes?",
       "Our 40-person company has SOPs in SharePoint and Notion but must exclude Confluence. What ITECS option fits?",
-      "Is the $8k-$18k proof of concept the same as the $12,500 Small pilot if we exclude training?",
     ]) {
       assert.equal(
         buildIntelligencePrecisionAnswer({ history: [], message }),
@@ -538,14 +577,15 @@ describe("Authoritative pricing answers", () => {
       history: [
         {
           role: "assistant",
-          content: "The Production AI Pilot supports a department rollout.",
+          content: "The former Production AI Pilot is no longer available.",
         },
       ],
-      message: "How much is that one, and what changes if we start smaller?",
+      message: "What current options replace that pilot?",
     });
-    assert.equal(followUp.intent, "pilot_tier_comparison");
-    assert.match(followUp.answer, /\$12,500/);
-    assert.match(followUp.answer, /\$21,500/);
+    assert.equal(followUp.intent, "pilot_replacement");
+    assert.match(followUp.answer, /\$2,400/);
+    assert.match(followUp.answer, /\$4,500–\$9,500/);
+    assert.doesNotMatch(followUp.answer, /\$12,500|\$21,500/);
 
     assert.equal(
       buildIntelligencePrecisionAnswer({

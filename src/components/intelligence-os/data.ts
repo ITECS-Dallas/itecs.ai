@@ -6,6 +6,10 @@ import {
   SlidersHorizontal,
   SquareTerminal,
 } from "lucide-react";
+import {
+  getAIPricingOffering,
+  MANAGED_AI_AGENT_OPERATIONS,
+} from "@/lib/constants";
 import type {
   ConfiguratorRecommendation,
   ConfiguratorSelection,
@@ -274,23 +278,27 @@ export const DEFAULT_CONFIGURATOR_SELECTION: ConfiguratorSelection = {
 
 const BUILD_BANDS = {
   prototype: {
-    title: "Proof of Concept / Prototype",
-    range: "$8,000–$18,000",
+    title: getAIPricingOffering("Proof of Concept / Prototype").name,
+    range: getAIPricingOffering("Proof of Concept / Prototype").price,
     label: "published prototype range",
   },
   single: {
-    title: "Single-Workflow Production Agent",
-    range: "$18,000–$35,000",
+    title: getAIPricingOffering("Single-Workflow Production Agent").name,
+    range: getAIPricingOffering("Single-Workflow Production Agent").price,
     label: "published single-workflow range",
   },
   integrated: {
-    title: "Integrated / Financial Workpaper Agent",
-    range: "$35,000–$75,000",
+    title: getAIPricingOffering("Integrated / Line-of-Business Agent").name,
+    range: getAIPricingOffering("Integrated / Line-of-Business Agent").price,
     label: "published integrated-agent range",
   },
   multi: {
-    title: "Multi-Agent System / Process Redesign",
-    range: "$55,000–$120,000",
+    title: getAIPricingOffering(
+      "Multi-Agent System / AI-Augmented Process Redesign",
+    ).name,
+    range: getAIPricingOffering(
+      "Multi-Agent System / AI-Augmented Process Redesign",
+    ).price,
     label: "published multi-agent range",
   },
 } as const;
@@ -328,8 +336,12 @@ export function buildConfiguratorRecommendation(
     summary: `${useCaseLabel} for ${selection.scale} across ${integrationLabel.toLowerCase()}, with scoped permissions and human review before consequential actions.`,
     buildRange: band.range,
     buildLabel: band.label,
-    discoveryRange: isPrototype ? null : "$4,500–$7,500",
-    operationsRange: selection.managed ? "$2,500–$6,500/mo" : null,
+    discoveryRange: isPrototype
+      ? null
+      : getAIPricingOffering("Agent Discovery & Technical Specification").price,
+    operationsRange: selection.managed
+      ? `From ${MANAGED_AI_AGENT_OPERATIONS.prices[0].price}`
+      : null,
     phases: isPrototype
       ? ["Confirm success criteria", "Build bounded prototype", "Document production path"]
       : [
@@ -361,37 +373,5 @@ export const PROOF_METRICS = [
     value: "200+",
     label: "Client engagements",
     source: "ITECS published site proof point",
-  },
-] as const;
-export const PROOF_CASE_STUDIES = [
-  {
-    client: "Pegasus Foods",
-    industry: "Food manufacturing",
-    outcome: "100% uptime maintained",
-    summary:
-      "ITECS used virtualization, replication, and staged cutover controls to relocate business-critical infrastructure 1,200 miles without production downtime or data loss.",
-    metrics: ["Zero data loss", "$2.1M prevented downtime loss"],
-    sourceDate: "May 28, 2020",
-    href: "https://itecsonline.com/white-papers-case-studies/pegasus-foods-white-paper",
-  },
-  {
-    client: "OpenText",
-    industry: "Enterprise software",
-    outcome: "99.8% system uptime",
-    summary:
-      "A dedicated ITECS on-site support program improved local response coverage while operating inside OpenText's central IT standards.",
-    metrics: ["52+ weeks of support", "30% faster response"],
-    sourceDate: "July 3, 2024",
-    href: "https://itecsonline.com/white-papers-case-studies/opentext-success-story",
-  },
-  {
-    client: "PepsiCo",
-    industry: "Food and beverage",
-    outcome: "99.9% transition uptime",
-    summary:
-      "ITECS supported acquired subsidiaries with compliant interim infrastructure and managed operations during enterprise transition periods.",
-    metrics: ["5 subsidiaries supported", "40% fewer disruptions"],
-    sourceDate: "March 25, 2025",
-    href: "https://itecsonline.com/white-papers-case-studies/pepsico-success-story-itecs-manages-it-transitions",
   },
 ] as const;

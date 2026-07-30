@@ -306,17 +306,6 @@ export const AI_ASSESSMENT_INTAKE = {
   formalAssessmentDelivered: false,
 } as const;
 
-export const AI_SERVICE_PAGE_ESTIMATES = {
-  receptionist: {
-    setup: "$3,000–$6,000",
-    ongoing: "$300–$800/month",
-  },
-  crmSalesAi: {
-    setup: "$5,000–$15,000",
-    ongoing: "$500/month",
-  },
-} as const;
-
 export interface AIPricingOffering {
   name: string;
   price: string;
@@ -327,43 +316,51 @@ export interface AIPricingOffering {
   included: string[];
   bestFor?: string;
   highlighted?: boolean;
+  schemaPrice?: string;
+  schemaLowPrice?: string;
+  schemaHighPrice?: string;
 }
 
 export interface AIPricingCategory {
+  id: string;
   eyebrow: string;
   title: string;
   description: string;
   offerings: AIPricingOffering[];
 }
 
+export const AI_PRICING_EFFECTIVE_DATE = "July 8, 2026";
+
 export const AI_PRICING_CATEGORIES: AIPricingCategory[] = [
   {
+    id: "start-here",
     eyebrow: "Start Here",
-    title: "Discovery and Strategy",
+    title: "Discovery, Strategy & Training",
     description:
-      "For leadership teams that want a clear, low-risk way to understand where AI fits before committing to a rollout or custom build.",
+      "Clarify the opportunity, train the right people, and establish a defensible starting point before committing to a larger build.",
     offerings: [
       {
         name: "AI Readiness Assessment",
         price: "$6,500",
-        duration: "1-2 weeks",
+        duration: "1–2 weeks · discovery capped at 20 ITECS hours",
         description:
-          "The fastest way to understand where AI fits in your organization. ITECS audits current AI usage, identifies shadow AI exposure, prioritizes high-value use cases, and recommends the right platform stack for your environment.",
+          "A leadership-level assessment that documents the current state, identifies shadow-AI exposure, prioritizes use cases, and turns the findings into an actionable roadmap.",
         included: [
-          "Current-state audit of AI usage across your organization",
+          "Current-state audit and shadow-AI exposure review",
           "Prioritized use-case map ranked by business impact and feasibility",
-          "Platform stack recommendation across Claude, ChatGPT, Gemini, Microsoft Copilot, GitHub Copilot, and other major tools",
+          "Platform-stack recommendation",
           "12-month AI roadmap aligned to your strategic priorities",
           "Executive-ready deliverable suitable for board or leadership review",
-          "90-minute leadership workshop",
+          "Leadership workshop",
         ],
         bestFor:
           "Organizations exploring AI for the first time or wanting to validate an existing AI direction.",
         highlighted: true,
+        schemaPrice: "6500",
       },
       {
         name: "Executive AI Literacy Briefing",
-        price: "$3,500/session",
+        price: "$4,500 / session",
         duration: "Half-day",
         description:
           "A private, tailored session for your board, leadership team, or department heads. We translate AI from buzzword to business reality, calibrated to your industry.",
@@ -375,9 +372,40 @@ export const AI_PRICING_CATEGORIES: AIPricingCategory[] = [
         ],
         bestFor:
           "Leadership teams that want a credible AI briefing without a multi-week consulting engagement.",
+        schemaPrice: "4500",
       },
       {
-        name: "Shadow AI Discovery and Risk Report",
+        name: "Team AI Workshop",
+        price: "$2,900 / session",
+        duration: "2 hours · up to 12 employees",
+        description:
+          "A hands-on, role-based group session that helps a team use approved AI tools safely and productively in its real work.",
+        included: [
+          "Role-based curriculum tailored to the participating team",
+          "Hands-on exercises using relevant business workflows",
+          "Safe-use and human-review guidance",
+        ],
+        bestFor:
+          "Teams that need a practical shared baseline and immediately useful working habits.",
+        schemaPrice: "2900",
+      },
+      {
+        name: "Power-User Coaching (1:1)",
+        price: "$650 / session or $2,400 / 4-pack",
+        duration: "60–90 minutes",
+        description:
+          "Individual coaching for high-aptitude employees who can turn good AI practices into repeatable team capability.",
+        included: [
+          "Session preparation around the employee's role and goals",
+          "Live one-to-one working session",
+          "Follow-up materials",
+        ],
+        bestFor:
+          "Employees who are ready to become confident, practical AI power users.",
+        schemaPrice: "650",
+      },
+      {
+        name: "Shadow AI Discovery & Risk Report",
         price: "$5,500",
         duration: "1 week",
         description:
@@ -390,90 +418,251 @@ export const AI_PRICING_CATEGORIES: AIPricingCategory[] = [
         ],
         bestFor:
           "Organizations with compliance, regulatory, or confidentiality obligations that need visibility into current AI usage.",
+        schemaPrice: "5500",
+      },
+      {
+        name: "Internal AI Champion Program",
+        price: "$8,500–$12,000",
+        duration: "4–6 weeks",
+        href: "/services/ai-champion-program",
+        description:
+          "A structured program that trains one employee to become the organization's internal AI lead and sustain adoption after the engagement.",
+        included: [
+          "Curriculum tailored to the organization and its use cases",
+          "Weekly coaching with a senior ITECS AI strategist",
+          "Project shadowing on real implementations",
+          "Handoff documentation",
+          "90-day post-program support",
+        ],
+        bestFor:
+          "Organizations that want durable in-house AI capability with a trusted internal owner.",
+        schemaLowPrice: "8500",
+        schemaHighPrice: "12000",
       },
     ],
   },
   {
+    id: "guided-local-builds",
     eyebrow: "Build",
-    title: "Production Foundation",
+    title: "Guided & Local Agent Builds",
     description:
-      "For organizations ready to put AI into controlled use with policy, governance, platform setup, training, and pilot support.",
+      "Build useful agents in the client's own desktop or workspace environment. An employee can co-build with an ITECS specialist, or ITECS can build and deliver the finished local agent.",
+    offerings: [
+      {
+        name: "Guided Build Session",
+        price: "$650",
+        scope: "90-minute working session",
+        description:
+          "ITECS architects and coaches while the client's employee drives the build in Claude Cowork, Codex, Copilot agents, or a comparable workspace.",
+        included: [
+          "Pre-session preparation",
+          "Live co-build working session",
+          "Session notes",
+        ],
+        bestFor:
+          "A focused workflow, agent setup, or technical decision that can move materially in one session.",
+        schemaPrice: "650",
+      },
+      {
+        name: "Guided Build Sprint (4 sessions)",
+        price: "$2,400",
+        scope: "One bounded agent or workflow · typically 2–3 weeks",
+        description:
+          "Four co-build sessions that take one bounded agent or workflow from design through a tested working setup.",
+        included: [
+          "Workflow and success-criteria definition",
+          "Guided configuration and build",
+          "Testing and refinement",
+          "Usage notes and handoff",
+        ],
+        bestFor:
+          "An employee who can co-build one well-bounded agent with expert architecture and coaching.",
+        schemaPrice: "2400",
+      },
+      {
+        name: "Guided Build Intensive (8 sessions)",
+        price: "$4,400",
+        scope: "Complex multi-step agent",
+        description:
+          "Eight co-build sessions for a complex agent that crosses multiple steps, tools, or outputs and needs deliberate testing and refinement.",
+        included: [
+          "Architecture and multi-step workflow design",
+          "Guided implementation across the selected workspace tools",
+          "Testing and refinement cycles",
+          "Documentation and working handoff",
+        ],
+        bestFor:
+          "Workflows such as data analysis, report generation, and business-intelligence publishing that need multiple connected steps.",
+        schemaPrice: "4400",
+      },
+      {
+        name: "Local Agent Sprint",
+        price: "$4,500–$9,500",
+        scope: "One workflow · 1–2 data sources",
+        description:
+          "ITECS builds and delivers one local agent inside the client's workspace, ready for the sponsoring employee to use.",
+        included: [
+          "One workflow and one or two data sources",
+          "Workspace deployment",
+          "Usage documentation",
+          "One handoff session",
+        ],
+        bestFor:
+          "Teams that want ITECS to deliver a bounded desktop or workspace agent.",
+        schemaLowPrice: "4500",
+        schemaHighPrice: "9500",
+      },
+      {
+        name: "Departmental Local Agent",
+        price: "$9,500–$18,000",
+        scope: "Multi-step workflow · multiple sources and outputs",
+        description:
+          "ITECS builds a more capable local agent for a department, with multiple inputs and outputs, structured testing, and team handoff.",
+        included: [
+          "Multi-step workflow with multiple sources and outputs",
+          "Testing cycles",
+          "Two handoff and training sessions",
+          "30-day tuning window",
+        ],
+        bestFor:
+          "Departments that need a delivered workspace agent with broader workflow coverage and a supported handoff.",
+        schemaLowPrice: "9500",
+        schemaHighPrice: "18000",
+      },
+      {
+        name: "Data Readiness Sprint",
+        price: "$3,500–$8,500",
+        scope: "One department or use case",
+        href: "/data-audit",
+        description:
+          "A document-corpus audit and cleanup that prepares business sources for a reliable agent or AI workflow.",
+        included: [
+          "Source inventory and permission review",
+          "Folder or library restructuring",
+          "Metadata and naming hygiene",
+          "Ingestion preparation",
+        ],
+        bestFor:
+          "Builds whose source documents, permissions, or information structure need cleanup before implementation.",
+        schemaLowPrice: "3500",
+        schemaHighPrice: "8500",
+      },
+    ],
+  },
+  {
+    id: "governance-security",
+    eyebrow: "Build",
+    title: "Governance & Security",
+    description:
+      "Put policy, tenant controls, and accountable leadership around AI before access and usage expand.",
     offerings: [
       {
         name: "AI Acceptable Use Policy Package",
         price: "$4,500",
         scope: "Standalone policy package",
         description:
-          "A complete, custom Acceptable Use Policy and AI governance framework right-sized for growing teams adopting AI across major platforms.",
+          "A custom Acceptable Use Policy and governance framework right-sized for a growing organization.",
         included: [
-          "Custom Acceptable Use Policy tailored to your industry and risk profile",
-          "AI governance framework with roles, responsibilities, and review cadence",
-          "Employee handbook insert ready for adoption",
-          "30-minute training deck for rollout",
+          "Custom AI Acceptable Use Policy",
+          "Governance framework with roles and responsibilities",
+          "Employee handbook insert",
+          "30-minute training deck",
         ],
         bestFor:
           "Organizations adopting AI tools that need clear rules before usage scales.",
+        schemaPrice: "4500",
       },
       {
-        name: "AI Pilot Implementation - Small",
-        price: "$12,500",
-        scope: "3-5 users, 1 primary use case, 30 days",
+        name: "AI Platform Deployment Readiness",
+        price: "$8,500–$15,000",
+        scope: "Pre-deployment review · priced by tenant size",
         description:
-          "A focused, low-risk pilot of your chosen AI platform. ITECS handles setup, training, and post-launch optimization so the team can prove value before expanding.",
+          "A tenant security review before enabling Microsoft 365 Copilot or a comparable workspace AI.",
         included: [
-          "Primary AI platform tenant setup",
-          "Project workspace configuration tailored to the use case",
-          "5-template prompt library built around your real work",
-          "1 onsite or virtual training session",
-          "30-day post-launch optimization window",
+          "Data-permission hygiene review",
+          "Oversharing discovery and remediation plan",
+          "Sensitivity-labeling review",
+          "Conditional-access alignment",
+          "Pilot-group rollout plan",
         ],
         bestFor:
-          "Organizations ready to pilot AI in a focused workflow with a small user group.",
+          "Organizations preparing to enable workspace AI across a governed tenant.",
+        schemaLowPrice: "8500",
+        schemaHighPrice: "15000",
       },
       {
-        name: "AI Pilot Implementation - Production",
-        price: "$21,500",
-        scope: "10-25 users, 2-3 use cases, 60 days",
+        name: "AI Governance Baseline Bundle",
+        price: "$14,500 (vs. $16,500 à la carte)",
+        duration: "3–4 weeks",
         description:
-          "A production-ready AI rollout with the role-based libraries, audit-trail documentation, training, and support required for a real department deployment.",
+          "A coordinated governance baseline that combines strategy, risk discovery, and policy into one engagement.",
         included: [
-          "Everything in the Small pilot tier",
-          "Expansion to multiple use cases",
-          "Role-based prompt libraries",
-          "Audit-trail documentation",
-          "2 training sessions for pilot kickoff and expansion",
-          "60-day post-launch optimization window",
+          "AI Readiness Assessment",
+          "Shadow AI Discovery & Risk Report",
+          "AI Acceptable Use Policy Package",
         ],
         bestFor:
-          "Organizations moving past pilot into production deployment for a full team or department.",
+          "Leadership teams that want the core AI governance controls established together.",
+        schemaPrice: "14500",
+      },
+      {
+        name: "AI Compliance & Audit Support",
+        price: "Strategist hourly, written not-to-exceed",
+        description:
+          "Senior support for regulated-industry documentation, evidence packages, and audit liaison.",
+        included: [
+          "Compliance documentation support",
+          "Evidence-package preparation",
+          "Audit liaison",
+        ],
+        bestFor:
+          "Regulated organizations that need strategist-led AI compliance support.",
+      },
+      {
+        name: "Fractional Head of AI",
+        price: "Strategist hourly via monthly retainer",
+        scope: "Typically 16–24 hours per month",
+        description:
+          "Recurring senior advisory for AI strategy, governance, investment priorities, and leadership alignment.",
+        included: [
+          "Executive AI advisory",
+          "Roadmap and portfolio guidance",
+          "Governance leadership",
+          "Leadership and board support",
+        ],
+        bestFor:
+          "Organizations that need ongoing AI leadership without a full-time executive hire.",
       },
     ],
   },
   {
+    id: "custom-build",
     eyebrow: "Specialize",
     title: "Custom Build",
     description:
-      "For teams that need phased custom agents, platform connectors, AI-enabled workflows, or internal AI capability beyond standard tool configuration.",
+      "Every production build starts with discovery, and the discovery fee credits toward the build. Production operations after launch are billed under Agent Operations and are never absorbed into the build fee.",
     offerings: [
       {
         name: "Agent Discovery & Technical Specification",
-        price: "$4,500-$7,500",
-        scope: "Discovery, credited toward build",
+        price: "$4,500–$7,500",
+        scope: "Required discovery · credited toward the build",
         description:
-          "A focused specification engagement for a custom agent or workflow before production engineering begins. The fee is credited toward the build if the client proceeds.",
+          "A focused specification engagement that turns a workflow into a buildable, governed production plan.",
         included: [
           "Current workflow, data source, and integration review",
           "Use-case specification with success criteria",
           "Architecture, risk, and human-review model",
-          "Fixed-fee build estimate for the next phase",
+          "Fixed-fee build not-to-exceed for the next phase",
         ],
         bestFor:
           "Teams with a defined AI workflow that need a credible build plan before committing to engineering.",
+        schemaLowPrice: "4500",
+        schemaHighPrice: "7500",
       },
       {
         name: "Proof of Concept / Prototype",
-        price: "$8,000-$18,000",
-        scope: "One data source or workflow",
+        price: "$8,000–$18,000",
+        scope: "One primary source or workflow",
         description:
           "A bounded prototype that proves technical feasibility and workflow fit before a production commitment.",
         included: [
@@ -484,10 +673,12 @@ export const AI_PRICING_CATEGORIES: AIPricingCategory[] = [
         ],
         bestFor:
           "Organizations that need evidence before funding a production agent.",
+        schemaLowPrice: "8000",
+        schemaHighPrice: "18000",
       },
       {
         name: "Single-Workflow Production Agent",
-        price: "$18,000-$35,000 per agent",
+        price: "$18,000–$35,000",
         description:
           "A production agent for one primary workflow, deployed with documentation, human-in-the-loop review, and staff handoff.",
         included: [
@@ -498,24 +689,28 @@ export const AI_PRICING_CATEGORIES: AIPricingCategory[] = [
         ],
         bestFor:
           "Light or bounded assistants such as recurring research, drafting, executive briefing, or comparable workflow support.",
+        schemaLowPrice: "18000",
+        schemaHighPrice: "35000",
       },
       {
-        name: "Integrated / Financial Workpaper Agent",
-        price: "$35,000-$75,000 per agent",
+        name: "Integrated / Line-of-Business Agent",
+        price: "$35,000–$75,000",
         description:
-          "A more complex production agent for multi-source ingestion, reconciliation, audit trails, validation, exception handling, and reviewer workflows.",
+          "A line-of-business production agent for multi-source ingestion, reconciliation, audit trails, validation, exception handling, and reviewer workflows.",
         included: [
           "Multi-source data ingestion and reconciliation",
           "Audit trail and validation controls",
           "Exception handling and reviewer workflow",
-          "Documentation and operational handoff",
+          "Flagship pattern: PPV analysis across purchasing, ERP, and invoice data with variance analysis and exception queues",
         ],
         bestFor:
-          "Line-of-business and finance workflows where accuracy, review evidence, and system integration are central.",
+          "Line-of-business workflows where accuracy, review evidence, and system integration are central.",
+        schemaLowPrice: "35000",
+        schemaHighPrice: "75000",
       },
       {
         name: "Multi-Agent System / AI-Augmented Process Redesign",
-        price: "$55,000-$120,000",
+        price: "$55,000–$120,000",
         description:
           "An orchestrated multi-agent system or end-to-end redesign of a major workflow with integrations, monitoring, and rollout enablement.",
         included: [
@@ -526,34 +721,59 @@ export const AI_PRICING_CATEGORIES: AIPricingCategory[] = [
         ],
         bestFor:
           "Organizations ready to redesign a high-value workflow rather than automate one task at a time.",
+        schemaLowPrice: "55000",
+        schemaHighPrice: "120000",
       },
       {
-        name: "Internal AI Champion Enablement Program",
-        price: "$8,500-$12,000",
-        duration: "4-6 weeks",
-        href: "/services/ai-champion-program",
+        name: "AI-Augmented Custom Software Development",
+        price: "Fixed-fee discovery, then hourly against a written not-to-exceed or fixed fee where scope is firm",
+        href: "/ai-devops",
         description:
-          "A structured program that trains one employee to become the organization's internal AI lead, creating capability that compounds after the engagement.",
+          "Custom software delivered through the ITECS AI-DevOps model, with a senior architect supervising an AI-assisted build.",
         included: [
-          "Custom curriculum tailored to your industry and use cases",
-          "Weekly coaching with a senior ITECS AI strategist",
-          "Project shadowing on real implementations",
-          "Handoff documentation",
-          "90-day post-program support window",
+          "Browser extensions, workflow tools, integrations, and internal applications",
+          "Fixed-fee discovery and specification with a written not-to-exceed",
+          "Hourly build against the not-to-exceed or fixed fee where scope is firm",
+          "The same warranty, acceptance, and change-order terms as agent builds",
         ],
         bestFor:
-          "Organizations that want durable in-house AI fluency instead of relying only on outside consultants.",
+          "Organizations that need governed custom software beyond an agent or workspace configuration.",
       },
     ],
   },
 ];
 
+export function getAIPricingOffering(name: string): AIPricingOffering {
+  const offering = AI_PRICING_CATEGORIES.flatMap(
+    (category) => category.offerings,
+  ).find((item) => item.name === name);
+
+  if (!offering) {
+    throw new Error(`Missing published AI pricing offering: ${name}`);
+  }
+
+  return offering;
+}
+
+export const AI_GUIDED_BUILD_TERMS = [
+  "Sessions expire 90 days from purchase.",
+  "Sessions are scheduled at least 5 business days out.",
+  "Cancellation under 24 hours or a no-show forfeits the session.",
+  "Out-of-session ITECS build work is billed at the applicable hourly tier.",
+] as const;
+
+export const AI_BUILD_CONTINUITY_ASSURANCE =
+  "Every guided or delivered agent build is archived in the ITECS client vault: workspace configuration, skills, prompt libraries, data-source maps, and usage documentation. If the sponsoring employee leaves, ITECS re-wires the archived agent for a successor as a short guided engagement, typically 1–2 sessions, rather than a rebuild. Proven agents can be cloned and adapted for other employees or departments at a fraction of the original build effort.";
+
+export const AI_DATA_READINESS_RULE =
+  "Every build proposal either includes a data-readiness line item or confirms in writing that sources were verified build-ready during discovery.";
+
 export const MANAGED_AI_TIERS = [
   {
-    tier: "Managed AI Starter",
-    users: "Up to 10 users",
+    tier: "MIS Core",
+    users: "Up to 10",
     price: "$1,950/mo",
-    includedHours: "4 included hours",
+    includedHours: "4 optimization hours",
     highlighted: false,
     features: [
       "Monthly check-in",
@@ -562,10 +782,10 @@ export const MANAGED_AI_TIERS = [
     ],
   },
   {
-    tier: "Managed AI Standard",
-    users: "11-25 users",
+    tier: "MIS Growth",
+    users: "11–25",
     price: "$2,650/mo",
-    includedHours: "6 included hours",
+    includedHours: "6 optimization hours",
     features: [
       "Bi-monthly office hours",
       "Expansion support",
@@ -575,10 +795,10 @@ export const MANAGED_AI_TIERS = [
     highlighted: true,
   },
   {
-    tier: "Managed AI Plus",
-    users: "26-50 users",
+    tier: "MIS Scale",
+    users: "26–50",
     price: "$3,500/mo",
-    includedHours: "10 included hours",
+    includedHours: "10 optimization hours",
     highlighted: false,
     features: [
       "Dedicated AI advisor",
@@ -590,40 +810,96 @@ export const MANAGED_AI_TIERS = [
 ] as const;
 
 export const MANAGED_AI_AGENT_OPERATIONS = {
-  tier: "Managed AI - Agent Operations",
-  users: "Per production-agent footprint",
-  price: "$2,500-$6,500/mo",
-  includedHours: "Scoped operations retainer",
+  tier: "Agent Operations",
   description:
-    "Ongoing operations for production agents after launch, separate from adoption and advisory retainers.",
+    "Ongoing operations for production agents after launch, separate from Managed Intelligence Services adoption tiers.",
+  prices: [
+    { agents: "1 production agent", price: "$2,500/mo", schemaPrice: "2500" },
+    { agents: "2 production agents", price: "$4,500/mo", schemaPrice: "4500" },
+    { agents: "3 production agents", price: "$6,500/mo", schemaPrice: "6500" },
+    {
+      agents:
+        "4+ agents, aggressive data-refresh cadence, or tight review SLAs",
+      price: "Custom quote",
+    },
+  ],
   features: [
-    "Agent monitoring and evaluations",
+    "Monitoring and evaluations",
     "Quality and drift checks",
-    "Data-refresh and exception triage",
-    "Production tuning based on usage and review SLA",
+    "Data refresh and exception triage",
+    "Production tuning based on usage",
   ],
 } as const;
+
+export const MANAGED_AI_TERMS = [
+  "Clients who also hold an MIS adoption tier receive 10% off the Agent Operations line.",
+  "Included hours do not roll over month to month.",
+  "Annual term with 30-day non-renewal notice; month-to-month is available at +10%.",
+  "Hours beyond the included amount bill at the applicable hourly tier.",
+] as const;
+
+export const AI_PREPAID_OPTIONS = [
+  {
+    name: "AI Retainer",
+    price: "$3,375",
+    unit: "15-hour prepaid block",
+    terms: [
+      "12-month expiry",
+      "Any employee may draw against the block",
+      "Monthly usage statement to the client's named contact",
+      "Hours are deducted on a tier-weighted basis; the detailed draw-down schedule is reviewed in consultation",
+      "Strategist-level work is never discounted",
+    ],
+    bestFor: "Uneven workloads, quick fixes, and mixed-tier work.",
+    schemaPrice: "3375",
+  },
+  {
+    name: "Guided Build Session Bank — 10",
+    price: "$5,900",
+    unit: "$590 / session",
+    terms: ["12-month expiry"],
+    bestFor:
+      "Ten Guided Build or Power-User Coaching sessions shared by any employee.",
+    schemaPrice: "5900",
+  },
+  {
+    name: "Guided Build Session Bank — 20",
+    price: "$10,800",
+    unit: "$540 / session",
+    terms: ["12-month expiry"],
+    bestFor:
+      "Twenty Guided Build or Power-User Coaching sessions shared by any employee.",
+    schemaPrice: "10800",
+  },
+] as const;
+
+export const AI_SESSION_BANK_TERMS = [
+  "A bank session is redeemable for either a Guided Build Session or a Power-User Coaching session.",
+  "Any employee may use the bank.",
+  "Managed-IT loyalty discounts apply to session banks.",
+] as const;
 
 export const AI_HOURLY_RATES = [
   {
     tier: "Tier 1 - AI Implementer",
     role: "Hands-on delivery",
     rate: "$245/hr",
-    typicalWork: "Setup, configuration, training delivery, documentation, testing",
+    typicalWork:
+      "Platform tenant and workspace setup, project workspace configuration, document corpus organization, training delivery, enablement, documentation, testing, and internal champion coaching",
   },
   {
     tier: "Tier 2 - AI Specialist",
     role: "Senior engineering and authoring",
     rate: "$295/hr",
     typicalWork:
-      "Custom AI agent and connector development, prompt engineering, integration work, AI policy authoring",
+      "Custom agent, sub-agent, connector, and MCP development across major platforms; AI-augmented development (AI DevOps); prompt engineering; integration work; workflow design; and AI policy and governance authoring",
   },
   {
     tier: "Tier 3 - AI Strategist",
     role: "Strategic advisory and AI security/governance",
     rate: "$375/hr",
     typicalWork:
-      "Executive workshops, AI roadmapping, AI security architecture, shadow AI advisory, AI compliance, fractional Head of AI",
+      "Executive workshops, AI roadmapping, fractional Head of AI, AI security architecture, shadow-AI risk advisory, compliance and audit support, and board-level briefings. Never discounted.",
   },
 ] as const;
 
@@ -640,14 +916,124 @@ export const AI_RATE_MULTIPLIERS = [
 
 export const AI_LOYALTY_DISCOUNTS = [
   {
-    plan: "MSP Pro",
-    hourlyDiscount: "10%",
-    productizedDiscount: "10%",
+    benefit: "Tier 1 / Tier 2 hourly",
+    select: "—",
+    pro: "10%",
+    elite: "15%",
   },
   {
-    plan: "MSP Elite",
-    hourlyDiscount: "15%",
-    productizedDiscount: "15%",
+    benefit: "Tier 3 hourly",
+    select: "—",
+    pro: "—",
+    elite: "—",
+  },
+  {
+    benefit: "One-time training, build, and governance packages",
+    select: "—",
+    pro: "10%",
+    elite: "15%",
+  },
+  {
+    benefit: "Custom production-agent build phases",
+    select: "—",
+    pro: "—",
+    elite: "15%",
+  },
+  {
+    benefit: "Managed Intelligence Services (recurring)",
+    select: "—",
+    pro: "—",
+    elite: "Onboarding month waived, up to $2,500 value (annual terms only)",
+  },
+  {
+    benefit: "Complimentary AI Orientation Sessions",
+    select: "—",
+    pro: "—",
+    elite:
+      "2 per contract year (30–45 minutes, up to 8 employees, remote, orientation only)",
+  },
+  {
+    benefit: "Priority scheduling for AI engagements",
+    select: "—",
+    pro: "—",
+    elite: "Yes",
+  },
+] as const;
+
+export const AI_LOYALTY_TERMS = [
+  "Tier 3 strategist rates are never discounted.",
+  "Recurring MIS fees are not percentage-discounted; MSP Elite receives the one-time onboarding waiver instead.",
+  "AI Retainer blocks are net-priced; loyalty percentages do not stack on retainer draw. Session Banks do take the loyalty discount.",
+  "MSP retainer blocks, MSP special-project hours, and MSP plan inclusions do not apply to AI engagements; AI work is quoted separately.",
+  "Third-party AI platform subscriptions are client-paid direct costs unless a proposal states pass-through billing.",
+] as const;
+
+export const AI_ASSURANCES = [
+  {
+    title: "Warranty",
+    description:
+      "Delivered agents and software carry a 30-day defect warranty from acceptance; ITECS remediates at no charge where a deliverable fails to perform against the written specification. Clients have 10 business days from delivery to test against that specification. Platform or model version changes, client modifications, changes to client data sources or permissions, and vendor outages fall outside warranty and route to Agent Operations or hourly work.",
+  },
+  {
+    title: "Human-in-the-loop by design",
+    description:
+      "AI output is probabilistic. Every ITECS-delivered agent is designed for human review; ITECS does not warrant the accuracy, completeness, or fitness of AI-generated analysis, and the client remains responsible for reviewing output before business decisions. Finance-class variance analysis and exception queues are decision support, not decisions. ITECS does not provide legal, tax, or accounting advice through AI deliverables.",
+  },
+  {
+    title: "Data handling",
+    description:
+      "Client work is performed in enterprise-grade, no-training platform configurations; client data remains in the client's tenant wherever the platform allows. ITECS accesses client systems via client-managed, least-privilege credentials. A DPA is available on request. ITECS does not submit client data to consumer-grade or non-contracted AI services.",
+  },
+  {
+    title: "Regulated environments",
+    description:
+      "Clients subject to CMMC/CUI, HIPAA, or similar regimes are custom-scoped on compliance-eligible platforms with the compliance framework governing architecture. Standard packages and commercial AI platforms do not apply; commercial AI platforms are generally ineligible for CUI.",
+  },
+] as const;
+
+export const AI_PRICING_FAQ = [
+  {
+    question: "What is the best first step if we are new to AI?",
+    answer: `Most leadership teams should start with the ${getAIPricingOffering("AI Readiness Assessment").price} AI Readiness Assessment. In 1–2 weeks, ITECS documents where AI fits, which platforms match the environment, what risks need guardrails, and what the 12-month adoption roadmap should look like. For a lighter single-workflow entry point, start with a ${getAIPricingOffering("Guided Build Session").price} Guided Build Session.`,
+  },
+  {
+    question: "Are these prices fixed or estimates?",
+    answer:
+      "Published single prices are list prices for defined scopes. Ranges and custom work are scoped before build with a written scope and not-to-exceed amount; work outside a defined scope bills at the applicable hourly tier.",
+  },
+  {
+    question: "Do you only support one AI platform?",
+    answer:
+      "No. ITECS is vendor-neutral across Claude, ChatGPT, Codex, Gemini, Microsoft Copilot, GitHub Copilot, and other enterprise platforms, then recommends what fits the business, data, and governance requirements.",
+  },
+  {
+    question: "What happens after our first agent works?",
+    answer:
+      "An agent graduates from a desktop or workspace build to an engineered production build when it needs server-side deployment, unattended scheduling, multi-user access, audit trails, or an SLA. Discovery is then quoted and fees already paid credit toward it. Ongoing operation moves to Agent Operations.",
+  },
+  {
+    question: "Do existing ITECS managed IT clients receive AI discounts?",
+    answer:
+      "MSP Pro receives 10% off eligible Tier 1 and Tier 2 hourly work and eligible one-time training, guided or local build, and governance packages, but not custom production-agent build phases. MSP Elite receives 15% on those eligible categories and custom production-agent build phases. Tier 3 is never discounted, recurring MIS fees receive no percentage discount, AI Retainers are net-priced, and Session Banks do take the applicable loyalty discount.",
+  },
+  {
+    question: "What if our data isn't ready?",
+    answer: `Use the ${getAIPricingOffering("Data Readiness Sprint").price} Data Readiness Sprint for source inventory, permissions, structure, metadata, naming hygiene, and ingestion preparation. ${AI_DATA_READINESS_RULE}`,
+  },
+  {
+    question: "What happens if the employee who built our agent leaves?",
+    answer:
+      "ITECS archives every guided or delivered agent in the client vault. The archived workspace configuration, skills, prompt libraries, source maps, and usage documentation let ITECS re-wire it for a successor in typically 1–2 guided sessions rather than rebuilding it.",
+  },
+  {
+    question: "Do you guarantee the AI's output?",
+    answer:
+      "No. AI output is probabilistic and must be reviewed by the client before business decisions. ITECS designs delivered agents for human review and provides a 30-day defect warranty against the written specification, with a 10-business-day acceptance period. The warranty does not guarantee AI-generated analysis.",
+  },
+  {
+    question: "Can you support regulated or CUI environments?",
+    answer:
+      "Yes, through custom strategist-led scoping on compliance-eligible platforms. Standard packages and commercial AI platforms do not apply to CMMC/CUI, HIPAA, or similar regulated requirements; commercial AI platforms are generally ineligible for CUI.",
   },
 ] as const;
 
@@ -742,8 +1128,7 @@ export const SERVICES: ServiceItem[] = [
     faq: [
       {
         question: "How much does AI consulting cost for a growing organization?",
-        answer:
-          "AI consulting can be billed hourly, but most clients prefer a prepaid retainer block of time. Retainer hours can be used at your discretion for discovery, tool configuration, training, testing, workflow design, and advisory work. There is no minimum monthly usage and no expiration date. Flat-rate fees are used only for scoped projects such as building AI agents or securely connecting them to your platforms.",
+        answer: `${getAIPricingOffering("Guided Build Session").name} is ${getAIPricingOffering("Guided Build Session").price} for a focused 90-minute working session. The leadership-level ${getAIPricingOffering("AI Readiness Assessment").name} is ${getAIPricingOffering("AI Readiness Assessment").price}. The ${AI_PREPAID_OPTIONS[0].name} is ${AI_PREPAID_OPTIONS[0].price} for a ${AI_PREPAID_OPTIONS[0].unit} with a 12-month expiry. Hourly advisory and phased custom work are also available as published on the pricing page.`,
       },
       {
         question: "How do I know if my business is ready for AI?",
@@ -834,8 +1219,7 @@ export const SERVICES: ServiceItem[] = [
     faq: [
       {
         question: "How much does a custom AI agent cost for a growing organization?",
-        answer:
-          "Custom AI agents are quoted as scoped projects after we understand the workflow, data sources, security requirements, approval points, and external systems involved. Discovery, project-folder setup, prompt systems, testing, training, and tuning can also use prepaid retainer hours with no minimum monthly usage or expiration date.",
+        answer: `Every production build starts with ${getAIPricingOffering("Agent Discovery & Technical Specification").name} at ${getAIPricingOffering("Agent Discovery & Technical Specification").price}, credited toward the build. Published phases then range from ${getAIPricingOffering("Proof of Concept / Prototype").price} for a bounded prototype to ${getAIPricingOffering("Multi-Agent System / AI-Augmented Process Redesign").price} for a multi-agent system or major process redesign. Final scope is confirmed before work begins, and production operations are separate.`,
       },
       {
         question: "Can you build workflows for Claude, Codex, ChatGPT, Gemini, and other AI tools?",
@@ -928,8 +1312,7 @@ export const SERVICES: ServiceItem[] = [
     faq: [
       {
         question: "How much does AI workflow automation cost for a growing business?",
-        answer:
-          "Setup costs for Dallas businesses typically range from $2,500–$10,000 depending on the number of workflows, with ongoing management starting at $500/month. Most clients break even within the first month through time savings alone.",
+        answer: `A client-led ${getAIPricingOffering("Guided Build Sprint (4 sessions)").name} is ${getAIPricingOffering("Guided Build Sprint (4 sessions)").price}; the ${getAIPricingOffering("Guided Build Intensive (8 sessions)").name} is ${getAIPricingOffering("Guided Build Intensive (8 sessions)").price}. ITECS-delivered local agents start with the ${getAIPricingOffering("Local Agent Sprint").name} at ${getAIPricingOffering("Local Agent Sprint").price}. Production operations after launch use the separate Agent Operations ladder.`,
       },
       {
         question: "What tasks can you automate with AI?",
@@ -1038,8 +1421,7 @@ export const SERVICES: ServiceItem[] = [
       },
       {
         question: "How much does AI DevOps cost?",
-        answer:
-          "Production stabilization is quoted after we review the codebase, data sources, integrations, and deployment environments. Ongoing monitoring reviews, maintenance, release support, testing, cost reviews, and advisory work can use prepaid retainer hours with no minimum monthly usage and no expiration date.",
+        answer: `${getAIPricingOffering("AI-Augmented Custom Software Development").name} uses fixed-fee discovery, followed by hourly build work against a written not-to-exceed or a fixed fee where scope is firm. The ${AI_PREPAID_OPTIONS[0].name} is ${AI_PREPAID_OPTIONS[0].price} for a ${AI_PREPAID_OPTIONS[0].unit} with a 12-month expiry and can cover eligible mixed-tier support work.`,
       },
       {
         question: "Which AI platforms do you support?",
@@ -1113,8 +1495,7 @@ export const SERVICES: ServiceItem[] = [
     faq: [
       {
         question: "How much does AI training cost for employees?",
-        answer:
-          "Workshops and multi-session training programs are quoted based on team size, tools, and curriculum depth. Ongoing office hours, refresher sessions, and new-tool onboarding can use prepaid retainer hours with no minimum monthly usage and no expiration date.",
+        answer: `${getAIPricingOffering("Team AI Workshop").name} is ${getAIPricingOffering("Team AI Workshop").price} for a 2-hour session with up to 12 employees. ${getAIPricingOffering("Power-User Coaching (1:1)").name} is ${getAIPricingOffering("Power-User Coaching (1:1)").price}. The half-day ${getAIPricingOffering("Executive AI Literacy Briefing").name} is ${getAIPricingOffering("Executive AI Literacy Briefing").price}, and the ${getAIPricingOffering("Internal AI Champion Program").name} is ${getAIPricingOffering("Internal AI Champion Program").price}.`,
       },
       {
         question: "Do my employees need a technical background for AI training?",
@@ -1197,7 +1578,7 @@ export const SERVICES: ServiceItem[] = [
     faq: [
       {
         question: "How much does an AI receptionist cost for a growing organization?",
-        answer: `Setup starts at ${AI_SERVICE_PAGE_ESTIMATES.receptionist.setup} depending on call complexity and integrations. Monthly service runs ${AI_SERVICE_PAGE_ESTIMATES.receptionist.ongoing} — compared to $1,500–$4,000/month for a human receptionist or traditional answering service. Most Dallas businesses save $3,000+ per month from day one.`,
+        answer: `A production voice workflow starts with ${getAIPricingOffering("Agent Discovery & Technical Specification").name} at ${getAIPricingOffering("Agent Discovery & Technical Specification").price}, credited toward the build. A ${getAIPricingOffering("Single-Workflow Production Agent").name} is ${getAIPricingOffering("Single-Workflow Production Agent").price} after discovery confirms scope. Production operation is separate; one production agent is ${MANAGED_AI_AGENT_OPERATIONS.prices[0].price}.`,
       },
       {
         question: "Does the AI receptionist sound robotic?",
@@ -1281,7 +1662,7 @@ export const SERVICES: ServiceItem[] = [
     faq: [
       {
         question: "How much does AI CRM integration cost for a growing organization?",
-        answer: `Setup ranges from ${AI_SERVICE_PAGE_ESTIMATES.crmSalesAi.setup} depending on your CRM platform, number of integrations, and team size. Ongoing optimization and support starts at ${AI_SERVICE_PAGE_ESTIMATES.crmSalesAi.ongoing}. Most Dallas businesses see the investment pay for itself within 60 days through increased close rates and time savings.`,
+        answer: `A production CRM workflow starts with ${getAIPricingOffering("Agent Discovery & Technical Specification").name} at ${getAIPricingOffering("Agent Discovery & Technical Specification").price}, credited toward the build. An ${getAIPricingOffering("Integrated / Line-of-Business Agent").name} is ${getAIPricingOffering("Integrated / Line-of-Business Agent").price} when the workflow needs production integrations and reviewer controls. Agent Operations after launch is quoted separately from the build.`,
       },
       {
         question: "Does this work with HubSpot Free or do I need a paid plan?",
@@ -1376,8 +1757,7 @@ export const SERVICES: ServiceItem[] = [
     faq: [
       {
         question: "How much does an internal AI knowledge base cost?",
-        answer:
-          "Setup ranges from $8,000–$20,000 depending on the number of data sources, document volume, and compliance requirements. Ongoing hosting and management starts at $500/month including auto-indexing and performance monitoring. Most Dallas businesses with 50+ employees recover the full cost within 3 months through reduced onboarding time and fewer repeated questions.",
+        answer: `${getAIPricingOffering("Agent Discovery & Technical Specification").name} is ${getAIPricingOffering("Agent Discovery & Technical Specification").price} and credits toward the build. A bounded ${getAIPricingOffering("Proof of Concept / Prototype").name} is ${getAIPricingOffering("Proof of Concept / Prototype").price}; a multi-source ${getAIPricingOffering("Integrated / Line-of-Business Agent").name} is ${getAIPricingOffering("Integrated / Line-of-Business Agent").price}. Production operation after launch uses the separate Agent Operations ladder.`,
       },
       {
         question: "Is my company data safe in an AI knowledge base?",
@@ -1413,14 +1793,14 @@ export const SERVICES: ServiceItem[] = [
   },
   {
     slug: "data-audit",
-    title: "The AI Data Readiness Audit",
-    shortTitle: "AI Data Audit",
+    title: "The AI Data Readiness Sprint",
+    shortTitle: "Data Readiness Sprint",
     description:
-      "Is your data secure enough for AI? Get a comprehensive, flat-fee audit of your Microsoft 365 or Google Workspace environment — security risks and automation opportunities identified in 7 days.",
+      "Prepare one department or use case for a reliable AI build with source inventory, permission review, data organization, metadata hygiene, and ingestion preparation.",
     longDescription:
-      "Before you can use AI safely, you need to know what shape your data is in. Our AI Data Readiness Audit gives Dallas businesses a clear picture of their security posture, data organization, and automation opportunities in exactly 7 days. We assess your Microsoft 365 or Google Workspace environment, identify exposed sensitive data, and deliver a prioritized action plan — so you can adopt AI with confidence, not anxiety.",
+      "Reliable AI starts with build-ready source material. The AI Data Readiness Sprint audits and cleans the document corpus for one department or use case, reviews permissions, restructures folders or libraries, improves metadata and naming hygiene, and prepares the approved sources for ingestion.",
     heroSummary:
-      "Is your data secure enough for AI? Get a comprehensive, flat-fee audit of your Microsoft 365 or Google Workspace environment to identify security risks and automation opportunities in exactly 7 days.",
+      "Prepare one department or use case for a reliable AI build with source inventory, permission review, folder or library restructuring, metadata and naming hygiene, and ingestion preparation.",
     href: "/data-audit",
     icon: "ShieldCheck",
     keywords: [
@@ -1431,31 +1811,31 @@ export const SERVICES: ServiceItem[] = [
       "AI readiness assessment",
       "data security audit for AI",
     ],
-    h1: "The AI Data Readiness Audit",
+    h1: "The AI Data Readiness Sprint",
     features: [
-      "Complete security assessment of your Microsoft 365 or Google Workspace",
-      "Identify exposed sensitive data — PII, financial records, credentials",
-      "Map automation opportunities ranked by time savings and ROI",
-      "Compliance gap analysis for HIPAA, SOX, FINRA, and CMMC",
-      "Detailed report with prioritized action items delivered in 7 days",
-      "Flat-fee pricing — no hourly billing surprises",
+      "Document corpus audit and source inventory for one department or use case",
+      "Permission review for the sources a proposed AI build will use",
+      "Folder or library restructuring around the target workflow",
+      "Metadata and naming hygiene for more reliable retrieval",
+      "Ingestion preparation for approved build-ready sources",
+      "Written readiness confirmation or a data-readiness line item in every build proposal",
     ],
-    howItWorksHeading: "How the AI Data Readiness Audit works",
+    howItWorksHeading: "How the AI Data Readiness Sprint works",
     howItWorks: [
       {
-        step: "Connect your environment and run the automated security scan",
+        step: "Inventory the target document corpus",
         description:
-          "We connect read-only to your Microsoft 365 or Google Workspace using secure admin APIs. Our automated tools scan permissions, sharing settings, data exposure, and security configurations — no agents installed, no disruption to your team.",
+          "We identify the approved sources for one department or use case, map ownership, and document the material the proposed AI workflow is expected to use.",
       },
       {
-        step: "Analyze findings and identify AI automation opportunities",
+        step: "Review permissions and organize the sources",
         description:
-          "Our team reviews the scan results, identifies security risks and compliance gaps, and maps the workflows in your environment that are ripe for AI automation. We prioritize by risk severity and potential time savings.",
+          "We review access, restructure the relevant folders or libraries, and improve metadata and naming so the source set is consistent and governable.",
       },
       {
-        step: "Deliver your action plan and roadmap in 7 days",
+        step: "Prepare the corpus for ingestion",
         description:
-          "You receive a comprehensive report with: security risks ranked by severity, compliance gaps, AI automation opportunities ranked by ROI, and a clear implementation roadmap. We walk you through every finding in a live review session.",
+          "We prepare the approved source set for ingestion and confirm in writing whether it is build-ready. Any remaining readiness work is identified before engineering begins.",
       },
     ],
     integrations: [
@@ -1467,30 +1847,29 @@ export const SERVICES: ServiceItem[] = [
       "Microsoft Purview",
     ],
     stats: [
-      { value: 7, suffix: " days", label: "Audit Turnaround Time" },
+      { value: 1, suffix: "", label: "Department or Use Case" },
       { value: 100, suffix: "%", label: "Flat-Fee Pricing" },
-      { value: 15, suffix: "+", label: "Security Checkpoints Assessed" },
+      { value: 5, suffix: "", label: "Readiness Areas Covered" },
     ],
     faq: [
       {
-        question: "How much does the AI Data Readiness Audit cost?",
-        answer:
-          "We offer three flat-fee tiers: Essentials ($2,500) covers core security assessment for teams under 25 users, Professional ($5,000) adds compliance analysis and AI opportunity mapping for teams of 25–100, and Enterprise ($8,500) includes full compliance audit, executive briefing, and implementation roadmap for 100+ users. No hourly billing, no surprise invoices.",
+        question: "How much does the AI Data Readiness Sprint cost?",
+        answer: `The ${getAIPricingOffering("Data Readiness Sprint").name} is ${getAIPricingOffering("Data Readiness Sprint").price} for one department or use case. It includes source inventory, permission review, folder or library restructuring, metadata and naming hygiene, and ingestion preparation.`,
       },
       {
-        question: "What do you need access to for the audit?",
+        question: "What access does ITECS need for the sprint?",
         answer:
-          "Read-only admin access to your Microsoft 365 or Google Workspace environment. We use secure API connections — no agents installed on your machines, no passwords stored, no disruption to your team's work. Access is revoked immediately after the audit completes.",
+          "ITECS uses client-managed, least-privilege credentials for the specific sources in scope. Access and any required changes are agreed before work begins; the sprint does not require unrestricted access to the client's full environment.",
       },
       {
-        question: "Is my business data safe during the audit?",
+        question: "How is our data handled during the sprint?",
         answer:
-          "Yes. We use read-only API access — we can see configurations and metadata but cannot modify, copy, or download your actual files or emails. All findings are encrypted in transit and at rest, and we delete all scan data within 30 days of delivering your report.",
+          "Client work is performed in enterprise-grade, no-training platform configurations, and client data remains in the client's tenant wherever the platform allows. ITECS does not submit client data to consumer-grade or non-contracted AI services. A DPA is available on request.",
       },
       {
-        question: "What if we're not ready for AI after the audit?",
+        question: "What if our sources are not build-ready?",
         answer:
-          "That's valuable information too. The audit gives you a clear, prioritized list of what to fix before adopting AI — and many of those fixes (permission cleanup, MFA enforcement, data organization) improve your security regardless of AI. Most businesses can address the critical items within 30–60 days.",
+          AI_DATA_READINESS_RULE,
       },
     ],
   },
@@ -1555,7 +1934,7 @@ export const TRAINING_SERVICES: ServiceItem[] = [
       {
         step: "Reinforce and scale",
         description:
-          "We build reusable templates, run refresher sessions as Claude evolves, and expand adoption to new teams using prepaid retainer hours with no monthly minimum.",
+          "We build reusable templates, run refresher sessions as Claude evolves, and expand adoption to new teams using prepaid retainer hours with a 12-month expiry.",
       },
     ],
     integrations: [
@@ -1584,7 +1963,7 @@ export const TRAINING_SERVICES: ServiceItem[] = [
       {
         question: "How long does Claude Cowork implementation and training take?",
         answer:
-          "Most Dallas teams are proficient within two weeks. We implement Claude Cowork and connect your tools in the first sessions, then run hands-on workshops on your real projects. Ongoing refreshers use prepaid retainer hours with no monthly minimum.",
+          "Most Dallas teams are proficient within two weeks. We implement Claude Cowork and connect your tools in the first sessions, then run hands-on workshops on your real projects. Ongoing refreshers use prepaid retainer hours with a 12-month expiry.",
       },
       {
         question: "Is our company data safe when we use Claude Cowork?",
@@ -1696,7 +2075,7 @@ export const TRAINING_SERVICES: ServiceItem[] = [
       {
         question: "How long does Codex implementation and training take?",
         answer:
-          "Most teams run governed Codex workflows within two to three weeks. We set up the tooling and guardrails first, then train developers on live tickets. Ongoing tuning uses prepaid retainer hours with no monthly minimum.",
+          "Most teams run governed Codex workflows within two to three weeks. We set up the tooling and guardrails first, then train developers on live tickets. Ongoing tuning uses prepaid retainer hours with a 12-month expiry.",
       },
     ],
   },
@@ -1750,7 +2129,7 @@ export const TRAINING_SERVICES: ServiceItem[] = [
       {
         step: "Drive adoption and measure ROI",
         description:
-          "We track usage, run refresher workshops, and expand Copilot to new workflows. Ongoing support uses prepaid retainer hours with no monthly minimum or expiration.",
+          "We track usage, run refresher workshops, and expand Copilot to new workflows. Ongoing support uses prepaid retainer hours with a 12-month expiry.",
       },
     ],
     integrations: [
@@ -1800,59 +2179,6 @@ export const TRAINING_SERVICES: ServiceItem[] = [
   },
 ];
 
-// ---------------------------------------------------------------------------
-// Data Audit pricing tiers (for PricingTable component)
-// ---------------------------------------------------------------------------
-
-export const DATA_AUDIT_PRICING = [
-  {
-    tier: "Essentials",
-    price: "$2,500",
-    description: "Core security assessment for lean teams",
-    users: "Up to 25 users",
-    features: [
-      "Microsoft 365 or Google Workspace security scan",
-      "Permission and sharing audit",
-      "Sensitive data exposure report",
-      "Top 10 risk findings with remediation steps",
-      "30-minute results walkthrough call",
-    ],
-    highlighted: false,
-  },
-  {
-    tier: "Professional",
-    price: "$5,000",
-    description: "Full audit with compliance and AI opportunity mapping",
-    users: "25–100 users",
-    features: [
-      "Everything in Essentials, plus:",
-      "HIPAA / SOX / FINRA compliance gap analysis",
-      "AI automation opportunity mapping ranked by ROI",
-      "MFA and identity security review",
-      "Detailed 40+ page report with executive summary",
-      "60-minute live review session with your leadership team",
-    ],
-    highlighted: true,
-  },
-  {
-    tier: "Enterprise",
-    price: "$8,500",
-    description: "Comprehensive audit for larger organizations",
-    users: "100+ users",
-    features: [
-      "Everything in Professional, plus:",
-      "CMMC / NIST compliance assessment",
-      "Third-party app and OAuth permission audit",
-      "Data classification and retention analysis",
-      "Custom AI implementation roadmap",
-      "Executive briefing presentation for stakeholders",
-      "90-day follow-up check-in included",
-    ],
-    highlighted: false,
-  },
-] as const;
-
-// ---------------------------------------------------------------------------
 // Insight / Spoke Pages
 // ---------------------------------------------------------------------------
 
@@ -2093,7 +2419,7 @@ export const INSIGHTS: InsightItem[] = [
       "Attribution is the control that ties it together. When every AI action maps to an app, an owner, and a log, an incident becomes something you can investigate rather than guess at. Before any AI-enabled app touches sensitive systems, ITECS runs a [data and AI readiness audit](/data-audit) to map its reach, and pairs it with the staff [AI governance and training](/insights/ai-governance-training-dallas-businesses) that keeps the inventory honest.",
       "**How ITECS Builds and Governs Your AI-Enabled App Inventory**",
       "Most companies cannot answer a simple question: which of our approved apps can now act on their own? ITECS answers it. We inventory every AI-enabled app, browser, plugin, and MCP server, document what each can do and what it can reach, assign owners, require attribution logs, and set the controls that keep agentic software inside its lane — vendor-neutral, across your whole stack.",
-      "We price this the way we price all advisory work — hourly consulting or prepaid retainer hours with tracked usage, no monthly minimum and no expiration, plus a flat fee for a scoped AI-enabled app inventory and governance build. The payoff is simple: you know what your software can do before it does it. When you want to govern the software that acts, [talk to the ITECS team](/contact).",
+      "We price this the way we price all advisory work — hourly consulting or prepaid retainer hours with tracked usage, a 12-month expiry, plus a flat fee for a scoped AI-enabled app inventory and governance build. The payoff is simple: you know what your software can do before it does it. When you want to govern the software that acts, [talk to the ITECS team](/contact).",
     ],
     faq: [
       {
@@ -2119,7 +2445,7 @@ export const INSIGHTS: InsightItem[] = [
       {
         question: "How does ITECS help govern AI-enabled software?",
         answer:
-          "ITECS inventories every AI-enabled app, browser, plugin, and MCP server, documents what each can do and reach, assigns owners, requires attribution logs, and sets controls on risky actions. It is vendor-neutral advisory work priced as hourly consulting or prepaid retainer hours with no monthly minimum.",
+          "ITECS inventories every AI-enabled app, browser, plugin, and MCP server, documents what each can do and reach, assigns owners, requires attribution logs, and sets controls on risky actions. It is vendor-neutral advisory work priced as hourly consulting or prepaid retainer hours with a 12-month expiry.",
       },
     ],
   },
@@ -2168,7 +2494,7 @@ export const INSIGHTS: InsightItem[] = [
       "None of this is about spending less on AI. It is about spending deliberately. Before you connect a workflow to a metered platform, ITECS runs a [data and AI readiness audit](/data-audit) and stands up the cost instrumentation, and we operate the ongoing controls through our [AI DevOps](/ai-devops) practice. The goal is simple: every dollar visible, every workflow capped, and every spend tied to an outcome.",
       "**How ITECS Sets Up AI Spend Visibility and Guardrails**",
       "Most companies discover their AI spend problem on an invoice. ITECS finds it first. We inventory every AI tool and its pricing model, turn on usage analytics and cost APIs, set hard spend limits and approval workflows, route models by task, and put a cost-per-outcome measure in place — vendor-neutral, across whatever platforms you use.",
-      "We price this the way we price all advisory work — hourly consulting or prepaid retainer hours with tracked usage, no monthly minimum and no expiration, plus a flat fee for a scoped spend-governance build. The payoff is an AI budget you can forecast, defend, and tie to value as it grows. When you want to buy and run AI with visibility, [talk to the ITECS team](/contact).",
+      "We price this the way we price all advisory work — hourly consulting or prepaid retainer hours with tracked usage, a 12-month expiry, plus a flat fee for a scoped spend-governance build. The payoff is an AI budget you can forecast, defend, and tie to value as it grows. When you want to buy and run AI with visibility, [talk to the ITECS team](/contact).",
     ],
     faq: [
       {
@@ -2194,7 +2520,7 @@ export const INSIGHTS: InsightItem[] = [
       {
         question: "How does ITECS help control AI spend?",
         answer:
-          "ITECS inventories every AI tool and its pricing, turns on usage analytics and cost APIs, sets hard spend limits and approval workflows, routes models by task, and measures cost per accepted outcome. It is vendor-neutral advisory work priced as hourly consulting or prepaid retainer hours with no monthly minimum.",
+          "ITECS inventories every AI tool and its pricing, turns on usage analytics and cost APIs, sets hard spend limits and approval workflows, routes models by task, and measures cost per accepted outcome. It is vendor-neutral advisory work priced as hourly consulting or prepaid retainer hours with a 12-month expiry.",
       },
     ],
   },
@@ -2245,7 +2571,7 @@ export const INSIGHTS: InsightItem[] = [
       "We scope what the agent can access, keep its actions inside our tenant, and require human approval for the decisions that matter — a technician has to accept a coverage request before anything changes. That is the same discipline we apply to any agent that acts on real systems, and the same care we cover in our guide to [securing an AI agent's admin controls](/insights/chatgpt-work-secure-admin-checklist). A rollout like this usually starts with our [Microsoft Copilot training and implementation](/copilot-training).",
       "**What This Means for Your Business**",
       "The on-call agent is one workflow, but the pattern is general. Any coordination that runs on chat messages and tribal knowledge — approvals, scheduling, dispatch, handoffs — is a candidate for a governed Copilot or Teams agent that does the legwork and keeps a record. The value is not novelty. It is hours returned to your team and a process that no longer depends on someone remembering to chase it.",
-      "This is what ITECS builds for other businesses: custom AI agents that automate a real workflow inside the tools your staff already use, connected to the systems that hold your data, and governed so they are safe to run. We price it the way we price all engineering work — hourly consulting or prepaid retainer hours with tracked usage, no monthly minimum and no expiration, plus a flat fee for a scoped agent build. If you have a workflow that runs on manual coordination, we can turn it into a [workflow automation](/automation) that runs itself. When you are ready, [talk to the ITECS team](/contact).",
+      "This is what ITECS builds for other businesses: custom AI agents that automate a real workflow inside the tools your staff already use, connected to the systems that hold your data, and governed so they are safe to run. We price it the way we price all engineering work — hourly consulting or prepaid retainer hours with tracked usage, a 12-month expiry, plus a flat fee for a scoped agent build. If you have a workflow that runs on manual coordination, we can turn it into a [workflow automation](/automation) that runs itself. When you are ready, [talk to the ITECS team](/contact).",
     ],
     faq: [
       {
@@ -2325,7 +2651,7 @@ export const INSIGHTS: InsightItem[] = [
       "This is general guidance, not a security or recovery guarantee — your architecture, providers, and risk are specific to you. What ITECS brings is the operational discipline: we map what your agents can reach in a [data and AI readiness audit](/data-audit), separate and harden your backups, and stand up the identity and approval controls that keep a single agent from becoming a single point of failure. Read it alongside our [AI DevOps](/ai-devops) resilience work.",
       "**How ITECS Hardens Your Backups and Agent Governance**",
       "ITECS has run backup, disaster recovery, and cybersecurity for Dallas businesses since 2002 — long before AI agents. That foundation is exactly what the AI era needs: we treat an over-privileged agent like any other threat to your data, and we build the recovery architecture that survives it. We separate your backup blast radius, make backups immutable, scope agent identities, gate destructive actions, and test that you can actually restore.",
-      "We price this the way we price all advisory work — hourly consulting or prepaid retainer hours with tracked usage, no monthly minimum and no expiration, plus a flat fee for a scoped backup-hardening and agent-governance project. The payoff is simple: when an agent makes a mistake, you recover in minutes, not months. When you are ready to protect your backups before you deploy agents, [talk to the ITECS team](/contact).",
+      "We price this the way we price all advisory work — hourly consulting or prepaid retainer hours with tracked usage, a 12-month expiry, plus a flat fee for a scoped backup-hardening and agent-governance project. The payoff is simple: when an agent makes a mistake, you recover in minutes, not months. When you are ready to protect your backups before you deploy agents, [talk to the ITECS team](/contact).",
     ],
     faq: [
       {
@@ -2406,7 +2732,7 @@ export const INSIGHTS: InsightItem[] = [
       "This connects directly to how agents are permissioned and secured. The admin controls in our [ChatGPT Work security guide](/insights/chatgpt-work-secure-admin-checklist) and the discipline in our [AI governance guide](/insights/ai-governance-training-dallas-businesses) are the operational layer on top of sound infrastructure. Readiness is all of it together.",
       "**How ITECS Assesses Your Agentic AI Readiness**",
       "Most companies discover their infrastructure gaps in production, when it is expensive to fix. ITECS finds them first. We benchmark your compute elasticity, agent identity and permissions, observability, data access, workload placement, and cost visibility against the real demands of the agents you want to run — then close the gaps before anything goes live.",
-      "We do this vendor-neutrally: hourly consulting or prepaid retainer hours with tracked usage, no monthly minimum and no expiration, plus a flat fee for a scoped readiness assessment and remediation plan. The payoff is agents that reach production without runaway cost, security gaps, or outages. When you are ready to move agents from pilot to production safely, [talk to the ITECS team](/contact).",
+      "We do this vendor-neutrally: hourly consulting or prepaid retainer hours with tracked usage, a 12-month expiry, plus a flat fee for a scoped readiness assessment and remediation plan. The payoff is agents that reach production without runaway cost, security gaps, or outages. When you are ready to move agents from pilot to production safely, [talk to the ITECS team](/contact).",
     ],
     faq: [
       {
@@ -2432,7 +2758,7 @@ export const INSIGHTS: InsightItem[] = [
       {
         question: "How does ITECS assess agentic AI readiness?",
         answer:
-          "ITECS benchmarks your compute elasticity, agent permissions, observability, data access, workload placement, and cost visibility against the agents you plan to run, then closes the gaps before production. It is vendor-neutral advisory work, priced as hourly consulting or prepaid retainer hours with no monthly minimum.",
+          "ITECS benchmarks your compute elasticity, agent permissions, observability, data access, workload placement, and cost visibility against the agents you plan to run, then closes the gaps before production. It is vendor-neutral advisory work, priced as hourly consulting or prepaid retainer hours with a 12-month expiry.",
       },
     ],
   },
@@ -2488,7 +2814,7 @@ export const INSIGHTS: InsightItem[] = [
       "An AI-BOM is also the backbone of accountability. It tells you who owns each component, what it touches, and what changed — the evidence auditors, regulators, and insurers increasingly expect. Before any AI system connects to sensitive data, ITECS runs a [data and AI readiness audit](/data-audit) that produces exactly this record.",
       "**How ITECS Builds Your AI-BOM Before Production**",
       "Most companies cannot inventory their AI because it grew without a map. ITECS builds that map: we discover what is actually running — including the shadow AI nobody registered — document it as an AI-BOM aligned to the CISA and G7 elements, assess each component for risk, and stand up the governance to keep it current as your systems change.",
-      "We price this the way we price all advisory work — hourly consulting or prepaid retainer hours with tracked usage, no monthly minimum and no expiration, plus a flat fee for a scoped AI-BOM and governance build. The payoff is AI you can move to production with confidence, and evidence you can hand to any auditor, regulator, or insurer. When you are ready to inventory your agents before they reach production, [talk to the ITECS team](/contact).",
+      "We price this the way we price all advisory work — hourly consulting or prepaid retainer hours with tracked usage, a 12-month expiry, plus a flat fee for a scoped AI-BOM and governance build. The payoff is AI you can move to production with confidence, and evidence you can hand to any auditor, regulator, or insurer. When you are ready to inventory your agents before they reach production, [talk to the ITECS team](/contact).",
     ],
     faq: [
       {
@@ -2575,7 +2901,7 @@ export const INSIGHTS: InsightItem[] = [
       "**This article is general information, not insurance or legal advice.** Coverage depends entirely on your specific policy wording, carrier, and jurisdiction. ITECS is not an insurance broker or advisor — confirm your coverage with a licensed broker and qualified counsel. What ITECS provides is the technical evidence they will ask you for.",
       "**How ITECS Helps You Get Underwriting-Ready**",
       "Most companies cannot answer an underwriter's questions because nobody has mapped their AI. ITECS closes that gap: we inventory every AI system and what it can reach, scope agent permissions to the minimum, put human approval gates on sensitive actions, and turn on the audit logging that proves what happened. A [data and AI readiness audit](/data-audit) produces the documentation record.",
-      "We price this the way we price all advisory work — hourly consulting or prepaid retainer hours with tracked usage, no monthly minimum and no expiration, plus a flat fee for a scoped governance build. The payoff is twofold: fewer incidents, and a defensible file when your broker or carrier asks what your agents can do. If you deploy agents into the EU, pair this with our [EU AI Act transparency checklist](/insights/eu-ai-act-transparency-rules-checklist). When you want AI you can actually insure, [talk to the ITECS team](/contact).",
+      "We price this the way we price all advisory work — hourly consulting or prepaid retainer hours with tracked usage, a 12-month expiry, plus a flat fee for a scoped governance build. The payoff is twofold: fewer incidents, and a defensible file when your broker or carrier asks what your agents can do. If you deploy agents into the EU, pair this with our [EU AI Act transparency checklist](/insights/eu-ai-act-transparency-rules-checklist). When you want AI you can actually insure, [talk to the ITECS team](/contact).",
     ],
     faq: [
       {
@@ -2660,7 +2986,7 @@ export const INSIGHTS: InsightItem[] = [
       "Before any agent touches production, ITECS runs a [data and AI readiness audit](/data-audit) to classify what it may reach, and aligns the deployment to your governance policy — the same approach in our [AI governance and training guide](/insights/ai-governance-training-dallas-businesses).",
       "**How ITECS Helps You Deploy ChatGPT Work Safely**",
       "This is guidance, not a security guarantee — your configuration is yours to own. What ITECS provides is the operational discipline: we set the admin controls and RBAC, scope connectors, define approval points, lock down publishing, turn on auditing, and run the phased pilot so value is proven before access is widened.",
-      "We price this the way we price all advisory work — hourly consulting or prepaid retainer hours with tracked usage, no monthly minimum and no expiration, plus a flat fee for a scoped ChatGPT Work rollout. The return is an agent that produces real work without becoming a liability. When you are ready to deploy ChatGPT Work safely, [talk to the ITECS team](/contact).",
+      "We price this the way we price all advisory work — hourly consulting or prepaid retainer hours with tracked usage, a 12-month expiry, plus a flat fee for a scoped ChatGPT Work rollout. The return is an agent that produces real work without becoming a liability. When you are ready to deploy ChatGPT Work safely, [talk to the ITECS team](/contact).",
     ],
     faq: [
       {
@@ -2744,7 +3070,7 @@ export const INSIGHTS: InsightItem[] = [
       "This article is general information, not legal advice — confirm your specific obligations with qualified counsel. What ITECS provides is the operational side: the inventory, the governance, the [custom AI agents](/custom-ai-agents) configured to disclose and mark by default, and the [AI consulting](/consulting) to keep it defensible.",
       "**How ITECS Helps You Get Ready**",
       "Most businesses discover they have more AI in production than they realized, and no record of how it is labeled. ITECS closes that gap fast: we inventory your AI-generated content, map each use to its obligation, implement disclosure and marking, and stand up the governance to keep it current.",
-      "We price this the way we price all advisory work — hourly consulting or prepaid retainer hours with tracked usage, no monthly minimum and no expiration, plus a flat fee for a scoped compliance-readiness project. The value is avoided fines, provable diligence, and AI you can keep using in Europe with confidence. When August 2 is on your calendar, [talk to the ITECS team](/contact).",
+      "We price this the way we price all advisory work — hourly consulting or prepaid retainer hours with tracked usage, a 12-month expiry, plus a flat fee for a scoped compliance-readiness project. The value is avoided fines, provable diligence, and AI you can keep using in Europe with confidence. When August 2 is on your calendar, [talk to the ITECS team](/contact).",
     ],
     faq: [
       {
@@ -2826,7 +3152,7 @@ export const INSIGHTS: InsightItem[] = [
       "One control matters most: secrets. Neither agent should ever hold your API keys in its context. We wire both to pull credentials at runtime from a vault, gated by biometric approval, in the pattern described in our guide to [keeping secrets out of the LLM with 1Password](/insights/secure-ai-agents-1password-secrets). Before any agent touches production, we run a [data and AI readiness audit](/data-audit) and align the deployment to enterprise policy.",
       "**Cost and ROI at Enterprise Scale**",
       "Per-token rates are nearly identical, so ROI is decided by governance, not vendor. An ungoverned agent retries endlessly, burns tokens, and ships code nobody reviewed. A governed one clears real work at a predictable cost. The difference is the architecture around the agent, not the badge on it. For a fuller view of Anthropic's plan tiers, see our [Claude plan comparison](/insights/claude-plan-comparison).",
-      "ITECS prices this vendor-neutrally: hourly consulting or prepaid retainer hours with tracked usage, no monthly minimum and no expiration, plus a flat fee for a scoped agent selection and rollout. We help you pilot both, measure real throughput and cost, and standardize on the right mix — with the [AI consulting and governance](/consulting) to make it stick. When you are choosing between Codex and Claude Code, [talk to the ITECS team](/contact).",
+      "ITECS prices this vendor-neutrally: hourly consulting or prepaid retainer hours with tracked usage, a 12-month expiry, plus a flat fee for a scoped agent selection and rollout. We help you pilot both, measure real throughput and cost, and standardize on the right mix — with the [AI consulting and governance](/consulting) to make it stick. When you are choosing between Codex and Claude Code, [talk to the ITECS team](/contact).",
     ],
     faq: [
       {
@@ -2914,7 +3240,7 @@ export const INSIGHTS: InsightItem[] = [
       "None of this is theoretical for us. ITECS has run a Dallas cybersecurity practice since 2002, and we have watched ungoverned AI tooling turn into incidents — the [OpenClaw agent security crisis](/insights/openclaw-security-crisis) is a recent example. Secrets management is where agent security either holds or fails, and it is the first thing we lock down.",
       "**What This Costs and Why It Pays Off**",
       "The tooling is inexpensive. 1Password is a per-seat subscription your team may already have, and the CLI is included. The value is in the architecture — configuring secret references, biometric approval, write-back, and access controls so the whole system is secure by default rather than secure only if everyone remembers to be careful.",
-      "ITECS prices this the way we price all engineering work: hourly consulting or prepaid retainer hours with tracked usage, no monthly minimum and no expiration, plus a flat fee for a scoped secrets-and-agent build. The return is avoided breaches, provable compliance, and developers who move fast without leaking keys. When you want AI agents that are powerful and governed, [talk to the ITECS team](/contact).",
+      "ITECS prices this the way we price all engineering work: hourly consulting or prepaid retainer hours with tracked usage, a 12-month expiry, plus a flat fee for a scoped secrets-and-agent build. The return is avoided breaches, provable compliance, and developers who move fast without leaking keys. When you want AI agents that are powerful and governed, [talk to the ITECS team](/contact).",
     ],
     faq: [
       {
@@ -3001,7 +3327,7 @@ export const INSIGHTS: InsightItem[] = [
       "This is not new territory for us. ITECS has run a Dallas cybersecurity practice since 2002. We have seen how fast ungoverned tools become incidents — our breakdown of the [OpenClaw AI agent security crisis](/insights/openclaw-security-crisis) shows exactly how. The same discipline that protects your network now protects your AI.",
       "**The ROI: Training Pays for Itself**",
       "Leaders hesitate on AI training because the cost is visible and the return feels vague. It is not. Untrained staff use a fraction of what these tools can do — a better search box. Trained staff delegate real work, automate the repetitive, and reclaim hours every week. The gap between those two is the ROI.",
-      "ITECS prices this the way we price all advisory work: hourly consulting or prepaid retainer hours with tracked usage, no monthly minimum and no expiration, plus a flat fee for scoped policy and training programs. The math is simple. When a governed rollout saves each employee a few hours a week and removes a data-breach liability, it pays for itself fast. When you are ready to make AI a governed advantage instead of a hidden risk, [talk to the ITECS team](/contact).",
+      "ITECS prices this the way we price all advisory work: hourly consulting or prepaid retainer hours with tracked usage, a 12-month expiry, plus a flat fee for scoped policy and training programs. The math is simple. When a governed rollout saves each employee a few hours a week and removes a data-breach liability, it pays for itself fast. When you are ready to make AI a governed advantage instead of a hidden risk, [talk to the ITECS team](/contact).",
     ],
     faq: [
       {
@@ -3088,7 +3414,7 @@ export const INSIGHTS: InsightItem[] = [
       "For businesses, the safer path is structural. Keep frontier-AI use on Enterprise or API tiers with managed identity, scope which data each user and agent can reach, and classify sensitive information before it touches any model. ITECS runs a [data and AI readiness audit](/data-audit) to do exactly that, and applies the same discipline behind its [custom AI agents](/custom-ai-agents). The OpenClaw crisis showed how fast ungoverned AI access turns into exposure — our [breakdown of that incident](/insights/openclaw-security-crisis) is a useful companion read.",
       "**How ITECS Helps You Deploy Frontier AI Securely**",
       "The Fable 5 episode is a preview, not an exception. Frontier models will keep arriving with shifting access rules, security reviews, and identity requirements attached. Businesses that treat AI as a governed system — not a free-for-all of personal accounts — will adapt without disruption.",
-      "ITECS prices this work transparently: hourly consulting or prepaid retainer hours with tracked usage, no minimum monthly commitment and no expiration, plus a flat fee for scoped builds. We help you choose the right plan and tier, configure identity and access controls, and keep frontier AI productive and compliant as the rules change. When you want frontier AI deployed with real identity governance, [talk to the ITECS team](/contact).",
+      "ITECS prices this work transparently: hourly consulting or prepaid retainer hours with tracked usage, a 12-month expiry, plus a flat fee for scoped builds. We help you choose the right plan and tier, configure identity and access controls, and keep frontier AI productive and compliant as the rules change. When you want frontier AI deployed with real identity governance, [talk to the ITECS team](/contact).",
     ],
     faq: [
       {
@@ -3179,7 +3505,7 @@ export const INSIGHTS: InsightItem[] = [
       "The controls that matter most are the ones you operate. Scope which tools and data each seat can reach, require approval on actions that touch customer records, and classify your data before connecting it. ITECS runs a [data and AI readiness audit](/data-audit) to do exactly that, and applies the same governance behind its [custom AI agents](/custom-ai-agents) — the discipline of a cybersecurity practice ITECS has run since 2002. For teams worried about exposure, our guide to [keeping business data safe in AI tools](/insights/secure-business-data-chatgpt) is a useful starting point.",
       "**What It Costs to Roll Out Claude With ITECS**",
       "The license is only part of the cost. The rest is setup: choosing seats, configuring single sign-on and spend caps, connecting tools safely, and training people to use Claude well. Done wrong, companies overbuy Enterprise seats nobody needs or underbuy Team seats that throttle their best people.",
-      "ITECS prices this work transparently — hourly consulting or prepaid retainer hours with tracked usage, no minimum monthly commitment and no expiration, plus a flat fee for scoped rollouts. The ROI is concrete: right-sized seats, governed usage, and a team that adopts the tool instead of fighting its limits. When you are ready to choose and deploy the right Claude plan, [talk to the ITECS team](/contact).",
+      "ITECS prices this work transparently — hourly consulting or prepaid retainer hours with tracked usage, a 12-month expiry, plus a flat fee for scoped rollouts. The ROI is concrete: right-sized seats, governed usage, and a team that adopts the tool instead of fighting its limits. When you are ready to choose and deploy the right Claude plan, [talk to the ITECS team](/contact).",
     ],
     faq: [
       {
@@ -3262,7 +3588,7 @@ export const INSIGHTS: InsightItem[] = [
       "This is the same discipline behind ITECS' [custom AI agents](/custom-ai-agents) for clients — private environments, no third-party model training on your data, and the backing of a cybersecurity practice ITECS has run since 2002. For teams adopting these tools, [structured AI training](/training) makes sure people actually use the approval gates instead of working around them.",
       "**What It Costs and the ROI of Shared Agents**",
       "The economics are straightforward. A self-hosted sync server runs on hardware most firms already own, plus the open-source Seafile software, which carries no per-seat license. The real return is operational: one engineer's best agent becomes every engineer's tool overnight, and documentation that used to be skipped gets done.",
-      "ITECS builds these systems on its standard model — hourly consulting or prepaid retainer hours with tracked usage, no minimum monthly commitment and no expiration, plus a flat fee for scoped builds like a private agent platform or a custom [workflow automation](/automation). The ROI shows up as hours returned to billable work and as risk removed, because client data never leaves your control. When you want the same setup for your team, [talk to the ITECS team](/contact).",
+      "ITECS builds these systems on its standard model — hourly consulting or prepaid retainer hours with tracked usage, a 12-month expiry, plus a flat fee for scoped builds like a private agent platform or a custom [workflow automation](/automation). The ROI shows up as hours returned to billable work and as risk removed, because client data never leaves your control. When you want the same setup for your team, [talk to the ITECS team](/contact).",
     ],
     faq: [
       {
@@ -3344,7 +3670,7 @@ export const INSIGHTS: InsightItem[] = [
       "For any business, the deeper security question is not the model's guardrails but your own. A more capable model with broad tool and data access raises the stakes of a misconfiguration. The controls that matter are the ones you operate: scoped credentials per workflow, sandboxed agent runtimes, audit logs of every action, and human approval gates on anything that moves money or touches customer data. ITECS deploys AI against the [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework), the U.S. standard most enterprise auditors now use as the backbone for AI accountability. Anthropic's own [usage policies and model documentation](https://www.anthropic.com/legal/aup) describe the safeguard boundaries in detail. For businesses whose data is not yet ready to support this, a [data and AI readiness audit](/data-audit) comes before any high-capability model goes live, and [team AI training](/training) follows so people actually use the approval gates as designed.",
       "**Pricing And The ROI Of Using Fable 5 Deliberately**",
       "Fable 5's API pricing is $10 per million input tokens and $50 per million output tokens — about double Claude Opus 4.8, and Anthropic positions it as the premium tier. On subscriptions, it is bundled into Pro, Max, Team, and Enterprise through June 22, 2026, then shifts to usage-credit billing — our [Claude plan comparison](/insights/claude-plan-comparison) breaks down what each tier costs and which one fits your team. The cost lever most businesses miss is not the per-token rate; it is routing. Sending every prompt to the most expensive model, with extended thinking always on, is where bills balloon.",
-      "ITECS prices its advisory and setup work transparently — hourly consulting or prepaid retainer hours with tracked usage, no minimum monthly commitment, and no expiration, plus a flat fee for scoped builds such as a [custom AI agent that routes work across models](/custom-ai-agents). The ROI of doing this deliberately is concrete: the right model on the right task, hard spending caps, and governed agent sessions typically cut a team's AI spend while increasing the work it produces. The Dallas software shop above kept Fable 5 for its hardest tickets, moved routine work to a cheaper model, capped its credits, and turned a runaway cost into a predictable line item. When you are ready to put Anthropic's newest model to work without the bill surprises, [talk to the ITECS team](/contact).",
+      "ITECS prices its advisory and setup work transparently — hourly consulting or prepaid retainer hours with tracked usage, a 12-month expiry, plus a flat fee for scoped builds such as a [custom AI agent that routes work across models](/custom-ai-agents). The ROI of doing this deliberately is concrete: the right model on the right task, hard spending caps, and governed agent sessions typically cut a team's AI spend while increasing the work it produces. The Dallas software shop above kept Fable 5 for its hardest tickets, moved routine work to a cheaper model, capped its credits, and turned a runaway cost into a predictable line item. When you are ready to put Anthropic's newest model to work without the bill surprises, [talk to the ITECS team](/contact).",
     ],
     faq: [
       {
@@ -3435,7 +3761,7 @@ export const INSIGHTS: InsightItem[] = [
       "First, identity-bound credentials per workflow, never the operator's personal logins. Second, sandboxed runtime — file access, network access, and tool access scoped per agent purpose. Third, an allowlisted skill or plugin set with signed publishers and a documented review process. Fourth, an immutable audit log capturing every read, every write, every credential use, and every tool call. Fifth, an approval gate for any action that moves money, files with a regulator, or posts to a customer-facing channel. Sixth, a quarterly governance review of what the agent did and what it touched.",
       "ITECS deploys every AI agent against the [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework) — the standard most enterprise auditors and U.S. federal agencies now use as the policy backbone for AI accountability. The controls above map directly to its Govern, Map, Measure, and Manage functions. For businesses whose data is not yet ready to support this discipline, a [data and AI readiness audit](/data-audit) comes before any agent goes live, and team-level [AI training](/training) follows so that human reviewers actually use the approval gates the way they were designed.",
       "**Pricing And The ROI Of Doing This Right**",
-      "ITECS prices AI security and consulting transparently — hourly engineering and consulting or prepaid retainer hours with tracked usage, no minimum monthly commitment, and no expiration. Scoped builds, including a governed [custom AI agent deployment](/custom-ai-agents), carry a flat fee. The entry point for most leadership teams is a fixed-fee [AI consulting and readiness engagement](/consulting) that audits current AI usage, prioritizes use cases by payback, and produces a board-ready security and governance roadmap.",
+      "ITECS prices AI security and consulting transparently — hourly engineering and consulting or prepaid retainer hours with tracked usage, a 12-month expiry. Scoped builds, including a governed [custom AI agent deployment](/custom-ai-agents), carry a flat fee. The entry point for most leadership teams is a fixed-fee [AI consulting and readiness engagement](/consulting) that audits current AI usage, prioritizes use cases by payback, and produces a board-ready security and governance roadmap.",
       "The ROI of governance is asymmetric. A single avoided incident — one Atomic Stealer infection on a controller's workstation, one credential leak from a shared agent, one customer-data exposure from an unsanctioned plugin — pays for years of disciplined deployment. The 95-person logistics company above kept the productivity gains of its AI agent program and reduced its incident exposure to something the leadership team could actually defend. That is what a managed approach delivers. When you are ready to plan an agent deployment your auditor, your insurer, and your board can sign off on, [talk to the ITECS team](/contact).",
     ],
     faq: [
@@ -3539,7 +3865,7 @@ export const INSIGHTS: InsightItem[] = [
       "**Owner sign-off for money and customer-facing posts.** Configure Guardrails so any action that pays a vendor, files with a regulator, sends a contract, or posts publicly pauses for approval. Approval friction is the feature, not the bug — it is the difference between an agent that helps and an agent that publishes a bad invoice run on a Saturday.",
       "**Govern Claude like an employee.** ITECS deploys Cowork against the controls in the [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework) — defined purpose per Project, identity-bound credentials, an immutable audit log of every action, a documented human approval path, and a quarterly review of what the agent did and what it touched. The same discipline ITECS has applied to managed IT for twenty-four years, applied now to an AI workspace. For owners who want to harden the data layer before automating, a [data and AI readiness audit](/data-audit) comes first.",
       "**Pricing And The ROI Of Cowork For A Growing Team**",
-      "Claude for Small Business is part of Claude Cowork's standard subscription tier — pricing sits on Anthropic's plans page and tracks per user; our [Claude plan comparison](/insights/claude-plan-comparison) shows which tier fits a small team. There is no separate license fee for the Small Business toggle. ITECS prices the setup and operating layer transparently: hourly consulting or prepaid retainer hours for configuration and tuning, no minimum monthly commitment, no expiration, and a flat fee for scoped builds such as a [custom AI agent extending one of the ten workflows](/custom-ai-agents).",
+      "Claude for Small Business is part of Claude Cowork's standard subscription tier — pricing sits on Anthropic's plans page and tracks per user; our [Claude plan comparison](/insights/claude-plan-comparison) shows which tier fits a small team. There is no separate license fee for the Small Business toggle. ITECS prices the setup and operating layer transparently: hourly consulting or prepaid retainer hours for configuration and tuning, a 12-month expiry, and a flat fee for scoped builds such as a [custom AI agent extending one of the ten workflows](/custom-ai-agents).",
       "Many growing teams recover the setup cost inside the first month. The Dallas cleaning company above reclaimed roughly three hours a week from the owner — at a fully loaded owner's hourly cost, that paid back the configuration retainer in under three weeks and now compounds across every additional workflow turned on. Owners who pair Cowork with [AI training for the rest of the team](/training) get the second multiplier — the work the owner used to do alone now runs as a managed system the whole company can lean on. Teams that want a designated internal expert can develop one through the [AI Champion Program](/services/ai-champion-program). When you are ready to walk through the setup with someone who has done it before, [talk to the ITECS team](/contact).",
     ],
     faq: [
@@ -3627,7 +3953,7 @@ export const INSIGHTS: InsightItem[] = [
       "A savings number a board will trust requires governance behind it. Unmeasured, ungoverned AI produces anecdotes. Instrumented, governed AI produces auditable returns. ITECS deploys every AI program against the [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework) — the standard most enterprise auditors and the U.S. government now use as the backbone for AI governance and accountability.",
       "In practice, that means defined ownership for every deployment, logging that captures what the AI did and what it saved, access controls that keep sensitive data out of consumer tools, and a quarterly review tying realized savings back to the original business case. This is the same operational discipline ITECS has applied to managed IT for 24 years — applied now to AI investment. For businesses whose data is not yet ready to support clean measurement, a [data audit](/data-audit) comes before any ROI claim.",
       "**Pricing And The ROI Of Getting Help**",
-      "ITECS prices AI strategy and consulting transparently: hourly consulting or prepaid retainer hours with tracked usage, no minimum monthly commitment, and no expiration. Scoped builds — [custom AI agents](/custom-ai-agents), automations, integrations — carry a flat fee. The entry point for most leadership teams is a fixed-fee [AI readiness assessment](/consulting) that baselines current costs, ranks use cases by payback, and produces a board-ready roadmap.",
+      "ITECS prices AI strategy and consulting transparently: hourly consulting or prepaid retainer hours with tracked usage, a 12-month expiry. Scoped builds — [custom AI agents](/custom-ai-agents), automations, integrations — carry a flat fee. The entry point for most leadership teams is a fixed-fee [AI readiness assessment](/consulting) that baselines current costs, ranks use cases by payback, and produces a board-ready roadmap.",
       "The ROI of the assessment itself is usually the cleanest in the program. It prevents the two most expensive mistakes — funding the wrong use case and skipping the baseline that lets you prove the right one. For most mid-market companies, one corrected investment decision pays for the engagement many times over. When you are ready to measure what AI is actually returning, [talk to the ITECS team](/contact) or start with a readiness assessment.",
     ],
     faq: [
@@ -3664,7 +3990,7 @@ export const INSIGHTS: InsightItem[] = [
       {
         question: "How can ITECS help measure and scale AI ROI?",
         answer:
-          "ITECS starts with a fixed-fee AI readiness assessment that baselines current costs, ranks use cases by payback, and produces a board-ready roadmap. Engagements run on hourly consulting or prepaid retainer hours with transparent tracking, no minimum monthly usage, and no expiration.",
+          "ITECS starts with a fixed-fee AI readiness assessment that baselines current costs, ranks use cases by payback, and produces a board-ready roadmap. Engagements run on hourly consulting or prepaid retainer hours with transparent tracking, a 12-month expiry.",
       },
     ],
   },
@@ -3714,7 +4040,7 @@ export const INSIGHTS: InsightItem[] = [
       "Concretely, that means every agent has a documented purpose, a defined input and output schema, an identity-bound credential model, an immutable audit log, a model version pin, a human approval path for high-impact actions, a rollback procedure, and a quarterly governance review. Sensitive data flows through Azure OpenAI on a private endpoint or through an equivalent governed runtime — never through a consumer AI tool. For regulated industries, ITECS configures DLP policies that block PHI, PII, payment data, and privileged legal content from leaving the agent's permitted scope.",
       "The right way to think about agentic AI security is the way a 24-year-old Dallas managed IT firm thinks about user account management — least privilege, full logging, regular review, and clear ownership of every credential. Agents are simply another class of identity that needs governance.",
       "**Pricing And ROI For Enterprise Agentic AI Workflows**",
-      "ITECS prices agentic AI workflow builds the same way it has priced complex IT projects for two decades: scoped flat fees for discovery, prototype, and production build phases, a separate managed operations line after launch, and a separate pass-through for underlying model and infrastructure cost. Agent Discovery and Technical Specification runs $4,500 to $7,500 and is credited toward the build when the client proceeds. Proof of Concept / Prototype work runs $8,000 to $18,000, Single-Workflow Production Agents run $18,000 to $35,000 per agent, Integrated / Financial Workpaper Agents run $35,000 to $75,000 per agent, and Multi-Agent System / AI-Augmented Process Redesign engagements run $55,000 to $120,000. Production-agent operations are billed separately under Managed AI - Agent Operations at $2,500 to $6,500 per month, depending on volume, data-refresh cadence, review SLA, and complexity. The full fee schedule across every service line is published on our [pricing page](/pricing).",
+      `ITECS prices agentic AI workflow builds in governed phases, with discovery credited toward the build and production operations separate after launch. ${getAIPricingOffering("Agent Discovery & Technical Specification").name} is ${getAIPricingOffering("Agent Discovery & Technical Specification").price}; ${getAIPricingOffering("Proof of Concept / Prototype").name} is ${getAIPricingOffering("Proof of Concept / Prototype").price}; ${getAIPricingOffering("Single-Workflow Production Agent").name} is ${getAIPricingOffering("Single-Workflow Production Agent").price}; ${getAIPricingOffering("Integrated / Line-of-Business Agent").name} is ${getAIPricingOffering("Integrated / Line-of-Business Agent").price}; and ${getAIPricingOffering("Multi-Agent System / AI-Augmented Process Redesign").name} is ${getAIPricingOffering("Multi-Agent System / AI-Augmented Process Redesign").price}. Agent Operations is ${MANAGED_AI_AGENT_OPERATIONS.prices[0].price} for one production agent, ${MANAGED_AI_AGENT_OPERATIONS.prices[1].price} for two, and ${MANAGED_AI_AGENT_OPERATIONS.prices[2].price} for three; larger or more demanding footprints are custom-quoted. The full fee schedule is published on our [pricing page](/pricing).`,
       "ROI math is more direct than most AI initiatives. The finance workflow above eliminated roughly 1,400 hours of manual processing in its first year — at a fully loaded cost of $65,000 — against a build cost in the same range. The agent paid for itself in eleven months and now compounds: every new supplier, region, or business unit added to the workflow extends the same payback ratio. Procurement and HR workflows tend to deliver softer ROI through risk reduction (avoided lien filings, reduced regulatory exposure, faster offer-to-accept cycles) but generally clear payback inside 18 months. Our [CEO guide to AI ROI](/insights/ceo-guide-ai-roi) works through this payback math function by function.",
       "What governs the math is whether your business already carries the data, identity, and integration discipline to absorb an agent. Companies that do not should start with a structured [data and AI readiness audit](/data-audit) before scoping any agentic build. Companies that do can move directly to a [custom AI agent build](/custom-ai-agents), pair it with [workflow automation](/automation) for the surrounding routing work, and back it with [employee AI training](/training) so the workflow's human reviewers operate the agent confidently from day one.",
     ],
@@ -3752,7 +4078,7 @@ export const INSIGHTS: InsightItem[] = [
       {
         question: "What does an enterprise agentic AI workflow cost?",
         answer:
-          "ITECS scopes agentic AI work in phases: Agent Discovery and Technical Specification is $4,500 to $7,500, Proof of Concept / Prototype work is $8,000 to $18,000, Single-Workflow Production Agents are $18,000 to $35,000 per agent, Integrated / Financial Workpaper Agents are $35,000 to $75,000 per agent, and Multi-Agent System / AI-Augmented Process Redesign engagements are $55,000 to $120,000. Production-agent operations run $2,500 to $6,500 per month under Managed AI - Agent Operations.",
+          `ITECS scopes agentic AI work in phases: ${getAIPricingOffering("Agent Discovery & Technical Specification").name} is ${getAIPricingOffering("Agent Discovery & Technical Specification").price}, ${getAIPricingOffering("Proof of Concept / Prototype").name} is ${getAIPricingOffering("Proof of Concept / Prototype").price}, ${getAIPricingOffering("Single-Workflow Production Agent").name} is ${getAIPricingOffering("Single-Workflow Production Agent").price}, ${getAIPricingOffering("Integrated / Line-of-Business Agent").name} is ${getAIPricingOffering("Integrated / Line-of-Business Agent").price}, and ${getAIPricingOffering("Multi-Agent System / AI-Augmented Process Redesign").name} is ${getAIPricingOffering("Multi-Agent System / AI-Augmented Process Redesign").price}. Production Agent Operations follows the discrete one-, two-, and three-agent ladder published on the pricing page.`,
       },
     ],
   },
@@ -3804,8 +4130,7 @@ export const INSIGHTS: InsightItem[] = [
       },
       {
         question: "How much does AI cost for a growing business?",
-        answer:
-          "Off-the-shelf AI tools can start with existing subscriptions or per-user plans. ITECS consulting can be hourly or handled through prepaid retainer hours with no minimum monthly usage or expiration date. Scoped custom builds such as AI agents, automations, and secure integrations are quoted after requirements are clear.",
+        answer: `ITECS publishes multiple entry points: a ${getAIPricingOffering("Guided Build Session").name} at ${getAIPricingOffering("Guided Build Session").price}, a leadership-level ${getAIPricingOffering("AI Readiness Assessment").name} at ${getAIPricingOffering("AI Readiness Assessment").price}, and the ${AI_PREPAID_OPTIONS[0].name} at ${AI_PREPAID_OPTIONS[0].price} for a ${AI_PREPAID_OPTIONS[0].unit}. Custom production work starts with credited discovery and is scoped before build.`,
       },
       {
         question: "Do I need technical staff to implement AI in my business?",
@@ -3964,8 +4289,7 @@ export const INSIGHTS: InsightItem[] = [
       },
       {
         question: "How much does automated lead follow-up cost to set up?",
-        answer:
-          "A standard lead follow-up automation with Zapier, CRM integration, email, and SMS costs $2,500–$5,000 to build. Monthly tool costs run $50–$200 depending on lead volume. Most businesses recover setup costs within the first month through improved conversion rates.",
+        answer: `A client-led ${getAIPricingOffering("Guided Build Sprint (4 sessions)").name} is ${getAIPricingOffering("Guided Build Sprint (4 sessions)").price}; an ITECS-delivered ${getAIPricingOffering("Local Agent Sprint").name} is ${getAIPricingOffering("Local Agent Sprint").price}. CRM integrations that require an engineered production workflow start with credited discovery and move through the published custom-build ladder.`,
       },
     ],
   },
@@ -4154,7 +4478,7 @@ export const INSIGHTS: InsightItem[] = [
       {
         question: "How can ITECS help my Dallas business adopt MCP?",
         answer:
-          "ITECS audits your current AI usage, designs a governed MCP architecture, deploys a managed gateway, and trains your team on safe AI workflows. Engagements run on hourly consulting or prepaid retainer hours with transparent tracking and no minimum monthly usage.",
+          "ITECS audits your current AI usage, designs a governed MCP architecture, deploys a managed gateway, and trains your team on safe AI workflows. Engagements run on hourly consulting or prepaid retainer hours with transparent tracking and a 12-month expiry.",
       },
     ],
   },
@@ -4199,8 +4523,7 @@ export const STATS = [
 export const FAQ_ITEMS = [
   {
     question: "How much does AI cost for a growing organization?",
-    answer:
-      "AI adoption does not need to start as a large fixed project. ITECS can consult hourly, but most clients prefer a prepaid retainer block of time they can use at their discretion with no minimum monthly usage and no expiration date. Every hour consumed is documented clearly. Flat project pricing is used only when the scope is defined, such as building an AI agent, automation, or secure platform integration.",
+    answer: `AI adoption does not need to start as a large fixed project. A ${getAIPricingOffering("Guided Build Session").name} is ${getAIPricingOffering("Guided Build Session").price}; the ${getAIPricingOffering("AI Readiness Assessment").name} is ${getAIPricingOffering("AI Readiness Assessment").price}; and the ${AI_PREPAID_OPTIONS[0].name} is ${AI_PREPAID_OPTIONS[0].price} for a ${AI_PREPAID_OPTIONS[0].unit}. Custom production work starts with credited discovery.`,
   },
   {
     question: "What makes ITECS different from other AI companies in Dallas?",
@@ -5041,7 +5364,7 @@ export const HOMEPAGE_SERVICE_BLURBS = [
     slug: "data-audit",
     blurb:
       "Before you deploy AI, know where your data stands. Our ",
-    anchorText: "AI data readiness audit maps security gaps and automation opportunities in 7 days",
+    anchorText: "AI Data Readiness Sprint prepares one department or use case for a reliable build",
     anchorHref: "/data-audit",
     afterAnchor: ".",
   },

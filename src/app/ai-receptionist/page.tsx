@@ -4,7 +4,11 @@ import {
   generateFAQSchema,
   generateHowToSchema,
 } from "@/lib/seo";
-import { SERVICES } from "@/lib/constants";
+import {
+  getAIPricingOffering,
+  MANAGED_AI_AGENT_OPERATIONS,
+  SERVICES,
+} from "@/lib/constants";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { ServiceHero } from "@/components/sections/ServiceHero";
@@ -22,6 +26,13 @@ import { FAQ } from "@/components/sections/FAQ";
 import { CTASection } from "@/components/sections/CTASection";
 
 const service = SERVICES.find((s) => s.slug === "ai-receptionist")!;
+const agentDiscovery = getAIPricingOffering(
+  "Agent Discovery & Technical Specification",
+);
+const singleWorkflowAgent = getAIPricingOffering(
+  "Single-Workflow Production Agent",
+);
+const agentOperationsOne = MANAGED_AI_AGENT_OPERATIONS.prices[0];
 
 export const metadata = generatePageMetadata({
   title: "AI Receptionist for Growing Teams",
@@ -113,8 +124,8 @@ export default function AIReceptionistPage() {
         comparison={[
           {
             label: "Monthly cost",
-            traditional: "$2,500–$4,000/mo",
-            ai: "$300–$800/mo",
+            traditional: "Salary, coverage, and answering-service costs vary",
+            ai: "Scoped Agent Operations after launch",
           },
           {
             label: "Availability",
@@ -144,10 +155,10 @@ export default function AIReceptionistPage() {
         ]}
         roiStatement="Most businesses recover setup costs within 60 days — then save $2,000–$3,500 every month after."
         pricingNotes={[
-          "Flat-fee deployment: $3,000–$6,000 depending on call complexity and integrations",
-          "Monthly managed service includes monitoring, transcript review, and weekly optimization",
-          "No per-minute charges — flat monthly rate regardless of call volume",
-          "30-day pilot available: test with real calls before full commitment",
+          `${agentDiscovery.name}: ${agentDiscovery.price}, credited toward the build when the client proceeds`,
+          `${singleWorkflowAgent.name}: ${singleWorkflowAgent.price} after discovery confirms the production scope`,
+          `${agentOperationsOne.agents}: ${agentOperationsOne.price} for monitoring, evaluations, drift checks, data refresh, exception triage, and tuning`,
+          "Production operation after launch is never absorbed into the build fee",
         ]}
       />
 

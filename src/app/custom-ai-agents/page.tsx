@@ -4,7 +4,11 @@ import {
   generateFAQSchema,
   generateHowToSchema,
 } from "@/lib/seo";
-import { SERVICES } from "@/lib/constants";
+import {
+  getAIPricingOffering,
+  MANAGED_AI_AGENT_OPERATIONS,
+  SERVICES,
+} from "@/lib/constants";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { ServiceHero } from "@/components/sections/ServiceHero";
@@ -22,6 +26,14 @@ import { FAQ } from "@/components/sections/FAQ";
 import { CTASection } from "@/components/sections/CTASection";
 
 const service = SERVICES.find((s) => s.slug === "custom-ai-agents")!;
+const agentDiscovery = getAIPricingOffering(
+  "Agent Discovery & Technical Specification",
+);
+const prototype = getAIPricingOffering("Proof of Concept / Prototype");
+const singleWorkflowAgent = getAIPricingOffering(
+  "Single-Workflow Production Agent",
+);
+const agentOperationsOne = MANAGED_AI_AGENT_OPERATIONS.prices[0];
 
 export const metadata = generatePageMetadata({
   title: "Custom AI Agents for Business in Dallas",
@@ -163,10 +175,12 @@ export default function CustomAIAgentsPage() {
         ]}
         roiStatement="The right custom agent should remove handoffs, reduce errors, and give staff leverage without removing human judgment from sensitive business decisions."
         pricingNotes={[
-          "Agent builds are quoted as scoped projects after workflow, data, security, and integration requirements are clear",
-          "Prepaid retainer hours can cover discovery, project-folder setup, prompt systems, testing, staff training, and tuning",
+          `${agentDiscovery.name}: ${agentDiscovery.price}, required first and credited toward the build`,
+          `${prototype.name}: ${prototype.price} for bounded feasibility work without a production SLA`,
+          `${singleWorkflowAgent.name}: ${singleWorkflowAgent.price} for one governed workflow in production`,
+          `${agentOperationsOne.agents}: ${agentOperationsOne.price} after launch; production operations are separate from the build fee`,
           "Claude projects, Codex workflows, CLI automations, RAG agents, and external-system integrations are all in scope",
-          "HIPAA/SOC 2 compliant infrastructure is available when the agent handles regulated data",
+          "Regulated environments are custom-scoped on compliance-eligible platforms",
         ]}
       />
 

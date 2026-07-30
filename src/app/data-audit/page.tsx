@@ -4,7 +4,10 @@ import {
   generateFAQSchema,
   generateHowToSchema,
 } from "@/lib/seo";
-import { SERVICES } from "@/lib/constants";
+import {
+  getAIPricingOffering,
+  SERVICES,
+} from "@/lib/constants";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { ServiceHero } from "@/components/sections/ServiceHero";
@@ -23,11 +26,11 @@ import { FAQ } from "@/components/sections/FAQ";
 import { CTASection } from "@/components/sections/CTASection";
 
 const service = SERVICES.find((s) => s.slug === "data-audit")!;
+const dataReadinessSprint = getAIPricingOffering("Data Readiness Sprint");
 
 export const metadata = generatePageMetadata({
-  title: "AI Data Readiness Audit for Growing Organizations",
-  description:
-    "Flat-fee Microsoft 365 and Google Workspace security audit delivered in 7 days. Identify data risks, compliance gaps, and AI opportunities — from $2,500.",
+  title: "AI Data Readiness Sprint for Growing Organizations",
+  description: `Prepare one department or use case for a reliable AI build with the ${dataReadinessSprint.name}, published at ${dataReadinessSprint.price}.`,
   path: service.href,
   keywords: service.keywords,
 });
@@ -49,21 +52,21 @@ export default function DataAuditPage() {
 
       <AIAdoptionUnderstanding />
 
-      {/* 2. Operating pain point — validate the data exposure risk */}
+      {/* 2. Operating pain point — validate the source-readiness risk */}
       <PainPoint
-        stat="60%"
-        statLabel="of breach-impacted companies face major disruption within 6 months"
-        heading="You Don't Know What's Exposed in Your Cloud Environment"
+        stat="1"
+        statLabel="approved source set for the target workflow"
+        heading="Reliable AI Starts With Build-Ready Source Material"
         paragraphs={[
-          "Your Microsoft 365 or Google Workspace has been accumulating permissions, shared links, and external access for years. Files shared with 'anyone with the link' from 2019 are still public. Former employees still have access. Sensitive data — client SSNs, financial records, stored credentials — sits in folders with no access controls.",
-          "For a 30-person company, the average cloud environment has 200+ misconfigured sharing permissions. Each one is an open door for data exfiltration, compliance violations, or ransomware entry.",
+          "Useful business knowledge is often spread across duplicated folders, inconsistent names, stale documents, and permissions that were never designed for an AI workflow. A build cannot be reliable when its source set is unclear.",
+          "The Data Readiness Sprint concentrates on one department or use case. ITECS inventories the corpus, reviews access, organizes the relevant libraries, improves metadata, and prepares approved sources for ingestion before engineering begins.",
         ]}
         scenario={{
-          business: "A 45-person accounting firm in Richardson",
+          business: "A growing operations team",
           problem:
-            "discovered during our audit that 3 former employees still had full access to client tax documents in SharePoint. Over 400 files containing SSNs and financial records were shared via public links — accessible to anyone for over 2 years.",
+            "has the documents an agent needs, but the approved versions are mixed with duplicates, inconsistent permissions, and folders that reflect years of ad hoc storage.",
           result:
-            "We identified 23 critical security gaps, locked down all exposed data within 48 hours of the report, and built a compliance remediation roadmap that satisfied their SOX audit requirements.",
+            "The sprint creates a governed source set and a written readiness decision, giving the build team a dependable starting point instead of discovering data problems during implementation.",
         }}
       />
 
@@ -85,14 +88,14 @@ export default function DataAuditPage() {
       {/* 6. Tool integrations */}
       <Integrations
         tools={service.integrations}
-        heading="Environments We Audit"
+        heading="Common Source Environments"
       />
 
       {/* 7. Enterprise-Grade Security */}
       <SecurityGuarantee
         description={
           <>
-            Your audit data stays protected throughout the entire engagement.
+            Your source material stays governed throughout the engagement.
             ITECS AI is backed by ITECS — a Dallas-based cybersecurity MSP
             operating since 2002. For ongoing protection beyond the audit,
             the{" "}
@@ -109,10 +112,10 @@ export default function DataAuditPage() {
           </>
         }
         points={[
-          "Read-only API access — we scan configurations and metadata but cannot modify, copy, or download your files, emails, or documents",
-          "Zero data retention — all scan findings are encrypted in transit and at rest, and deleted within 30 days of report delivery",
-          "No agents installed — no software on your machines, no stored passwords, no disruption to your team's daily work",
-          "HIPAA, SOX, FINRA, and CMMC alignment — our audit methodology maps to the regulatory frameworks your industry requires",
+          "Enterprise-grade, no-training platform configurations for client work",
+          "Client data remains in the client's tenant wherever the platform allows",
+          "Client-managed, least-privilege credentials for in-scope systems",
+          "No client data submitted to consumer-grade or non-contracted AI services; a DPA is available on request",
         ]}
         internalLink={{
           text: "Explore AI consulting to plan your post-audit implementation roadmap",
@@ -126,59 +129,58 @@ export default function DataAuditPage() {
 
       {/* 8. Pricing Transparency & ROI — comparison table */}
       <PricingROI
-        heading="How Does the ITECS Audit Compare?"
-        description="Most businesses either skip the audit entirely or overpay for it. Here's how the ITECS AI Data Readiness Audit compares to doing it yourself."
-        traditionalLabel="DIY / Internal IT"
-        aiLabel="ITECS AI Audit"
+        heading="Prepare the Sources Before Engineering Begins"
+        description="The sprint turns an uncertain document corpus into a defined, governed source set for one department or use case."
+        traditionalLabel="Unprepared Sources"
+        aiLabel="Data Readiness Sprint"
         comparison={[
           {
-            label: "Time to complete",
-            traditional: "4–8 weeks",
-            ai: "7 days",
+            label: "Source set",
+            traditional: "Scattered or undefined",
+            ai: "Inventoried for one department or use case",
           },
           {
             label: "Cost",
-            traditional: "$10,000–$50,000+",
-            ai: "$2,500–$8,500 flat fee",
+            traditional: "Internal cleanup cost varies with source condition",
+            ai: dataReadinessSprint.price,
           },
           {
-            label: "Scope",
-            traditional: "Manual spot checks",
-            ai: "Full-environment automated scan",
+            label: "Permissions",
+            traditional: "Inherited and inconsistent",
+            ai: "Reviewed for the target workflow",
           },
           {
-            label: "Compliance mapping",
-            traditional: "Rarely included",
-            ai: "HIPAA, SOX, FINRA, CMMC",
+            label: "Organization",
+            traditional: "Ad hoc folders and names",
+            ai: "Restructured with naming and metadata hygiene",
           },
           {
-            label: "AI readiness",
-            traditional: "Not assessed",
-            ai: "Automation opportunities ranked by ROI",
+            label: "Build readiness",
+            traditional: "Discovered during engineering",
+            ai: "Confirmed in writing before engineering",
           },
           {
             label: "Deliverable",
-            traditional: "Spreadsheet or email summary",
-            ai: "40+ page report with implementation roadmap",
+            traditional: "Unverified corpus",
+            ai: "Approved sources prepared for ingestion",
           },
         ]}
-        roiStatement="The cost of a breach quickly exceeds the cost of prevention. A $2,500–$8,500 audit identifies the gaps before attackers do."
+        roiStatement={`${dataReadinessSprint.name} prepares one department or use case for a reliable build before engineering begins.`}
         pricingNotes={[
-          "Essentials ($2,500): Core security scan for teams under 25 users",
-          "Professional ($5,000): Full audit with compliance and AI opportunity mapping for 25–100 users",
-          "Enterprise ($8,500): Comprehensive audit with executive briefing for 100+ users",
-          "All tiers include a live review session — no report left unread",
+          `${dataReadinessSprint.name}: ${dataReadinessSprint.price}`,
+          "Includes source inventory, permission review, folder or library restructuring, metadata and naming hygiene, and ingestion preparation",
+          "Every build proposal includes a data-readiness line item or written confirmation that sources were verified build-ready during discovery",
         ]}
       />
 
-      {/* 9. Flat-Fee Pricing Tiers — unique to data-audit */}
+      {/* 9. Published sprint pricing */}
       <PricingTable />
 
       {/* 10. Stats */}
       <ServiceStats stats={service.stats} />
 
       {/* 11. FAQ — LAST content section before CTA (V2.0 protocol) */}
-      <FAQ items={service.faq} heading="AI Data Audit FAQ" />
+      <FAQ items={service.faq} heading="AI Data Readiness Sprint FAQ" />
 
       {/* 12. Final CTA */}
       <CTASection />

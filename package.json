@@ -10,6 +10,7 @@
     "dev": "next dev",
     "build": "next build",
     "eval:intelligence": "node scripts/eval-intelligence.mjs",
+    "test:pricing": "node --test tests/ai-pricing-v14.test.mjs",
     "test:intelligence": "node --test tests/intelligence-os.test.mjs tests/intelligence-backend.test.cjs",
     "seo:audit": "node scripts/seo-audit.mjs",
     "start": "next start",

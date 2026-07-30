@@ -1,13 +1,14 @@
 import Link from "next/link";
-import { ArrowUpRight, BookOpen, ExternalLink, ShieldCheck } from "lucide-react";
-import { PROOF_CASE_STUDIES, PROOF_METRICS } from "./data";
+import { ArrowUpRight, BookOpen, ShieldCheck } from "lucide-react";
+import { PROOF_METRICS } from "./data";
 import styles from "./intelligence-os.module.css";
 
 const KNOWLEDGE_ROUTES = [
   {
     eyebrow: "Choose a starting point",
     title: "AI services",
-    summary: "Assessments, pilots, custom agents, training, governance, and ongoing operations.",
+    summary:
+      "Assessments, guided and local agents, custom builds, training, governance, and ongoing operations.",
     href: "/services",
   },
   {
@@ -33,7 +34,7 @@ export function ResourceVaultApp() {
           Proof & resource vault
         </div>
         <p className="mt-1.5 max-w-3xl text-xs leading-relaxed text-slate-400">
-          Published ITECS proof points and direct source links. Historic MSP outcomes below demonstrate operational delivery; they are not presented as AI-project results.
+          Published company-level proof points and direct routes to current ITECS AI resources. Client identities and private engagement details are not included in this experience.
         </p>
       </div>
 
@@ -47,42 +48,6 @@ export function ResourceVaultApp() {
                 <p className="mt-1 text-[10px] leading-snug text-slate-300 sm:text-xs">{metric.label}</p>
                 <p className="mt-2 hidden font-mono text-[8px] uppercase tracking-wide text-slate-600 sm:block">{metric.source}</p>
               </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="mt-5" aria-labelledby="vault-cases-title">
-          <div className="flex flex-wrap items-end justify-between gap-2">
-            <div>
-              <h3 id="vault-cases-title" className="font-mono text-[9px] uppercase tracking-[0.14em] text-slate-500">Public managed-services case studies</h3>
-              <p className="mt-1 text-[10px] text-slate-500">Each card links to the original ITECS Online source.</p>
-            </div>
-            <span className={`${styles.chamferSmall} border border-amber-400/25 bg-amber-400/5 px-2 py-1 font-mono text-[8px] uppercase text-amber-100`}>Historic MSP evidence</span>
-          </div>
-          <div className="mt-2 grid gap-3 xl:grid-cols-3">
-            {PROOF_CASE_STUDIES.map((study) => (
-              <article key={study.client} className={`${styles.chamfer} flex flex-col border border-[#7fb4d8]/20 bg-[#061728]/80 p-4`}>
-                <div className="flex items-start justify-between gap-3">
-                  <div>
-                    <p className="font-mono text-[8px] uppercase tracking-[0.14em] text-[#7fb4d8]">{study.industry}</p>
-                    <h4 className="mt-1 text-base font-semibold text-white">{study.client}</h4>
-                  </div>
-                  <span className="h-3 w-3 shrink-0 rotate-45 border border-[#5ba8d8] bg-[#326189]" aria-hidden="true" />
-                </div>
-                <p className="mt-3 font-display text-xl font-semibold text-[#a9d5f1]">{study.outcome}</p>
-                <p className="mt-2 flex-1 text-[11px] leading-relaxed text-slate-400">{study.summary}</p>
-                <ul className="mt-3 flex flex-wrap gap-1.5">
-                  {study.metrics.map((metric) => (
-                    <li key={metric} className={`${styles.chamferSmall} border border-[#326189]/55 bg-[#0a2134] px-2 py-1 font-mono text-[8px] text-slate-300`}>{metric}</li>
-                  ))}
-                </ul>
-                <div className="mt-4 flex items-center justify-between gap-2 border-t border-[#7fb4d8]/15 pt-3">
-                  <span className="font-mono text-[8px] text-slate-600">Published {study.sourceDate}</span>
-                  <a href={study.href} target="_blank" rel="noreferrer" className="inline-flex min-h-9 items-center gap-1.5 font-mono text-[9px] font-semibold uppercase text-[#a9d5f1] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5ba8d8]">
-                    Original source <ExternalLink className="h-3 w-3" aria-hidden="true" />
-                  </a>
-                </div>
-              </article>
             ))}
           </div>
         </section>

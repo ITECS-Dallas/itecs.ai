@@ -4,7 +4,11 @@ import {
   generateFAQSchema,
   generateHowToSchema,
 } from "@/lib/seo";
-import { SERVICES } from "@/lib/constants";
+import {
+  getAIPricingOffering,
+  MANAGED_AI_AGENT_OPERATIONS,
+  SERVICES,
+} from "@/lib/constants";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { ServiceHero } from "@/components/sections/ServiceHero";
@@ -22,6 +26,14 @@ import { FAQ } from "@/components/sections/FAQ";
 import { CTASection } from "@/components/sections/CTASection";
 
 const service = SERVICES.find((s) => s.slug === "ai-knowledge-base")!;
+const agentDiscovery = getAIPricingOffering(
+  "Agent Discovery & Technical Specification",
+);
+const prototype = getAIPricingOffering("Proof of Concept / Prototype");
+const integratedAgent = getAIPricingOffering(
+  "Integrated / Line-of-Business Agent",
+);
+const agentOperationsOne = MANAGED_AI_AGENT_OPERATIONS.prices[0];
 
 export const metadata = generatePageMetadata({
   title: "Internal AI Knowledge Bases & SOP Automation for Dallas Businesses",
@@ -156,16 +168,16 @@ export default function AIKnowledgeBasePage() {
           },
           {
             label: "Setup cost",
-            traditional: "$15,000–$50,000+",
-            ai: "$8,000–$20,000 flat fee",
+            traditional: "Internal build cost varies by team and platform",
+            ai: `${prototype.price} published prototype range`,
           },
         ]}
         roiStatement="Average client ROI: 50% faster onboarding, 70% fewer repeated questions, 25+ hours recovered per week. Most businesses recoup the full setup cost within 3 months."
         pricingNotes={[
-          "Setup: $8,000–$20,000 depending on data sources, document volume, and compliance scope",
-          "Monthly hosting and management from $500/month — includes auto-indexing, performance monitoring, and quarterly accuracy reviews",
-          "Multi-source connectivity included — no per-platform fees for SharePoint + Google Drive + Notion + Confluence",
-          "HIPAA/SOC 2/FINRA/CMMC compliance options available — quoted based on your regulatory requirements",
+          `${agentDiscovery.name}: ${agentDiscovery.price}, credited toward the build when the client proceeds`,
+          `${prototype.name}: ${prototype.price} for a bounded feasibility build without a production SLA`,
+          `${integratedAgent.name}: ${integratedAgent.price} for a multi-source production knowledge workflow`,
+          `${agentOperationsOne.agents}: ${agentOperationsOne.price} after launch; regulated environments are custom-scoped on compliance-eligible platforms`,
         ]}
       />
 

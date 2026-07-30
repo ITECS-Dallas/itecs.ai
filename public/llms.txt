@@ -52,15 +52,12 @@ Tier URLs:
 - SEO Momentum: https://itecs.ai/ai-optimized-seo/momentum
 - SEO Velocity: https://itecs.ai/ai-optimized-seo/velocity
 
-### Internal AI Champion Enablement Program
+### Internal AI Champion Program
 URL: https://itecs.ai/services/ai-champion-program
 4-6 week structured enablement program that trains one trusted employee to
 become the organization's internal AI lead. Includes 1:1 strategist coaching,
 prompt library development, governance support, train-the-trainer materials,
-and 90-day post-program support. Pricing: $8,500-$12,000.
+and 90-day post-program support. Pricing: $8,500–$12,000.
 
 ## Technology Partners
 Microsoft Azure, Microsoft, Claude, OpenAI, Copilot, Sophos
-
-## Clients
-PepsiCo, Pizza Hut, OpenText, Miller, BE Farms

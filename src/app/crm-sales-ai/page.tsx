@@ -4,7 +4,11 @@ import {
   generateFAQSchema,
   generateHowToSchema,
 } from "@/lib/seo";
-import { SERVICES } from "@/lib/constants";
+import {
+  getAIPricingOffering,
+  MANAGED_AI_AGENT_OPERATIONS,
+  SERVICES,
+} from "@/lib/constants";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { ServiceHero } from "@/components/sections/ServiceHero";
@@ -22,6 +26,13 @@ import { FAQ } from "@/components/sections/FAQ";
 import { CTASection } from "@/components/sections/CTASection";
 
 const service = SERVICES.find((s) => s.slug === "crm-sales-ai")!;
+const agentDiscovery = getAIPricingOffering(
+  "Agent Discovery & Technical Specification",
+);
+const integratedAgent = getAIPricingOffering(
+  "Integrated / Line-of-Business Agent",
+);
+const agentOperationsOne = MANAGED_AI_AGENT_OPERATIONS.prices[0];
 
 export const metadata = generatePageMetadata({
   title: "AI CRM & Sales Automation for Growing Teams",
@@ -144,10 +155,10 @@ export default function CRMSalesAIPage() {
         ]}
         roiStatement="Most teams recover the full setup cost within 60 days through higher close rates and recovered selling time."
         pricingNotes={[
-          "Flat-fee setup: $5,000–$15,000 depending on CRM platform, integrations, and team size",
-          "Monthly optimization and support from $500/month — includes model tuning and reporting",
-          "No per-seat AI licensing fees — flat monthly rate regardless of team size",
-          "Pilot program available: test AI on one pipeline segment before rolling out company-wide",
+          `${agentDiscovery.name}: ${agentDiscovery.price}, credited toward the build when the client proceeds`,
+          `${integratedAgent.name}: ${integratedAgent.price} when the workflow needs production CRM integrations and reviewer controls`,
+          `${agentOperationsOne.agents}: ${agentOperationsOne.price} after launch; multi-agent footprints follow the published ladder`,
+          "Production operation is quoted separately and never absorbed into the build fee",
         ]}
       />
 
