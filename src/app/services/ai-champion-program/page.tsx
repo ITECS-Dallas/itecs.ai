@@ -20,13 +20,13 @@ import { GridBackground } from "@/components/effects/GridBackground";
 import { ScrollReveal } from "@/components/effects/ScrollReveal";
 import { generatePageMetadata } from "@/lib/metadata";
 import { generateFAQSchema } from "@/lib/seo";
-import { SITE_CONFIG } from "@/lib/constants";
+import { getAIPricingOffering, SITE_CONFIG } from "@/lib/constants";
 
 const bookingHref =
   "https://outlook.office.com/bookwithme/user/a2b6e699aac2490e9b9020bb762b2ac3@itecsmsp.com/meetingtype/k4ly0cvm8ky5RtRVi9SrvQ2";
 
 export const metadata = generatePageMetadata({
-  title: "Internal AI Champion Enablement Program",
+  title: "Internal AI Champion Program",
   description:
     "Build durable in-house AI capability with ITECS's 4-6 week structured program that turns one employee into your internal AI lead.",
   path: "/services/ai-champion-program",
@@ -120,27 +120,17 @@ const deliverables = [
   "Certificate of Completion for the Champion's professional record.",
 ] as const;
 
+const championProgram = getAIPricingOffering("Internal AI Champion Program");
+
 const pricingOptions = [
   {
-    name: "AI Champion - Standard",
-    price: "$8,500",
-    duration: "4 weeks",
-    bestFor:
-      "Organizations with an established AI deployment ready to formalize internal ownership.",
-    coverage: "Weeks 1-4 of the curriculum",
-    coaching: "About 12-20 synchronous coaching hours",
+    name: championProgram.name,
+    price: championProgram.price,
+    duration: championProgram.duration,
+    bestFor: championProgram.bestFor,
+    coverage: "Full curriculum tailored to the organization and its use cases",
+    coaching: "Weekly coaching with a senior ITECS AI strategist",
     deliverables: "Full deliverable set",
-    featured: false,
-  },
-  {
-    name: "AI Champion - Extended",
-    price: "$12,000",
-    duration: "6 weeks",
-    bestFor:
-      "Organizations early in their AI journey or expanding quickly across departments.",
-    coverage: "Full 6-week curriculum",
-    coaching: "About 18-30 synchronous coaching hours",
-    deliverables: "Full set plus expansion roadmap and governance playbook",
     featured: true,
   },
 ] as const;
@@ -225,7 +215,7 @@ const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
   "@id": `${SITE_CONFIG.url}/services/ai-champion-program#service`,
-  name: "Internal AI Champion Enablement Program",
+  name: "Internal AI Champion Program",
   serviceType: "AI Training and Enablement",
   description:
     "A 4-6 week structured enablement program that trains one trusted employee to become the organization's internal AI lead.",
@@ -252,10 +242,10 @@ const serviceSchema = {
   ],
   offers: {
     "@type": "AggregateOffer",
-    lowPrice: "8500",
-    highPrice: "12000",
+    lowPrice: championProgram.schemaLowPrice,
+    highPrice: championProgram.schemaHighPrice,
     priceCurrency: "USD",
-    offerCount: 2,
+    offerCount: 1,
     url: `${SITE_CONFIG.url}/services/ai-champion-program#pricing`,
   },
 };
@@ -264,7 +254,7 @@ const courseSchema = {
   "@context": "https://schema.org",
   "@type": "Course",
   "@id": `${SITE_CONFIG.url}/services/ai-champion-program#course`,
-  name: "Internal AI Champion Enablement Program",
+  name: "Internal AI Champion Program",
   description:
     "A structured 4-6 week curriculum that teaches prompt engineering, AI workflow design, governance, train-the-trainer methods, measurement, and long-term AI operations.",
   provider: {
@@ -284,8 +274,8 @@ const courseSchema = {
   ],
   offers: {
     "@type": "AggregateOffer",
-    lowPrice: "8500",
-    highPrice: "12000",
+    lowPrice: championProgram.schemaLowPrice,
+    highPrice: championProgram.schemaHighPrice,
     priceCurrency: "USD",
     availability: "https://schema.org/InStock",
     url: `${SITE_CONFIG.url}/services/ai-champion-program#pricing`,
@@ -643,11 +633,11 @@ export default function AIChampionProgramPage() {
           <SectionIntro
             centered
             eyebrow="Pricing"
-            title="Two program lengths. One outcome."
-            description="Both options are designed to create durable in-house AI capability. The right fit depends on how mature your current AI deployment is."
+            title="One program, tailored to the organization."
+            description="The engagement is scoped across four to six weeks to create durable in-house AI capability around the tools and workflows your team actually uses."
           />
         </ScrollReveal>
-        <div className="mt-14 grid gap-6 lg:grid-cols-2">
+        <div className="mx-auto mt-14 grid max-w-3xl gap-6">
           {pricingOptions.map((option, index) => (
             <ScrollReveal key={option.name} delay={index * 0.08}>
               <article

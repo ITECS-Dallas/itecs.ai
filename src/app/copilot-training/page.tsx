@@ -158,14 +158,14 @@ export default function CopilotTrainingPage() {
           {
             label: "Ongoing support",
             traditional: "None",
-            ai: "Retainer hours, no expiration",
+            ai: "AI Retainer, 12-month expiry",
           },
         ]}
         roiStatement="Typical outcome: 30% faster document and email work and far higher license utilization within the first month — turning a recurring cost into a measurable return."
         pricingNotes={[
           "Readiness assessment + governance setup: scoped flat fee covering permission cleanup and Microsoft Purview configuration",
           "Department training: role-specific workshops with prompt libraries for Word, Excel, Outlook, and Teams",
-          "Prepaid retainer hours cover refreshers, new-hire onboarding, and new-workflow enablement with no monthly minimum",
+          "Prepaid retainer hours cover refreshers, new-hire onboarding, and new-workflow enablement with a 12-month expiry",
         ]}
       />
 

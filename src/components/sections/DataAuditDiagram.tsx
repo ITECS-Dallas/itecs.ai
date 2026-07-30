@@ -2,39 +2,39 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Plug2, ScanSearch, BrainCircuit, FileCheck, Users } from "lucide-react";
+import { Plug2, ScanSearch, FolderCog, Tags, FileCheck } from "lucide-react";
 import { ScrollReveal } from "@/components/effects/ScrollReveal";
 import { GradientOrb } from "@/components/effects/GradientOrb";
 
 const stages = [
   {
     icon: Plug2,
-    label: "Connect",
-    detail: "Read-only API access",
+    label: "Inventory",
+    detail: "Approved sources and owners",
     color: "var(--brand-accent)",
   },
   {
     icon: ScanSearch,
-    label: "Scan",
-    detail: "Permissions, sharing, exposure",
+    label: "Review",
+    detail: "Permissions for the workflow",
     color: "var(--brand-accent)",
   },
   {
-    icon: BrainCircuit,
-    label: "Analyze",
-    detail: "Risks, gaps, opportunities",
+    icon: FolderCog,
+    label: "Organize",
+    detail: "Folders and libraries",
+    color: "var(--brand-hover)",
+  },
+  {
+    icon: Tags,
+    label: "Normalize",
+    detail: "Metadata and naming",
     color: "var(--brand-hover)",
   },
   {
     icon: FileCheck,
-    label: "Report",
-    detail: "Prioritized action items",
-    color: "var(--brand-hover)",
-  },
-  {
-    icon: Users,
-    label: "Review",
-    detail: "Live walkthrough session",
+    label: "Prepare",
+    detail: "Ingestion-ready source set",
     color: "var(--brand-accent)",
   },
 ];
@@ -126,14 +126,14 @@ export function DataAuditDiagram() {
               Audit Process
             </p>
             <h2 className="text-3xl md:text-4xl font-light tracking-[-0.02em] text-text-primary">
-              From Connection to Action Plan in 7 Days
+              From Source Inventory to Ingestion Preparation
             </h2>
           </div>
         </ScrollReveal>
 
         <figure
           role="img"
-          aria-label="AI data readiness audit flow diagram showing five stages: connect to Microsoft 365 or Google Workspace via read-only API, automated scan of permissions and sharing settings, expert analysis of security risks and compliance gaps, deliver prioritized report with remediation steps, and live review session with leadership team"
+          aria-label="AI data readiness sprint flow diagram showing five stages: inventory approved sources and owners, review permissions for the target workflow, organize folders and libraries, normalize metadata and naming, and prepare the source set for ingestion"
         >
           {/* Desktop: horizontal flow */}
           <div ref={ref} className="hidden md:flex items-start justify-center">

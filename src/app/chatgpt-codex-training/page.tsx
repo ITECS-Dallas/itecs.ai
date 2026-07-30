@@ -159,14 +159,14 @@ export default function ChatGPTCodexTrainingPage() {
           {
             label: "Ongoing support",
             traditional: "None",
-            ai: "Retainer hours, no expiration",
+            ai: "AI Retainer, 12-month expiry",
           },
         ]}
         roiStatement="Typical outcome: routine engineering runs meaningfully faster and teams clear more tickets per sprint — without a single unreviewed change reaching production."
         pricingNotes={[
           "Implementation + guardrails: scoped flat fee covering CLI, IDE, and cloud-agent setup with sandboxing and approval gates",
           "Developer enablement: hands-on workshops on live tickets, plus a documented review standard for agent output",
-          "Prepaid retainer hours cover workflow tuning, new-repo onboarding, and cost optimization with no monthly minimum",
+          "Prepaid retainer hours cover workflow tuning, new-repo onboarding, and cost optimization with a 12-month expiry",
         ]}
       />
 

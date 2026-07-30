@@ -4,7 +4,11 @@ import {
   generateFAQSchema,
   generateHowToSchema,
 } from "@/lib/seo";
-import { SERVICES } from "@/lib/constants";
+import {
+  AI_PREPAID_OPTIONS,
+  getAIPricingOffering,
+  SERVICES,
+} from "@/lib/constants";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { ServiceHero } from "@/components/sections/ServiceHero";
@@ -22,6 +26,12 @@ import { FAQ } from "@/components/sections/FAQ";
 import { CTASection } from "@/components/sections/CTASection";
 
 const service = SERVICES.find((s) => s.slug === "ai-devops")!;
+const customSoftware = getAIPricingOffering(
+  "AI-Augmented Custom Software Development",
+);
+const aiRetainer = AI_PREPAID_OPTIONS.find(
+  (option) => option.name === "AI Retainer",
+)!;
 
 export const metadata = generatePageMetadata({
   title: "AI DevOps & MLOps Services in Dallas",
@@ -154,9 +164,9 @@ export default function AIDevOpsPage() {
         ]}
         roiStatement="The fastest way to improve AI ROI is to stop rebuilding fragile demos. Managed AI DevOps keeps useful systems stable, measurable, and ready to expand."
         pricingNotes={[
-          "Production stabilization is quoted as a scoped project after reviewing the codebase, data, integrations, and environments",
-          "Prepaid retainer hours can cover monitoring reviews, maintenance, release support, testing, cost reviews, and advisory work",
-          "Retainer hours have no minimum monthly usage and no expiration date",
+          `${customSoftware.name}: ${customSoftware.price}`,
+          `${aiRetainer.name}: ${aiRetainer.price} for a ${aiRetainer.unit}, with a 12-month expiry`,
+          "Production stabilization is quoted after reviewing the codebase, data, integrations, environments, and acceptance criteria",
           "Can be bundled with Custom AI Agents, AI Knowledge Base, and workflow automation deployments when a build is needed",
           "Works with existing internal developers, MSPs, or prior vendors without requiring a full rebuild",
         ]}

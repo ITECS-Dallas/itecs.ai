@@ -1,30 +1,55 @@
 import Link from "next/link";
-import { ArrowRight, Brain, CheckCircle2, RefreshCw, Rocket } from "lucide-react";
+import {
+  ArrowRight,
+  Brain,
+  CheckCircle2,
+  RefreshCw,
+  Rocket,
+  Workflow,
+} from "lucide-react";
+import {
+  getAIPricingOffering,
+  MANAGED_AI_TIERS,
+} from "@/lib/constants";
+const readiness = getAIPricingOffering("AI Readiness Assessment");
+const guidedBuild = getAIPricingOffering("Guided Build Session");
+const discovery = getAIPricingOffering(
+  "Agent Discovery & Technical Specification",
+);
+const misCore = MANAGED_AI_TIERS[0];
 
 const pathways = [
   {
     icon: Brain,
-    label: "Start",
-    title: "Discovery and strategy",
-    price: "From $3,500",
+    label: "Start Here",
+    title: "Discovery, strategy, and training",
+    price: readiness.price,
     description:
-      "Leadership briefings, AI readiness assessments, and shadow AI risk reports that clarify where AI belongs in the business.",
+      "Assess readiness, train the right people, and establish the governance and roadmap required to move with confidence.",
   },
   {
     icon: Rocket,
     label: "Build",
-    title: "Pilots and custom workflows",
-    price: "From $4,500",
+    title: "Guided and local agents",
+    price: guidedBuild.price,
     description:
-      "Policy packages, pilot implementations, custom agents, connectors, and process redesign when the workflow justifies a build.",
+      "Co-build in an employee's workspace or have ITECS deliver a local agent with documentation and handoff.",
+  },
+  {
+    icon: Workflow,
+    label: "Specialize",
+    title: "Phased production builds",
+    price: discovery.price,
+    description:
+      "Start with credited discovery, then engineer production agents, integrations, or AI-augmented software where the workflow justifies it.",
   },
   {
     icon: RefreshCw,
     label: "Sustain",
-    title: "Managed AI services",
-    price: "From $1,950/mo",
+    title: "Managed Intelligence Services",
+    price: `From ${misCore.price}`,
     description:
-      "Ongoing optimization, office hours, prompt-library maintenance, quarterly reviews, and advisor support as adoption expands.",
+      "Ongoing optimization, office hours, prompt-library maintenance, governance, and Agent Operations as adoption expands.",
   },
 ] as const;
 
@@ -63,7 +88,7 @@ export function AIPricingPreview() {
             </div>
           </div>
 
-          <div className="grid gap-4 md:grid-cols-3 lg:grid-cols-1">
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-1">
             {pathways.map((pathway) => {
               const Icon = pathway.icon;
 
@@ -104,7 +129,8 @@ export function AIPricingPreview() {
             <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-brand-accent-bright" />
             <span>
               Existing ITECS managed IT clients receive loyalty discounts on
-              eligible AI hourly work and productized offerings.
+              specific eligible AI hourly work and one-time packages. The
+              published matrix defines each benefit.
             </span>
           </div>
           <Link

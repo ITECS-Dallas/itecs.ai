@@ -4,7 +4,10 @@ import {
   generateFAQSchema,
   generateHowToSchema,
 } from "@/lib/seo";
-import { SERVICES } from "@/lib/constants";
+import {
+  getAIPricingOffering,
+  SERVICES,
+} from "@/lib/constants";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { ServiceHero } from "@/components/sections/ServiceHero";
@@ -22,6 +25,12 @@ import { FAQ } from "@/components/sections/FAQ";
 import { CTASection } from "@/components/sections/CTASection";
 
 const service = SERVICES.find((s) => s.slug === "training")!;
+const executiveBriefing = getAIPricingOffering(
+  "Executive AI Literacy Briefing",
+);
+const teamWorkshop = getAIPricingOffering("Team AI Workshop");
+const powerUserCoaching = getAIPricingOffering("Power-User Coaching (1:1)");
+const championProgram = getAIPricingOffering("Internal AI Champion Program");
 
 export const metadata = generatePageMetadata({
   title: "AI Training for Employees in Dallas",
@@ -146,10 +155,10 @@ export default function TrainingPage() {
         ]}
         roiStatement="Average client ROI: 4 hours saved per employee per week within 30 days. A 20-person team recovers the full training cost in the first month through productivity gains alone."
         pricingNotes={[
-          "Half-day workshop (up to 20 employees): $2,000 — covers one core tool (ChatGPT or Copilot) plus safe AI usage fundamentals",
-          "Full-day deep dive: $4,000–$6,000 — multi-tool training with role-specific breakout sessions and hands-on exercises",
-          "Multi-session program: $6,000–$10,000 — comprehensive curriculum across all AI tools your team uses, spread over 2–4 weeks",
-          "Prepaid retainer hours can cover office hours, new-tool onboarding, refresher workshops, and safe-use policy updates with no monthly minimum or expiration",
+          `${executiveBriefing.name}: ${executiveBriefing.price} for a half-day private leadership session`,
+          `${teamWorkshop.name}: ${teamWorkshop.price} for a 2-hour role-based session with up to 12 employees`,
+          `${powerUserCoaching.name}: ${powerUserCoaching.price} for 60–90 minute individual coaching`,
+          `${championProgram.name}: ${championProgram.price} for a 4–6 week internal capability program`,
         ]}
       />
 
