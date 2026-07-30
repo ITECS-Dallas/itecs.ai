@@ -1053,11 +1053,11 @@ export const SERVICES: ServiceItem[] = [
     title: "AI Training for Employees in Dallas",
     shortTitle: "AI Training",
     description:
-      "Hands-on AI training for your Dallas team — teach employees to use ChatGPT, Claude, Gemini, Copilot, and automation tools safely and productively. No technical background required.",
+      "Hands-on AI training and guided agent builds for Dallas teams using ChatGPT, Claude, Gemini, Microsoft Copilot, and automation tools.",
     longDescription:
-      "Your employees are already using AI — the question is whether they're using it safely and effectively. We train your team on the AI tools that matter: ChatGPT, Claude, Gemini, Microsoft Copilot, automation platforms, and custom tools. Hands-on workshops, not boring slide decks. Your staff walks away knowing exactly how to use AI to do their job faster without putting company data at risk.",
+      "Guided Build Sessions are build-together, not lecture. We map a workflow with your team, let the agent test the plan, build it live in your own project folder, and run it against real work in the Claude or ChatGPT desktop app. You leave with the working agent, its written workflow, organized reference files, and the know-how to maintain it.",
     heroSummary:
-      "We train your Dallas team to use AI tools like ChatGPT, Claude, Gemini, and Microsoft Copilot safely and productively — with hands-on workshops that cut task completion time by 30% while keeping sensitive company data secure.",
+      "ITECS trains Dallas teams on ChatGPT, Claude, Gemini, and Microsoft Copilot through role-specific workshops and Guided Build Sessions. We plan one real workflow, build a working agent in your project folder, and teach your people to test, maintain, and extend it.",
     href: "/training",
     icon: "GraduationCap",
     keywords: [
@@ -1067,31 +1067,36 @@ export const SERVICES: ServiceItem[] = [
       "Microsoft Copilot training Dallas",
       "employee AI training for growing teams",
     ],
-    h1: "AI Training for Your Dallas Team",
+    h1: "AI Training and Guided Agent Builds for Dallas Teams",
     features: [
-      "Hands-on workshops — your team practices with real work scenarios, not slides",
-      "ChatGPT, Claude, Gemini, Microsoft Copilot, and automation tool training",
-      "Safe AI usage policies — keep company data out of public models",
-      "Role-specific training for sales, support, HR, finance, and ops",
-      "Prompt engineering basics so your team gets better AI outputs",
-      "Ongoing office hours and refresher sessions as tools evolve",
+      "Guided Build Sessions — plan one workflow and build a working agent with your team",
+      "Agents built in your project folder and tested against real work while your team watches",
+      "A plain-language workflow specification that defines what the agent does and where it stops",
+      "Reference files organized so your team and future agents can reuse them",
+      "Role-specific workshops for sales, support, HR, finance, operations, and leadership",
+      "Written AI usage rules, office hours, and refresher sessions as tools and workflows evolve",
     ],
-    howItWorksHeading: "How to get your team trained on AI",
+    howItWorksHeading: "How a Guided Build Session Works",
     howItWorks: [
       {
-        step: "Assess your team's current AI skills and daily workflows",
+        step: "Write the workflow down",
         description:
-          "We survey your staff, identify which roles benefit most from AI, and map the specific tasks where AI tools will have the biggest impact on productivity.",
+          "We plan the workflow with your team and state exactly what the agent should do, which reference files it may use, and where it must stop.",
       },
       {
-        step: "Deliver hands-on workshops customized to your business",
+        step: "Let the agent poke holes",
         description:
-          "Your team practices with real work scenarios using ChatGPT, Claude, Gemini, Copilot, and automation tools. We cover prompt engineering, data safety, and role-specific use cases — not generic demos.",
+          "The agent interrogates the plan and asks questions until the steps, inputs, decisions, and approval boundaries are clear.",
       },
       {
-        step: "Provide ongoing support and refresher training",
+        step: "Build it in your project folder",
         description:
-          "AI tools evolve fast. Retainer hours can be used for office hours, updated training materials, and refresher sessions so your team stays current and keeps getting value from AI.",
+          "We assemble the agent live on your machine, in your folder, with only the reference files the workflow actually needs.",
+      },
+      {
+        step: "Test it live, with your team watching",
+        description:
+          "We run the agent against real work during the session, review the output together, and make sure your people understand the method well enough to repeat it.",
       },
     ],
     integrations: [
@@ -1106,15 +1111,15 @@ export const SERVICES: ServiceItem[] = [
       "Slack",
     ],
     stats: [
-      { value: 30, suffix: "%", label: "Faster Task Completion" },
-      { value: 95, suffix: "%", label: "Participant Satisfaction" },
-      { value: 4, suffix: "hrs", label: "Avg. Weekly Time Saved per Employee" },
+      { value: 24, suffix: "+ years", label: "Dallas IT Operations" },
+      { value: 92, suffix: "%", label: "Client Retention" },
+      { value: 200, suffix: "+", label: "Engagements Delivered" },
     ],
     faq: [
       {
-        question: "How much does AI training cost for employees?",
+        question: "How much do AI training and Guided Build Sessions cost?",
         answer:
-          "Workshops and multi-session training programs are quoted based on team size, tools, and curriculum depth. Ongoing office hours, refresher sessions, and new-tool onboarding can use prepaid retainer hours with no minimum monthly usage and no expiration date.",
+          "ITECS offers single guided-build sessions, discounted session packs, prepaid-hour retainers, shared session banks, and half-day executive briefings. Pricing depends on team size, workflow complexity, tools, and whether delivery is onsite or remote. Prepaid retainer hours have no minimum monthly usage and no expiration date.",
       },
       {
         question: "Do my employees need a technical background for AI training?",
@@ -1122,14 +1127,14 @@ export const SERVICES: ServiceItem[] = [
           "No. Our training is designed for non-technical staff — sales reps, customer support agents, HR managers, accountants, and office admins. If they can use email, they can learn to use AI effectively.",
       },
       {
-        question: "What AI tools do you train on?",
+        question: "What happens during a Guided Build Session?",
         answer:
-          "We cover ChatGPT, Claude, Gemini, Microsoft Copilot (Word, Excel, Outlook, Teams), automation platforms (Zapier, Make.com, Power Automate), and any custom AI tools your business uses. Training is customized to the tools your team will actually use.",
+          "We write the workflow down, let the agent question the plan until the instructions are clear, build the agent live in your project folder, and test it against real work with your team watching. The goal is one working workflow and a team that understands how to run it again.",
       },
       {
-        question: "How do you handle AI data safety in training?",
+        question: "What does our team keep after a Guided Build Session?",
         answer:
-          "Data safety is built into every session. We teach employees exactly what they can and can't share with AI tools, set up company-wide AI usage policies, and show them how to use private AI instances for sensitive work. This is especially critical for healthcare, legal, and financial services teams in Dallas.",
+          "You keep the working agent in your own project folder, the plain-language workflow specification it was built from, and the organized reference files it uses. Your team also sees the method end to end so it can maintain, extend, and repeat the workflow.",
       },
     ],
   },
@@ -1510,11 +1515,11 @@ export const TRAINING_SERVICES: ServiceItem[] = [
     title: "Claude Cowork Training & Implementation in Dallas",
     shortTitle: "Claude Cowork Training",
     description:
-      "Claude Cowork training and implementation for Dallas teams. ITECS sets up, secures, and teaches your staff to delegate real projects to Anthropic's agentic AI workspace.",
+      "Claude Cowork training and Guided Build Sessions for Dallas teams. ITECS builds one working agent in your project folder and teaches your staff to maintain it.",
     longDescription:
-      "Claude Cowork lets your team hand entire projects to Claude — research, documents, spreadsheets, and multi-step tasks — inside a shared, agentic workspace. The tool only pays off when people know how to delegate work well and your data stays governed. ITECS handles both: we implement Claude Cowork on the right plan, connect it to your tools securely, and train your staff to get production-quality output instead of dead ends.",
+      "Claude Cowork can handle research, documents, spreadsheets, and multi-step projects. In a Guided Build Session, we turn one of those projects into a repeatable agent workflow with your team watching: write the workflow down, let Claude question the plan, build it in your project folder, and test it against real work.",
     heroSummary:
-      "ITECS trains and implements Claude Cowork for Dallas teams — Anthropic's agentic AI workspace where employees delegate full projects to Claude. Hands-on workshops and secure setup get your staff producing real work in days, not months, with company data governed the whole way.",
+      "ITECS trains and implements Claude Cowork for Dallas teams through secure setup and Guided Build Sessions. We build one working agent live in your project folder, organize its instructions and reference files, and teach your staff to maintain and extend it.",
     href: "/claude-cowork-training",
     icon: "Users",
     keywords: [
@@ -1528,10 +1533,10 @@ export const TRAINING_SERVICES: ServiceItem[] = [
     ],
     h1: "Claude Cowork Training & Implementation",
     features: [
-      "Guided Claude Cowork setup — the right plan, workspace structure, and project folders for your team",
+      "Guided Build Sessions — turn one real project into a working Claude agent your team can maintain",
       "Hands-on delegation workshops — teach staff to brief Claude like a capable teammate, not a search box",
       "Secure connections to Google Workspace, Microsoft 365, Slack, and your file storage",
-      "Reusable project templates and prompt patterns for your most common workflows",
+      "Plain-language workflow specifications, organized reference files, and reusable project templates",
       "Data-safety guardrails — control what Claude can access and keep sensitive records out of reach",
       "Role-based playbooks for operations, marketing, finance, HR, and support teams",
     ],
@@ -1608,11 +1613,11 @@ export const TRAINING_SERVICES: ServiceItem[] = [
     title: "ChatGPT Codex Training & Implementation in Dallas",
     shortTitle: "ChatGPT Codex Training",
     description:
-      "ChatGPT Codex training and implementation for Dallas engineering teams. ITECS helps developers adopt OpenAI's coding agent to ship faster — with secure setup, guardrails, and hands-on workshops.",
+      "ChatGPT Codex training and Guided Build Sessions for Dallas engineering teams. ITECS builds governed repository workflows your developers can maintain.",
     longDescription:
-      "ChatGPT Codex is OpenAI's software-engineering agent — it reads your codebase, writes and edits code, runs tasks in a sandbox, and opens pull requests. Used well, it compresses days of engineering into hours. Used carelessly, it introduces risk. ITECS implements Codex in your environment, sets the right guardrails and approvals, and trains your developers to drive it effectively.",
+      "ChatGPT Codex reads your codebase, edits files, runs tasks in a sandbox, and opens pull requests. In a Guided Build Session, we turn one live engineering task into a repeatable workflow: write the plan down, let Codex challenge it, add the instructions inside your repository, and test the result with your developers watching.",
     heroSummary:
-      "ITECS trains and implements ChatGPT Codex for Dallas engineering teams — OpenAI's agentic coding tool that reads your codebase, writes code, and opens pull requests. Secure setup, sandboxed runs, and hands-on training get your developers shipping faster without sacrificing control.",
+      "ITECS trains and implements ChatGPT Codex for Dallas engineering teams through governed setup and Guided Build Sessions. We build one repeatable workflow in your repository, test it on real work, and teach your developers to maintain the instructions and review boundaries.",
     href: "/chatgpt-codex-training",
     icon: "Terminal",
     keywords: [
@@ -1626,10 +1631,10 @@ export const TRAINING_SERVICES: ServiceItem[] = [
     ],
     h1: "ChatGPT Codex Training & Implementation",
     features: [
-      "Codex setup in your stack — CLI, IDE extension, and cloud agent configured for your repositories",
+      "Guided Build Sessions — turn one live repository task into a repeatable Codex workflow your developers own",
       "Sandboxed execution and approval gates so agent runs never touch production unchecked",
       "Hands-on developer workshops — task scoping, prompting, and reviewing agent-written code",
-      "Guardrails for secrets, dependencies, and code review before anything merges",
+      "Plain-language engineering specifications, repository instructions, and review boundaries",
       "Team workflows for delegating refactors, tests, migrations, and bug fixes to Codex",
       "Cost and usage controls so agent runs stay within a predictable budget",
     ],
@@ -2042,6 +2047,87 @@ export const CODING_AGENT_COMPARISON: PlanComparison = {
 };
 
 export const INSIGHTS: InsightItem[] = [
+  {
+    slug: "ai-model-evaluation-blind-tests",
+    title: "AI Model Evaluation: Blind Tests Before You Deploy",
+    description:
+      "Public AI leaderboards can be contaminated. Learn to evaluate models with blind, task-specific tests on your own data before you deploy — the way NIST now does.",
+    href: "/insights/ai-model-evaluation-blind-tests",
+    publishedDate: "2026-07-30",
+    hubSlug: "consulting",
+    hubLabel: "AI Consulting",
+    hubHref: "/consulting",
+    keywords: [
+      "AI model evaluation",
+      "blind test AI model",
+      "benchmark contamination",
+      "NIST AITE",
+      "AI model benchmarking",
+      "evaluate AI before deployment",
+      "AI model testing",
+      "train test contamination",
+      "domain-specific AI evaluation",
+      "AI model monitoring",
+    ],
+    h1: "AI Model Evaluation: Run Blind Tests Before You Deploy",
+    content: [
+      "Every model vendor leads with a number. A leaderboard rank, a benchmark score, a percentage that says this model is the best. Executives buy on those numbers and deploy into customer service, security, finance, and operations — then wonder why the model that topped the chart underperforms on their actual work. The problem is not the model. It is the evaluation. A public leaderboard measures a public test, not your job. In July 2026, the U.S. government's own standards body made the point unmistakable by building a blind-data testbed to evaluate models the honest way. Here is how to do the same before you deploy, with the [vendor-neutral evaluation](/consulting) discipline to back it.",
+      "**Public AI leaderboards do not predict how a model performs on your work, and many benchmarks leak into training data, inflating scores. Before you deploy a model into customer, security, finance, or operational workflows, test it on task-specific blind data it has never seen, using your own domain datasets and common metrics. Separate vendor claims from your deployment decision, document the uncertainty, and keep monitoring after go-live — because one benchmark result is not a business guarantee.**",
+      "**The Leaderboard Is Not the Job**",
+      "A leaderboard answers one question: how did this model score on a shared, public test. That is useful for researchers and nearly useless for a deployment decision. Your workflow is not the benchmark. A model that tops a general reasoning chart may badly misread your support tickets, your contracts, or your transaction patterns, because none of those were in the test it aced.",
+      "The gap widens with the stakes. A model picked for a customer-service workflow will meet phrasing, products, and edge cases no public benchmark contains. A security model will see your logs, not a tidy academic dataset. A finance model will read your ledgers and your fraud patterns. The only evaluation that predicts performance on your job is an evaluation built from your job — a principle we apply when we help clients [pick the right model for security](/insights/ai-cyber-models-pick-right-model-security), where the benchmark rarely matches the real threat.",
+      "**NIST Built a Blind Testbed for a Reason**",
+      "The clearest endorsement of this approach came in July 2026 from the National Institute of Standards and Technology. NIST announced the Artificial Intelligence Technology Evaluation, or AITE, a voluntary program run by its Technology Test and Evaluation Division. In NIST's description, AITE gives models blind data to process inside a sequestered testbed, so evaluators gain objective insight into what a model can actually do.",
+      "The design choice that matters is why the data is blind. NIST states that the sequestered environment mitigates the risk of train/test data contamination — the exact failure that inflates public scores. The first evaluations, focused on image analysis with large vision language models across quantum science, genomics, and public safety, are set to begin in August 2026, with NIST planning to expand the program in four phases. Separately, NIST's Center for AI Standards and Innovation runs pre-deployment safety testing of frontier models. The throughline is unmistakable: the nation's measurement authority does not trust a public score, and neither should you.",
+      "[[PRACTICE_TABLE]]",
+      "**Benchmark Contamination Is the Quiet Failure**",
+      "Contamination is the problem most buyers never see. Modern models train on enormous slices of the internet, and popular benchmarks live on the internet. When a test set leaks into training data, the model has effectively seen the answers, and its score measures memorization, not capability. The result looks like brilliance and behaves like a student who got the exam in advance.",
+      "This is why NIST sequesters its data, and why your evaluation must use inputs the model could not have trained on. Hold out a fresh sample of your own data and never share it with the vendor. A support classifier that scores 95 percent on a public set but 70 percent on your held-out tickets just told you the public number was contaminated or irrelevant. NIST's [announcement of the AITE program](https://www.nist.gov/news-events/news/2026/07/announcing-nists-artificial-intelligence-technology-evaluation-aite) is explicit that guarding against train/test contamination is the point — treat that as your standard, not an academic nicety.",
+      "**Separate Vendor Claims From Deployment Approval**",
+      "A vendor's benchmark is a marketing asset, and there is nothing wrong with that — until it becomes your approval decision. The two must stay separate. A claim tells you what the vendor measured; approval is your judgment that the model is safe and effective for a specific workflow, on your data, at your risk tolerance. Collapsing the two is how contaminated scores end up in production.",
+      "Good evaluation also refuses false precision. One accuracy number hides the error bars, the failure modes, and the cases where the model is confidently wrong. Document the uncertainty: where the model struggled, how often, and how badly. Then make deployment a deliberate gate, not a default — the same posture we build into [agentic AI infrastructure](/insights/agentic-ai-infrastructure-production-readiness) and every [AI-enabled system we inventory](/insights/ai-enabled-app-inventory-govern-software).",
+      "[[READINESS_DIAGRAM]]",
+      "**Your Model Evaluation Checklist**",
+      "A trustworthy evaluation follows a short discipline. ITECS runs this before any model reaches a real workflow.",
+      "**Test on task-specific blind data.** Score every model on held-out data drawn from your actual workflow, which the model has never seen and the vendor never receives.",
+      "**Watch for benchmark contamination.** Assume popular benchmarks may have leaked into training. Use fresh, private data so the score reflects capability, not memorization.",
+      "**Compare on common metrics.** Score every candidate the same way, on the same data, so the comparison is real. Different scales and different tests cannot be ranked.",
+      "**Include your domain datasets.** Add examples from your customers, your logs, your ledgers, and your edge cases. Generic tests miss the inputs that actually break a model.",
+      "**Separate vendor claims from approval.** Treat a benchmark as a claim to verify, and make deployment a distinct, documented decision on your data and your risk.",
+      "**Document the uncertainty.** Record where the model failed, how often, and how confidently it was wrong. One accuracy number is not an evaluation.",
+      "**Monitor after production.** Keep scoring the model once real data arrives, because inputs shift, models update, and last quarter's result is not a guarantee.",
+      "**How ITECS Evaluates Models Before You Deploy**",
+      "Most companies evaluate a model by reading its marketing. ITECS evaluates it against your work. We are vendor-neutral: we do not sell a model, so we have no reason to flatter one. We define the task and the metric that means success for your workflow, build a blind test set from your own data, score every candidate the same way, and hand you a ranked result with the uncertainty attached — not a leaderboard screenshot. Then we stand up the monitoring that keeps the answer honest after go-live.",
+      "We price this the way we price all advisory work — hourly consulting or prepaid retainer hours with tracked usage, no monthly minimum and no expiration, plus a flat fee for a scoped model-evaluation build. We start with a [data and AI readiness audit](/data-audit) and pair the result with the guardrails to run a model safely, including an [emergency stop for any agent that acts on your systems](/insights/ai-kill-switch-plan-emergency-stops). The payoff is a deployment decision you can defend: the right model for the job, proven on your data. When you are ready to evaluate before you deploy, [talk to the ITECS team](/contact).",
+    ],
+    faq: [
+      {
+        question: "Why aren't public AI benchmarks enough to choose a model?",
+        answer:
+          "A public leaderboard measures a shared, public test, not your workflow. A model that tops a general chart can misread your support tickets, contracts, or transaction data, because none of those were in the benchmark. Public benchmarks can also leak into training data, inflating scores. The only evaluation that predicts performance on your job is one built from your job.",
+      },
+      {
+        question: "What is NIST AITE?",
+        answer:
+          "AITE is the Artificial Intelligence Technology Evaluation, a voluntary program NIST announced in July 2026 and runs through its Technology Test and Evaluation Division. It evaluates AI models on blind data inside a sequestered testbed, which NIST says mitigates the risk of train/test data contamination. Initial evaluations focus on vision-language image analysis and begin in August 2026.",
+      },
+      {
+        question: "What is benchmark contamination?",
+        answer:
+          "Benchmark contamination happens when a test set leaks into a model's training data, so the model has effectively seen the answers. Its score then measures memorization, not capability. Because models train on large slices of the internet where popular benchmarks live, contamination is common — which is why evaluation should use fresh, private data the model could not have trained on.",
+      },
+      {
+        question: "How should a business evaluate an AI model before deployment?",
+        answer:
+          "Define the task and a success metric, then test every candidate on blind data drawn from your own workflow, using common metrics and your domain datasets. Treat vendor benchmarks as claims to verify, keep deployment a separate documented decision, record the uncertainty and failure modes, and keep monitoring the model after production because performance drifts.",
+      },
+      {
+        question: "How does ITECS help evaluate AI models?",
+        answer:
+          "ITECS is vendor-neutral and evaluates models against your work, not their marketing. We define the task and metric, build a blind test set from your own data, score every candidate the same way, deliver a ranked result with the uncertainty attached, and set up post-deployment monitoring. It is advisory and engineering work priced as hourly consulting or prepaid retainer hours with no monthly minimum.",
+      },
+    ],
+  },
   {
     slug: "ai-payment-agents-control-money-movement",
     title: "AI Payment Agents: Control Money Movement Before Launch",
