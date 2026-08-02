@@ -47,6 +47,15 @@ Markdown using indexes, coverage files, headings, full body content, and relativ
 media links. It can preserve the source path, exact heading, surrounding article
 context, and relevant local visual when the approved workspace has access.
 
+### ITECS Change Assurance
+URL: https://itecs.ai/it-change-readiness
+Managed, read-only AI-assisted IT change readiness reviews for infrastructure
+teams. The service classifies risk, challenges assumptions, checks current
+official vendor requirements, requires and records technician-reported live
+verification for critical prerequisites, and produces an auditable readiness
+verdict. It complements existing ticketing, change-owner, and CAB processes. It
+never executes, approves, deploys, remediates, or rolls back a change.
+
 ### AI Security & Compliance
 URL: https://itecs.ai/data-audit
 HIPAA, SOX, FINRA, and CMMC-aligned AI security. PHI/PII redaction, audit

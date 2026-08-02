@@ -17,6 +17,12 @@ custom AI agents, AI security compliance, and AI-optimized SEO services.
   headings, full body content, and relative media links, preserving the source
   path, exact heading, article context, and relevant visual when available.
   URL: https://itecs.ai/ai-knowledge-base
+- ITECS Change Assurance — managed, read-only AI-assisted IT change readiness
+  reviews that challenge infrastructure plans, require and record
+  technician-reported live verification for critical prerequisites, check
+  current official vendor requirements, and produce an auditable readiness
+  verdict. Review-only: it never executes the change.
+  URL: https://itecs.ai/it-change-readiness
 - AI Security & Compliance — HIPAA, SOX, FINRA alignment, PHI/PII redaction
 - AI-Optimized SEO & GEO — Generative engine optimization, AI search
   Hub: https://itecs.ai/ai-optimized-seo

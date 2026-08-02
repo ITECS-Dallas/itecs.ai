@@ -1,7 +1,14 @@
 import Link from "next/link";
-import { ArrowRight, BookOpen, Factory, Landmark } from "lucide-react";
+import {
+  ArrowRight,
+  BookOpen,
+  Factory,
+  Landmark,
+  ShieldCheck,
+} from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import {
+  CHANGE_ASSURANCE_SERVICE,
   FIELD_EXAM_ANALYZER_USE_CASE,
   PPV_AGENT_USE_CASE,
 } from "@/lib/constants";
@@ -23,6 +30,7 @@ interface FeaturedAgent {
   cta: string;
   icon: LucideIcon;
   blurb: string;
+  badge?: string;
   stats?: readonly { value: string; label: string }[];
 }
 
@@ -61,6 +69,17 @@ const FEATURED: FeaturedAgent[] = [
     blurb:
       "Turns approved company knowledge, client documentation, and authoritative vendor guidance into cited answers and maintained SOPs and runbooks, with human review for consequential changes.",
   },
+  {
+    title: CHANGE_ASSURANCE_SERVICE.shortTitle,
+    eyebrow: "AI-Assisted IT Change Readiness",
+    href: CHANGE_ASSURANCE_SERVICE.href,
+    category: "IT Operations & Change Assurance",
+    cta: "Explore Change Assurance",
+    icon: ShieldCheck,
+    badge: "Review-only",
+    blurb:
+      "Stress-tests infrastructure change plans before technicians act—challenging risk, prerequisites, dependencies, rollback, current vendor guidance, and required live evidence—then produces an auditable readiness report. It never executes the change.",
+  },
 ];
 
 export function FeaturedAgentBuilds() {
@@ -70,10 +89,10 @@ export function FeaturedAgentBuilds() {
         <SectionHeading
           eyebrow="Flagship Agent Builds"
           title="What an enterprise agent actually looks like."
-          description="These are fully specified agent systems ITECS engineers for operating teams — grounded in approved operational data, with human review in front of consequential actions."
+          description="These managed agent systems support finance, operations, knowledge, and change-review teams with approved evidence and human authority in front of consequential actions."
         />
 
-        <div className="mt-14 grid gap-6 lg:grid-cols-3">
+        <div className="mt-14 grid gap-6 md:grid-cols-2">
           {FEATURED.map(
             ({
               title,
@@ -84,6 +103,7 @@ export function FeaturedAgentBuilds() {
               cta,
               icon: Icon,
               blurb,
+              badge,
               stats,
             }) => (
               <article
@@ -114,6 +134,11 @@ export function FeaturedAgentBuilds() {
               <p className="mt-2 text-sm font-medium text-ink-muted">
                 {eyebrow}
               </p>
+              {badge && (
+                <p className="chamfer-sm mt-4 w-fit border border-amber-700/30 bg-amber-50 px-3 py-1 font-mono text-[11px] font-semibold uppercase tracking-[0.12em] text-amber-800">
+                  {badge}
+                </p>
+              )}
               <p className="mt-4 flex-1 text-sm leading-relaxed text-ink-body md:text-base">
                 {blurb}
               </p>
