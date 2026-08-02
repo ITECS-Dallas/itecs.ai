@@ -1870,6 +1870,121 @@ export const SERVICES: ServiceItem[] = [
 ];
 
 // ---------------------------------------------------------------------------
+// ITECS Change Assurance
+// Kept outside SERVICES so the focused product page does not silently expand
+// the general services grid or navigation. Homepage, sitemap, public summaries,
+// and Intelligence grounding opt in explicitly.
+// ---------------------------------------------------------------------------
+
+export const CHANGE_ASSURANCE_SERVICE: ServiceItem = {
+  slug: "it-change-readiness",
+  title: "ITECS Change Assurance",
+  shortTitle: "ITECS Change Assurance",
+  description:
+    "ITECS Change Assurance is a managed, read-only AI review agent that stress-tests infrastructure change plans before execution. It classifies risk, challenges assumptions, checks current vendor requirements, requires live verification for critical prerequisites, and produces an auditable readiness verdict. It never makes the change.",
+  longDescription:
+    "Managed pre-change technical review for infrastructure teams. The service complements existing ITSM, change-owner, and CAB processes by challenging whether the submitted technical plan and its evidence are ready while the technician and approvers retain authority.",
+  heroSummary:
+    "Challenge the plan before the change challenges production.",
+  href: "/it-change-readiness",
+  icon: "ShieldCheck",
+  keywords: [
+    "IT change risk assessment",
+    "IT change readiness",
+    "infrastructure change review",
+    "MSP change management",
+    "pre-change technical review",
+    "AI-assisted IT change readiness",
+  ],
+  h1: "Challenge High-Risk IT Changes Before Production",
+  features: [
+    "Prerequisites, compatibility, dependencies, and blast radius",
+    "Backup safety, rollback triggers, duration, and point of no return",
+    "Maintenance timing, communications, security, access, ownership, and escalation",
+    "Immediate functional verification and silent-failure checks at T+24h and T+72h",
+    "Evidence statuses and an attributable readiness verdict for the reviewed plan",
+  ],
+  howItWorksHeading: "How the change readiness review works",
+  howItWorks: [
+    {
+      step: "Plan intake",
+      description:
+        "Capture technician identity, ticket or reference, the change description, and the submitted plan with scope, steps, window, backup, rollback, verification, and communications.",
+    },
+    {
+      step: "Risk tier",
+      description:
+        "Classify the reviewed change as routine, elevated, or critical based on scope, dependencies, reversibility, and required evidence.",
+    },
+    {
+      step: "Documentation and current vendor evidence",
+      description:
+        "Consult approved company and OpsMemory context read-only, then use current official vendor guidance for exact upgrade or migration requirements.",
+    },
+    {
+      step: "Constructively adversarial technical review",
+      description:
+        "Challenge assumptions in focused question batches and require the technician to inspect the live environment for critical prerequisites.",
+    },
+    {
+      step: "Readiness verdict and report",
+      description:
+        "Record evidence, unresolved risk, rollback criteria, validation checks, sources, and an attributable readiness verdict. The agent never executes the change.",
+    },
+  ],
+  integrations: [
+    "Technician-submitted change plans",
+    "Technician-reported live observations",
+    "Current official vendor guidance",
+    "Approved company and OpsMemory documentation read-only",
+    "Existing ITSM, change-owner, and CAB processes",
+  ],
+  stats: [],
+  faq: [
+    {
+      question: "What is an AI-assisted IT change readiness review?",
+      answer:
+        "It is a managed pre-change technical review that challenges an infrastructure plan, classifies its risk, checks current requirements, and records whether the evidence supports proceeding. ITECS Change Assurance produces an auditable verdict for the reviewed plan while people retain approval and execution authority.",
+    },
+    {
+      question: "Does ITECS Change Assurance execute infrastructure changes?",
+      answer:
+        "No. ITECS Change Assurance is review-only and never executes, deploys, remediates, rolls back, or approves an infrastructure change. The technician and the customer's existing change process remain responsible for action and authorization.",
+    },
+    {
+      question: "How are critical prerequisites verified?",
+      answer:
+        "Critical prerequisites require and record technician-reported live verification. Documentation and current official vendor guidance establish context and requirements, but the technician must inspect the live environment and report the observed fact before critical evidence can be marked VERIFIED LIVE.",
+    },
+    {
+      question: "Which changes require a full review?",
+      answer:
+        "Scope and evidence determine treatment. Server, multi-user, DNS, GPO, firewall-rule, application, backup and disaster-recovery, identity, hypervisor, core-network, storage, certificate-authority, and shared-platform work commonly needs elevated or critical review, while trivial single-user changes may be routine.",
+    },
+    {
+      question: "What is included in the readiness report?",
+      answer:
+        "The report includes the submitted plan, scope and risk tier, verified and open evidence, pre-flight checklist, rollback criteria and point of no return, immediate and T+24h and T+72h checks, communications, sources, and the readiness verdict. It is valid only for the reviewed plan and for 14 days, expiring earlier if the plan or target version changes.",
+    },
+    {
+      question: "Can a technician override a no-go verdict?",
+      answer:
+        "Yes, but the override is explicit and attributable. The record preserves the technician's decision and every unresolved risk; an override never converts unresolved risk into GO.",
+    },
+    {
+      question: "Can it use our documentation and ticketing process?",
+      answer:
+        "It can use approved company and OpsMemory documentation read-only and can work alongside the customer's existing ticketing and change workflow. Specific repositories, handoffs, and permissions are confirmed during scoping; no direct ticketing connector is promised by this page.",
+    },
+    {
+      question: "Does it replace a change advisory board or change owner?",
+      answer:
+        "No. The ITSM and change workflow records, routes, schedules, and approves the change, while ITECS Change Assurance challenges whether the technical plan and evidence are ready. The change owner, approver, CAB, and technician remain responsible.",
+    },
+  ],
+};
+
+// ---------------------------------------------------------------------------
 // Tool-specific AI Training & Implementation pages.
 // These reuse the ServiceItem shape and every hub-page section component, but
 // live in their own array so they do NOT appear in the /services grid or the

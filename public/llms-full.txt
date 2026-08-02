@@ -73,6 +73,17 @@ desktop project or workspace with local-folder access and required permissions,
 the article, surrounding context, and associated local visual can be opened and
 cited; behavior varies by platform, plan, device, permissions, and configuration.
 
+### ITECS Change Assurance — AI-Assisted IT Change Readiness
+URL: https://itecs.ai/it-change-readiness
+ITECS Change Assurance is a managed, read-only AI review agent that stress-tests
+infrastructure change plans before execution. It classifies risk, challenges
+assumptions, checks current official vendor requirements, and requires and
+records technician-reported live verification for critical prerequisites. The
+readiness report preserves evidence statuses, unresolved risk, rollback criteria,
+immediate and later checks, cited sources, and an attributable verdict for the
+reviewed plan. It complements existing ITSM, change-owner, and CAB processes and
+never executes, approves, deploys, remediates, or rolls back a change.
+
 ### Data Readiness Audit
 URL: https://itecs.ai/data-audit
 Flat-fee Microsoft 365 and Google Workspace security and AI readiness audits

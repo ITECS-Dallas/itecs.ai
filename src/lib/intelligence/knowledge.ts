@@ -11,6 +11,7 @@ import {
   AI_SESSION_BANK_TERMS,
   AI_SEO_OVERVIEW,
   AI_SEO_TIERS,
+  CHANGE_ASSURANCE_SERVICE,
   FIELD_EXAM_ANALYZER_USE_CASE,
   FINANCIAL_SERVICES_SPOKE_PAGES,
   FINANCIAL_SERVICES_VERTICAL,
@@ -84,6 +85,7 @@ const SEARCH_EXPANSIONS: Array<[RegExp, string]> = [
   [/\b(phone|call|calls|reception|receptionist|after.hours|booking)\b/i, "voice agent AI receptionist missed calls appointment routing"],
   [/\b(sales|pipeline|lead|leads|crm|hubspot|salesforce)\b/i, "CRM sales AI lead follow-up scoring outreach"],
   [/\b(files|documents|markdown|headings?|images?|diagrams?|media|sop|runbooks?|knowledge|opsmemory|sharepoint|notion|confluence|onboarding)\b/i, "ITECS OpsMemory managed knowledge document operations structured Markdown index coverage headings body content relative media links cited answers source priority permissions human review freshness"],
+  [/\b(change readiness|change risk|change plan|pre.change|no.go|rollback|blast radius|maintenance window|cab)\b/i, "ITECS Change Assurance AI-assisted IT change readiness infrastructure change review risk tier prerequisites current official vendor guidance technician-reported live verification auditable readiness verdict review-only never executes"],
   [/\b(factory|plant|manufacturer|manufacturing|inventory|quality|ppv|procurement)\b/i, "manufacturing finance operations AI margin working capital"],
   [/\b(lender|lending|borrower|collateral|covenant|field exam|restructuring)\b/i, "financial services AI lender advisory workpaper agent"],
   [/\b(search|seo|rank|ranking|google|visibility|answer engine)\b/i, "AI optimized SEO GEO search visibility Foundation Momentum Velocity"],
@@ -149,10 +151,10 @@ function safeFaq(faq: readonly { question: string; answer: string }[]) {
         ),
     )
     .map((item) => ({
-      question: item.question,
+      question: safeMarketingText(item.question),
       answer: safeMarketingText(item.answer),
     }))
-    .filter((item) => Boolean(item.answer))
+    .filter((item) => Boolean(item.question) && Boolean(item.answer))
     .map((item) => `Q: ${item.question}\nA: ${item.answer}`)
     .join("\n");
 }
@@ -171,7 +173,7 @@ function resource(
 }
 
 function serviceDocuments(): KnowledgeDocument[] {
-  return [...SERVICES, ...TRAINING_SERVICES].map((service) => ({
+  return [...SERVICES, ...TRAINING_SERVICES, CHANGE_ASSURANCE_SERVICE].map((service) => ({
     id: `service:${service.slug}`,
     title: service.shortTitle,
     href: service.href,
@@ -846,7 +848,7 @@ const CATALOG_DOCUMENTS: KnowledgeDocument[] = [
     title: "ITECS AI service catalog",
     href: "/services",
     tags: ["services", "offerings", "solutions", "what do you do", "catalog"],
-    body: [...SERVICES, ...TRAINING_SERVICES]
+    body: [...SERVICES, ...TRAINING_SERVICES, CHANGE_ASSURANCE_SERVICE]
       .map(
         (item) =>
           `${item.shortTitle}: ${safeMarketingText(item.description)} (${item.href})`,

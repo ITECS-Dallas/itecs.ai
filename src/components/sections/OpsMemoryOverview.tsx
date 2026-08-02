@@ -1,4 +1,6 @@
+import Link from "next/link";
 import {
+  ArrowRight,
   BookOpenCheck,
   Building2,
   ClipboardCheck,
@@ -132,6 +134,19 @@ export function OpsMemoryBoundaries() {
             </li>
           ))}
         </ul>
+
+        <p className="mx-auto mt-8 max-w-3xl text-center text-sm leading-relaxed text-ink-muted">
+          For pre-change review, see how{" "}
+          <Link
+            href="/it-change-readiness"
+            className="inline-flex min-h-11 items-center gap-2 font-semibold text-itecs-blue transition-colors hover:text-itecs-blue-bright focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2"
+          >
+            ITECS Change Assurance uses OpsMemory context read-only
+            <ArrowRight aria-hidden="true" className="h-4 w-4" />
+          </Link>
+          , flags staleness or conflict, and still requires technician-reported
+          live verification for critical facts.
+        </p>
       </div>
     </section>
   );
