@@ -51,7 +51,7 @@ const sources: ArticleSource[] = [
     label: "ITECS — Self-Hosted AI Agents With Seafile",
     href: "/insights/self-hosted-ai-agents-seafile",
     description:
-      "How ITECS shares App-enabled AI agents like DOCBOT across the team using a self-hosted, open-source stack.",
+      "How ITECS shares internal App-enabled documentation agents across the team using a self-hosted, open-source stack.",
   },
 ];
 

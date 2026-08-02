@@ -452,22 +452,15 @@ Team size alone does not select the engagement. The workflow, deployment environ
 }
 
 function knowledgeBaseFit(): IntelligencePrecisionAnswer {
-  const matchingIntegrations = ["Microsoft SharePoint", "Notion", "Confluence"].map(
-    (name) => requiredValue(
-      KNOWLEDGE_BASE_SERVICE.integrations.find((integration) => integration === name),
-      `AI Knowledge Base integration: ${name}`,
-    ),
-  );
-
   return {
     intent: "knowledge_base_fit",
-    answer: `The closest published ITECS option is the ${KNOWLEDGE_BASE_SERVICE.shortTitle}. It is designed to turn scattered company files into a private, natural-language knowledge experience.
+    answer: `The closest published ITECS option is ${KNOWLEDGE_BASE_SERVICE.shortTitle}, a managed knowledge and document operations agent.
 
-- Systems: the published integrations include ${matchingIntegrations.join(", ")}.
-- Department controls: ${KNOWLEDGE_BASE_PERMISSION_FEATURE}.
-- Answer quality: ${KNOWLEDGE_BASE_CITATION_FEATURE}.
+- Source priority: approved organization and client-specific documentation is consulted first, reusable internal standards next, and current authoritative guidance when local material is missing or stale.
+- Permissions: ${KNOWLEDGE_BASE_PERMISSION_FEATURE}.
+- Answer quality: ${KNOWLEDGE_BASE_CITATION_FEATURE}. Missing, stale, or conflicting facts are identified instead of silently invented.
 
-That maps directly to your stated platforms and permission requirement. Final fit, source ownership, access boundaries, and implementation scope are confirmed in a scoping conversation; do not place private SOPs or credentials into this public chat.`,
+The repositories you named are inputs to scoping, not a blanket connector promise. Final connector fit, source ownership, access boundaries, review roles, and implementation scope are confirmed before work begins; do not place private SOPs or credentials into this public chat.`,
   };
 }
 

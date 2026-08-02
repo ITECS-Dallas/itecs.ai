@@ -61,10 +61,12 @@ URL: https://itecs.ai/crm-sales-ai
 Sales pipeline automation, lead scoring, follow-up workflows, and CRM-connected
 AI for small and mid-sized businesses.
 
-### AI Knowledge Base
+### ITECS OpsMemory — Managed Knowledge & Document Operations Agent
 URL: https://itecs.ai/ai-knowledge-base
-Internal RAG search over SOPs, policies, tickets, documents, and operational
-knowledge with secure retrieval controls.
+ITECS OpsMemory turns approved company knowledge, client-specific documentation,
+and authoritative vendor guidance into cited answers and maintained SOPs,
+runbooks, and operational documentation. ITECS manages source priority,
+permissions, human review, freshness, and ongoing quality.
 
 ### Data Readiness Audit
 URL: https://itecs.ai/data-audit

@@ -527,10 +527,9 @@ describe("Authoritative pricing answers", () => {
         "Our 40-person company has SOPs in SharePoint, Notion, and Confluence with department permissions. What ITECS option fits?",
     });
     assert.equal(knowledgeBase.intent, "knowledge_base_fit");
-    assert.match(knowledgeBase.answer, /AI Knowledge Base/);
-    assert.match(knowledgeBase.answer, /Microsoft SharePoint/);
-    assert.match(knowledgeBase.answer, /Notion/);
-    assert.match(knowledgeBase.answer, /Confluence/);
+    assert.match(knowledgeBase.answer, /ITECS OpsMemory/);
+    assert.match(knowledgeBase.answer, /source priority/i);
+    assert.match(knowledgeBase.answer, /not a blanket connector promise/i);
     assert.match(knowledgeBase.answer, /role-based access/i);
     assert.match(knowledgeBase.answer, /cited answers/i);
 

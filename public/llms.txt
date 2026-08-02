@@ -37,6 +37,13 @@ URL: https://itecs.ai/custom-ai-agents
 Custom agents, Claude and Codex workflows, and RAG-powered assistants grounded
 in client data. Multi-channel deployment and HIPAA/SOC 2 capable architectures.
 
+### ITECS OpsMemory
+URL: https://itecs.ai/ai-knowledge-base
+Managed knowledge and document operations that turn approved company knowledge,
+client-specific documentation, and authoritative vendor guidance into cited
+answers and maintained SOPs and runbooks, with managed permissions, human
+review, freshness, and ongoing quality.
+
 ### AI Security & Compliance
 URL: https://itecs.ai/data-audit
 HIPAA, SOX, FINRA, and CMMC-aligned AI security. PHI/PII redaction, audit

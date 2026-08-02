@@ -43,10 +43,10 @@ const sources: ArticleSource[] = [
       "How ITECS rolls out and governs Microsoft 365 Copilot before building agents on top of it.",
   },
   {
-    label: "ITECS — Self-Hosted AI Agents and DOCBOT",
+    label: "ITECS — Self-Hosted Documentation Agents",
     href: "/insights/self-hosted-ai-agents-seafile",
     description:
-      "Another ITECS-built agent, DOCBOT, applying the same principle: meet people in the tools they use and connect the systems that were not talking.",
+      "Another ITECS-built internal agent applying the same principle: meet people in the tools they use and connect systems that were not talking.",
   },
   {
     label: "ITECS Workflow Automation",

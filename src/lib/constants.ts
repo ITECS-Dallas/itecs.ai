@@ -1683,14 +1683,14 @@ export const SERVICES: ServiceItem[] = [
   },
   {
     slug: "ai-knowledge-base",
-    title: "Internal AI Knowledge Bases & SOP Automation for Dallas Businesses",
-    shortTitle: "AI Knowledge Base",
+    title: "AI Knowledge Base & SOP Automation | ITECS OpsMemory",
+    shortTitle: "ITECS OpsMemory",
     description:
-      "Turn scattered company files into a private AI search engine. Employees ask questions in plain English and get cited answers in 5 seconds — cutting onboarding time by 50%.",
+      "ITECS OpsMemory turns approved company knowledge into cited answers and maintained SOPs, with managed permissions, review, and ongoing support.",
     longDescription:
-      "Your company knowledge is trapped in SharePoint folders, Google Drives, Notion pages, and people's heads. New hires take months to get up to speed. Employees ask the same questions over and over. ITECS builds private, RAG-powered AI knowledge bases that connect all your documentation into a single natural-language search interface — like having a secure AI assistant that only knows your company's SOPs, policies, and institutional knowledge, and cites the source document for every answer.",
+      "ITECS OpsMemory turns approved company knowledge, client-specific documentation, and authoritative vendor guidance into cited answers and maintained SOPs, runbooks, and operational documentation. ITECS manages source priority, permissions, human review, freshness, and ongoing quality—helping employees work faster without treating AI-generated guesses as company truth.",
     heroSummary:
-      "ITECS builds private AI knowledge bases for Dallas businesses with 50–500 employees. We connect SharePoint, Google Drive, Notion, and Confluence into one RAG-powered search engine. Employees ask questions in plain English and get cited answers in 5 seconds. Average result: 50% faster onboarding, 70% fewer repeated questions, full setup in 4–6 weeks.",
+      "Your company's operational memory—organized, source-backed, and ready to use.",
     href: "/ai-knowledge-base",
     icon: "BookOpen",
     keywords: [
@@ -1703,91 +1703,86 @@ export const SERVICES: ServiceItem[] = [
       "AI knowledge management Dallas",
       "private AI search company documents",
       "RAG knowledge base for growing teams",
+      "ITECS OpsMemory",
+      "managed knowledge operations agent",
+      "document operations agent",
     ],
-    h1: "Internal AI Knowledge Bases & SOP Automation",
+    h1: "AI Knowledge Base & SOP Automation",
     features: [
-      "Natural-language search across all company documents, SOPs, and wikis",
-      "Connects to SharePoint, Google Drive, Notion, Confluence, and file servers via API",
-      "Cited answers — every response links to the source document and paragraph",
-      "Confidence scoring rejects low-certainty answers instead of hallucinating",
-      "Role-based access control so departments only see authorized knowledge",
-      "Auto-sync indexes new and updated documents without manual re-ingestion",
+      "Cited answers grounded in approved organization and client-specific documentation",
+      "Maintained SOPs, runbooks, and operational documentation with human review",
+      "Role-based access and source permissions aligned to approved knowledge boundaries",
+      "Freshness and quality checks that flag missing, stale, or conflicting facts",
+      "Fewer repeated questions and shorter technician research and onboarding",
+      "Less key-person dependency as operational knowledge stays organized and available",
     ],
-    howItWorksHeading: "How to build an AI knowledge base for your company",
+    howItWorksHeading: "How the OpsMemory trust model works",
     howItWorks: [
       {
-        step: "Audit your documentation landscape and identify knowledge gaps",
+        step: "Consult approved organization and client documentation first",
         description:
-          "We map where your company knowledge lives — SharePoint, Google Drive, Notion, Confluence, wikis, file servers, and undocumented tribal knowledge. We interview department leads to identify the 20 most frequently asked questions and the biggest onboarding bottlenecks.",
+          "OpsMemory begins with the organization- or client-specific material that has been approved for the user and task.",
       },
       {
-        step: "Ingest, chunk, and embed your documents into a private vector database",
+        step: "Consult reusable internal standards and procedures next",
         description:
-          "We connect to your data sources via read-only API, split documents into semantic chunks, and generate vector embeddings stored in a private database on your infrastructure. No data leaves your environment. Role-based permissions mirror your existing access controls.",
+          "When client-specific material does not resolve the question, OpsMemory checks the approved standards and procedures your teams share.",
       },
       {
-        step: "Build the RAG pipeline with confidence scoring and citation logic",
+        step: "Use current authoritative guidance when local material is missing or stale",
         description:
-          "We configure the retrieval-augmented generation pipeline — query parsing, semantic search, re-ranking, and answer synthesis via OpenAI API or Azure OpenAI. Every answer includes source citations. Confidence scoring rejects uncertain responses instead of hallucinating.",
+          "Current vendor or other official guidance can fill a verified gap without being silently promoted above approved company knowledge.",
       },
       {
-        step: "Deploy to Slack, Teams, or intranet and train your team",
+        step: "Identify missing, stale, or conflicting facts",
         description:
-          "We launch the AI knowledge base where your team already works — Slack, Microsoft Teams, or a branded intranet portal. We run hands-on training sessions and configure auto-sync so new documents are indexed within minutes of being saved.",
+          "When the available sources do not support a reliable answer, OpsMemory surfaces the gap or conflict instead of silently inventing a fact.",
+      },
+      {
+        step: "Keep consequential changes under human review",
+        description:
+          "Consequential documentation or operational changes remain subject to human review and existing approvals before they take effect.",
       },
     ],
     integrations: [
-      "Microsoft SharePoint",
-      "Google Drive",
-      "Notion",
-      "Confluence",
-      "Slack",
-      "Microsoft Teams",
-      "OpenAI API",
-      "Azure OpenAI",
-      "Pinecone",
-      "Microsoft 365",
+      "Approved organization and client documentation",
+      "Reusable internal standards and procedures",
+      "Current authoritative vendor and official guidance",
+      "Existing identity and permission controls",
+      "Human review and approval workflows",
+      "Freshness and ongoing quality checks",
     ],
-    stats: [
-      { value: 50, suffix: "%", label: "Faster Employee Onboarding" },
-      { value: 70, suffix: "%", label: "Fewer Repeated Questions" },
-      { value: 5, suffix: "sec", label: "Avg. Answer Time" },
-      { value: 600, suffix: "+", label: "Queries Handled Weekly" },
-    ],
+    stats: [],
     faq: [
       {
-        question: "How much does an internal AI knowledge base cost?",
-        answer: `${getAIPricingOffering("Agent Discovery & Technical Specification").name} is ${getAIPricingOffering("Agent Discovery & Technical Specification").price} and credits toward the build. A bounded ${getAIPricingOffering("Proof of Concept / Prototype").name} is ${getAIPricingOffering("Proof of Concept / Prototype").price}; a multi-source ${getAIPricingOffering("Integrated / Line-of-Business Agent").name} is ${getAIPricingOffering("Integrated / Line-of-Business Agent").price}. Production operation after launch uses the separate Agent Operations ladder.`,
+        question: "What is ITECS OpsMemory?",
+        answer:
+          "ITECS OpsMemory is a managed knowledge and document operations agent. It turns approved company knowledge, client-specific documentation, and authoritative vendor guidance into cited answers and maintained SOPs, runbooks, and operational documentation, with ITECS managing source priority, permissions, human review, freshness, and ongoing quality.",
       },
       {
-        question: "Is my company data safe in an AI knowledge base?",
+        question: "How does OpsMemory decide which source to trust?",
         answer:
-          "Yes. We deploy on your infrastructure or a private cloud — your data never touches public AI services or trains third-party models. We implement AES-256 encryption at rest and in transit, role-based access control, and full audit logging. For regulated industries we build HIPAA, SOC 2, FINRA, and CMMC compliant deployments.",
+          "OpsMemory checks approved organization or client-specific documentation first, then reusable internal standards and procedures. Current authoritative vendor or official guidance is used when local material is missing or stale. Missing, stale, or conflicting facts are identified instead of silently invented.",
       },
       {
-        question: "What is the difference between an AI knowledge base and SharePoint search?",
+        question: "How are permissions and consequential changes handled?",
         answer:
-          "SharePoint search matches keywords. An AI knowledge base understands meaning. Ask 'What is our PTO policy for first-year employees?' and get the exact answer with a citation — instead of 50 documents that mention 'PTO'. It also searches across all your platforms simultaneously, not just SharePoint.",
+          "ITECS manages source permissions and review roles around the approved knowledge boundary. Consequential documentation or operational changes remain subject to human review and existing approvals.",
       },
       {
-        question: "How does RAG work for internal knowledge bases?",
+        question: "What outcomes is OpsMemory designed to support?",
         answer:
-          "RAG (Retrieval-Augmented Generation) splits your documents into chunks, converts them into vector embeddings, and stores them in a searchable database. When an employee asks a question, the system retrieves the most relevant passages, then uses AI to synthesize a clear answer with citations. It only answers from your data — no hallucinations.",
+          "OpsMemory is designed to reduce repeated questions, shorten technician research and onboarding, reduce key-person dependency, and help keep SOPs and runbooks current. Results depend on the quality, permissions, and freshness of the approved sources.",
       },
       {
-        question: "How long does it take to deploy an AI knowledge base?",
+        question: "Which repositories and connectors does OpsMemory support?",
         answer:
-          "Most deployments take 4–6 weeks from kickoff to production. Week 1 covers the documentation audit and data source mapping. Weeks 2–4 handle ingestion, pipeline configuration, and accuracy testing. Weeks 5–6 cover deployment, team training, and auto-sync configuration. Companies with clean, centralized documentation can go faster.",
+          "OpsMemory works from approved company knowledge, client-specific documentation, internal standards, and authoritative vendor or official guidance. The repositories, connectors, permission boundaries, and deployment pattern are verified during scoping rather than promised as a universal bundle.",
       },
       {
-        question: "Can the AI knowledge base connect to multiple platforms at once?",
+        question: "What will OpsMemory not do?",
         answer:
-          "Yes. A single knowledge base can pull from SharePoint, Google Drive, Notion, Confluence, file servers, and wikis simultaneously. Multi-source connectivity is included at no additional per-platform fee. Employees search one interface and get answers sourced from any connected platform.",
-      },
-      {
-        question: "What happens when we update or add new documents?",
-        answer:
-          "Auto-sync monitors your connected data sources and re-indexes new or updated documents within minutes. No manual re-ingestion required. Deleted documents are automatically removed from search results. We also run quarterly reviews to tune retrieval accuracy as your knowledge base grows.",
+          "OpsMemory does not turn unverified internet content into company truth, store secrets in its knowledge base, make autonomous compliance judgments, or perform unapproved infrastructure changes.",
       },
     ],
   },
@@ -2565,7 +2560,7 @@ export const INSIGHTS: InsightItem[] = [
       "[[WORKFLOW_DIAGRAM]]",
       "**Tied Into Our PSA for Tickets and Events**",
       "Scheduling does not happen in a vacuum. On-call work maps to real tickets and events in our professional services automation platform. So we connected the agent to our PSA as well. A technician can reference a ticket number or an event in the same Teams conversation, and the agent pulls the relevant details without anyone leaving the chat or logging into another system.",
-      "That link is what turns the agent from a calendar tool into an operations tool. Coverage, availability, and the actual work are finally in one place. It is the same integration philosophy behind [DOCBOT, the documentation agent we built](/insights/self-hosted-ai-agents-seafile) — meet people in the tools they already use, and connect the systems that were never talking.",
+      "That link is what turns the agent from a calendar tool into an operations tool. Coverage, availability, and the actual work are finally in one place. It is the same integration philosophy behind [the internal documentation agent we built](/insights/self-hosted-ai-agents-seafile) — meet people in the tools they already use, and connect the systems that were never talking.",
       "**Why Copilot and Teams, and How We Keep It Governed**",
       "We chose Microsoft Copilot and Teams deliberately. Adoption is the hardest part of any internal tool, and an agent that lives where staff already work gets used. Copilot also grounds the agent in our Microsoft 365 environment and respects the permissions already in place, which Microsoft documents in its [Microsoft 365 Copilot data privacy commitments](https://learn.microsoft.com/en-us/copilot/microsoft-365/microsoft-365-copilot-privacy). Governance is built in, not bolted on.",
       "We scope what the agent can access, keep its actions inside our tenant, and require human approval for the decisions that matter — a technician has to accept a coverage request before anything changes. That is the same discipline we apply to any agent that acts on real systems, and the same care we cover in our guide to [securing an AI agent's admin controls](/insights/chatgpt-work-secure-admin-checklist). A rollout like this usually starts with our [Microsoft Copilot training and implementation](/copilot-training).",
@@ -3206,7 +3201,7 @@ export const INSIGHTS: InsightItem[] = [
       "biometric secret access",
       "1Password op run",
       "AI agent secrets management",
-      "DOCBOT ITECS agent",
+      "ITECS internal documentation agent",
     ],
     h1: "How to Use 1Password With Claude Cowork, Codex, and Custom AI Agent CLIs",
     content: [
@@ -3225,10 +3220,10 @@ export const INSIGHTS: InsightItem[] = [
       "**The Reciprocal Pipeline: Agents That Write Secrets Back**",
       "The flow runs both directions. Agents do not just read secrets — they can create them. When an agent provisions a new service, generates an API key, or rotates a token, it can write that secret straight into 1Password using the CLI or the 1Password SDK.",
       "This closes the loop. Instead of a freshly generated key ending up pasted in a chat or a notes file, it is stored, encrypted, and governed the moment it exists. Every credential the agent produces lands in the same vault, under the same access controls and the same biometric gate. Secrets sprawl stops before it starts.",
-      "**Case Study: How ITECS's DOCBOT Agent Uses This**",
-      "DOCBOT is the AI agent ITECS built for our own team. It gives our technicians an LLM interface to review, update, and create SOPs, knowledge-base articles, and documentation — the [self-hosted agent architecture we described here](/insights/self-hosted-ai-agents-seafile), extended to live operations.",
-      "A technician can ask DOCBOT what tickets are open, what a project's status is, or which licenses a client holds. To answer, DOCBOT reaches into our real systems: our PSA for tickets and projects, our datacenter hypervisors for infrastructure, and PAX8 for license inquiries. Each of those calls needs an API secret.",
-      "Here is the part that matters. DOCBOT never stores those secrets, and the LLM never sees them. When DOCBOT calls a system, it pulls the credential from 1Password at runtime — and the technician must approve the access with 1Password biometrics before the call proceeds. Our documentation agent has full operational reach and zero standing access to raw credentials. That is the pattern we build for clients, too.",
+      "**Case Study: How ITECS's Internal Documentation Agent Uses This**",
+      "ITECS built an internal AI agent that gives our technicians an LLM interface to review, update, and create SOPs, knowledge-base articles, and documentation — the [self-hosted agent architecture we described here](/insights/self-hosted-ai-agents-seafile), extended to live operations.",
+      "A technician can ask the agent what tickets are open, what a project's status is, or which licenses a client holds. To answer, the agent reaches into our real systems: our PSA for tickets and projects, our datacenter hypervisors for infrastructure, and PAX8 for license inquiries. Each of those calls needs an API secret.",
+      "Here is the part that matters. The agent never stores those secrets, and the LLM never sees them. When it calls a system, it pulls the credential from 1Password at runtime — and the technician must approve the access with 1Password biometrics before the call proceeds. Our documentation agent has full operational reach and zero standing access to raw credentials. That is the pattern we build for clients, too.",
       "**How ITECS Architects Secure AI Agent Workflows**",
       "We deploy this pattern as a repeatable engagement. The steps are consistent whether it is one developer's IDE or a fleet of production agents.",
       "**Step 1: Inventory the secrets.** We find every API key, token, and password your tools and agents use — including the ones already pasted in plaintext — and move them into 1Password.",
@@ -3265,9 +3260,9 @@ export const INSIGHTS: InsightItem[] = [
           "Yes. Using the 1Password CLI or SDK, an agent can create and update vault items. When it generates or rotates an API key, it writes the secret straight into 1Password, so new credentials are stored, encrypted, and governed instead of pasted into a file or chat.",
       },
       {
-        question: "What is the ITECS DOCBOT agent?",
+        question: "How does ITECS secure its internal documentation agent?",
         answer:
-          "DOCBOT is ITECS's internal AI agent for documentation and operations. Technicians use it to create and update SOPs and knowledge-base articles and to query open tickets, projects, hypervisors, and PAX8 licensing. It pulls the required API secrets from 1Password at runtime, gated by biometric approval, so credentials are never exposed to the model.",
+          "ITECS's internal documentation agent helps technicians create and update SOPs and knowledge-base articles and query approved operational systems. It pulls required API secrets from 1Password at runtime, gated by biometric approval, so credentials are not placed in the model prompt.",
       },
     ],
   },
@@ -3552,7 +3547,7 @@ export const INSIGHTS: InsightItem[] = [
       "seafile self-hosted file sync",
       "codex ai agents",
       "claude cowork agents",
-      "docbot documentation agent",
+      "internal documentation agent",
       "keep client data in-house ai",
       "open source ai agent sharing",
       "self-hosted ai for msp",
@@ -3570,10 +3565,10 @@ export const INSIGHTS: InsightItem[] = [
       "ITECS solved this with infrastructure we own end to end. The core is [Seafile](https://www.seafile.com/en/home/), an open-source file-sync platform, running on a Linux server inside our Dallas datacenter. It does what Dropbox does — keep folders identical across many computers — except we host it, we hold the encryption keys, and the data stays on our hardware.",
       "Three pieces work together. **Seafile** handles secure file sync and version history across the workforce. **Codex and Claude Cowork** are the AI tools our employees run locally; both support App-enabled agents, meaning an agent is defined by files — instructions, skills, and scripts — that live in a project folder. **The Seafile client** on each Windows and macOS machine keeps those project folders identical for everyone. If your team is new to these tools, start with our guide to [Claude Cowork for small business](/insights/claude-cowork-for-small-business).",
       "When an engineer improves an agent on their laptop, Seafile syncs the change to our server, then out to every other endpoint. The next time a colleague opens Codex or Cowork in that project folder, they run the updated agent — no install, no copying, no manual versioning. The whole company shares one evolving library of AI agents the same way a team shares a set of documents. We covered the broader pattern in [building a shared repository of agentic skills](/insights/enterprise-agentic-skills-repo).",
-      "**Meet DOCBOT: The Agent That Manages Client Documentation**",
-      "The clearest example is an agent we call DOCBOT. It manages client documentation — the runbooks, standard operating procedures, onboarding and offboarding checklists, and knowledge-base articles a managed services team lives on. DOCBOT lives in a synced project folder, so every technician runs the same version.",
-      "A technician asks DOCBOT to do three kinds of work. It **adds** new documentation, turning a finished project or a support ticket into a clean SOP. It **updates** existing records when a client's environment changes, so the docs match reality. And it **discovers** gaps, flagging the runbooks, onboarding steps, and knowledge-base articles a client should have but does not. Documentation stops being the task everyone skips and becomes a prompt away.",
-      "In practice, a technician finishing a firewall replacement tells DOCBOT what changed. DOCBOT drafts the updated network runbook, adds the offboarding step for the old device, and checks whether the client's onboarding guide still references hardware that no longer exists. A human reviews and approves. The documentation that used to lag weeks behind the work now keeps pace with it. DOCBOT is one pattern of the [AI knowledge base](/ai-knowledge-base) work we deliver for clients, applied to our own operations.",
+      "**Meet the Agent That Manages Client Documentation**",
+      "The clearest example is an internal agent that manages client documentation — the runbooks, standard operating procedures, onboarding and offboarding checklists, and knowledge-base articles a managed services team lives on. The agent lives in a synced project folder, so every technician runs the same version.",
+      "A technician asks the agent to do three kinds of work. It **adds** new documentation, turning a finished project or a support ticket into a clean SOP. It **updates** existing records when a client's environment changes, so the docs match reality. And it **discovers** gaps, flagging the runbooks, onboarding steps, and knowledge-base articles a client should have but does not. Documentation stops being the task everyone skips and becomes a prompt away.",
+      "In practice, a technician finishing a firewall replacement tells the agent what changed. The agent drafts the updated network runbook, adds the offboarding step for the old device, and checks whether the client's onboarding guide still references hardware that no longer exists. A human reviews and approves. The documentation that used to lag weeks behind the work now keeps pace with it. This internal pattern is related to the managed knowledge operations described on the [ITECS OpsMemory](/ai-knowledge-base) page, while each client implementation is scoped separately.",
       "**How the Shared-Agent System Works**",
       "Setting up shared, self-hosted AI agents follows four steps. ITECS runs the same playbook for clients who want their own private version.",
       "**Step 1: Stand up a self-hosted sync server.** We install Seafile on a hardened Linux server inside the datacenter, behind the firewall, with encrypted storage and scheduled backups. Nothing depends on a third-party cloud.",
@@ -3602,9 +3597,9 @@ export const INSIGHTS: InsightItem[] = [
           "Seafile is open-source and self-hosted, so ITECS owns the server, storage, and encryption keys and keeps client data inside its own security boundary. Public cloud sync tools like Dropbox or Google Drive place a third party between the firm and its clients' sensitive data, a liability a managed services provider chooses not to carry.",
       },
       {
-        question: "What is DOCBOT?",
+        question: "What does ITECS's internal documentation agent do?",
         answer:
-          "DOCBOT is an ITECS AI agent that manages client documentation. Technicians use it to add new SOPs, update runbooks when an environment changes, and discover missing onboarding, offboarding, and knowledge-base content — all from a synced project folder so everyone runs the same version.",
+          "ITECS's internal AI agent manages client documentation. Technicians use it to add new SOPs, update runbooks when an environment changes, and discover missing onboarding, offboarding, and knowledge-base content — all from a synced project folder so everyone runs the same version.",
       },
       {
         question: "How do shared AI agents stay in sync across Windows and macOS?",

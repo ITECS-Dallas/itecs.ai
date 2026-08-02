@@ -36,7 +36,7 @@ const sources: ArticleSource[] = [
     label: "ITECS AI Knowledge Base",
     href: "/ai-knowledge-base",
     description:
-      "The documentation and knowledge-base service the DOCBOT pattern is built on — runbooks, SOPs, onboarding and offboarding content kept current.",
+      "ITECS OpsMemory applies managed source priority, permissions, review, freshness, and quality to answers, SOPs, and runbooks.",
   },
   {
     label: "ITECS Data and AI Readiness Audit",
