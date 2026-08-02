@@ -42,7 +42,10 @@ URL: https://itecs.ai/ai-knowledge-base
 Managed knowledge and document operations that turn approved company knowledge,
 client-specific documentation, and authoritative vendor guidance into cited
 answers and maintained SOPs and runbooks, with managed permissions, human
-review, freshness, and ongoing quality.
+review, freshness, and ongoing quality. OpsMemory narrows and verifies structured
+Markdown using indexes, coverage files, headings, full body content, and relative
+media links. It can preserve the source path, exact heading, surrounding article
+context, and relevant local visual when the approved workspace has access.
 
 ### AI Security & Compliance
 URL: https://itecs.ai/data-audit

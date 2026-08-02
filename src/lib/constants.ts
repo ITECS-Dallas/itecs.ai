@@ -1686,7 +1686,7 @@ export const SERVICES: ServiceItem[] = [
     title: "AI Knowledge Base & SOP Automation | ITECS OpsMemory",
     shortTitle: "ITECS OpsMemory",
     description:
-      "ITECS OpsMemory turns approved company knowledge into cited answers and maintained SOPs, with managed permissions, review, and ongoing support.",
+      "ITECS OpsMemory turns approved company knowledge into cited answers and visual SOPs, with structured retrieval, managed permissions, review, and support.",
     longDescription:
       "ITECS OpsMemory turns approved company knowledge, client-specific documentation, and authoritative vendor guidance into cited answers and maintained SOPs, runbooks, and operational documentation. ITECS manages source priority, permissions, human review, freshness, and ongoing quality—helping employees work faster without treating AI-generated guesses as company truth.",
     heroSummary:
@@ -1699,10 +1699,8 @@ export const SERVICES: ServiceItem[] = [
       "SOP automation AI",
       "AI onboarding tool",
       "enterprise AI knowledge management",
-      "internal RAG system",
       "AI knowledge management Dallas",
       "private AI search company documents",
-      "RAG knowledge base for growing teams",
       "ITECS OpsMemory",
       "managed knowledge operations agent",
       "document operations agent",
@@ -1711,10 +1709,11 @@ export const SERVICES: ServiceItem[] = [
     features: [
       "Cited answers grounded in approved organization and client-specific documentation",
       "Maintained SOPs, runbooks, and operational documentation with human review",
+      "Structured Markdown retrieval that uses indexes, coverage files, titles, headings, full body content, and relative media links together",
       "Role-based access and source permissions aligned to approved knowledge boundaries",
       "Freshness and quality checks that flag missing, stale, or conflicting facts",
-      "Fewer repeated questions and shorter technician research and onboarding",
-      "Less key-person dependency as operational knowledge stays organized and available",
+      "Source paths, exact headings, and article context preserved with the relevant written or visual evidence",
+      "Fewer repeated questions, shorter technician research and onboarding, and less key-person dependency",
     ],
     howItWorksHeading: "How the OpsMemory trust model works",
     howItWorks: [
@@ -1760,9 +1759,9 @@ export const SERVICES: ServiceItem[] = [
           "ITECS OpsMemory is a managed knowledge and document operations agent. It turns approved company knowledge, client-specific documentation, and authoritative vendor guidance into cited answers and maintained SOPs, runbooks, and operational documentation, with ITECS managing source priority, permissions, human review, freshness, and ongoing quality.",
       },
       {
-        question: "How does OpsMemory decide which source to trust?",
+        question: "How does OpsMemory search headings and document content?",
         answer:
-          "OpsMemory checks approved organization or client-specific documentation first, then reusable internal standards and procedures. Current authoritative vendor or official guidance is used when local material is missing or stale. Missing, stale, or conflicting facts are identified instead of silently invented.",
+          "OpsMemory narrows the candidate set with the knowledge index, coverage file, category, filename, title, and headings, then reads the relevant Markdown body for exact steps, values, conditions, and context. It uses these signals together and verifies the evidence before returning a cited answer; it is not a rigid headings-first, body-second algorithm.",
       },
       {
         question: "How are permissions and consequential changes handled?",
@@ -1770,9 +1769,9 @@ export const SERVICES: ServiceItem[] = [
           "ITECS manages source permissions and review roles around the approved knowledge boundary. Consequential documentation or operational changes remain subject to human review and existing approvals.",
       },
       {
-        question: "What outcomes is OpsMemory designed to support?",
+        question: "Can OpsMemory show images and diagrams from our documentation?",
         answer:
-          "OpsMemory is designed to reduce repeated questions, shorten technician research and onboarding, reduce key-person dependency, and help keep SOPs and runbooks current. Results depend on the quality, permissions, and freshness of the approved sources.",
+          "In ChatGPT Work/Codex Desktop or Claude Cowork, an approved project or workspace with local-folder access and required permissions can open a Markdown article and its relative local image or diagram, use the surrounding context and useful alt text, and cite the source path and heading. Desktop behavior depends on the platform, plan or feature availability, device, folder permissions, and configuration; not every image automatically renders in every ChatGPT or Claude interface.",
       },
       {
         question: "Which repositories and connectors does OpsMemory support?",

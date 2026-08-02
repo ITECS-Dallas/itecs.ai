@@ -14,6 +14,8 @@ import {
   OpsMemoryBoundaries,
   OpsMemoryOverview,
 } from "@/components/sections/OpsMemoryOverview";
+import { OpsMemoryRetrievalFlow } from "@/components/sections/OpsMemoryRetrievalFlow";
+import { OpsMemoryDesktopExperience } from "@/components/sections/OpsMemoryDesktopExperience";
 import { FAQ } from "@/components/sections/FAQ";
 import { CTASection } from "@/components/sections/CTASection";
 
@@ -22,7 +24,7 @@ const service = SERVICES.find((s) => s.slug === "ai-knowledge-base")!;
 export const metadata = generatePageMetadata({
   title: "AI Knowledge Base & SOP Automation | ITECS OpsMemory",
   description:
-    "ITECS OpsMemory turns approved company knowledge into cited answers and maintained SOPs, with managed permissions, review, and ongoing support.",
+    "ITECS OpsMemory turns approved company knowledge into cited answers and visual SOPs, with structured retrieval, managed permissions, review, and support.",
   path: service.href,
   keywords: service.keywords,
 });
@@ -42,6 +44,10 @@ export default function AIKnowledgeBasePage() {
       <ServiceHero service={service} />
 
       <OpsMemoryOverview />
+
+      <OpsMemoryRetrievalFlow />
+
+      <OpsMemoryDesktopExperience />
 
       <ServiceFeatures
         features={service.features}

@@ -83,7 +83,7 @@ const SEARCH_EXPANSIONS: Array<[RegExp, string]> = [
   [/\b(cost|costs|price|prices|pricing|budget|quote|estimate|investment|rate|rates)\b/i, "pricing fee package retainer hourly"],
   [/\b(phone|call|calls|reception|receptionist|after.hours|booking)\b/i, "voice agent AI receptionist missed calls appointment routing"],
   [/\b(sales|pipeline|lead|leads|crm|hubspot|salesforce)\b/i, "CRM sales AI lead follow-up scoring outreach"],
-  [/\b(files|documents|sop|runbooks?|knowledge|opsmemory|sharepoint|notion|confluence|onboarding)\b/i, "ITECS OpsMemory managed knowledge document operations cited answers source priority permissions human review freshness"],
+  [/\b(files|documents|markdown|headings?|images?|diagrams?|media|sop|runbooks?|knowledge|opsmemory|sharepoint|notion|confluence|onboarding)\b/i, "ITECS OpsMemory managed knowledge document operations structured Markdown index coverage headings body content relative media links cited answers source priority permissions human review freshness"],
   [/\b(factory|plant|manufacturer|manufacturing|inventory|quality|ppv|procurement)\b/i, "manufacturing finance operations AI margin working capital"],
   [/\b(lender|lending|borrower|collateral|covenant|field exam|restructuring)\b/i, "financial services AI lender advisory workpaper agent"],
   [/\b(search|seo|rank|ranking|google|visibility|answer engine)\b/i, "AI optimized SEO GEO search visibility Foundation Momentum Velocity"],

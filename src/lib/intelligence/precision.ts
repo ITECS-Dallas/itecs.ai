@@ -77,6 +77,10 @@ const KNOWLEDGE_BASE_PERMISSION_FEATURE = requiredValue(
   KNOWLEDGE_BASE_SERVICE.features.find((feature) => /role-based access/i.test(feature)),
   "AI Knowledge Base permission feature",
 );
+const KNOWLEDGE_BASE_RETRIEVAL_FEATURE = requiredValue(
+  KNOWLEDGE_BASE_SERVICE.features.find((feature) => /structured Markdown retrieval/i.test(feature)),
+  "AI Knowledge Base retrieval feature",
+);
 const PROTOTYPE_SCOPE = requiredValue(PROTOTYPE.scope, "Prototype scope");
 const READINESS_ASSESSMENT_DURATION = requiredValue(
   READINESS_ASSESSMENT.duration,
@@ -457,6 +461,7 @@ function knowledgeBaseFit(): IntelligencePrecisionAnswer {
     answer: `The closest published ITECS option is ${KNOWLEDGE_BASE_SERVICE.shortTitle}, a managed knowledge and document operations agent.
 
 - Source priority: approved organization and client-specific documentation is consulted first, reusable internal standards next, and current authoritative guidance when local material is missing or stale.
+- Retrieval: ${KNOWLEDGE_BASE_RETRIEVAL_FEATURE}.
 - Permissions: ${KNOWLEDGE_BASE_PERMISSION_FEATURE}.
 - Answer quality: ${KNOWLEDGE_BASE_CITATION_FEATURE}. Missing, stale, or conflicting facts are identified instead of silently invented.
 
