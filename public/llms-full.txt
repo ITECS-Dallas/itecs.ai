@@ -66,7 +66,12 @@ URL: https://itecs.ai/ai-knowledge-base
 ITECS OpsMemory turns approved company knowledge, client-specific documentation,
 and authoritative vendor guidance into cited answers and maintained SOPs,
 runbooks, and operational documentation. ITECS manages source priority,
-permissions, human review, freshness, and ongoing quality.
+permissions, human review, freshness, and ongoing quality. The verified retrieval
+pattern uses structured Markdown, indexes and coverage files, titles, headings,
+full body content, citations, and relative media links together. In an approved
+desktop project or workspace with local-folder access and required permissions,
+the article, surrounding context, and associated local visual can be opened and
+cited; behavior varies by platform, plan, device, permissions, and configuration.
 
 ### Data Readiness Audit
 URL: https://itecs.ai/data-audit
