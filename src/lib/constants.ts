@@ -2048,6 +2048,88 @@ export const CODING_AGENT_COMPARISON: PlanComparison = {
 
 export const INSIGHTS: InsightItem[] = [
   {
+    slug: "sign-in-with-chatgpt-identity-risk-checklist",
+    title: "Sign in with ChatGPT: Identity Risk Checklist",
+    description:
+      "OpenAI's Sign in with ChatGPT beta is an identity decision, not a convenience toggle. Use this checklist to separate sign-in from data access before you enable it.",
+    href: "/insights/sign-in-with-chatgpt-identity-risk-checklist",
+    publishedDate: "2026-07-31",
+    hubSlug: "consulting",
+    hubLabel: "AI Consulting",
+    hubHref: "/consulting",
+    keywords: [
+      "Sign in with ChatGPT",
+      "ChatGPT identity",
+      "ChatGPT OAuth",
+      "ChatGPT sign-in security",
+      "AI SSO risk",
+      "ChatGPT connector authorization",
+      "OpenAI sign in beta",
+      "identity risk checklist",
+      "ChatGPT app permissions",
+      "social sign-in security",
+    ],
+    h1: "Sign in with ChatGPT: An Identity Risk Checklist",
+    content: [
+      "A new button is appearing on login screens: Sign in with ChatGPT. OpenAI is rolling it out in beta with launch partners including Airtable, GitLab, HubSpot, Notion, Supabase, and Vercel, and it does what the name says — it lets someone create or access an account using their ChatGPT identity, in fewer steps. For a busy team, that sounds like a small convenience. It is not a small decision. The moment you let a third party broker who gets into your accounts, you have made an identity choice with security consequences. Before you flip it on for customers or employees, run the checklist — with the [identity and governance](/consulting) discipline behind it.",
+      "**Sign in with ChatGPT lets users create or access accounts with their ChatGPT identity, sharing only name, email, and profile picture with the partner, per OpenAI. It is now in beta with partners like Supabase and Vercel. Treat it as an identity decision, not a convenience toggle: know which apps support it, separate sign-in from data-access authorization, preserve your SSO and 2FA, document the consent screens, plan disconnect and offboarding paths, and decide per workflow when it is convenient versus too risky.**",
+      "**Convenience Is Not the Question**",
+      "Social sign-in is not new; Sign in with Google and Sign in with Apple normalized letting a big platform vouch for a user. Sign in with ChatGPT extends that pattern to OpenAI, and it arrives at a moment when ChatGPT is already woven into how people work. The convenience is real — fewer passwords, faster onboarding, one identity across tools. The convenience is also the trap, because it makes the decision feel trivial when it is structural.",
+      "When you enable ChatGPT sign-in, you add OpenAI to the list of parties that stand between a person and your systems. If that account is compromised, or the user loses access to it, or you later want them out, ChatGPT is now in that path. That is a governance question for owners and IT leaders, not a checkbox for whoever set up the app. The same thinking applies to every AI tool that touches your stack, which is why we start with an [AI-enabled app inventory](/insights/ai-enabled-app-inventory-govern-software).",
+      "**Sign-In Is Not the Same as Access**",
+      "Here is the distinction that matters most, and the one most likely to get blurred. Authentication proves who someone is. Authorization decides what a connected app may do with your data. Sign in with ChatGPT is authentication — and, per OpenAI, a limited one that shares only a name, email, and profile picture. That is low risk on its own. The risk lives one step over, in the connectors and app integrations that grant real access.",
+      "Supabase shows both sides in one product. You can use Sign in with ChatGPT to log into the Supabase dashboard — simple authentication. But Supabase also offers a ChatGPT app integration that, once authorized, can execute SQL on your Postgres database, change schemas, and deploy functions. Those are worlds apart. Approving a name-and-email sign-in is not the same as letting an AI tool run queries on your production database, and treating them as one decision is how a convenience turns into an incident. Approve each grant on its own terms, the same way you would scope any [AI payment agent](/insights/ai-payment-agents-control-money-movement).",
+      "[[CHECKLIST_TABLE]]",
+      "**What Data Actually Gets Shared**",
+      "Trust, but verify what crosses the boundary. For the sign-in itself, OpenAI states that only the user's name, email, and profile picture, if available, are shared with the partner. That is a narrow, sensible scope, and you should confirm it on the consent screen every user sees rather than assume it. The consent screen is the contract; read it, screenshot it, and keep it.",
+      "The caution is that scopes can differ by app and can grow over time, especially where sign-in sits next to a data connector. A consent screen that today shares only profile basics may, in another integration or a later version, request more. Make checking the consent screen a standing practice, not a one-time glance. Supabase's own [Sign in with ChatGPT beta notes](https://supabase.com/blog/sign-in-with-chatgpt-beta) describe a straightforward approve-on-the-ChatGPT-side flow — a useful reference for what a clean, minimal consent experience should look like.",
+      "**Protect SSO, 2FA, and Offboarding**",
+      "A new sign-in path is dangerous when it quietly routes around the controls you already rely on. If your business requires single sign-on and two-factor authentication, Sign in with ChatGPT must not become a side door that skips them. Confirm that enabling it does not weaken your existing requirements, and that the security posture of the ChatGPT account meets the same bar you set for any identity that reaches your systems.",
+      "Then plan the exit before the entrance. Every identity you let in, you must be able to remove. Decide in advance how you disconnect a ChatGPT-linked account, how a departing employee's access is revoked across every app they used it on, and what happens to a customer's account if they stop using ChatGPT. Offboarding is where convenient sign-ins become messy, orphaned access — the same failure mode we design against with an [emergency stop for any connected agent](/insights/ai-kill-switch-plan-emergency-stops). This is general information, not security or legal advice; set your controls with qualified counsel and your own risk in mind.",
+      "[[READINESS_DIAGRAM]]",
+      "**Your Sign in with ChatGPT Checklist**",
+      "Before you enable ChatGPT-based sign-in for anyone, work through these. ITECS runs this as an identity gate.",
+      "**Know which partner apps support it.** Inventory the tools your team uses that offer Sign in with ChatGPT, and decide app by app whether to allow it.",
+      "**Separate authentication from authorization.** Treat signing in and granting data access as two decisions. A name-and-email login is not permission to read or change your data.",
+      "**Verify what profile data is shared.** Confirm on the consent screen that only the expected fields — per OpenAI, name, email, and profile picture — cross to the partner, and re-check when integrations change.",
+      "**Preserve SSO and 2FA requirements.** Make sure ChatGPT sign-in does not bypass the single sign-on and two-factor rules you already enforce. A shortcut must not become a side door.",
+      "**Review team and project permissions.** Check what a ChatGPT-linked identity can reach at the workspace and project level, not just for one user. Access often extends further than it appears.",
+      "**Document the consent screens.** Screenshot and log what each consent screen granted, so you can audit later what a user actually approved and when.",
+      "**Plan offboarding and disconnect paths.** Define, in advance, how to disconnect a linked account and revoke access across every app, for employees who leave and customers who churn.",
+      "**Decide convenient versus too risky, per workflow.** Allow ChatGPT sign-in where the stakes are low and block it where they are not. A public marketing tool is not a production database.",
+      "**How ITECS Governs Your Identity Decisions**",
+      "Every new sign-in button is a small governance decision that adds up. ITECS helps you make them deliberately. We are vendor-neutral: we do not push you toward or away from Sign in with ChatGPT, we help you decide where it fits and where it does not. We inventory the apps that offer it, separate authentication from the connectors that actually touch your data, verify and document the consent scopes, protect your SSO and 2FA, and build the offboarding paths that keep access revocable.",
+      "We price this the way we price all advisory work — hourly consulting or prepaid retainer hours with tracked usage, no monthly minimum and no expiration, plus a flat fee for a scoped identity and app-authorization review. We pair it with a [data and AI readiness audit](/data-audit) and the broader [ChatGPT admin controls](/insights/chatgpt-work-secure-admin-checklist) that keep AI tools accountable. The payoff is simple: the convenience of modern sign-in without handing away control of who reaches your systems. When you are ready to govern identity before you enable it, [talk to the ITECS team](/contact).",
+    ],
+    faq: [
+      {
+        question: "What is Sign in with ChatGPT?",
+        answer:
+          "Sign in with ChatGPT is an OpenAI feature, in beta, that lets users create or access an account with a partner service using their ChatGPT identity, in fewer steps. It launched with partners including Airtable, GitLab, HubSpot, Notion, Supabase, and Vercel. Per OpenAI, the sign-in shares only the user's name, email, and profile picture with the partner.",
+      },
+      {
+        question: "Is Sign in with ChatGPT safe for business use?",
+        answer:
+          "The sign-in itself is limited and low risk, sharing only basic profile data. The risk is treating it as one decision with data-access authorization. Signing in is not the same as letting a ChatGPT connector read or change your data. Keep SSO and 2FA required, document consent, plan disconnect paths, and allow it only where the workflow's stakes are low.",
+      },
+      {
+        question: "What data does Sign in with ChatGPT share?",
+        answer:
+          "According to OpenAI, signing in shares only the user's name, email, and profile picture, if available, with the partner service. You should still confirm this on the consent screen each user sees, because scopes can differ by app and change over time, especially where sign-in sits alongside a data connector that requests broader access.",
+      },
+      {
+        question: "How is signing in different from authorizing a ChatGPT connector?",
+        answer:
+          "Authentication proves identity; authorization grants an app access to your data. Sign in with ChatGPT is authentication and shares only basic profile fields. A connector, such as Supabase's ChatGPT app integration, can be authorized to execute SQL, change schemas, and deploy functions. Approve each separately and never assume a login implies data access.",
+      },
+      {
+        question: "How does ITECS help govern Sign in with ChatGPT?",
+        answer:
+          "ITECS is vendor-neutral and helps you decide where ChatGPT sign-in fits. We inventory the apps that offer it, separate authentication from data-access connectors, verify and document consent scopes, protect your SSO and 2FA, and build offboarding and disconnect paths. It is advisory work priced as hourly consulting or prepaid retainer hours with no monthly minimum.",
+      },
+    ],
+  },
+  {
     slug: "ai-model-evaluation-blind-tests",
     title: "AI Model Evaluation: Blind Tests Before You Deploy",
     description:
