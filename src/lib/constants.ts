@@ -2048,6 +2048,86 @@ export const CODING_AGENT_COMPARISON: PlanComparison = {
 
 export const INSIGHTS: InsightItem[] = [
   {
+    slug: "open-weight-ai-models-business-risk-checklist",
+    title: "Open-Weight AI Models: Business Risk Checklist",
+    description:
+      "Open-weight AI models are now a procurement decision, not a dev preference. Use this checklist to weigh data control and cost against irreversible-release risk.",
+    href: "/insights/open-weight-ai-models-business-risk-checklist",
+    publishedDate: "2026-08-04",
+    hubSlug: "consulting",
+    hubLabel: "AI Consulting",
+    hubHref: "/consulting",
+    keywords: [
+      "open-weight AI models",
+      "open weights vs open source",
+      "open-weight model risk",
+      "open-weight AI procurement",
+      "self-hosting AI models",
+      "open model governance",
+      "AI model provenance",
+      "downloadable AI models",
+      "open-weight cyber capability",
+      "open-weight license",
+    ],
+    h1: "Open-Weight AI Models: A Business Risk Checklist",
+    content: [
+      "For years, choosing an open-weight AI model was a developer's call — grab a downloadable model, fine-tune it, ship it. That era ended in the summer of 2026. In a single stretch of weeks, the CEO of NVIDIA published a letter defending open weights that dozens of companies signed, Anthropic issued a formal position on where it stands, the UK's security researchers measured exactly how capable these models are getting, and the White House convened the major labs over how models should be reviewed. When open weights are on the agenda in Washington and in every major lab's press office, they are no longer a technical preference. They are a procurement decision — and this is the checklist to make it with, backed by [vendor-neutral AI strategy](/consulting).",
+      "**Open-weight AI models — downloadable parameters you can run and fine-tune on your own infrastructure — are now a business procurement decision, not a developer preference. They offer real data control, lower cost, and no vendor lock-in, but a released model can never be recalled, and open models are closing the cyber-capability gap with frontier systems. Before teams deploy one, distinguish open weights from open source, require cyber and misuse testing, decide where private hosting helps, track provenance and licenses, and set approval rules.**",
+      "**Open Weights Are Not Open Source**",
+      "Start with the distinction that trips up most buyers, because the words are used loosely and the difference carries legal and security weight. An open-weight model is one whose trained parameters — the weights — you can download, run, and fine-tune yourself. That is powerful, but it is not the same as open source. Open source, properly used, means the full package: the training code, often the data, and a license that grants broad rights to use, modify, and redistribute.",
+      "Most models marketed as open are open-weight, not open-source. You get the weights, but not necessarily the training data, the full recipe, or an unrestricted license. Popular downloadable models often ship under custom terms that limit commercial use, cap user counts, or restrict fields of use. Treating an open-weight model as if it were freely open source is how a business backs into a license violation. Read the actual terms, not the marketing — the same rigor we bring to an [AI Bill of Materials](/insights/ai-bill-of-materials-inventory-agents).",
+      "**Why This Became a Boardroom Question**",
+      "The policy fight made open weights a leadership issue overnight. On July 24, 2026, NVIDIA's Jensen Huang published a letter titled Open Weights and American AI Leadership, urging Washington not to restrict open-weight models; within a day, according to reporting, the signatory list grew to roughly fifty companies, including Microsoft, Meta, IBM, Hugging Face, Mistral, and the Linux Foundation. Their argument: models that can be downloaded, inspected, and run on private infrastructure widen access, sharpen competition, and aid security research.",
+      "Not everyone lined up the same way. On July 27, 2026, Anthropic published its own position, with CEO Dario Amodei clarifying that the company has never advocated banning open-weight models and calling those without dangerous capabilities a public good — while pressing for capability-based safety testing of powerful models, open or closed. Days later, the White House convened major labs over how frontier models should be reviewed before release. The takeaway for a business is not which side is right. It is that open-weight adoption now sits inside an active security and policy debate, so your own use of these models deserves the same deliberation.",
+      "[[CHECKLIST_TABLE]]",
+      "**The Capability Gap Is Real but Closing**",
+      "The reason governments are paying attention is measurable. In July 2026, the UK's AI Security Institute published its first public measurement of how far open-weight models trail closed ones on offensive cyber tasks. The finding: the most capable downloadable models now lag the top closed systems by roughly four to seven months, narrowed from six to ten months across most of 2025. The gap is real, and it is closing.",
+      "Two facts make this a business issue, not an academic one. The capability is arriving cheaply: the institute's figures put the run cost of a leading open model at a small fraction of a frontier one — dollars versus tens of dollars for the same volume of work. Capable and cheap is exactly the combination that pulls a downloadable model into your stack, and the same combination that lets it be misused. The UK institute's [analysis of open-weight cyber capability](https://www.aisi.gov.uk/blog/how-far-behind-the-frontier-are-leading-open-weight-models-on-cyber) is the clearest public benchmark, and it belongs in your evaluation — the same discipline we apply when we help clients [pick the right model for security](/insights/ai-cyber-models-pick-right-model-security).",
+      "**The One Risk You Cannot Undo**",
+      "Every other risk on this list is manageable. This one is not, and it defines the category. When you deploy a closed model through an API, the vendor can patch it, restrict it, or pull it. When a model's weights are released, they are released for good. No one can recall a downloaded file. A model that later proves capable of harm cannot be un-shipped, and neither can your fine-tuned derivative of it.",
+      "That irreversibility is why testing must come before deployment, not after. It is also why provenance matters: the debate over open weights is entangled with national-security concern about model origin and industrial-scale distillation, and a downloadable model's lineage is not always clear. You do not need to resolve the geopolitics. You do need to know where your model came from, what it can do, and who approved running it — which is why open-weight adoption belongs under the same governance as every other [AI-enabled system you inventory](/insights/ai-enabled-app-inventory-govern-software).",
+      "[[GOVERNANCE_DIAGRAM]]",
+      "**Your Open-Weight Model Checklist**",
+      "Before a downloadable model reaches a real workflow, an owner should be able to confirm each of these. ITECS runs this as a procurement gate.",
+      "**Distinguish open weights from open source.** Read the actual license. Downloadable weights rarely come with full open-source rights, and the terms decide what you may legally do.",
+      "**Weigh the benefits against irreversible risk.** Set the data control, cost, and lock-in advantages against the fact that a released model, and your derivative of it, can never be recalled.",
+      "**Require cyber and misuse testing.** Evaluate what the model can do — including offensive capability — on your own tests before deployment, not after. Capable and cheap also means abusable.",
+      "**Decide where private hosting helps.** Self-host the model where data control is the point, so sensitive inputs never leave your environment, and use hosted options where they do not.",
+      "**Monitor provenance and licenses.** Track who built the model, where it came from, and how its license lets you use it — and re-check, because terms and lineage can change.",
+      "**Set approval rules before deployment.** Anyone can download a model in minutes. Gate production use behind named sign-off, so adoption is a decision, not an accident.",
+      "**How ITECS Governs Open-Weight Adoption**",
+      "Open-weight models can be a genuine advantage — control of your data, lower cost, freedom from a single vendor. They can also be a quiet liability if a team downloads one without a second thought. ITECS makes the choice deliberate. We are vendor-neutral: we do not push open or closed, we help you decide model by model. We read the license and separate open weight from open source, test the model's capability and misuse potential on your own data, advise where private hosting earns its keep, track provenance, and put an approval gate in front of production.",
+      "We price this the way we price all advisory work — hourly consulting or prepaid retainer hours with tracked usage, no monthly minimum and no expiration, plus a flat fee for a scoped open-weight evaluation and governance build. We start with a [data and AI readiness audit](/data-audit) and pair it with blind, task-specific [model evaluation](/insights/ai-model-evaluation-blind-tests) so the decision rests on your evidence, not a leaderboard. The payoff is the upside of open weights without the accidents. When you are ready to govern open-weight adoption, [talk to the ITECS team](/contact).",
+    ],
+    faq: [
+      {
+        question: "What is the difference between open-weight and open-source AI models?",
+        answer:
+          "An open-weight model gives you the trained parameters to download, run, and fine-tune, but not necessarily the training code, data, or an unrestricted license. Open source means the full package — code, often data, and a license granting broad rights to use, modify, and redistribute. Most models marketed as open are open-weight, often under custom terms that limit commercial use, so read the actual license.",
+      },
+      {
+        question: "Why are open-weight AI models a business risk, not just a developer choice?",
+        answer:
+          "Because deploying one is a procurement decision with legal, security, and irreversibility consequences. A released model can never be recalled, licenses can restrict commercial use, and open models are closing the cyber-capability gap with frontier systems. In 2026 the topic reached NVIDIA's leadership, Anthropic's formal position, UK security researchers, and the White House — signaling it belongs in governance, not just engineering.",
+      },
+      {
+        question: "How capable are open-weight models compared to closed ones?",
+        answer:
+          "In July 2026, the UK AI Security Institute reported that the most capable open-weight models trail top closed systems on offensive cyber tasks by roughly four to seven months, narrowed from six to ten months through most of 2025. They also run at a fraction of the cost. The gap is real but closing, which makes capability and misuse testing essential before deployment.",
+      },
+      {
+        question: "When does self-hosting an open-weight model make sense?",
+        answer:
+          "Self-hosting makes sense when data control is the point — when sensitive inputs cannot leave your environment for a third-party API. Running the weights on your own infrastructure keeps data in-house and avoids vendor lock-in. Where data sensitivity is low, a hosted option may be simpler. Make the decision per workflow, weighed against the cost and effort of hosting.",
+      },
+      {
+        question: "How does ITECS help govern open-weight AI models?",
+        answer:
+          "ITECS is vendor-neutral and makes open-weight adoption deliberate. We read the license and separate open weight from open source, test the model's capability and misuse potential on your own data, advise where private hosting helps, track provenance, and put an approval gate before production. It is advisory work priced as hourly consulting or prepaid retainer hours with no monthly minimum.",
+      },
+    ],
+  },
+  {
     slug: "sign-in-with-chatgpt-identity-risk-checklist",
     title: "Sign in with ChatGPT: Identity Risk Checklist",
     description:
