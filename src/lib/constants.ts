@@ -2048,6 +2048,88 @@ export const CODING_AGENT_COMPARISON: PlanComparison = {
 
 export const INSIGHTS: InsightItem[] = [
   {
+    slug: "ai-prompt-dlp-block-data-before-models",
+    title: "AI Prompt DLP: Block Data Before It Reaches Models",
+    description:
+      "AI prompt DLP is moving from audit logs to inline allow-or-deny before a model sees the data. Learn the checklist, framed by Anthropic's new inference hooks.",
+    href: "/insights/ai-prompt-dlp-block-data-before-models",
+    publishedDate: "2026-08-06",
+    hubSlug: "consulting",
+    hubLabel: "AI Consulting",
+    hubHref: "/consulting",
+    keywords: [
+      "AI prompt DLP",
+      "inference hooks",
+      "pre-inference blocking",
+      "Claude Enterprise DLP",
+      "AI data loss prevention",
+      "block sensitive data AI",
+      "prompt inspection",
+      "AI security server",
+      "allow deny prompt",
+      "AI DLP checklist",
+    ],
+    h1: "AI Prompt DLP: How to Block Data Before It Reaches Models",
+    content: [
+      "For years, data loss prevention for AI meant reading the transcript afterward. You let employees use a chatbot, you logged what they typed, and your compliance team reviewed it later — hoping nothing sensitive had already left the building. That model is inverting. The new control inspects the prompt before the model ever sees it, and blocks the ones that break policy in real time. On August 5, 2026, Anthropic shipped the clearest example yet. Here is what changed, and the checklist to adopt it, with the [vendor-neutral governance](/consulting) to back it.",
+      "**AI prompt DLP is moving from after-the-fact audit logs to inline allow-or-deny controls that inspect content before a model sees it. Anthropic's inference hooks, launched August 5, 2026 in beta for Claude Enterprise, route every governed prompt and tool response through your own security server for an allow or deny verdict before inference runs. To adopt it well: choose which surfaces to inspect, connect your existing DLP, set timeouts and failure handling, start in shadow mode, log every denial, and know the limits — it blocks, it does not redact.**",
+      "**Audit Logs Tell You Too Late**",
+      "The problem with logging AI use is timing. An audit log records that an employee pasted a customer list, a source file, or a set of credentials into a chatbot — but it records it after the data has already reached the model. By the time your compliance team reviews the log, the exposure has happened. You can discipline the person and file the incident, but you cannot un-send the data. For regulated data, that is the difference between a control and a report.",
+      "Inline DLP flips the order. Instead of watching what already left, it inspects each prompt in the moment and decides whether to let it through. Security teams have run this pattern on email and web traffic for years: a message carrying a Social Security number or a confidential document gets held or blocked before it leaves. AI is finally getting the same treatment — a gate in front of the model, not a log behind it. That is the shift every AI-using business should plan for, alongside a current [AI-enabled app inventory](/insights/ai-enabled-app-inventory-govern-software).",
+      "**What Anthropic's Inference Hooks Actually Do**",
+      "On August 5, 2026, Anthropic launched inference hooks, a beta feature for Claude Enterprise that makes pre-inference blocking concrete. According to Anthropic, when a user submits a prompt, the feature sends the conversation transcript to an AI security server your organization operates and waits for an allow or deny verdict. A denied request never reaches the model, and the user sees a blocked-by-policy message. The checkpoint lives on Anthropic's servers, after the request leaves the client and before inference, so one organization-level setting covers every governed surface with nothing installed on user devices.",
+      "The scope is specific. Per Anthropic, inference hooks govern Claude Enterprise surfaces — chat, Claude Code, and Claude Cowork among them — and inspect every prompt and tool call response before it reaches Claude. Access through the Claude Platform API is out of scope. The integration is a signed webhook that follows the Standard Webhooks specification, with a published schema, designed to plug into existing DLP from vendors like Netskope, Palo Alto Networks, Proofpoint, and Zscaler, or a server you build yourself. Your server evaluates the content and answers within a verdict timeout you configure, five seconds by default.",
+      "[[DECISION_TABLE]]",
+      "**Block or Audit? Match the Control to the Risk**",
+      "Pre-inference blocking is powerful, and it is not always the right tool. Blocking a prompt stops work; if the policy is too broad or the server too slow, you frustrate every employee to catch a rare leak. The decision is not block everything — it is match the control to the data. A surface where regulated data could plausibly be pasted, like a general chat window open to the whole company, is a strong candidate for a hard gate. A tightly scoped internal tool used by a vetted team may be better served by logging and periodic review.",
+      "Think in two tiers. Where exposure is unacceptable and irreversible — protected health information, source code, regulated financial data — a pre-inference block is the control, because a log after the fact does not help. Where the risk is lower and speed matters more, post-use auditing may be enough. Most organizations will run both: a hard gate on the high-risk surfaces and monitoring on the rest. That per-surface judgment is the same discipline behind our [Sign in with ChatGPT identity checklist](/insights/sign-in-with-chatgpt-identity-risk-checklist) and [agentic browsing controls](/insights/agentic-browsing-security-browser-controls-for-ai).",
+      "**Know the Limits Before You Rely on It**",
+      "A gate is only as good as your understanding of its edges. Inference hooks return an allow or a deny — they do not, on their own, redact or rewrite a prompt. That is a meaningful limit: if a message is ninety percent legitimate and ten percent sensitive, the control blocks the whole thing rather than cleaning it, so your policies have to account for false positives and give people a path to proceed without the sensitive part. Confirm, too, how the feature treats attachments and raw file content versus text, and where the boundaries of inspection sit, before you assume full coverage.",
+      "Then design for failure. Your security server is now in the path of every governed prompt, so decide what happens when it is slow or unreachable: does the request fail open and let traffic through, or fail closed and block it? That single choice is the difference between an availability incident and a data incident, and it should be a deliberate policy, not a default you inherited. Anthropic's [inference hooks documentation](https://platform.claude.com/docs/en/manage-claude/inference-hooks) is the authoritative reference for the schema, timeouts, and verdict behavior — read it before you wire anything to production. It is the same operational rigor we bring to any [AI DevOps](/ai-devops) control.",
+      "[[ROLLOUT_DIAGRAM]]",
+      "**Your AI Prompt DLP Checklist**",
+      "Before you turn on pre-inference blocking, work through these. ITECS runs this as a rollout plan, not a switch.",
+      "**Choose which surfaces to inspect.** Decide which AI surfaces — company-wide chat, coding tools, agent workflows — carry enough risk to gate, and which are fine with logging alone.",
+      "**Connect your existing DLP.** Wire the pre-inference hook to the DLP or AI security server you already run, so your AI policy matches your email and web policy instead of starting over.",
+      "**Inspect prompts and tool responses.** Cover both the text a user submits and the data tools return, since sensitive content leaks through tool results as easily as through typed prompts.",
+      "**Define failure handling and timeouts.** Set the verdict timeout and decide, explicitly, whether a slow or unreachable server fails open or fails closed. Make it a policy, not an accident.",
+      "**Start in shadow mode.** Run the control in shadow mode first, watching verdicts on live traffic without blocking, so you tune out false positives before a single employee is stopped.",
+      "**Record every denial.** Send each blocked prompt to your compliance log or SIEM, so a denial is evidence you can review and report, not a silent event.",
+      "**Understand the limitations.** Know that the control blocks rather than redacts, confirm how it treats raw files, and remember that API access outside the governed surfaces is not covered.",
+      "**Decide block versus audit, per surface.** Reserve hard pre-inference blocks for data whose exposure is irreversible, and use post-use auditing where the risk is lower and speed matters more.",
+      "**How ITECS Builds Your Pre-Inference DLP**",
+      "Pre-inference DLP is a real control, and a real way to break your own workforce if you deploy it carelessly. ITECS builds it to protect data without grinding work to a halt. We are vendor-neutral: we design the control around whatever you run — Anthropic's inference hooks, your existing DLP from Netskope, Palo Alto Networks, Proofpoint, or Zscaler, or a custom server. We scope the surfaces that need a gate, connect the hook, tune policy in shadow mode, set the fail-open or fail-closed behavior deliberately, and route every denial into your compliance feed.",
+      "We price this the way we price all advisory work — hourly consulting or prepaid retainer hours with tracked usage, no monthly minimum and no expiration, plus a flat fee for a scoped pre-inference DLP build. We start with a [data and AI readiness audit](/data-audit) to map what must never reach a model, and pair it with the admin controls in our [ChatGPT Work security checklist](/insights/chatgpt-work-secure-admin-checklist). The payoff is simple: sensitive data stopped before it leaves, and employees who can still get their work done. When you are ready to block data before it reaches a model, [talk to the ITECS team](/contact).",
+    ],
+    faq: [
+      {
+        question: "What is AI prompt DLP?",
+        answer:
+          "AI prompt DLP is data loss prevention applied to what people send to AI models. Instead of only logging prompts for later review, inline AI prompt DLP inspects each prompt — and often the responses from tools — and decides in real time whether to allow or block it, before the model processes the content. It brings the email and web DLP model to AI surfaces.",
+      },
+      {
+        question: "What are Anthropic's inference hooks?",
+        answer:
+          "Inference hooks are a beta Claude Enterprise feature Anthropic launched August 5, 2026. When a user submits a prompt, Anthropic sends the conversation transcript to an AI security server your organization runs and waits for an allow or deny verdict before inference. A denied request never reaches the model. It governs Claude Enterprise surfaces like chat, Claude Code, and Cowork; Claude Platform API access is out of scope.",
+      },
+      {
+        question: "How is pre-inference blocking different from AI audit logs?",
+        answer:
+          "An audit log records what was already sent to a model, so exposure has happened by the time you review it. Pre-inference blocking inspects the prompt before the model sees it and rejects the ones that break policy, so sensitive data is stopped rather than merely recorded. Logs are for after the fact; a gate is for the moment.",
+      },
+      {
+        question: "What are the limitations of inference-hook DLP?",
+        answer:
+          "It returns an allow or deny, not a redaction, so a partly-sensitive prompt is blocked whole rather than cleaned. It governs specific Claude Enterprise surfaces, not the Claude Platform API. Your security server sits in the request path, so you must set a verdict timeout and decide whether it fails open or fails closed. Confirm how it handles raw files in the documentation.",
+      },
+      {
+        question: "How does ITECS help set up AI prompt DLP?",
+        answer:
+          "ITECS is vendor-neutral and designs pre-inference DLP around what you run — Anthropic's inference hooks, your existing DLP from Netskope, Palo Alto Networks, Proofpoint, or Zscaler, or a custom server. We scope the surfaces, connect the hook, tune policy in shadow mode, set failure handling deliberately, and route denials into your compliance feed. It is advisory work priced as hourly consulting or prepaid retainer hours with no monthly minimum.",
+      },
+    ],
+  },
+  {
     slug: "how-to-set-up-mcp-in-claude",
     title: "How to Set Up Model Context Protocol (MCP) in Claude",
     description:
