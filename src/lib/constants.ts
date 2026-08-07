@@ -2048,6 +2048,87 @@ export const CODING_AGENT_COMPARISON: PlanComparison = {
 
 export const INSIGHTS: InsightItem[] = [
   {
+    slug: "ai-agent-authorization-control-sequences",
+    title: "AI Agent Authorization: Control Sequences, Not Actions",
+    description:
+      "AI agent authorization must judge sequences of tool calls, not each action alone. Learn the checklist, framed by AWS Bedrock AgentCore temporal policies and Dogwood.",
+    href: "/insights/ai-agent-authorization-control-sequences",
+    publishedDate: "2026-08-07",
+    hubSlug: "custom-ai-agents",
+    hubLabel: "Custom AI Agents",
+    hubHref: "/custom-ai-agents",
+    keywords: [
+      "AI agent authorization",
+      "temporal policies",
+      "Bedrock AgentCore",
+      "Dogwood policy language",
+      "agent tool call sequences",
+      "stateful agent authorization",
+      "Cedar policy",
+      "agent gateway enforcement",
+      "cumulative spend cap agent",
+      "sequence-aware authorization",
+    ],
+    h1: "AI Agent Authorization: Control Sequences, Not Actions",
+    content: [
+      "Most AI agent security asks one question per action: is this tool call allowed? That question is necessary and no longer enough. An agent does not do damage in a single call; it does damage in a sequence — verify nothing, then refund; look up one account, then wire money to another; make twenty small purchases that each pass the limit and together blow the budget. Each step can look perfectly legal on its own while the chain is a disaster. On August 6, 2026, AWS shipped controls built for exactly this problem, and the shift they represent belongs in every agent deployment. Here is what changed, with the [governed AI agent](/custom-ai-agents) discipline to apply it.",
+      "**AI agent authorization has to judge sequences of tool calls, not each action in isolation — because an agent causes harm through a chain of individually-legal steps. AWS's Bedrock AgentCore temporal policies, announced August 6, 2026, evaluate a request against the agent's session history at the gateway, outside the agent's code, so they cannot be prompted or coded around. The open-source Dogwood policy language, built on Cedar, expresses these history-aware rules. To adopt the idea: map high-risk tool chains, enforce order and output-matching at the gateway, cap cumulative spend, require recorded human approval, and log every deterministic decision.**",
+      "**Every Action Looked Fine on Its Own**",
+      "The weakness in per-action authorization is that it has no memory. It checks whether the agent may call the refund tool, or the wire tool, or the purchase tool — and if the answer is yes, the call goes through, no matter what came before it. But the danger in an agent is almost never a single forbidden action. It is a legal action taken in the wrong order, on the wrong value, or one too many times.",
+      "Consider three failures that stateless checks wave through. An agent issues a refund to an account it never verified, because verify-then-refund was a convention, not an enforced order. An agent wires money to an account number it fabricated two steps earlier, because nothing checked that the number came from a real lookup. An agent makes twenty purchases of ninety dollars each, every one under the hundred-dollar cap, and drains a budget that per-action limits were supposed to protect. Every one of those calls passes an action-level check. The sequence is the attack surface.",
+      "**What AWS Shipped: Temporal Policies and Dogwood**",
+      "On August 6, 2026, AWS introduced temporal policies in Amazon Bedrock AgentCore — stateful authorization rules that evaluate a tool-call request in the context of the agent's prior actions and session history. According to AWS, instead of judging a request in isolation, the policy engine looks at what the agent has already done in the session and then permits or denies the call based on that sequence. Critically, the policies run at the gateway, outside the agent's code, so they cannot be bypassed by prompting, by a jailbreak, or by a bug in the agent itself.",
+      "AWS describes three patterns that make the idea concrete. A policy can require that an argument passed to the current tool exactly matches the output of a prior tool, so the agent cannot substitute or hallucinate a value between steps. A policy can require that one tool is called before another, enforcing a standard operating procedure rather than trusting the agent to follow it. And a policy can tally what the agent has spent in a session and block the next purchase once the budget is reached, even when that purchase is under the individual limit. Alongside the feature, AWS released Dogwood, an open-source policy language built on the Cedar authorization language, that expresses these history-aware rules — rate limits, time windows, prerequisite steps, and escalation triggers.",
+      "[[CONTROL_TABLE]]",
+      "**Carry the Output, Not a Hallucination**",
+      "The most quietly important of these controls is the one that binds a step's input to a prior step's output. Long-running agents pass values between tool calls constantly — an account ID from a lookup, a total from a calculation, a ticket number from a search. A stateless system trusts whatever the agent puts in the next call's arguments. But an agent can substitute a value, or invent one that looks plausible, and a per-action check has no way to know the number is wrong.",
+      "Enforcing that the argument must match a real prior output closes that gap. The wire goes only to the account the verified lookup returned; the refund applies only to the order the agent actually retrieved. This is the same class of risk we address when an agent can move money, covered in our guide to controlling [AI payment agents](/insights/ai-payment-agents-control-money-movement) — and it is why sequence-aware policy matters most exactly where the stakes are highest.",
+      "**Enforce at the Gateway, Not in the Agent**",
+      "Where the policy runs is as important as what it says. If the check lives inside the agent's own logic, it is only as trustworthy as the agent — and the whole reason for external authorization is that the agent can be manipulated, confused, or simply wrong. Putting enforcement at the gateway, in front of every tool call, means the rule holds no matter how the agent was prompted or what bug it carries. That is the design AWS chose, and it is the right one for anything that touches money, data, or customers.",
+      "One caveat matters before you build on it. AWS notes that Dogwood's open-source reference interpreter is meant for exploring and testing the language, not for use as a production authorization engine — the managed enforcement runs in AgentCore. Treat the language as the portable way to express your rules and the gateway as the place you enforce them. AWS's [introduction of Dogwood](https://aws.amazon.com/blogs/opensource/introducing-dogwood-runtime-verification-for-ai-agents/) is the authoritative reference for the model, and this is the same production-readiness discipline behind our guides to [agentic AI infrastructure](/insights/agentic-ai-infrastructure-production-readiness) and an [emergency stop for any agent that can act on your systems](/insights/ai-kill-switch-plan-emergency-stops).",
+      "[[READINESS_DIAGRAM]]",
+      "**Your Sequence-Aware Authorization Checklist**",
+      "Before a long-running agent reaches production, an owner should be able to confirm each of these. ITECS runs this as an authorization design, not a single rule.",
+      "**Map your high-risk tool chains.** Threat-model the sequences where a bad order, a substituted value, or one call too many causes real damage — money moved, data exposed, a customer harmed.",
+      "**Enforce prerequisites and order at the gateway.** Require the verifying or approving step to run before the acting step, and enforce it outside the agent's code so it cannot be skipped.",
+      "**Carry outputs safely between calls.** Require that a sensitive argument matches the output of a real prior tool call, so the agent cannot substitute or fabricate the value it acts on.",
+      "**Cap cumulative spend and exposure.** Tally what the agent has spent or moved across the session and block the next step at the ceiling, even when each call is individually within limits.",
+      "**Require recorded human approval for sensitive actions.** Gate the highest-risk steps behind an approval that must exist in the session record before the action runs, not a courtesy notice after.",
+      "**Log deterministic allow-or-deny decisions.** Record every gateway verdict, so each allow and each block is an auditable, repeatable decision you can show a regulator or an incident review.",
+      "**Decide where enforcement belongs.** Choose the gateway as your enforcement point, use a portable policy language to express the rules, and never rely on a reference interpreter as your production engine.",
+      "**How ITECS Governs Your Agent Tool Chains**",
+      "Sequence-aware authorization is the difference between an agent that is convenient and one that is safe to run unattended. ITECS designs it. We are vendor-neutral: we build this on AWS Bedrock AgentCore and Dogwood, on other gateways, or on the policy layer you already run. We threat-model your agents' tool chains, enforce prerequisites and output-matching at the gateway, set cumulative caps on spend and exposure, put recorded human approval in front of the sensitive steps, and log every deterministic decision for audit.",
+      "We price this the way we price all engineering work — hourly consulting or prepaid retainer hours with tracked usage, no monthly minimum and no expiration, plus a flat fee for a scoped agent-authorization build. We start with a [data and AI readiness audit](/data-audit) and fold it into the broader [AI DevOps](/ai-devops) discipline that keeps automation safe in production, alongside the pre-inference controls in our [AI prompt DLP guide](/insights/ai-prompt-dlp-block-data-before-models). The payoff is agents you can let run — because the chain, not just the click, is under control. When you are ready to authorize sequences instead of actions, [talk to the ITECS team](/contact).",
+    ],
+    faq: [
+      {
+        question: "What is sequence-aware AI agent authorization?",
+        answer:
+          "It is authorization that evaluates a tool call in the context of what the agent has already done in the session, rather than judging each action in isolation. It can require a prerequisite step to run first, bind an argument to a prior tool's output, or cap cumulative spend across many calls. The goal is to stop harmful sequences of individually-legal actions.",
+      },
+      {
+        question: "What are AWS Bedrock AgentCore temporal policies?",
+        answer:
+          "Temporal policies are a Bedrock AgentCore feature AWS announced in early August 2026. They are stateful authorization rules that evaluate a tool-call request against the agent's session history and permit or deny it based on the sequence. They run at the gateway, outside the agent's code, so they cannot be bypassed by prompting or by a bug in the agent.",
+      },
+      {
+        question: "What is Dogwood?",
+        answer:
+          "Dogwood is an open-source policy language and reference interpreter, released by AWS under Apache 2.0, for authorization decisions that depend on history rather than a single request. It builds on the Cedar authorization language and adds temporal constructs like rate limits, prerequisite steps, and escalation triggers. AWS notes the reference interpreter is for testing the language, not production enforcement.",
+      },
+      {
+        question: "Why isn't per-action authorization enough for AI agents?",
+        answer:
+          "Because an agent rarely causes harm with one forbidden action. It causes harm through a legal action in the wrong order, acting on a value it fabricated in an earlier step, or one call too many past a cumulative limit. A per-action check has no memory of the sequence, so it approves each step while the chain does the damage.",
+      },
+      {
+        question: "How does ITECS set up agent authorization?",
+        answer:
+          "ITECS is vendor-neutral and designs sequence-aware authorization on AWS Bedrock AgentCore, Dogwood, or your existing policy layer. We threat-model your tool chains, enforce prerequisites and output-matching at the gateway, cap cumulative spend, require recorded human approval for sensitive steps, and log every deterministic decision. It is advisory and engineering work priced as hourly consulting or prepaid retainer hours.",
+      },
+    ],
+  },
+  {
     slug: "ai-prompt-dlp-block-data-before-models",
     title: "AI Prompt DLP: Block Data Before It Reaches Models",
     description:
