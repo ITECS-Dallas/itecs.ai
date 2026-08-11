@@ -91,7 +91,11 @@ function normalizeHistory(value: unknown): IntelligenceChatMessage[] | null {
 
     const content = normalizeText(item.content);
 
-    if (!content || content.length > CHAT_LIMITS.maxMessageCharacters) {
+    if (
+      !content ||
+      (item.role === "user" &&
+        content.length > CHAT_LIMITS.maxMessageCharacters)
+    ) {
       return null;
     }
 

@@ -45,6 +45,9 @@ relevant public facets.
 
 The browser posts a bounded message, recent in-memory history, a random session
 ID, and an allowlisted public page path to `/api/intelligence/stream`.
+Visitor messages are limited to 900 characters, while prior assistant answers
+are accepted within the separate 5,000-character total history budget. This
+keeps follow-up turns valid without relaxing the visitor-input boundary.
 
 The route:
 
