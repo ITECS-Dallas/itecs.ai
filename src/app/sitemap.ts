@@ -19,28 +19,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const hubPages = SERVICES.map((s) => ({
     url: `${base}${s.href}`,
-    lastModified: new Date(),
     changeFrequency: "weekly" as const,
     priority: 0.9,
   }));
 
   const trainingPages = TRAINING_SERVICES.map((s) => ({
     url: `${base}${s.href}`,
-    lastModified: new Date(),
     changeFrequency: "weekly" as const,
     priority: 0.85,
   }));
 
   const insightPages = INSIGHTS.map((i) => ({
     url: `${base}${i.href}`,
-    lastModified: new Date(),
+    lastModified: new Date(i.modifiedDate ?? i.publishedDate),
     changeFrequency: "monthly" as const,
     priority: 0.7,
   }));
 
   const seoTierPages = AI_SEO_TIERS.map((t) => ({
     url: `${base}${t.href}`,
-    lastModified: new Date(),
     changeFrequency: "weekly" as const,
     priority: 0.85,
   }));
@@ -48,19 +45,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const manufacturingPages = [
     {
       url: `${base}${MANUFACTURING_VERTICAL.href}`,
-      lastModified: new Date(),
       changeFrequency: "weekly" as const,
       priority: 0.9,
     },
     {
       url: `${base}${PPV_AGENT_USE_CASE.href}`,
-      lastModified: new Date(),
       changeFrequency: "weekly" as const,
       priority: 0.85,
     },
     ...MANUFACTURING_SPOKE_PAGES.map((page) => ({
       url: `${base}${page.href}`,
-      lastModified: new Date(),
       changeFrequency: "weekly" as const,
       priority: 0.82,
     })),
@@ -69,19 +63,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const financialServicesPages = [
     {
       url: `${base}${FINANCIAL_SERVICES_VERTICAL.href}`,
-      lastModified: new Date(),
       changeFrequency: "weekly" as const,
       priority: 0.9,
     },
     {
       url: `${base}${FIELD_EXAM_ANALYZER_USE_CASE.href}`,
-      lastModified: new Date(),
       changeFrequency: "weekly" as const,
       priority: 0.85,
     },
     ...FINANCIAL_SERVICES_SPOKE_PAGES.map((page) => ({
       url: `${base}${page.href}`,
-      lastModified: new Date(),
       changeFrequency: "weekly" as const,
       priority: 0.82,
     })),
@@ -89,7 +80,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const caseStudyPages = TRUST_CASE_STUDIES.map((caseStudy) => ({
     url: `${base}${caseStudy.detailHref}`,
-    lastModified: new Date(),
     changeFrequency: "monthly" as const,
     priority: 0.75,
   }));
@@ -97,7 +87,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       url: base,
-      lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 1.0,
     },
@@ -108,57 +97,48 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...financialServicesPages,
     {
       url: `${base}/managed-intelligence-provider`,
-      lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.9,
     },
     {
       url: `${base}${AI_SEO_OVERVIEW.href}`,
-      lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.9,
     },
     ...seoTierPages,
     {
       url: `${base}/insights`,
-      lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.8,
     },
     ...insightPages,
     {
       url: `${base}/services`,
-      lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.6,
     },
     {
       url: `${base}/services/ai-champion-program`,
-      lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
       url: `${base}/pricing`,
-      lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
       url: `${base}/about`,
-      lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.7,
     },
     {
       url: `${base}/contact`,
-      lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.7,
     },
     {
       url: `${base}/assessment`,
-      lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.8,
     },

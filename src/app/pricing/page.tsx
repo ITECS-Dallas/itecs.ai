@@ -69,13 +69,22 @@ const pricingFAQ = [
   },
 ] as const;
 
+function schemaFragment(value: string) {
+  return value
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+}
+
 function priceSchemaFor(name: string, price: string) {
+  const id = `${SITE_CONFIG.url}/pricing#offer-${schemaFragment(name)}`;
   const range = price.match(/\$([\d,]+)-\$([\d,]+)/);
   const single = price.match(/\$([\d,]+)/);
 
   if (range) {
     return {
       "@type": "AggregateOffer",
+      "@id": id,
       name,
       lowPrice: range[1].replace(/,/g, ""),
       highPrice: range[2].replace(/,/g, ""),
@@ -86,6 +95,7 @@ function priceSchemaFor(name: string, price: string) {
   if (single) {
     return {
       "@type": "Offer",
+      "@id": id,
       name,
       price: single[1].replace(/,/g, ""),
       priceCurrency: "USD",
@@ -94,6 +104,7 @@ function priceSchemaFor(name: string, price: string) {
 
   return {
     "@type": "Offer",
+    "@id": id,
     name,
     priceSpecification: price,
   };
@@ -114,10 +125,12 @@ const offerCatalogSchema = {
             ...priceSchemaFor(offering.name, offering.price),
             itemOffered: {
               "@type": "Service",
+              "@id": `${SITE_CONFIG.url}/pricing#service-${schemaFragment(offering.name)}`,
               name: offering.name,
               description: offering.description,
               provider: {
                 "@type": "Organization",
+                "@id": `${SITE_CONFIG.url}/#organization`,
                 name: SITE_CONFIG.name,
                 url: SITE_CONFIG.url,
               },
@@ -128,6 +141,7 @@ const offerCatalogSchema = {
     ),
     ...MANAGED_AI_TIERS.map((tier) => ({
       "@type": "Offer",
+      "@id": `${SITE_CONFIG.url}/pricing#offer-${schemaFragment(tier.tier)}`,
       name: tier.tier,
       price: tier.price.replace(/[^\d]/g, ""),
       priceCurrency: "USD",
@@ -139,6 +153,7 @@ const offerCatalogSchema = {
       },
       itemOffered: {
         "@type": "Service",
+        "@id": `${SITE_CONFIG.url}/pricing#service-${schemaFragment(tier.tier)}`,
         name: tier.tier,
         description: `Managed AI services for ${tier.users.toLowerCase()}.`,
       },
@@ -150,6 +165,7 @@ const offerCatalogSchema = {
       ),
       itemOffered: {
         "@type": "Service",
+        "@id": `${SITE_CONFIG.url}/pricing#service-${schemaFragment(MANAGED_AI_AGENT_OPERATIONS.tier)}`,
         name: MANAGED_AI_AGENT_OPERATIONS.tier,
         description: MANAGED_AI_AGENT_OPERATIONS.description,
       },

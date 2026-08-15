@@ -25,10 +25,10 @@ const sources: ArticleSource[] = [
       "Gartner's forecast that 40 percent of enterprise applications will feature task-specific AI agents by the end of 2026, up from less than 5 percent in 2025.",
   },
   {
-    label: "Neo — Launches with $100M to Secure AI Software Across the Enterprise",
-    href: "https://www.globenewswire.com/news-release/2026/07/20/3329638/0/en/Neo-Launches-with-100M-to-Secure-AI-Software-Across-the-Enterprise.html",
+    label: "Bessemer Venture Partners — Neo: Securing AI Agents at the Endpoint",
+    href: "https://www.bvp.com/news/neo-security-securing-ai-agents-at-the-endpoint",
     description:
-      "The July 20, 2026 launch of Neo, a security company built to inventory, attribute, and control AI agents, AI-enabled applications, and software gaining agentic capabilities.",
+      "Bessemer's July 20, 2026 announcement of its investment in Neo and the company's approach to inventorying, attributing, and controlling AI-enabled software.",
   },
   {
     label: "GovInfoSecurity — Neo Launches With $100M to Guard Agentic Enterprise Software",

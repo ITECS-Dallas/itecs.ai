@@ -49,6 +49,11 @@ export function PricingROI({
           </p>
         </ScrollReveal>
 
+        <p className="mx-auto mt-4 max-w-3xl text-center text-xs leading-relaxed text-text-tertiary">
+          Planning comparison only. Scope, timing, and outcomes vary by data,
+          workflow, approvals, adoption, and implementation conditions.
+        </p>
+
         {/* Comparison table */}
         <ScrollReveal delay={0.15}>
           <div className="mt-12 overflow-hidden rounded-[var(--r-section)] border border-[var(--card-line)] bg-card">
@@ -87,11 +92,18 @@ export function PricingROI({
           </div>
         </ScrollReveal>
 
-        {/* ROI callout */}
+        {/* Planning hypothesis, explicitly not a performance claim */}
         <ScrollReveal delay={0.3}>
           <div className="chamfer-md mt-8 p-6 border-l-2 border-itecs-blue bg-brand-subtle text-center">
+            <p className="mb-2 font-mono text-xs font-semibold uppercase tracking-[0.08em] text-text-tertiary">
+              Outcome hypothesis to validate
+            </p>
             <p className="text-lg text-ink font-medium">
               {roiStatement}
+            </p>
+            <p className="mt-3 text-xs leading-relaxed text-text-tertiary">
+              This is not a reported client result or guarantee. Baseline the
+              current workflow and measure accepted work before relying on it.
             </p>
           </div>
         </ScrollReveal>

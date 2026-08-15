@@ -32,7 +32,7 @@ const sources: ArticleSource[] = [
   },
   {
     label: "OpenAI ChatGPT Business",
-    href: "https://openai.com/chatgpt/business/",
+    href: "https://openai.com/business/",
     description:
       "OpenAI's business workspace information for teams evaluating ChatGPT at work.",
   },

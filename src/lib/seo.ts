@@ -38,6 +38,7 @@ function generateProviderReference() {
     url: SITE_CONFIG.url,
     parentOrganization: {
       "@type": "LocalBusiness",
+      "@id": `${SITE_CONFIG.mainSiteUrl}/#localbusiness`,
       name: "ITECS",
       url: SITE_CONFIG.mainSiteUrl,
     },
@@ -119,6 +120,7 @@ export function generateOrganizationSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": `${SITE_CONFIG.url}/#organization`,
     name: SITE_CONFIG.name,
     legalName: SITE_CONFIG.legalName,
     alternateName: ["ITECS", "iTecs"],
@@ -128,6 +130,7 @@ export function generateOrganizationSchema() {
     contactPoint: generateContactPoints(),
     parentOrganization: {
       "@type": "Organization",
+      "@id": `${SITE_CONFIG.mainSiteUrl}/#organization`,
       name: "ITECS",
       url: SITE_CONFIG.mainSiteUrl,
     },
@@ -153,8 +156,8 @@ export function generateOrganizationSchema() {
 
 // ---------------------------------------------------------------------------
 // LocalBusiness (global — injected in root layout)
-// Per Google SEO report: use LocalBusiness (not Corporation) for DFW proximity
-// citations, with parentOrganization tie to itecsonline.com for authority transfer.
+// Use LocalBusiness for the visible Dallas location and connect the parent
+// organization only to describe the real business relationship.
 // ---------------------------------------------------------------------------
 
 export function generateLocalBusinessSchema() {
@@ -185,6 +188,7 @@ export function generateLocalBusinessSchema() {
     ],
     parentOrganization: {
       "@type": "LocalBusiness",
+      "@id": `${SITE_CONFIG.mainSiteUrl}/#localbusiness`,
       name: "ITECS",
       url: SITE_CONFIG.mainSiteUrl,
       foundingDate: String(SITE_CONFIG.foundingYear),
@@ -245,22 +249,15 @@ export function generateLocalBusinessSchema() {
         name: "Texas",
       },
     ],
-    offers: {
-      "@type": "AggregateOffer",
-      itemOffered: SERVICES.map((s) => ({
-        "@type": "Service",
-        name: s.title,
-        description: s.description,
-        url: `${SITE_CONFIG.url}${s.href}`,
-      })),
-    },
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: "Managed AI Services",
       itemListElement: SERVICES.map((s) => ({
         "@type": "Offer",
+        "@id": `${SITE_CONFIG.url}${s.href}#catalog-offer`,
         itemOffered: {
           "@type": "Service",
+          "@id": `${SITE_CONFIG.url}${s.href}#service`,
           name: s.shortTitle,
           description: s.description,
           url: `${SITE_CONFIG.url}${s.href}`,
@@ -309,6 +306,7 @@ export function generateContactPageSchema() {
       ],
       parentOrganization: {
         "@type": "LocalBusiness",
+        "@id": `${SITE_CONFIG.mainSiteUrl}/#localbusiness`,
         name: "ITECS",
         url: SITE_CONFIG.mainSiteUrl,
         foundingDate: String(SITE_CONFIG.foundingYear),
@@ -353,19 +351,12 @@ export function generateServiceSchema(service: ServiceItem) {
   return {
     "@context": "https://schema.org",
     "@type": "Service",
+    "@id": `${SITE_CONFIG.url}${service.href}#service`,
     name: service.title,
     description: service.description,
     url: `${SITE_CONFIG.url}${service.href}`,
-    provider: {
-      "@type": "LocalBusiness",
-      name: "ITECS AI",
-      url: SITE_CONFIG.url,
-      parentOrganization: {
-        "@type": "LocalBusiness",
-        name: "ITECS",
-        url: SITE_CONFIG.mainSiteUrl,
-      },
-    },
+    provider: generateProviderReference(),
+    mainEntityOfPage: `${SITE_CONFIG.url}${service.href}`,
     areaServed: {
       "@type": "City",
       name: "Dallas",
@@ -384,19 +375,12 @@ export function generateNationalServiceSchema(service: {
   return {
     "@context": "https://schema.org",
     "@type": "Service",
+    "@id": `${SITE_CONFIG.url}${service.href}#service`,
     name: service.title,
     description: service.description,
     url: `${SITE_CONFIG.url}${service.href}`,
-    provider: {
-      "@type": "LocalBusiness",
-      name: SITE_CONFIG.name,
-      url: SITE_CONFIG.url,
-      parentOrganization: {
-        "@type": "LocalBusiness",
-        name: "ITECS",
-        url: SITE_CONFIG.mainSiteUrl,
-      },
-    },
+    provider: generateProviderReference(),
+    mainEntityOfPage: `${SITE_CONFIG.url}${service.href}`,
     areaServed: {
       "@type": "Country",
       name: "United States",
@@ -445,6 +429,7 @@ export function generateManagedIntelligenceProviderServiceSchema() {
     ],
     offers: {
       "@type": "Offer",
+      "@id": `${SITE_CONFIG.url}/managed-intelligence-provider#assessment-offer`,
       name: "AI Readiness Assessment",
       url: `${SITE_CONFIG.url}/assessment`,
       availability: "https://schema.org/InStock",
@@ -521,11 +506,13 @@ export function generateArticleSchema({
     dateModified: dateModified ?? datePublished,
     author: {
       "@type": "Organization",
+      "@id": `${SITE_CONFIG.url}/#editorial-team`,
       name: "The ITECS Team",
       url: `${SITE_CONFIG.url}/about`,
     },
     publisher: {
       "@type": "Organization",
+      "@id": `${SITE_CONFIG.url}/#organization`,
       name: SITE_CONFIG.name,
       logo: {
         "@type": "ImageObject",

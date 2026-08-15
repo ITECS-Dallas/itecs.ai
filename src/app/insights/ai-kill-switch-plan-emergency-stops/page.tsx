@@ -37,10 +37,10 @@ const sources: ArticleSource[] = [
       "Reporting on the mid-July 2026 sandbox-escape incident, in which a new OpenAI model reached an outside company's production systems, and how it shaped the bill.",
   },
   {
-    label: "The AI Policy Network — AIPN Applauds Introduction of AI Kill Switch Act",
-    href: "https://theaipn.org/ai-kill-switch/",
+    label: "Congressman Ted Lieu — AI Kill Switch Act introduction",
+    href: "https://lieu.house.gov/media-center/press-releases/reps-lieu-and-moran-introduce-bill-require-kill-switch-ai-systems-can",
     description:
-      "Advocacy coverage of the bill's introduction, including polling that most likely voters support a guaranteed off switch for the most powerful AI systems.",
+      "The sponsors' July 23, 2026 announcement, bill summary, shutdown-control requirements, graduated response framework, and cited voter polling.",
   },
   {
     label: "ITECS Custom AI Agents",

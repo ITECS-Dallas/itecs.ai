@@ -237,8 +237,8 @@ export default function AIOptimizedSEOPage() {
                   <p className="mt-3 text-text-secondary leading-relaxed">
                     ITECS AI is the AI division of ITECS — a Dallas managed IT
                     and cybersecurity firm operating since 2002. We do not
-                    outsource technical work. Schema, llms.txt, Core Web
-                    Vitals, and AI visibility audits are run by the same
+                    outsource technical work. Crawlability, accurate schema,
+                    Core Web Vitals, and AI visibility audits are run by the same
                     engineers who manage{" "}
                     <a
                       href="https://itecsonline.com/it-services/managed-it-services-in-dallas"

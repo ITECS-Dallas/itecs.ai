@@ -37,7 +37,7 @@ const SERVICES_FAQ = [
       "Start with an AI consulting assessment. We audit your team's workflows, identify the biggest time drains, and recommend the service that delivers the fastest ROI — typically automation, training, or a custom AI agent when the workflow needs one.",
   },
   {
-    question: "Do I need to buy all 9 services at once?",
+    question: "Do I need to buy all 10 services at once?",
     answer:
       "No. Most clients start with one or two services and expand as they see results. Our three-phase framework (Assess, Build, Scale) lets you adopt AI incrementally without disrupting daily operations.",
   },

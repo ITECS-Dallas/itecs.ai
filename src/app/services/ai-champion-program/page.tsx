@@ -232,6 +232,7 @@ const serviceSchema = {
   url: `${SITE_CONFIG.url}/services/ai-champion-program`,
   provider: {
     "@type": "LocalBusiness",
+    "@id": `${SITE_CONFIG.url}/#dallas-ai`,
     name: SITE_CONFIG.name,
     legalName: SITE_CONFIG.legalName,
     url: SITE_CONFIG.url,
@@ -269,6 +270,7 @@ const courseSchema = {
     "A structured 4-6 week curriculum that teaches prompt engineering, AI workflow design, governance, train-the-trainer methods, measurement, and long-term AI operations.",
   provider: {
     "@type": "Organization",
+    "@id": `${SITE_CONFIG.url}/#organization`,
     name: SITE_CONFIG.legalName,
     url: SITE_CONFIG.url,
   },

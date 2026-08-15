@@ -263,6 +263,7 @@ export default async function CaseStudyDetailPage({
 
         <div className="mx-auto max-w-5xl px-6 md:px-8">
           <div className="chamfer-md mt-4 border border-[var(--card-line)] bg-canvas-sunken p-6">
+            <p className="text-sm text-text-secondary">By The ITECS Team</p>
             <p className="font-mono text-xs font-semibold uppercase text-text-tertiary">
               Source: {caseStudy.sourceDate}
             </p>
@@ -281,7 +282,7 @@ export default async function CaseStudyDetailPage({
 
       <JsonLd
         data={generateArticleSchema({
-          headline: `${caseStudy.client} Case Study — ${caseStudy.outcome}`,
+          headline: `${caseStudy.client}: ${caseStudy.outcome}`,
           description: caseStudy.summary,
           url: `${SITE_CONFIG.url}${caseStudy.detailHref}`,
           datePublished: toIsoDate(caseStudy.sourceDate),

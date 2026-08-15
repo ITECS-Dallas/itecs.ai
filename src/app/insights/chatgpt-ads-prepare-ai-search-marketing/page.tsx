@@ -52,7 +52,7 @@ const sources: ArticleSource[] = [
   },
   {
     label: "Google Ads — About ads and AI Overviews",
-    href: "https://support.google.com/google-ads/answer/16297775",
+    href: "https://support.google.com/google-ads/answer/16297775?hl=en",
     description:
       "Google's current guidance on paid placements around and within AI Overviews, eligible campaign types, market scope, sensitive categories, and reporting limits.",
   },

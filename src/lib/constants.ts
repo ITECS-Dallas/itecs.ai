@@ -2228,7 +2228,7 @@ export const INSIGHTS: InsightItem[] = [
       "Assign one person to review brand safety and one to own media performance. A narrow cost-per-lead incentive can hide subtle delivery problems.",
       "**Decide the channel's role beside SEO, Google Ads, and AI Overviews**",
       "ChatGPT ads should begin as an incremental discovery test. Google Ads remains the more established paid-demand system, with broader volume, familiar auctions, query controls, and mature optimization. SEO builds durable discoverability and authority across search engines and the sources AI systems may use. Organic AI visibility earns mentions and citations inside answers without buying the placement.",
-      "Google's current [AI Overview ad guidance](https://support.google.com/google-ads/answer/16297775) shows how these layers are already converging. Existing eligible Search, Shopping, Performance Max, and App campaigns can appear above, below, or within AI Overviews in supported settings. Advertisers cannot buy 'AI Overview visibility' as an isolated placement or receive fully segmented reporting for it. Content and authority work therefore remain distinct from paid Google distribution.",
+      "Google's current [AI Overview ad guidance](https://support.google.com/google-ads/answer/16297775?hl=en) shows how these layers are already converging. Existing eligible Search, Shopping, Performance Max, and App campaigns can appear above, below, or within AI Overviews in supported settings. Advertisers cannot buy 'AI Overview visibility' as an isolated placement or receive fully segmented reporting for it. Content and authority work therefore remain distinct from paid Google distribution.",
       "Use one scorecard across the portfolio. Include marginal qualified-lead cost, revenue conversion, time to outcome, safety incidents, assisted paths, and incremental lift. Then ask what each channel contributes that the others do not. ChatGPT ads may expose conversational intent. Google Ads may capture explicit demand at scale. SEO and [AI search momentum](/ai-optimized-seo/momentum) may compound authority and unpaid discovery over time.",
       "**A controlled path to a budget decision**",
       "In week one, name the owner, verify eligibility, select one query category, and approve the landing page. Map data flows and baseline comparable channel performance. Next, launch at a capped budget with daily delivery and brand review. Qualify every lead using the same definition applied to other channels.",
@@ -6869,37 +6869,37 @@ export const AI_SEO_OVERVIEW: AISEOOverview = {
   eyebrow: "AI-Optimized SEO",
   h1: "AI-Optimized SEO Services in Dallas",
   heroSubline:
-    "Dominate Dallas search results with AI-optimized SEO. We blend technical precision with generative AI strategies to capture local traffic in DFW.",
+    "Strengthen how Dallas buyers and answer engines discover, understand, and verify your business with sound technical SEO, useful content, and measurable AI-search visibility.",
   heroCTA: "Request an AI-SEO Audit",
   definitionTitle: "What is AI SEO?",
   definitionBody:
-    "Adapting your digital presence for the era of answer engines. SEO used to be a keywords game: convince Google to rank your link #1. Today, buyers ask complex questions to ChatGPT, Google Gemini, and Perplexity. These answer engines do not just list websites — they read them, summarize them, and recommend the most trusted option. AI-Optimized SEO (also called Generative Engine Optimization or GEO) is the engineering process of structuring your brand's data and content so AI models recognize you as the trusted authority in your industry.",
-  mechanicsTitle: "The Mechanics of GEO",
+    "AI-optimized SEO, sometimes called generative engine optimization (GEO), applies durable search fundamentals to AI-assisted discovery. It makes your public pages crawlable, clear, useful, and well supported so search systems and people can understand your services. No special file, schema type, writing formula, or page structure guarantees a ranking, mention, recommendation, or citation.",
+  mechanicsTitle: "How AI-Assisted Discovery Works",
   mechanicsIntro:
-    "Three-step process that determines whether AI models recommend you or your competitor.",
+    "A practical model for improving eligibility and measuring results without pretending to control an answer engine.",
   mechanicsSteps: [
     {
       number: 1,
-      title: "Entity Extraction",
+      title: "Crawl and Retrieval Eligibility",
       description:
-        "The AI reads your content not as strings of text, but as entities (People, Places, Concepts). It looks for relationships. Does \"ITECS\" have a \"Parent\" relationship with \"Dallas\"? Is \"Managed IT\" a \"Service\" offered by \"ITECS\"? We use Schema.org to hardcode these relationships so the AI doesn't have to guess.",
+        "Search systems need to reach the canonical page, render its useful content, and understand its basic purpose. Technical SEO, descriptive internal links, and consistent business details support that access. Accurate structured data can clarify visible facts, but it is not a ranking or citation switch.",
     },
     {
       number: 2,
-      title: "Retrieval Augmented Generation (RAG)",
+      title: "Source Selection and Corroboration",
       description:
-        "The model doesn't just memorize the internet — that triggers hallucinations. Instead, it searches its trusted Knowledge Graph to retrieve facts. If your site provides structured, citation-ready facts (via llms.txt and semantic HTML), you become a primary source for the RAG process.",
+        "Some AI experiences retrieve current web sources; others use different systems and indexes. Clear first-party facts, useful evidence, and consistent third-party references can make a page easier to evaluate. An llms.txt file is optional documentation and is not a Google Search requirement or a guarantee of ingestion.",
     },
     {
       number: 3,
       title: "Response Synthesis",
       description:
-        "Finally, the AI combines the retrieved facts into a natural language answer. It prioritizes sources that are authoritative (proven expertise) and concise. Our \"Winner Takes All\" content strategy is designed to be the single best answer used in this synthesis.",
+        "An answer engine may synthesize multiple eligible sources based on the query and its own systems. We make claims specific, source-backed, and easy to verify, then measure actual mentions, citations, referral sessions, and conversions. The platform—not ITECS—decides what appears.",
     },
   ],
   comparisonTitle: "Traditional SEO vs AI-Optimized SEO",
   comparisonIntro:
-    "The optimization rules changed when answer engines arrived. Here is what shifts.",
+    "AI discovery adds another measurement surface; it does not replace traditional search fundamentals.",
   comparisonRows: [
     {
       aspect: "Core Competition",
@@ -6914,7 +6914,7 @@ export const AI_SEO_OVERVIEW: AISEOOverview = {
     {
       aspect: "Ranking Target",
       traditional: "Rank for blue links",
-      aiOptimized: "Answer-centric content written for extraction",
+      aiOptimized: "Useful, verifiable content that can support an answer",
     },
     {
       aspect: "Trust Building",
@@ -6924,7 +6924,7 @@ export const AI_SEO_OVERVIEW: AISEOOverview = {
     {
       aspect: "Authority Source",
       traditional: "Authority is implied by position",
-      aiOptimized: "Authority is proven by context",
+      aiOptimized: "Claims are supported by visible evidence and context",
     },
   ],
   philosophyTitle: "Clean SEO Philosophy",
@@ -6938,16 +6938,16 @@ export const AI_SEO_OVERVIEW: AISEOOverview = {
       "Generic SEO packages with no AI visibility strategy",
     ],
     doInstead: [
-      "Technical SEO fixes that search engines and AI models reward",
+      "Technical SEO fixes that help search systems crawl and interpret pages",
       "Semantic HTML and content architecture for topical authority",
-      "Schema markup for rich results and AI understanding",
+      "Accurate schema markup when it matches visible content and a real use",
       "Performance tuning that improves Core Web Vitals",
       "Content built around real search demand, not fluff",
     ],
   },
   includesTitle: "What AI-Optimized SEO Includes",
   includesIntro:
-    "Two layers of work running in parallel — the traditional SEO foundation that Google still rewards, plus the AI discovery layer that answer engines require.",
+    "Two layers of work running in parallel — the traditional SEO foundation search systems rely on, plus AI-discovery measurement and source clarity where evidence supports it.",
   includes: [
     {
       category: "Traditional SEO Foundation",
@@ -6962,11 +6962,11 @@ export const AI_SEO_OVERVIEW: AISEOOverview = {
     {
       category: "AI Discovery Layer",
       items: [
-        "LLM visibility files (llms.txt + llms-full.txt) for AI ingestion",
-        "Schema.org JSON-LD graphing for entity clarity",
-        "Semantic page structure for AI answer extraction",
-        "Entity optimization and citation readiness across platforms",
-        "AI search optimization for AI Overviews, Perplexity, and Bing Chat",
+        "Optional llms.txt documentation when a named consumer or business use justifies it",
+        "Accurate Schema.org JSON-LD that matches visible entities and offers",
+        "Clear semantic page structure for readers, crawlers, and assistive technology",
+        "Source, entity, and citation-readiness review across relevant platforms",
+        "AI-search visibility baselines for AI Overviews, ChatGPT, Perplexity, and Bing",
       ],
     },
   ],
@@ -6990,7 +6990,7 @@ export const AI_SEO_OVERVIEW: AISEOOverview = {
       number: 3,
       title: "Sharp Industry Hooks",
       description:
-        "We hardcode insider terms — Schema.org, JSON-LD, AI Overviews, and LLM files — so search engines and AI models understand your expertise.",
+        "We explain the products, standards, evidence, and workflows buyers actually need, using the language your subject-matter experts and customers can verify.",
     },
     {
       number: 4,
@@ -7001,13 +7001,13 @@ export const AI_SEO_OVERVIEW: AISEOOverview = {
   ],
   technicalTitle: "Technical Foundation",
   technicalIntro:
-    "The infrastructure layer that makes AI extraction and traditional ranking possible at the same time.",
+    "The infrastructure layer that supports crawlability, page understanding, measurement, and a stable buyer journey.",
   technicalSpecs: [
     "Schema.org + JSON-LD Graphs",
     "Core Web Vitals",
     "Canonical + Sitemap Governance",
     "OpenGraph + Social Metadata",
-    "LLM Files (llms.txt)",
+    "Optional LLM Documentation (when justified)",
     "Semantic Heading Architecture",
     "GA4 + Search Console Instrumentation",
     "Citation-Ready Content",
@@ -7068,7 +7068,7 @@ export const AI_SEO_OVERVIEW: AISEOOverview = {
     {
       question: "How is AI SEO different from traditional SEO?",
       answer:
-        "Traditional SEO focuses on keywords and blue-link rankings. AI SEO focuses on entity clarity and context (who you are, what you do, and where you serve), plus structured data and answer-ready content so AI systems can confidently recommend you.",
+        "AI SEO keeps the same crawlability, content quality, technical, and authority fundamentals as traditional SEO, then adds measurement for AI-assisted discovery and extra attention to source clarity. Structured data can describe visible facts, but no special markup or writing format makes an AI system recommend a business.",
     },
     {
       question: "Will AI SEO work for my specific industry (legal, manufacturing, etc.)?",
@@ -7083,7 +7083,7 @@ export const AI_SEO_OVERVIEW: AISEOOverview = {
     {
       question: "Will this help with Google AI Overviews and AI citations?",
       answer:
-        "Yes. We structure content for AI extraction, implement Schema.org JSON-LD, and build citation-ready pages so your brand is eligible for AI Overviews and assistants such as ChatGPT, Claude, and Perplexity.",
+        "It can improve the technical eligibility and source clarity that search and AI systems may use. We also measure actual visibility and referral evidence. Google and AI platforms control their results, so ITECS cannot guarantee an Overview, mention, ranking, recommendation, or citation.",
     },
     {
       question: "Do you build backlinks or run link schemes?",
@@ -7098,7 +7098,7 @@ export const AI_SEO_OVERVIEW: AISEOOverview = {
     {
       question: "How long does it take to see results?",
       answer:
-        "Most sites see early movement within 60–90 days, with compounding growth as content and technical improvements mature. Timelines vary by competition and current site health.",
+        "There is no fixed ranking or citation timeline. We establish a baseline, ship the agreed technical and content work, and review crawl, visibility, referral, and conversion evidence on the reporting cadence. Competition, demand, platform changes, and current site health all affect outcomes.",
     },
     {
       question: "Can you target Dallas–Fort Worth and my industry at the same time?",
@@ -7108,7 +7108,7 @@ export const AI_SEO_OVERVIEW: AISEOOverview = {
     {
       question: "Where do the three tiers fit (Foundation, Momentum, Velocity)?",
       answer:
-        "Foundation is a one-time project that fixes technical SEO and content architecture so AI and search engines can interpret your site. Momentum is the monthly retainer that keeps the foundation healthy and adds content, AI visibility tracking, and one authority backlink per month. Velocity is the premium retainer that doubles content velocity, adds third-party link building, competitor monitoring, and quarterly CRO. Foundation is a prerequisite for Momentum and Velocity.",
+        "Foundation is a one-time project that fixes technical SEO and content architecture. Momentum is the monthly retainer that keeps the foundation healthy and adds content, AI visibility tracking, and one disclosed ITECS editorial feature per month. Velocity doubles content cadence and editorial features, then adds earned third-party outreach, competitor monitoring, and quarterly CRO. Foundation is a prerequisite for Momentum and Velocity.",
     },
   ],
 };
@@ -7203,7 +7203,7 @@ export const AI_SEO_TIERS: AISEOTier[] = [
     href: "/ai-optimized-seo/foundation",
     title: "SEO Foundation Dallas | Technical Audits & Schema",
     description:
-      "One-time technical SEO and AI discoverability project for Dallas businesses. Schema.org, llms.txt, Core Web Vitals, semantic content architecture. From $4,500.",
+      "One-time technical SEO and AI-discovery readiness project for Dallas businesses. Crawlability, accurate schema, Core Web Vitals, content architecture, and measurement. From $4,500.",
     keywords: [
       "SEO Foundation Dallas",
       "technical SEO Dallas",
@@ -7218,7 +7218,7 @@ export const AI_SEO_TIERS: AISEOTier[] = [
       "Build a flawless digital foundation. SEO Foundation includes deep technical audits, local schema architecture, and site speed optimization for Dallas.",
     heroCTA: "Schedule Foundation Consultation",
     overview:
-      "SEO Foundation is a one-time project that fixes the technical SEO and content architecture issues that keep Dallas–Fort Worth businesses from ranking on Google and being cited by AI assistants. We focus on schema, Core Web Vitals, and llms.txt so your site is ready for both traditional and AI-driven discovery. Local focus includes Uptown, Legacy West, Las Colinas, and the Richardson Telecom Corridor so your location signals match how Dallas buyers search.",
+      "SEO Foundation is a one-time project that fixes verified technical SEO and content architecture issues affecting crawlability, page understanding, performance, and measurement. We use accurate schema where it matches visible content and treat llms.txt as optional documentation—not a Google requirement or citation mechanism. Local work aligns real Dallas–Fort Worth service areas with how buyers search without promising rankings or AI mentions.",
     priceModel: "one-time",
     priceLabel: "From $4,500",
     priceNumeric: 4500,
@@ -7281,8 +7281,8 @@ export const AI_SEO_TIERS: AISEOTier[] = [
         description:
           "Schema, Core Web Vitals improvements, metadata updates, and technical SEO fixes.",
         items: [
-          "llms.txt and llms-full.txt generation for AI ingestion",
-          "Schema.org JSON-LD implementation with service and FAQ markup",
+          "Optional llms.txt documentation only when a defined consumer or business use justifies it",
+          "Schema.org JSON-LD implementation only where vocabulary and visible-content parity are accurate",
           "Meta tag rewrites, canonical tags, sitemap/robots optimization",
           "Image optimization, lazy loading, and mobile readiness improvements",
         ],
@@ -7301,17 +7301,17 @@ export const AI_SEO_TIERS: AISEOTier[] = [
       {
         area: "AI Discoverability Enhancements",
         description:
-          "LLM files, entity optimization, and FAQ structuring for AI search visibility.",
+          "Source clarity, entity consistency, and measured AI-search visibility without formulaic requirements.",
         items: [
-          "llms.txt and llms-full.txt files for AI training and runtime ingestion",
-          "Entity optimization so AI models map your brand to the right categories",
-          "FAQ structuring designed for AI answer extraction",
+          "Optional llms.txt documentation with its non-Google purpose recorded",
+          "Entity consistency across visible pages, structured data, and supported profiles",
+          "Useful visible FAQs when buyers need them, not as a rich-result requirement",
           "Before-and-after AI visibility comparison report",
         ],
       },
     ],
     whyItecs: [
-      "Practitioner-led credibility with rankings that prove our playbook works in Dallas",
+      "Practitioner-led technical and content work measured against an agreed baseline",
       "Technical superiority across schema, site speed, and secure implementation",
       "Clean SEO practices without paid links or risky shortcuts",
       "Unified security standards that align with MSP-grade infrastructure",
@@ -7338,16 +7338,16 @@ export const AI_SEO_TIERS: AISEOTier[] = [
           "Most engagements complete in about 8 weeks from kickoff, depending on site size and implementation approvals.",
       },
       {
-        question: "Will this improve AI visibility for ChatGPT and Google AI Overviews?",
-        answer:
-          "Yes. We implement llms.txt files, structured data, and semantic content architecture so AI platforms can interpret and cite your services.",
+      question: "Will this improve AI visibility for ChatGPT and Google AI Overviews?",
+      answer:
+          "It can improve crawlability, source clarity, and technical eligibility, and the engagement includes visibility measurement. An optional llms.txt file or structured data never guarantees that ChatGPT, Google, or another platform will interpret, rank, mention, or cite a service.",
       },
     ],
     cardTagline: "One-time technical and AI-readiness project.",
     cardPriceLabel: "From $4,500 · one-time",
     cardHighlights: [
       "Technical audit + remediation",
-      "Schema.org + llms.txt files",
+      "Accurate schema + optional LLM documentation",
       "Semantic + local content architecture",
       "Prerequisite for Momentum & Velocity",
     ],
@@ -7360,7 +7360,7 @@ export const AI_SEO_TIERS: AISEOTier[] = [
     href: "/ai-optimized-seo/momentum",
     title: "SEO Momentum Dallas | Monthly AI SEO Retainer",
     description:
-      "Monthly managed AI SEO for Dallas businesses with technical monitoring, 2 articles, AI visibility tracking, and 1 authority backlink for $1,750/mo.",
+      "Monthly managed AI SEO for Dallas businesses with technical monitoring, 2 articles, AI visibility tracking, and 1 disclosed ITECS editorial feature for $1,750/mo.",
     keywords: [
       "managed SEO Dallas",
       "SEO retainer Dallas",
@@ -7433,10 +7433,10 @@ export const AI_SEO_TIERS: AISEOTier[] = [
         ],
       },
       {
-        category: "ITECS Domain Authority Backlink",
+        category: "ITECS Editorial Feature",
         items: [
           "1 feature article or white paper published monthly on itecsonline.com",
-          "Do-follow backlink to your site with permanent publication",
+          "Permanent referral link with sponsorship disclosure when required",
           "Formats include case studies, industry insights, and technical guides",
         ],
       },
@@ -7470,15 +7470,15 @@ export const AI_SEO_TIERS: AISEOTier[] = [
     upgradePath: {
       headline: "Upgrade when you need aggressive growth.",
       description:
-        "SEO Velocity adds doubled content velocity, third-party link building, competitor response, and CRO audits for teams ready to dominate.",
+        "SEO Velocity adds doubled content cadence, earned third-party outreach, competitor response, and CRO audits for teams ready to invest at a higher cadence.",
       targetSlug: "velocity",
       ctaText: "Explore SEO Velocity",
     },
     whyItecs: [
-      "Practitioner-led credibility with Dallas rankings and AI visibility proof",
+      "Practitioner-led delivery with ranking, referral, and AI-visibility measurement",
       "Technical SEO and AI search expertise rooted in MSP-grade infrastructure",
       "Clean SEO practices without paid link schemes",
-      "Built-in backlink value through itecsonline.com authority",
+      "Editorial exposure on itecsonline.com with guideline-aligned link handling",
     ],
     faq: [
       {
@@ -7497,9 +7497,9 @@ export const AI_SEO_TIERS: AISEOTier[] = [
           "We run a quarterly AI visibility audit across platforms like ChatGPT, Google AI search mode, and Claude.",
       },
       {
-        question: "What is the ITECS domain authority backlink?",
+        question: "What is the ITECS editorial feature?",
         answer:
-          "Each month we publish a feature article or white paper about your business on itecsonline.com with a do-follow backlink to your site.",
+          "Each month we publish a feature article or white paper about your business on itecsonline.com with a referral link. Commercial relationships are disclosed and link attributes follow current search guidelines; the feature is not sold as a ranking guarantee.",
       },
       {
         question: "Can I cancel at any time?",
@@ -7512,7 +7512,7 @@ export const AI_SEO_TIERS: AISEOTier[] = [
     cardHighlights: [
       "2 articles + AI visibility audits",
       "15–30 keywords tracked monthly",
-      "1 do-follow backlink from itecsonline.com",
+      "1 itecsonline.com editorial feature",
       "Two 30-min strategy calls per month",
     ],
     cardAccent: "brand",
@@ -7536,10 +7536,10 @@ export const AI_SEO_TIERS: AISEOTier[] = [
     eyebrow: "Tier 3 · Premium Retainer",
     h1: "SEO Velocity — Premium AI SEO for Dallas Leaders",
     heroSubline:
-      "Maximize your digital footprint in DFW. SEO Velocity delivers high-authority backlinks and AI-driven traffic automation for Dallas market dominance.",
+      "Expand useful content, earned coverage, competitor intelligence, and conversion learning across Dallas–Fort Worth with a measured premium SEO program.",
     heroCTA: "Start SEO Velocity",
     overview:
-      "SEO Velocity is built for Dallas–Fort Worth businesses that want to dominate organic search. We accelerate content velocity, expand backlink coverage, and run conversion audits so your growth compounds faster than competitors. Ideal for Uptown, Legacy West, Las Colinas, and Richardson Telecom Corridor teams ready to scale visibility across multiple locations.",
+      "SEO Velocity is built for Dallas–Fort Worth businesses that want a higher-cadence organic-search program. We expand useful content and earned coverage, monitor competitors, and run conversion audits while reporting outcomes without promising rankings or AI citations. It supports real multi-location growth across Dallas–Fort Worth when the business has the corresponding locations and service evidence.",
     priceModel: "monthly",
     priceLabel: "$3,500/mo",
     priceNumeric: 3500,
@@ -7549,7 +7549,7 @@ export const AI_SEO_TIERS: AISEOTier[] = [
     cancellationPolicy: "30 days written notice after initial term",
     refundPolicy: "No refunds for partial months or completed work",
     billingTerms: "Invoiced on the 1st of each month, due upon receipt",
-    projectTimeline: "Most clients see significant improvements within 90–120 days",
+    projectTimeline: "Progress reviewed over the six-month initial term against the agreed baseline",
     prerequisitesHeading: "Velocity requires a strong starting line.",
     prerequisites: [
       {
@@ -7577,10 +7577,10 @@ export const AI_SEO_TIERS: AISEOTier[] = [
         ],
       },
       {
-        category: "ITECS Domain Authority Backlinks",
+        category: "ITECS Editorial Features",
         items: [
           "2 feature articles or white papers published monthly on itecsonline.com",
-          "Do-follow backlinks to your site with permanent publication",
+          "Permanent referral links with sponsorship disclosure when required",
           "Formats include case studies, industry insights, and technical guides",
         ],
       },
@@ -7625,8 +7625,8 @@ export const AI_SEO_TIERS: AISEOTier[] = [
       "Leaders that want dedicated account management and weekly alignment",
     ],
     whyItecs: [
-      "Practitioner-led credibility with Dallas rankings and AI visibility proof",
-      "Dual backlink engine combining ITECS authority and third-party outreach",
+      "Practitioner-led delivery with ranking, referral, and AI-visibility measurement",
+      "Editorial exposure through ITECS publications plus earned third-party outreach",
       "Clean SEO practices with white-hat link building only",
       "Conversion-focused reporting that connects traffic to revenue outcomes",
     ],
@@ -7654,13 +7654,13 @@ export const AI_SEO_TIERS: AISEOTier[] = [
       {
         question: "How quickly can results appear?",
         answer:
-          "Most clients see meaningful ranking improvements within 90–120 days, with continued gains as content velocity compounds.",
+          "There is no fixed ranking or citation timeline. We review technical health, visibility, referrals, conversions, and shipped work throughout the six-month initial term, then use that evidence to decide what to continue or change.",
       },
     ],
     cardTagline: "Premium retainer for aggressive growth.",
     cardPriceLabel: "$3,500 / month · 6-mo minimum",
     cardHighlights: [
-      "4 articles + 2 backlinks + 3rd-party PR",
+      "4 articles + 2 editorial features + 3rd-party PR",
       "50–75 keywords + monthly AI visibility",
       "Competitor monitoring + quarterly CRO",
       "Weekly strategy calls + dedicated AM",
