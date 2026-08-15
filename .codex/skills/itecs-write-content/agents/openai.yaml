@@ -1,0 +1,4 @@
+interface:
+  display_name: "ITECS Write Content"
+  short_description: "Write governed ITECS service-page content"
+  default_prompt: "Use $itecs-write-content to draft or implement accurate ITECS.ai page content within the requested authority boundary."

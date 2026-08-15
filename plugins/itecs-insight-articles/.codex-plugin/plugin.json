@@ -1,7 +1,7 @@
 {
   "name": "itecs-insight-articles",
   "version": "0.1.0",
-  "description": "Project-specific ITECS AI Insights article workflow with slash commands, source citations, trust signals, and skill guidance.",
+  "description": "Project-specific ITECS AI Insights drafting and implementation workflow with explicit publication gates.",
   "author": {
     "name": "ITECS",
     "url": "https://itecs.ai"
@@ -19,8 +19,8 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "ITECS Insight Articles",
-    "shortDescription": "Create SEO-ready ITECS AI Insights articles",
-    "longDescription": "Project-specific workflow for creating ITECS AI Insights articles with executive business writing, sitemap-based internal links, SEO metadata, schema, OpenGraph images, share bars, source citations, trust signals, and author blocks.",
+    "shortDescription": "Draft governed ITECS AI Insights articles",
+    "longDescription": "Project-specific workflow for researching, drafting, reviewing, and implementing ITECS AI Insights articles. Publication, commit, push, deployment, and activation occur only when the user explicitly authorizes the exact outcome.",
     "developerName": "ITECS",
     "category": "Coding",
     "capabilities": [
@@ -30,9 +30,9 @@
     ],
     "websiteURL": "https://itecs.ai/insights",
     "defaultPrompt": [
-      "Create a new ITECS AI Insights article.",
-      "Draft an SEO article for ITECS AI.",
-      "Add schema, share bar, source citations, and author block."
+      "Draft a new ITECS AI Insights article without publishing it.",
+      "Research and implement an ITECS AI Insights article locally.",
+      "Publish a resolved ITECS AI Insights article after validation."
     ],
     "brandColor": "#06B6D4",
     "screenshots": []
