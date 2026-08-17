@@ -113,7 +113,7 @@ export default function AutomationPage() {
         }}
         externalLink={{
           text: "Microsoft Power Automate Security & Compliance",
-          href: "https://learn.microsoft.com/en-us/power-automate/security-privacy-compliance",
+          href: "https://learn.microsoft.com/en-us/power-platform/admin/wp-compliance-data-privacy",
         }}
       />
 

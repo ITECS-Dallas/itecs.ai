@@ -13,6 +13,15 @@ export function ServiceStats({
   return (
     <section className="py-24 md:py-32 bg-canvas-sunken">
       <div className="mx-auto max-w-7xl px-6 md:px-8">
+        <div className="mx-auto mb-10 max-w-3xl text-center">
+          <p className="font-mono text-xs font-semibold uppercase tracking-[0.08em] text-brand-accent">
+            Engagement Targets
+          </p>
+          <p className="mt-3 text-sm leading-relaxed text-text-secondary">
+            Illustrative targets to baseline and validate during discovery —
+            not reported client results or performance guarantees.
+          </p>
+        </div>
         <div
           className={`grid gap-8 ${
             stats.length <= 3

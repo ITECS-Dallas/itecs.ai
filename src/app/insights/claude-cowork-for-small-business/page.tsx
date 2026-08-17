@@ -16,9 +16,9 @@ export const metadata = generatePageMetadata({
 const sources: ArticleSource[] = [
   {
     label: "Anthropic — Claude for Small Business",
-    href: "https://www.anthropic.com/claude/business",
+    href: "https://www.anthropic.com/news/claude-for-small-business",
     description:
-      "Anthropic's product page for Claude Cowork business tiers, including the Small Business toggle, pre-built workflows, and supported integrations.",
+      "Anthropic's May 2026 launch post for the Small Business toggle, pre-built Cowork workflows, supported integrations, permissions, and approval controls.",
   },
   {
     label: "Anthropic — 2026 Work Trend Index",

@@ -112,6 +112,10 @@ function getTrackedCtaType(href: string) {
     return "phone";
   }
 
+  if (href.startsWith("mailto:")) {
+    return "email";
+  }
+
   return null;
 }
 

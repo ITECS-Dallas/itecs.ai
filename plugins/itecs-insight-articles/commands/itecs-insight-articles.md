@@ -8,14 +8,14 @@ allowed-tools: [Read, Glob, Grep, Bash, Write, Edit, WebFetch]
 
 The user invoked this command with: $ARGUMENTS
 
-Read `.codex/skills/itecs-insight-articles/SKILL.md` and follow it as the source of truth. Use this command for ITECS AI blog articles, Insights posts, SEO guides, article page updates, overview card previews, generated article imagery, Article schema, OpenGraph metadata, share bars, source citations, trust signal sections, and author blocks.
+Read `.codex/skills/itecs-insight-articles/SKILL.md` and follow it as the source of truth. Use this command for ITECS AI blog articles, Insights posts, guides, article page updates, overview card previews, optional article imagery, Article schema, metadata, source citations, trust signals, and accurate authorship.
 
-Unless the user asks for draft-only work, follow the skill's CPBA completion path: commit, push, build, and activate after verification.
+A generic write, create, research, or draft request authorizes only the requested copy. Local repository implementation, commit, push, publication, deployment, and activation require explicit user authority for the exact resolved article and target.
 
 If the user gives only a topic, infer a Dallas SMB executive audience and create the article workflow described by the skill.
 
 Expected usage:
 
 ```text
-/itecs-insight-articles:itecs-insight-articles AI governance checklist for small businesses
+/itecs-insight-articles:itecs-insight-articles draft an AI governance checklist for small businesses
 ```

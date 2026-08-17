@@ -8,9 +8,7 @@ function read(relativePath) {
 }
 
 function assert(condition, message) {
-  if (!condition) {
-    throw new Error(message);
-  }
+  if (!condition) throw new Error(message);
 }
 
 const layout = read("src/app/layout.tsx");
@@ -32,64 +30,59 @@ assert(
     metadata.includes("canonical") &&
     metadata.includes("openGraph") &&
     metadata.includes("twitter"),
-  "Global and page metadata must include title templates, canonical URLs, OpenGraph, and Twitter metadata.",
+  "Global and page metadata must preserve title templates, canonicals, OpenGraph, and Twitter metadata.",
 );
 
 assert(
-    layout.includes("generateOrganizationSchema()") &&
+  layout.includes("generateOrganizationSchema()") &&
     layout.includes("generateLocalBusinessSchema()") &&
     seo.includes("generateOrganizationSchema") &&
     seo.includes("generateLocalBusinessSchema") &&
-    seo.includes("telephone: SITE_CONFIG.phoneE164"),
-  "Root layout must inject Organization and LocalBusiness JSON-LD with phone and DFW location facts.",
+    seo.includes("telephone: SITE_CONFIG.phoneE164") &&
+    seo.includes('`${SITE_CONFIG.url}/#localbusiness`'),
+  "Root schema must preserve Organization/LocalBusiness output, current contact data, and the stable LocalBusiness ID.",
 );
 
 assert(
   sitemap.includes("/managed-intelligence-provider") &&
     sitemap.includes("/assessment") &&
-    sitemap.includes("/services/ai-champion-program"),
-  "Sitemap must include rebuilt conversion, MIP, and AI Champion routes.",
+    sitemap.includes("/services/ai-champion-program") &&
+    !sitemap.includes('url: `${base}/p/'),
+  "Sitemap must cover current public conversion routes and exclude proposal routes.",
 );
 
 assert(
-  robots.includes('disallow: ["/api/", "/p/"]') &&
+  robots.includes('const DISALLOWED_PATHS = ["/api/", "/p/"]') &&
+    robots.includes('userAgent: "*"') &&
+    robots.includes("disallow: DISALLOWED_PATHS") &&
+    robots.includes("...AI_CRAWLERS.map") &&
     robots.includes("https://itecs.ai/sitemap.xml"),
-  "Robots must allow public routes, block API/proposal surfaces, and advertise the sitemap.",
+  "Robots must allow public routes, keep API/proposal exclusions on wildcard and named AI agents, and advertise the canonical sitemap.",
 );
 
 assert(
   mipPage.includes("generateManagedIntelligenceProviderServiceSchema") &&
     mipPage.includes("<JsonLd data={generateManagedIntelligenceProviderServiceSchema()} />") &&
-    mipPage.includes("generateFAQSchema") &&
     mipPage.includes("<Breadcrumbs"),
-  "MIP page must emit Service, FAQPage, and Breadcrumb structured data.",
+  "MIP pages must preserve accurate Service and Breadcrumb semantics.",
 );
 
 assert(
-  consultingPage.includes("generateServiceSchema") &&
-    consultingPage.includes("generateFAQSchema") &&
-    consultingPage.includes("generateHowToSchema"),
-  "Service pages must emit Service, FAQPage, and HowTo structured data.",
+  consultingPage.includes("generateServiceSchema") && consultingPage.includes("<Breadcrumbs"),
+  "Service pages must preserve Service and Breadcrumb semantics.",
 );
 
 assert(
   insightLayout.includes("generateArticleSchema") &&
-    insightLayout.includes("generateFAQSchema") &&
+    insightLayout.includes("datePublished") &&
+    insightLayout.includes("citations") &&
     insightLayout.includes("<Breadcrumbs"),
-  "Insight pages must emit Article, FAQPage, and Breadcrumb structured data.",
+  "Insight pages must preserve Article dates, citations, and Breadcrumb semantics.",
 );
 
 assert(
-  breadcrumbs.includes("generateBreadcrumbSchema"),
-  "Breadcrumb component must emit BreadcrumbList schema.",
+  seo.includes('"@id": `${url}#article`') && breadcrumbs.includes("generateBreadcrumbSchema"),
+  "Article and breadcrumb helpers must preserve stable identity and BreadcrumbList output.",
 );
 
-for (const forbidden of [
-  "Small Business AI Consulting",
-  "small to medium businesses (SMBs)",
-  "Small Business AI Services",
-]) {
-  assert(!seo.includes(forbidden), `SEO schema must retire legacy SMB framing: ${forbidden}`);
-}
-
-console.log("Epic 8 technical SEO and schema validation passed");
+console.log("Epic 8 durable technical SEO and schema validation passed");

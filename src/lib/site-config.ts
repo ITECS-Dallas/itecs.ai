@@ -20,8 +20,7 @@ export const SITE_CONFIG = {
     country: "US",
   },
   geo: { lat: 32.987046344992, lng: -96.803103829427 },
-  googleMapsUrl:
-    "https://www.google.com/maps/search/?api=1&query=17304%20Preston%20Rd.%20Ste%20460%2C%20Dallas%2C%20TX%2075252",
+  googleMapsUrl: "https://maps.app.goo.gl/oFDotCsqC2SpdppV6",
   googleMapsEmbedUrl:
     "https://www.google.com/maps?q=17304%20Preston%20Rd.%20Ste%20460%2C%20Dallas%2C%20TX%2075252&output=embed",
   social: {

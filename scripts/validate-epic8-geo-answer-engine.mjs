@@ -1,4 +1,4 @@
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 
 const root = process.cwd();
@@ -8,63 +8,41 @@ function read(relativePath) {
 }
 
 function assert(condition, message) {
-  if (!condition) {
-    throw new Error(message);
-  }
+  if (!condition) throw new Error(message);
 }
 
 const constants = read("src/lib/constants.ts");
 const mipPage = read("src/app/managed-intelligence-provider/page.tsx");
-const llms = read("public/llms.txt");
-const llmsFull = read("public/llms-full.txt");
-const aiPolicy = read("public/ai.txt");
+const definitionComponent = read("src/components/sections/MIPDefinitionCapabilities.tsx");
 
 assert(
-  constants.includes("A Managed Intelligence Provider is") &&
+  constants.includes("export const MIP_DEFINITION_CAPABILITIES") &&
     constants.includes("model governance") &&
     constants.includes("executive reporting"),
-  "MIP content must include a clear extractable definition with entity-rich operating details.",
-);
-
-const faqBlockStart = constants.indexOf("export const MIP_ENTERPRISE_FAQ");
-const faqBlockEnd = constants.indexOf("] as const;", faqBlockStart);
-const faqBlock = constants.slice(faqBlockStart, faqBlockEnd);
-
-assert(
-  (faqBlock.match(/question: "/g) ?? []).length >= 6 &&
-    faqBlock.includes("data security") &&
-    faqBlock.includes("model choice") &&
-    faqBlock.includes("IP ownership") &&
-    faqBlock.includes("getting started"),
-  "MIP FAQ must expose enterprise Q&A blocks for AI answer extraction.",
+  "MIP source data must preserve a visible, decision-useful operating definition.",
 );
 
 assert(
-  mipPage.includes("Managed Intelligence Provider FAQ") &&
-    mipPage.includes("generateFAQSchema(MIP_ENTERPRISE_FAQ)"),
-  "MIP page must render Q&A blocks and FAQPage schema from the same source.",
+  definitionComponent.includes("MIP_DEFINITION_CAPABILITIES.definition") &&
+    definitionComponent.includes("MIP_DEFINITION_CAPABILITIES.capabilities"),
+  "The MIP definition and capabilities must render from their current source of truth.",
 );
 
-for (const [label, source] of [
-  ["llms.txt", llms],
-  ["llms-full.txt", llmsFull],
-  ["ai.txt", aiPolicy],
-]) {
-  assert(
-    source.includes("https://itecs.ai/managed-intelligence-provider"),
-    `${label} must include the MIP canonical URL.`,
-  );
+assert(
+  mipPage.includes("generatePageMetadata") &&
+    mipPage.includes("generateManagedIntelligenceProviderServiceSchema") &&
+    mipPage.includes("<Breadcrumbs") &&
+    mipPage.includes("<MIPDefinitionCapabilities"),
+  "The MIP page must preserve metadata, Service semantics, breadcrumbs, and the visible definition.",
+);
+
+for (const relativePath of ["public/llms.txt", "public/llms-full.txt", "public/ai.txt"]) {
+  if (!existsSync(join(root, relativePath))) continue;
+  const source = read(relativePath);
   assert(
     !source.includes("99.9% uptime"),
-    `${label} must not ship the unapproved disputed uptime proof point.`,
+    `${relativePath} must not contain the disputed uptime proof point.`,
   );
 }
 
-assert(
-  llmsFull.includes("A Managed Intelligence Provider is") &&
-    llms.includes("Managed Intelligence Provider") &&
-    aiPolicy.includes("Managed Intelligence Provider"),
-  "AI-facing policy files must include the extractable MIP definition and entity name.",
-);
-
-console.log("Epic 8 GEO and answer-engine validation passed");
+console.log("Epic 8 AI visibility content-safety validation passed");

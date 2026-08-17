@@ -255,6 +255,8 @@ export function Footer() {
                 <p className="text-text-secondary">Phone</p>
                 <a
                   href={`tel:${SITE_CONFIG.phoneE164}`}
+                  data-cta-type="phone"
+                  data-cta-destination={`tel:${SITE_CONFIG.phoneE164}`}
                   className="mt-1 flex min-h-11 items-center font-mono transition-colors hover:text-brand-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-sunken"
                 >
                   {SITE_CONFIG.phone}
@@ -264,6 +266,8 @@ export function Footer() {
                 <p className="text-text-secondary">Email</p>
                 <a
                   href={`mailto:${SITE_CONFIG.email}`}
+                  data-cta-type="email"
+                  data-cta-destination={`mailto:${SITE_CONFIG.email}`}
                   className="mt-1 flex min-h-11 items-center transition-colors hover:text-brand-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-sunken"
                 >
                   {SITE_CONFIG.email}

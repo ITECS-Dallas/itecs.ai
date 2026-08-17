@@ -112,6 +112,60 @@ describe("Intelligence request validation", () => {
     assert.equal(forgedRole.ok, false);
     assert.equal(forgedRole.status, 400);
   });
+
+  it("accepts bounded assistant answers longer than the visitor message limit", () => {
+    const assistantAnswer = "a".repeat(
+      CHAT_LIMITS.maxMessageCharacters + 500,
+    );
+    const validFollowUp = validateIntelligenceChatRequest({
+      message: "What should we do first?",
+      history: [
+        { role: "user", content: "Compare pilot and custom agent pricing." },
+        { role: "assistant", content: assistantAnswer },
+      ],
+      sessionId: session,
+      pagePath: "/pricing",
+    });
+
+    assert.equal(validFollowUp.ok, true);
+    assert.equal(validFollowUp.value.history[1].content, assistantAnswer);
+
+    const oversizedVisitorHistory = validateIntelligenceChatRequest({
+      message: "What should we do first?",
+      history: [
+        {
+          role: "user",
+          content: "u".repeat(CHAT_LIMITS.maxMessageCharacters + 1),
+        },
+      ],
+      sessionId: session,
+      pagePath: "/pricing",
+    });
+
+    assert.deepEqual(oversizedVisitorHistory, {
+      ok: false,
+      status: 400,
+      message: "Invalid conversation history.",
+    });
+
+    const oversizedAssistantHistory = validateIntelligenceChatRequest({
+      message: "What should we do first?",
+      history: [
+        {
+          role: "assistant",
+          content: "a".repeat(CHAT_LIMITS.maxHistoryCharacters + 1),
+        },
+      ],
+      sessionId: session,
+      pagePath: "/pricing",
+    });
+
+    assert.deepEqual(oversizedAssistantHistory, {
+      ok: false,
+      status: 400,
+      message: "Invalid conversation history.",
+    });
+  });
 });
 
 describe("Intelligence rate limits", () => {

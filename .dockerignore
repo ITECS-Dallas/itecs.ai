@@ -5,3 +5,4 @@ node_modules
 .env.local
 infra/certbot/letsencrypt
 infra/certbot/lib
+ops

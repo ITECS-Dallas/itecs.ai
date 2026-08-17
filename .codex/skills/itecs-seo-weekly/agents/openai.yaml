@@ -1,0 +1,4 @@
+interface:
+  display_name: "ITECS Weekly SEO"
+  short_description: "Analyze ITECS search and analytics evidence"
+  default_prompt: "Use $itecs-seo-weekly to collect and interpret the current ITECS.ai SEO evidence without mutating the site."

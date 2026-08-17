@@ -1,4 +1,4 @@
 interface:
   display_name: "ITECS Insight Articles"
-  short_description: "Write SEO-ready ITECS AI Insight articles"
-  default_prompt: "Create an SEO-ready ITECS AI Insights article with metadata, schema, internal links, generated imagery, share bar, sources, and author block."
+  short_description: "Draft governed ITECS AI Insights articles"
+  default_prompt: "Use $itecs-insight-articles to research and draft an evidence-led ITECS AI Insights article without publishing unless explicitly requested."

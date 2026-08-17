@@ -34,7 +34,30 @@ const aiRetainer = AI_PREPAID_OPTIONS.find(
 )!;
 
 const consultingFaq = [
-  ...service.faq,
+  ...service.faq.map((item) =>
+    item.question === "How much does AI consulting cost for a growing organization?"
+      ? {
+          ...item,
+          answer: (
+            <>
+              {item.answer} Businesses already on an ITECS managed-services
+              agreement through one of our{" "}
+              <a
+                href="https://itecsonline.com/msp-pro-program"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-brand-accent underline decoration-brand-accent/30 underline-offset-2 hover:decoration-brand-accent"
+              >
+                MSP programs
+              </a>{" "}
+              can bundle AI consulting hours into their existing engagement
+              rather than opening a separate contract.
+            </>
+          ),
+          schemaAnswer: `${item.answer} Businesses already on an ITECS managed-services agreement through one of our MSP programs can bundle AI consulting hours into their existing engagement rather than opening a separate contract.`,
+        }
+      : item,
+  ),
   {
     question:
       "Do you also help us get found by AI search engines like ChatGPT and Google AI Overviews?",
@@ -47,14 +70,14 @@ const consultingFaq = [
         >
           AI-Optimized SEO
         </Link>{" "}
-        engagement (Generative Engine Optimization) that structures your
-        content so AI assistants cite you as the answer. Foundation is a
-        one-time technical project; Momentum and Velocity are monthly
-        retainers that compound visibility over time.
+        engagement (Generative Engine Optimization) that improves
+        crawlability, entity clarity, and source usefulness for search engines
+        and AI answer systems. Foundation is a one-time technical project;
+        Momentum and Velocity are monthly retainers for ongoing improvement.
       </>
     ),
     schemaAnswer:
-      "Yes. ITECS runs a dedicated AI-Optimized SEO engagement (Generative Engine Optimization) that structures your content so AI assistants cite you as the answer. Foundation is a one-time technical project; Momentum and Velocity are monthly retainers that compound visibility over time.",
+      "Yes. ITECS runs a dedicated AI-Optimized SEO engagement (Generative Engine Optimization) that improves crawlability, entity clarity, and source usefulness for search engines and AI answer systems. Foundation is a one-time technical project; Momentum and Velocity are monthly retainers for ongoing improvement.",
   },
 ];
 

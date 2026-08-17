@@ -13,6 +13,7 @@ import { PainPoint } from "@/components/sections/PainPoint";
 import { ServiceFeatures } from "@/components/sections/ServiceFeatures";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { ToolTrainingDiagram } from "@/components/sections/ToolTrainingDiagram";
+import { GuidedBuildEngagement } from "@/components/sections/GuidedBuildEngagement";
 import { Integrations } from "@/components/sections/Integrations";
 import { SecurityGuarantee } from "@/components/sections/SecurityGuarantee";
 import { PricingROI } from "@/components/sections/PricingROI";
@@ -26,7 +27,7 @@ const heroImage = "/images/services/chatgpt-codex-training.png";
 export const metadata = generatePageMetadata({
   title: "ChatGPT Codex Training & Implementation in Dallas",
   description:
-    "ITECS trains and implements OpenAI's ChatGPT Codex for Dallas engineering teams — secure, sandboxed setup with guardrails and hands-on developer workshops.",
+    "Hands-on ChatGPT Codex training and Guided Build Sessions for Dallas engineering teams. Build governed agent workflows in your repository with ITECS.",
   path: service.href,
   keywords: service.keywords,
   ogImage: heroImage,
@@ -105,6 +106,8 @@ export default function ChatGPTCodexTrainingPage() {
           { icon: "LineChart", label: "Optimize", detail: "Tune cost & standards" },
         ]}
       />
+
+      <GuidedBuildEngagement context="codex" />
 
       <Integrations
         tools={service.integrations}

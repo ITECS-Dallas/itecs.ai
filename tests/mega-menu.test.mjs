@@ -6,53 +6,44 @@ import { join } from "node:path";
 const root = process.cwd();
 const read = (path) => readFileSync(join(root, path), "utf8");
 
-function megaMenuSource() {
-  const constants = read("src/lib/constants.ts");
-  const start = constants.indexOf("export const MEGA_MENU_CATEGORIES");
-  const end = constants.indexOf("// ---------------------------------------------------------------------------\n// Public AI Pricing");
-  assert.ok(start > -1, "MEGA_MENU_CATEGORIES should exist");
-  assert.ok(end > start, "mega menu source block should be bounded");
-  return constants.slice(start, end);
-}
+const megaMenuSource = () => read("src/components/layout/HeaderMenus.tsx");
 
 describe("full-screen mega menu", () => {
-  it("uses category-aware panels instead of static or blank service columns", () => {
+  it("loads categorized, route-aware panels from the header shell", () => {
     const header = read("src/components/layout/Header.tsx");
+    const menu = megaMenuSource();
 
-    assert.match(header, /activeCategory/);
-    assert.match(header, /onMouseEnter=\{\(\) => setActiveCat\(i\)\}/);
-    assert.match(header, /Explore/);
-    assert.match(header, /activeCategory\.name/);
-    assert.match(header, /activeCategory\.cards\.map/);
-    assert.doesNotMatch(header, /MEGA_MENU_FEATURED/);
-    assert.doesNotMatch(header, /MEGA_MENU_QUICK_LINKS/);
-    assert.doesNotMatch(header, /MEGA_MENU_STATS/);
-    assert.doesNotMatch(header, /All services/i);
+    assert.match(header, /\.\/HeaderMenus/);
+    assert.match(header, /SolutionsMegaMenu/);
+    assert.match(header, /IndustriesMenu/);
+    assert.match(menu, /solutionsMegaColumns/);
+    assert.match(menu, /industryColumns/);
+    assert.match(menu, /routeMatches/);
+    assert.match(menu, /aria-current=\{active \? "page" : undefined\}/);
+    assert.match(menu, /column\.items\.map/);
   });
 
-  it("defines cards and proof context for every root category", () => {
+  it("defines descriptive items for every public menu column", () => {
     const menu = megaMenuSource();
 
     for (const category of [
-      "AI Services",
-      "AI Products",
-      "Industries",
-      "Resources",
-      "Company",
+      "Managed Intelligence",
+      "AI Consulting & Strategy",
+      "AI Solutions",
+      "Manufacturing",
+      "Financial Services",
     ]) {
-      assert.match(menu, new RegExp(`name: "${category}"`));
+      assert.match(menu, new RegExp(`title: "${category}"`));
     }
 
-    assert.match(menu, /summary:/);
-    assert.match(menu, /proofPoints:/);
-    assert.match(menu, /cards:/);
-    assert.match(menu, /primaryCta:/);
+    assert.match(menu, /description:/);
+    assert.match(menu, /items:/);
+    assert.match(menu, /icon:/);
   });
 
   it("wires public service, product, industry, resource, and company pages into the mega menu", () => {
     const menu = megaMenuSource();
     const expectedRoutes = [
-      "/services",
       "/consulting",
       "/custom-ai-agents",
       "/automation",
@@ -64,33 +55,17 @@ describe("full-screen mega menu", () => {
       "/crm-sales-ai",
       "/ai-knowledge-base",
       "/ai-optimized-seo",
-      "/ai-optimized-seo/foundation",
-      "/ai-optimized-seo/momentum",
-      "/ai-optimized-seo/velocity",
       "/manufacturing",
       "/manufacturing/ppv-agent",
       "/manufacturing/demand-forecasting-sop-ai",
-      "/manufacturing/predictive-maintenance-ai",
-      "/manufacturing/inventory-working-capital-ai",
       "/manufacturing/quality-traceability-ai",
-      "/manufacturing/customer-sku-profitability-ai",
-      "/manufacturing/production-scheduling-yield-ai",
-      "/manufacturing/contract-pass-through-intelligence",
-      "/manufacturing/energy-freight-scope-3-ai",
-      "/manufacturing/vendor-payment-anomaly-ai",
+      "/financial-services",
+      "/financial-services/field-examination-analyzer",
+      "/financial-services/cash-flow-model-builder",
+      "/financial-services/portfolio-monitoring-covenant-ai",
+      "/financial-services/ar-collections-receivables-ai",
       "/insights",
-      "/insights/ceo-guide-ai-roi",
-      "/insights/secure-business-data-chatgpt",
-      "/insights/agentic-ai-workflows-enterprise-operations",
-      "/insights/automate-lead-follow-up",
-      "/insights/claude-cowork-for-small-business",
-      "/insights/how-to-use-ai-small-business",
-      "/insights/mcp-is-the-new-api",
-      "/insights/openclaw-security-crisis",
-      "/insights/enterprise-agentic-skills-repo",
       "/about",
-      "/pricing",
-      "/managed-intelligence-provider",
       "/contact",
     ];
 

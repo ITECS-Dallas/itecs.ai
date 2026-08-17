@@ -20,6 +20,7 @@ Pattern:
 - Magic-link proposals are registered in `src/lib/proposals/access.ts`, use `src/app/p/[slug]/access/page.tsx`, send access links through `src/app/api/proposals/access/request/route.ts`, verify links through `src/app/api/proposals/access/verify/route.ts`, and should use `/api/proposals/<slug>/pdf` for PDF downloads.
 - Gated proposal PDFs should live under `private/proposals/` and be referenced by `pdfFileName` so the API route serves them only after the access cookie is present.
 - Proposal pages should include a single sticky bottom Download Proposal control linked to the protected PDF route. Do not add sticky Accept or Decline controls unless specifically requested.
+- If a proposal also offers the standing ITECS services deck, use `src/components/proposals/StickyProposalDownloads.tsx`; it keeps both downloads behind the same access cookie and serves the overview through `/api/proposals/<slug>/service-overview` from `private/proposals/`.
 - Proposal access emails and verification redirects must use canonical public URLs from `SITE_CONFIG.url` or `NEXT_PUBLIC_SITE_URL`. Never build client-facing proposal links from request host headers, `request.url`, Docker hostnames, `0.0.0.0`, or container ports. After deploy, simulate `Host: 0.0.0.0:3000` against `/api/proposals/access/verify` and confirm the `Location` starts with `https://itecs.ai/`.
 - `PROPOSAL_MAGIC_LINK_SECRET` must exist in `.env`, `.env.example`, and `docker-compose.yml`.
 

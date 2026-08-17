@@ -170,6 +170,10 @@ const pdfHref = "/api/proposals/<slug>/pdf";
    `pdfHref` and uses a `lucide-react` `Download` icon. Keep the sticky control
    focused on the PDF only; Accept and Decline remain in the proposal response
    section unless the user explicitly asks for them in the sticky bar.
+   If the proposal should also offer the standing ITECS services deck, use
+   `src/components/proposals/StickyProposalDownloads.tsx` instead. The shared
+   component keeps both the proposal PDF and the protected
+   `/api/proposals/<slug>/service-overview` route behind the same access cookie.
 8. Send client-facing emails to `https://itecs.ai/p/<slug>/access`, not directly
    to `/p/<slug>`.
 9. Confirm magic-link emails and verification redirects use canonical public
@@ -187,6 +191,8 @@ const pdfHref = "/api/proposals/<slug>/pdf";
   `Host: 0.0.0.0:3000` to `/api/proposals/access/verify` must redirect to
   `https://itecs.ai/p/<slug>`, never to `0.0.0.0`, `localhost`, or a container
   address.
+- When the services-overview download is linked, verify both protected PDF
+  routes return `application/pdf` only after the proposal cookie is present.
 
 ### 8. Deploy
 

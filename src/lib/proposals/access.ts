@@ -30,6 +30,15 @@ export type ProposalAccessConfig = {
   pdfFileName: string;
 };
 
+/**
+ * Shared ITECS capabilities deck offered alongside every proposal's own PDF.
+ * Served through /api/proposals/[slug]/service-overview behind the same gate.
+ */
+export const SERVICE_OVERVIEW_FILE = {
+  fileName: "itecs-services-overview-2026.pdf",
+  downloadName: "ITECS-Services-Overview-2026.pdf",
+} as const;
+
 export const PROPOSAL_ACCESS: Record<string, ProposalAccessConfig> = {
   "hasen-claude-work-order-phase-1-9ee3f0": {
     slug: "hasen-claude-work-order-phase-1-9ee3f0",
@@ -124,6 +133,33 @@ export const PROPOSAL_ACCESS: Record<string, ProposalAccessConfig> = {
     heroImageUrl:
       "https://itecs.ai/images/proposals/ai-adoption-agents-arg-hero.png",
     pdfFileName: "ai-adoption-agents-arg-3aab89.pdf",
+  },
+  "purpose-capital-managed-it-e8e515": {
+    slug: "purpose-capital-managed-it-e8e515",
+    title: "Purpose Capital — Managed IT, Security & AI Readiness Proposal",
+    clientName: "Purpose Capital",
+    clientGreeting: "Hi Nate,",
+    accessEyebrow: "Private Proposal · Managed IT, Security & AI Readiness",
+    accessHeading: "Check your email to open the Purpose Capital proposal.",
+    accessDescription:
+      "Enter your business email and we will send a private access link for the Managed IT, Security & AI Readiness proposal prepared for Purpose Capital.",
+    allowedEmails: [
+      "bdesmot@itecsonline.com",
+      "bdesmot@gmail.com",
+      "nate@purposecapitalmgmt.com",
+      "mdunbar@itecsmsp.com",
+      "jemerle@itecsmsp.com",
+    ],
+    // Anyone with a @purposecapitalmgmt.com address is authorized to use the magic link.
+    allowedDomains: [
+      "purposecapitalmgmt.com",
+      "itecsonline.com",
+      "itecsmsp.com",
+    ],
+    fromEmail: "bdesmot@itecsonline.com",
+    heroImageUrl:
+      "https://itecs.ai/images/proposals/purpose-capital-managed-it-hero.png",
+    pdfFileName: "purpose-capital-managed-it-e8e515.pdf",
   },
 };
 

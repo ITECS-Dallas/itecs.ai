@@ -1,0 +1,4 @@
+interface:
+  display_name: "ITECS SEO Audit"
+  short_description: "Audit ITECS technical SEO and AI visibility"
+  default_prompt: "Use $itecs-seo-audit to audit ITECS.ai and route evidence-backed fixes."

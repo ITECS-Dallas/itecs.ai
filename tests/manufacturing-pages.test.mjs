@@ -80,21 +80,23 @@ describe("manufacturing vertical pages", () => {
     }
   });
 
-  it("links manufacturing pages from global navigation and footer", () => {
+  it("links primary manufacturing paths from global navigation and the footer", () => {
     const header = read("src/components/layout/Header.tsx");
+    const headerMenus = read("src/components/layout/HeaderMenus.tsx");
     const footer = read("src/components/layout/Footer.tsx");
-    const constants = read("src/lib/constants.ts");
-
-    assert.match(header, /MEGA_MENU_CATEGORIES/);
-    assert.match(constants, /Industries/);
-    assert.match(constants, /Manufacturing AI/);
-    assert.match(constants, /MEGA_MENU_CATEGORIES/);
-    assert.match(constants, /\/manufacturing\/ppv-agent/);
+    assert.match(header, /\.\/HeaderMenus/);
+    assert.match(header, /IndustriesMenu/);
+    assert.match(headerMenus, /Manufacturing AI/);
+    assert.match(headerMenus, /\/manufacturing\/ppv-agent/);
     assert.match(footer, /Industries/);
     assert.match(footer, /Manufacturing AI/);
     assert.match(footer, /\/manufacturing\/ppv-agent/);
-    for (const route of spokeRoutes) {
-      assert.match(constants, new RegExp(route));
+    for (const route of [
+      "/manufacturing/demand-forecasting-sop-ai",
+      "/manufacturing/predictive-maintenance-ai",
+      "/manufacturing/quality-traceability-ai",
+      "/manufacturing/inventory-working-capital-ai",
+    ]) {
       assert.match(footer, new RegExp(route));
     }
     assert.match(footer, /ITECS MSP/);

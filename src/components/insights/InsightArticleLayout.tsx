@@ -202,7 +202,7 @@ export function InsightArticleLayout({
         </div>
       </section>
 
-      <article className="pb-24">
+      <article className="pb-12">
         <div className="mx-auto max-w-3xl space-y-8 px-6 md:px-8">
           <div className="space-y-6">
             {insight.content.map((paragraph, index) => (
@@ -227,7 +227,13 @@ export function InsightArticleLayout({
               </ScrollReveal>
             ))}
           </div>
+        </div>
+      </article>
 
+      <FAQ items={insight.faq} heading={faqHeading} />
+
+      <article className="pb-12 pt-12">
+        <div className="mx-auto max-w-3xl px-6 md:px-8">
           <ScrollReveal>
             <div className="chamfer-md border-l-2 border-itecs-blue bg-brand-subtle p-6">
               <p className="font-medium leading-relaxed text-ink">
@@ -249,37 +255,13 @@ export function InsightArticleLayout({
               </p>
             </div>
           </ScrollReveal>
+        </div>
+      </article>
 
-          <ScrollReveal>
-            <section
-              aria-labelledby="author-heading"
-              className="border-t border-[var(--border-subtle)] pt-8"
-            >
-              <div className="flex items-start gap-4">
-                <div className="hex flex h-11 w-11 shrink-0 items-center justify-center bg-brand-subtle">
-                  <UserRound className="h-5 w-5 text-itecs-blue" aria-hidden="true" />
-                </div>
-                <div>
-                  <h2
-                    id="author-heading"
-                    className="text-sm font-medium uppercase tracking-[0.12em] text-text-dim"
-                  >
-                    About The Author
-                  </h2>
-                  <p className="mt-2 font-medium text-text-primary">
-                    The ITECS Team
-                  </p>
-                  <p className="mt-2 text-sm leading-relaxed text-text-secondary">
-                    ITECS helps Dallas business leaders adopt practical AI with
-                    the security, documentation, training, and operational
-                    discipline expected from an established managed technology
-                    partner.
-                  </p>
-                </div>
-              </div>
-            </section>
-          </ScrollReveal>
+      <CTASection />
 
+      <article className="pb-24 pt-16">
+        <div className="mx-auto max-w-3xl space-y-8 px-6 md:px-8">
           <ScrollReveal>
             <ArticleShareBar title={insight.title} url={canonicalUrl} />
           </ScrollReveal>
@@ -323,11 +305,37 @@ export function InsightArticleLayout({
               </div>
             </section>
           </ScrollReveal>
+
+          <ScrollReveal>
+            <section
+              aria-labelledby="author-heading"
+              className="border-t border-[var(--border-subtle)] pt-8"
+            >
+              <div className="flex items-start gap-4">
+                <div className="hex flex h-11 w-11 shrink-0 items-center justify-center bg-brand-subtle">
+                  <UserRound className="h-5 w-5 text-itecs-blue" aria-hidden="true" />
+                </div>
+                <div>
+                  <h2
+                    id="author-heading"
+                    className="text-sm font-medium uppercase tracking-[0.12em] text-text-dim"
+                  >
+                    About The Author
+                  </h2>
+                  <p className="mt-2 font-medium text-text-primary">
+                    The ITECS Team
+                  </p>
+                  <p className="mt-2 text-sm leading-relaxed text-text-secondary">
+                    ITECS&apos; AI consulting, security, training, and DevOps team
+                    helps Dallas businesses adopt practical AI safely, backed by
+                    more than 24 years of IT operations experience.
+                  </p>
+                </div>
+              </div>
+            </section>
+          </ScrollReveal>
         </div>
       </article>
-
-      <FAQ items={insight.faq} heading={faqHeading} />
-      <CTASection />
 
       <JsonLd data={articleSchema} />
       <JsonLd data={generateFAQSchema(insight.faq)} />

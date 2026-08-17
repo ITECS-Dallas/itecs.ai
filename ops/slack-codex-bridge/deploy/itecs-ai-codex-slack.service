@@ -1,0 +1,37 @@
+[Unit]
+Description=ITECS.AI-CODEX Slack Bridge
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=itecs
+Group=itecs
+WorkingDirectory=/home/itecs/itecs.ai
+Environment=HOME=/home/itecs
+Environment=USER=itecs
+Environment=LOGNAME=itecs
+Environment=SHELL=/usr/bin/zsh
+Environment=PATH=/home/itecs/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+Environment=NODE_ENV=production
+EnvironmentFile=/etc/itecs-ai-codex-slack/config.env
+LoadCredentialEncrypted=op_service_account_token:/etc/credstore.encrypted/itecs-ai-codex-op.cred
+StateDirectory=itecs-ai-codex-slack
+StateDirectoryMode=0700
+LogsDirectory=itecs-ai-codex-slack
+LogsDirectoryMode=0700
+RuntimeDirectory=itecs-ai-codex-slack
+RuntimeDirectoryMode=0700
+UMask=0077
+ExecStartPre=/usr/bin/test -x /usr/bin/op
+ExecStartPre=/usr/bin/test -x /usr/bin/node
+ExecStartPre=/usr/local/libexec/itecs-ai-codex-slack-run --check
+ExecStart=/usr/local/libexec/itecs-ai-codex-slack-run
+Restart=on-failure
+RestartSec=5s
+TimeoutStopSec=30s
+KillSignal=SIGTERM
+SyslogIdentifier=itecs-ai-codex-slack
+
+[Install]
+WantedBy=multi-user.target
