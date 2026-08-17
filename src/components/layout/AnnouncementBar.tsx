@@ -46,6 +46,8 @@ export function AnnouncementBar() {
         <div className="flex items-center gap-3">
           <a
             href={`mailto:${SITE_CONFIG.email}`}
+            data-cta-type="email"
+            data-cta-destination={`mailto:${SITE_CONFIG.email}`}
             className="hover:text-text-primary transition-colors truncate"
           >
             {SITE_CONFIG.email}
@@ -53,6 +55,8 @@ export function AnnouncementBar() {
           <span className="text-text-tertiary" aria-hidden="true">|</span>
           <a
             href={`tel:${SITE_CONFIG.phoneE164}`}
+            data-cta-type="phone"
+            data-cta-destination={`tel:${SITE_CONFIG.phoneE164}`}
             className="hover:text-text-primary transition-colors whitespace-nowrap"
           >
             {SITE_CONFIG.phone}

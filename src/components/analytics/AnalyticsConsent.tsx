@@ -91,7 +91,7 @@ export function AnalyticsConsent() {
 
   useEffect(() => {
     function handleCtaClick(event: MouseEvent) {
-      if (event.defaultPrevented || !(event.target instanceof Element)) {
+      if (!(event.target instanceof Element)) {
         return;
       }
 
@@ -110,10 +110,13 @@ export function AnalyticsConsent() {
       });
     }
 
-    document.addEventListener("click", handleCtaClick);
+    // Capture phase: Next.js <Link> calls preventDefault() for client-side
+    // navigation before bubble-phase listeners run, which would otherwise
+    // discard every internal CTA click.
+    document.addEventListener("click", handleCtaClick, true);
 
     return () => {
-      document.removeEventListener("click", handleCtaClick);
+      document.removeEventListener("click", handleCtaClick, true);
     };
   }, [pagePath]);
 

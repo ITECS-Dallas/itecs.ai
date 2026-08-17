@@ -287,6 +287,8 @@ export function Header() {
             <div className="hidden items-center gap-4 lg:flex">
               <a
                 href={`tel:${SITE_CONFIG.phoneE164}`}
+                data-cta-type="phone"
+                data-cta-destination={`tel:${SITE_CONFIG.phoneE164}`}
                 className="font-mono text-sm text-text-secondary transition-colors hover:text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base"
               >
                 {SITE_CONFIG.phone}

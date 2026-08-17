@@ -652,6 +652,8 @@ export function MobileNavDrawer({
           </Button>
           <a
             href={`tel:${SITE_CONFIG.phoneE164}`}
+            data-cta-type="phone"
+            data-cta-destination={`tel:${SITE_CONFIG.phoneE164}`}
             className="mt-3 flex min-h-12 items-center justify-center rounded-md border border-[var(--border-default)] bg-bg-surface font-mono text-sm text-text-secondary"
           >
             {SITE_CONFIG.phone}
