@@ -52,9 +52,12 @@ assert(
 );
 
 assert(
-  robots.includes('disallow: ["/api/", "/p/"]') &&
+  robots.includes('const DISALLOWED_PATHS = ["/api/", "/p/"]') &&
+    robots.includes('userAgent: "*"') &&
+    robots.includes("disallow: DISALLOWED_PATHS") &&
+    robots.includes("...AI_CRAWLERS.map") &&
     robots.includes("https://itecs.ai/sitemap.xml"),
-  "Robots must allow public routes, block API/proposal surfaces, and advertise the canonical sitemap.",
+  "Robots must allow public routes, keep API/proposal exclusions on wildcard and named AI agents, and advertise the canonical sitemap.",
 );
 
 assert(

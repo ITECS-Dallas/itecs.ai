@@ -44,7 +44,7 @@ const assessmentForm = read("src/components/forms/AIReadinessAssessmentForm.tsx"
 const contactForm = read("src/components/forms/ContactForm.tsx");
 
 for (const [label, source, expected] of [
-  ["Home", home, ["TrustBar", "MethodologySteps", "OutcomesProof", "SecurityGovernanceBand", "ConversionBand"]],
+  ["Home", home, ["TrustBar", "OutcomesProof", "SecurityGovernanceBand", "ConversionBand"]],
   ["MIP", mip, ["MethodologySteps", "SecurityGovernanceBand", "OutcomesProof", "ConversionBand"]],
   ["Assessment", assessment, ["TrustBar", "SecurityGovernanceBand", "AIReadinessAssessmentForm"]],
   ["Contact", contact, ["TrustBar", "ContactForm"]],
@@ -71,9 +71,12 @@ assert(
   "Sitemap must include launch-critical public routes and exclude hidden proposals.",
 );
 assert(
-  robots.includes('disallow: ["/api/", "/p/"]') &&
+  robots.includes('const DISALLOWED_PATHS = ["/api/", "/p/"]') &&
+    robots.includes('userAgent: "*"') &&
+    robots.includes("disallow: DISALLOWED_PATHS") &&
+    robots.includes("...AI_CRAWLERS.map") &&
     robots.includes("https://itecs.ai/sitemap.xml"),
-  "Robots must block API/proposal surfaces and advertise the sitemap.",
+  "Robots must keep API/proposal exclusions on wildcard and named AI agents and advertise the sitemap.",
 );
 assert(
   analytics.includes("ANALYTICS_EVENTS") &&

@@ -125,8 +125,12 @@ assert(sitemap.includes("AI_SEO_OVERVIEW"), "Sitemap must include AI_SEO_OVERVIE
 assert(sitemap.includes("AI_SEO_TIERS"), "Sitemap must include AI_SEO_TIERS.");
 assert(!sitemap.includes('url: `${base}/p/'), "Sitemap must not expose proposal routes.");
 assert(
-  robots.includes('disallow: ["/api/", "/p/"]') && robots.includes(`${siteUrl}/sitemap.xml`),
-  "Robots must allow public routes, block API/proposal routes, and advertise the canonical sitemap.",
+  robots.includes('const DISALLOWED_PATHS = ["/api/", "/p/"]') &&
+    robots.includes('userAgent: "*"') &&
+    robots.includes("disallow: DISALLOWED_PATHS") &&
+    robots.includes("...AI_CRAWLERS.map") &&
+    robots.includes(`${siteUrl}/sitemap.xml`),
+  "Robots must allow public routes, keep API/proposal exclusions on wildcard and named AI agents, and advertise the canonical sitemap.",
 );
 assert(
   metadata.includes("alternates") && metadata.includes("canonical") && metadata.includes("SITE_CONFIG.url"),
