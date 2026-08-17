@@ -78,6 +78,18 @@ describe("AI Services Program v1.4 pricing contract", () => {
     assert.match(pricingPage, /schemaPrice: offering\.schemaPrice/);
     assert.match(pricingPage, /AI_PRICING_FAQ/);
     assert.match(pricingPage, /generateFAQSchema\(AI_PRICING_FAQ\)/);
+    assert.match(
+      pricingPage,
+      /"@id": `\$\{SITE_CONFIG\.url\}\/pricing#offer-\$\{schemaId\}`/,
+    );
+    assert.match(
+      pricingPage,
+      /"@id": `\$\{SITE_CONFIG\.url\}\/pricing#service-\$\{schemaId\}`/,
+    );
+    assert.match(
+      pricingPage,
+      /"@id": `\$\{SITE_CONFIG\.url\}\/#organization`/,
+    );
   });
 
   it("rejects removed SKUs, stale names, stale prices, and stale retainer terms", () => {

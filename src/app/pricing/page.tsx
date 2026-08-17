@@ -98,6 +98,13 @@ const quickPricing = [
   },
 ] as const;
 
+function schemaFragment(value: string) {
+  return value
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+}
+
 function priceSchemaFor(args: {
   name: string;
   description: string;
@@ -106,12 +113,15 @@ function priceSchemaFor(args: {
   schemaLowPrice?: string;
   schemaHighPrice?: string;
 }) {
+  const schemaId = schemaFragment(args.name);
   const itemOffered = {
     "@type": "Service",
+    "@id": `${SITE_CONFIG.url}/pricing#service-${schemaId}`,
     name: args.name,
     description: args.description,
     provider: {
       "@type": "Organization",
+      "@id": `${SITE_CONFIG.url}/#organization`,
       name: SITE_CONFIG.name,
       url: SITE_CONFIG.url,
     },
@@ -120,6 +130,7 @@ function priceSchemaFor(args: {
   if (args.schemaLowPrice && args.schemaHighPrice) {
     return {
       "@type": "AggregateOffer",
+      "@id": `${SITE_CONFIG.url}/pricing#offer-${schemaId}`,
       name: args.name,
       lowPrice: args.schemaLowPrice,
       highPrice: args.schemaHighPrice,
@@ -132,6 +143,7 @@ function priceSchemaFor(args: {
   if (args.schemaPrice) {
     return {
       "@type": "Offer",
+      "@id": `${SITE_CONFIG.url}/pricing#offer-${schemaId}`,
       name: args.name,
       price: args.schemaPrice,
       priceCurrency: "USD",
