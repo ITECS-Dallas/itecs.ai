@@ -13,6 +13,7 @@ import { PainPoint } from "@/components/sections/PainPoint";
 import { ServiceFeatures } from "@/components/sections/ServiceFeatures";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { ToolTrainingDiagram } from "@/components/sections/ToolTrainingDiagram";
+import { GuidedBuildEngagement } from "@/components/sections/GuidedBuildEngagement";
 import { Integrations } from "@/components/sections/Integrations";
 import { SecurityGuarantee } from "@/components/sections/SecurityGuarantee";
 import { PricingROI } from "@/components/sections/PricingROI";
@@ -26,7 +27,7 @@ const heroImage = "/images/services/claude-cowork-training.png";
 export const metadata = generatePageMetadata({
   title: "Claude Cowork Training & Implementation in Dallas",
   description:
-    "ITECS trains and implements Claude Cowork for Dallas teams — Anthropic's agentic AI workspace. Secure setup, hands-on workshops, and real adoption in weeks.",
+    "Hands-on Claude Cowork training and Guided Build Sessions for Dallas teams. Build a working agent in your project folder with secure setup and team handoff.",
   path: service.href,
   keywords: service.keywords,
   ogImage: heroImage,
@@ -104,6 +105,8 @@ export default function ClaudeCoworkTrainingPage() {
           { icon: "Rocket", label: "Scale", detail: "Templates & new teams" },
         ]}
       />
+
+      <GuidedBuildEngagement context="claude" />
 
       <Integrations
         tools={service.integrations}
