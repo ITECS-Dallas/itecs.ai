@@ -59,9 +59,6 @@ const AGENT_DISCOVERY = offering("Agent Discovery & Technical Specification");
 const PROTOTYPE = offering("Proof of Concept / Prototype");
 const SINGLE_WORKFLOW_AGENT = offering("Single-Workflow Production Agent");
 const INTEGRATED_AGENT = offering("Integrated / Line-of-Business Agent");
-const MULTI_AGENT_SYSTEM = offering(
-  "Multi-Agent System / AI-Augmented Process Redesign",
-);
 const READINESS_ASSESSMENT = offering("AI Readiness Assessment");
 const EXECUTIVE_BRIEFING = offering("Executive AI Literacy Briefing");
 const DATA_READINESS_SPRINT = offering("Data Readiness Sprint");

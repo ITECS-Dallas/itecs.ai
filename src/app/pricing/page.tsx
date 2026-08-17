@@ -73,17 +73,30 @@ const pricingModes = [
   },
 ] as const;
 
-function schemaFragment(value: string) {
-  return value
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/(^-|-$)/g, "");
-}
-
-function priceSchemaFor(name: string, price: string) {
-  const id = `${SITE_CONFIG.url}/pricing#offer-${schemaFragment(name)}`;
-  const range = price.match(/\$([\d,]+)-\$([\d,]+)/);
-  const single = price.match(/\$([\d,]+)/);
+const quickPricing = [
+  {
+    value: getAIPricingOffering("Guided Build Session").price,
+    label: "Guided Build Session",
+    detail: "The lightest build entry point",
+  },
+  {
+    value: getAIPricingOffering("AI Readiness Assessment").price,
+    label: "AI Readiness Assessment",
+    detail: "Recommended leadership starting point",
+  },
+  {
+    value: getAIPricingOffering("AI Governance Baseline Bundle").price.split(
+      " ",
+    )[0],
+    label: "Governance Baseline",
+    detail: "Three core controls in one engagement",
+  },
+  {
+    value: `From ${MANAGED_AI_TIERS[0].price}`,
+    label: "Managed Intelligence",
+    detail: "Ongoing adoption and optimization",
+  },
+] as const;
 
 function priceSchemaFor(args: {
   name: string;
@@ -107,10 +120,9 @@ function priceSchemaFor(args: {
   if (args.schemaLowPrice && args.schemaHighPrice) {
     return {
       "@type": "AggregateOffer",
-      "@id": id,
-      name,
-      lowPrice: range[1].replace(/,/g, ""),
-      highPrice: range[2].replace(/,/g, ""),
+      name: args.name,
+      lowPrice: args.schemaLowPrice,
+      highPrice: args.schemaHighPrice,
       priceCurrency: "USD",
       description: args.displayPrice,
       itemOffered,
@@ -120,21 +132,15 @@ function priceSchemaFor(args: {
   if (args.schemaPrice) {
     return {
       "@type": "Offer",
-      "@id": id,
-      name,
-      price: single[1].replace(/,/g, ""),
+      name: args.name,
+      price: args.schemaPrice,
       priceCurrency: "USD",
       description: args.displayPrice,
       itemOffered,
     };
   }
 
-  return {
-    "@type": "Offer",
-    "@id": id,
-    name,
-    priceSpecification: price,
-  };
+  return null;
 }
 
 const offeringSchemas = AI_PRICING_CATEGORIES.flatMap((category) =>
@@ -187,60 +193,10 @@ const offerCatalogSchema = {
   name: "ITECS AI Services Pricing",
   url: `${SITE_CONFIG.url}/pricing`,
   itemListElement: [
-    ...AI_PRICING_CATEGORIES.flatMap((category) =>
-      category.offerings.map((offering) => ({
-        "@type": "OfferCatalog",
-        name: `${category.title} - ${offering.name}`,
-        itemListElement: [
-          {
-            ...priceSchemaFor(offering.name, offering.price),
-            itemOffered: {
-              "@type": "Service",
-              "@id": `${SITE_CONFIG.url}/pricing#service-${schemaFragment(offering.name)}`,
-              name: offering.name,
-              description: offering.description,
-              provider: {
-                "@type": "Organization",
-                "@id": `${SITE_CONFIG.url}/#organization`,
-                name: SITE_CONFIG.name,
-                url: SITE_CONFIG.url,
-              },
-            },
-          },
-        ],
-      })),
-    ),
-    ...MANAGED_AI_TIERS.map((tier) => ({
-      "@type": "Offer",
-      "@id": `${SITE_CONFIG.url}/pricing#offer-${schemaFragment(tier.tier)}`,
-      name: tier.tier,
-      price: tier.price.replace(/[^\d]/g, ""),
-      priceCurrency: "USD",
-      priceSpecification: {
-        "@type": "UnitPriceSpecification",
-        price: tier.price.replace(/[^\d]/g, ""),
-        priceCurrency: "USD",
-        billingDuration: "P1M",
-      },
-      itemOffered: {
-        "@type": "Service",
-        "@id": `${SITE_CONFIG.url}/pricing#service-${schemaFragment(tier.tier)}`,
-        name: tier.tier,
-        description: `Managed AI services for ${tier.users.toLowerCase()}.`,
-      },
-    })),
-    {
-      ...priceSchemaFor(
-        MANAGED_AI_AGENT_OPERATIONS.tier,
-        MANAGED_AI_AGENT_OPERATIONS.price,
-      ),
-      itemOffered: {
-        "@type": "Service",
-        "@id": `${SITE_CONFIG.url}/pricing#service-${schemaFragment(MANAGED_AI_AGENT_OPERATIONS.tier)}`,
-        name: MANAGED_AI_AGENT_OPERATIONS.tier,
-        description: MANAGED_AI_AGENT_OPERATIONS.description,
-      },
-    },
+    ...offeringSchemas,
+    ...managedSchemas,
+    ...agentOperationsSchemas,
+    ...prepaidSchemas,
   ],
 };
 

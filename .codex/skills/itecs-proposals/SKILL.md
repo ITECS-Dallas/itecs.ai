@@ -25,7 +25,7 @@ The template standard includes dark itecs.ai styling, an executive hero, clear s
 3. Use an unguessable slug with a short random suffix.
 4. Register magic-link access in `src/lib/proposals/access.ts` unless the user explicitly wants a plain unlisted URL.
 5. Store gated PDFs under `private/proposals/` and set `pdfFileName`; proposal components must use `/api/proposals/<slug>/pdf`, not `/public` PDF paths.
-6. Add a single sticky bottom Download Proposal control using `lucide-react` `Download`. Do not put Accept or Decline in the sticky bar unless explicitly requested; keep those actions in the proposal response section.
+6. Add a single sticky bottom Download Proposal control using `lucide-react` `Download`. When a proposal should also offer the standing ITECS services deck, use `StickyProposalDownloads` so both files remain behind the same proposal access cookie. Do not put Accept or Decline in the sticky bar unless explicitly requested; keep those actions in the proposal response section.
 7. Client-facing proposal emails should link to `https://itecs.ai/p/<slug>/access`, avoid pricing in the email body unless requested, and use the proposal hero image when suitable.
 8. Update `docs/proposals.md`, `.claude/commands/add-proposal.md`, `CLAUDE.md`, and `.serena/memories/proposal_pages_workflow.md` when the workflow or template standard changes.
 
@@ -62,7 +62,7 @@ NODE
 - Run `npm run lint`, `npx tsc --noEmit`, `npm run build`, and `git diff --check`.
 - Deploy with `docker compose up -d --build --remove-orphans web` when the user asks to publish or the proposal is ready for client testing.
 - Verify with Playwright using the Googlebot Smartphone viewport from `CLAUDE.md`.
-- Check direct proposal URL redirects to `/access`, magic-link cookie grants access, protected PDF route returns `application/pdf`, raw public PDF URLs are not reachable, and magic-link redirects use `https://itecs.ai` even when the request host is internal.
+- Check direct proposal URL redirects to `/access`, magic-link cookie grants access, each linked protected PDF route returns `application/pdf`, raw public PDF URLs are not reachable, and magic-link redirects use `https://itecs.ai` even when the request host is internal.
 
 ## Guardrails
 

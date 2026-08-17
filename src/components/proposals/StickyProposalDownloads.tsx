@@ -4,11 +4,12 @@ import { motion } from "framer-motion";
 import { Download, FileText } from "lucide-react";
 
 /**
- * Sticky bottom-right download controls shared by every /p/ proposal page.
+ * Sticky bottom-right controls for proposals that offer both downloads.
  *
  * Renders the proposal's own PDF alongside the standing ITECS service-overview
  * deck. Both links are gated by the same magic-link cookie as the page itself.
- * New proposals should import this rather than hand-rolling a download button.
+ * Proposals that include the service overview should import this rather than
+ * hand-rolling a second download button.
  */
 export function StickyProposalDownloads({ slug }: { slug: string }) {
   const proposalHref = `/api/proposals/${slug}/pdf`;

@@ -4,10 +4,7 @@ import {
   generateFAQSchema,
   generateHowToSchema,
 } from "@/lib/seo";
-import {
-  getAIPricingOffering,
-  SERVICES,
-} from "@/lib/constants";
+import { SERVICES } from "@/lib/constants";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { ServiceHero } from "@/components/sections/ServiceHero";
@@ -22,12 +19,6 @@ import { FAQ } from "@/components/sections/FAQ";
 import { CTASection } from "@/components/sections/CTASection";
 
 const service = SERVICES.find((s) => s.slug === "training")!;
-const executiveBriefing = getAIPricingOffering(
-  "Executive AI Literacy Briefing",
-);
-const teamWorkshop = getAIPricingOffering("Team AI Workshop");
-const powerUserCoaching = getAIPricingOffering("Power-User Coaching (1:1)");
-const championProgram = getAIPricingOffering("Internal AI Champion Program");
 
 export const metadata = generatePageMetadata({
   title: "AI Training for Employees in Dallas",

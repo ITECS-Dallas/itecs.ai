@@ -70,6 +70,8 @@ Implementation files:
 - Access request API: `src/app/api/proposals/access/request/route.ts`
 - Link verification API: `src/app/api/proposals/access/verify/route.ts`
 - Protected PDF route: `src/app/api/proposals/<slug>/pdf`
+- Optional protected services-overview route:
+  `src/app/api/proposals/<slug>/service-overview`
 - Access form: `src/components/proposals/ProposalAccessForm.tsx`
 - Access page: `src/app/p/[slug]/access/page.tsx`
 
@@ -141,6 +143,10 @@ overbuilding a full portal.
    - Include a single sticky bottom Download Proposal control that uses the
      protected PDF route. Do not add sticky Accept or Decline actions unless the
      user explicitly requests them.
+   - When the proposal should also offer the standing ITECS services deck, use
+     `src/components/proposals/StickyProposalDownloads.tsx`. It links both the
+     proposal PDF and `/api/proposals/<slug>/service-overview` behind the same
+     access cookie; the services PDF remains under `private/proposals/`.
    - If the proposal will use magic-link access, use the access URL in client
      emails and keep page/PDF links behind the access cookie.
 4. Add tasteful visual effects from `src/components/effects/`, especially

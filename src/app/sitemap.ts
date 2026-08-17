@@ -98,7 +98,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...financialServicesPages,
     {
       url: `${base}${CHANGE_ASSURANCE_SERVICE.href}`,
-      lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.9,
     },
