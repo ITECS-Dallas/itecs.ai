@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import {
+  CHANGE_ASSURANCE_SERVICE,
   SERVICES,
   TRAINING_SERVICES,
   INSIGHTS,
@@ -95,6 +96,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...caseStudyPages,
     ...manufacturingPages,
     ...financialServicesPages,
+    {
+      url: `${base}${CHANGE_ASSURANCE_SERVICE.href}`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
     {
       url: `${base}/managed-intelligence-provider`,
       changeFrequency: "weekly",

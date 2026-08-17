@@ -11,61 +11,65 @@ import {
   Users,
   Zap,
 } from "lucide-react";
-import { generatePageMetadata } from "@/lib/metadata";
-import { generateFAQSchema } from "@/lib/seo";
-import {
-  AI_HOURLY_RATES,
-  AI_LOYALTY_DISCOUNTS,
-  AI_PRICING_CATEGORIES,
-  AI_RATE_MULTIPLIERS,
-  MANAGED_AI_AGENT_OPERATIONS,
-  MANAGED_AI_TIERS,
-  SITE_CONFIG,
-} from "@/lib/constants";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { CTASection } from "@/components/sections/CTASection";
+import {
+  AI_ASSURANCES,
+  AI_BUILD_CONTINUITY_ASSURANCE,
+  AI_DATA_READINESS_RULE,
+  AI_GUIDED_BUILD_TERMS,
+  AI_HOURLY_RATES,
+  AI_LOYALTY_DISCOUNTS,
+  AI_LOYALTY_TERMS,
+  AI_PREPAID_OPTIONS,
+  AI_PRICING_CATEGORIES,
+  AI_PRICING_EFFECTIVE_DATE,
+  AI_PRICING_FAQ,
+  AI_RATE_MULTIPLIERS,
+  AI_SESSION_BANK_TERMS,
+  getAIPricingOffering,
+  MANAGED_AI_AGENT_OPERATIONS,
+  MANAGED_AI_TERMS,
+  MANAGED_AI_TIERS,
+  SITE_CONFIG,
+} from "@/lib/constants";
+import { generatePageMetadata } from "@/lib/metadata";
+import { generateFAQSchema } from "@/lib/seo";
 
 export const metadata = generatePageMetadata({
-  title: "AI Consulting Pricing for Growing Organizations",
+  title: "AI Services Pricing for Growing Organizations",
   description:
-    "Transparent AI consulting pricing for readiness assessments, executive briefings, pilots, custom AI agents, managed AI retainers, and hourly rates.",
+    "Transparent ITECS pricing for AI readiness, guided and local agent builds, governance, custom production agents, Managed Intelligence Services, and prepaid support.",
   path: "/pricing",
   keywords: [
     "AI consulting pricing",
     "AI readiness assessment cost",
-    "managed AI services pricing",
+    "guided AI agent build pricing",
+    "managed intelligence services pricing",
     "custom AI agent pricing",
-    "AI pilot implementation cost",
     "Dallas AI consulting rates",
   ],
 });
 
-const pricingFAQ = [
+const pricingModes = [
   {
-    question: "What is the best first step if we are new to AI?",
-    answer:
-      "Most organizations should start with the AI Readiness Assessment. In 1-2 weeks, ITECS documents where AI fits, which platforms match your environment, what risks need guardrails, and what the 12-month adoption roadmap should look like.",
+    icon: FileText,
+    title: "Published packages",
+    description:
+      "Defined starting points for readiness, training, guided builds, local agents, and governance.",
   },
   {
-    question: "Are these prices fixed or estimates?",
-    answer:
-      "Productized services are listed as flat-fee starting points with defined deliverables. Custom agents, connectors, and process redesign work are scoped before build with a final scope and not-to-exceed amount.",
+    icon: Layers3,
+    title: "Phased custom work",
+    description:
+      "Discovery produces the specification and not-to-exceed before production engineering begins.",
   },
   {
-    question: "Do you only support one AI platform?",
-    answer:
-      "No. ITECS is vendor-neutral. We work across Claude, ChatGPT, Gemini, Microsoft Copilot, GitHub Copilot, Azure OpenAI, and other commercial AI platforms, then recommend what fits your business.",
-  },
-  {
-    question: "What happens after a pilot?",
-    answer:
-      "After a pilot, clients can scale to more teams, request a custom build, or move into managed AI services for ongoing optimization, training, prompt-library maintenance, and quarterly reviews.",
-  },
-  {
-    question: "Do existing ITECS managed IT clients receive AI discounts?",
-    answer:
-      "Yes. MSP Pro clients receive 10% off eligible Tier 1 and Tier 2 hourly work and productized offerings. MSP Elite clients receive 15%. Tier 3 strategist rates are not discounted.",
+    icon: Zap,
+    title: "Flexible support",
+    description:
+      "Managed Intelligence Services, Agent Operations, prepaid options, and hourly expertise sustain the work.",
   },
 ] as const;
 
@@ -81,7 +85,26 @@ function priceSchemaFor(name: string, price: string) {
   const range = price.match(/\$([\d,]+)-\$([\d,]+)/);
   const single = price.match(/\$([\d,]+)/);
 
-  if (range) {
+function priceSchemaFor(args: {
+  name: string;
+  description: string;
+  displayPrice: string;
+  schemaPrice?: string;
+  schemaLowPrice?: string;
+  schemaHighPrice?: string;
+}) {
+  const itemOffered = {
+    "@type": "Service",
+    name: args.name,
+    description: args.description,
+    provider: {
+      "@type": "Organization",
+      name: SITE_CONFIG.name,
+      url: SITE_CONFIG.url,
+    },
+  };
+
+  if (args.schemaLowPrice && args.schemaHighPrice) {
     return {
       "@type": "AggregateOffer",
       "@id": id,
@@ -89,16 +112,20 @@ function priceSchemaFor(name: string, price: string) {
       lowPrice: range[1].replace(/,/g, ""),
       highPrice: range[2].replace(/,/g, ""),
       priceCurrency: "USD",
+      description: args.displayPrice,
+      itemOffered,
     };
   }
 
-  if (single) {
+  if (args.schemaPrice) {
     return {
       "@type": "Offer",
       "@id": id,
       name,
       price: single[1].replace(/,/g, ""),
       priceCurrency: "USD",
+      description: args.displayPrice,
+      itemOffered,
     };
   }
 
@@ -109,6 +136,50 @@ function priceSchemaFor(name: string, price: string) {
     priceSpecification: price,
   };
 }
+
+const offeringSchemas = AI_PRICING_CATEGORIES.flatMap((category) =>
+  category.offerings
+    .map((offering) =>
+      priceSchemaFor({
+        name: offering.name,
+        description: offering.description,
+        displayPrice: offering.price,
+        schemaPrice: offering.schemaPrice,
+        schemaLowPrice: offering.schemaLowPrice,
+        schemaHighPrice: offering.schemaHighPrice,
+      }),
+    )
+    .filter((offering) => offering !== null),
+);
+
+const managedSchemas = MANAGED_AI_TIERS.map((tier) =>
+  priceSchemaFor({
+    name: tier.tier,
+    description: `Managed Intelligence Services for ${tier.users.toLowerCase()} users with ${tier.includedHours.toLowerCase()}.`,
+    displayPrice: tier.price,
+    schemaPrice: tier.price.replace(/[^\d]/g, ""),
+  }),
+).filter((offering) => offering !== null);
+
+const agentOperationsSchemas = MANAGED_AI_AGENT_OPERATIONS.prices
+  .map((option) =>
+    priceSchemaFor({
+      name: `${MANAGED_AI_AGENT_OPERATIONS.tier} — ${option.agents}`,
+      description: MANAGED_AI_AGENT_OPERATIONS.description,
+      displayPrice: option.price,
+      schemaPrice: "schemaPrice" in option ? option.schemaPrice : undefined,
+    }),
+  )
+  .filter((offering) => offering !== null);
+
+const prepaidSchemas = AI_PREPAID_OPTIONS.map((option) =>
+  priceSchemaFor({
+    name: option.name,
+    description: `${option.unit}. ${option.bestFor}`,
+    displayPrice: option.price,
+    schemaPrice: option.schemaPrice,
+  }),
+).filter((offering) => offering !== null);
 
 const offerCatalogSchema = {
   "@context": "https://schema.org",
@@ -173,110 +244,56 @@ const offerCatalogSchema = {
   ],
 };
 
-const pricingModes = [
-  {
-    icon: FileText,
-    title: "Productized engagements",
-    description:
-      "Flat-fee services for discovery, policy, pilots, and executive enablement when leadership needs clear scope and predictable cost.",
-  },
-  {
-    icon: Layers3,
-    title: "Scoped custom builds",
-    description:
-      "Custom AI agents, connectors, and process redesign projects are quoted after requirements, data, integrations, and risk controls are understood.",
-  },
-  {
-    icon: Zap,
-    title: "Managed AI retainers",
-    description:
-      "Monthly support for teams that want ongoing optimization, office hours, prompt-library maintenance, and quarterly business reviews.",
-  },
-] as const;
-
 export default function PricingPage() {
   return (
     <>
-      <div className="mx-auto max-w-7xl px-6 pt-24 md:px-8">
-        <Breadcrumbs
-          items={[
-            { label: "Home", href: "/" },
-            { label: "Pricing", href: "/pricing" },
-          ]}
-        />
-      </div>
-
-      <section className="relative overflow-hidden py-20 md:py-28">
-        <div className="absolute left-1/2 top-0 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-brand-accent/10 blur-3xl" />
+      <section className="relative overflow-hidden border-b border-[var(--border-subtle)] bg-bg-base pb-20 pt-28 md:pb-28 md:pt-36">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,rgba(30,183,183,0.12),transparent_42%)]" />
         <div className="relative mx-auto max-w-7xl px-6 md:px-8">
-          <div className="max-w-4xl">
-            <p className="mb-5 text-sm font-medium uppercase tracking-[0.08em] text-brand-accent">
-              Public AI Pricing
-            </p>
-            <h1 className="text-4xl font-light tracking-[-0.03em] text-text-primary md:text-6xl">
-              Practical AI pricing for leaders who need clarity before
-              committing.
-            </h1>
-            <p className="mt-6 max-w-3xl text-lg leading-relaxed text-text-secondary">
-              ITECS helps growth-stage and mid-market organizations adopt AI with
-              predictable pricing, productized engagement options, and the right
-              platform fit. We work across Claude, ChatGPT, Gemini, Microsoft
-              Copilot, GitHub Copilot, and other major AI platforms without
-              locking you into one vendor.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-4">
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center gap-2 rounded-lg bg-brand-accent px-7 py-4 text-sm font-medium uppercase tracking-wide text-bg-void transition-colors hover:bg-brand-accent-bright"
-              >
-                Schedule a Consultation
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-              <Link
-                href="#productized"
-                className="inline-flex items-center justify-center rounded-lg border border-[var(--border-subtle)] px-7 py-4 text-sm font-medium uppercase tracking-wide text-text-secondary transition-colors hover:border-brand-accent hover:text-brand-accent"
-              >
-                Compare Packages
-              </Link>
-            </div>
-          </div>
+          <Breadcrumbs
+            items={[
+              { label: "Home", href: "/" },
+              { label: "Pricing", href: "/pricing" },
+            ]}
+          />
 
-          <div className="mt-14 grid gap-4 md:grid-cols-3">
-            {[
-              {
-                value: "$6,500",
-                label: "Recommended starting point",
-                detail: "AI Readiness Assessment",
-              },
-              {
-                value: "$12,500",
-                label: "Focused pilot",
-                detail: "Small team AI implementation",
-              },
-              {
-                value: "$1,950/mo",
-                label: "Managed AI services",
-                detail: "Ongoing optimization and support",
-              },
-            ].map((stat) => (
-              <div
-                key={stat.label}
-                className="rounded-2xl border border-[var(--border-subtle)] bg-bg-surface/60 p-6"
-              >
-                <div className="text-3xl font-semibold text-brand-accent-bright">
-                  {stat.value}
+          <div className="mt-10 grid gap-12 lg:grid-cols-[1fr_0.85fr] lg:items-end">
+            <div>
+              <p className="mb-5 text-sm font-medium uppercase tracking-[0.12em] text-brand-accent">
+                AI Services Program
+              </p>
+              <h1 className="max-w-4xl text-4xl font-light tracking-[-0.03em] text-text-primary md:text-6xl lg:text-7xl">
+                A practical path from the first useful agent to managed
+                intelligence.
+              </h1>
+              <p className="mt-7 max-w-3xl text-lg leading-relaxed text-text-secondary md:text-xl">
+                Start with clarity, build in the right environment, specialize
+                only when the workflow demands engineering, and sustain what
+                works with an accountable operating model.
+              </p>
+            </div>
+
+            <div className="grid gap-3 sm:grid-cols-2">
+              {quickPricing.map((stat) => (
+                <div
+                  key={stat.label}
+                  className="rounded-2xl border border-[var(--border-subtle)] bg-bg-surface/60 p-5"
+                >
+                  <div className="text-2xl font-semibold text-brand-accent-bright">
+                    {stat.value}
+                  </div>
+                  <div className="mt-2 text-xs font-medium uppercase tracking-[0.13em] text-text-dim">
+                    {stat.label}
+                  </div>
+                  <p className="mt-3 text-sm text-text-secondary">{stat.detail}</p>
                 </div>
-                <div className="mt-2 text-xs font-medium uppercase tracking-[0.15em] text-text-dim">
-                  {stat.label}
-                </div>
-                <p className="mt-3 text-sm text-text-secondary">{stat.detail}</p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="border-y border-[var(--border-subtle)] bg-bg-void py-20">
+      <section className="border-b border-[var(--border-subtle)] bg-bg-void py-20">
         <div className="mx-auto max-w-7xl px-6 md:px-8">
           <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
             <div>
@@ -284,8 +301,7 @@ export default function PricingPage() {
                 How Our Pricing Works
               </p>
               <h2 className="text-3xl font-light tracking-[-0.02em] text-text-primary md:text-5xl">
-                Most clients start flat-fee, then scale only when the business
-                case is clear.
+                Match the engagement to the maturity of the work.
               </h2>
             </div>
             <div className="grid gap-4 md:grid-cols-3">
@@ -314,24 +330,29 @@ export default function PricingPage() {
         </div>
       </section>
 
-      <section id="productized" className="py-24 md:py-32">
+      <section id="productized" className="scroll-mt-24 py-24 md:py-32">
         <div className="mx-auto max-w-7xl px-6 md:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <p className="mb-4 text-sm font-medium uppercase tracking-[0.08em] text-brand-accent">
-              Productized AI Services
+              Start Here → Build → Specialize
             </p>
             <h2 className="text-3xl font-light tracking-[-0.02em] text-text-primary md:text-5xl">
-              Clear packages for each stage of adoption.
+              Clear options for each stage of adoption.
             </h2>
             <p className="mt-5 text-lg leading-relaxed text-text-secondary">
-              Start with discovery and strategy, build a controlled production
-              foundation, then specialize when a custom workflow is justified.
+              Start with the smallest engagement that can produce evidence, then
+              move into a larger build only when the workflow and business case
+              justify it.
             </p>
           </div>
 
           <div className="mt-16 space-y-20">
             {AI_PRICING_CATEGORIES.map((category) => (
-              <div key={category.title}>
+              <div
+                key={category.id}
+                id={category.id}
+                className="scroll-mt-24"
+              >
                 <div className="mb-8 max-w-3xl">
                   <p className="mb-3 text-xs font-medium uppercase tracking-[0.18em] text-brand-accent-bright">
                     {category.eyebrow}
@@ -364,15 +385,13 @@ export default function PricingPage() {
                         <h4 className="text-lg font-medium text-text-primary">
                           {offering.name}
                         </h4>
-                        <div className="mt-4">
-                          <span className="text-3xl font-semibold text-text-primary">
-                            {offering.price}
-                          </span>
+                        <div className="mt-4 text-2xl font-semibold leading-tight text-text-primary">
+                          {offering.price}
                         </div>
                         {offering.duration || offering.scope ? (
-                          <div className="mt-3 flex items-center gap-2 text-sm text-text-dim">
-                            <Clock className="h-4 w-4 text-brand-accent" />
-                            {offering.duration || offering.scope}
+                          <div className="mt-3 flex items-start gap-2 text-sm text-text-dim">
+                            <Clock className="mt-0.5 h-4 w-4 shrink-0 text-brand-accent" />
+                            <span>{offering.duration || offering.scope}</span>
                           </div>
                         ) : null}
                       </div>
@@ -416,25 +435,60 @@ export default function PricingPage() {
                     </article>
                   ))}
                 </div>
+
+                {category.id === "guided-local-builds" ? (
+                  <div className="mt-8 grid gap-6 lg:grid-cols-2">
+                    <div className="rounded-2xl border border-brand-accent/20 bg-brand-accent/5 p-6">
+                      <h4 className="font-medium text-text-primary">
+                        Guided session terms
+                      </h4>
+                      <ul className="mt-4 space-y-3">
+                        {AI_GUIDED_BUILD_TERMS.map((term) => (
+                          <li
+                            key={term}
+                            className="flex items-start gap-2 text-sm leading-relaxed text-text-secondary"
+                          >
+                            <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-brand-accent-bright" />
+                            <span>{term}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div className="rounded-2xl border border-[var(--border-subtle)] bg-bg-void/55 p-6">
+                      <h4 className="font-medium text-text-primary">
+                        Build readiness and continuity
+                      </h4>
+                      <p className="mt-4 text-sm leading-relaxed text-text-secondary">
+                        {AI_DATA_READINESS_RULE}
+                      </p>
+                      <p className="mt-4 text-sm leading-relaxed text-text-secondary">
+                        {AI_BUILD_CONTINUITY_ASSURANCE}
+                      </p>
+                    </div>
+                  </div>
+                ) : null}
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section id="managed-ai" className="border-y border-[var(--border-subtle)] bg-bg-void py-24 md:py-32">
+      <section
+        id="managed-intelligence"
+        className="scroll-mt-24 border-y border-[var(--border-subtle)] bg-bg-void py-24 md:py-32"
+      >
         <div className="mx-auto max-w-7xl px-6 md:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <p className="mb-4 text-sm font-medium uppercase tracking-[0.08em] text-brand-accent">
               Sustain
             </p>
             <h2 className="text-3xl font-light tracking-[-0.02em] text-text-primary md:text-5xl">
-              Managed AI services for ongoing improvement.
+              Managed Intelligence Services.
             </h2>
             <p className="mt-5 text-lg leading-relaxed text-text-secondary">
-              Managed AI mirrors ITECS&apos; managed IT model: predictable monthly
-              support, practical optimization, and a team that keeps improving
-              the way AI fits into daily work.
+              ITECS operates as a Managed Intelligence Provider: the accountable
+              operating layer for AI-first, outcome-driven services. MIS keeps
+              adoption, optimization, and governance moving after launch.
             </p>
           </div>
 
@@ -453,12 +507,12 @@ export default function PricingPage() {
                     Popular for teams
                   </div>
                 ) : null}
-                <h3 className="text-xl font-medium text-text-primary">{tier.tier}</h3>
-                <p className="mt-2 text-sm text-text-dim">{tier.users}</p>
-                <div className="mt-6">
-                  <span className="text-4xl font-semibold text-text-primary">
-                    {tier.price}
-                  </span>
+                <h3 className="text-xl font-medium text-text-primary">
+                  {tier.tier}
+                </h3>
+                <p className="mt-2 text-sm text-text-dim">{tier.users} users</p>
+                <div className="mt-6 text-4xl font-semibold text-text-primary">
+                  {tier.price}
                 </div>
                 <p className="mt-3 text-sm font-medium text-brand-accent-bright">
                   {tier.includedHours}
@@ -478,43 +532,57 @@ export default function PricingPage() {
             ))}
           </div>
 
-          <p className="mx-auto mt-8 max-w-3xl text-center text-sm leading-relaxed text-text-dim">
-            Hours beyond the included amount are billed at the applicable hourly
-            rate below, with loyalty discounts for eligible ITECS managed IT
-            clients.
-          </p>
+          <div className="mt-10 grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
+            <div className="rounded-2xl border border-brand-accent/20 bg-bg-surface/55 p-6 md:p-8">
+              <p className="text-xs font-medium uppercase tracking-[0.16em] text-brand-accent-bright">
+                Production Agent Operations
+              </p>
+              <h3 className="mt-3 text-2xl font-light text-text-primary">
+                {MANAGED_AI_AGENT_OPERATIONS.tier}
+              </h3>
+              <p className="mt-3 text-sm leading-relaxed text-text-secondary">
+                {MANAGED_AI_AGENT_OPERATIONS.description}
+              </p>
 
-          <div className="mt-10 rounded-2xl border border-brand-accent/20 bg-bg-surface/55 p-6 md:p-8">
-            <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
-              <div>
-                <p className="text-xs font-medium uppercase tracking-[0.16em] text-brand-accent-bright">
-                  Production Agent Operations
-                </p>
-                <h3 className="mt-3 text-2xl font-light text-text-primary">
-                  {MANAGED_AI_AGENT_OPERATIONS.tier}
-                </h3>
-                <p className="mt-2 text-sm text-text-dim">
-                  {MANAGED_AI_AGENT_OPERATIONS.users}
-                </p>
-                <div className="mt-5 text-4xl font-semibold text-text-primary">
-                  {MANAGED_AI_AGENT_OPERATIONS.price}
-                </div>
-                <p className="mt-3 text-sm font-medium text-brand-accent-bright">
-                  {MANAGED_AI_AGENT_OPERATIONS.includedHours}
-                </p>
-                <p className="mt-4 text-sm leading-relaxed text-text-secondary">
-                  {MANAGED_AI_AGENT_OPERATIONS.description}
-                </p>
+              <div className="mt-6 overflow-hidden rounded-xl border border-[var(--border-subtle)]">
+                {MANAGED_AI_AGENT_OPERATIONS.prices.map((option) => (
+                  <div
+                    key={option.agents}
+                    className="grid gap-2 border-b border-[var(--border-subtle)] bg-bg-void/40 p-4 last:border-b-0 sm:grid-cols-[1fr_auto] sm:items-center"
+                  >
+                    <span className="text-sm text-text-secondary">
+                      {option.agents}
+                    </span>
+                    <span className="font-medium text-text-primary">
+                      {option.price}
+                    </span>
+                  </div>
+                ))}
               </div>
 
-              <ul className="grid gap-3 sm:grid-cols-2">
+              <ul className="mt-6 grid gap-3 sm:grid-cols-2">
                 {MANAGED_AI_AGENT_OPERATIONS.features.map((feature) => (
                   <li
                     key={feature}
-                    className="flex items-start gap-2 text-sm leading-relaxed text-text-secondary"
+                    className="flex items-start gap-2 text-sm text-text-secondary"
                   >
                     <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-brand-accent" />
                     <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="rounded-2xl border border-[var(--border-subtle)] bg-bg-surface/45 p-6 md:p-8">
+              <h3 className="font-medium text-text-primary">MIS terms</h3>
+              <ul className="mt-5 space-y-4">
+                {MANAGED_AI_TERMS.map((term) => (
+                  <li
+                    key={term}
+                    className="flex items-start gap-2 text-sm leading-relaxed text-text-secondary"
+                  >
+                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-brand-accent" />
+                    <span>{term}</span>
                   </li>
                 ))}
               </ul>
@@ -523,7 +591,75 @@ export default function PricingPage() {
         </div>
       </section>
 
-      <section id="hourly" className="py-24 md:py-32">
+      <section id="prepaid" className="scroll-mt-24 py-24 md:py-32">
+        <div className="mx-auto max-w-7xl px-6 md:px-8">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="mb-4 text-sm font-medium uppercase tracking-[0.08em] text-brand-accent">
+              Prepaid Options
+            </p>
+            <h2 className="text-3xl font-light tracking-[-0.02em] text-text-primary md:text-5xl">
+              Flexible capacity for uneven demand.
+            </h2>
+            <p className="mt-5 text-lg leading-relaxed text-text-secondary">
+              Prepaid options let multiple employees draw on a defined pool
+              without turning every request into a new engagement.
+            </p>
+          </div>
+
+          <div className="mt-14 grid gap-6 lg:grid-cols-3">
+            {AI_PREPAID_OPTIONS.map((option) => (
+              <article
+                key={option.name}
+                className="rounded-2xl border border-[var(--border-subtle)] bg-bg-surface/50 p-6"
+              >
+                <h3 className="text-lg font-medium text-text-primary">
+                  {option.name}
+                </h3>
+                <div className="mt-4 text-3xl font-semibold text-text-primary">
+                  {option.price}
+                </div>
+                <p className="mt-2 text-sm font-medium text-brand-accent-bright">
+                  {option.unit}
+                </p>
+                <ul className="mt-6 space-y-3">
+                  {option.terms.map((term) => (
+                    <li
+                      key={term}
+                      className="flex items-start gap-2 text-sm leading-relaxed text-text-secondary"
+                    >
+                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-brand-accent" />
+                      <span>{term}</span>
+                    </li>
+                  ))}
+                </ul>
+                <p className="mt-6 text-sm leading-relaxed text-text-dim">
+                  {option.bestFor}
+                </p>
+              </article>
+            ))}
+          </div>
+
+          <div className="mt-8 rounded-2xl border border-brand-accent/20 bg-brand-accent/5 p-6">
+            <h3 className="font-medium text-text-primary">Session-bank rules</h3>
+            <ul className="mt-4 grid gap-3 md:grid-cols-3">
+              {AI_SESSION_BANK_TERMS.map((term) => (
+                <li
+                  key={term}
+                  className="flex items-start gap-2 text-sm leading-relaxed text-text-secondary"
+                >
+                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-brand-accent-bright" />
+                  <span>{term}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="hourly"
+        className="scroll-mt-24 border-y border-[var(--border-subtle)] bg-bg-void py-24 md:py-32"
+      >
         <div className="mx-auto max-w-7xl px-6 md:px-8">
           <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr]">
             <div>
@@ -531,12 +667,11 @@ export default function PricingPage() {
                 Hourly Rates
               </p>
               <h2 className="text-3xl font-light tracking-[-0.02em] text-text-primary md:text-5xl">
-                For work that falls outside the productized packages.
+                The right expertise for work outside a package.
               </h2>
               <p className="mt-5 text-lg leading-relaxed text-text-secondary">
-                Hourly work is billed by the type of expertise required. The
-                goal is to match the right skill level to the work rather than
-                over-scoping simple delivery tasks.
+                Hourly work is billed by the expertise required. Tier 3
+                strategist work is never discounted.
               </p>
             </div>
 
@@ -555,10 +690,8 @@ export default function PricingPage() {
                       {rate.typicalWork}
                     </p>
                   </div>
-                  <div className="text-left md:text-right">
-                    <div className="text-2xl font-semibold text-text-primary">
-                      {rate.rate}
-                    </div>
+                  <div className="text-2xl font-semibold text-text-primary md:text-right">
+                    {rate.rate}
                   </div>
                 </div>
               ))}
@@ -588,33 +721,109 @@ export default function PricingPage() {
 
             <div
               id="loyalty"
-              className="rounded-2xl border border-brand-accent/20 bg-brand-accent/5 p-6"
+              className="scroll-mt-24 rounded-2xl border border-brand-accent/20 bg-brand-accent/5 p-6"
             >
               <div className="mb-5 flex items-center gap-3">
                 <Users className="h-5 w-5 text-brand-accent-bright" />
                 <h3 className="font-medium text-text-primary">
-                  Loyalty discount for managed IT clients
+                  Managed-IT loyalty matrix
                 </h3>
               </div>
-              <div className="space-y-3">
-                {AI_LOYALTY_DISCOUNTS.map((discount) => (
+              <div className="space-y-3 lg:hidden">
+                {AI_LOYALTY_DISCOUNTS.map((row) => (
                   <div
-                    key={discount.plan}
+                    key={row.benefit}
                     className="rounded-xl border border-brand-accent/15 bg-bg-void/35 p-4"
                   >
-                    <div className="font-medium text-text-primary">
-                      {discount.plan}
-                    </div>
-                    <p className="mt-2 text-sm leading-relaxed text-text-secondary">
-                      {discount.hourlyDiscount} off eligible Tier 1 and Tier 2
-                      hourly work, plus {discount.productizedDiscount} off
-                      productized offerings. Tier 3 strategist rates are not
-                      discounted.
-                    </p>
+                    <p className="font-medium text-text-primary">{row.benefit}</p>
+                    <dl className="mt-3 grid grid-cols-[auto_1fr] gap-x-4 gap-y-2 text-sm">
+                      <dt className="text-text-dim">Select</dt>
+                      <dd className="text-text-secondary">{row.select}</dd>
+                      <dt className="text-text-dim">Pro</dt>
+                      <dd className="text-text-secondary">{row.pro}</dd>
+                      <dt className="text-text-dim">Elite</dt>
+                      <dd className="text-text-secondary">{row.elite}</dd>
+                    </dl>
                   </div>
                 ))}
               </div>
+              <div className="hidden overflow-x-auto lg:block">
+                <table className="w-full min-w-[680px] text-left text-sm">
+                  <thead>
+                    <tr className="border-b border-brand-accent/20 text-text-dim">
+                      <th className="pb-3 pr-4 font-medium">Benefit</th>
+                      <th className="pb-3 px-3 font-medium">MSP Select</th>
+                      <th className="pb-3 px-3 font-medium">MSP Pro</th>
+                      <th className="pb-3 pl-3 font-medium">MSP Elite</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {AI_LOYALTY_DISCOUNTS.map((row) => (
+                      <tr
+                        key={row.benefit}
+                        className="border-b border-brand-accent/10 last:border-b-0"
+                      >
+                        <th className="py-3 pr-4 font-medium text-text-primary">
+                          {row.benefit}
+                        </th>
+                        <td className="px-3 py-3 text-text-secondary">
+                          {row.select}
+                        </td>
+                        <td className="px-3 py-3 text-text-secondary">
+                          {row.pro}
+                        </td>
+                        <td className="py-3 pl-3 text-text-secondary">
+                          {row.elite}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
+          </div>
+
+          <div className="mt-6 rounded-2xl border border-[var(--border-subtle)] bg-bg-surface/45 p-6">
+            <h3 className="font-medium text-text-primary">Loyalty terms</h3>
+            <ul className="mt-4 grid gap-3 md:grid-cols-2">
+              {AI_LOYALTY_TERMS.map((term) => (
+                <li
+                  key={term}
+                  className="flex items-start gap-2 text-sm leading-relaxed text-text-secondary"
+                >
+                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-brand-accent" />
+                  <span>{term}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-24 md:py-32">
+        <div className="mx-auto max-w-7xl px-6 md:px-8">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="mb-4 text-sm font-medium uppercase tracking-[0.08em] text-brand-accent">
+              Assurances
+            </p>
+            <h2 className="text-3xl font-light tracking-[-0.02em] text-text-primary md:text-5xl">
+              Clear boundaries for responsible delivery.
+            </h2>
+          </div>
+          <div className="mt-14 grid gap-6 md:grid-cols-2">
+            {AI_ASSURANCES.map((assurance) => (
+              <article
+                key={assurance.title}
+                className="rounded-2xl border border-[var(--border-subtle)] bg-bg-surface/50 p-6"
+              >
+                <h3 className="font-medium text-text-primary">
+                  {assurance.title}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-text-secondary">
+                  {assurance.description}
+                </p>
+              </article>
+            ))}
           </div>
         </div>
       </section>
@@ -623,12 +832,11 @@ export default function PricingPage() {
         <div className="mx-auto max-w-4xl px-6 text-center md:px-8">
           <Sparkles className="mx-auto mb-5 h-8 w-8 text-brand-accent-bright" />
           <h2 className="text-3xl font-light text-text-primary md:text-4xl">
-            The fastest starting point is the AI Readiness Assessment.
+            Choose the smallest engagement that can create useful evidence.
           </h2>
           <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-text-secondary">
-            In 1-2 weeks, your leadership team receives a clear picture of
-            where AI fits, which platform stack makes sense, and what the
-            next 12 months should look like.
+            Start with a Guided Build Session for one workflow or the AI
+            Readiness Assessment for a leadership-level roadmap.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <Link
@@ -646,10 +854,12 @@ export default function PricingPage() {
             </a>
           </div>
           <p className="mt-6 text-xs leading-relaxed text-text-dim">
-            Pricing effective June 27, 2026. ITECS reserves the right to scope
-            custom engagements to fit unique requirements. All productized offerings
-            include the deliverables listed on this page; out-of-scope work is
-            billed at the applicable hourly rate.
+            Pricing effective {AI_PRICING_EFFECTIVE_DATE}. ITECS reserves the
+            right to scope custom engagements to fit unique requirements.
+            Published packages include the deliverables listed on this page;
+            out-of-scope work is billed at the applicable hourly rate. ITECS
+            reviews AI pricing annually each January; signed engagements and
+            active retainer terms are honored through their term.
           </p>
         </div>
       </section>
@@ -657,7 +867,7 @@ export default function PricingPage() {
       <FAQSection />
       <CTASection />
 
-      <JsonLd data={generateFAQSchema(pricingFAQ)} />
+      <JsonLd data={generateFAQSchema(AI_PRICING_FAQ)} />
       <JsonLd data={offerCatalogSchema} />
     </>
   );
@@ -676,7 +886,7 @@ function FAQSection() {
           </h2>
         </div>
         <div className="divide-y divide-[var(--border-subtle)] rounded-2xl border border-[var(--border-subtle)] bg-bg-surface/45">
-          {pricingFAQ.map((item) => (
+          {AI_PRICING_FAQ.map((item) => (
             <div key={item.question} className="p-6">
               <h3 className="text-lg font-medium text-text-primary">
                 {item.question}

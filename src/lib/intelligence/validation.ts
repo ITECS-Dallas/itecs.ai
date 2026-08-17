@@ -53,6 +53,7 @@ function normalizePagePath(value: unknown) {
     "/data-audit",
     "/financial-services",
     "/insights",
+    "/it-change-readiness",
     "/managed-intelligence-provider",
     "/manufacturing",
     "/pricing",

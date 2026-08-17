@@ -161,14 +161,14 @@ export default function ClaudeCoworkTrainingPage() {
           {
             label: "Ongoing support",
             traditional: "None",
-            ai: "Retainer hours, no expiration",
+            ai: "AI Retainer, 12-month expiry",
           },
         ]}
         roiStatement="Typical outcome: about 12 hours saved per team each week within 30 days — enough to cover the engagement in the first month through productivity gains alone."
         pricingNotes={[
           "Implementation + core workshop (up to 20 staff): scoped flat fee covering setup, secure tool connections, and delegation training",
           "Multi-team rollout: flat-fee program with role-specific sessions and reusable project templates",
-          "Prepaid retainer hours cover refreshers, new-team onboarding, and workflow tuning with no monthly minimum or expiration",
+          "Prepaid retainer hours cover refreshers, new-team onboarding, and workflow tuning with a 12-month expiry",
         ]}
       />
 

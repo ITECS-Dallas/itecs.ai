@@ -11,13 +11,25 @@ custom AI agents, AI security compliance, and AI-optimized SEO services.
   governance, monitoring, optimization, security, and executive reporting
   URL: https://itecs.ai/managed-intelligence-provider
 - Custom AI Agents — Claude, ChatGPT, Codex, RAG, and workflow agents
+- ITECS OpsMemory — managed knowledge and document operations that turn approved
+  company knowledge into cited answers and maintained SOPs and runbooks. It
+  narrows and verifies structured Markdown using indexes, coverage files,
+  headings, full body content, and relative media links, preserving the source
+  path, exact heading, article context, and relevant visual when available.
+  URL: https://itecs.ai/ai-knowledge-base
+- ITECS Change Assurance — managed, read-only AI-assisted IT change readiness
+  reviews that challenge infrastructure plans, require and record
+  technician-reported live verification for critical prerequisites, check
+  current official vendor requirements, and produce an auditable readiness
+  verdict. Review-only: it never executes the change.
+  URL: https://itecs.ai/it-change-readiness
 - AI Security & Compliance — HIPAA, SOX, FINRA alignment, PHI/PII redaction
 - AI-Optimized SEO & GEO — Generative engine optimization, AI search
   Hub: https://itecs.ai/ai-optimized-seo
   Foundation: https://itecs.ai/ai-optimized-seo/foundation
   Momentum: https://itecs.ai/ai-optimized-seo/momentum
   Velocity: https://itecs.ai/ai-optimized-seo/velocity
-- Internal AI Champion Enablement Program — 4-6 week AI training and
+- Internal AI Champion Program — 4-6 week AI training and
   enablement program for building an internal AI lead
 
 ## Contact

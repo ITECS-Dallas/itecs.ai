@@ -6,6 +6,10 @@ import {
   SlidersHorizontal,
   SquareTerminal,
 } from "lucide-react";
+import {
+  getAIPricingOffering,
+  MANAGED_AI_AGENT_OPERATIONS,
+} from "@/lib/constants";
 import type {
   ConfiguratorRecommendation,
   ConfiguratorSelection,
@@ -24,9 +28,9 @@ export const OS_APPS: Array<{
 }> = [
   {
     id: "soc",
-    label: "SOC Operations",
+    label: "SOC Response Command",
     shortLabel: "SOC",
-    description: "Scripted incident-response simulation",
+    description: "Managed detection, decision, containment, and proof",
     icon: ShieldCheck,
   },
   {
@@ -54,182 +58,184 @@ export const OS_APPS: Array<{
 
 export const STATUS_ICON = Activity;
 
-export const INCIDENT_DURATION_MS = 30_000;
+export const INCIDENT_DURATION_MS = 17_000;
+export const INCIDENT_REVIEW_GATE_MS = 7_000;
+export const INCIDENT_CONTAINMENT_MS = 9_500;
 
 export const INCIDENT_STEPS: IncidentStep[] = [
   {
     atMs: 0,
-    phase: "idle",
-    status: "Simulation armed. Baseline healthy.",
-    nodeState: "healthy",
+    phase: "ready",
+    status: "Response loop ready. Start the synthetic scenario to see each accountable decision.",
+    controlState: "ready",
     progress: 0,
-    feed: {
+    trace: {
       id: "baseline",
       atMs: 0,
-      time: "00:00",
+      time: "READY",
       severity: "INFO",
-      title: "Baseline verified",
-      detail: "Six demo zones reporting healthy status.",
+      title: "Policy baseline loaded",
+      detail: "Finance-workflow boundaries, approval gates, and review owners are staged for this synthetic scenario.",
     },
     terminal: {
       id: "terminal-baseline",
       atMs: 0,
       label: "SIMULATION",
-      text: "Incident rehearsal initialized. All telemetry below is scripted demo data.",
+      text: "Managed-response rehearsal initialized. All telemetry below is scripted demo data.",
       tone: "neutral",
     },
   },
   {
-    atMs: 2_500,
-    phase: "detecting",
-    status: "Anomalous execution detected on demo endpoint FIN-WS-27.",
-    nodeState: "at-risk",
+    atMs: 2_000,
+    phase: "detect",
+    status: "Risky sign-in and out-of-policy finance export request detected.",
+    controlState: "exposed",
     progress: 14,
-    feed: {
+    trace: {
       id: "detect",
-      atMs: 2_500,
-      time: "00:03",
-      severity: "CRITICAL",
-      title: "Execution anomaly",
-      detail: "FIN-WS-27 launched an unsigned process from a temporary path.",
+      atMs: 2_000,
+      time: "SIGNAL",
+      severity: "HIGH",
+      title: "Signals cross a policy boundary",
+      detail: "A synthetic Microsoft 365 sign-in requests a bulk finance export through an approved AI workflow.",
     },
     terminal: {
       id: "terminal-detect",
-      atMs: 2_500,
+      atMs: 2_000,
       label: "DETECT",
-      text: "Correlating endpoint behavior, identity context, and recent file activity.",
+      text: "Synthetic identity and workflow signals crossed the approved finance-export policy boundary.",
       tone: "danger",
     },
   },
   {
-    atMs: 6_000,
-    phase: "classifying",
-    status: "Behavior classified with simulated 96% confidence.",
-    nodeState: "at-risk",
+    atMs: 4_500,
+    phase: "correlate",
+    status: "Identity, workflow, and policy context converge on one risky access path.",
+    controlState: "exposed",
     progress: 28,
-    feed: {
+    trace: {
       id: "classify",
-      atMs: 6_000,
-      time: "00:06",
+      atMs: 4_500,
+      time: "CONTEXT",
       severity: "HIGH",
-      title: "Technique classified",
-      detail: "Demo classification: command execution followed by file modification.",
+      title: "Context assembled",
+      detail: "Two scripted signals point to the same identity and approved finance workflow.",
     },
     terminal: {
       id: "terminal-classify",
-      atMs: 6_000,
-      label: "CLASSIFY",
-      text: "Simulated confidence 96%. Recommended response: isolate first, preserve evidence, then remediate.",
+      atMs: 4_500,
+      label: "CORRELATE",
+      text: "The rehearsal links sign-in, workflow, and policy context into one bounded response case.",
       tone: "warning",
     },
   },
   {
-    atMs: 10_000,
-    phase: "isolating",
-    status: "Demo endpoint isolated. Business services remain available.",
-    nodeState: "isolated",
+    atMs: 7_000,
+    phase: "review",
+    status: "A targeted containment plan is ready for human authorization.",
+    controlState: "held",
     progress: 44,
-    feed: {
-      id: "isolate",
-      atMs: 10_000,
-      time: "00:10",
+    trace: {
+      id: "review",
+      atMs: 7_000,
+      time: "DECISION",
       severity: "HIGH",
-      title: "Endpoint quarantined",
-      detail: "Network path severed in the simulation; evidence channel retained.",
+      title: "Decision gate engaged",
+      detail: "AI-assisted triage recommends revoking the session and pausing only the affected workflow path.",
     },
     terminal: {
-      id: "terminal-isolate",
-      atMs: 10_000,
-      label: "CONTAIN",
-      text: "FIN-WS-27 moved to the simulated quarantine segment. No adjacent demo nodes show propagation.",
+      id: "terminal-review",
+      atMs: 7_000,
+      label: "REVIEW",
+      text: "Containment plan prepared for human authorization. No response action has executed yet.",
       tone: "warning",
     },
   },
   {
-    atMs: 14_000,
-    phase: "remediating",
-    status: "Unsigned process terminated; rollback staged.",
-    nodeState: "isolated",
+    atMs: 9_500,
+    phase: "contain",
+    status: "Synthetic identity session revoked; affected workflow path paused.",
+    controlState: "contained",
     progress: 60,
-    feed: {
-      id: "terminate",
-      atMs: 14_000,
-      time: "00:14",
+    trace: {
+      id: "contain",
+      atMs: 9_500,
+      time: "ACTION",
       severity: "MEDIUM",
-      title: "Process terminated",
-      detail: "Scripted response stopped the demo process and retained its hash.",
+      title: "Risky path contained",
+      detail: "The scenario severs the risky session while leaving unrelated work available.",
     },
     terminal: {
-      id: "terminal-terminate",
-      atMs: 14_000,
-      label: "REMEDIATE",
-      text: "Process stopped. Comparing modified files with the known-good demo snapshot.",
+      id: "terminal-contain",
+      atMs: 9_500,
+      label: "CONTAIN",
+      text: "Authorized scenario action: revoke the synthetic session and pause only the affected workflow path.",
       tone: "warning",
     },
   },
   {
-    atMs: 18_500,
-    phase: "remediating",
-    status: "Known-good snapshot restored in the scripted environment.",
-    nodeState: "recovering",
+    atMs: 12_000,
+    phase: "verify",
+    status: "No additional access path appears in the scripted evidence set.",
+    controlState: "contained",
     progress: 76,
-    feed: {
-      id: "restore",
-      atMs: 18_500,
-      time: "00:19",
-      severity: "MEDIUM",
-      title: "Files restored",
-      detail: "Three simulated files returned to their approved state.",
-    },
-    terminal: {
-      id: "terminal-restore",
-      atMs: 18_500,
-      label: "RESTORE",
-      text: "Three demo files restored. Running integrity and persistence checks before release.",
-      tone: "neutral",
-    },
-  },
-  {
-    atMs: 23_000,
-    phase: "verifying",
-    status: "Recovery checks passed. Monitoring for recurrence.",
-    nodeState: "recovering",
-    progress: 89,
-    feed: {
+    trace: {
       id: "verify",
-      atMs: 23_000,
-      time: "00:23",
+      atMs: 12_000,
+      time: "CHECK",
       severity: "INFO",
-      title: "Integrity verified",
-      detail: "No simulated persistence or lateral movement detected.",
+      title: "Scope checked",
+      detail: "Access review finds no second identity, app token, or workflow path in this synthetic scenario.",
     },
     terminal: {
       id: "terminal-verify",
-      atMs: 23_000,
+      atMs: 12_000,
       label: "VERIFY",
-      text: "Integrity checks passed. Preparing a human-review packet and controlled return-to-service recommendation.",
+      text: "Checking the scripted evidence set for adjacent identities, app tokens, and workflow paths.",
       tone: "neutral",
     },
   },
   {
-    atMs: 28_000,
+    atMs: 14_500,
+    phase: "brief",
+    status: "Evidence, decision record, and recovery steps assembled for review.",
+    controlState: "contained",
+    progress: 89,
+    trace: {
+      id: "brief",
+      atMs: 14_500,
+      time: "RECORD",
+      severity: "INFO",
+      title: "Review packet prepared",
+      detail: "The synthetic record preserves evidence, explains each action, and assigns follow-up owners.",
+    },
+    terminal: {
+      id: "terminal-brief",
+      atMs: 14_500,
+      label: "BRIEF",
+      text: "Assembling the evidence trail, decision rationale, recovery steps, and named follow-up owners.",
+      tone: "neutral",
+    },
+  },
+  {
+    atMs: 17_000,
     phase: "resolved",
-    status: "Simulation resolved. Zero demo endpoints compromised.",
-    nodeState: "healthy",
+    status: "Response complete — control retained.",
+    controlState: "verified",
     progress: 100,
-    feed: {
+    trace: {
       id: "resolve",
-      atMs: 28_000,
-      time: "00:28",
+      atMs: 17_000,
+      time: "OUTCOME",
       severity: "RESOLVED",
-      title: "Incident resolved",
-      detail: "Demo endpoint restored; review evidence prepared.",
+      title: "Accountable outcome",
+      detail: "Risky access contained, unaffected work available, evidence preserved, and follow-up owners assigned.",
     },
     terminal: {
       id: "terminal-resolve",
-      atMs: 28_000,
+      atMs: 17_000,
       label: "RESOLVED",
-      text: "Simulation complete in under 30 seconds: contained, restored, verified, and routed for human review.",
+      text: "Synthetic scenario complete: risky access contained, unaffected work available, evidence preserved, owners assigned.",
       tone: "success",
     },
   },
@@ -272,23 +278,27 @@ export const DEFAULT_CONFIGURATOR_SELECTION: ConfiguratorSelection = {
 
 const BUILD_BANDS = {
   prototype: {
-    title: "Proof of Concept / Prototype",
-    range: "$8,000–$18,000",
+    title: getAIPricingOffering("Proof of Concept / Prototype").name,
+    range: getAIPricingOffering("Proof of Concept / Prototype").price,
     label: "published prototype range",
   },
   single: {
-    title: "Single-Workflow Production Agent",
-    range: "$18,000–$35,000",
+    title: getAIPricingOffering("Single-Workflow Production Agent").name,
+    range: getAIPricingOffering("Single-Workflow Production Agent").price,
     label: "published single-workflow range",
   },
   integrated: {
-    title: "Integrated / Financial Workpaper Agent",
-    range: "$35,000–$75,000",
+    title: getAIPricingOffering("Integrated / Line-of-Business Agent").name,
+    range: getAIPricingOffering("Integrated / Line-of-Business Agent").price,
     label: "published integrated-agent range",
   },
   multi: {
-    title: "Multi-Agent System / Process Redesign",
-    range: "$55,000–$120,000",
+    title: getAIPricingOffering(
+      "Multi-Agent System / AI-Augmented Process Redesign",
+    ).name,
+    range: getAIPricingOffering(
+      "Multi-Agent System / AI-Augmented Process Redesign",
+    ).price,
     label: "published multi-agent range",
   },
 } as const;
@@ -326,8 +336,12 @@ export function buildConfiguratorRecommendation(
     summary: `${useCaseLabel} for ${selection.scale} across ${integrationLabel.toLowerCase()}, with scoped permissions and human review before consequential actions.`,
     buildRange: band.range,
     buildLabel: band.label,
-    discoveryRange: isPrototype ? null : "$4,500–$7,500",
-    operationsRange: selection.managed ? "$2,500–$6,500/mo" : null,
+    discoveryRange: isPrototype
+      ? null
+      : getAIPricingOffering("Agent Discovery & Technical Specification").price,
+    operationsRange: selection.managed
+      ? `From ${MANAGED_AI_AGENT_OPERATIONS.prices[0].price}`
+      : null,
     phases: isPrototype
       ? ["Confirm success criteria", "Build bounded prototype", "Document production path"]
       : [
@@ -359,37 +373,5 @@ export const PROOF_METRICS = [
     value: "200+",
     label: "Client engagements",
     source: "ITECS published site proof point",
-  },
-] as const;
-export const PROOF_CASE_STUDIES = [
-  {
-    client: "Pegasus Foods",
-    industry: "Food manufacturing",
-    outcome: "100% uptime maintained",
-    summary:
-      "ITECS used virtualization, replication, and staged cutover controls to relocate business-critical infrastructure 1,200 miles without production downtime or data loss.",
-    metrics: ["Zero data loss", "$2.1M prevented downtime loss"],
-    sourceDate: "May 28, 2020",
-    href: "https://itecsonline.com/white-papers-case-studies/pegasus-foods-white-paper",
-  },
-  {
-    client: "OpenText",
-    industry: "Enterprise software",
-    outcome: "99.8% system uptime",
-    summary:
-      "A dedicated ITECS on-site support program improved local response coverage while operating inside OpenText's central IT standards.",
-    metrics: ["52+ weeks of support", "30% faster response"],
-    sourceDate: "July 3, 2024",
-    href: "https://itecsonline.com/white-papers-case-studies/opentext-success-story",
-  },
-  {
-    client: "PepsiCo",
-    industry: "Food and beverage",
-    outcome: "99.9% transition uptime",
-    summary:
-      "ITECS supported acquired subsidiaries with compliant interim infrastructure and managed operations during enterprise transition periods.",
-    metrics: ["5 subsidiaries supported", "40% fewer disruptions"],
-    sourceDate: "March 25, 2025",
-    href: "https://itecsonline.com/white-papers-case-studies/pepsico-success-story-itecs-manages-it-transitions",
   },
 ] as const;

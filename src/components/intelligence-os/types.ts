@@ -6,17 +6,23 @@ import type {
 export type IntelligenceAppId = "soc" | "terminal" | "configurator" | "vault";
 
 export type IncidentPhase =
-  | "idle"
-  | "detecting"
-  | "classifying"
-  | "isolating"
-  | "remediating"
-  | "verifying"
+  | "ready"
+  | "detect"
+  | "correlate"
+  | "review"
+  | "contain"
+  | "verify"
+  | "brief"
   | "resolved";
 
-export type DemoNodeState = "healthy" | "at-risk" | "isolated" | "recovering";
+export type DemoControlState =
+  | "ready"
+  | "exposed"
+  | "held"
+  | "contained"
+  | "verified";
 
-export interface IncidentFeedItem {
+export interface IncidentTraceItem {
   id: string;
   atMs: number;
   time: string;
@@ -36,23 +42,28 @@ export interface IncidentStep {
   atMs: number;
   phase: IncidentPhase;
   status: string;
-  nodeState: DemoNodeState;
+  controlState: DemoControlState;
   progress: number;
-  feed?: IncidentFeedItem;
+  trace?: IncidentTraceItem;
   terminal?: IncidentTerminalLine;
 }
 
 export interface IncidentController {
   running: boolean;
   completed: boolean;
+  paused: boolean;
+  awaitingApproval: boolean;
   elapsedMs: number;
   phase: IncidentPhase;
   status: string;
-  nodeState: DemoNodeState;
+  controlState: DemoControlState;
   progress: number;
-  feed: IncidentFeedItem[];
+  trace: IncidentTraceItem[];
   terminalLines: IncidentTerminalLine[];
   start: () => void;
+  pause: () => void;
+  resume: () => void;
+  approve: () => void;
   reset: () => void;
 }
 

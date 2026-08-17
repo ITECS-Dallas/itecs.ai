@@ -25,6 +25,7 @@ const intelligenceFiles = {
   stream: "src/components/intelligence-os/stream.ts",
   chat: "src/components/intelligence-os/useIntelligenceChat.ts",
   incident: "src/components/intelligence-os/useIncident.ts",
+  window: "src/components/intelligence-os/WindowFrame.tsx",
   styles: "src/components/intelligence-os/intelligence-os.module.css",
 };
 
@@ -218,18 +219,26 @@ describe("ITECS Intelligence OS negative-path guardrails", () => {
     const provider = read(intelligenceFiles.provider);
 
     assert.match(currentPricing, /name:\s*["']AI Readiness Assessment["'][\s\S]*?price:\s*["']\$6,500["']/);
-    assert.match(currentPricing, /name:\s*["']AI Pilot Implementation - Production["'][\s\S]*?price:\s*["']\$21,500["']/);
-    assert.doesNotMatch(currentPricing, /\$18,500/);
+    assert.match(currentPricing, /name:\s*["']Executive AI Literacy Briefing["'][\s\S]*?price:\s*["']\$4,500 \/ session["']/);
+    assert.match(currentPricing, /name:\s*["']Guided Build Session["'][\s\S]*?price:\s*["']\$650["']/);
+    assert.match(currentPricing, /name:\s*["']Integrated \/ Line-of-Business Agent["'][\s\S]*?price:\s*["']\$35,000–\$75,000["']/);
+    assert.doesNotMatch(
+      currentPricing,
+      /AI Pilot Implementation|\$12,500|\$21,500|Managed AI Standard|Integrated \/ Financial Workpaper Agent/,
+    );
     assert.match(knowledge, /AI_PRICING_CATEGORIES/);
     assert.match(knowledge, /Current constants\.ts pricing wins over older markdown price sheets/i);
     assert.match(constants, /AI_ASSESSMENT_INTAKE[\s\S]*No-cost intake form/);
     assert.match(knowledge, /AI_ASSESSMENT_INTAKE\.costLabel/);
-    assert.match(knowledge, /formal AI Readiness Assessment[\s\S]*paid \$6,500/i);
-    assert.doesNotMatch(knowledge, /\$18,500/);
-    assert.match(provider, /Distinguish the free \/assessment intake form from the formal paid \$6,500 AI Readiness Assessment/);
+    assert.match(
+      knowledge,
+      /formal AI Readiness Assessment[\s\S]*getAIPricingOffering\("AI Readiness Assessment"\)\.price/i,
+    );
+    assert.match(provider, /READINESS_ASSESSMENT\.price/);
+    assert.match(provider, /Distinguish the free \/assessment intake form from the formal paid \$\{READINESS_ASSESSMENT\.price\}/);
   });
 
-  it("excludes proposal and private sources from grounding and labels sourced MSP proof precisely", () => {
+  it("excludes proposal, private, and named-client sources from grounding", () => {
     const knowledge = read(intelligenceFiles.knowledge);
     const importEnd = knowledge.indexOf("interface KnowledgeDocument");
     const imports = knowledge.slice(0, importEnd);
@@ -238,10 +247,8 @@ describe("ITECS Intelligence OS negative-path guardrails", () => {
     assert.doesNotMatch(imports, /(?:^|\/)proposals?(?:\/|["'])/i);
     assert.doesNotMatch(imports, /private(?:\/|["'])/i);
     assert.doesNotMatch(imports, /src\/app\/p|@\/app\/p/);
-    assert.match(knowledge, /Important evidence label: this is a sourced ITECS managed-services case study/i);
-    assert.match(knowledge, /not a claim that the client used an ITECS AI deployment/i);
-    assert.match(knowledge, /eyebrow:\s*["']Sourced MSP Proof["']/);
-    assert.match(knowledge, /Public source:/);
+    assert.doesNotMatch(imports, /TRUST_CASE_STUDIES/);
+    assert.doesNotMatch(knowledge, /proofDocuments|Sourced MSP Proof|public case study/i);
   });
 });
 
@@ -302,11 +309,23 @@ describe("ITECS Intelligence OS streaming and deterministic apps", () => {
     const soc = requireSource(intelligenceFiles.soc);
     const configurator = requireSource(intelligenceFiles.configurator);
 
-    assert.match(data, /export const INCIDENT_DURATION_MS\s*=\s*30_000/);
+    assert.match(data, /export const INCIDENT_DURATION_MS\s*=\s*17_000/);
+    assert.match(data, /export const INCIDENT_REVIEW_GATE_MS\s*=\s*7_000/);
+    assert.match(data, /export const INCIDENT_CONTAINMENT_MS\s*=\s*9_500/);
     assert.match(data, /export const INCIDENT_STEPS/);
     assert.match(data, /All telemetry below is scripted demo data/);
     assert.match(incident, /INCIDENT_STEPS/);
-    assert.match(soc, /Scripted demo · not live telemetry/);
+    assert.match(incident, /awaitingApproval/);
+    assert.match(incident, /approvedRef/);
+    assert.match(soc, /Guided demo · synthetic scenario/);
+    assert.match(soc, /No client data or live systems are connected/);
+    assert.match(soc, /Authorize containment/);
+    assert.match(soc, /Business value/);
+    assert.match(soc, /Client policy/);
+    assert.match(soc, /Synthetic evidence packet contents/);
+    assert.match(soc, /Scope this operating model/);
+    assert.doesNotMatch(soc, /Demo signal map|Endpoint topology|FIN-WS-27|96% confidence/);
+    assert.doesNotMatch(shell, /mobileIncidentView|Synchronized SOC incident view/);
     assert.match(data, /export function buildConfiguratorRecommendation/);
     assert.match(data, /BUILD_BANDS/);
     assert.match(configurator, /buildConfiguratorRecommendation/);
@@ -315,20 +334,24 @@ describe("ITECS Intelligence OS streaming and deterministic apps", () => {
     assert.match(shell, /ConfiguratorApp/);
   });
 
-  it("includes sourced proof UI, mobile behavior, reduced motion, and accessibility contracts", () => {
+  it("includes public resource UI, mobile behavior, reduced motion, and accessibility contracts", () => {
     const mount = requireSource(intelligenceFiles.mount);
     const shell = requireSource(intelligenceFiles.shell);
     const soc = read(intelligenceFiles.soc);
     const terminal = read(intelligenceFiles.terminal);
     const vault = requireSource(intelligenceFiles.vault);
+    const window = requireSource(intelligenceFiles.window);
     const styles = read(intelligenceFiles.styles);
-    const allUi = `${mount}\n${shell}\n${soc}\n${terminal}\n${vault}`;
+    const allUi = `${mount}\n${shell}\n${soc}\n${terminal}\n${vault}\n${window}`;
 
-    assert.match(vault, /PROOF_CASE_STUDIES/);
-    assert.match(vault, /sourceDate/);
-    assert.match(vault, /source/i);
+    assert.match(vault, /PROOF_METRICS/);
+    assert.match(vault, /Client identities and private engagement details are not included/);
+    assert.doesNotMatch(vault, /PROOF_CASE_STUDIES|sourceDate|study\.client/);
     assert.match(shell, /useReducedMotion\(\)/);
+    assert.match(window, /useReducedMotion\(\)/);
     assert.match(shell, /window\.matchMedia\(["']\(min-width: 900px\)["']\)/);
+    assert.match(shell, /const shouldTilePrimaryApps\s*=\s*firstLayoutRef\.current/);
+    assert.match(shell, /shouldTilePrimaryApps\s*&&\s*\(windowState\.id === "soc"/);
     assert.match(styles, /@media\s*\(prefers-reduced-motion:\s*reduce\)/);
     assert.match(shell, /role=["']dialog["']/);
     assert.match(shell, /aria-modal=(?:["']true["']|\{true\})/);

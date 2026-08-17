@@ -67,7 +67,7 @@ export function TerminalApp({ incident, compact = false }: TerminalAppProps) {
         <div className="flex items-center gap-1 border border-[#7fb4d8]/20 bg-[#061728] p-1" role="tablist" aria-label="Terminal mode">
           {([
             ["advisor", "Live advisor"],
-            ["incident", "Incident log"],
+            ["incident", "Response trace"],
           ] as const).map(([value, label]) => (
             <button
               key={value}
@@ -75,7 +75,7 @@ export function TerminalApp({ incident, compact = false }: TerminalAppProps) {
               role="tab"
               aria-selected={activeTab === value}
               onClick={() => setTab(value)}
-              className={`${styles.chamferSmall} min-h-8 px-3 font-mono text-[9px] uppercase tracking-wide transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5ba8d8] ${
+              className={`${styles.chamferSmall} min-h-11 px-3 font-mono text-[10px] uppercase tracking-wide transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5ba8d8] ${
                 activeTab === value ? "bg-[#326189] text-white" : "text-slate-400 hover:text-white"
               }`}
             >
@@ -84,15 +84,33 @@ export function TerminalApp({ incident, compact = false }: TerminalAppProps) {
           ))}
         </div>
         <span className="flex items-center gap-1.5 font-mono text-[9px] uppercase tracking-[0.12em] text-slate-400">
-          <span className={`h-2 w-2 rotate-45 ${activeTab === "advisor" ? "bg-emerald-400" : incident.running ? "bg-amber-400" : "bg-[#3288b6]"}`} aria-hidden="true" />
-          {activeTab === "advisor" ? "Scope locked to ITECS" : incident.running ? "Replay active" : "Demo log"}
+          <span className={`h-2 w-2 rotate-45 ${
+            activeTab === "advisor"
+              ? "bg-emerald-400"
+              : incident.awaitingApproval
+                ? "bg-amber-400"
+                : incident.paused
+                  ? "bg-slate-400"
+                  : incident.running
+                    ? "bg-[#5ba8d8]"
+                    : "bg-[#3288b6]"
+          }`} aria-hidden="true" />
+          {activeTab === "advisor"
+            ? "Scope locked to ITECS"
+            : incident.awaitingApproval
+              ? "Authorization gate"
+              : incident.paused
+                ? "Response paused"
+              : incident.running
+                ? "Response active"
+                : "Demo trace"}
         </span>
       </div>
 
       {activeTab === "incident" ? (
         <div className="flex min-h-0 flex-1 flex-col pt-3">
           <div className={`${styles.chamferSmall} mb-3 border border-amber-400/25 bg-amber-400/5 p-2.5 font-mono text-[9px] leading-relaxed text-amber-100`}>
-            SCRIPTED INCIDENT REHEARSAL — Commands and outcomes are illustrative. No live systems are connected.
+            SYNTHETIC RESPONSE REHEARSAL — Commands and outcomes are illustrative. No client data or live systems are connected.
           </div>
           <div ref={scrollRef} className={`${styles.scrollArea} min-h-0 flex-1 overflow-y-auto bg-[#04111e] p-3 font-mono text-[10px] leading-relaxed`} aria-live="polite">
             {incident.terminalLines.map((line) => (
@@ -108,9 +126,11 @@ export function TerminalApp({ incident, compact = false }: TerminalAppProps) {
               </div>
             ))}
             {!incident.running && !incident.completed && (
-              <p className="text-slate-500">Run the incident from SOC Operations to stream the synchronized response trace.</p>
+              <p className="text-slate-400">Run the scenario from SOC Response Command to stream its optional technical trace.</p>
             )}
-            {incident.running && <span className={`${styles.bootCursor} inline-block h-3 w-1.5 bg-[#7fb4d8]`} aria-hidden="true" />}
+            {incident.running && !incident.paused && !incident.awaitingApproval && (
+              <span className={`${styles.bootCursor} inline-block h-3 w-1.5 bg-[#7fb4d8]`} aria-hidden="true" />
+            )}
           </div>
         </div>
       ) : (

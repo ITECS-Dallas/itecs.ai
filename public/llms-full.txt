@@ -61,10 +61,28 @@ URL: https://itecs.ai/crm-sales-ai
 Sales pipeline automation, lead scoring, follow-up workflows, and CRM-connected
 AI for small and mid-sized businesses.
 
-### AI Knowledge Base
+### ITECS OpsMemory — Managed Knowledge & Document Operations Agent
 URL: https://itecs.ai/ai-knowledge-base
-Internal RAG search over SOPs, policies, tickets, documents, and operational
-knowledge with secure retrieval controls.
+ITECS OpsMemory turns approved company knowledge, client-specific documentation,
+and authoritative vendor guidance into cited answers and maintained SOPs,
+runbooks, and operational documentation. ITECS manages source priority,
+permissions, human review, freshness, and ongoing quality. The verified retrieval
+pattern uses structured Markdown, indexes and coverage files, titles, headings,
+full body content, citations, and relative media links together. In an approved
+desktop project or workspace with local-folder access and required permissions,
+the article, surrounding context, and associated local visual can be opened and
+cited; behavior varies by platform, plan, device, permissions, and configuration.
+
+### ITECS Change Assurance — AI-Assisted IT Change Readiness
+URL: https://itecs.ai/it-change-readiness
+ITECS Change Assurance is a managed, read-only AI review agent that stress-tests
+infrastructure change plans before execution. It classifies risk, challenges
+assumptions, checks current official vendor requirements, and requires and
+records technician-reported live verification for critical prerequisites. The
+readiness report preserves evidence statuses, unresolved risk, rollback criteria,
+immediate and later checks, cited sources, and an attributable verdict for the
+reviewed plan. It complements existing ITSM, change-owner, and CAB processes and
+never executes, approves, deploys, remediates, or rolls back a change.
 
 ### Data Readiness Audit
 URL: https://itecs.ai/data-audit

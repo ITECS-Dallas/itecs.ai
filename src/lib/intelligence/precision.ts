@@ -5,8 +5,6 @@ import {
   AI_PRICING_CATEGORIES,
   AI_RATE_MULTIPLIERS,
   AI_SEO_TIERS,
-  AI_SERVICE_PAGE_ESTIMATES,
-  DATA_AUDIT_PRICING,
   FIELD_EXAM_ANALYZER_USE_CASE,
   MANAGED_AI_AGENT_OPERATIONS,
   MANAGED_AI_TIERS,
@@ -16,8 +14,10 @@ import {
 import type { IntelligenceChatMessage } from "./contract";
 
 export type IntelligencePrecisionIntent =
-  | "pilot_custom_comparison"
-  | "pilot_tier_comparison"
+  | "pilot_replacement"
+  | "guided_build_pricing"
+  | "executive_briefing_pricing"
+  | "internal_pricing_refusal"
   | "managed_operations_comparison"
   | "combined_hourly_rate"
   | "seo_tier_comparison"
@@ -27,7 +27,6 @@ export type IntelligencePrecisionIntent =
   | "field_exam_solution_blueprint"
   | "budget_path_comparison"
   | "knowledge_base_fit"
-  | "poc_small_pilot_comparison"
   | "assessment_clarification";
 
 export interface IntelligencePrecisionAnswer {
@@ -51,16 +50,21 @@ function offering(name: string) {
   );
 }
 
-const SMALL_PILOT = offering("AI Pilot Implementation - Small");
-const PRODUCTION_PILOT = offering("AI Pilot Implementation - Production");
+const GUIDED_BUILD_SESSION = offering("Guided Build Session");
+const GUIDED_BUILD_SPRINT = offering("Guided Build Sprint (4 sessions)");
+const GUIDED_BUILD_INTENSIVE = offering("Guided Build Intensive (8 sessions)");
+const LOCAL_AGENT_SPRINT = offering("Local Agent Sprint");
+const DEPARTMENTAL_LOCAL_AGENT = offering("Departmental Local Agent");
 const AGENT_DISCOVERY = offering("Agent Discovery & Technical Specification");
 const PROTOTYPE = offering("Proof of Concept / Prototype");
 const SINGLE_WORKFLOW_AGENT = offering("Single-Workflow Production Agent");
-const INTEGRATED_AGENT = offering("Integrated / Financial Workpaper Agent");
+const INTEGRATED_AGENT = offering("Integrated / Line-of-Business Agent");
 const MULTI_AGENT_SYSTEM = offering(
   "Multi-Agent System / AI-Augmented Process Redesign",
 );
 const READINESS_ASSESSMENT = offering("AI Readiness Assessment");
+const EXECUTIVE_BRIEFING = offering("Executive AI Literacy Briefing");
+const DATA_READINESS_SPRINT = offering("Data Readiness Sprint");
 const KNOWLEDGE_BASE_SERVICE = requiredValue(
   SERVICES.find((service) => service.slug === "ai-knowledge-base"),
   "AI Knowledge Base service",
@@ -73,27 +77,18 @@ const KNOWLEDGE_BASE_PERMISSION_FEATURE = requiredValue(
   KNOWLEDGE_BASE_SERVICE.features.find((feature) => /role-based access/i.test(feature)),
   "AI Knowledge Base permission feature",
 );
-const PROTOTYPE_NO_SLA = requiredValue(
-  PROTOTYPE.included.find((item) => /without production SLA/i.test(item)),
-  "Prototype production SLA boundary",
-);
-const PROFESSIONAL_DATA_AUDIT = requiredValue(
-  DATA_AUDIT_PRICING.find((tier) => tier.tier === "Professional"),
-  "Professional Data Audit",
-);
-const SMALL_PILOT_SCOPE = requiredValue(SMALL_PILOT.scope, "Small pilot scope");
-const PRODUCTION_PILOT_SCOPE = requiredValue(
-  PRODUCTION_PILOT.scope,
-  "Production pilot scope",
+const KNOWLEDGE_BASE_RETRIEVAL_FEATURE = requiredValue(
+  KNOWLEDGE_BASE_SERVICE.features.find((feature) => /structured Markdown retrieval/i.test(feature)),
+  "AI Knowledge Base retrieval feature",
 );
 const PROTOTYPE_SCOPE = requiredValue(PROTOTYPE.scope, "Prototype scope");
 const READINESS_ASSESSMENT_DURATION = requiredValue(
   READINESS_ASSESSMENT.duration,
   "AI Readiness Assessment duration",
 );
-const MANAGED_STANDARD = requiredValue(
-  MANAGED_AI_TIERS.find((tier) => tier.tier === "Managed AI Standard"),
-  "Managed AI Standard",
+const MIS_GROWTH = requiredValue(
+  MANAGED_AI_TIERS.find((tier) => tier.tier === "MIS Growth"),
+  "MIS Growth",
 );
 const TIER_TWO = requiredValue(
   AI_HOURLY_RATES.find((tier) => tier.tier.startsWith("Tier 2")),
@@ -104,8 +99,10 @@ const AFTER_HOURS = requiredValue(
   "After-hours multiplier",
 );
 const MSP_ELITE = requiredValue(
-  AI_LOYALTY_DISCOUNTS.find((item) => item.plan === "MSP Elite"),
-  "MSP Elite loyalty discount",
+  AI_LOYALTY_DISCOUNTS.find(
+    (item) => item.benefit === "Tier 1 / Tier 2 hourly",
+  ),
+  "MSP Elite Tier 1 / Tier 2 loyalty discount",
 );
 const SEO_FOUNDATION = requiredValue(
   AI_SEO_TIERS.find((tier) => tier.name === "SEO Foundation"),
@@ -155,24 +152,37 @@ function matchesAny(value: string, patterns: RegExp[]) {
   return patterns.some((pattern) => pattern.test(value));
 }
 
-const PILOT_CUSTOM_REQUESTS = [
-  /^(?:please )?compare (?:the )?(?:itecs )?(?:ai )?pilots?(?: (?:and|with|to|versus|vs|or))? (?:a |the )?custom (?:ai )?(?:agents?|assistant|build)(?: pricing| prices| costs?)?$/,
-  /^(?:itecs )?(?:ai )?pilots? (?:versus|vs|or) (?:a |the )?custom (?:ai )?(?:agents?|assistant|build)(?: pricing| prices| costs?)$/,
-  /^what costs? less (?:a |an )?(?:itecs )?(?:ai )?pilot or (?:a |an )?custom (?:ai )?(?:agent|assistant|build)$/,
-  /^give me (?:all|every) published (?:itecs )?(?:ai )?pilot(?: and| plus| versus| vs) custom (?:ai )?(?:agent|build) prices?$/,
-  /^how does (?:that|it) compare (?:with|to) (?:a |an |the )?custom (?:ai )?(?:agent|assistant|build)(?: pricing| prices| costs?)?$/,
+const PILOT_REQUESTS = [
+  /\bai pilot implementation\b/,
+  /\bsmall (?:ai )?pilot\b/,
+  /\bproduction (?:ai )?pilot\b/,
+  /\bpilot (?:pricing|price|cost|offering|package|sku)\b/,
+  /\b(?:compare|versus|vs) (?:the )?(?:itecs )?(?:ai )?pilot\b/,
 ];
 
-const PILOT_TIER_REQUESTS = [
-  /^(?:please )?compare (?:the )?small (?:and|with|to|versus|vs) (?:the )?production (?:ai )?pilot(?: implementation)?(?: options?)?(?: pricing| prices| costs?)?$/,
-  /^(?:please )?compare (?:the )?production (?:ai )?pilot(?: implementation)? (?:and|with|to|versus|vs) (?:the )?small(?: pilot)?(?: option)?(?: pricing| prices| costs?)?$/,
-  /^how much is that one and what changes if (?:we )?start smaller$/,
+const GUIDED_BUILD_REQUESTS = [
+  /^how much (?:is|does) (?:a |the )?guided build(?: session| sprint| intensive)?(?: cost)?$/,
+  /^(?:what is|whats|show me|give me) (?:the )?guided build pricing$/,
+  /^guided build(?: session| sprint| intensive)? (?:pricing|price|cost)$/,
+];
+
+const EXECUTIVE_BRIEFING_REQUESTS = [
+  /^how much (?:is|does) (?:the )?executive ai literacy briefing(?: cost)?$/,
+  /^(?:what is|whats) (?:the )?executive (?:ai )?briefing (?:pricing|price|cost)$/,
+];
+
+const INTERNAL_PRICING_REQUESTS = [
+  /\b(?:internal|private|hidden) (?:discount|margin|cost|price|pricing|rate)\b/,
+  /\b(?:margin|cost basis|discount logic|rate rationale|burn multipliers?)\b/,
+  /\b(?:service.line codes?|psa ticket|helpdesk routing|tam escalation)\b/,
 ];
 
 const MANAGED_OPERATIONS_REQUESTS = [
-  /^compare (?:the )?managed ai standard (?:and|with|to|versus|vs) (?:the )?(?:managed ai )?agent operations(?: pricing| prices| costs?)?$/,
-  /^compare managed (?:ai|intelligence) (?:and|with|to|versus|vs) (?:managed ai )?agent operations(?: pricing| prices| costs?)?$/,
+  /^compare (?:the )?mis growth (?:and|with|to|versus|vs) (?:the )?agent operations(?: pricing| prices| costs?)?$/,
+  /^compare managed intelligence(?: services)? (?:and|with|to|versus|vs) agent operations(?: pricing| prices| costs?)?$/,
   /^does that operate (?:our|a|the) production agent(?: too| as well)?$/,
+  /^(?:how much|what does) agent operations (?:cost )?for 2 (?:production )?agents$/,
+  /^agent operations (?:pricing|price|cost) for 2 (?:production )?agents$/,
 ];
 
 const COMBINED_RATE_REQUESTS = [
@@ -192,6 +202,7 @@ const SERVICE_ESTIMATE_REQUESTS = [
 
 const DATA_AUDIT_READINESS_REQUESTS = [
   /^compare (?:the )?professional data audit (?:and|with|to|versus|vs) (?:the )?ai readiness assessment(?: pricing| prices| costs?)?$/,
+  /^compare (?:the )?data readiness sprint (?:and|with|to|versus|vs) (?:the )?ai readiness assessment(?: pricing| prices| costs?)?$/,
 ];
 
 const PPV_SOLUTION_BLUEPRINT_REQUEST = normalizedIntent(
@@ -209,10 +220,6 @@ const KNOWLEDGE_BASE_FIT_REQUEST = normalizedIntent(
   "Our 40-person company has SOPs in SharePoint, Notion, and Confluence with department permissions. What ITECS option fits?",
 );
 
-const POC_SMALL_PILOT_REQUEST = normalizedIntent(
-  "Is the $8k-$18k proof of concept basically the same thing as the $12,500 Small pilot?",
-);
-
 function publishedCurrencyAmounts(value: string, label: string) {
   const values = [...value.matchAll(/\$([\d,]+)/g)].map((match) =>
     Number(match[1].replaceAll(",", "")),
@@ -225,14 +232,6 @@ function publishedCurrencyAmounts(value: string, label: string) {
   return values;
 }
 
-const SMALL_PILOT_AMOUNT = requiredValue(
-  publishedCurrencyAmounts(SMALL_PILOT.price, "Small pilot amount")[0],
-  "Small pilot amount",
-);
-const PRODUCTION_PILOT_AMOUNT = requiredValue(
-  publishedCurrencyAmounts(PRODUCTION_PILOT.price, "Production pilot amount")[0],
-  "Production pilot amount",
-);
 const PROTOTYPE_AMOUNTS = publishedCurrencyAmounts(
   PROTOTYPE.price,
   "Prototype range",
@@ -257,6 +256,14 @@ const SINGLE_AGENT_MAXIMUM = requiredValue(
   SINGLE_AGENT_AMOUNTS[1],
   "Single-workflow agent maximum",
 );
+const LOCAL_AGENT_AMOUNTS = publishedCurrencyAmounts(
+  LOCAL_AGENT_SPRINT.price,
+  "Local Agent Sprint range",
+);
+const LOCAL_AGENT_MINIMUM = requiredValue(
+  LOCAL_AGENT_AMOUNTS[0],
+  "Local Agent Sprint minimum",
+);
 
 function formatCurrency(value: number) {
   return new Intl.NumberFormat("en-US", {
@@ -271,54 +278,73 @@ const ASSESSMENT_REQUESTS = [
   /^what(?:s| is) the difference between (?:the )?(?:free|no cost) (?:assessment )?intake and (?:the )?paid (?:ai )?readiness assessment$/,
 ];
 
-function pilotCustomComparison(): IntelligencePrecisionAnswer {
+function pilotReplacement(): IntelligencePrecisionAnswer {
   return {
-    intent: "pilot_custom_comparison",
-    answer: `Pilots and custom agents are different purchasing paths: pilots roll out a chosen AI platform to a defined user group, while custom work specifies or builds a workflow-specific agent.
+    intent: "pilot_replacement",
+    answer: `AI Pilot Implementation is no longer an available ITECS offering. The current path depends on where the agent will run and how much engineering it needs.
 
-- Pilot implementation: Small is ${SMALL_PILOT.price} for ${SMALL_PILOT_SCOPE}; Production is ${PRODUCTION_PILOT.price} for ${PRODUCTION_PILOT_SCOPE}.
-- Definition and feasibility: ${AGENT_DISCOVERY.name} is ${AGENT_DISCOVERY.price} and is credited toward the build if you proceed. A ${PROTOTYPE.name} is ${PROTOTYPE.price} for ${PROTOTYPE_SCOPE.toLowerCase()}.
-- Production custom builds: ${SINGLE_WORKFLOW_AGENT.price} for a single-workflow agent; ${INTEGRATED_AGENT.price} for an integrated or financial-workpaper agent; and ${MULTI_AGENT_SYSTEM.price} for a multi-agent system or major process redesign.
+- Co-build in an employee's workspace: ${GUIDED_BUILD_SPRINT.name} is ${GUIDED_BUILD_SPRINT.price}; ${GUIDED_BUILD_INTENSIVE.name} is ${GUIDED_BUILD_INTENSIVE.price}.
+- Have ITECS deliver a workspace agent: ${LOCAL_AGENT_SPRINT.name} is ${LOCAL_AGENT_SPRINT.price}; ${DEPARTMENTAL_LOCAL_AGENT.name} is ${DEPARTMENTAL_LOCAL_AGENT.price}.
+- Engineer a production agent: start with ${AGENT_DISCOVERY.name} at ${AGENT_DISCOVERY.price}, credited toward the build, then use the published custom-build ladder.
 
-Choose the pilot path when the priority is controlled team adoption of an AI platform. Choose the custom path when the priority is a purpose-built workflow, integrations, validation, or reviewer controls. These are published planning prices and ranges—not firm quotes—and final scope is confirmed before work begins.`,
+The Guided & Local Agent Builds section at /pricing#guided-local-builds is the replacement destination. Final scope is confirmed before work begins.`,
   };
 }
 
-function pilotTierComparison(): IntelligencePrecisionAnswer {
+function guidedBuildPricing(): IntelligencePrecisionAnswer {
   return {
-    intent: "pilot_tier_comparison",
-    answer: `The Small and Production pilots differ mainly in user count, use-case breadth, training, documentation, and optimization period.
+    intent: "guided_build_pricing",
+    answer: `ITECS publishes three co-build options:
 
-- Small: ${SMALL_PILOT.price} planning price for ${SMALL_PILOT_SCOPE}. Included: ${SMALL_PILOT.included.join("; ")}.
-- Production: ${PRODUCTION_PILOT.price} planning price for ${PRODUCTION_PILOT_SCOPE}. Included: ${PRODUCTION_PILOT.included.join("; ")}.
+- ${GUIDED_BUILD_SESSION.name}: ${GUIDED_BUILD_SESSION.price} for a 90-minute working session with preparation and session notes.
+- ${GUIDED_BUILD_SPRINT.name}: ${GUIDED_BUILD_SPRINT.price} for one bounded agent or workflow, typically over 2–3 weeks.
+- ${GUIDED_BUILD_INTENSIVE.name}: ${GUIDED_BUILD_INTENSIVE.price} for a complex multi-step agent with testing and refinement cycles.
 
-Small is the focused starting point for one primary workflow and a limited group. Production is the department-scale option for multiple use cases and role-based enablement. Final scope is confirmed before work begins.`,
+Sessions expire 90 days from purchase, are scheduled at least 5 business days out, and a cancellation under 24 hours or no-show forfeits the session. Out-of-session build work bills at the applicable hourly tier.`,
+  };
+}
+
+function executiveBriefingPricing(): IntelligencePrecisionAnswer {
+  return {
+    intent: "executive_briefing_pricing",
+    answer: `${EXECUTIVE_BRIEFING.name} is ${EXECUTIVE_BRIEFING.price}. It is a private half-day session for a board, leadership team, or department heads, tailored to the organization's industry.`,
+  };
+}
+
+function internalPricingRefusal(): IntelligencePrecisionAnswer {
+  return {
+    intent: "internal_pricing_refusal",
+    answer:
+      "I can share the published ITECS pricing, eligibility matrix, and engagement terms, but I cannot provide internal margin, cost-basis, rate-rationale, discount-design, service-code, or retainer burn-schedule details. ITECS can confirm which published option applies in a consultation.",
   };
 }
 
 function managedOperationsComparison(query: string): IntelligencePrecisionAnswer {
-  const adoptionPricing = /\bmanaged ai standard\b/i.test(query)
-    ? `${MANAGED_STANDARD.tier}: ${MANAGED_STANDARD.price}; ${MANAGED_STANDARD.users}; ${MANAGED_STANDARD.includedHours}. Included: ${MANAGED_STANDARD.features.join("; ")}.`
+  const adoptionPricing = /\bmis growth\b/i.test(query)
+    ? `${MIS_GROWTH.tier}: ${MIS_GROWTH.price}; ${MIS_GROWTH.users} users; ${MIS_GROWTH.includedHours}. Included: ${MIS_GROWTH.features.join("; ")}.`
     : MANAGED_AI_TIERS.map(
         (tier) =>
-          `${tier.tier}: ${tier.price}; ${tier.users}; ${tier.includedHours}`,
+          `${tier.tier}: ${tier.price}; ${tier.users} users; ${tier.includedHours}`,
       ).join("; ");
+  const operationsPricing = MANAGED_AI_AGENT_OPERATIONS.prices
+    .map((option) => `${option.agents}: ${option.price}`)
+    .join("; ");
 
   return {
     intent: "managed_operations_comparison",
-    answer: `Managed AI adoption retainers and Managed AI Agent Operations cover different operating needs.
+    answer: `Managed Intelligence Services and Agent Operations cover different operating needs.
 
 - Adoption and advisory: ${adoptionPricing}
-- Production agents: ${MANAGED_AI_AGENT_OPERATIONS.tier} is ${MANAGED_AI_AGENT_OPERATIONS.price}, priced ${MANAGED_AI_AGENT_OPERATIONS.users.toLowerCase()}. It includes ${MANAGED_AI_AGENT_OPERATIONS.features.join("; ")}.
+- Production agents: ${operationsPricing}. Agent Operations includes ${MANAGED_AI_AGENT_OPERATIONS.features.join("; ")}.
 
-The adoption retainers support people, enablement, and workflow refinement. Agent Operations is the separate ongoing service for production agents after launch. Published monthly amounts are planning prices or ranges; final scope is confirmed before work begins.`,
+MIS supports people, enablement, and workflow refinement. Agent Operations is the separate ongoing service for production agents after launch. Clients holding an MIS tier receive 10% off the Agent Operations line. Final scope is confirmed before work begins.`,
   };
 }
 
 function combinedHourlyRate(): IntelligencePrecisionAnswer {
   return {
     intent: "combined_hourly_rate",
-    answer: `${TIER_TWO.tier} work is published at ${TIER_TWO.rate}. ${AFTER_HOURS.condition} work carries a ${AFTER_HOURS.multiplier} multiplier, and ${MSP_ELITE.plan} clients receive ${MSP_ELITE.hourlyDiscount} off eligible Tier 1 and Tier 2 hourly work.
+    answer: `${TIER_TWO.tier} work is published at ${TIER_TWO.rate}. ${AFTER_HOURS.condition} work carries a ${AFTER_HOURS.multiplier} multiplier, and MSP Elite clients receive ${MSP_ELITE.elite} off eligible Tier 1 and Tier 2 hourly work.
 
 The public pricing does not specify whether the loyalty discount and after-hours multiplier combine or the order in which they would be applied, so I should not calculate an effective billed rate. ITECS can confirm the applicable rate for the specific schedule and scope before work begins.`,
   };
@@ -340,24 +366,25 @@ Foundation establishes the technical and content architecture. Momentum is the m
 function serviceEstimateComparison(): IntelligencePrecisionAnswer {
   return {
     intent: "service_estimate_comparison",
-    answer: `Neither option has one universally higher published cost because the ranges overlap and the ongoing structures differ.
+    answer: `ITECS no longer publishes separate setup estimates for AI Receptionist and AI CRM & Sales. Both use the current governed build path.
 
-- AI Receptionist: published service-page setup estimate of ${AI_SERVICE_PAGE_ESTIMATES.receptionist.setup}, with monthly service of ${AI_SERVICE_PAGE_ESTIMATES.receptionist.ongoing}.
-- AI CRM & Sales: published service-page setup estimate of ${AI_SERVICE_PAGE_ESTIMATES.crmSalesAi.setup}, with ongoing optimization and support starting at ${AI_SERVICE_PAGE_ESTIMATES.crmSalesAi.ongoing}.
+- Discovery: ${AGENT_DISCOVERY.name} is ${AGENT_DISCOVERY.price} and credits toward the build.
+- Production build: ${SINGLE_WORKFLOW_AGENT.name} is ${SINGLE_WORKFLOW_AGENT.price}; ${INTEGRATED_AGENT.name} is ${INTEGRATED_AGENT.price} when multi-source integrations and reviewer controls are required.
+- After launch: Agent Operations follows the discrete production-agent ladder and is separate from the build fee.
 
-The CRM setup range starts higher and extends higher, but the setup estimates overlap. For ongoing service, the CRM starting amount falls within the receptionist range, so the actual comparison depends on call complexity, integrations, CRM platform, team size, and confirmed support scope. These are current planning estimates from the individual service pages, not firm quotes.`,
+The applicable phase depends on workflow complexity, integrations, review controls, and production requirements. Final scope is confirmed before work begins.`,
   };
 }
 
 function dataAuditReadinessComparison(): IntelligencePrecisionAnswer {
   return {
     intent: "data_audit_readiness_comparison",
-    answer: `The Professional Data Audit and AI Readiness Assessment answer different questions.
+    answer: `The Data Readiness Sprint and AI Readiness Assessment answer different questions.
 
-- Professional Data Audit: ${PROFESSIONAL_DATA_AUDIT.price} for ${PROFESSIONAL_DATA_AUDIT.users}. It is a ${PROFESSIONAL_DATA_AUDIT.description.toLowerCase()} and includes ${PROFESSIONAL_DATA_AUDIT.features.join("; ")}.
+- Data Readiness Sprint: ${DATA_READINESS_SPRINT.price} for one department or use case. It includes ${DATA_READINESS_SPRINT.included.join("; ")}.
 - AI Readiness Assessment: ${READINESS_ASSESSMENT.price} with a typical duration of ${READINESS_ASSESSMENT_DURATION}. It includes ${READINESS_ASSESSMENT.included.join("; ")}.
 
-Choose the Data Audit when the immediate need is security, permissions, sensitive-data exposure, compliance gaps, and a technical remediation view. Choose the Readiness Assessment when leadership needs prioritized AI use cases, platform direction, and a 12-month adoption roadmap. Both are published planning prices, and final scope is confirmed before work begins.`,
+Choose Data Readiness when a build's source documents, permissions, structure, metadata, or ingestion preparation need work. Choose the Readiness Assessment when leadership needs prioritized use cases, platform direction, risk context, and a 12-month adoption roadmap. Every build proposal includes a data-readiness line item or written confirmation that sources were verified build-ready during discovery.`,
   };
 }
 
@@ -407,10 +434,8 @@ function budgetPathComparison(
     return null;
   }
 
-  const productionUserFit = users >= 10 && users <= 25;
-  const productionBudgetFit = budget >= PRODUCTION_PILOT_AMOUNT;
-  const smallBudgetFit = budget >= SMALL_PILOT_AMOUNT;
   const prototypeBudgetFit = budget >= PROTOTYPE_MINIMUM;
+  const localBudgetFit = budget >= LOCAL_AGENT_MINIMUM;
   const agentBudgetPosition =
     budget < SINGLE_AGENT_MINIMUM
       ? "below the published starting point"
@@ -420,44 +445,27 @@ function budgetPathComparison(
 
   return {
     intent: "budget_path_comparison",
-    answer: `For ${users} employees and a ${formatCurrency(budget)} planning budget, the published paths do not represent the same outcome.
+    answer: `For ${users} employees and a ${formatCurrency(budget)} planning budget, the current published paths serve different outcomes.
 
-- Broad platform rollout: ${PRODUCTION_PILOT.name} is ${PRODUCTION_PILOT.price} for ${PRODUCTION_PILOT_SCOPE}. It ${productionUserFit ? "matches your stated team-size band" : "does not match your stated team size exactly"} and is ${productionBudgetFit ? "within" : "above"} your stated budget. ${SMALL_PILOT.name} is ${SMALL_PILOT.price} for ${SMALL_PILOT_SCOPE}; it ${smallBudgetFit ? "fits the budget" : "is above the budget"}, but covers only a focused 3–5-person group.
-- Purpose-built workflow: ${SINGLE_WORKFLOW_AGENT.name} is ${SINGLE_WORKFLOW_AGENT.price}. Your budget ${agentBudgetPosition}; final scope could exceed it. ${PROTOTYPE.name} is ${PROTOTYPE.price} for ${PROTOTYPE_SCOPE.toLowerCase()} and ${prototypeBudgetFit && budget <= PROTOTYPE_MAXIMUM ? "fits within its published range" : prototypeBudgetFit ? "is within your budget" : "starts above your budget"}, but it is a feasibility step rather than a production deployment.
+- Employee-led workspace build: ${GUIDED_BUILD_SPRINT.name} is ${GUIDED_BUILD_SPRINT.price}; ${GUIDED_BUILD_INTENSIVE.name} is ${GUIDED_BUILD_INTENSIVE.price}. Both are within the stated budget and focus on a bounded co-build.
+- ITECS-delivered workspace agent: ${LOCAL_AGENT_SPRINT.name} is ${LOCAL_AGENT_SPRINT.price} and ${localBudgetFit ? "starts within" : "starts above"} the stated budget.
+- Engineered production workflow: ${SINGLE_WORKFLOW_AGENT.name} is ${SINGLE_WORKFLOW_AGENT.price}. Your budget ${agentBudgetPosition}. ${PROTOTYPE.name} is ${PROTOTYPE.price} for ${PROTOTYPE_SCOPE.toLowerCase()} and ${prototypeBudgetFit && budget <= PROTOTYPE_MAXIMUM ? "fits within its published range" : prototypeBudgetFit ? "is within your budget" : "starts above your budget"}, but it is a feasibility step rather than a production deployment.
 
-Choose the pilot path when the priority is governed adoption of an AI platform. Choose the custom path when one clearly defined, high-value workflow is the priority. Published amounts are planning prices and ranges—not firm quotes—and ITECS confirms scope before work begins.`,
+Team size alone does not select the engagement. The workflow, deployment environment, integrations, and operating requirements do. Published amounts are planning prices and ranges—not firm quotes—and ITECS confirms scope before work begins.`,
   };
 }
 
 function knowledgeBaseFit(): IntelligencePrecisionAnswer {
-  const matchingIntegrations = ["Microsoft SharePoint", "Notion", "Confluence"].map(
-    (name) => requiredValue(
-      KNOWLEDGE_BASE_SERVICE.integrations.find((integration) => integration === name),
-      `AI Knowledge Base integration: ${name}`,
-    ),
-  );
-
   return {
     intent: "knowledge_base_fit",
-    answer: `The closest published ITECS option is the ${KNOWLEDGE_BASE_SERVICE.shortTitle}. It is designed to turn scattered company files into a private, natural-language knowledge experience.
+    answer: `The closest published ITECS option is ${KNOWLEDGE_BASE_SERVICE.shortTitle}, a managed knowledge and document operations agent.
 
-- Systems: the published integrations include ${matchingIntegrations.join(", ")}.
-- Department controls: ${KNOWLEDGE_BASE_PERMISSION_FEATURE}.
-- Answer quality: ${KNOWLEDGE_BASE_CITATION_FEATURE}.
+- Source priority: approved organization and client-specific documentation is consulted first, reusable internal standards next, and current authoritative guidance when local material is missing or stale.
+- Retrieval: ${KNOWLEDGE_BASE_RETRIEVAL_FEATURE}.
+- Permissions: ${KNOWLEDGE_BASE_PERMISSION_FEATURE}.
+- Answer quality: ${KNOWLEDGE_BASE_CITATION_FEATURE}. Missing, stale, or conflicting facts are identified instead of silently invented.
 
-That maps directly to your stated platforms and permission requirement. Final fit, source ownership, access boundaries, and implementation scope are confirmed in a scoping conversation; do not place private SOPs or credentials into this public chat.`,
-  };
-}
-
-function pocSmallPilotComparison(): IntelligencePrecisionAnswer {
-  return {
-    intent: "poc_small_pilot_comparison",
-    answer: `No. The two offerings can each focus on one workflow, but they serve different stages.
-
-- ${PROTOTYPE.name}: ${PROTOTYPE.price} for ${PROTOTYPE_SCOPE.toLowerCase()}. It is a bounded technical-feasibility build with ${PROTOTYPE_NO_SLA.toLowerCase()} and a documented path to production.
-- ${SMALL_PILOT.name}: ${SMALL_PILOT.price} for ${SMALL_PILOT_SCOPE}. It deploys a chosen AI platform with tenant and workspace setup, a prompt library, training, and a 30-day optimization window.
-
-Choose the proof of concept when technical feasibility for a custom workflow still needs to be demonstrated. Choose the Small pilot when the platform and use case are selected and a focused team is ready for controlled adoption. Published amounts are planning prices and ranges, and final scope is confirmed before work begins.`,
+The repositories you named are inputs to scoping, not a blanket connector promise. Final connector fit, source ownership, access boundaries, review roles, and implementation scope are confirmed before work begins; do not place private SOPs or credentials into this public chat.`,
   };
 }
 
@@ -479,35 +487,36 @@ export function buildIntelligencePrecisionAnswer(args: {
   const query = conversationQuery(args.history, args.message);
   if (INJECTION_PATTERN.test(query)) return null;
   const currentIntent = normalizedIntent(args.message);
-  const hasPilot = /\bpilots?\b/i.test(query);
-  const hasCustom =
-    /\b(custom (?:ai )?(?:agents?|assistant|build)|custom-agent|proof of concept|prototype|production agent)\b/i.test(
-      query,
-    );
+  const hasPilot = /\bpilots?\b/i.test(args.message);
 
-  if (
-    hasPilot &&
-    hasCustom &&
-    matchesAny(currentIntent, PILOT_CUSTOM_REQUESTS)
-  ) {
-    return pilotCustomComparison();
+  if (matchesAny(currentIntent, INTERNAL_PRICING_REQUESTS)) {
+    return internalPricingRefusal();
   }
 
   if (
-    hasPilot &&
-    matchesAny(currentIntent, PILOT_TIER_REQUESTS) &&
-    (/\b(small|start smaller)\b/i.test(query) ||
-      /\bproduction ai pilot\b/i.test(query))
+    matchesAny(currentIntent, PILOT_REQUESTS) ||
+    (hasPilot &&
+      /\b(price|pricing|cost|offering|package|sku|custom|small|production)\b/i.test(
+        query,
+      ))
   ) {
-    return pilotTierComparison();
+    return pilotReplacement();
+  }
+
+  if (matchesAny(currentIntent, GUIDED_BUILD_REQUESTS)) {
+    return guidedBuildPricing();
+  }
+
+  if (matchesAny(currentIntent, EXECUTIVE_BRIEFING_REQUESTS)) {
+    return executiveBriefingPricing();
   }
 
   if (
-    /\b(managed ai|managed intelligence)\b/i.test(query) &&
-    /\b(agent operations|operate (?:our|a|the) production agent|production-agent operations)\b/i.test(
-      query,
-    ) &&
-    matchesAny(currentIntent, MANAGED_OPERATIONS_REQUESTS)
+    matchesAny(currentIntent, MANAGED_OPERATIONS_REQUESTS) ||
+    (/\bmis\b/i.test(args.message) &&
+      /\b(price|pricing|cost|tier)\b/i.test(args.message)) ||
+    (/\bagent operations\b/i.test(args.message) &&
+      /\b(price|pricing|cost|agents?)\b/i.test(args.message))
   ) {
     return managedOperationsComparison(query);
   }
@@ -554,11 +563,11 @@ export function buildIntelligencePrecisionAnswer(args: {
     return knowledgeBaseFit();
   }
 
-  if (currentIntent === POC_SMALL_PILOT_REQUEST) {
-    return pocSmallPilotComparison();
-  }
-
-  if (matchesAny(currentIntent, ASSESSMENT_REQUESTS)) {
+  if (
+    matchesAny(currentIntent, ASSESSMENT_REQUESTS) ||
+    (/\bai readiness assessment\b/i.test(query) &&
+      /\b(price|pricing|cost|how much)\b/i.test(query))
+  ) {
     return assessmentClarification();
   }
 

@@ -5,7 +5,11 @@ import {
   generateFAQSchema,
   generateHowToSchema,
 } from "@/lib/seo";
-import { SERVICES } from "@/lib/constants";
+import {
+  AI_PREPAID_OPTIONS,
+  getAIPricingOffering,
+  SERVICES,
+} from "@/lib/constants";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { ServiceHero } from "@/components/sections/ServiceHero";
@@ -23,9 +27,12 @@ import { FAQ } from "@/components/sections/FAQ";
 import { CTASection } from "@/components/sections/CTASection";
 
 const service = SERVICES.find((s) => s.slug === "consulting")!;
+const readinessAssessment = getAIPricingOffering("AI Readiness Assessment");
+const guidedBuildSession = getAIPricingOffering("Guided Build Session");
+const aiRetainer = AI_PREPAID_OPTIONS.find(
+  (option) => option.name === "AI Retainer",
+)!;
 
-// Append MSP-program bundling context to the cost FAQ + add a discoverability
-// FAQ for AI-Optimized SEO so /consulting visitors find the related service.
 const consultingFaq = [
   ...service.faq.map((item) =>
     item.question === "How much does AI consulting cost for a growing organization?"
@@ -172,7 +179,7 @@ export default function ConsultingPage() {
           {
             label: "Minimum usage",
             traditional: "Monthly commitments before value is proven",
-            ai: "No monthly minimum and no expiration on retainer hours",
+            ai: "12-month expiry on the prepaid AI Retainer",
           },
           {
             label: "Cost visibility",
@@ -197,10 +204,10 @@ export default function ConsultingPage() {
         ]}
         roiStatement="The goal is to spend consulting time where it reduces risk and accelerates adoption, then quote scoped projects only when a build is actually justified."
         pricingNotes={[
-          "Hourly consulting is available for discovery, advisory calls, and focused problem solving",
-          "Prepaid retainer blocks are recommended for most clients and carry no minimum monthly usage or expiration date",
-          "Retainer hours can cover workflow design, AI app setup, training, testing, vendor coordination, and optimization",
-          "Flat-rate proposals are reserved for scoped projects such as AI agents, secure integrations, and custom automations",
+          `${guidedBuildSession.name}: ${guidedBuildSession.price} for a focused 90-minute working session`,
+          `${readinessAssessment.name}: ${readinessAssessment.price} for a leadership-level assessment and roadmap`,
+          `${aiRetainer.name}: ${aiRetainer.price} for a ${aiRetainer.unit}, with a 12-month expiry`,
+          "Hourly consulting is available for advisory work outside a published package; custom production work starts with credited discovery",
         ]}
       />
 

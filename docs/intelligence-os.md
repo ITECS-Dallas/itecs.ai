@@ -8,15 +8,21 @@ routes under `/p`.
 
 - The AI Terminal uses a real server-side OpenAI Responses API connection for
   free-form questions about ITECS AI.
-- The security incident is deterministic theater. Its topology, event feed,
-  response narration, counters, and timing are demo data and must never be
-  described as a live client incident.
+- SOC Response Command is a deterministic guided rehearsal. Its synthetic
+  identity and governed-workflow scenario demonstrates how ITECS correlates a
+  signal, presents a human authorization gate, contains only the risky path,
+  verifies scope, and prepares an accountable review packet. Its scenario,
+  decisions, controls, evidence, and sequencing are demo data and must never be
+  described as live telemetry or a client incident.
+- Starting the rehearsal keeps the visitor in SOC Response Command. The
+  optional AI Terminal response trace remains available from the dock, but it
+  is not auto-opened or duplicated on mobile.
 - The Solution Configurator is a deterministic React calculator driven by the
   current public pricing catalog. It provides starting points and ranges, not a
   contract or firm quote.
-- Resource Vault proof cards use the source-linked managed-services case studies
-  in `TRUST_CASE_STUDIES`. They prove the operating foundation behind ITECS AI;
-  they are not represented as AI deployment case studies.
+- The Resource Vault publishes company-level proof points and routes to current
+  public AI resources. Named-client case studies are intentionally excluded
+  from the Intelligence OS UI and grounding corpus.
 - No live operations, CRM, client, proposal, analytics, or ticket data is
   exposed to the experience.
 
@@ -28,18 +34,19 @@ corpus from those exports at build time. It does not read `/p`, proposal
 components, private files, environment files, or old Markdown price sheets.
 
 Current `constants.ts` pricing wins over older page copy and
-`itecs-ai-public-price-sheet.md`. In particular, the current Production AI Pilot
-is $21,500. The no-cost `/assessment` form is an intake request; the separate
-formal 1–2 week AI Readiness Assessment is currently $6,500.
+`itecs-ai-public-price-sheet.md`. The former AI Pilot Implementation packages
+are no longer available; current buyers are routed to Guided Build, Local Agent,
+or phased custom-build options. The no-cost `/assessment` form is an intake
+request; the separate formal 1–2 week AI Readiness Assessment is currently
+$6,500.
 
 Retrieval is facet-aware rather than relying on a single relevance score. For
 recognized pricing and service terms, it deterministically pins the applicable
 category overview and exact offering documents before filling the remaining
-context with ranked public sources. This keeps both sides of comparisons such
-as pilots versus custom agents, adoption retainers versus production-agent
-operations, or SEO tiers in the same trusted context. Recent bounded
-conversation turns are included so short follow-up questions can retain the
-relevant public facets.
+context with ranked public sources. This keeps current alternatives, Managed
+Intelligence Services versus Agent Operations, and SEO tiers in the same
+trusted context. Recent bounded conversation turns are included so short
+follow-up questions can retain the relevant public facets.
 
 ## Request boundary
 
@@ -58,7 +65,8 @@ The route:
 5. returns a fixed ITECS-only refusal for off-topic or injection requests;
 6. after scope approval, first checks the deterministic precision-answer
    handler for recognized, high-confidence published comparisons,
-   clarifications, and tightly matched solution blueprints;
+   retired-offering guidance, clarifications, and tightly matched solution
+   blueprints;
 7. when no precision intent matches, generates an answer privately with inline
    moderation enabled and runs a second strict structured-output gate that
    checks ITECS-only scope, evidence, pricing, proof labels, guarantees, prompt
@@ -72,17 +80,18 @@ The route:
 The deterministic precision handler is the primary authoritative handler for
 the narrow intents it recognizes, not a fallback after provider failure. It
 builds responses directly from the same current constants that own public
-service and pricing content. Covered comparisons include pilot tiers, pilots
-versus custom agents, Managed AI adoption versus Agent Operations, Data Audit
-versus AI Readiness, service-page estimates, the published hourly-rate
-components, SEO tiers, and the no-cost intake versus paid assessment
-distinction. The exact published PPV and Field Examination scenarios also have
-deterministic build/data/action blueprints, and a bounded budget/team-size
-decision path evaluates visitor constraints against the current pilot and
-custom-build constants. Exact public-catalog questions for Proof of Concept
-versus Small Pilot and the multi-source AI Knowledge Base fit also use this
-path. Unrecognized, qualified, or open-ended ITECS questions continue through
-the grounded answer-and-verifier path.
+service and pricing content. Covered answers include the retired AI Pilot
+Implementation route to Guided or Local Agent builds, Guided Build pricing,
+Executive AI Literacy Briefing pricing, Managed Intelligence Services versus
+Agent Operations, Data Readiness versus AI Readiness, the published hourly-rate
+components, SEO tiers, the no-cost intake versus paid assessment distinction,
+and refusal of unpublished pricing-program details. The exact published PPV and
+Field Examination scenarios also have deterministic build/data/action
+blueprints, and a bounded budget/team-size decision path evaluates visitor
+constraints against the current Guided Build, Local Agent, and custom-build
+constants. The multi-source AI Knowledge Base fit also uses this path.
+Unrecognized, qualified, or open-ended ITECS questions continue through the
+grounded answer-and-verifier path.
 
 Conversation state is held only in the open client experience. OpenAI requests
 set `store: false`. ITECS and the demo do not save chat text; OpenAI may retain

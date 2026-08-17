@@ -4,7 +4,11 @@ import {
   generateFAQSchema,
   generateHowToSchema,
 } from "@/lib/seo";
-import { SERVICES } from "@/lib/constants";
+import {
+  getAIPricingOffering,
+  MANAGED_AI_AGENT_OPERATIONS,
+  SERVICES,
+} from "@/lib/constants";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { ServiceHero } from "@/components/sections/ServiceHero";
@@ -22,11 +26,18 @@ import { FAQ } from "@/components/sections/FAQ";
 import { CTASection } from "@/components/sections/CTASection";
 
 const service = SERVICES.find((s) => s.slug === "automation")!;
+const guidedBuildSprint = getAIPricingOffering(
+  "Guided Build Sprint (4 sessions)",
+);
+const guidedBuildIntensive = getAIPricingOffering(
+  "Guided Build Intensive (8 sessions)",
+);
+const localAgentSprint = getAIPricingOffering("Local Agent Sprint");
+const agentOperationsOne = MANAGED_AI_AGENT_OPERATIONS.prices[0];
 
 export const metadata = generatePageMetadata({
   title: "AI Automation Services in Dallas — Business Workflow Automation",
-  description:
-    "AI automation services for Dallas businesses — automate lead follow-up, data entry, and scheduling with managed implementation from a 24-year MSP. From $2,500.",
+  description: `AI automation services for Dallas businesses — co-build a bounded workflow from ${guidedBuildSprint.price} or have ITECS deliver a local agent with governed handoff.`,
   path: service.href,
   keywords: service.keywords,
 });
@@ -146,10 +157,10 @@ export default function AutomationPage() {
         ]}
         roiStatement="Average client ROI: 40% reduction in operational costs within 60 days. Most businesses recover setup costs in the first month through time savings alone."
         pricingNotes={[
-          "Setup: $2,500–$10,000 depending on workflow count, complexity, and integrations required",
-          "Monthly management from $500/month — includes 24/7 monitoring, error recovery, and optimization",
-          "No per-workflow fees — automate as many processes as your plan covers",
-          "Add new automations anytime without disrupting existing pipelines",
+          `${guidedBuildSprint.name}: ${guidedBuildSprint.price} for one bounded employee-led agent or workflow`,
+          `${guidedBuildIntensive.name}: ${guidedBuildIntensive.price} for a complex multi-step co-build`,
+          `${localAgentSprint.name}: ${localAgentSprint.price} for an ITECS-delivered local agent`,
+          `Production operation is separate from the build; ${agentOperationsOne.agents} starts at ${agentOperationsOne.price}`,
         ]}
       />
 
