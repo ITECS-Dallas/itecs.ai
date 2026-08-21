@@ -57,7 +57,7 @@ test("every Insights record has one route with shared date, metadata, and citati
     .filter((entry) => statSync(join(routeRoot, entry, "page.tsx"), { throwIfNoEntry: false }))
     .sort();
 
-  assert.equal(slugs.length, 44);
+  assert.equal(slugs.length, 45);
   assert.deepEqual([...slugs].sort(), routes);
 
   for (const slug of slugs) {
