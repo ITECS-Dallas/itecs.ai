@@ -106,6 +106,7 @@ export default function RootLayout({
       className={`${spaceGrotesk.variable} ${ibmPlexSans.variable} ${ibmPlexMono.variable}`}
     >
       <head>
+        <link rel="describedby" href="/llms.txt" />
         <JsonLd data={generateOrganizationSchema()} />
         <JsonLd data={generateLocalBusinessSchema()} />
         <meta
