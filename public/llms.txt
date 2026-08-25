@@ -1,82 +1,78 @@
-# ITECS AI — LLMs.txt
+# ITECS AI
 
-> ITECS is a Dallas-based managed IT services provider (est. 2002) offering
-> enterprise AI consulting, managed intelligence, custom AI agents, AI
-> security compliance, and AI-optimized SEO services.
+> ITECS AI is the Dallas-based AI consulting, automation, training, and managed intelligence practice of Itecs Outsourcing, LLC, a managed IT and cybersecurity provider founded in 2002.
 
-## Company
+Use the linked canonical pages as the source for current service scope, pricing, evidence, and contact details. The descriptions below are navigation summaries. This file does not replace robots.txt, sitemap.xml, contractual terms, or the separate ITECS AI crawler-use statement.
 
-- Name: Itecs Outsourcing, LLC
+Canonical company facts:
+
+- Legal entity: Itecs Outsourcing, LLC
+- Brand: ITECS AI
 - Founded: 2002
-- Location: Dallas, TX (serving Dallas-Fort Worth)
-- Website: https://itecs.ai
-- Main website: https://itecsonline.com
-- International phone: (214) 444-7884
+- Office: 17304 Preston Rd. Ste 460, Dallas, TX 75252
+- Service area: Dallas-Fort Worth and remote United States engagements
+- Phone: (214) 444-7884
 - Toll-free phone: (877) 483-2710
-- Address: 17304 Preston Rd. Ste 460, Dallas, TX 75252
-- Google Maps: https://www.google.com/maps/search/?api=1&query=17304%20Preston%20Rd.%20Ste%20460%2C%20Dallas%2C%20TX%2075252
-- Specialization: AI Consulting, Managed IT, Cybersecurity, Cloud
+- Email: sales-inquiry@itecsonline.com
+- Google Maps: [View ITECS on Google Maps](https://maps.app.goo.gl/oFDotCsqC2SpdppV6)
 
-## AI Services
+## Start Here
 
-### AI Consulting & Strategy
-URL: https://itecs.ai/consulting
-Vendor-neutral AI readiness assessments, ROI modeling, and governance frameworks.
-Industries: Healthcare, Financial Services, Manufacturing, Legal.
-Engagement models: Two-week Insight Sprints, 4-6 week POCs, 8-12 week implementations.
+- [ITECS AI home](https://itecs.ai/): Overview of governed AI adoption, managed intelligence, agent implementations, training, operating controls, and current public proof.
+- [AI services](https://itecs.ai/services): Public catalog of ITECS AI consulting, automation, agent, training, operations, data-readiness, and AI-search services.
+- [AI services pricing](https://itecs.ai/pricing): Current published packages, rates, included work, engagement boundaries, and frequently asked pricing questions.
+- [About ITECS](https://itecs.ai/about): Company history, leadership, Dallas operating context, public evidence, and the relationship between ITECS AI and Itecs Outsourcing, LLC.
+- [Contact ITECS](https://itecs.ai/contact): Canonical office address, phone, email, Google Maps destination, consultation form, and business contact details.
+- [AI assessment](https://itecs.ai/assessment): Guided public intake for identifying an initial AI workflow, readiness concern, or implementation path.
 
-### Managed Intelligence Provider
-URL: https://itecs.ai/managed-intelligence-provider
-A Managed Intelligence Provider is an operating layer for production AI:
-governed agents, automations, model selection, monitoring, optimization,
-security controls, and executive reporting for organizations with 10-300
-employees.
+## Strategy, Governance, and Operations
 
-### Custom AI Agents
-URL: https://itecs.ai/custom-ai-agents
-Custom agents, Claude and Codex workflows, and RAG-powered assistants grounded
-in client data. Multi-channel deployment and HIPAA/SOC 2 capable architectures.
+- [AI consulting](https://itecs.ai/consulting): AI readiness, workflow selection, governance, planning, and vendor-neutral implementation guidance.
+- [Managed Intelligence Provider](https://itecs.ai/managed-intelligence-provider): ITECS operating model for governed agents, automations, model selection, monitoring, security, optimization, and executive reporting.
+- [Custom AI agents](https://itecs.ai/custom-ai-agents): Governed agents and assistants connected to approved business context, tools, permissions, human review, and production support.
+- [AI workflow automation](https://itecs.ai/automation): Bounded automation for recurring business workflows, including guided builds and governed implementation handoffs.
+- [AI DevOps](https://itecs.ai/ai-devops): Versioned deployment, evaluation, monitoring, incident response, rollback, and ongoing production operations for AI systems.
+- [Data and AI readiness](https://itecs.ai/data-audit): Fixed-scope readiness work for mapping approved data, access, risks, owners, and a build-ready first use case.
 
-### ITECS OpsMemory
-URL: https://itecs.ai/ai-knowledge-base
-Managed knowledge and document operations that turn approved company knowledge,
-client-specific documentation, and authoritative vendor guidance into cited
-answers and maintained SOPs and runbooks, with managed permissions, human
-review, freshness, and ongoing quality. OpsMemory narrows and verifies structured
-Markdown using indexes, coverage files, headings, full body content, and relative
-media links. It can preserve the source path, exact heading, surrounding article
-context, and relevant local visual when the approved workspace has access.
+## Managed Agent Products
 
-### ITECS Change Assurance
-URL: https://itecs.ai/it-change-readiness
-Managed, read-only AI-assisted IT change readiness reviews for infrastructure
-teams. The service classifies risk, challenges assumptions, checks current
-official vendor requirements, requires and records technician-reported live
-verification for critical prerequisites, and produces an auditable readiness
-verdict. It complements existing ticketing, change-owner, and CAB processes. It
-never executes, approves, deploys, remediates, or rolls back a change.
+- [ITECS OpsMemory](https://itecs.ai/ai-knowledge-base): Managed knowledge and document operations using structured Markdown, indexes, full body content, citations, and relative media links to produce reviewed answers, SOPs, and runbooks from approved sources.
+- [ITECS Change Assurance](https://itecs.ai/it-change-readiness): Read-only AI-assisted IT change reviews that challenge plans, check official requirements, require and record technician-reported live verification for critical prerequisites, and produce an auditable readiness verdict; it never executes, approves, remediates, or rolls back the change.
+- [AI receptionist](https://itecs.ai/ai-receptionist): Voice-agent implementation for call answering, intake, routing, scheduling, escalation, and managed operation.
+- [CRM and sales AI](https://itecs.ai/crm-sales-ai): Governed sales and CRM workflows for lead handling, follow-up, pipeline operations, and approved system actions.
 
-### AI Security & Compliance
-URL: https://itecs.ai/data-audit
-HIPAA, SOX, FINRA, and CMMC-aligned AI security. PHI/PII redaction, audit
-logging, Azure OpenAI private networking, and data governance frameworks.
+## Training and Enablement
 
-### AI-Optimized SEO & GEO
-URL: https://itecs.ai/ai-optimized-seo
-Generative Engine Optimization for AI-powered search. Schema.org JSON-LD,
-llms.txt and llms-full.txt implementation, AI citation tracking, and
-answer-ready content for Google AI Overviews, ChatGPT, Claude, and Perplexity.
-Tier URLs:
-- SEO Foundation: https://itecs.ai/ai-optimized-seo/foundation
-- SEO Momentum: https://itecs.ai/ai-optimized-seo/momentum
-- SEO Velocity: https://itecs.ai/ai-optimized-seo/velocity
+- [AI training](https://itecs.ai/training): Role-based AI training, governance education, workflow practice, and team adoption support.
+- [Claude Cowork training](https://itecs.ai/claude-cowork-training): Governed Claude Cowork configuration and enablement for approved business workflows.
+- [ChatGPT and Codex training](https://itecs.ai/chatgpt-codex-training): Role-based ChatGPT and Codex implementation guidance covering workspace controls, data handling, review, and practical workflows.
+- [Microsoft Copilot training](https://itecs.ai/copilot-training): Microsoft 365 Copilot readiness, permissions review, use-case design, and employee enablement.
+- [AI Champion Program](https://itecs.ai/services/ai-champion-program): Structured enablement for developing an internal AI lead with coaching, governance support, reusable guidance, and post-program support.
 
-### Internal AI Champion Program
-URL: https://itecs.ai/services/ai-champion-program
-4-6 week structured enablement program that trains one trusted employee to
-become the organization's internal AI lead. Includes 1:1 strategist coaching,
-prompt library development, governance support, train-the-trainer materials,
-and 90-day post-program support. Pricing: $8,500–$12,000.
+## Industry Solutions
 
-## Technology Partners
-Microsoft Azure, Microsoft, Claude, OpenAI, Copilot, Sophos
+- [Manufacturing AI](https://itecs.ai/manufacturing): Manufacturing finance and operations use cases, control boundaries, implementation sequence, and related solution pages.
+- [Purchase price variance agent](https://itecs.ai/manufacturing/ppv-agent): Governed PPV analysis workflow for tracing material-cost variance to approved purchasing and finance records.
+- [Financial services AI](https://itecs.ai/financial-services): Governed AI workflows for lenders, field examination, cash-flow analysis, portfolio monitoring, and receivables operations.
+- [Field Examination Analyzer](https://itecs.ai/financial-services/field-examination-analyzer): Evidence-linked field-examination workflow that preserves review, exceptions, and human decision ownership.
+
+## AI Search and Editorial Resources
+
+- [AI-Optimized SEO](https://itecs.ai/ai-optimized-seo): Technical SEO, content architecture, entity clarity, structured data, AI-search measurement, and optional llms.txt documentation without ranking or citation guarantees.
+- [SEO Foundation](https://itecs.ai/ai-optimized-seo/foundation): One-time technical and content-foundation engagement with current scope and pricing.
+- [SEO Momentum](https://itecs.ai/ai-optimized-seo/momentum): Recurring managed SEO and editorial program with current scope and pricing.
+- [SEO Velocity](https://itecs.ai/ai-optimized-seo/velocity): Higher-cadence managed SEO and editorial program with current scope and pricing.
+- [ITECS AI Insights](https://itecs.ai/insights): Current research-led articles about AI adoption, governance, security, operations, platforms, and business controls.
+
+## Evidence
+
+- [Pegasus Foods relocation case study](https://itecs.ai/case-studies/pegasus-foods-zero-downtime-relocation): Public case study about planning and executing an infrastructure relocation.
+- [OpenText Dallas support case study](https://itecs.ai/case-studies/opentext-dallas-onsite-support): Public case study about onsite enterprise IT support in Dallas.
+- [PepsiCo subsidiary transitions case study](https://itecs.ai/case-studies/pepsico-subsidiary-it-transitions): Public case study about managed IT transition work for two former PepsiCo subsidiaries.
+
+## Optional
+
+- [XML sitemap](https://itecs.ai/sitemap.xml): Complete current inventory of public canonical pages intended for search discovery.
+- [Robots policy](https://itecs.ai/robots.txt): Machine-readable crawler access rules; this remains separate from the descriptive purpose of llms.txt.
+- [ITECS AI crawler-use statement](https://itecs.ai/ai.txt): ITECS-authored statement about AI crawler use; read it together with robots.txt and applicable terms.
+- [ITECS managed IT and cybersecurity](https://itecsonline.com): Parent company site for managed IT, cybersecurity, cloud, support, and corporate information.
