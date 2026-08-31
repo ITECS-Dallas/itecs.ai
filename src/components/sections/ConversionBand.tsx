@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/Button";
 import { Hex } from "@/components/ui/Motifs";
 import { SITE_CONFIG } from "@/lib/constants";
 
-const STEPS = ["Book a call", "Free assessment", "Your roadmap"] as const;
+const STEPS = ["Send intake", "Scope the need", "Choose the next step"] as const;
 
 /* ---------------------------------------------------------------------------
    CONVERSION BAND — Fitts's Law + Goal-Gradient Effect.
@@ -61,7 +61,7 @@ export function ConversionBand() {
 
           <div className="mt-8 flex flex-wrap items-center gap-4">
             <Button href="/assessment" variant="ondark" size="lg">
-              Request your free AI assessment
+              Start the no-cost intake
             </Button>
             <Button href={`tel:${SITE_CONFIG.phoneE164}`} variant="ghost" size="lg">
               Call {SITE_CONFIG.phone} →

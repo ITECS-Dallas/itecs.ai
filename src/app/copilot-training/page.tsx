@@ -78,9 +78,9 @@ export default function CopilotTrainingPage() {
         scenario={{
           business: "A 120-employee professional services firm in Dallas",
           problem:
-            "rolled out 90 Copilot licenses with no plan. Adoption cratered within a month, and an internal check found Copilot could surface HR and finance files that had been quietly overshared across the tenant for years. Leadership questioned the entire investment.",
+            "could roll out licenses without a plan and discover that low adoption and inherited Microsoft 365 oversharing undermine the business case.",
           result:
-            "ITECS ran a Copilot readiness assessment, fixed the oversharing with Microsoft Purview sensitivity labels, and delivered role-specific training to every department. Adoption climbed sharply, the data-exposure risk was closed, and the firm now measures real time savings on documents and email.",
+            "A governed rollout could inventory permissions, remediate approved oversharing, configure applicable Purview controls, and train selected departments before measuring adoption and workflow impact.",
         }}
       />
 
@@ -112,12 +112,12 @@ export default function CopilotTrainingPage() {
 
       <SecurityGuarantee
         title="Governed, Compliant Copilot Rollout"
-        description="Your Microsoft 365 tenant, files, and communications stay protected throughout the engagement. ITECS AI is backed by ITECS — a Dallas cybersecurity MSP operating since 2002."
+        description="ITECS reviews inherited access, Purview controls, Microsoft data terms, and rollout governance for the selected tenant and users. ITECS AI is backed by ITECS, a Dallas cybersecurity MSP operating since 2002."
         points={[
-          "Permission cleanup — we fix tenant oversharing before Copilot can surface data users should not see",
-          "Microsoft Purview controls — sensitivity labels and data-loss policies keep confidential content protected",
+          "Permission cleanup — approved oversharing findings are remediated or accepted before the affected rollout scope",
+          "Microsoft Purview controls — applicable sensitivity labels and data-loss policies are configured and tested",
           "Respects existing access — Copilot honors your Microsoft 365 permissions and does not train foundation models on your data",
-          "Compliance-aligned — rollout accounts for HIPAA, SOC 2, and industry requirements with documented governance",
+          "Compliance-aware — rollout governance maps the client's applicable obligations without claiming an ITECS SOC 2 certification",
         ]}
         internalLink={{
           text: "Run a data & AI readiness audit before rollout",
@@ -137,13 +137,13 @@ export default function CopilotTrainingPage() {
         comparison={[
           {
             label: "License utilization",
-            traditional: "Drops within 90 days",
-            ai: "High and sustained",
+            traditional: "Not measured",
+            ai: "Baselined and monitored",
           },
           {
             label: "Data-exposure risk",
             traditional: "Oversharing goes live",
-            ai: "Fixed before rollout",
+            ai: "Reviewed and remediated by scope",
           },
           {
             label: "Employee proficiency",
@@ -161,7 +161,7 @@ export default function CopilotTrainingPage() {
             ai: "AI Retainer, 12-month expiry",
           },
         ]}
-        roiStatement="Typical outcome: 30% faster document and email work and far higher license utilization within the first month — turning a recurring cost into a measurable return."
+        roiStatement="ITECS baselines selected Microsoft 365 workflows and license use, then measures cycle time, adoption, output quality, and review requirements after rollout."
         pricingNotes={[
           "Readiness assessment + governance setup: scoped flat fee covering permission cleanup and Microsoft Purview configuration",
           "Department training: role-specific workshops with prompt libraries for Word, Excel, Outlook, and Teams",

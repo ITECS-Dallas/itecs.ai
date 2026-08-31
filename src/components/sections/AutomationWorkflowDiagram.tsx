@@ -40,7 +40,7 @@ const stages = [
   {
     icon: Activity,
     label: "Monitor",
-    detail: "24/7 uptime and optimization",
+    detail: "Scoped signals and escalation",
     color: "var(--brand-accent)",
   },
 ];
@@ -132,14 +132,14 @@ export function AutomationWorkflowDiagram() {
               Automation Pipeline
             </p>
             <h2 className="text-3xl md:text-4xl font-light tracking-[-0.02em] text-text-primary">
-              From Manual Workflows to Hands-Free Automation in 2–4 Weeks
+              From Manual Workflow to Governed Production Automation
             </h2>
           </div>
         </ScrollReveal>
 
         <figure
           role="img"
-          aria-label="AI workflow automation pipeline diagram showing five stages: audit existing manual workflows to identify repetitive tasks, map automation pipelines connecting tools like Zapier, Make.com, and Power Automate, build multi-step automations with custom AI logic and API integrations, deploy and verify live automations across CRM, email, invoicing, and helpdesk systems, and monitor 24/7 with auto-recovery and monthly optimization reports"
+          aria-label="AI workflow automation pipeline diagram showing five stages: audit existing manual workflows, map approved automation pipelines, build multi-step logic and integrations, deploy and verify automations, and monitor scoped health signals with documented escalation"
         >
           {/* Desktop: horizontal flow */}
           <div ref={ref} className="hidden md:flex items-start justify-center">
@@ -211,8 +211,9 @@ export function AutomationWorkflowDiagram() {
           <ScrollReveal delay={0.5}>
             <figcaption className="mt-10 text-center text-sm text-text-dim italic">
               We map your manual processes, connect your existing tools, and
-              deploy automations that run 24/7. Most Dallas businesses reach
-              production within 2–4 weeks.
+              deploy automations with the coverage defined in scope. The
+              production schedule is confirmed after discovery, access review,
+              and testing.
             </figcaption>
           </ScrollReveal>
         </figure>

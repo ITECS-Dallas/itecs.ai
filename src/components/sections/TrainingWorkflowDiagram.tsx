@@ -132,7 +132,7 @@ export function TrainingWorkflowDiagram() {
               Training Program
             </p>
             <h2 className="text-3xl md:text-4xl font-light tracking-[-0.02em] text-text-primary">
-              From Skills Assessment to AI-Proficient Team in 2 Weeks
+              From Skills Assessment to a Governed Training Program
             </h2>
           </div>
         </ScrollReveal>
@@ -213,7 +213,7 @@ export function TrainingWorkflowDiagram() {
               We assess your team, build custom curriculum around ChatGPT,
               Claude, Gemini, Microsoft Copilot, and your existing tools, then
               reinforce with ongoing sessions. Most Dallas teams reach
-              proficiency within two weeks.
+              proficiency measured against criteria agreed for the rollout.
             </figcaption>
           </ScrollReveal>
         </figure>

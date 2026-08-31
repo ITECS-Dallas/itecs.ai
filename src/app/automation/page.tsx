@@ -62,7 +62,7 @@ export default function AutomationPage() {
       {/* 2. Operating pain point — validate the manual workflow drain */}
       <PainPoint
         stat="60%"
-        statLabel="of employee time can disappear into repetitive tasks AI handles in seconds"
+        statLabel="modeled share of time available for repetitive-work reduction"
         heading="Your Team Spends Half the Day on Work a Machine Should Handle"
         paragraphs={[
           "Your office manager copies lead info from web forms into the CRM by hand. Your dispatcher assigns service calls from a spreadsheet and texts confirmations one at a time. Your bookkeeper re-enters invoice data from emails into QuickBooks every afternoon. These tasks run your business — but they drain the people doing them.",
@@ -71,9 +71,9 @@ export default function AutomationPage() {
         scenario={{
           business: "A 30-person HVAC company in Richardson",
           problem:
-            "had dispatchers manually assigning 40+ service calls per day from a shared spreadsheet. Technicians received assignments via group text. Lead follow-ups took 24–48 hours because the office manager toggled between the CRM, email, and a paper calendar. They lost an estimated 15% of inbound leads to slow response times.",
+            "could rely on a shared spreadsheet, group texts, a CRM, email, and a paper calendar for dispatch and lead follow-up, creating duplicate entry and avoidable delay.",
           result:
-            "ITECS automated their dispatch-to-invoice pipeline: web form capture → CRM entry → technician assignment → customer confirmation → post-service invoice. The team now responds to leads within 5 minutes and saves 28 hours per week on manual data entry.",
+            "A scoped dispatch-to-invoice workflow could connect form capture, CRM entry, assignment, confirmation, and invoicing. Response-time and labor targets would be baselined and tested before production rollout.",
         }}
       />
 
@@ -100,12 +100,12 @@ export default function AutomationPage() {
 
       {/* 7. Enterprise-Grade Security */}
       <SecurityGuarantee
-        description="Your workflow data, customer records, and internal processes stay protected at every step. ITECS AI is backed by ITECS — a Dallas-based cybersecurity MSP operating since 2002 with 24 years of enterprise security experience."
+        description="ITECS documents the data flow, access, retention, review, and recovery controls required for the selected workflow and platforms. ITECS AI is backed by ITECS — a Dallas-based cybersecurity MSP operating since 2002 with 24 years of enterprise security experience."
         points={[
           "Tool-agnostic architecture — we build on Zapier, Make.com, Power Automate, or custom APIs based on your needs, not vendor margins",
-          "Encrypted data pipelines — all workflow data in transit and at rest uses AES-256 encryption with no data stored on third-party servers beyond what your connected tools require",
+          "Data-flow controls — encryption, storage locations, subprocessors, and retention are documented for the selected automation and connected tools",
           "Credential isolation — API keys and access tokens live in encrypted vaults, never hardcoded or shared between client environments",
-          "Compliance-ready automations — workflows respect HIPAA, SOC 2, and PCI-DSS requirements for healthcare, legal, and financial services",
+          "Compliance-aware design — regulated workflows are scoped to applicable client obligations and vendor eligibility",
         ]}
         internalLink={{
           text: "Run an AI data readiness audit before automating sensitive workflows",
@@ -120,19 +120,19 @@ export default function AutomationPage() {
       {/* 8. Pricing Transparency & ROI */}
       <PricingROI
         heading="How Much Does AI Workflow Automation Cost?"
-        description="Most businesses try DIY automation with free-tier tools, then hire a freelancer when it breaks. Here is how ITECS compares for a team running 5–20 automated workflows."
+        description="DIY automation can become difficult to own as connectors, exceptions, and workflow volume grow. Here is the design comparison ITECS validates for a managed automation scope."
         traditionalLabel="DIY / Freelancer"
         aiLabel="ITECS Managed Automation"
         comparison={[
           {
             label: "Workflows automated",
-            traditional: "2–3 basic triggers",
-            ai: "10–20+ multi-step pipelines",
+            traditional: "Scope varies by owner and tool",
+            ai: "Scope confirmed during discovery",
           },
           {
             label: "Error handling",
             traditional: "Manual checking, breaks silently",
-            ai: "24/7 monitoring with auto-recovery",
+            ai: "Scoped monitoring, alerts, and recovery runbooks",
           },
           {
             label: "Tool integration depth",
@@ -146,16 +146,16 @@ export default function AutomationPage() {
           },
           {
             label: "Time to ROI",
-            traditional: "3–6 months of tinkering",
-            ai: "2–4 weeks to production",
+            traditional: "No defined baseline or schedule",
+            ai: "Schedule confirmed after discovery",
           },
           {
             label: "Scalability",
             traditional: "Rebuilds when volume grows",
-            ai: "Architecture scales with your business",
+            ai: "Capacity and change paths designed for the approved scope",
           },
         ]}
-        roiStatement="Average client ROI: 40% reduction in operational costs within 60 days. Most businesses recover setup costs in the first month through time savings alone."
+        roiStatement="ITECS establishes the current labor, error, throughput, and response-time baseline, then reports the observed outcome against the targets approved for the workflow."
         pricingNotes={[
           `${guidedBuildSprint.name}: ${guidedBuildSprint.price} for one bounded employee-led agent or workflow`,
           `${guidedBuildIntensive.name}: ${guidedBuildIntensive.price} for a complex multi-step co-build`,

@@ -365,13 +365,13 @@ export const PROOF_METRICS = [
     source: "ITECS public company history",
   },
   {
-    value: "92%",
+    value: "95%",
     label: "Client retention rate",
-    source: "ITECS published site proof point",
+    source: "ITECS public company announcement",
   },
   {
-    value: "200+",
-    label: "Client engagements",
-    source: "ITECS published site proof point",
+    value: "7,000+",
+    label: "Managed endpoints",
+    source: "ITECS managed-services site",
   },
 ] as const;

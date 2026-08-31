@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { ArrowUpRight, ChevronRight, CheckCircle2, Quote } from "lucide-react";
+import { ArrowUpRight, ChevronRight, CheckCircle2 } from "lucide-react";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -95,6 +95,12 @@ export default async function CaseStudyDetailPage({
             title={`${caseStudy.client}: ${caseStudy.outcome}`}
             description={caseStudy.summary}
           />
+
+          <p className="mt-6 rounded-md border border-[var(--card-line)] bg-canvas-sunken p-4 text-sm leading-relaxed text-text-secondary">
+            Historical case summary based on an ITECS source dated {caseStudy.sourceDate}.
+            Metrics below are source-reported and are not represented as an
+            independent audit or a guarantee of future results.
+          </p>
 
           <p
             className="mt-8 text-lg leading-relaxed text-ink-body"
@@ -225,21 +231,6 @@ export default async function CaseStudyDetailPage({
               ))}
             </div>
           </section>
-
-          {"quote" in caseStudy && caseStudy.quote ? (
-            <blockquote className="chamfer-md mt-14 border border-[var(--card-line)] bg-canvas-sunken p-8">
-              <Quote
-                aria-hidden="true"
-                className="h-6 w-6 text-itecs-blue-bright"
-              />
-              <p className="mt-4 text-lg leading-relaxed text-ink">
-                “{caseStudy.quote.text}”
-              </p>
-              <footer className="mt-4 font-mono text-xs font-semibold uppercase tracking-wide text-text-tertiary">
-                — {caseStudy.quote.attribution}
-              </footer>
-            </blockquote>
-          ) : null}
 
           <section className="mt-14">
             <h2 className="font-display text-2xl font-semibold text-ink md:text-3xl">

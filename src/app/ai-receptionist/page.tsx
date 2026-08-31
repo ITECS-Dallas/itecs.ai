@@ -37,7 +37,7 @@ const agentOperationsOne = MANAGED_AI_AGENT_OPERATIONS.prices[0];
 export const metadata = generatePageMetadata({
   title: "AI Receptionist for Growing Teams",
   description:
-    "Deploy AI voice agents that answer calls 24/7, book appointments, and save $3,000+/month. Backed by 24 years of IT security expertise.",
+    "Deploy governed AI voice agents that answer calls, book appointments, and route exceptions through an approved call flow.",
   path: service.href,
   keywords: service.keywords,
 });
@@ -61,8 +61,8 @@ export default function AIReceptionistPage() {
 
       {/* 2. Operating pain point — validate the missed-call risk */}
       <PainPoint
-        stat="$3,000+"
-        statLabel="lost per month on missed calls for a typical 20-person office"
+        stat="24/7"
+        statLabel="modeled coverage window, subject to telephony and support scope"
         heading="Your Front Desk Can't Answer Every Call — and It's Costing You"
         paragraphs={[
           "Your receptionist handles walk-ins, transfers, and paperwork at the same time. When two calls come in at once, one goes to voicemail. That caller hangs up and calls your competitor. For businesses with 10-50 employees, this happens 5-15 times per week.",
@@ -71,9 +71,9 @@ export default function AIReceptionistPage() {
         scenario={{
           business: "A 12-person dental clinic in Plano",
           problem:
-            "was losing 8-10 appointment requests per week to missed calls during lunch breaks and after 5 PM. Their front desk staff juggled check-ins, insurance verification, and phone calls simultaneously.",
+            "could miss appointment requests during lunch and after hours while front-desk staff balance check-ins, insurance work, and calls.",
           result:
-            "After deploying an AI voice agent, the clinic captured 40+ additional appointments per month — adding $12,000 in monthly revenue with zero new hires.",
+            "A voice agent could answer approved questions, offer available appointment slots, and route clinical or sensitive exceptions to staff. Booking and revenue impact would be measured after launch.",
         }}
       />
 
@@ -100,12 +100,12 @@ export default function AIReceptionistPage() {
 
       {/* 7. Enterprise-Grade Security */}
       <SecurityGuarantee
-        description="Every call recording, transcript, and caller data stays inside your private environment. ITECS AI is backed by ITECS — a Dallas-based cybersecurity MSP operating since 2002."
+        description="Call recordings, transcripts, and caller data follow the storage, access, disclosure, and retention controls selected for the telephony and AI vendors. ITECS AI is backed by ITECS, a Dallas cybersecurity MSP operating since 2002."
         points={[
-          "Private AI environments — your voice agent runs in isolated infrastructure, not shared multi-tenant servers",
-          "Zero data training — OpenAI, ElevenLabs, and Twilio never use your call data to train their models",
-          "Encrypted call recordings and transcripts stored in your own cloud tenant with role-based access controls",
-          "HIPAA-eligible deployment available for medical, legal, and financial practices handling sensitive caller data",
+          "Architecture review — tenancy and isolation depend on the selected voice, telephony, model, and hosting configuration",
+          "Contract review — vendor data use and training terms are verified for the selected business or enterprise plans",
+          "Recording controls — storage, encryption, role access, consent, and retention are documented before launch",
+          "Regulated workflows — HIPAA or other regulated use is custom-scoped only on eligible platforms and contracts",
         ]}
         internalLink={{
           text: "Start with an AI data readiness audit to assess your security posture",
@@ -120,7 +120,7 @@ export default function AIReceptionistPage() {
       {/* 8. Pricing Transparency & ROI */}
       <PricingROI
         heading="How Much Does an AI Receptionist Cost?"
-        description="Growth-stage teams deserve transparent pricing. Here's how an AI receptionist compares to traditional alternatives for a business handling 200-500 calls per month."
+        description="The business case depends on current call volume, coverage, telephony, integrations, review requirements, and production operations. ITECS validates each comparison during discovery."
         comparison={[
           {
             label: "Monthly cost",
@@ -130,30 +130,30 @@ export default function AIReceptionistPage() {
           {
             label: "Availability",
             traditional: "Business hours only",
-            ai: "24/7/365",
+            ai: "Configured coverage window",
           },
           {
             label: "Simultaneous calls",
             traditional: "1 at a time",
-            ai: "Unlimited",
+            ai: "Capacity confirmed during scoping",
           },
           {
             label: "Setup time",
-            traditional: "2–4 weeks hiring",
-            ai: "5–10 business days",
+            traditional: "Current hiring or vendor timeline",
+            ai: "Confirmed after discovery and testing",
           },
           {
             label: "Calendar booking",
             traditional: "Manual, error-prone",
-            ai: "Automated, real-time",
+            ai: "Automated after calendar testing",
           },
           {
             label: "Sick days / turnover",
             traditional: "Yes",
-            ai: "Never",
+            ai: "Not dependent on one scheduled employee",
           },
         ]}
-        roiStatement="Most businesses recover setup costs within 60 days — then save $2,000–$3,500 every month after."
+        roiStatement="ITECS compares current call-handling costs and missed-call volume with the proposed platform, usage, and operations costs before setting a savings target."
         pricingNotes={[
           `${agentDiscovery.name}: ${agentDiscovery.price}, credited toward the build when the client proceeds`,
           `${singleWorkflowAgent.name}: ${singleWorkflowAgent.price} after discovery confirms the production scope`,

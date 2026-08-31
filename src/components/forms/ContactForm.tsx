@@ -154,6 +154,19 @@ export function ContactForm() {
         }}
         className="rounded-md border border-[var(--border-strong)] bg-bg-elevated px-4 py-3 shadow-[var(--elev-1-inset)]"
       />
+      <p className="text-xs leading-relaxed text-text-tertiary">
+        ITECS uses the information submitted here to respond to this request.
+        Review the {" "}
+        <a
+          href="https://itecsonline.com/privacy-policy"
+          target="_blank"
+          rel="noreferrer"
+          className="text-brand-hover underline underline-offset-4 hover:text-itecs-blue"
+        >
+          ITECS Privacy Policy
+        </a>
+        .
+      </p>
       {message ? (
         <FormStatus
           tone={state === "success" ? "success" : "error"}

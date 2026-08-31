@@ -21,7 +21,7 @@ import Link from "next/link";
 export const metadata = generatePageMetadata({
   title: "Contact ITECS — Dallas Managed AI Team",
   description:
-    "Contact ITECS for managed AI consulting, automation, governance, and AI Readiness Assessment conversations from the Dallas corporate office serving Dallas-Fort Worth.",
+    "Contact ITECS for managed AI consulting, automation, governance, and AI Readiness Assessment scoping from the Dallas corporate office serving Dallas-Fort Worth.",
   path: "/contact",
   keywords: [
     "contact AI consultant Dallas",
@@ -56,7 +56,7 @@ export default function ContactPage() {
               <span className="text-itecs-blue">governed and useful</span>
             </h1>
             <p className="mt-6 text-lg text-ink-body max-w-xl">
-              Use this page for architect conversations, AI Readiness Assessment
+              Use this page for service-scoping conversations, AI Readiness Assessment
               follow-up, or direct contact with the ITECS team serving DFW from
               Dallas.
             </p>
@@ -109,12 +109,12 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-medium text-text-primary">
-                      Response-time promise
+                      Response routing
                     </h3>
                     <p className="mt-2 text-sm leading-relaxed text-text-secondary">
-                      Assessment and architect requests route to the ITECS team
-                      by email. A qualified team member follows up on the next
-                      business day; urgent requests should call {SITE_CONFIG.phone}.
+                      Assessment and service-scoping requests route to the ITECS team
+                      by email during business operations. This is not a
+                      response-time SLA; urgent requests should call {SITE_CONFIG.phone}.
                     </p>
                   </div>
                 </div>
@@ -188,7 +188,7 @@ export default function ContactPage() {
                     href="/about"
                     className="inline-flex min-h-11 items-center text-sm text-brand-accent transition-colors hover:text-brand-accent-bright focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base"
                   >
-                    About ITECS &rarr;
+                    Meet founder Brian Desmot &rarr;
                   </Link>
                 </div>
               </div>
@@ -285,15 +285,26 @@ export default function ContactPage() {
                   </a>
                 </div>
 
-                <a
-                  href={SITE_CONFIG.googleMapsUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-6 inline-flex min-h-11 items-center gap-2 text-sm font-medium text-brand-accent transition-colors hover:text-brand-accent-bright focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base"
-                >
-                  View ITECS on Google Maps
-                  <ExternalLink className="h-4 w-4" aria-hidden="true" />
-                </a>
+                <div className="mt-6 flex flex-wrap gap-5">
+                  <a
+                    href={SITE_CONFIG.googleMapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex min-h-11 items-center gap-2 text-sm font-medium text-brand-accent transition-colors hover:text-brand-accent-bright focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base"
+                  >
+                    View reviews on Google Maps
+                    <ExternalLink className="h-4 w-4" aria-hidden="true" />
+                  </a>
+                  <a
+                    href={SITE_CONFIG.g2ReviewsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex min-h-11 items-center gap-2 text-sm font-medium text-brand-accent transition-colors hover:text-brand-accent-bright focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base"
+                  >
+                    View reviews on G2
+                    <ExternalLink className="h-4 w-4" aria-hidden="true" />
+                  </a>
+                </div>
               </div>
             </div>
           </ScrollReveal>

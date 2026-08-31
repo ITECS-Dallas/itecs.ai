@@ -36,7 +36,7 @@ export default function NotFound() {
               Back to home
             </Button>
             <Button href="/assessment" variant="secondary" size="lg">
-              Book a free AI assessment
+              Start the no-cost intake
             </Button>
           </div>
 

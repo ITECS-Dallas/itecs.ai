@@ -112,10 +112,10 @@ export default function DataAuditPage() {
           </>
         }
         points={[
-          "Enterprise-grade, no-training platform configurations for client work",
-          "Client data remains in the client's tenant wherever the platform allows",
+          "Plan-level vendor data-use and retention terms verified before client work",
+          "Tenancy, connectors, and required data movement documented for the in-scope sources",
           "Client-managed, least-privilege credentials for in-scope systems",
-          "No client data submitted to consumer-grade or non-contracted AI services; a DPA is available on request",
+          "Non-contracted consumer services excluded from approved client-data workflows; a DPA is available on request",
         ]}
         internalLink={{
           text: "Explore AI consulting to plan your post-audit implementation roadmap",

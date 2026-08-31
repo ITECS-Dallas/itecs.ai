@@ -10,7 +10,7 @@ const steps = [
   {
     icon: Phone,
     label: "Call Comes In",
-    detail: "24/7 on your business line",
+    detail: "Within the configured coverage window",
     color: "var(--brand-accent)",
   },
   {

@@ -249,7 +249,7 @@ export function InsightArticleLayout({
                   href="/contact"
                   className="inline-flex min-h-11 items-center text-brand-accent underline underline-offset-4 transition-colors hover:text-brand-accent-bright focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-bg-surface"
                 >
-                  schedule a free AI assessment
+                  start the no-cost intake
                 </Link>
                 .
               </p>

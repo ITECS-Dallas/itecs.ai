@@ -2,6 +2,7 @@
 
 import { StatCounter } from "@/components/ui/StatCounter";
 import { GridBackground } from "@/components/effects/GridBackground";
+import { SITE_CONFIG } from "@/lib/constants";
 
 interface StatItem {
   readonly value: number;
@@ -36,6 +37,27 @@ export function AboutStats({ stats }: { stats: readonly StatItem[] }) {
             </div>
           ))}
         </div>
+        <p className="mt-6 text-center text-sm leading-relaxed text-text-tertiary">
+          Company history and managed-endpoint source: {" "}
+          <a
+            href={SITE_CONFIG.companyFactsUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="text-brand-hover underline underline-offset-4 hover:text-itecs-blue"
+          >
+            ITECS managed-services site
+          </a>
+          . Retention source: {" "}
+          <a
+            href={SITE_CONFIG.retentionSourceUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="text-brand-hover underline underline-offset-4 hover:text-itecs-blue"
+          >
+            December 2025 company announcement
+          </a>
+          .
+        </p>
       </div>
     </section>
   );

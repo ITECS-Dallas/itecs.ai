@@ -38,9 +38,15 @@ export function OutcomesProof() {
               <p className="mt-3 text-sm font-semibold text-text-primary">
                 {metric.label}
               </p>
-              <p className="mt-3 text-xs uppercase tracking-[0.08em] text-text-tertiary">
+              <a
+                href={metric.sourceHref}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-3 inline-flex text-xs uppercase tracking-[0.08em] text-brand-hover hover:text-itecs-blue"
+              >
                 Source: {metric.source}
-              </p>
+                <ArrowUpRight aria-hidden="true" className="ml-1 h-3.5 w-3.5" />
+              </a>
             </div>
           ))}
         </div>

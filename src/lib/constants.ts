@@ -2,6 +2,8 @@
 // ITECS.AI — Single source of truth for all structured content
 // ---------------------------------------------------------------------------
 
+import { SITE_CONFIG } from "./site-config";
+
 export { SITE_CONFIG } from "./site-config";
 
 // ---------------------------------------------------------------------------
@@ -982,7 +984,7 @@ export const AI_ASSURANCES = [
   {
     title: "Data handling",
     description:
-      "Client work is performed in enterprise-grade, no-training platform configurations; client data remains in the client's tenant wherever the platform allows. ITECS accesses client systems via client-managed, least-privilege credentials. A DPA is available on request. ITECS does not submit client data to consumer-grade or non-contracted AI services.",
+      "ITECS verifies the selected platform plan's contractual data-use and retention terms, tenancy, connectors, and required data movement before production. Client systems use client-managed, least-privilege credentials. A DPA is available on request, and non-contracted consumer services are excluded from approved client-data workflows.",
   },
   {
     title: "Regulated environments",
@@ -1105,7 +1107,7 @@ export const SERVICES: ServiceItem[] = [
       {
         step: "We implement the tools and train your team",
         description:
-          "We configure off-the-shelf AI applications when they are enough, integrate systems when needed, and train your staff until they are self-sufficient. Most clients are up and running within 2–4 weeks.",
+          "We configure off-the-shelf AI applications when they are enough, integrate systems when needed, and train your staff to operate the approved workflow. The delivery schedule is confirmed after scope, data, and access requirements are known.",
       },
     ],
     integrations: [
@@ -1121,9 +1123,9 @@ export const SERVICES: ServiceItem[] = [
       "Make.com",
     ],
     stats: [
-      { value: 20, suffix: "+", label: "Hours Saved per Week" },
-      { value: 3.2, suffix: "x", label: "Average Client ROI" },
-      { value: 45, suffix: "%", label: "Faster Than DIY Implementation" },
+      { value: 20, suffix: "+", label: "Modeled Weekly Hours Returned" },
+      { value: 3.2, suffix: "x", label: "Modeled ROI Target" },
+      { value: 45, suffix: "%", label: "Modeled Cycle-Time Reduction" },
     ],
     faq: [
       {
@@ -1133,7 +1135,7 @@ export const SERVICES: ServiceItem[] = [
       {
         question: "How do I know if my business is ready for AI?",
         answer:
-          "If your team spends time on repetitive tasks like data entry, report generation, customer follow-ups, or document processing, you're ready. We start with a free assessment to identify exactly where AI will save you the most time and money.",
+          "If your team spends time on repetitive tasks such as data entry, report generation, customer follow-up, or document processing, start with the no-cost intake to route the right conversation. The formal AI Readiness Assessment is a separate paid engagement with defined deliverables.",
       },
       {
         question: "Do you sell or lock us into specific AI platforms?",
@@ -1143,7 +1145,7 @@ export const SERVICES: ServiceItem[] = [
       {
         question: "How long until we see results from AI?",
         answer:
-          "Most Dallas businesses see measurable time savings within 2–4 weeks of implementation. Our Insight Sprint takes just two weeks, and we can have your first AI tools running the same month.",
+          "Timing depends on the workflow, source readiness, integrations, permissions, testing, and approval requirements. ITECS confirms milestones after discovery and measures the agreed baseline before making an outcome claim.",
       },
     ],
   },
@@ -1175,7 +1177,7 @@ export const SERVICES: ServiceItem[] = [
       "Secure connections to CRMs, helpdesks, file stores, databases, codebases, and APIs",
       "Human-in-the-loop approvals for sensitive messages, records, transactions, and production changes",
       "Project folders, prompt systems, tool schemas, evaluation sets, and operating documentation",
-      "HIPAA and SOC 2 compliant options for regulated industries",
+      "Compliance-eligible deployment options scoped to the client's obligations and vendor terms",
     ],
     howItWorksHeading: "How to build custom AI agents for your business",
     howItWorks: [
@@ -1234,7 +1236,7 @@ export const SERVICES: ServiceItem[] = [
       {
         question: "How do I secure my business data when using AI agents?",
         answer:
-          "The biggest risk is connecting AI to sensitive data without access controls, logging, or approved workflows. We solve this with private or enterprise AI environments, scoped permissions, DLP policies, credential isolation, audit logs, and employee training. Your data never trains public models.",
+          "The biggest risk is connecting AI to sensitive data without access controls, logging, or approved workflows. ITECS scopes private or enterprise configurations, permissions, DLP policies, credential isolation, audit logs, and training to the selected vendors' contractual data terms and the client's requirements.",
       },
       {
         question: "Can a custom agent perform tasks, not just answer questions?",
@@ -1253,11 +1255,11 @@ export const SERVICES: ServiceItem[] = [
     title: "AI Workflow Automation for Dallas Businesses",
     shortTitle: "AI Automation",
     description:
-      "We build and manage AI-powered workflow automations for Dallas businesses — from lead follow-up to data entry to customer onboarding. Set it and forget it.",
+      "We build and manage AI-powered workflow automations for Dallas businesses, from lead follow-up and data entry to customer onboarding, with documented ownership and support.",
     longDescription:
       "Your team shouldn't waste hours on tasks a machine can handle. We map your repetitive workflows — lead follow-ups, invoice processing, data entry, appointment scheduling — and automate them with AI tools like Zapier, Make, Microsoft Power Automate, and custom integrations. Then we monitor everything so it keeps running smoothly.",
     heroSummary:
-      "We automate your most time-consuming workflows — lead follow-ups, data entry, invoice processing, scheduling — saving Dallas businesses an average of 40% on operational costs and freeing your team to focus on growth.",
+      "We automate time-consuming workflows such as lead follow-up, data entry, invoice processing, and scheduling, then measure results against the baseline agreed during discovery.",
     href: "/automation",
     icon: "Activity",
     keywords: [
@@ -1272,9 +1274,9 @@ export const SERVICES: ServiceItem[] = [
       "Automate lead follow-up, appointment scheduling, and customer onboarding",
       "Connect your existing tools — CRM, email, invoicing, helpdesk",
       "AI-powered data entry and document processing",
-      "24/7 monitoring so automations never break silently",
+      "Monitoring, alerts, and named escalation paths for production automations",
       "Monthly reporting on time saved and cost reduction",
-      "Scale up without hiring — handle 2x the workload with the same team",
+      "Capacity planning for higher workflow volume without assuming a staffing outcome",
     ],
     howItWorksHeading: "How to automate your business workflows with AI",
     howItWorks: [
@@ -1291,7 +1293,7 @@ export const SERVICES: ServiceItem[] = [
       {
         step: "Monitor, optimize, and scale your automations",
         description:
-          "We monitor your automations 24/7, fix issues before you notice, and optimize for even more time savings. When you're ready, we add more automations without disrupting what's already working.",
+          "For managed production scopes, we monitor agreed health signals, investigate alerts, and optimize against measured results. Additional workflows are tested and released through the documented change process.",
       },
     ],
     integrations: [
@@ -1305,9 +1307,9 @@ export const SERVICES: ServiceItem[] = [
       "Microsoft Teams",
     ],
     stats: [
-      { value: 40, suffix: "%", label: "Avg. Cost Reduction" },
-      { value: 99.9, suffix: "%", label: "Automation Uptime" },
-      { value: 2, suffix: "x", label: "Workload Without New Hires" },
+      { value: 40, suffix: "%", label: "Modeled Cost-Reduction Target" },
+      { value: 99.9, suffix: "%", label: "Modeled Uptime Target" },
+      { value: 2, suffix: "x", label: "Modeled Capacity Target" },
     ],
     faq: [
       {
@@ -1322,7 +1324,7 @@ export const SERVICES: ServiceItem[] = [
       {
         question: "Can you automate lead follow-up with AI?",
         answer:
-          "Yes — this is one of our most popular automations. We build AI-powered sequences that follow up with leads via email and text within minutes of form submission, qualify them based on your criteria, and route hot leads directly to your sales team. Most clients see a 30–50% improvement in lead response time.",
+          "Yes. ITECS can build sequences that follow up by email or text, apply approved qualification criteria, and route leads to the sales team. The target response time and improvement baseline are defined and measured for each workflow.",
       },
       {
         question: "Do I need to change my existing software to use AI automation?",
@@ -1364,7 +1366,7 @@ export const SERVICES: ServiceItem[] = [
       "Development, staging, and production environment separation",
       "RAG pipeline observability — retrieval quality, citation coverage, and drift detection",
       "Cost monitoring for OpenAI, Azure OpenAI, vector databases, and automation platforms",
-      "Rollback, incident response, and 24/7 managed operations for business-critical AI",
+      "Rollback, incident response, and managed-support coverage defined for each production scope",
     ],
     howItWorksHeading: "How AI DevOps moves your AI system from demo to production",
     howItWorks: [
@@ -1399,9 +1401,9 @@ export const SERVICES: ServiceItem[] = [
       "Microsoft 365",
     ],
     stats: [
-      { value: 60, suffix: "%", label: "Faster AI Release Cycles" },
+      { value: 60, suffix: "%", label: "Modeled Release-Cycle Target" },
       { value: 99.9, suffix: "%", label: "Target Pipeline Uptime" },
-      { value: 30, suffix: "%", label: "Lower AI Run Costs" },
+      { value: 30, suffix: "%", label: "Modeled Run-Cost Target" },
     ],
     faq: [
       {
@@ -1494,14 +1496,14 @@ export const SERVICES: ServiceItem[] = [
     ],
     stats: [
       { value: 24, suffix: "+ years", label: "Dallas IT Operations" },
-      { value: 92, suffix: "%", label: "Client Retention" },
-      { value: 200, suffix: "+", label: "Engagements Delivered" },
+      { value: 95, suffix: "%", label: "Client Retention" },
+      { value: 7000, suffix: "+", label: "Managed Endpoints" },
     ],
     faq: [
       {
         question: "How much do AI training and Guided Build Sessions cost?",
         answer:
-          "ITECS offers single guided-build sessions, discounted session packs, prepaid-hour retainers, shared session banks, and half-day executive briefings. Pricing depends on team size, workflow complexity, tools, and whether delivery is onsite or remote. Prepaid retainer hours have no minimum monthly usage and no expiration date.",
+          "ITECS offers single guided-build sessions, discounted session packs, prepaid-hour retainers, shared session banks, and half-day executive briefings. Pricing depends on team size, workflow complexity, tools, and whether delivery is onsite or remote. Prepaid retainer hours have a 12-month expiry.",
       },
       {
         question: "Do my employees need a technical background for AI training?",
@@ -1525,11 +1527,11 @@ export const SERVICES: ServiceItem[] = [
     title: "AI Receptionists & Voice Agents for Growing Teams",
     shortTitle: "AI Receptionist",
     description:
-      "Human-sounding AI voice agents that answer your phones 24/7, book appointments, and route calls — saving Dallas businesses $3,000+ a month over traditional answering services.",
+      "AI voice agents that can answer calls, book appointments, and route callers according to an approved call flow and escalation policy.",
     longDescription:
-      "Your phones ring after hours, during lunch, and when your team is slammed. Every missed call is a missed opportunity. We deploy AI voice agents that sound natural, answer your business line 24/7, book appointments directly into your calendar, qualify leads, and route urgent calls to the right person. No hold music, no voicemail — just a professional AI receptionist that never takes a day off.",
+      "Your phones ring after hours, during lunch, and when your team is busy. ITECS can deploy a voice agent that answers the business line, books appointments into an approved calendar, qualifies leads using defined criteria, and routes or records exceptions for a human team member.",
     heroSummary:
-      "Never miss a lead again. We deploy AI Voice Agents that answer your phones 24/7, book appointments securely, and save you $3,000+ a month on traditional answering services.",
+      "ITECS deploys AI voice agents that can answer calls around the clock, book appointments, and route exceptions securely. Capacity, availability, and savings targets are confirmed during discovery.",
     href: "/ai-receptionist",
     icon: "Phone",
     keywords: [
@@ -1542,7 +1544,7 @@ export const SERVICES: ServiceItem[] = [
     ],
     h1: "Human-Sounding AI Receptionists for Growing Teams",
     features: [
-      "24/7 phone answering — nights, weekends, holidays, no voicemail",
+      "Around-the-clock call coverage when the approved telephony scope and vendor capacity support it",
       "Natural-sounding AI voices powered by ElevenLabs and Twilio",
       "Books appointments directly into your calendar via Calendar API",
       "Qualifies leads and routes urgent calls to the right team member",
@@ -1577,9 +1579,9 @@ export const SERVICES: ServiceItem[] = [
       "Calendly",
     ],
     stats: [
-      { value: 3000, suffix: "+", label: "Monthly Savings vs. Answering Service" },
-      { value: 98, suffix: "%", label: "Call Answer Rate" },
-      { value: 24, suffix: "/7", label: "Always Available" },
+      { value: 3000, suffix: "+", label: "Modeled Monthly Savings Target" },
+      { value: 98, suffix: "%", label: "Modeled Call-Answer Target" },
+      { value: 24, suffix: "/7", label: "Configurable Coverage Window" },
     ],
     faq: [
       {
@@ -1589,7 +1591,7 @@ export const SERVICES: ServiceItem[] = [
       {
         question: "Does the AI receptionist sound robotic?",
         answer:
-          "No. We use ElevenLabs voice synthesis technology to create natural-sounding, conversational AI voices. Callers frequently can't tell they're speaking to an AI. We customize the voice, tone, and speaking style to match your brand — professional, friendly, or whatever fits your business.",
+          "ITECS can configure a natural-sounding synthesized voice and tune tone, pacing, and speaking style to the approved brand experience. The call flow should disclose automation where law, policy, or client preference requires it.",
       },
       {
         question: "Can the AI receptionist book appointments on my calendar?",
@@ -1599,7 +1601,7 @@ export const SERVICES: ServiceItem[] = [
       {
         question: "What happens when the AI can't handle a call?",
         answer:
-          "The AI transfers to a live team member with full call context — who the caller is, what they asked, and why they need a human. If no one is available, it takes a detailed message and sends it via text, email, or Slack immediately. No caller ever hits a dead end.",
+          "The approved exception path can transfer the caller to a live team member with context or collect a message for delivery through an agreed channel. Exact behavior depends on staff availability, telephony configuration, and the escalation rules tested before launch.",
       },
     ],
   },
@@ -1608,11 +1610,11 @@ export const SERVICES: ServiceItem[] = [
     title: "AI CRM Integration & Sales Automation for Dallas Businesses",
     shortTitle: "AI CRM & Sales",
     description:
-      "We integrate AI into your CRM to automatically research leads, draft personalized outreach, log data, and score prospects — giving your Dallas sales team 15+ hours back every week.",
+      "We integrate AI into CRM workflows to research leads, draft outreach, log approved data, and support prospect scoring with human review where needed.",
     longDescription:
       "Your sales team is spending more time updating your CRM than actually selling. We fix that. We integrate AI directly into HubSpot, Salesforce, or your existing CRM to automate lead research, draft personalized outreach emails, score leads based on real buying signals, and keep your pipeline data clean — automatically. Your reps focus on closing deals, not data entry.",
     heroSummary:
-      "Turn your CRM into an autonomous assistant. We integrate AI to automatically research leads, draft personalized outreach, and log data — giving your sales team 15+ hours back every week.",
+      "Turn your CRM into a governed assistant for lead research, outreach drafts, and activity logging. Time-savings and conversion targets are baselined and measured for the scoped workflow.",
     href: "/crm-sales-ai",
     icon: "TrendingUp",
     keywords: [
@@ -1661,9 +1663,9 @@ export const SERVICES: ServiceItem[] = [
       "LinkedIn Sales Navigator",
     ],
     stats: [
-      { value: 15, suffix: "+", label: "Hours Saved per Rep Weekly" },
-      { value: 35, suffix: "%", label: "Increase in Lead Conversion" },
-      { value: 3, suffix: "x", label: "Faster Lead Response Time" },
+      { value: 15, suffix: "+", label: "Modeled Weekly Hours Returned" },
+      { value: 35, suffix: "%", label: "Modeled Conversion Target" },
+      { value: 3, suffix: "x", label: "Modeled Response-Time Target" },
     ],
     faq: [
       {
@@ -1683,7 +1685,7 @@ export const SERVICES: ServiceItem[] = [
       {
         question: "Will this replace my sales team?",
         answer:
-          "No — it makes them more effective. AI handles the manual work your reps hate (data entry, research, CRM updates) so they can spend more time actually selling. Our Dallas clients typically see reps recover 15+ hours per week that was previously spent on administrative tasks.",
+          "No. The design goal is to reduce approved administrative work such as data entry, research, and CRM updates so representatives can spend more time selling. ITECS measures the client's actual baseline and reports the observed result after launch.",
       },
     ],
   },
@@ -1785,6 +1787,15 @@ export const SERVICES: ServiceItem[] = [
           "OpsMemory works from approved company knowledge, client-specific documentation, internal standards, and authoritative vendor or official guidance. The repositories, connectors, permission boundaries, and deployment pattern are verified during scoping rather than promised as a universal bundle.",
       },
       {
+        question: "How is OpsMemory priced?",
+        answer: `A production OpsMemory build starts with the ${getAIPricingOffering("Agent Discovery & Technical Specification").name} at ${getAIPricingOffering("Agent Discovery & Technical Specification").price}, credited toward the approved build. Build scope depends on repositories, permissions, source cleanup, interfaces, and review workflow. Production Agent Operations is separate from the build fee.`,
+      },
+      {
+        question: "Are the OpsMemory capabilities reported client outcomes?",
+        answer:
+          "No. This page defines the service design and operating boundaries. It does not publish an anonymous success story or unsupported performance metric. Client-specific acceptance criteria and evidence are established and tested during discovery and rollout.",
+      },
+      {
         question: "What will OpsMemory not do?",
         answer:
           "OpsMemory does not turn unverified internet content into company truth, store secrets in its knowledge base, make autonomous compliance judgments, or perform unapproved infrastructure changes.",
@@ -1805,8 +1816,8 @@ export const SERVICES: ServiceItem[] = [
     icon: "ShieldCheck",
     keywords: [
       "AI data readiness audit",
-      "Microsoft 365 security audit",
-      "Google Workspace security audit",
+      "AI source permission review",
+      "AI document corpus audit",
       "business data audit Dallas",
       "AI readiness assessment",
       "data security audit for AI",
@@ -1848,7 +1859,7 @@ export const SERVICES: ServiceItem[] = [
     ],
     stats: [
       { value: 1, suffix: "", label: "Department or Use Case" },
-      { value: 100, suffix: "%", label: "Flat-Fee Pricing" },
+      { value: 100, suffix: "%", label: "Published Flat-Fee Scope" },
       { value: 5, suffix: "", label: "Readiness Areas Covered" },
     ],
     faq: [
@@ -1864,7 +1875,7 @@ export const SERVICES: ServiceItem[] = [
       {
         question: "How is our data handled during the sprint?",
         answer:
-          "Client work is performed in enterprise-grade, no-training platform configurations, and client data remains in the client's tenant wherever the platform allows. ITECS does not submit client data to consumer-grade or non-contracted AI services. A DPA is available on request.",
+          "ITECS documents the approved vendors, plan-level data-use and retention terms, tenancy, access, and any required data movement before work begins. Client-managed least-privilege access is used for in-scope sources, and a DPA is available on request.",
       },
       {
         question: "What if our sources are not build-ready?",
@@ -1982,11 +1993,16 @@ export const CHANGE_ASSURANCE_SERVICE: ServiceItem = {
       answer:
         "It can use approved company and OpsMemory documentation read-only and can work alongside the customer's existing ticketing and change workflow. Specific repositories, handoffs, and permissions are confirmed during scoping; no direct ticketing connector is promised by this page.",
     },
-    {
-      question: "Does it replace a change advisory board or change owner?",
+      {
+        question: "Does it replace a change advisory board or change owner?",
       answer:
-        "No. The ITSM and change workflow records, routes, schedules, and approves the change, while ITECS Change Assurance challenges whether the technical plan and evidence are ready. The change owner, approver, CAB, and technician remain responsible.",
-    },
+          "No. The ITSM and change workflow records, routes, schedules, and approves the change, while ITECS Change Assurance challenges whether the technical plan and evidence are ready. The change owner, approver, CAB, and technician remain responsible.",
+      },
+      {
+        question: "Does this page publish a proven client outcome?",
+        answer:
+          "No. It describes the managed service, review policy, and a fictional demonstration. A client rollout begins with sanitized acceptance tests and client-approved evidence criteria; the page does not represent demonstration output as production proof.",
+      },
   ],
 };
 
@@ -2064,9 +2080,9 @@ export const TRAINING_SERVICES: ServiceItem[] = [
       "SharePoint",
     ],
     stats: [
-      { value: 12, suffix: "hrs", label: "Avg. Weekly Hours Saved per Team" },
-      { value: 2, suffix: " wks", label: "To Team Proficiency" },
-      { value: 90, suffix: "%", label: "Employee Adoption Rate" },
+      { value: 12, suffix: "hrs", label: "Modeled Weekly Time Target" },
+      { value: 2, suffix: " wks", label: "Modeled Proficiency Target" },
+      { value: 90, suffix: "%", label: "Modeled Adoption Target" },
     ],
     faq: [
       {
@@ -2078,7 +2094,7 @@ export const TRAINING_SERVICES: ServiceItem[] = [
       {
         question: "How long does Claude Cowork implementation and training take?",
         answer:
-          "Most Dallas teams are proficient within two weeks. We implement Claude Cowork and connect your tools in the first sessions, then run hands-on workshops on your real projects. Ongoing refreshers use prepaid retainer hours with a 12-month expiry.",
+          "The schedule depends on readiness, connections, team size, and the workflows selected. ITECS confirms milestones during scoping, then measures proficiency against the criteria agreed for the rollout. Ongoing refreshers can use prepaid retainer hours with a 12-month expiry.",
       },
       {
         question: "Is our company data safe when we use Claude Cowork?",
@@ -2162,9 +2178,9 @@ export const TRAINING_SERVICES: ServiceItem[] = [
       "Slack",
     ],
     stats: [
-      { value: 55, suffix: "%", label: "Faster Routine Engineering" },
-      { value: 3, suffix: "x", label: "More Tickets Cleared per Sprint" },
-      { value: 100, suffix: "%", label: "Agent Code Human-Reviewed" },
+      { value: 55, suffix: "%", label: "Modeled Cycle-Time Target" },
+      { value: 3, suffix: "x", label: "Modeled Throughput Target" },
+      { value: 100, suffix: "%", label: "Required Human-Review Coverage" },
     ],
     faq: [
       {
@@ -2190,7 +2206,7 @@ export const TRAINING_SERVICES: ServiceItem[] = [
       {
         question: "How long does Codex implementation and training take?",
         answer:
-          "Most teams run governed Codex workflows within two to three weeks. We set up the tooling and guardrails first, then train developers on live tickets. Ongoing tuning uses prepaid retainer hours with a 12-month expiry.",
+          "Timing depends on repository readiness, CI/CD, permissions, review policy, and the workflows selected. ITECS confirms milestones after assessment, then trains developers on approved work. Ongoing tuning can use prepaid retainer hours with a 12-month expiry.",
       },
     ],
   },
@@ -2260,9 +2276,9 @@ export const TRAINING_SERVICES: ServiceItem[] = [
       "Copilot Studio",
     ],
     stats: [
-      { value: 30, suffix: "%", label: "Faster Document & Email Work" },
-      { value: 40, suffix: "%", label: "Higher License Utilization" },
-      { value: 14, suffix: " days", label: "To Company-Wide Rollout" },
+      { value: 30, suffix: "%", label: "Modeled Cycle-Time Target" },
+      { value: 40, suffix: "%", label: "Modeled Utilization Target" },
+      { value: 14, suffix: " days", label: "Modeled Rollout Target" },
     ],
     faq: [
       {
@@ -2288,7 +2304,7 @@ export const TRAINING_SERVICES: ServiceItem[] = [
       {
         question: "How long does a Copilot rollout take?",
         answer:
-          "Most Dallas businesses reach company-wide rollout in about two weeks. We run the readiness assessment and governance setup first, then deliver department training. Refreshers and new-workflow onboarding use prepaid retainer hours.",
+          "Timing depends on permission cleanup, governance, licensing, team size, and the rollout plan. ITECS confirms milestones after the readiness assessment, then delivers department training. Refreshers and new-workflow onboarding can use prepaid retainer hours.",
       },
     ],
   },
@@ -2483,6 +2499,120 @@ export const CODING_AGENT_COMPARISON: PlanComparison = {
 };
 
 export const INSIGHTS: InsightItem[] = [
+  {
+    slug: "ai-knowledge-management-capture-expertise",
+    title: "AI Knowledge Management: Capture Expertise Before It Leaves",
+    description:
+      "Preserve institutional knowledge before experts leave with a governed AI workflow for consented capture, cited retrieval, access control, review, correction, and renewal.",
+    href: "/insights/ai-knowledge-management-capture-expertise",
+    publishedDate: "2026-08-31",
+    hubSlug: "ai-knowledge-base",
+    hubLabel: "AI Knowledge Base",
+    hubHref: "/ai-knowledge-base",
+    keywords: [
+      "AI knowledge management",
+      "institutional knowledge retention",
+      "capture employee expertise",
+      "tacit knowledge transfer",
+      "AI knowledge base governance",
+      "retrieval augmented generation knowledge base",
+      "RAG knowledge management",
+      "knowledge provenance",
+      "knowledge base access control",
+      "employee retirement knowledge transfer",
+      "AI onboarding knowledge base",
+      "knowledge freshness workflow",
+    ],
+    h1: "AI Knowledge Management: Capture Expertise Before It Leaves",
+    content: [
+      "Business leaders should treat institutional knowledge as an operating asset with an expiration risk. The danger is not limited to retirement. A senior technician changes territories, a controller moves into a new role, an implementation lead resigns, or a trusted coordinator takes leave—and the organization discovers that the written procedure never captured the exceptions, warning signs, sequencing choices, customer history, or reasoning that made the work succeed.",
+      "**The right response is not to create an AI replica of an employee or pour every file into a chatbot. Build a governed workflow that captures approved evidence and expert rationale with consent, preserves source identity and access rules, retrieves only authorized material, cites every useful answer, routes uncertainty and conflicts to people, and makes named experts responsible for approval and renewal. AI should make maintained knowledge easier to use; it should not turn an experienced person's unreviewed recollection into permanent company truth.**",
+      "That distinction matters because expertise is not one thing. Manuals, decisions, checklists, and recurring exceptions can often be documented and retrieved. Judgment developed through observation, practice, relationships, and physical experience may require mentoring, shadowing, simulation, or supervised work. A complete knowledge-transfer program uses AI for the codifiable layer while protecting the human learning that a language model cannot reproduce.",
+      "**What AWS's August 24 architecture demonstrates**",
+      "AWS's [August 24, 2026 institutional-knowledge architecture](https://aws.amazon.com/blogs/machine-learning/democratizing-institutional-knowledge-building-an-ai-powered-knowledge-management-system-with-aws/) provides a useful technical reference. Its pattern separates authenticated user access, a controlled API and orchestration layer, a governed document repository, retrieval and generation, a vector index, response caching, and operational monitoring. Amazon Cognito handles identity, API Gateway and Lambda control requests, Amazon S3 holds source material, Amazon Bedrock Knowledge Bases performs retrieval-augmented generation, OpenSearch Serverless backs retrieval, and DynamoDB supports caching.",
+      "The business lesson is architectural, not vendor-specific: identity, source storage, retrieval, answer generation, caching, and monitoring are separate control points. That separation lets leaders decide who can ask, which source can answer, when a cached response expires, what evidence appears with the answer, and where an error is investigated. A single shared chatbot connected to a flat document dump cannot enforce those decisions reliably.",
+      "AWS also states important limits. Updates are not queryable until ingestion completes; content types can require different cache lifetimes; grounding reduces but does not eliminate incorrect answers; and high-consequence decisions should retain human review. The published accelerator is cloud-connected and does not include the recommended confidence or answer-validation enhancement by default. Treat it as a reference design to evaluate, not a turnkey governance outcome.",
+      "**What current research adds**",
+      "The [August 13, 2026 Harvard Data Science Review article published by MIT Press](https://hdsr.mitpress.mit.edu/pub/jude8rkl/release/2) argues that broad access is not the same as business value. Its five success patterns are strategic problem definition, concrete outcome metrics, workflow integration, context-specific architecture with curated content, and active human governance. For knowledge retention, that means beginning with a vulnerable decision or workflow—not with a mandate to index everything the company owns.",
+      "The MIT Press article also describes a practical evaluation loop: nonexperts test a grounded assistant, experts assess the answers, corrected answers improve the knowledge base, and evaluation examines faithfulness and relevance. Another example emphasizes that client-owned and privileged material cannot be made broadly available merely because retrieval technology can search it. Those patterns support frontline testing, correction workflows, and permission-aware retrieval as design requirements rather than later enhancements.",
+      "A [2025 Wiley study of generative AI in knowledge-management work](https://onlinelibrary.wiley.com/doi/10.1002/kpm.70004) found that AI can accelerate retrieval, learning, and onboarding, but also raises reliability, privacy, and collaboration concerns. Its evidence is a small qualitative sample of 11 software developers in eight countries, so it should not be generalized into a universal productivity claim. Its more durable lesson is operational: AI-generated knowledge needs continuous verification, transparent data policy, and access to human colleagues when the question becomes specific or consequential.",
+      "A [2026 Wiley provocation on LLM-mediated learning](https://onlinelibrary.wiley.com/doi/full/10.1111/1748-8583.70036) draws an equally important boundary. Encoded material such as manuals and formal procedures is a partial fit for LLM support, while embodied practice, shared culture, and expert judgment are poor candidates for substitution. The authors recommend retaining mentoring, shadowing, reflection, and first-hand experience. This is conceptual research rather than a field trial, but it is a useful warning against confusing a fluent answer with transferred capability.",
+      "**The capture-to-renewal operating model**",
+      "Use the following plan as the control contract for one bounded knowledge workflow. Replace the generic roles with named owners, systems, time limits, and evidence before launch. The knowledge owner approves meaning; security and data owners approve access; the platform owner operates retrieval; and frontline users supply evidence about whether the answer actually helps them complete work.",
+      "[[AI_KNOWLEDGE_MANAGEMENT_PLAN]]",
+      "**1. Identify high-risk roles and recurring exceptions**",
+      "Start with work where knowledge concentration and business consequence overlap. Map roles that have a single experienced holder, foreseeable retirement or transition, long replacement time, safety or compliance responsibility, recurring escalations, customer-specific history, or frequent workarounds. Ask managers which questions repeatedly interrupt the same expert and which failures become likely when that person is unavailable.",
+      "Turn the result into a risk register. For each role or workflow, record the accountable executive, expert contributors, backup coverage, critical decisions, systems and documents used, exception frequency, impact of a wrong answer, time sensitivity, confidentiality class, and target transfer date. Prioritize a narrow decision such as diagnosing one equipment fault, reconciling one exception class, or preparing one regulated review. A company-wide repository is not a useful first pilot.",
+      "**2. Interview experts around real work, not job descriptions**",
+      "Use structured interviews, scenario walkthroughs, artifact review, and observation where appropriate. Ask the expert to reconstruct a recent normal case, a difficult exception, a near miss, and a situation in which the documented procedure would have produced the wrong result. Follow each decision with: What signal changed your mind? Which source did you trust? What did you rule out? Who had authority? What would make this advice unsafe next month?",
+      "Interview more than one person when the process crosses functions. A technician may know the physical symptoms, dispatch may know customer constraints, procurement may know parts substitutions, and security may know which logs cannot be copied. Record disagreement instead of forcing premature consensus. A conflict is knowledge about the operating environment, not an editing inconvenience.",
+      "**3. Capture sources, decisions, and rationale with consent**",
+      "Create an approved capture notice before recording an interview, meeting, screen walkthrough, transcript, or demonstration. State the business purpose, material collected, intended users, storage location, retention, editing and approval process, and whether the contributor will be identified. Give the expert a chance to correct the record and separate personal information, confidential client material, anecdotes, or opinions that should not enter the reusable knowledge base.",
+      "Each knowledge packet should include the authoritative source document, the decision or procedure, triggering conditions, required inputs, rationale, exceptions, prohibited shortcuts, escalation path, effective date, contributor, approver, source system, and links back to the original record. Store a stable reference to protected evidence rather than duplicating sensitive files into a wider AI repository when retrieval can honor the original system's permissions.",
+      "**4. Assign an owner and review date to every knowledge object**",
+      "A document without an owner is already becoming stale. Name a business knowledge owner who can approve meaning, a technical custodian who manages ingestion and access, and an alternate who can act when the primary owner leaves. Set an effective date, next review date, event-based review triggers, and a retirement condition for every approved object.",
+      "Review frequency should follow volatility and consequence. A stable historical explanation may remain useful for years when clearly labeled. A vendor procedure, pricing rule, safety instruction, regulatory interpretation, or customer-specific process may need review when the underlying system, contract, law, personnel, or risk changes. Expiration should remove the item from ordinary answers or label it historical; it should not silently remain current because nobody opened a ticket.",
+      "**5. Preserve provenance and permissions end to end**",
+      "Keep the source title, owner, contributor, approver, version, effective date, system of record, classification, permission group, ingestion time, and review status with each retrievable segment. If content is transformed, summarized, translated, or split, retain the relationship to the original. Users should be able to move from an answer citation to the exact approved evidence they are allowed to inspect.",
+      "Retrieval must filter before generation, not hide unauthorized citations after an answer has already been composed. Preserve matter, client, department, geography, and role boundaries from the source systems. Test both positive and negative access cases. An employee who lacks the underlying permission should not learn a protected fact, its summary, its existence, or clues embedded in an error message.",
+      "**6. Build a retrieval-grounded knowledge base**",
+      "Create an ingestion pipeline that accepts only approved sources, validates required metadata, applies permission labels, parses the content, creates retrieval representations, and records the resulting version. Tune chunking and retrieval around the way employees ask questions and the unit of evidence needed to justify an answer. A paragraph may work for a policy definition; a troubleshooting sequence may need the prerequisites, steps, warning, and escalation rule together.",
+      "Keep retrieval separate from approval. The model can assemble a response from authorized evidence, but it cannot promote draft notes into policy or resolve two owners' disagreement. For sensitive work, constrain the assistant to answer from the retrieved corpus, refuse when evidence is missing, and route high-impact questions to a named expert. The [ITECS OpsMemory model](/ai-knowledge-base) applies this source-priority, permission, citation, review, and freshness discipline to managed knowledge operations.",
+      "**7. Require citations that support the answer**",
+      "Every substantive instruction, threshold, exception, and decision rule should cite the evidence that supports it. Show a useful source label, version or effective date, and link when the user has access. Citation presence alone is not enough: test whether the cited passage entails the claim and whether the answer omitted a limiting condition from the same procedure.",
+      "Define an abstention contract. When retrieval returns weak, conflicting, expired, or unauthorized evidence, the assistant should say that approved guidance is unavailable, identify the safe next step, and create or route a knowledge-gap record. A confident uncited answer is not a faster form of knowledge transfer; it is an undocumented decision risk.",
+      "**8. Test answers with frontline employees**",
+      "Build a test set from real recurring questions, exceptions, ambiguous wording, outdated documents, permission differences, and cases that should produce no answer. Ask frontline employees—not only the experts who wrote the material—to use the system in the actual work context. Observe whether they can frame the question, understand the answer, open the citation, recognize its limits, complete the next step, and escalate without reverting to an informal back channel.",
+      "Have qualified experts grade factual support, completeness, exception handling, and safety. Have frontline users grade usefulness, clarity, and fit with the workflow. Record both. An answer may be factually faithful but unusable on a service call, or easy to follow but missing the condition that prevents damage. Release only when the system meets both evidence and workability thresholds.",
+      "**9. Flag conflicts and stale guidance instead of blending them**",
+      "Detect duplicate procedures, incompatible thresholds, multiple current versions, expired approvals, missing owners, broken source links, and facts that changed after ingestion. Present material conflicts as a review state with the affected sources and owners. Do not ask the model to average contradictory instructions or select whichever passage sounds more authoritative.",
+      "Use change events to trigger re-ingestion and review: source edits, system releases, policy changes, contract renewals, incidents, audit findings, organization changes, and expert feedback. Invalidate cached answers when their source changes. Until revalidation completes, label the knowledge as under review or remove it from production retrieval according to consequence.",
+      "**10. Make feedback and correction part of the workflow**",
+      "Give every answer a way to report wrong, incomplete, stale, inaccessible, or unsafe guidance. Capture the question, answer version, citations, user role, reason code, and optional comment without copying unrelated sensitive context. Route the issue to the knowledge owner with a severity and deadline; security or privacy incidents should follow their existing response process rather than an editorial queue.",
+      "Separate correction from model tuning. The owner first fixes or clarifies the authoritative source, records approval, re-ingests it, invalidates affected caches, reruns the relevant tests, and then closes the report with evidence. If the source was correct but retrieval failed, adjust and evaluate retrieval. If the answer exceeded the source, adjust generation controls. This preserves a defensible chain from defect to correction.",
+      "**11. Measure successful retrieval and onboarding time**",
+      "Measure completed knowledge work, not chat volume. Useful indicators include the share of eligible questions answered with accepted supporting evidence, citation-support pass rate, appropriate abstention rate, time to locate authoritative guidance, repeat expert interruptions, open knowledge gaps, stale-item rate, correction closure time, and the percentage of high-risk knowledge objects reviewed on schedule.",
+      "For onboarding, define the role-specific tasks a new employee must complete safely and independently. Compare time to demonstrated proficiency, error and escalation patterns, supervisor review load, and knowledge retention over an agreed period. Do not claim that AI caused an improvement without accounting for changes in hiring, training, workload, documentation, and supervision. The system should help leaders learn which knowledge flow improved—not manufacture an ROI story from login counts.",
+      "**12. Keep human experts accountable for approval and renewal**",
+      "The business owner remains accountable for the knowledge even after the original expert leaves. Establish a renewal calendar, overdue escalation, coverage for departed owners, periodic access recertification, sampled answer review, and a rule for retiring unsupported guidance. Require human approval before AI output becomes a policy, customer commitment, safety instruction, financial decision, legal interpretation, or consequential system action.",
+      "Preserve the community that keeps knowledge alive. Use the assistant to prepare employees for mentoring sessions, surface relevant cases during shadowing, and record approved lessons afterward. Rotate developing staff through real decisions with supervision. The objective is institutional resilience: the company can retrieve what it knows, prove why it believes it, correct it when reality changes, and continue developing people who can challenge the system.",
+      "**A practical first 30 days**",
+      "In the first week, choose one high-risk recurring decision and name the executive owner, expert contributors, users, data owner, and security reviewer. In the second, capture five to ten representative cases plus their documents, rationale, exceptions, and permissions with consent. In the third, build a restricted retrieval pilot that cites sources and abstains on gaps. In the fourth, run frontline and expert tests, fix the authoritative material, set the review calendar, and decide whether the measured retrieval and onboarding signals justify expansion.",
+      "Do not expand because the demonstration is fluent. Expand when the owners can show that authorized employees find approved guidance faster, citations support the answer, sensitive boundaries hold, conflicts become review work instead of hidden output, corrections close on time, and people still develop the practical judgment needed to keep the knowledge current.",
+    ],
+    faq: [
+      {
+        question: "Which knowledge workflow should a business capture first?",
+        answer:
+          "Start with one recurring decision or exception where expertise is concentrated in a small number of people and a delay or wrong answer has a meaningful operational consequence. Name the owner, users, approved sources, permissions, and success measure before indexing content.",
+      },
+      {
+        question: "Can an AI knowledge base capture all tacit knowledge?",
+        answer:
+          "No. AI can help document and retrieve codifiable evidence, decisions, rationale, and recurring exceptions. Embodied skill, shared culture, and expert judgment still require mentoring, shadowing, supervised practice, and reflection. The AI workflow should support those methods rather than replace them.",
+      },
+      {
+        question: "How should sensitive institutional knowledge be protected?",
+        answer:
+          "Preserve the source system's permissions and classification through ingestion and retrieval, filter access before generation, avoid unnecessary copies, and test both allowed and denied users. An unauthorized employee should not receive the protected fact, a summary, its citation, or clues that reveal it exists.",
+      },
+      {
+        question: "What makes an AI knowledge answer attributable?",
+        answer:
+          "The answer should cite the exact approved source, version or effective date, and supporting passage available to that user. The system should retain the source owner, contributor, approver, transformation history, retrieval evidence, answer version, and review status so a reviewer can reconstruct why it answered.",
+      },
+      {
+        question: "How does a company keep an AI knowledge base current?",
+        answer:
+          "Assign a business owner, review date, event-based triggers, and retirement condition to every knowledge object. Source changes should trigger re-ingestion, cache invalidation, focused retesting, and approval. Conflicting or expired guidance should be flagged or withheld, not blended into a plausible answer.",
+      },
+      {
+        question: "How should leaders measure an AI knowledge-management pilot?",
+        answer:
+          "Measure eligible questions resolved with accepted evidence, citation support, appropriate abstention, time to authoritative guidance, repeated expert interruptions, correction time, stale content, scheduled reviews, and role-specific onboarding time to demonstrated proficiency. Chat volume alone does not show that knowledge work improved.",
+      },
+    ],
+  },
   {
     slug: "ai-agent-evaluation-score-tool-use-before-production",
     title: "AI Agent Evaluation: Score Tool Use Before Production",
@@ -4075,7 +4205,7 @@ export const INSIGHTS: InsightItem[] = [
       "**Decide where enforcement belongs.** Choose the gateway as your enforcement point, use a portable policy language to express the rules, and never rely on a reference interpreter as your production engine.",
       "**How ITECS Governs Your Agent Tool Chains**",
       "Sequence-aware authorization is the difference between an agent that is convenient and one that is safe to run unattended. ITECS designs it. We are vendor-neutral: we build this on AWS Bedrock AgentCore and Dogwood, on other gateways, or on the policy layer you already run. We threat-model your agents' tool chains, enforce prerequisites and output-matching at the gateway, set cumulative caps on spend and exposure, put recorded human approval in front of the sensitive steps, and log every deterministic decision for audit.",
-      "We price this the way we price all engineering work — hourly consulting or prepaid retainer hours with tracked usage, no monthly minimum and no expiration, plus a flat fee for a scoped agent-authorization build. We start with a [data and AI readiness audit](/data-audit) and fold it into the broader [AI DevOps](/ai-devops) discipline that keeps automation safe in production, alongside the pre-inference controls in our [AI prompt DLP guide](/insights/ai-prompt-dlp-block-data-before-models). The payoff is agents you can let run — because the chain, not just the click, is under control. When you are ready to authorize sequences instead of actions, [talk to the ITECS team](/contact).",
+      "We price this the way we price all engineering work — hourly consulting or prepaid retainer hours with tracked usage, no monthly minimum and a 12-month expiry, plus a flat fee for a scoped agent-authorization build. We start with a [data and AI readiness audit](/data-audit) and fold it into the broader [AI DevOps](/ai-devops) discipline that keeps automation safe in production, alongside the pre-inference controls in our [AI prompt DLP guide](/insights/ai-prompt-dlp-block-data-before-models). The payoff is agents you can let run — because the chain, not just the click, is under control. When you are ready to authorize sequences instead of actions, [talk to the ITECS team](/contact).",
     ],
     faq: [
       {
@@ -4157,7 +4287,7 @@ export const INSIGHTS: InsightItem[] = [
       "**Decide block versus audit, per surface.** Reserve hard pre-inference blocks for data whose exposure is irreversible, and use post-use auditing where the risk is lower and speed matters more.",
       "**How ITECS Builds Your Pre-Inference DLP**",
       "Pre-inference DLP is a real control, and a real way to break your own workforce if you deploy it carelessly. ITECS builds it to protect data without grinding work to a halt. We are vendor-neutral: we design the control around whatever you run — Anthropic's inference hooks, your existing DLP from Netskope, Palo Alto Networks, Proofpoint, or Zscaler, or a custom server. We scope the surfaces that need a gate, connect the hook, tune policy in shadow mode, set the fail-open or fail-closed behavior deliberately, and route every denial into your compliance feed.",
-      "We price this the way we price all advisory work — hourly consulting or prepaid retainer hours with tracked usage, no monthly minimum and no expiration, plus a flat fee for a scoped pre-inference DLP build. We start with a [data and AI readiness audit](/data-audit) to map what must never reach a model, and pair it with the admin controls in our [ChatGPT Work security checklist](/insights/chatgpt-work-secure-admin-checklist). The payoff is simple: sensitive data stopped before it leaves, and employees who can still get their work done. When you are ready to block data before it reaches a model, [talk to the ITECS team](/contact).",
+      "We price this the way we price all advisory work — hourly consulting or prepaid retainer hours with tracked usage, no monthly minimum and a 12-month expiry, plus a flat fee for a scoped pre-inference DLP build. We start with a [data and AI readiness audit](/data-audit) to map what must never reach a model, and pair it with the admin controls in our [ChatGPT Work security checklist](/insights/chatgpt-work-secure-admin-checklist). The payoff is simple: sensitive data stopped before it leaves, and employees who can still get their work done. When you are ready to block data before it reaches a model, [talk to the ITECS team](/contact).",
     ],
     faq: [
       {
@@ -4240,7 +4370,7 @@ export const INSIGHTS: InsightItem[] = [
       "Then treat every server as code you are running with your access. Install servers only from sources you trust, because a local server runs with your user's permissions and a remote one receives whatever data Claude sends it. Scope filesystem servers to a specific folder, keep credentials in environment variables rather than in the config file, and prefer OAuth over long-lived tokens for remote servers. The official [Model Context Protocol documentation](https://modelcontextprotocol.io/docs/develop/connect-local-servers) is the authoritative reference for server behavior and transports — read it before deploying a server you did not write. This is the same review we apply when we build an emergency stop for any [autonomous agent that can act on your systems](/insights/ai-kill-switch-plan-emergency-stops).",
       "**How ITECS Sets Up MCP for Your Team**",
       "MCP is simple to start and easy to get wrong at scale. The common failure modes are an over-scoped filesystem server, a secret checked into a shared config, or a remote connector exposed wider than intended. ITECS sets it up so it is useful and contained. We select the right servers for your workflows, choose local versus remote per case, scope each server to least privilege, keep credentials out of files, and put the same identity, logging, and approval controls around MCP that we apply to any [governed AI agent](/custom-ai-agents).",
-      "We price this the way we price all engineering work — hourly consulting or prepaid retainer hours with tracked usage, no monthly minimum and no expiration, plus a flat fee for a scoped MCP rollout across your team. We start with a [data and AI readiness audit](/data-audit) and align it with your broader [AI strategy](/consulting). The payoff is Claude wired into the tools your team actually uses, without opening a door you did not mean to. When you are ready to set up MCP the right way, [talk to the ITECS team](/contact).",
+      "We price this the way we price all engineering work — hourly consulting or prepaid retainer hours with tracked usage, no monthly minimum and a 12-month expiry, plus a flat fee for a scoped MCP rollout across your team. We start with a [data and AI readiness audit](/data-audit) and align it with your broader [AI strategy](/consulting). The payoff is Claude wired into the tools your team actually uses, without opening a door you did not mean to. When you are ready to set up MCP the right way, [talk to the ITECS team](/contact).",
     ],
     faq: [
       {
@@ -4326,7 +4456,7 @@ export const INSIGHTS: InsightItem[] = [
       "**Test indirect prompt injection defenses.** Red-team the agent against hidden malicious instructions before production, and keep the agent away from sensitive workflows until it passes.",
       "**How ITECS Secures Your Browser Agents**",
       "Browser agents are arriving in your workforce whether or not you have a policy for them. ITECS gives you one that works. We are vendor-neutral: we secure agentic browsing across Chrome Enterprise and whatever else your teams use, not a single product. We bind agents to your identity system, enforce browser DLP, scope agents to the sites their tasks need, control extension and scraping risk, turn on activity logging, set human-approval gates for high-stakes actions, and red-team your agents against prompt injection before they go live.",
-      "We price this the way we price all advisory work — hourly consulting or prepaid retainer hours with tracked usage, no monthly minimum and no expiration, plus a flat fee for a scoped browser-agent security build. We start with a [data and AI readiness audit](/data-audit) and fold it into the broader [AI DevOps](/ai-devops) discipline that keeps automation safe in production. The payoff is the productivity of browser agents without handing an attacker a browser that acts with your employees' access. When you are ready to secure agentic browsing, [talk to the ITECS team](/contact).",
+      "We price this the way we price all advisory work — hourly consulting or prepaid retainer hours with tracked usage, no monthly minimum and a 12-month expiry, plus a flat fee for a scoped browser-agent security build. We start with a [data and AI readiness audit](/data-audit) and fold it into the broader [AI DevOps](/ai-devops) discipline that keeps automation safe in production. The payoff is the productivity of browser agents without handing an attacker a browser that acts with your employees' access. When you are ready to secure agentic browsing, [talk to the ITECS team](/contact).",
     ],
     faq: [
       {
@@ -4406,7 +4536,7 @@ export const INSIGHTS: InsightItem[] = [
       "**Set approval rules before deployment.** Anyone can download a model in minutes. Gate production use behind named sign-off, so adoption is a decision, not an accident.",
       "**How ITECS Governs Open-Weight Adoption**",
       "Open-weight models can be a genuine advantage — control of your data, lower cost, freedom from a single vendor. They can also be a quiet liability if a team downloads one without a second thought. ITECS makes the choice deliberate. We are vendor-neutral: we do not push open or closed, we help you decide model by model. We read the license and separate open weight from open source, test the model's capability and misuse potential on your own data, advise where private hosting earns its keep, track provenance, and put an approval gate in front of production.",
-      "We price this the way we price all advisory work — hourly consulting or prepaid retainer hours with tracked usage, no monthly minimum and no expiration, plus a flat fee for a scoped open-weight evaluation and governance build. We start with a [data and AI readiness audit](/data-audit) and pair it with blind, task-specific [model evaluation](/insights/ai-model-evaluation-blind-tests) so the decision rests on your evidence, not a leaderboard. The payoff is the upside of open weights without the accidents. When you are ready to govern open-weight adoption, [talk to the ITECS team](/contact).",
+      "We price this the way we price all advisory work — hourly consulting or prepaid retainer hours with tracked usage, no monthly minimum and a 12-month expiry, plus a flat fee for a scoped open-weight evaluation and governance build. We start with a [data and AI readiness audit](/data-audit) and pair it with blind, task-specific [model evaluation](/insights/ai-model-evaluation-blind-tests) so the decision rests on your evidence, not a leaderboard. The payoff is the upside of open weights without the accidents. When you are ready to govern open-weight adoption, [talk to the ITECS team](/contact).",
     ],
     faq: [
       {
@@ -4488,7 +4618,7 @@ export const INSIGHTS: InsightItem[] = [
       "**Decide convenient versus too risky, per workflow.** Allow ChatGPT sign-in where the stakes are low and block it where they are not. A public marketing tool is not a production database.",
       "**How ITECS Governs Your Identity Decisions**",
       "Every new sign-in button is a small governance decision that adds up. ITECS helps you make them deliberately. We are vendor-neutral: we do not push you toward or away from Sign in with ChatGPT, we help you decide where it fits and where it does not. We inventory the apps that offer it, separate authentication from the connectors that actually touch your data, verify and document the consent scopes, protect your SSO and 2FA, and build the offboarding paths that keep access revocable.",
-      "We price this the way we price all advisory work — hourly consulting or prepaid retainer hours with tracked usage, no monthly minimum and no expiration, plus a flat fee for a scoped identity and app-authorization review. We pair it with a [data and AI readiness audit](/data-audit) and the broader [ChatGPT admin controls](/insights/chatgpt-work-secure-admin-checklist) that keep AI tools accountable. The payoff is simple: the convenience of modern sign-in without handing away control of who reaches your systems. When you are ready to govern identity before you enable it, [talk to the ITECS team](/contact).",
+      "We price this the way we price all advisory work — hourly consulting or prepaid retainer hours with tracked usage, no monthly minimum and a 12-month expiry, plus a flat fee for a scoped identity and app-authorization review. We pair it with a [data and AI readiness audit](/data-audit) and the broader [ChatGPT admin controls](/insights/chatgpt-work-secure-admin-checklist) that keep AI tools accountable. The payoff is simple: the convenience of modern sign-in without handing away control of who reaches your systems. When you are ready to govern identity before you enable it, [talk to the ITECS team](/contact).",
     ],
     faq: [
       {
@@ -4569,7 +4699,7 @@ export const INSIGHTS: InsightItem[] = [
       "**Monitor after production.** Keep scoring the model once real data arrives, because inputs shift, models update, and last quarter's result is not a guarantee.",
       "**How ITECS Evaluates Models Before You Deploy**",
       "Most companies evaluate a model by reading its marketing. ITECS evaluates it against your work. We are vendor-neutral: we do not sell a model, so we have no reason to flatter one. We define the task and the metric that means success for your workflow, build a blind test set from your own data, score every candidate the same way, and hand you a ranked result with the uncertainty attached — not a leaderboard screenshot. Then we stand up the monitoring that keeps the answer honest after go-live.",
-      "We price this the way we price all advisory work — hourly consulting or prepaid retainer hours with tracked usage, no monthly minimum and no expiration, plus a flat fee for a scoped model-evaluation build. We start with a [data and AI readiness audit](/data-audit) and pair the result with the guardrails to run a model safely, including an [emergency stop for any agent that acts on your systems](/insights/ai-kill-switch-plan-emergency-stops). The payoff is a deployment decision you can defend: the right model for the job, proven on your data. When you are ready to evaluate before you deploy, [talk to the ITECS team](/contact).",
+      "We price this the way we price all advisory work — hourly consulting or prepaid retainer hours with tracked usage, no monthly minimum and a 12-month expiry, plus a flat fee for a scoped model-evaluation build. We start with a [data and AI readiness audit](/data-audit) and pair the result with the guardrails to run a model safely, including an [emergency stop for any agent that acts on your systems](/insights/ai-kill-switch-plan-emergency-stops). The payoff is a deployment decision you can defend: the right model for the job, proven on your data. When you are ready to evaluate before you deploy, [talk to the ITECS team](/contact).",
     ],
     faq: [
       {
@@ -4650,7 +4780,7 @@ export const INSIGHTS: InsightItem[] = [
       "**Decide recommend, initiate, or complete.** Set an explicit ceiling for each workflow, and grant full completion only where the value is low and the testing is thorough.",
       "**How ITECS Governs Your Payment Agents**",
       "AI payment agents are arriving fast, and the vendors building the rails are the first to say the governance is your job. ITECS is vendor-neutral: we do not sell you a payment product, we build the controls around whichever one you use — Corpay, Mastercard, Visa, or your bank's own agent tooling. We verify agent identity and intent, scope each agent to a narrow payment lane, set approval thresholds, enforce separation of duties, wire up audit trails, and red-team the workflow against the prompt-injection attacks the research is now documenting.",
-      "We price this the way we price all advisory work — hourly consulting or prepaid retainer hours with tracked usage, no monthly minimum and no expiration, plus a flat fee for a scoped payment-agent governance build. We begin every engagement with a [data and AI readiness audit](/data-audit) and align it with your broader [AI strategy](/consulting). The payoff is the ability to let agents handle payments at all — with the confidence that none of them can move money you did not authorize. When you are ready to control money movement before launch, [talk to the ITECS team](/contact).",
+      "We price this the way we price all advisory work — hourly consulting or prepaid retainer hours with tracked usage, no monthly minimum and a 12-month expiry, plus a flat fee for a scoped payment-agent governance build. We begin every engagement with a [data and AI readiness audit](/data-audit) and align it with your broader [AI strategy](/consulting). The payoff is the ability to let agents handle payments at all — with the confidence that none of them can move money you did not authorize. When you are ready to control money movement before launch, [talk to the ITECS team](/contact).",
     ],
     faq: [
       {
@@ -4732,7 +4862,7 @@ export const INSIGHTS: InsightItem[] = [
       "**Demand auditability and human review.** Require a traceable log of what the model found and did, and put a person between any generated patch and your live systems.",
       "**How ITECS Selects and Governs Your Security Models**",
       "The security-AI market now moves in weekly launches, and no single model is the answer. ITECS is vendor-neutral by design: we do not sell you a model, we help you choose and govern the right ones. We map your security tasks, match each to the appropriate small, frontier, or agentic model, sandbox the ones that run exploits, and put human review and audit logging around anything that can change your code. It is the same governance discipline we apply to [agentic AI infrastructure](/insights/agentic-ai-infrastructure-production-readiness) and to building an emergency stop for any [autonomous agent that can act on your systems](/insights/ai-kill-switch-plan-emergency-stops).",
-      "We price this the way we price all advisory work — hourly consulting or prepaid retainer hours with tracked usage, no monthly minimum and no expiration, plus a flat fee for a scoped security-AI selection and governance build. The payoff is simple: the right model on each task, sensitive code kept where it belongs, and no automated fix reaching production without a human's sign-off. We begin every engagement with a [data and AI readiness audit](/data-audit). When you are ready to pick the right models for security, [talk to the ITECS team](/contact).",
+      "We price this the way we price all advisory work — hourly consulting or prepaid retainer hours with tracked usage, no monthly minimum and a 12-month expiry, plus a flat fee for a scoped security-AI selection and governance build. The payoff is simple: the right model on each task, sensitive code kept where it belongs, and no automated fix reaching production without a human's sign-off. We begin every engagement with a [data and AI readiness audit](/data-audit). When you are ready to pick the right models for security, [talk to the ITECS team](/contact).",
     ],
     faq: [
       {
@@ -4813,7 +4943,7 @@ export const INSIGHTS: InsightItem[] = [
       "This is general information, not legal advice — the bill's fate and any obligations it creates are for qualified counsel to assess. What ITECS provides is the operational side: the emergency-stop controls, the logging, and the drills. It is the same discipline behind our guides to [agentic AI infrastructure](/insights/agentic-ai-infrastructure-production-readiness) and [securing an AI agent's admin controls](/insights/chatgpt-work-secure-admin-checklist), and we begin every engagement with a [data and AI readiness audit](/data-audit).",
       "**How ITECS Builds Your Agent Kill Switch**",
       "Most companies deploy an autonomous agent and never build the stop. ITECS builds it first. We define loss of control for each agent, map the ones that can move money or data, build throttle and suspension controls, preserve off-agent logs, assign incident owners, and run the drills that prove the switch works — vendor-neutral, across whatever agents and platforms you run. It is the operational half of the [AI DevOps](/ai-devops) discipline that keeps automation safe in production.",
-      "We price this the way we price all engineering work — hourly consulting or prepaid retainer hours with tracked usage, no monthly minimum and no expiration, plus a flat fee for a scoped emergency-stop and incident-response build. The payoff is the confidence to run autonomous agents at all: when one goes wrong, you stop it in seconds, not in meetings. When you are ready to build a real off switch for your agents, [talk to the ITECS team](/contact).",
+      "We price this the way we price all engineering work — hourly consulting or prepaid retainer hours with tracked usage, no monthly minimum and a 12-month expiry, plus a flat fee for a scoped emergency-stop and incident-response build. The payoff is the confidence to run autonomous agents at all: when one goes wrong, you stop it in seconds, not in meetings. When you are ready to build a real off switch for your agents, [talk to the ITECS team](/contact).",
     ],
     faq: [
       {
@@ -4839,7 +4969,7 @@ export const INSIGHTS: InsightItem[] = [
       {
         question: "How does ITECS build agent emergency stops?",
         answer:
-          "ITECS defines loss-of-control criteria for each agent, maps the high-risk agents, builds throttle and suspension controls, preserves off-agent logs, assigns incident owners, and runs shutdown drills. It is vendor-neutral advisory and engineering work priced as hourly consulting or prepaid retainer hours with no monthly minimum and no expiration.",
+          "ITECS defines loss-of-control criteria for each agent, maps the high-risk agents, builds throttle and suspension controls, preserves off-agent logs, assigns incident owners, and runs shutdown drills. It is vendor-neutral advisory and engineering work priced as hourly consulting or prepaid retainer hours with no monthly minimum and a 12-month expiry.",
       },
     ],
   },
@@ -4892,7 +5022,7 @@ export const INSIGHTS: InsightItem[] = [
       "This connects to the broader inventory of what acts in your environment. Knowing which AI systems reach your site is part of the same discipline as an [AI-enabled app inventory](/insights/ai-enabled-app-inventory-govern-software) and an [AI Bill of Materials](/insights/ai-bill-of-materials-inventory-agents). Before we set a policy, ITECS runs a [data and AI readiness review](/data-audit), and we align the search side with your [AI-optimized SEO](/ai-optimized-seo) so blocking abuse never costs you legitimate discovery.",
       "**How ITECS Sets Your AI Bot Policy**",
       "Most businesses are running the default — allow-all by habit or block-all by fear — and paying for it in either lost customers or wasted spend. ITECS replaces the guesswork with a policy. We classify your AI bot traffic, set verification that spoofers cannot fake, protect your ad and checkout pages, and stand up the monitoring that tells you which agents help and which abuse — using Cloudflare and the tools you already run, vendor-neutral.",
-      "We price this the way we price all advisory work — hourly consulting or prepaid retainer hours with tracked usage, no monthly minimum and no expiration, plus a flat fee for a scoped bot-policy and monitoring build. The payoff is search traffic and legitimate agents welcomed, abuse and fraud kept out, and a bill you can explain. When you are ready to allow search and block agent abuse, [talk to the ITECS team](/contact).",
+      "We price this the way we price all advisory work — hourly consulting or prepaid retainer hours with tracked usage, no monthly minimum and a 12-month expiry, plus a flat fee for a scoped bot-policy and monitoring build. The payoff is search traffic and legitimate agents welcomed, abuse and fraud kept out, and a bill you can explain. When you are ready to allow search and block agent abuse, [talk to the ITECS team](/contact).",
     ],
     faq: [
       {
@@ -4973,7 +5103,7 @@ export const INSIGHTS: InsightItem[] = [
       "The habit most teams skip is the last one: approving updates. A customer-facing agent is never finished — prompts change, knowledge updates, capabilities expand. Each change can quietly alter behavior in front of customers. The same admin discipline in our [ChatGPT Work security guide](/insights/chatgpt-work-secure-admin-checklist) and the inventory behind an [AI Bill of Materials](/insights/ai-bill-of-materials-inventory-agents) apply here: know what changed, and approve it before it ships.",
       "**How ITECS Launches Customer-Facing AI Agents Safely**",
       "Most companies rush a customer-facing agent to launch and discover the guardrails they needed after a customer finds the gap. ITECS builds it the other way around. We scope each agent to one job, limit its knowledge and access, write its escalation rules, test it with simulations and graders, require human review on high-risk actions, and monitor it in production — vendor-neutral, whether you build on OpenAI, another platform, or a custom stack. This is the same governance discipline in our [AI adoption and training work](/insights/ai-governance-training-dallas-businesses).",
-      "We price this the way we price all engineering work — hourly consulting or prepaid retainer hours with tracked usage, no monthly minimum and no expiration, plus a flat fee for a scoped agent design, test, and launch. The payoff is a customer-facing agent you can trust in front of customers, because you proved it before you launched it. When you are ready to launch an AI agent your customers can rely on, [talk to the ITECS team](/contact).",
+      "We price this the way we price all engineering work — hourly consulting or prepaid retainer hours with tracked usage, no monthly minimum and a 12-month expiry, plus a flat fee for a scoped agent design, test, and launch. The payoff is a customer-facing agent you can trust in front of customers, because you proved it before you launched it. When you are ready to launch an AI agent your customers can rely on, [talk to the ITECS team](/contact).",
     ],
     faq: [
       {
@@ -7147,8 +7277,8 @@ export const INSIGHTS_FAQ = [
 
 export const STATS = [
   { value: 24, suffix: "+", label: "Years of IT Operations" },
-  { value: 92, suffix: "%", label: "Client Retention Rate" },
-  { value: 200, suffix: "+", label: "Client Engagements" },
+  { value: 95, suffix: "%", label: "Client Retention Rate" },
+  { value: 7000, suffix: "+", label: "Managed Endpoints" },
 ] as const;
 
 // ---------------------------------------------------------------------------
@@ -7168,7 +7298,7 @@ export const FAQ_ITEMS = [
   {
     question: "How do I know if AI is right for my organization?",
     answer:
-      "If your team spends time on repetitive tasks — data entry, report generation, customer follow-ups, answering the same questions, scheduling — AI can help. We offer a free initial assessment where we identify the tasks that are costing you the most time and show you exactly what AI can automate.",
+      `If your team spends time on repetitive tasks, the no-cost intake can help route the right next conversation. It does not include the formal assessment deliverables. The separate AI Readiness Assessment is a published ${getAIPricingOffering("AI Readiness Assessment").price} engagement that baselines workflows, risks, and priorities.`,
   },
   {
     question: "Which AI tools do you work with?",
@@ -7178,12 +7308,12 @@ export const FAQ_ITEMS = [
   {
     question: "How do I keep my company data safe when using AI?",
     answer:
-      "This is one of the most common concerns for Dallas businesses adopting AI. The short answer: don't paste sensitive data into public ChatGPT. We deploy private AI instances, set up data loss prevention policies, train your staff, and ensure compliance with HIPAA, SOX, or whatever regulations apply to your industry.",
+      "Do not submit sensitive data through unapproved consumer accounts. ITECS verifies plan-level vendor terms, maps data flows, scopes permissions and retention, and adds human review and DLP controls where the architecture supports them. Regulated work is scoped to the client's actual obligations and eligible vendor contracts.",
   },
   {
     question: "Can you build custom AI agents for my business?",
     answer:
-      "Yes — and we build two different kinds. Enterprise hosted agents are engineered by ITECS AI engineers, connect to your ERP, CRM, and finance systems, and run in a governed hosted environment with a human-in-the-loop review portal and audit trails. Personal desktop agents are built with your employees inside Claude Cowork, Codex, and Microsoft Copilot on their own machines — role-specific skills and workflows rolled out through hands-on training. Most clients start with personal agents and graduate their highest-value workflow into an enterprise build.",
+      "Yes. Enterprise hosted agents can connect approved systems through governed integrations, human review, and audit trails. Personal desktop agents can be built with employees inside approved tools such as Claude Cowork, Codex, or Microsoft Copilot. Discovery determines which model fits the workflow; the site does not imply a universal client progression.",
   },
   {
     question: "Do you work with businesses outside of Dallas?",
@@ -7197,11 +7327,27 @@ export const FAQ_ITEMS = [
 // ---------------------------------------------------------------------------
 
 export const CLIENT_LOGOS = [
-  { name: "Phoenix Capital", src: "/images/clients/phoenix-capital.webp", width: 129, height: 35 },
-  { name: "First Choice Containers", src: "/images/clients/first-choice-containers.webp", width: 100, height: 44 },
-  { name: "BURNCO", src: "/images/clients/burnco-logo.webp", width: 197, height: 32 },
-  { name: "Ad Pages", src: "/images/clients/adpages.webp", width: 162, height: 28 },
-  { name: "Pegasus Food Group", src: "/images/clients/pegasus-food-group.webp", width: 75, height: 40 },
+  {
+    name: "Pegasus Food Group",
+    src: "/images/clients/pegasus-food-group.webp",
+    width: 60,
+    height: 32,
+    href: "/case-studies/pegasus-foods-zero-downtime-relocation",
+  },
+  {
+    name: "OpenText",
+    src: "/images/clients/opentext.webp",
+    width: 59,
+    height: 32,
+    href: "/case-studies/opentext-dallas-onsite-support",
+  },
+  {
+    name: "PepsiCo",
+    src: "/images/clients/pepsico.webp",
+    width: 72,
+    height: 32,
+    href: "/case-studies/pepsico-subsidiary-it-transitions",
+  },
 ] as const;
 
 export const PARTNER_LOGOS = [
@@ -7217,57 +7363,35 @@ export const CERTIFICATION_BADGES = [
   {
     label: "Microsoft Solutions Partner",
     detail:
-      "Infrastructure and Digital & App Innovation workload status documented on the ITECS managed Azure page.",
+      "Microsoft partner status documented on the ITECS managed Azure page.",
     sourceHref: "https://itecsonline.com/managed-cloud/managed-azure-cloud",
-    sourceLabel: "Verify Microsoft workloads",
+    sourceLabel: "View ITECS partner page",
   },
   {
-    label: "Azure",
-    detail: "Microsoft Azure cloud, migration, and managed infrastructure experience.",
-    sourceHref: "https://itecsonline.com/managed-cloud/managed-azure-cloud",
-    sourceLabel: "Verify Azure expertise",
+    label: "Promus Hosting — SOC 2 Type II",
+    detail:
+      "SOC 2 Type II applies to ITECS Promus managed cloud hosting, not to the ITECS MSP or AI practice as a whole.",
+    sourceHref: SITE_CONFIG.promusHostingUrl,
+    sourceLabel: "View Promus hosting",
   },
   {
-    label: "SOC 2 Type II",
-    detail: "Security and operational control framework listed in ITECS certification proof.",
-    sourceHref:
-      "https://itecsonline.com/msp-industries/it-support-cybersecurity-manufacturing",
-    sourceLabel: "Verify SOC 2 listing",
-  },
-  {
-    label: "CMMC",
-    detail: "CMMC readiness and registered-provider compliance support.",
+    label: "CMMC Readiness Services",
+    detail:
+      "ITECS provides CMMC readiness services; this is a service capability, not an ITECS certification.",
     sourceHref: "https://itecsonline.com/cmmc-compliance",
-    sourceLabel: "Verify CMMC support",
-  },
-  {
-    label: "ISO 27001",
-    detail: "Information security management framework listed in ITECS certification proof.",
-    sourceHref:
-      "https://itecsonline.com/msp-industries/it-support-cybersecurity-manufacturing",
-    sourceLabel: "Verify ISO 27001 listing",
+    sourceLabel: "View readiness service",
   },
   {
     label: "Sophos Gold Partner",
-    detail: "Gold-tier security platform partner status surfaced on ITECS managed IT pages.",
+    detail: "Sophos Gold partner status published by ITECS.",
     sourceHref: "https://itecsonline.com/",
-    sourceLabel: "Verify Sophos status",
+    sourceLabel: "View ITECS source",
   },
   {
-    label: "Veeam",
-    detail: "Backup and resilience platform used in the managed security stack.",
-    sourceHref: "https://itecsonline.com/it-services/backup-disaster-recovery",
-    sourceLabel: "Verify Veeam stack",
-  },
-  {
-    label: "Fortinet",
-    detail: "Network security platform partner status listed on ITECS legal IT pages.",
-    sourceHref: "https://itecsonline.com/msp-industries/managed-it-services-lawfirms",
-    sourceLabel: "Verify Fortinet listing",
-  },
-  {
-    label: "CompTIA",
-    detail: "IT industry certification ecosystem carried from confirmed ITECS credential list.",
+    label: "Check Point MSSP Advanced",
+    detail: "Check Point MSSP Advanced partner status published by ITECS.",
+    sourceHref: "https://itecsonline.com/cybersecurity/managed-firewall-services",
+    sourceLabel: "View ITECS partner page",
   },
 ] as const;
 
@@ -7283,25 +7407,25 @@ export const TRUST_CASE_STUDIES = [
     industry: "Food manufacturing",
     label: "Public case study",
     sourceDate: "May 28, 2020",
-    outcome: "100% uptime maintained",
+    outcome: "Source-reported zero-downtime relocation",
     challenge:
       "Pegasus Foods needed to relocate its IT infrastructure across 1,200 miles while maintaining continuous 24/7 manufacturing operations.",
     solution:
       "ITECS used virtualization, real-time replication, failover planning, encrypted connectivity, staged testing, and 24/7 monitoring to move the environment without interrupting production.",
     measuredOutcome:
-      "100% uptime maintained, zero data loss incidents, and $2.1M in prevented downtime losses documented in the public case study.",
+      "The 2020 ITECS source reports no production downtime or data loss and estimates $2.1M in avoided downtime losses; these figures have not been independently audited for this page.",
     summary:
-      "ITECS used virtualization and managed migration controls to move business-critical infrastructure across 1,200 miles without production downtime or data loss.",
+      "A historical ITECS source describes virtualization and migration controls used during a 1,200-mile infrastructure relocation and reports no production downtime or data loss.",
     metrics: [
-      { value: "100%", label: "Uptime maintained" },
-      { value: "Zero", label: "Data loss incidents" },
-      { value: "$2.1M", label: "Revenue loss prevented" },
+      { value: "Reported", label: "No production downtime" },
+      { value: "Reported", label: "No data loss" },
+      { value: "$2.1M", label: "Estimated avoided downtime" },
     ],
     heroSummary:
-      "**ITECS relocated Pegasus Foods' entire IT environment 1,200 miles — from Los Angeles to Rockwall, Texas — with 100% uptime, zero data loss, and $2.1M in prevented downtime losses. Virtualization, real-time replication, and a staged cutover kept 24/7 food manufacturing running through the whole move.**",
+      "**A May 2020 ITECS source describes a 1,200-mile Pegasus Foods infrastructure relocation using virtualization, replication, and staged cutover. It reports no production downtime or data loss and estimates $2.1M in avoided downtime losses; the figures are historical and source-reported.**",
     stakesHeading: "Why Zero Downtime Was Non-Negotiable",
     stakes: [
-      "In food manufacturing, downtime does not just mean lost productivity. It means spoiled inventory, missed deliveries, broken supply chains, and damaged customer relationships. Pegasus Foods operated 24/7 across multiple production facilities, and ITECS estimated the cost of a system outage at **$1,467 per minute** in lost revenue and operational disruption.",
+      "In food manufacturing, downtime can mean spoiled inventory, missed deliveries, and supply-chain disruption. The historical source describes a 24/7 operation and estimates **$2.1M in avoided downtime losses**; it does not provide independently audited loss calculations.",
       "Four system families had to stay online through the entire move: production lines reading the real-time inventory management system, quality-control systems mandated by food safety regulations, financial systems processing thousands of daily transactions, and supply chain coordination across multiple distribution centers. A traditional relocation — back up, truck the servers, restore — would have taken these systems down for days.",
     ],
     approachHeading: "How ITECS Delivered the Migration",
@@ -7352,10 +7476,6 @@ export const TRUST_CASE_STUDIES = [
         ],
       },
     ],
-    quote: {
-      text: "The ITECS team provided an innovative solution to what seemed like an impossible challenge. Their virtual migration approach ensured our operations continued without interruption while eliminating the risks associated with physically moving our critical IT infrastructure.",
-      attribution: "Dan, CEO, Pegasus Foods, Inc.",
-    },
     aiBridge:
       "The discipline behind this migration — dependency mapping, replication, staged rollout, 24/7 monitoring — is the same discipline ITECS now applies to [AI agents for manufacturing operations](/manufacturing). Manufacturers whose production runs on live ERP and inventory data start with a [data readiness audit](/data-audit) before any AI build touches those systems.",
     detailFaq: [
@@ -7367,7 +7487,7 @@ export const TRUST_CASE_STUDIES = [
       {
         question: "What would downtime have cost Pegasus Foods?",
         answer:
-          "ITECS estimated the cost at $1,467 per minute in lost revenue and operational disruption. The zero-downtime approach prevented an estimated $2.1M in downtime losses.",
+          "The May 2020 ITECS source estimates $2.1M in avoided downtime losses. That estimate is presented as source-reported historical context, not as an independently audited financial result.",
       },
       {
         question: "Which systems had to stay online during the relocation?",
@@ -7391,13 +7511,13 @@ export const TRUST_CASE_STUDIES = [
     industry: "Enterprise software",
     label: "Public case study",
     sourceDate: "July 3, 2024",
-    outcome: "99.8% system uptime",
+    outcome: "Source-reported Dallas on-site support results",
     challenge:
       "OpenText's Dallas branch needed consistent local IT support as growth increased the strain on distributed internal resources.",
     solution:
       "ITECS delivered a dedicated on-site support program for workstation support, provisioning, troubleshooting, and coordination with central IT.",
     measuredOutcome:
-      "99.8% system uptime, 52+ weeks of uninterrupted on-site support, and a 30% reduction in IT support response time.",
+      "The July 2024 ITECS source reports 99.8% uptime, 52+ weeks of on-site support, and a 30% response-time reduction; definitions and raw measurement records are not published on this page.",
     summary:
       "Dedicated on-site IT support helped the Dallas office keep operations stable while improving local response coverage for a growing enterprise team.",
     metrics: [
@@ -7406,7 +7526,7 @@ export const TRUST_CASE_STUDIES = [
       { value: "30%", label: "Response-time reduction" },
     ],
     heroSummary:
-      "**ITECS provides OpenText's Dallas office a dedicated on-site IT specialist — 52+ consecutive weeks delivered — holding 99.8% system uptime across all workstations and cutting IT support response time 30%. The program extends OpenText's central IT without the overhead of building a new internal department.**",
+      "**A July 2024 ITECS source describes a dedicated on-site support program for OpenText's Dallas office and reports 52+ weeks of delivery, 99.8% uptime, and a 30% response-time reduction. These are historical, source-reported figures.**",
     stakesHeading: "The Challenge: IT Support That Could Not Keep Pace With Growth",
     stakes: [
       "OpenText, a global leader in Enterprise Information Management, was expanding its Dallas branch — and its distributed IT support model struggled to keep up with day-to-day operational needs. Routine issues sat in queues, and response times dragged on employee productivity.",
@@ -7417,17 +7537,17 @@ export const TRUST_CASE_STUDIES = [
       {
         step: "Dedicated weekly on-site specialist",
         description:
-          "A consistent ITECS specialist works on-site weekly, building continuity of service and working knowledge of OpenText's environment rather than rotating unfamiliar technicians through the office.",
+          "The historical source describes a consistent specialist working on-site weekly to build service continuity and knowledge of the environment.",
       },
       {
         step: "Complete new-hire provisioning",
         description:
-          "ITECS manages end-to-end setup for new employees — computer builds, software installation, network configuration, and user account creation — so every onboarding follows the same standard.",
+          "The historical program included computer builds, software installation, network configuration, and user-account setup for new employees.",
       },
       {
         step: "Hardware refresh and deployment coordination",
         description:
-          "The specialist coordinates with OpenText's central IT for scheduled hardware refreshes and rollouts, providing on-site hands during deployments to keep disruption near zero.",
+          "The historical source describes coordination with central IT for scheduled hardware refreshes and rollouts.",
       },
       {
         step: "Proactive maintenance on every visit",
@@ -7470,7 +7590,7 @@ export const TRUST_CASE_STUDIES = [
       {
         question: "How does on-site support coordinate with OpenText's central IT?",
         answer:
-          "The specialist works under OpenText's standards and schedules — coordinating hardware refreshes, deployments, and escalations with the central team rather than around it. Rollouts completed with zero business disruption.",
+          "The July 2024 source describes the specialist working under OpenText's standards and schedules while coordinating hardware refreshes, deployments, and escalations with the central team. It reports zero business disruption during rollouts.",
       },
       {
         question: "Why use an MSP instead of hiring internal IT staff for a branch office?",
@@ -7489,13 +7609,13 @@ export const TRUST_CASE_STUDIES = [
     industry: "Food and beverage",
     label: "Public case study",
     sourceDate: "March 25, 2025",
-    outcome: "99.9% transition uptime",
+    outcome: "Source-reported acquisition-transition support",
     challenge:
       "Newly acquired PepsiCo subsidiaries needed operational continuity while preparing for eventual integration into corporate systems and governance.",
     solution:
       "ITECS provided transition IT management, compliant interim infrastructure, procurement support, risk management, and managed IT services during the acquisition-to-integration period.",
     measuredOutcome:
-      "99.9% system uptime, five subsidiaries supported, 40% fewer transition-related IT disruptions, and 100% compliance with PepsiCo IT governance standards.",
+      "The March 2025 ITECS source reports five subsidiaries supported, 99.9% uptime, and 40% fewer transition-related disruptions. It also states governance alignment; this page does not independently validate a 100% compliance claim.",
     summary:
       "ITECS supported newly acquired subsidiaries with compliant infrastructure and managed IT services during enterprise transition periods.",
     metrics: [
@@ -7504,7 +7624,7 @@ export const TRUST_CASE_STUDIES = [
       { value: "40%", label: "Disruption reduction" },
     ],
     heroSummary:
-      "**ITECS manages IT transitions for PepsiCo's newly acquired subsidiaries — five supported to date on roughly 12-month timelines — holding 99.9% system uptime, cutting transition-related IT disruptions 40%, and maintaining 100% compliance with PepsiCo's corporate IT governance standards.**",
+      "**A March 2025 ITECS source describes transition support for five newly acquired PepsiCo subsidiaries and reports 99.9% uptime and 40% fewer transition-related disruptions. These are historical, source-reported figures; governance alignment is not presented here as an independently audited compliance result.**",
     stakesHeading: "The Challenge: The Gap Between Acquisition and Integration",
     stakes: [
       "PepsiCo expands through strategic acquisitions, and every acquired company enters a transition window: it must keep operating today while preparing to merge into PepsiCo's corporate systems tomorrow. That window is where IT risk concentrates.",
@@ -7515,17 +7635,17 @@ export const TRUST_CASE_STUDIES = [
       {
         step: "Compliant interim infrastructure",
         description:
-          "ITECS stands up interim IT infrastructure that serves day-to-day operations while complying with PepsiCo's governance frameworks from day one — so nothing built during transition has to be torn out at integration.",
+          "The historical program used interim infrastructure intended to support day-to-day operations while aligning transition work with PepsiCo governance requirements.",
       },
       {
         step: "Strategic technology procurement",
         description:
-          "All transition-period procurement runs through ITECS, selecting hardware and software that meets immediate business needs while aligning with PepsiCo's long-term IT strategy and easing eventual migration.",
+          "The historical source describes transition-period procurement through ITECS, with hardware and software selected for immediate needs and intended alignment with the later integration path.",
       },
       {
         step: "Risk management and compliance",
         description:
-          "ITECS conducts risk assessments, implements controls that meet PepsiCo's security and compliance standards, and delivers regular compliance documentation throughout the transition.",
+          "The historical source describes risk assessments, control implementation, and recurring governance documentation during the transition.",
       },
       {
         step: "Comprehensive managed IT services",
@@ -7535,7 +7655,7 @@ export const TRUST_CASE_STUDIES = [
     ],
     securityHeading: "Governance and Compliance Discipline",
     security: [
-      "Acquired companies arrive with uneven security postures; the transition program's job is to raise each one to PepsiCo's standard and prove it. Risk assessments, implemented controls, and recurring compliance documentation kept all five subsidiaries at 100% compliance with PepsiCo's IT governance requirements. ITECS maps this work to the control structure of the [NIST Cybersecurity Framework](https://www.nist.gov/cyberframework), the same reference model U.S. enterprises and auditors use.",
+      "Acquired companies can arrive with uneven security postures. The historical source describes risk assessments, implemented controls, and recurring documentation intended to align five subsidiaries with PepsiCo governance requirements. This page does not treat that source statement as an independent compliance audit. ITECS maps current work to relevant control structures such as the [NIST Cybersecurity Framework](https://www.nist.gov/cyberframework).",
     ],
     resultsHeading: "Measured Results",
     resultsGroups: [
@@ -7544,7 +7664,7 @@ export const TRUST_CASE_STUDIES = [
         points: [
           "99.9% system uptime maintained during transition periods",
           "40% reduction in transition-related IT disruptions",
-          "100% compliance with PepsiCo's IT governance standards",
+          "Governance alignment reported by the historical ITECS source",
         ],
       },
       {
@@ -7567,7 +7687,7 @@ export const TRUST_CASE_STUDIES = [
       {
         question: "How does ITECS keep acquired subsidiaries compliant with PepsiCo governance?",
         answer:
-          "Through risk assessments, controls that meet PepsiCo's security and compliance standards, and regular compliance documentation across the transition. The program has maintained 100% compliance across five subsidiaries.",
+          "The March 2025 ITECS source describes risk assessments, controls, and recurring documentation used to align transition work with PepsiCo requirements. This page does not independently validate a 100% compliance result.",
       },
       {
         question: "How long does a subsidiary IT transition take?",
@@ -7589,22 +7709,25 @@ export const HOMEPAGE_OUTCOMES_PROOF = {
   eyebrow: "Outcomes Proof",
   title: "Operational proof from the managed-services foundation behind ITECS AI.",
   description:
-    "Managed Intelligence is built on the same operating discipline ITECS applies to infrastructure, security, continuity, and support. These proof points use approved live metrics and public ITECS case studies.",
+    "Managed Intelligence is built on the same operating discipline ITECS applies to infrastructure, security, continuity, and support. Every company metric below links to public supporting evidence.",
   metrics: [
     {
       value: "24+",
       label: "Years operating client technology environments",
-      source: "ITECS approved live proof",
+      source: "ITECS company history",
+      sourceHref: SITE_CONFIG.companyFactsUrl,
     },
     {
-      value: "92%",
+      value: "95%",
       label: "Client retention rate",
-      source: "ITECS approved live proof",
+      source: "PRNewswire company announcement",
+      sourceHref: SITE_CONFIG.retentionSourceUrl,
     },
     {
-      value: "200+",
-      label: "Client engagements",
-      source: "ITECS approved live proof",
+      value: "7,000+",
+      label: "Endpoints managed",
+      source: "ITECS managed-services site",
+      sourceHref: SITE_CONFIG.companyFactsUrl,
     },
   ],
   cases: TRUST_CASE_STUDIES,
@@ -7626,19 +7749,14 @@ export const SECURITY_GOVERNANCE_BAND = {
         "Govern, Map, Measure, and Manage functions guide AI risk decisions and operating reviews.",
     },
     {
-      name: "SOC 2 Type II",
+      name: "Promus Hosting — SOC 2 Type II",
       detail:
-        "Security and operational control expectations inform monitoring, access, and change-management practices.",
+        "This attestation applies only to ITECS Promus managed cloud hosting, not to the MSP or AI practice as a whole.",
     },
     {
-      name: "ISO 27001",
+      name: "CMMC readiness services",
       detail:
-        "Information-security management principles shape policy, asset, vendor, and evidence handling.",
-    },
-    {
-      name: "CMMC",
-      detail:
-        "Cybersecurity maturity controls support clients with defense, manufacturing, and regulated supply-chain exposure.",
+        "ITECS can help clients prepare for CMMC requirements; readiness support is not an ITECS certification.",
     },
     {
       name: "HIPAA / BAA",
@@ -7676,35 +7794,33 @@ export const SECURITY_GOVERNANCE_BAND = {
 
 export const HOMEPAGE_TESTIMONIALS = {
   eyebrow: "Client Voice",
-  title: "Attributed client commentary from public ITECS proof.",
+  title: "Client commentary you can verify at the source.",
   description:
-    "These short excerpts are sourced from public ITECS case studies and review modules. Each quote is attributed to a named person or hidden rather than filled with unnamed filler.",
+    "Every testimonial shown here links directly to its Google Maps or G2 review source.",
   testimonials: [
     {
-      quote:
-        "an innovative solution to what seemed like an impossible challenge.",
-      name: "Dan",
-      title: "CEO",
-      company: "Pegasus Foods, Inc.",
-      sourceHref:
-        "https://itecsonline.com/white-papers-case-studies/pegasus-foods-white-paper",
-      sourceLabel: "Pegasus Foods case study",
-    },
-    {
-      quote: "strategic IT guidance is top-notch.",
+      quote: "Their expertise in Managed IT Services and strategic IT guidance is top-notch.",
       name: "David Bryant",
-      title: "Verified Google reviewer",
-      company: "Dallas business review",
-      sourceHref: "https://itecsonline.com/",
-      sourceLabel: "Google review excerpt",
+      title: "Google reviewer",
+      company: "ITECS client",
+      sourceHref: SITE_CONFIG.googleMapsUrl,
+      sourceLabel: "View on Google Maps",
     },
     {
-      quote: "a huge asset to our business.",
-      name: "Jason Jones",
-      title: "Verified Google reviewer",
-      company: "Dallas business review",
-      sourceHref: "https://itecsonline.com/hipaa-compliance",
-      sourceLabel: "Google review excerpt",
+      quote: "Complete, Comprehensive IT Support",
+      name: "John C.",
+      title: "G2 reviewer",
+      company: "ITECS client",
+      sourceHref: SITE_CONFIG.g2ReviewsUrl,
+      sourceLabel: "View on G2",
+    },
+    {
+      quote: "Exceptional IT Consulting Services",
+      name: "Michael W.",
+      title: "G2 reviewer",
+      company: "ITECS client",
+      sourceHref: SITE_CONFIG.g2ReviewsUrl,
+      sourceLabel: "View on G2",
     },
   ],
 } as const;
@@ -7717,44 +7833,29 @@ export const THIRD_PARTY_VALIDATION = {
   eyebrow: "Third-Party Validation",
   title: "Independent proof signals buyers can verify.",
   description:
-    "These badges and review metrics are sourced from public ITECS pages or third-party coverage, so procurement teams can inspect the proof behind the signal.",
+    "Each review destination and company fact links directly to its public source.",
   items: [
     {
       label: "4.9/5",
       title: "Google rating",
-      detail: "54+ local reviews surfaced on public ITECS managed IT pages.",
-      sourceHref: "https://itecsonline.com/collection/frontpage",
-      sourceLabel: "View Google review proof",
+      detail: "54 public Google reviews for the ITECS Dallas listing.",
+      sourceHref: SITE_CONFIG.googleMapsUrl,
+      sourceLabel: "View reviews on Google Maps",
     },
     {
       label: "4.9/5",
       title: "G2 B2B reviews",
-      detail: "11 B2B reviews referenced on the public ITECS managed IT site.",
-      sourceHref: "https://itecsonline.com/",
-      sourceLabel: "View B2B review proof",
+      detail: "11 public reviews on the ITECS Outsourcing G2 profile.",
+      sourceHref: SITE_CONFIG.g2ReviewsUrl,
+      sourceLabel: "View reviews on G2",
     },
     {
       label: "PRNewswire",
       title: "Anniversary coverage",
       detail:
         "Newswire coverage documents ITECS as a Dallas-Fort Worth managed-services provider founded in 2002.",
-      sourceHref:
-        "https://www.prnewswire.com/news-releases/dallas-it-firm-itecs-celebrates-23-years-of-technology-excellence-in-dallas-fort-worth-302630228.html",
+      sourceHref: SITE_CONFIG.retentionSourceUrl,
       sourceLabel: "Read PRNewswire coverage",
-    },
-    {
-      label: "Top MSP 2024",
-      title: "Public proof badge",
-      detail: "Public ITECS proof strip includes Top MSP 2024.",
-      sourceHref: "https://itecsonline.com/",
-      sourceLabel: "View public proof strip",
-    },
-    {
-      label: "BusinessRate Best of 2026",
-      title: "Public proof badge",
-      detail: "Public ITECS proof strip includes BusinessRate Best of 2026.",
-      sourceHref: "https://itecsonline.com/",
-      sourceLabel: "View public proof strip",
     },
   ],
 } as const;
@@ -7769,7 +7870,8 @@ export const TEAM_MEMBERS = [
     title: "Founder & CEO",
     image: "/images/team/brian-desmot.webp",
     bio: "Brian founded ITECS in 2002 with a mission to deliver enterprise-grade IT to Dallas businesses without the enterprise price tag. With over two decades of hands-on operations experience, he now leads the firm's expansion into practical AI solutions for small and mid-sized businesses.",
-    quote: "AI should save your team 10 hours a week — not create 10 new problems. We build tools that work on day one.",
+    quote:
+      "AI should reduce operational burden, not create a new one. We scope the workflow, test it with the team, and measure the result.",
   },
 ] as const;
 
@@ -7786,21 +7888,21 @@ export const ABOUT_MILESTONES = [
   },
   {
     year: "2008",
-    title: "500+ Endpoints Under Management",
+    title: "Managed-Services Growth",
     description:
-      "ITECS scales to manage infrastructure across healthcare, legal, financial services, and manufacturing sectors in Dallas-Fort Worth. 24/7 monitoring and on-site support become standard.",
+      "ITECS expands its managed infrastructure, monitoring, and on-site support work across Dallas-Fort Worth organizations.",
   },
   {
     year: "2015",
     title: "Cloud Migration & Cybersecurity Expansion",
     description:
-      "Full Microsoft 365 and Azure migration practice. Partnership with SentinelOne and Sophos for endpoint detection and response. HIPAA and SOX compliance services launch for regulated clients.",
+      "ITECS expands its Microsoft cloud, migration, cybersecurity, and compliance-readiness services for regulated clients.",
   },
   {
     year: "2020",
     title: "Remote Workforce Enablement",
     description:
-      "COVID-19 hits. ITECS transitions 40+ client organizations to secure remote operations in under 3 weeks — VPN, Teams, MFA, and zero-trust access policies deployed at scale.",
+      "ITECS helps client organizations move to secure remote operations using VPN, Microsoft Teams, MFA, and access controls.",
   },
   {
     year: "2023",
@@ -7812,7 +7914,7 @@ export const ABOUT_MILESTONES = [
     year: "2024",
     title: "Full AI Service Portfolio",
     description:
-      "AI Receptionist, CRM & Sales AI, Data Readiness Audits, and employee AI training programs go live. Clients report 20+ hours saved per week within the first month of deployment.",
+      "ITECS adds AI Receptionist, CRM and sales AI, data-readiness audits, and employee AI training to its service portfolio.",
   },
 ] as const;
 
@@ -7825,13 +7927,13 @@ export const ABOUT_VALUES = [
     icon: "Shield",
     title: "Security-First AI",
     description:
-      "Every AI tool runs in a private environment. Your data never trains public models. We enforce HIPAA, SOX, and FINRA compliance from day one — not as an afterthought.",
+      "ITECS selects deployment tiers, access controls, logging, and review gates for each client's data and risk requirements. Regulated work is scoped to the applicable obligations and vendor terms.",
   },
   {
     icon: "Eye",
     title: "No Black Boxes",
     description:
-      "You own every prompt, every workflow, every integration. We document what we build and train your team to operate it. If you fire us tomorrow, everything still works.",
+      "Ownership, licensing, source access, documentation, and transition responsibilities are defined in scope. ITECS documents the approved workflow and trains the designated operators instead of relying on an undocumented black box.",
   },
   {
     icon: "Building2",
@@ -7843,7 +7945,7 @@ export const ABOUT_VALUES = [
     icon: "Target",
     title: "Practical Over Hype",
     description:
-      "We deploy AI that saves hours this week — not prototypes that impress in a demo and collect dust. Every engagement starts with ROI math, not a pitch deck.",
+      "We start with one operating workflow, define the baseline and acceptance criteria, and measure the result before recommending expansion. A fluent demonstration is not treated as production proof.",
   },
 ] as const;
 
@@ -7888,13 +7990,13 @@ export const HOMEPAGE_FEATURES = [
     eyebrow: "Security-First AI",
     title: "Your Data Stays Yours",
     description:
-      "We never deploy AI that puts your sensitive data at risk. Every tool we build uses private, secure AI environments — not public consumer AI accounts. Your customer records, financial data, and proprietary information stay under your control, always.",
+      "ITECS documents the deployment boundary, vendor terms, permissions, retention, and human review before sensitive data is approved for an AI workflow. Consumer accounts are excluded from approved client-data work.",
     image: "/images/services/cybersecurity.webp",
     bullets: [
-      "Private AI instances — your data never trains public models",
-      "HIPAA, SOX, and FINRA compliance built in from day one",
+      "Business or enterprise data terms verified for the selected platform and plan",
+      "Regulated workflows custom-scoped to applicable obligations and vendor eligibility",
       "Employee AI usage policies and automatic data safeguards",
-      "Ongoing monitoring so nothing slips through the cracks",
+      "Monitoring and escalation defined for each managed production scope",
     ],
   },
   {
@@ -7904,7 +8006,7 @@ export const HOMEPAGE_FEATURES = [
       "We don't ask you to rip and replace. Our AI integrations plug into your CRM, helpdesk, invoicing, and communication tools — Zapier, HubSpot, Microsoft 365, QuickBooks, Slack, Teams, and more. AI saves you time without changing how your team works.",
     image: "/images/services/technology-desks.webp",
     bullets: [
-      "Integrations with HubSpot, Salesforce, QuickBooks, and 100+ tools",
+      "Integrations evaluated for HubSpot, Salesforce, QuickBooks, and other approved tools",
       "Microsoft Copilot, Teams, and Outlook AI setup",
       "Custom AI agents that pull approved data from your existing systems",
       "Zapier and Make.com automations connecting everything together",
@@ -7975,7 +8077,7 @@ export const HOMEPAGE_SERVICE_BLURBS = [
     slug: "ai-receptionist",
     blurb:
       "Every missed call is lost revenue. We deploy ",
-    anchorText: "AI voice agents that answer your phones 24/7 and book appointments",
+    anchorText: "AI voice agents configured for extended call coverage and appointment booking",
     anchorHref: "/ai-receptionist",
     afterAnchor: ".",
   },
@@ -8028,7 +8130,7 @@ export const HOMEPAGE_HERITAGE = {
     {
       title: "Dedicated operating teams",
       description:
-        "AI work is handled by people accountable for discovery, build, training, security, and ongoing support instead of being thrown into a generic ticket queue.",
+        "ITECS maintains 24/7 NOC coverage for managed-services operations. That NOC is not represented as Dallas-based; AI coverage and escalation are defined separately in each production scope.",
     },
     {
       title: "Security-first",
@@ -8043,8 +8145,8 @@ export const HOMEPAGE_HERITAGE = {
   ],
   stats: [
     { value: "24+", label: "Years of IT Operations" },
-    { value: "92%", label: "Client Retention Rate" },
-    { value: "200+", label: "Client Engagements" },
+    { value: "95%", label: "Client Retention Rate" },
+    { value: "7,000+", label: "Managed Endpoints" },
   ],
   parentLink: {
     text: "Learn more about ITECS managed IT services",
@@ -8057,7 +8159,7 @@ export const HOMEPAGE_HERITAGE = {
 // ---------------------------------------------------------------------------
 
 export const MIP_PAGE_HERO = {
-  eyebrow: "DALLAS'S FIRST MANAGED INTELLIGENCE PROVIDER",
+  eyebrow: "MANAGED INTELLIGENCE PROVIDER",
   title: "The MSP, Evolved into a Managed Intelligence Provider",
   subhead:
     "A Managed Intelligence Provider is a team that operates AI the way a mature MSP operates infrastructure: governed, monitored, documented, secured, and continually improved.",
@@ -8077,12 +8179,12 @@ export const MIP_PAGE_HERO = {
       label: "years operating client technology environments",
     },
     {
-      value: "92%",
+      value: "95%",
       label: "client retention rate",
     },
     {
-      value: "200+",
-      label: "client engagements",
+      value: "7,000+",
+      label: "managed endpoints",
     },
   ],
   operatingLayer: [
@@ -8572,7 +8674,7 @@ export const AI_SEO_OVERVIEW: AISEOOverview = {
   ],
   proofTitle: "Proof: ITECS Practices What We Sell",
   proofIntro:
-    "Live analytics from itecsonline.com — the same playbook we run for our SEO clients.",
+    "Historical GA4 snapshot retained in the content model but not displayed as current proof.",
   proofStats: [
     { value: "23,238", label: "Active Users" },
     { value: "3×", label: "Growth in 4 Months" },
@@ -9663,7 +9765,7 @@ export const MANUFACTURING_VERTICAL: ManufacturingPageContent = {
       points: [
         "Discrete manufacturing parts, routings, suppliers, and warranty data",
         "Process manufacturing formulas, BOMs, lot traceability, and quality records",
-        "BatchMaster/SAP, Power BI, spreadsheets, contracts, and market data",
+        "ERP, BI, spreadsheets, contracts, and market data",
         "Role-based access, audit logs, and human approval boundaries",
       ],
     },
@@ -9829,7 +9931,7 @@ export const MANUFACTURING_VERTICAL: ManufacturingPageContent = {
     {
       question: "Can ITECS work with our ERP and Power BI setup?",
       answer:
-        "Yes. ITECS evaluates the client's ERP, BI, and reporting architecture during discovery. BatchMaster/SAP, Microsoft-stack BI, SQL-backed systems, and Power BI reporting patterns are all plausible starting points.",
+        "Yes. ITECS evaluates the client's ERP, BI, and reporting architecture during discovery. Microsoft-stack BI, SQL-backed systems, and common ERP reporting patterns are plausible starting points; compatibility is confirmed rather than inferred from a vendor name.",
     },
     {
       question: "What is the best first AI use case for a manufacturer?",
@@ -9935,9 +10037,9 @@ export const PPV_AGENT_USE_CASE: PPVAgentUseCaseContent = {
     },
   ],
   scenario: {
-    title: "Anonymized mid-market manufacturing scenario",
+    title: "Illustrative mid-market manufacturing scenario",
     problem:
-      "A manufacturer running BatchMaster/SAP and Power BI wants to reproduce 12-24 months of historical PPV, explain unfavorable movement by commodity, vendor, plant, SKU, and customer program, and understand exposure before month-end.",
+      "A manufacturer using an ERP and BI reporting wants to reproduce historical PPV, explain unfavorable movement by commodity, vendor, plant, SKU, and customer program, and understand exposure before month-end.",
     outcome:
       "ITECS scopes a governed PPV agent that connects purchase transactions, standards, BOMs or formulas, contract terms, and Power BI reporting into daily variance pulses, forward exposure models, and approval-ready recommendations.",
   },
@@ -9972,7 +10074,7 @@ export const PPV_AGENT_USE_CASE: PPVAgentUseCaseContent = {
     {
       step: "Discovery workshop",
       description:
-        "Confirm PPV methodology, data sources, approval matrix, BatchMaster/SAP setup, Power BI reporting model, and business case.",
+        "Confirm PPV methodology, data sources, approval matrix, ERP setup, BI reporting model, and business case.",
     },
     {
       step: "Historical PPV reproduction",
@@ -10035,9 +10137,9 @@ export const PPV_AGENT_USE_CASE: PPVAgentUseCaseContent = {
         "A PPV agent reads approved procurement, finance, BOM or formula, contract, forecast, and market data to decompose historical variance, project forward exposure, flag anomalies, and prepare recommendations for human approval.",
     },
     {
-      question: "Can the PPV agent work with BatchMaster/SAP and Power BI?",
+      question: "Can the PPV agent work with our ERP and BI platform?",
       answer:
-        "Yes, that is a realistic discovery pattern. The first step is to confirm the BatchMaster/SAP configuration, database or API access, Power BI semantic model quality, and how finance currently calculates PPV.",
+        "Potentially. Discovery confirms the ERP configuration, available database or API access, BI semantic-model quality, and how finance currently calculates PPV before ITECS represents the systems as compatible.",
     },
     {
       question: "Does the agent execute purchases or hedges automatically?",
@@ -10175,7 +10277,7 @@ export const MANUFACTURING_SPOKE_PAGES: ManufacturingSpokePageContent[] = [
       },
     ],
     scenario: {
-      title: "Anonymized S&OP scenario",
+      title: "Illustrative S&OP scenario",
       description:
         "A manufacturer with customer concentration and long material lead times needs a better way to see which forecast changes will turn into cash or service problems.",
       startingPoint:
@@ -10207,7 +10309,7 @@ export const MANUFACTURING_SPOKE_PAGES: ManufacturingSpokePageContent[] = [
       {
         label: "Customer and market signals",
         description:
-          "Customer programs, foodservice or retail signals, weather, regional demand, and macro indicators when relevant.",
+          "Customer programs, channel signals, weather, regional demand, and macro indicators when relevant.",
       },
     ],
     workflow: [
@@ -10459,7 +10561,7 @@ export const MANUFACTURING_SPOKE_PAGES: ManufacturingSpokePageContent[] = [
       },
     ],
     scenario: {
-      title: "Anonymized downtime scenario",
+      title: "Illustrative downtime scenario",
       description:
         "A manufacturer has recurring micro-stops and inconsistent work-order notes on a high-volume line, but the team struggles to quantify which issue deserves attention first.",
       startingPoint:
@@ -10743,7 +10845,7 @@ export const MANUFACTURING_SPOKE_PAGES: ManufacturingSpokePageContent[] = [
       },
     ],
     scenario: {
-      title: "Anonymized working capital scenario",
+      title: "Illustrative working capital scenario",
       description:
         "A manufacturer sees inventory rising while customer service remains uneven. Finance wants cash relief, but operations does not want to starve production.",
       startingPoint:
@@ -11022,7 +11124,7 @@ export const MANUFACTURING_SPOKE_PAGES: ManufacturingSpokePageContent[] = [
       },
     ],
     scenario: {
-      title: "Anonymized quality scenario",
+      title: "Illustrative quality scenario",
       description:
         "A manufacturer sees a rise in customer complaints and internal holds, but root-cause work is slowed by disconnected lot, supplier, and production data.",
       startingPoint:
@@ -11295,7 +11397,7 @@ export const MANUFACTURING_SPOKE_PAGES: ManufacturingSpokePageContent[] = [
       },
     ],
     scenario: {
-      title: "Anonymized profitability scenario",
+      title: "Illustrative profitability scenario",
       description:
         "A manufacturer has a large customer program with strong revenue but inconsistent realized margin across plants and SKUs.",
       startingPoint:
@@ -11564,7 +11666,7 @@ export const MANUFACTURING_SPOKE_PAGES: ManufacturingSpokePageContent[] = [
       },
     ],
     scenario: {
-      title: "Anonymized shift planning scenario",
+      title: "Illustrative shift planning scenario",
       description:
         "A manufacturer regularly enters the day with a feasible schedule on paper but loses throughput to labor gaps, changeovers, yield drift, and late quality holds.",
       startingPoint:
@@ -11833,7 +11935,7 @@ export const MANUFACTURING_SPOKE_PAGES: ManufacturingSpokePageContent[] = [
       },
     ],
     scenario: {
-      title: "Anonymized pass-through scenario",
+      title: "Illustrative pass-through scenario",
       description:
         "A manufacturer has adverse material movement and mixed customer contracts. Finance suspects some variance is recoverable but cannot review every clause during close.",
       startingPoint:
@@ -12102,7 +12204,7 @@ export const MANUFACTURING_SPOKE_PAGES: ManufacturingSpokePageContent[] = [
       },
     ],
     scenario: {
-      title: "Anonymized cost and reporting scenario",
+      title: "Illustrative cost and reporting scenario",
       description:
         "A manufacturer faces rising freight and utility costs while strategic customers request more packaging and Scope 3 data.",
       startingPoint:
@@ -12371,7 +12473,7 @@ export const MANUFACTURING_SPOKE_PAGES: ManufacturingSpokePageContent[] = [
       },
     ],
     scenario: {
-      title: "Anonymized finance control scenario",
+      title: "Illustrative finance control scenario",
       description:
         "A manufacturer with high supplier and freight invoice volume wants better exception detection without slowing ordinary AP processing.",
       startingPoint:
@@ -12725,7 +12827,7 @@ export const FINANCIAL_SERVICES_VERTICAL: VerticalPageContent = {
   h1: "AI Solutions for Financial Services",
   eyebrow: "Financial Services AI from the ITECS Dallas team",
   heroSummary:
-    "ITECS helps lenders, asset-based lenders, and advisory firms turn borrower financials, collateral data, portfolio reporting, and engagement files into governed AI workflows that free senior capacity, speed turnaround, and surface risk earlier—without sending confidential data outside a protected boundary.",
+    "ITECS helps lenders, asset-based lenders, and advisory firms turn borrower financials, collateral data, portfolio reporting, and engagement files into governed AI workflows with documented data boundaries, review controls, and source traceability.",
   longDescription:
     "Financial-services leaders do not need generic AI demos. They need systems that can read messy borrower files, explain collateral and covenant movement, respect approval controls, and keep every figure traceable to its source—built for confidential, audit-sensitive work where the output may be examined by lenders, courts, or in litigation support.",
   primaryCta: "Financial Services AI Readiness Assessment",
@@ -12920,9 +13022,9 @@ export const FINANCIAL_SERVICES_VERTICAL: VerticalPageContent = {
       description:
         "ITECS designs around the systems financial firms already run, on a managed-security foundation built for distressed-company and lender-collateral data.",
       points: [
-        "Business and enterprise tiers that contractually isolate firm data and never train on it",
+        "Business and enterprise vendor terms, data use, retention, and tenancy verified for the selected deployment",
         "Audit-ready output for work that may be examined by lenders, courts, or in litigation support",
-        "Delivered on ITECS's SOC 2 Type II, ISO 27001, and CMMC-aligned practice",
+        "CMMC readiness support available when scoped; SOC 2 Type II applies only if Promus managed cloud hosting is selected",
       ],
     },
   ],
@@ -12940,7 +13042,7 @@ export const FINANCIAL_SERVICES_VERTICAL: VerticalPageContent = {
     {
       question: "How do you handle confidential borrower and engagement data?",
       answer:
-        "Everything is built for confidential financial work. ITECS uses business and enterprise tiers that contractually isolate the firm's data and never train on it, with role-based access, audit logs, and human approval before sensitive actions, on a SOC 2 Type II and ISO 27001 foundation.",
+        "ITECS documents the selected vendors' contractual data-use and retention terms, tenancy, role-based access, audit logging, and human approval requirements before production. SOC 2 Type II applies only to Promus managed cloud hosting when that hosting service is part of the architecture; it does not apply to the ITECS MSP or AI practice as a whole.",
     },
     {
       question: "Do we need clean, integrated data before starting?",
@@ -13051,7 +13153,7 @@ export const FIELD_EXAM_ANALYZER_USE_CASE: FlagshipUseCaseContent = {
     },
   ],
   scenario: {
-    title: "Anonymized asset-based lending exam scenario",
+    title: "Illustrative asset-based lending exam scenario",
     problem:
       "An asset-based lender and its advisory partner want to standardize working-capital field exams across a portfolio, reproduce the roll-forward, dilution, and ineligible analysis consistently, and see availability risk before the next funding.",
     outcome:
@@ -13163,7 +13265,7 @@ export const FIELD_EXAM_ANALYZER_USE_CASE: FlagshipUseCaseContent = {
     {
       question: "Is our borrower data kept confidential?",
       answer:
-        "Yes. The analyzer runs on business or enterprise tiers that contractually isolate the firm's data and never train on it, with role-based access, audit logs, and a SOC 2 Type II and ISO 27001 foundation.",
+        "Confidentiality depends on the approved architecture and contracts. ITECS verifies vendor data-use and retention terms, access roles, audit logging, and human review before production. SOC 2 Type II applies only if Promus managed cloud hosting is selected for the workload.",
     },
     {
       question: "What data is needed for a discovery workshop?",
@@ -13291,7 +13393,7 @@ export const FINANCIAL_SERVICES_SPOKE_PAGES: VerticalSpokePageContent[] = [
       },
     ],
     scenario: {
-      title: "Anonymized cash flow modeling scenario",
+      title: "Illustrative cash flow modeling scenario",
       description:
         "An advisory firm needs to deliver a comprehensive model quickly after a field exam, without rebuilding the statements by hand each time.",
       startingPoint:
@@ -13414,7 +13516,7 @@ export const FINANCIAL_SERVICES_SPOKE_PAGES: VerticalSpokePageContent[] = [
       description:
         "Cash flow models contain confidential borrower and company financials. ITECS scopes access so each role sees only the engagements and data it is permitted to use.",
       points: [
-        "Business and enterprise tiers that isolate firm data and never train on it",
+        "Selected business or enterprise tier data terms, tenancy, and retention verified during scoping",
         "Versioned assumptions and source-traceable inputs",
         "No autonomous client delivery of models or commentary",
         "Audit history for model versions, assumptions, and approvals",
@@ -13570,7 +13672,7 @@ export const FINANCIAL_SERVICES_SPOKE_PAGES: VerticalSpokePageContent[] = [
       },
     ],
     scenario: {
-      title: "Anonymized portfolio monitoring scenario",
+      title: "Illustrative portfolio monitoring scenario",
       description:
         "A lender wants earlier warning on deteriorating credits without adding headcount to review every borrower report manually.",
       startingPoint:
@@ -13693,7 +13795,7 @@ export const FINANCIAL_SERVICES_SPOKE_PAGES: VerticalSpokePageContent[] = [
       description:
         "Portfolio monitoring touches confidential borrower reporting and credit data. ITECS scopes access so each role sees only the borrowers and portfolios it is permitted to review.",
       points: [
-        "Business and enterprise tiers that isolate firm data and never train on it",
+        "Selected business or enterprise tier data terms, tenancy, and retention verified during scoping",
         "Source-traceable evidence behind every alert",
         "No autonomous borrower communications or rating changes",
         "Audit history for alerts, reviews, and approvals",
@@ -13849,7 +13951,7 @@ export const FINANCIAL_SERVICES_SPOKE_PAGES: VerticalSpokePageContent[] = [
       },
     ],
     scenario: {
-      title: "Anonymized receivables scenario",
+      title: "Illustrative receivables scenario",
       description:
         "A company in a workout needs to accelerate collections and keep the receivables reconciliation clean for its lender, but the original accounting system is no longer available.",
       startingPoint:
@@ -13972,7 +14074,7 @@ export const FINANCIAL_SERVICES_SPOKE_PAGES: VerticalSpokePageContent[] = [
       description:
         "Receivables work exposes customer, credit, and payment data. ITECS scopes access so each role sees only the accounts and engagements it is permitted to work.",
       points: [
-        "Business and enterprise tiers that isolate firm data and never train on it",
+        "Selected business or enterprise tier data terms, tenancy, and retention verified during scoping",
         "Source-traceable roll-forward and reconciliation",
         "No autonomous customer contact or credit-term changes",
         "Audit history for prioritization, outreach, and approvals",

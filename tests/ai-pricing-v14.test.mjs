@@ -115,5 +115,10 @@ describe("AI Services Program v1.4 pricing contract", () => {
       publicPricingSurfaces,
       /Managed AI (?:Starter|Standard|Plus)|Integrated \/ Financial Workpaper Agent|\$3,500\/session|\$12,500|\$21,500|no expiration|does not expire/i,
     );
+    assert.doesNotMatch(
+      constants,
+      /no expiration|does not expire/i,
+      "Insights and service copy must preserve the catalog's 12-month retainer expiry",
+    );
   });
 });

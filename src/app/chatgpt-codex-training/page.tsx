@@ -52,7 +52,7 @@ export default function ChatGPTCodexTrainingPage() {
         heading="An Engineering Agent That Ships Real Pull Requests"
         paragraphs={[
           "ChatGPT Codex is OpenAI's software-engineering agent. It reads your repository, writes and edits code across files, runs commands in a sandbox, and opens pull requests your team reviews. It works in the terminal, inside your IDE, and in the cloud.",
-          "In the right hands it clears backlogs and compresses days of work into hours. Without guardrails it can introduce risk. ITECS implements Codex safely and trains your developers to drive it like a disciplined teammate.",
+          "For well-scoped tasks it can accelerate engineering work. Without guardrails it can introduce risk. ITECS configures controls and trains developers to use the agent within documented review boundaries.",
         ]}
         bullets={[
           "Delegate refactors, tests, migrations, and routine bug fixes",
@@ -80,9 +80,9 @@ export default function ChatGPTCodexTrainingPage() {
         scenario={{
           business: "A 25-developer SaaS company in Dallas",
           problem:
-            "let engineers experiment with Codex on their own. One agent run, given broad access and no review gate, force-pushed a half-finished refactor and broke the build for a full afternoon. Leadership nearly banned the tool outright despite its obvious upside.",
+            "could let engineers experiment independently, leaving an agent with broad access, no sandbox boundary, and no required review path for repository changes.",
           result:
-            "ITECS re-implemented Codex with sandboxed execution, scoped credentials, spending caps, and a mandatory pull-request review standard. We trained the team on task scoping and agent review. Codex now clears routine tickets safely, and the team ships noticeably more each sprint.",
+            "A governed rollout could add sandboxed execution, scoped credentials, spending caps, and mandatory pull-request review, then measure accepted output and cycle time against the team's baseline.",
         }}
       />
 
@@ -97,7 +97,7 @@ export default function ChatGPTCodexTrainingPage() {
         eyebrow="Implementation Path"
         heading="From Sandbox Setup to Governed Agent Workflows"
         ariaLabel="Five-stage ChatGPT Codex rollout: assess the codebase and workflow, implement Codex with sandboxing and guardrails, secure credentials and approval gates, train developers hands-on, then optimize cost and workflow."
-        caption="ITECS stands up Codex the safe way — assess, implement, secure, train, and optimize — so agent-written code is always sandboxed, reviewed, and within budget."
+        caption="The rollout path assesses, implements, secures, trains, and optimizes, with sandboxing, human review, and budget controls required by the approved policy."
         stages={[
           { icon: "Search", label: "Assess", detail: "Review repos & workflow" },
           { icon: "Terminal", label: "Implement", detail: "Configure CLI, IDE & cloud agent" },
@@ -116,10 +116,10 @@ export default function ChatGPTCodexTrainingPage() {
 
       <SecurityGuarantee
         title="Secure, Governed Codex Deployment"
-        description="Your source code, secrets, and infrastructure stay protected throughout the engagement. ITECS AI is backed by ITECS — a Dallas cybersecurity MSP operating since 2002."
+        description="ITECS scopes sandboxing, credentials, review, and budget controls for the approved repositories and workflows. ITECS AI is backed by ITECS, a Dallas cybersecurity MSP operating since 2002."
         points={[
           "Sandboxed execution — agent runs are isolated so they never touch production systems unchecked",
-          "Scoped credentials — Codex receives only the repository and permissions each task requires",
+          "Scoped credentials — repository and task permissions are minimized and verified for the approved workflow",
           "Mandatory human review — every agent-written change lands as a pull request a developer approves",
           "Spending and usage caps — agent runs stay within a budget you set and can audit",
         ]}
@@ -135,19 +135,19 @@ export default function ChatGPTCodexTrainingPage() {
 
       <PricingROI
         heading="What Does ChatGPT Codex Training Cost?"
-        description="Most teams either avoid Codex out of fear or adopt it with no guardrails. Here is how a governed ITECS engagement compares for a team of 5–30 developers."
+        description="Codex adoption needs explicit repository, execution, review, and spending boundaries. Here is the design comparison for a governed developer rollout."
         traditionalLabel="Self-Taught / Ungoverned"
         aiLabel="ITECS Program"
         comparison={[
           {
             label: "Time to safe adoption",
-            traditional: "Months of trial and error",
-            ai: "2–3 weeks",
+            traditional: "No defined rollout schedule",
+            ai: "Schedule confirmed after assessment",
           },
           {
             label: "Production risk",
             traditional: "High — no guardrails",
-            ai: "Low — sandboxed + reviewed",
+            ai: "Reduced through sandboxing and review",
           },
           {
             label: "Code review standard",
@@ -165,7 +165,7 @@ export default function ChatGPTCodexTrainingPage() {
             ai: "AI Retainer, 12-month expiry",
           },
         ]}
-        roiStatement="Typical outcome: routine engineering runs meaningfully faster and teams clear more tickets per sprint — without a single unreviewed change reaching production."
+        roiStatement="ITECS baselines the selected engineering work, then measures cycle time, accepted output, review quality, and cost while requiring human review before production changes."
         pricingNotes={[
           "Implementation + guardrails: scoped flat fee covering CLI, IDE, and cloud-agent setup with sandboxing and approval gates",
           "Developer enablement: hands-on workshops on live tickets, plus a documented review standard for agent output",

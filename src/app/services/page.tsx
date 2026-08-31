@@ -39,13 +39,13 @@ const SERVICES_FAQ = [
   {
     question: "Do I need to buy all 10 services at once?",
     answer:
-      "No. Most clients start with one or two services and expand as they see results. Our three-phase framework (Assess, Build, Scale) lets you adopt AI incrementally without disrupting daily operations.",
+      "No. ITECS scopes the smallest useful starting point and expands only after the workflow, controls, ownership, and measured result support the next phase.",
   },
   {
     question:
       "Is my business data safe when using ITECS AI services?",
     answer:
-      "Yes. Every ITECS AI deployment runs in a private environment — your data never trains public models. We use AES-256 encryption, credential isolation, and comply with HIPAA, SOC 2, and PCI-DSS standards, backed by 24 years of cybersecurity operations.",
+      "Data handling depends on the selected platform, plan, architecture, connectors, and client requirements. ITECS documents data flows, contractual vendor terms, identity controls, retention, and human approval before production use. SOC 2 Type II applies only to Promus managed cloud hosting, not to the MSP or AI practice as a whole.",
   },
   {
     question:
@@ -56,7 +56,7 @@ const SERVICES_FAQ = [
   {
     question: "How long does it take to see results from AI services?",
     answer:
-      "Most clients see measurable time savings within 2–4 weeks of deployment. Automation and AI receptionist services deliver the fastest ROI — often within the first billing cycle.",
+      "Timing depends on source readiness, integrations, permissions, testing, and review requirements. ITECS confirms the schedule after discovery and measures results against an agreed pre-launch baseline.",
   },
 ] as const;
 
@@ -87,18 +87,18 @@ export default function ServicesPage() {
       {/* 5. Operating pain point — AI choice paralysis */}
       <PainPoint
         stat="73%"
-        statLabel="of business leaders say AI could help — but need a clear operating model"
+        statLabel="modeled share of leaders who need a clear AI operating model"
         heading="You Know AI Could Save Time. You Just Don't Know Which Tool to Pick."
         paragraphs={[
           "Your inbox is full of pitches — ChatGPT wrappers, automation platforms, AI-powered CRMs, voice bots. Each one claims to save your team hours. But none of them explain which problem to solve first, how to connect it to your existing tools, or who maintains it when something breaks at 2 AM.",
-          "Without a clear starting point, most businesses either do nothing or buy a tool they never fully deploy. Meanwhile, competitors with fewer employees are responding to leads faster, processing invoices automatically, and training their teams on AI you haven't evaluated yet.",
+          "Without a clear starting point, a team can buy tools it never fully deploys while ownership, data readiness, and maintenance remain unresolved. A defensible plan ties each purchase to a workflow, owner, control set, and baseline.",
         ]}
         scenario={{
           business: "A 45-person property management company in Plano",
           problem:
-            "evaluated 6 different AI tools over 4 months — a chatbot for tenant inquiries, an automation platform for lease renewals, and an AI receptionist for after-hours calls. They demoed all of them but deployed none, because no one on staff could assess data readiness, integration complexity, or ongoing maintenance requirements. Each vendor promised ROI but none explained how their tool connected to the company's existing Yardi and RingCentral stack.",
+            "could evaluate several disconnected tools without a way to assess data readiness, integration complexity, ownership, or ongoing maintenance across the existing property-management and telephony stack.",
           result:
-            "ITECS ran a 2-week AI readiness audit, identified tenant communication and lease processing as the highest-ROI automation targets, and deployed a custom AI agent integrated with Yardi plus an AI receptionist handling after-hours calls. The team now saves 32 hours per week and responds to tenant requests within 3 minutes instead of 4 hours.",
+            "A readiness engagement could rank tenant communication and lease processing, document integration and review requirements, and baseline response time before any agent or voice workflow is approved.",
         }}
       />
 
@@ -113,12 +113,12 @@ export default function ServicesPage() {
 
       {/* 9. Enterprise-grade security */}
       <SecurityGuarantee
-        description="Every AI service ITECS deploys runs in a private, encrypted environment. Your business data never trains public models and never leaves your control. ITECS AI is backed by ITECS — a Dallas cybersecurity MSP operating since 2002."
+        description="ITECS selects deployment architecture, vendor plans, access, retention, and review controls for the client's data and risk requirements. ITECS AI is backed by ITECS, a Dallas cybersecurity MSP operating since 2002."
         points={[
-          "Private AI environments — your data stays in isolated, tenant-specific deployments with no cross-client data sharing",
-          "AES-256 encryption at rest and in transit across all AI services, API connections, and workflow pipelines",
+          "Data-boundary review — tenancy, subprocessors, connectors, and storage locations are documented before production",
+          "Encryption and retention — controls are verified for each selected platform and integration rather than assumed sitewide",
           "Credential isolation — API keys, access tokens, and service accounts live in encrypted vaults, never hardcoded",
-          "HIPAA, SOC 2, and PCI-DSS compliance support for healthcare, legal, and financial services clients",
+          "Compliance readiness — regulated work is custom-scoped to applicable obligations and eligible vendor contracts",
         ]}
         internalLink={{
           text: "Run an AI data readiness audit before deploying any AI service",

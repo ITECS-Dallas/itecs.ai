@@ -37,7 +37,7 @@ const agentOperationsOne = MANAGED_AI_AGENT_OPERATIONS.prices[0];
 export const metadata = generatePageMetadata({
   title: "AI CRM & Sales Automation for Growing Teams",
   description:
-    "Integrate AI into HubSpot or Salesforce to automate lead scoring, outreach, and data entry — saving reps 15+ hours/week. 24 years IT expertise.",
+    "Integrate governed AI into HubSpot or Salesforce for lead scoring support, outreach drafts, and approved data-entry workflows.",
   path: service.href,
   keywords: service.keywords,
 });
@@ -62,18 +62,18 @@ export default function CRMSalesAIPage() {
       {/* 2. Operating pain point — validate the sales admin drain */}
       <PainPoint
         stat="68%"
-        statLabel="of a sales rep's week is spent on non-selling activities"
+        statLabel="modeled non-selling time to baseline during discovery"
         heading="Your Reps Spend More Time on Data Entry Than Selling"
         paragraphs={[
           "Your sales team opens HubSpot 40 times a day to log calls, update deal stages, and copy-paste prospect info between tabs. They research leads manually on LinkedIn, draft outreach from scratch, and guess which prospects to prioritize. The CRM was supposed to help them sell — instead it became their biggest time sink.",
-          "For a 10-person sales team, that adds up to 150+ hours per week lost to admin work. At a blended cost of $50/hour, you're burning $7,500 a week on tasks AI handles in seconds.",
+          "For a sales team, the cost depends on actual activity volume, time per task, compensation, and existing automation. Discovery measures that baseline before ITECS recommends a workflow or forecasts a return.",
         ]}
         scenario={{
           business: "A 30-person HVAC company in Dallas",
           problem:
-            "had 8 field sales reps manually entering job estimates, follow-up notes, and lead sources into Salesforce after every site visit. Reps averaged 45 minutes of CRM admin per day — time they weren't spending on callbacks or closing.",
+            "could have field representatives manually entering estimates, notes, and lead sources after each visit, reducing the time available for follow-up.",
           result:
-            "After integrating AI for automatic activity logging and lead scoring, the team recovered 6 hours per rep per week. Close rates increased 22% in the first quarter with zero new hires.",
+            "A governed workflow could draft activity logs and scoring recommendations for review. Administrative time, data quality, and conversion impact would be measured against the pre-launch baseline.",
         }}
       />
 
@@ -102,10 +102,10 @@ export default function CRMSalesAIPage() {
       <SecurityGuarantee
         description="Your CRM contains your most sensitive business data — customer contacts, deal values, revenue forecasts, and communication history. ITECS AI is backed by ITECS, a Dallas-based cybersecurity MSP operating since 2002."
         points={[
-          "Private AI environments — your CRM data never leaves your tenant. We deploy AI within your existing HubSpot or Salesforce security perimeter",
-          "Zero data training — OpenAI and third-party AI providers never train on your CRM records, emails, or pipeline data",
+          "Documented data flow — hosting, connectors, subprocessors, and any data movement are verified for the chosen CRM and AI architecture",
+          "Contractual data terms — model training and retention depend on the selected vendor, plan, and configuration and are reviewed before launch",
           "Role-based access controls mirror your existing CRM permissions. AI actions respect the same visibility rules your reps follow",
-          "SOC 2 Type II alignment — we follow the same security controls used by the CRM platforms themselves",
+          "Control mapping — deployment controls are mapped to client requirements without representing ITECS as SOC 2 Type II certified",
         ]}
         internalLink={{
           text: "Run an AI data readiness audit before connecting AI to your CRM",
@@ -120,22 +120,22 @@ export default function CRMSalesAIPage() {
       {/* 8. Pricing Transparency & ROI */}
       <PricingROI
         heading="How Much Does AI CRM Integration Cost?"
-        description="AI CRM integration pays back fast. Here's how it compares to the status quo for a team of 5-15 sales reps."
+        description="The business case depends on current activity volume, CRM quality, licenses, integrations, review steps, and production operations. Here is the workflow comparison ITECS validates during discovery."
         comparison={[
           {
             label: "Lead research time",
-            traditional: "30-45 min per lead",
-            ai: "Instant, automated",
+            traditional: "Measured during discovery",
+            ai: "Automated within the approved data sources",
           },
           {
             label: "CRM data entry",
-            traditional: "45+ min/day per rep",
-            ai: "Auto-logged",
+            traditional: "Measured during discovery",
+            ai: "Auto-logged after validation",
           },
           {
             label: "Lead scoring",
             traditional: "Gut feel / manual",
-            ai: "AI-scored by close likelihood",
+            ai: "Scoring logic approved and monitored",
           },
           {
             label: "Outreach personalization",
@@ -145,15 +145,15 @@ export default function CRMSalesAIPage() {
           {
             label: "Pipeline accuracy",
             traditional: "Stale, incomplete",
-            ai: "Real-time, auto-enriched",
+            ai: "Refresh cadence defined in scope",
           },
           {
             label: "Time to first contact",
-            traditional: "Hours to days",
-            ai: "Minutes",
+            traditional: "Current baseline measured",
+            ai: "Target set after baseline measurement",
           },
         ]}
-        roiStatement="Most teams recover the full setup cost within 60 days through higher close rates and recovered selling time."
+        roiStatement="ITECS measures current administrative time, response time, data quality, and conversion performance before setting any payback or outcome target."
         pricingNotes={[
           `${agentDiscovery.name}: ${agentDiscovery.price}, credited toward the build when the client proceeds`,
           `${integratedAgent.name}: ${integratedAgent.price} when the workflow needs production CRM integrations and reviewer controls`,

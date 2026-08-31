@@ -248,7 +248,7 @@ export function AgentTaxonomy() {
             href="/assessment"
             className="font-semibold text-itecs-blue transition-colors hover:text-itecs-blue-bright"
           >
-            Start with a free AI assessment
+            Start with the no-cost intake
           </Link>
           .
         </p>

@@ -1,8 +1,8 @@
-import { ArrowUpRight, Award, Newspaper, Star } from "lucide-react";
+import { ArrowUpRight, Newspaper, Star } from "lucide-react";
 import { THIRD_PARTY_VALIDATION } from "@/lib/constants";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
-const itemIcons = [Star, Star, Newspaper, Award, Award] as const;
+const itemIcons = [Star, Star, Newspaper] as const;
 
 export function ThirdPartyValidation() {
   const items = [...THIRD_PARTY_VALIDATION.items];
@@ -20,9 +20,9 @@ export function ThirdPartyValidation() {
           description={THIRD_PARTY_VALIDATION.description}
         />
 
-        <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-5">
+        <div className="mt-10 grid gap-4 md:grid-cols-3">
           {items.map((item, index) => {
-            const Icon = itemIcons[index] ?? Award;
+            const Icon = itemIcons[index] ?? Newspaper;
 
             return (
               <a

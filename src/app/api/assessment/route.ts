@@ -96,14 +96,14 @@ export async function POST(request: NextRequest) {
   }
 
   if (normalizeValue(payload.website)) {
-    return NextResponse.json({ message: "Assessment request received." });
+    return NextResponse.json({ message: "Intake request received." });
   }
 
   const ipAddress = getIpAddress(request);
 
   if (!checkRateLimit(ipAddress)) {
     return NextResponse.json(
-      { message: "Too many assessment attempts. Please try again later." },
+      { message: "Too many intake attempts. Please try again later." },
       { status: 429 },
     );
   }
@@ -133,7 +133,7 @@ export async function POST(request: NextRequest) {
     const turnstile = await validateTurnstileToken(turnstileToken, ipAddress);
 
     if (!turnstile.success) {
-      console.warn("Turnstile validation rejected assessment submission", {
+      console.warn("Turnstile validation rejected intake submission", {
         sourcePath: normalizeValue(payload.sourcePath) || "/assessment",
         errorCodes: turnstile.errorCodes,
       });
@@ -145,7 +145,7 @@ export async function POST(request: NextRequest) {
     }
 
     await sendContactEmail({
-      formName: "AI Readiness Assessment",
+      formName: "AI Readiness Intake",
       sourcePath: normalizeValue(payload.sourcePath) || "/assessment",
       submittedAt: new Date().toISOString(),
       fields: [
@@ -163,14 +163,14 @@ export async function POST(request: NextRequest) {
     });
 
     return NextResponse.json({
-      message: "Assessment request received.",
+      message: "Intake request received.",
       nextStep: "ITECS will route the follow-up by email.",
     });
   } catch (error) {
-    console.error("Assessment form email failed", error);
+    console.error("AI readiness intake email failed", error);
 
     return NextResponse.json(
-      { message: "We could not send your assessment. Please call us directly." },
+      { message: "We could not send your intake. Please call us directly." },
       { status: 502 },
     );
   }

@@ -109,7 +109,7 @@ export function Hero() {
 
           <div className="mt-9 flex flex-wrap items-center gap-4">
             <Button href="/assessment" size="lg">
-              Get a Free AI Assessment
+              Start the No-Cost Intake
             </Button>
             <Button href="#ai-agents" variant="tertiary" size="lg">
               or see the two kinds of agents

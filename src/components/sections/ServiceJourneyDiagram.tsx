@@ -68,7 +68,7 @@ const phases = [
         icon: Phone,
         name: "AI Receptionist",
         href: "/ai-receptionist",
-        desc: "24/7 call answering and appointment booking",
+        desc: "Configured call coverage and appointment booking",
       },
       {
         icon: BarChart3,
@@ -218,7 +218,7 @@ export function ServiceJourneyDiagram() {
           <SectionHeading
             eyebrow="Your AI Journey"
             title="From Assessment to Adoption in Three Phases"
-            description="Most businesses stall because they try to do everything at once. We break AI adoption into three phases — so you start with quick wins and scale from there."
+            description="The three-phase model narrows scope before expansion: assess the workflow, build with controls, then scale only after measured evidence supports it."
           />
         </ScrollReveal>
 

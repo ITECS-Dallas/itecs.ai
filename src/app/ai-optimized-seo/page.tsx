@@ -17,7 +17,6 @@ import { SEOCircuit } from "@/components/effects/circuits/SEOCircuit";
 import { AISEOMethodology } from "@/components/sections/AISEOMethodology";
 import { TraditionalVsAIComparison } from "@/components/sections/TraditionalVsAIComparison";
 import { SEOPhilosophyContrast } from "@/components/sections/SEOPhilosophyContrast";
-import { LiveAnalyticsProof } from "@/components/sections/LiveAnalyticsProof";
 import { SEOEngagementTiers } from "@/components/sections/SEOEngagementTiers";
 import { AISEOGlossary } from "@/components/sections/AISEOGlossary";
 import { FAQ } from "@/components/sections/FAQ";
@@ -205,15 +204,6 @@ export default function AIOptimizedSEOPage() {
           </ScrollReveal>
         </div>
       </section>
-
-      {/* Live analytics proof */}
-      <LiveAnalyticsProof
-        title={overview.proofTitle}
-        intro={overview.proofIntro}
-        stats={overview.proofStats}
-        trafficSources={overview.proofTrafficSources}
-        dateRange={overview.proofDateRange}
-      />
 
       {/* Engagement tiers — Foundation / Momentum / Velocity */}
       <div id="tiers">

@@ -11,6 +11,7 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { TrustBar } from "@/components/sections/TrustBar";
 import { PartnerLogos } from "@/components/sections/PartnerLogos";
+import { Testimonials } from "@/components/sections/Testimonials";
 import { CTASection } from "@/components/sections/CTASection";
 import { FAQ } from "@/components/sections/FAQ";
 import { AboutTimeline } from "@/components/sections/AboutTimeline";
@@ -120,6 +121,9 @@ export default function AboutPage() {
 
       {/* 8. Partner Logos */}
       <PartnerLogos />
+
+      {/* Direct-source Google Maps and G2 reviews */}
+      <Testimonials />
 
       {/* 9. FAQ — LAST content section before CTA (V2.0 protocol) */}
       <FAQ items={aboutFaqWithLinks} heading="About ITECS — FAQ" />

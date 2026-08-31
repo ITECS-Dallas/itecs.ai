@@ -63,7 +63,7 @@ export default function CustomAIAgentsPage() {
       {/* 2. Operating pain point — validate the DIY agent trap */}
       <PainPoint
         stat="73%"
-        statLabel="of AI experiments never become reliable, governed business workflows"
+        statLabel="modeled share of experiments that could stall without governance and ownership"
         heading="Your Team Has AI Ideas. The Hard Part Is Making Them Work Safely."
         paragraphs={[
           "Your employees are already asking ChatGPT, Claude, Gemini, Copilot, and coding assistants to draft answers, summarize documents, write scripts, and speed up daily work. The gap appears when those useful experiments need approved data, repeatable prompts, project folders, tool access, audit trails, and a human approval path before anything touches a customer or production system.",
@@ -72,9 +72,9 @@ export default function CustomAIAgentsPage() {
         scenario={{
           business: "A 55-person property management company in Dallas",
           problem:
-            "had front desk staff manually answering 120+ tenant questions per day — lease terms, maintenance status, payment deadlines — by searching through 4 different systems. They had useful prompt experiments in ChatGPT and Claude, but no governed way to connect those workflows to Yardi, approved SOPs, or a staff review process.",
+            "could have front-desk staff repeatedly searching separate systems for lease, maintenance, and payment information while useful prompt experiments remain disconnected from approved records and review rules.",
           result:
-            "ITECS built a secure AI agent connected to their approved knowledge base and Yardi data through controlled APIs. The agent now resolves 87% of tenant inquiries, escalates sensitive cases with full context, and keeps staff in the loop when policy or account-specific decisions require approval.",
+            "A governed agent could retrieve approved material through scoped connections, draft an answer, and escalate policy or account-specific decisions with source context for staff review. Resolution targets would be validated during discovery.",
         }}
       />
 
@@ -123,7 +123,7 @@ export default function CustomAIAgentsPage() {
           "Vendor-neutral architecture — we build with the right mix of ChatGPT, Claude, Gemini, Copilot, Codex, APIs, open-source models, and business platforms for your use case",
           "Human-in-the-loop controls — sensitive actions can require approval before an agent sends a message, updates a record, triggers a workflow, or touches production",
           "Data boundaries — agents retrieve from approved folders, systems, and knowledge bases with scoped access, confidence thresholds, and audit logging",
-          "Encrypted end-to-end — prompts, retrieval data, tool calls, logs, and credentials are protected with access controls and secure retention policies",
+          "Scoped protection — prompts, retrieval data, tool calls, logs, and credentials use controls and retention policies selected for the deployment architecture",
         ]}
         internalLink={{
           text: "Run an AI data readiness audit before connecting agents to business systems",
@@ -138,7 +138,7 @@ export default function CustomAIAgentsPage() {
       {/* 8. Pricing Transparency & ROI */}
       <PricingROI
         heading="How Much Does a Custom AI Agent Cost?"
-        description="Most businesses start with useful one-off prompts, then need a governed system that can access data, call tools, and involve people at the right moments. Here is how ITECS compares for a company turning AI experiments into production workflows."
+        description="Useful one-off prompts need a governed system before they access business data, call tools, or change records. Here is the design comparison ITECS validates when an experiment moves toward production."
         traditionalLabel="DIY Prompt or No-Code Agent"
         aiLabel="ITECS Custom AI Agent"
         comparison={[

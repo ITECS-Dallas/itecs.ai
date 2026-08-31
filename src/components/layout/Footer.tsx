@@ -216,11 +216,12 @@ export function Footer() {
                 id="footer-certifications"
                 className="font-mono text-xs font-semibold uppercase text-text-primary"
               >
-                Certifications & Partners
+                Credentials, hosting scope & services
               </h3>
               <p className="mt-2 max-w-xl text-sm leading-relaxed text-text-tertiary">
-                Real security, cloud, and platform credentials supporting ITECS
-                managed intelligence delivery.
+                Verified partner credentials are labeled as such. SOC 2 Type II
+                applies only to ITECS Promus managed cloud hosting; CMMC is a
+                readiness service, not an ITECS certification.
               </p>
             </div>
             <CertificationStrip

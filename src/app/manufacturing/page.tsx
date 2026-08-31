@@ -73,6 +73,13 @@ export default function ManufacturingPage() {
                   cybersecurity, infrastructure, and managed-service discipline
                   that production AI needs.
                 </p>
+                <Link
+                  href="/case-studies/pegasus-foods-zero-downtime-relocation"
+                  className="mt-5 inline-flex min-h-11 items-center text-sm font-semibold text-brand-hover transition-colors hover:text-itecs-blue"
+                >
+                  Read the historical Pegasus Foods manufacturing case summary
+                  <ArrowRight aria-hidden="true" className="ml-2 h-4 w-4" />
+                </Link>
               </div>
             </div>
           </div>

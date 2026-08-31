@@ -79,9 +79,9 @@ export default function ClaudeCoworkTrainingPage() {
         scenario={{
           business: "A 40-person marketing agency in Plano",
           problem:
-            "paid for Claude across the team but saw almost no change in output after two months. Staff used it for the occasional email rewrite and little else. Client research, campaign briefs, and reporting — the work that ate their week — never moved into the tool because no one knew how to delegate it.",
+            "could license Claude broadly while staff use it only for occasional rewrites because no one has mapped approved research, briefing, or reporting workflows.",
           result:
-            "ITECS implemented Claude Cowork on the right plan, connected it to their Google Workspace and Slack securely, and ran two weeks of hands-on delegation workshops. The agency now runs first-draft research and reporting through Claude and recovered roughly 12 hours per week across the team.",
+            "A governed rollout could select the plan, scope approved connections, train the team on one real workflow, and measure accepted output and time returned against a pre-training baseline.",
         }}
       />
 
@@ -94,9 +94,9 @@ export default function ClaudeCoworkTrainingPage() {
 
       <ToolTrainingDiagram
         eyebrow="Implementation Path"
-        heading="From First Login to Delegated Projects in Two Weeks"
+        heading="From First Login to Governed Delegated Projects"
         ariaLabel="Five-stage Claude Cowork rollout: assess the work worth delegating, implement the workspace and plan, secure tool connections and data access, run hands-on training workshops, then scale with templates and new teams."
-        caption="Every ITECS Claude Cowork engagement follows the same governed path — assess, implement, secure, train, and scale — so adoption sticks and data stays protected."
+        caption="The rollout path assesses, implements, secures, trains, and scales, with adoption and data controls measured against the approved plan."
         stages={[
           { icon: "Search", label: "Assess", detail: "Map projects worth delegating" },
           { icon: "SlidersHorizontal", label: "Implement", detail: "Set up workspace & plan" },
@@ -115,10 +115,10 @@ export default function ClaudeCoworkTrainingPage() {
 
       <SecurityGuarantee
         title="Secure Claude Cowork Adoption"
-        description="Your documents, client records, and internal workflows stay protected throughout the engagement. ITECS AI is backed by ITECS — a Dallas cybersecurity MSP operating since 2002."
+        description="ITECS reviews plan-level vendor terms, permissions, connections, usage rules, and human review for documents, client records, and internal workflows. ITECS AI is backed by ITECS, a Dallas cybersecurity MSP operating since 2002."
         points={[
           "Business-plan configuration — on Anthropic's Team and Enterprise plans, your content is not used to train models by default",
-          "Scoped data access — we control which files, drives, and apps Claude can reach, so sensitive records stay out of scope",
+          "Scoped data access — approved files, drives, and app connections are limited to the workflow and tested before use",
           "Written AI usage policy — every engagement defines what data employees may and may not share with the tool",
           "Readiness first — we review and classify your data before connecting Claude to any sensitive system",
         ]}
@@ -134,14 +134,14 @@ export default function ClaudeCoworkTrainingPage() {
 
       <PricingROI
         heading="What Does Claude Cowork Training Cost?"
-        description="Most teams buy licenses, watch adoption stall, then wonder where the ROI went. Here is how a structured ITECS engagement compares for a team of 10–50 people."
+        description="Licenses alone do not define adoption, governance, or a measurable workflow. Here is the design comparison for a structured team engagement."
         traditionalLabel="Licenses Only"
         aiLabel="ITECS Program"
         comparison={[
           {
             label: "Time to real adoption",
-            traditional: "3–6 months, if ever",
-            ai: "About 2 weeks",
+            traditional: "No defined rollout schedule",
+            ai: "Schedule confirmed after scoping",
           },
           {
             label: "Work delegated to AI",
@@ -164,7 +164,7 @@ export default function ClaudeCoworkTrainingPage() {
             ai: "AI Retainer, 12-month expiry",
           },
         ]}
-        roiStatement="Typical outcome: about 12 hours saved per team each week within 30 days — enough to cover the engagement in the first month through productivity gains alone."
+        roiStatement="ITECS baselines the selected work before training, then measures accepted output, time returned, adoption, and review quality against targets agreed for the rollout."
         pricingNotes={[
           "Implementation + core workshop (up to 20 staff): scoped flat fee covering setup, secure tool connections, and delegation training",
           "Multi-team rollout: flat-fee program with role-specific sessions and reusable project templates",

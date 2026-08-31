@@ -113,7 +113,7 @@ export default function PPVAgentPage() {
           <SectionHeading
             eyebrow="Scenario"
             title={page.scenario.title}
-            description="This scenario is anonymized and is not presented as a named public case study."
+            description="Illustrative planning scenario, not a reported client result or a named public case study."
           />
           <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2">
             <div className="rounded-xl border border-[var(--border-subtle)] bg-bg-void/50 p-6">
@@ -233,7 +233,7 @@ export default function PPVAgentPage() {
           </h2>
           <p className="mt-4 text-text-secondary leading-relaxed">
             Start with a focused workshop that reviews your PPV method,
-            BatchMaster/SAP and Power BI environment, data availability, and
+            ERP and BI environment, data availability, and
             approval requirements.
           </p>
           <div className="mt-8 flex justify-center">

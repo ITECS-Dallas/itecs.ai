@@ -132,7 +132,7 @@ export function ConsultingWorkflowDiagram() {
               Consulting Engagement
             </p>
             <h2 className="text-3xl md:text-4xl font-light tracking-[-0.02em] text-text-primary">
-              From Discovery to Measurable ROI in 4 Weeks
+              From Discovery to a Measurable, Approved Roadmap
             </h2>
           </div>
         </ScrollReveal>
@@ -212,7 +212,7 @@ export function ConsultingWorkflowDiagram() {
             <figcaption className="mt-10 text-center text-sm text-text-dim italic">
               Each engagement follows this five-stage process — from
               stakeholder interviews through tool deployment. Most Dallas
-              businesses reach measurable ROI within 30 days.
+              timing and ROI targets are confirmed after discovery and baseline measurement.
             </figcaption>
           </ScrollReveal>
         </figure>

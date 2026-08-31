@@ -124,7 +124,7 @@ export function FinancialServicesSpokePage({
           <SectionHeading
             eyebrow="Scenario"
             title={page.scenario.title}
-            description={page.scenario.description}
+            description={`Illustrative planning scenario, not a reported client result. ${page.scenario.description}`}
           />
           <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2">
             <div className="rounded-xl border border-[var(--border-subtle)] bg-bg-surface/50 p-6">

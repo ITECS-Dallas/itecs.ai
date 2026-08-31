@@ -6,12 +6,14 @@ import { TrustBar } from "@/components/sections/TrustBar";
 import { SecurityGovernanceBand } from "@/components/sections/SecurityGovernanceBand";
 import { AIReadinessAssessmentForm } from "@/components/forms/AIReadinessAssessmentForm";
 import { Button } from "@/components/ui/Button";
-import { SITE_CONFIG } from "@/lib/constants";
+import { getAIPricingOffering, SITE_CONFIG } from "@/lib/constants";
+
+const formalAssessment = getAIPricingOffering("AI Readiness Assessment");
 
 export const metadata = generatePageMetadata({
-  title: "AI Readiness Assessment for Dallas Organizations",
+  title: "AI Readiness Intake for Dallas Organizations",
   description:
-    "Start ITECS's AI Readiness Assessment for 10-300 employee organizations evaluating secure AI adoption, automation, governance, and managed intelligence.",
+    "Use ITECS's no-cost intake to route an AI adoption conversation. The formal AI Readiness Assessment is a separate paid engagement.",
   path: "/assessment",
   keywords: [
     "AI Readiness Assessment Dallas",
@@ -50,7 +52,7 @@ export default function AssessmentPage() {
         <Breadcrumbs
           items={[
             { label: "Home", href: "/" },
-            { label: "AI Readiness Assessment", href: "/assessment" },
+            { label: "AI Readiness Intake", href: "/assessment" },
           ]}
         />
       </div>
@@ -68,13 +70,16 @@ export default function AssessmentPage() {
               Dallas managed intelligence intake
             </p>
             <h1 className="mt-5 max-w-3xl text-4xl font-semibold leading-[1.05] tracking-normal text-text-primary md:text-6xl">
-              AI Readiness Assessment for governed adoption.
+              AI readiness intake for governed adoption.
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-text-secondary">
               A short intake for 10-300 employee organizations that want a
               practical path into AI without guessing at platforms, exposing
               sensitive data, or funding work that operations cannot support.
-              No tool demo, no obligation.
+              This form is a no-cost intake, not the paid AI Readiness
+              Assessment deliverable. The formal assessment is currently
+              published at {formalAssessment.price} and begins only after
+              written scope approval.
             </p>
 
             <div className="mt-8 grid gap-3 sm:grid-cols-3">
@@ -107,7 +112,7 @@ export default function AssessmentPage() {
                   </h2>
                   <p className="mt-2 text-sm leading-relaxed text-text-secondary">
                     Submissions go to ITECS for review. If timing is urgent,
-                    call {SITE_CONFIG.phone} or use the architect contact path.
+                    call {SITE_CONFIG.phone} or use the direct contact path.
                   </p>
                 </div>
               </div>
@@ -118,7 +123,7 @@ export default function AssessmentPage() {
                   size="lg"
                   icon={<ArrowRight className="h-4 w-4" />}
                 >
-                  Talk to an architect
+                  Talk to the ITECS team
                 </Button>
               </div>
             </div>

@@ -36,7 +36,7 @@ const steps = [
   {
     eyebrow: "Step 1 of 3",
     title: "Who should we follow up with?",
-    description: "Use a work email so the assessment routes cleanly.",
+    description: "Use a work email so the intake routes cleanly.",
   },
   {
     eyebrow: "Step 2 of 3",
@@ -210,7 +210,7 @@ export function AIReadinessAssessmentForm() {
       setMessage(
         error instanceof Error
           ? error.message
-          : "Unable to submit your assessment. Please call us directly.",
+          : "Unable to submit your intake. Please call us directly.",
       );
       resetTurnstile();
     }
@@ -227,13 +227,13 @@ export function AIReadinessAssessmentForm() {
           <CheckCircle2 className="h-6 w-6" aria-hidden="true" />
         </div>
         <p className="mt-6 font-mono text-xs font-semibold uppercase tracking-[0.12em] text-accent-cyan">
-          Assessment received
+          Intake received
         </p>
         <h2 className="mt-3 text-3xl font-semibold leading-tight text-text-primary">
           ITECS will review your AI goal and route the next step by email.
         </h2>
         <p className="mt-4 text-base leading-relaxed text-text-secondary">
-          A Dallas-based architect will use your submission to frame the first
+          An ITECS team member will use your submission to frame the first
           conversation around workflows, data boundaries, governance, and the
           right operating model.
         </p>
@@ -246,14 +246,14 @@ export function AIReadinessAssessmentForm() {
                 Schedule the follow-up
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-text-secondary">
-                Use the contact path if the assessment is time-sensitive, or
+                Use the contact path if the intake is time-sensitive, or
                 call {SITE_CONFIG.phone} to reach the ITECS team directly.
               </p>
             </div>
           </div>
           <div className="mt-5 flex flex-col gap-3 sm:flex-row">
             <Button href="/contact" size="lg" className="w-full sm:w-auto">
-              Talk to an architect
+              Talk to ITECS
             </Button>
             <Button
               href={`tel:${SITE_CONFIG.phoneE164}`}

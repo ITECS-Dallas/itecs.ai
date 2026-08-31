@@ -2,11 +2,14 @@
 
 import { StatCounter } from "@/components/ui/StatCounter";
 import { ScrollReveal } from "@/components/effects/ScrollReveal";
+import { SITE_CONFIG } from "@/lib/constants";
 
 export function ServiceStats({
   stats,
+  context = "targets",
 }: {
   stats: { value: number; suffix: string; label: string }[];
+  context?: "targets" | "company-proof";
 }) {
   if (stats.length === 0) return null;
 
@@ -15,11 +18,14 @@ export function ServiceStats({
       <div className="mx-auto max-w-7xl px-6 md:px-8">
         <div className="mx-auto mb-10 max-w-3xl text-center">
           <p className="font-mono text-xs font-semibold uppercase tracking-[0.08em] text-brand-accent">
-            Engagement Targets
+            {context === "company-proof"
+              ? "Company Operating Foundation"
+              : "Engagement Targets"}
           </p>
           <p className="mt-3 text-sm leading-relaxed text-text-secondary">
-            Illustrative targets to baseline and validate during discovery —
-            not reported client results or performance guarantees.
+            {context === "company-proof"
+              ? "Current ITECS company facts: 24+ years of operations, 95% client retention, and 7,000+ managed endpoints."
+              : "Illustrative targets to baseline and validate during discovery — not reported client results or performance guarantees."}
           </p>
         </div>
         <div
@@ -39,6 +45,29 @@ export function ServiceStats({
             </ScrollReveal>
           ))}
         </div>
+        {context === "company-proof" ? (
+          <p className="mt-6 text-center text-sm leading-relaxed text-text-tertiary">
+            Company history and managed-endpoint source: {" "}
+            <a
+              href={SITE_CONFIG.companyFactsUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="text-brand-hover underline underline-offset-4 hover:text-itecs-blue"
+            >
+              ITECS managed-services site
+            </a>
+            . Retention source: {" "}
+            <a
+              href={SITE_CONFIG.retentionSourceUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="text-brand-hover underline underline-offset-4 hover:text-itecs-blue"
+            >
+              December 2025 company announcement
+            </a>
+            .
+          </p>
+        ) : null}
       </div>
     </section>
   );

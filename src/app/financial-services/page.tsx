@@ -163,7 +163,7 @@ export default function FinancialServicesPage() {
         title="Security for Financial Services AI Workflows"
         description="Financial-services AI can touch borrower financials, lender collateral data, distressed-company information, and bankruptcy-sensitive records. ITECS designs these systems with scoped access, audit logs, and human approval before sensitive actions."
         points={[
-          "Business and enterprise tiers that contractually isolate firm data and never train on it",
+          "Selected vendor data-use, retention, and tenancy terms verified before production",
           "Encrypted credentials and integration secrets managed outside prompts and browser code",
           "Human approval before client communications, finalized valuations, or collateral-record changes",
           "Audit-ready recommendation records for assumptions, source data, and reviewer decisions",

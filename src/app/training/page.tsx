@@ -87,7 +87,7 @@ export default function TrainingPage() {
       />
 
       {/* 7. Company proof */}
-      <ServiceStats stats={service.stats} />
+      <ServiceStats stats={service.stats} context="company-proof" />
 
       {/* 8. FAQ — LAST content section before CTA */}
       <FAQ items={service.faq} heading="AI Training FAQ" />

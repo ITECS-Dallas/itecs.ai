@@ -109,7 +109,7 @@ export default function ConsultingPage() {
       {/* 2. Operating pain point — validate the analysis paralysis */}
       <PainPoint
         stat="40+"
-        statLabel="hours per month teams waste researching AI tools they never implement"
+        statLabel="modeled monthly hours spent evaluating tools without an operating decision"
         heading="Your Team Knows AI Could Help — But Nobody Knows Where to Start"
         paragraphs={[
           "Your managers subscribe to ChatGPT Plus, watch YouTube tutorials, and test free AI tools for a week before moving on. Three departments champion three different platforms. After months of evaluation, no AI runs in production. The problem is not the technology — it is the lack of a practical plan that maps AI to your specific workflows.",
@@ -118,9 +118,9 @@ export default function ConsultingPage() {
         scenario={{
           business: "A 40-person accounting firm in Plano",
           problem:
-            "spent 6 months evaluating AI tools for tax document processing. Three partners each championed different platforms — Microsoft Copilot, a custom AI agent, and a niche accounting AI product. After $12,000 in trial subscriptions and 200+ hours of internal meetings, zero AI ran in production.",
+            "could spend months evaluating competing tools for tax-document processing without a shared decision rubric, approved data boundary, or production owner.",
           result:
-            "ITECS created a focused AI adoption agenda, identified document processing as the highest-ROI automation target, and integrated Microsoft Copilot with their SharePoint-based workflow within 30 days. The firm now saves 25 hours per week on document review.",
+            "A consulting engagement could rank the workflow, document security and review requirements, choose an approved platform, and set measurable time and quality baselines before implementation.",
         }}
       />
 
@@ -147,12 +147,12 @@ export default function ConsultingPage() {
 
       {/* 7. Enterprise-Grade Security */}
       <SecurityGuarantee
-        description="Your workflow data, financial records, and internal processes stay protected throughout the engagement. ITECS AI is backed by ITECS — a Dallas-based cybersecurity MSP operating since 2002 with 24 years of enterprise security experience."
+        description="ITECS documents access, retention, vendor, and review controls for the records and workflows included in the engagement. ITECS AI is backed by ITECS — a Dallas-based cybersecurity MSP operating since 2002 with 24 years of enterprise security experience."
         points={[
           "Vendor-neutral recommendations — we evaluate ChatGPT, Claude, Gemini, Microsoft Copilot, private AI platforms, and open-source options based on your needs, not vendor margins",
           "NDA-protected engagements — consulting, training, and implementation work operates under a signed NDA before we access any internal data",
-          "Zero data retention — workflow documentation and audit findings are encrypted in transit and at rest, then deleted within 30 days of project completion",
-          "Compliance-aware guidance — our recommendations account for HIPAA, SOC 2, PCI-DSS, and industry-specific regulatory requirements from day one",
+          "Documented retention — project records follow the retention and deletion schedule agreed in the engagement scope",
+          "Compliance-aware guidance — recommendations account for applicable client obligations and the selected vendors' contractual controls",
         ]}
         internalLink={{
           text: "Run an AI data readiness audit before adopting new AI tools",

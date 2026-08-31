@@ -58,8 +58,8 @@ export default function AIDevOpsPage() {
       <AIAdoptionUnderstanding />
 
       <PainPoint
-        stat="24/7"
-        statLabel="AI systems need monitoring after launch, not just a one-time build"
+        stat="Scoped"
+        statLabel="monitoring and response coverage defined for each production system"
         heading="AI Demos Fail When Nobody Owns Production"
         paragraphs={[
           "The prototype worked in a meeting. Then the API key rotated, the vector index went stale, a prompt change broke customer answers, and no one knew which version was live. This is where AI projects usually turn into internal shelfware.",
@@ -68,9 +68,9 @@ export default function AIDevOpsPage() {
         scenario={{
           business: "A 70-person professional services firm in Dallas",
           problem:
-            "had a useful internal RAG assistant built by a freelancer, but every document refresh was manual, prompts were edited directly in production, and leadership had no visibility into answer quality or OpenAI spend. The system became too risky to expand beyond one department.",
+            "could have an internal retrieval assistant with manual source refreshes, prompts edited directly in production, and no shared view of answer quality or platform spend.",
           result:
-            "ITECS moved the assistant into a managed AI DevOps pipeline with GitHub Actions, staging validation, secret rotation, retrieval monitoring, budget alerts, and documented rollback. The firm expanded the assistant to finance, HR, and operations without increasing support burden.",
+            "A managed pipeline could add versioned release automation, staging validation, secret rotation, retrieval checks, budget alerts, and rollback before expansion is approved. Support effort would be measured rather than assumed.",
         }}
       />
 
@@ -105,8 +105,10 @@ export default function AIDevOpsPage() {
             >
               managed network team
             </a>{" "}
-            applies to business infrastructure — monitoring, patching,
-            backups, and 24/7 response.
+            applies to business infrastructure. ITECS maintains 24/7 NOC
+            coverage for managed-services operations; the NOC is not
+            Dallas-based, and AI monitoring and response coverage are defined
+            separately in each production scope.
           </>
         }
         points={[

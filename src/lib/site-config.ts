@@ -21,6 +21,12 @@ export const SITE_CONFIG = {
   },
   geo: { lat: 32.987046344992, lng: -96.803103829427 },
   googleMapsUrl: "https://maps.app.goo.gl/oFDotCsqC2SpdppV6",
+  g2ReviewsUrl: "https://www.g2.com/products/itecs-outsourcing/reviews",
+  companyFactsUrl: "https://itecsonline.com/",
+  retentionSourceUrl:
+    "https://www.prnewswire.com/news-releases/dallas-it-firm-itecs-celebrates-23-years-of-technology-excellence-in-dallas-fort-worth-302630228.html",
+  promusHostingUrl:
+    "https://itecsonline.com/managed-cloud/managed-cloud-hosting",
   googleMapsEmbedUrl:
     "https://www.google.com/maps?q=17304%20Preston%20Rd.%20Ste%20460%2C%20Dallas%2C%20TX%2075252&output=embed",
   social: {

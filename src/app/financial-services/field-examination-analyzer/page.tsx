@@ -121,7 +121,7 @@ export default function FieldExamAnalyzerPage() {
           <SectionHeading
             eyebrow="Scenario"
             title={page.scenario.title}
-            description="This scenario is anonymized and is not presented as a named public case study."
+            description="Illustrative planning scenario, not a reported client result or a named public case study."
           />
           <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2">
             <div className="rounded-xl border border-[var(--border-subtle)] bg-bg-void/50 p-6">
@@ -223,7 +223,7 @@ export default function FieldExamAnalyzerPage() {
         title="Security for Financial Services AI Workflows"
         description="Field exams touch borrower agings, inventory, GL, bank statements, and lender collateral data. ITECS keeps those signals controlled with scoped access, human approval, and audit-ready recommendation history."
         points={[
-          "Business and enterprise tiers that contractually isolate firm data and never train on it",
+          "Selected vendor data-use, retention, and tenancy terms verified before production",
           "No finalized valuations, collateral-record changes, or issued reports without examiner approval",
           "Versioned assumptions and source references for examiner, lender, and audit review",
           "Credential isolation and encrypted secrets for borrower data, document, and reporting access",

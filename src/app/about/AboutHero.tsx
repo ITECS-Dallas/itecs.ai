@@ -37,8 +37,8 @@ export function AboutHero() {
                 now delivers practical AI consulting, automation, and custom AI agent
                 development for growth-stage and mid-market organizations.
               </strong>{" "}
-              With 24+ years of managed IT operations, 500+ endpoints under
-              management, and a 92% client retention rate, ITECS AI builds on a
+              With 24+ years of managed IT operations, 7,000+ endpoints under
+              management, and a 95% client retention rate, ITECS AI builds on a
               security-first infrastructure foundation that most AI startups
               cannot match.
             </motion.p>

@@ -83,7 +83,7 @@ export function ServicesHero() {
                 size="lg"
                 icon={<ArrowRight className="h-4 w-4" />}
               >
-                Get Your Free AI Assessment
+                Start the No-Cost Intake
               </Button>
               <Button href={`tel:${SITE_CONFIG.phoneE164}`} variant="tertiary" size="lg">
                 Call {SITE_CONFIG.phone}

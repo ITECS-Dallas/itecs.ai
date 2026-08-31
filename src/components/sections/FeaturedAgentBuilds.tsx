@@ -87,9 +87,9 @@ export function FeaturedAgentBuilds() {
     <section className="py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-6 md:px-8">
         <SectionHeading
-          eyebrow="Flagship Agent Builds"
+          eyebrow="Flagship Agent Designs"
           title="What an enterprise agent actually looks like."
-          description="These managed agent systems support finance, operations, knowledge, and change-review teams with approved evidence and human authority in front of consequential actions."
+          description="These are defined service and solution designs, not reported client case-study outcomes. Each keeps approved evidence and human authority in front of consequential actions."
         />
 
         <div className="mt-14 grid gap-6 md:grid-cols-2">
