@@ -34,6 +34,24 @@ const sources: ArticleSource[] = [
       "How Claude meters usage against a rolling window, and the 200K context window on paid plans versus 500K on some Enterprise models.",
   },
   {
+    label: "Claude Help Center — Team plan",
+    href: "https://support.claude.com/en/articles/9266767-what-is-the-team-plan",
+    description:
+      "Anthropic's current Team plan documentation covering the two-member minimum, Standard and Premium seats, billing terms, and workspace administration.",
+  },
+  {
+    label: "Claude Help Center — Enterprise plan",
+    href: "https://support.claude.com/en/articles/9797531-what-is-the-enterprise-plan",
+    description:
+      "Anthropic's current Enterprise documentation covering identity, security, administration, and usage-based commercial terms.",
+  },
+  {
+    label: "Claude Help Center — Business Associate Agreements",
+    href: "https://support.claude.com/en/articles/8114513-business-associate-agreements-baa-for-commercial-customers",
+    description:
+      "Anthropic's feature-specific BAA guidance, including plan eligibility and the need to verify which features are covered.",
+  },
+  {
     label: "Anthropic Trust Center",
     href: "https://trust.anthropic.com",
     description:

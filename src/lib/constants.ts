@@ -2331,7 +2331,7 @@ export interface InsightItem {
 
 // Side-by-side feature matrix for the Claude plan comparison insight article.
 // Rendered by the PlanComparisonTable component. Plan facts verified against
-// claude.com/pricing and the Claude Help Center (June 2026).
+// claude.com/pricing and the Claude Help Center (August 2026).
 export interface PlanComparison {
   caption: string;
   plans: { name: string; tagline: string; highlight?: boolean }[];
@@ -2340,7 +2340,7 @@ export interface PlanComparison {
 
 export const CLAUDE_PLAN_COMPARISON: PlanComparison = {
   caption:
-    "Claude plan comparison — Free, Pro, Max, Team, and Enterprise pricing, usage, and features (June 2026)",
+    "Claude plan comparison — Free, Pro, Max, Team, and Enterprise pricing, usage, and features (August 2026)",
   plans: [
     { name: "Free", tagline: "Try Claude" },
     { name: "Pro", tagline: "Solo professionals" },
@@ -2355,8 +2355,8 @@ export const CLAUDE_PLAN_COMPARISON: PlanComparison = {
         "$0",
         "$20 ($17 annual)",
         "$100 (5x) or $200 (20x)",
-        "$25 Standard / $125 Premium",
-        "From $20/seat + usage, or custom",
+        "$25 Standard / $125 Premium monthly; annual discounts available",
+        "Seat access plus metered usage, or a custom contract",
       ],
     },
     {
@@ -2366,17 +2366,17 @@ export const CLAUDE_PLAN_COMPARISON: PlanComparison = {
         "Baseline",
         "5x or 20x more per session",
         "More than Pro; Premium highest",
-        "Highest, negotiated",
+        "Plan- and contract-specific",
       ],
     },
     {
       feature: "Models",
       values: [
-        "Default model only",
-        "Opus, Sonnet, Fable 5",
-        "Opus, Sonnet, Fable 5 (priority)",
-        "Opus, Sonnet, Fable 5",
-        "All models, expanded",
+        "Current default model selection",
+        "Current paid-plan model selection",
+        "Current paid-plan model selection",
+        "Current business-plan model selection",
+        "Contract-specific model access",
       ],
     },
     {
@@ -2389,7 +2389,7 @@ export const CLAUDE_PLAN_COMPARISON: PlanComparison = {
     },
     {
       feature: "Context window",
-      values: ["200K", "200K", "200K", "200K", "Up to 500K (some models)"],
+      values: ["Model-specific", "Model-specific", "Model-specific", "Model-specific", "Model- and contract-specific"],
     },
     {
       feature: "Integrations",
@@ -2407,11 +2407,11 @@ export const CLAUDE_PLAN_COMPARISON: PlanComparison = {
     },
     {
       feature: "SSO / SCIM / audit logs",
-      values: ["—", "—", "—", "SSO + admin controls", "SSO, SCIM, audit logs"],
+      values: ["—", "—", "—", "SSO + admin controls", "SSO, SCIM, and audit logs"],
     },
     {
       feature: "HIPAA / advanced security",
-      values: ["—", "—", "—", "—", "HIPAA-ready (BAA), IP allowlisting"],
+      values: ["—", "—", "—", "Not BAA-eligible", "Eligible configurations can support a BAA; verify feature scope"],
     },
     {
       feature: "Your data trains models?",
@@ -2419,35 +2419,35 @@ export const CLAUDE_PLAN_COMPARISON: PlanComparison = {
         "Off by default (opt-in)",
         "Off by default (opt-in)",
         "Off by default (opt-in)",
-        "Never, by default",
-        "Never",
+        "Not used for training by default",
+        "Not used for training by default",
       ],
     },
   ],
 };
 
 // Vendor-neutral side-by-side matrix for the OpenAI Codex vs Claude Code
-// comparison article. Specs verified against openai.com/codex, the GPT-5.5
-// model docs, and the Claude Opus 4.8 platform docs (July 2026).
+// comparison article. Capabilities and commercial terms change frequently;
+// the table deliberately compares durable product characteristics.
 export const CODING_AGENT_COMPARISON: PlanComparison = {
   caption:
-    "OpenAI Codex (GPT-5.5) versus Claude Code (Opus 4.8) — enterprise coding agent comparison across model, context, autonomy, security, tooling, surfaces, pricing, and best fit (July 2026)",
+    "OpenAI Codex versus Claude Code — enterprise coding agent comparison across execution, security, tooling, deployment surfaces, commercial terms, and best fit (August 2026)",
   plans: [
-    { name: "OpenAI Codex", tagline: "GPT-5.5" },
-    { name: "Claude Code", tagline: "Opus 4.8" },
+    { name: "OpenAI Codex", tagline: "OpenAI coding agent" },
+    { name: "Claude Code", tagline: "Anthropic coding agent" },
   ],
   rows: [
     {
       feature: "Underlying model",
-      values: ["GPT-5.5", "Claude Opus 4.8 (4.7, 4.6 selectable)"],
+      values: ["Current supported OpenAI models", "Current supported Claude models"],
     },
     {
       feature: "Context window",
-      values: ["~1.05M tokens", "1M tokens (Claude Code, paid plans)"],
+      values: ["Model- and plan-specific", "Model- and plan-specific"],
     },
     {
       feature: "Max output",
-      values: ["128K tokens", "128K tokens"],
+      values: ["Model-specific", "Model-specific"],
     },
     {
       feature: "Autonomy model",
@@ -2478,14 +2478,14 @@ export const CODING_AGENT_COMPARISON: PlanComparison = {
       ],
     },
     {
-      feature: "API pricing (in / out per M)",
-      values: ["$5 / $30", "$5 / $25"],
+      feature: "Commercial model",
+      values: ["Subscription and API options; verify current terms", "Subscription and API options; verify current terms"],
     },
     {
-      feature: "Analyst standing",
+      feature: "Evaluation guidance",
       values: [
-        "OpenAI: Leader, 2026 Gartner MQ",
-        "Anthropic: frontier reasoning models",
+        "Test on governed, representative repository tasks",
+        "Test on governed, representative repository tasks",
       ],
     },
     {
@@ -5868,44 +5868,45 @@ export const INSIGHTS: InsightItem[] = [
   {
     slug: "openai-codex-vs-claude-code",
     title:
-      "OpenAI Codex (GPT-5.5) vs. Claude Code (Opus 4.8): Enterprise Coding Agents Compared",
+      "OpenAI Codex vs. Claude Code: Enterprise Coding Agents Compared",
     description:
-      "OpenAI Codex (GPT-5.5) vs Claude Code (Opus 4.8), compared for CTOs across autonomy, sandboxing, context, MCP, governance, and cost. A vendor-neutral enterprise guide.",
+      "OpenAI Codex and Claude Code compared for CTOs across execution, sandboxing, MCP, governance, evaluation, and cost. A vendor-neutral enterprise guide.",
     href: "/insights/openai-codex-vs-claude-code",
     publishedDate: "2026-07-03",
+    modifiedDate: "2026-08-31",
     hubSlug: "custom-ai-agents",
     hubLabel: "Custom AI Agents",
     hubHref: "/custom-ai-agents",
     keywords: [
       "OpenAI Codex vs Claude Code",
-      "GPT-5.5 vs Opus 4.8",
+      "coding agent evaluation",
       "enterprise AI coding agents",
       "Codex vs Claude Code comparison",
       "best AI coding agent enterprise",
-      "Claude Code Opus 4.8",
-      "OpenAI Codex GPT-5.5",
+      "Claude Code enterprise",
+      "OpenAI Codex enterprise",
       "Model Context Protocol coding agent",
       "AI coding agent security",
       "coding agent for CTOs",
     ],
-    h1: "OpenAI Codex (GPT-5.5) vs. Claude Code (Opus 4.8): Enterprise Coding Agents Compared",
+    h1: "OpenAI Codex vs. Claude Code: Enterprise Coding Agents Compared",
     content: [
-      "For CTOs and engineering leaders, the AI coding question has changed. It is no longer whether to adopt an agent — it is which one, and how to govern it. The two frontier options are OpenAI's **Codex**, powered by **GPT-5.5**, and Anthropic's **Claude Code**, powered by **Claude Opus 4.8**. Both can plan, write, test, and merge code across a repository. They differ in architecture, security model, and ecosystem. This is a vendor-neutral comparison for enterprise buyers — and ITECS helps teams [select and deploy either one securely](/custom-ai-agents).",
-      "**OpenAI Codex (GPT-5.5) and Claude Code (Opus 4.8) are the two frontier enterprise coding agents. Codex leads on parallel autonomy and OS-level sandboxing; Claude Code leads on deep reasoning and the Model Context Protocol it created. Context is no longer the divide — both offer roughly a million tokens. The right choice depends on your workflow, security posture, and existing stack.**",
+      "**Updated August 31, 2026:** Model names, context limits, prices, and feature bundles change faster than enterprise evaluation cycles. This comparison now focuses on durable product and governance differences; verify current specifications in each vendor's documentation.",
+      "For CTOs and engineering leaders, the decision is not only which coding agent to adopt, but which tasks it may perform and how its work will be reviewed. OpenAI Codex and Anthropic Claude Code can plan, edit, and test code, subject to their current product capabilities and permissions. This vendor-neutral comparison emphasizes evaluation and governance, and ITECS helps teams [select and deploy coding agents](/custom-ai-agents).",
+      "**Codex and Claude Code should be compared on representative repository tasks, execution isolation, permissions, tool connections, evidence quality, reliability, latency, and cost per accepted change. Neither product is universally better, and current model specifications should not substitute for a controlled pilot.**",
       "**Why This Comparison Matters Now**",
-      "Gartner formalized the shift. Its 2026 Magic Quadrant renamed the category from AI code assistants to Enterprise AI Coding Agents — tools that plan, execute, and verify multistep work, not just autocomplete lines. In that report, Gartner named OpenAI a Leader. Anthropic's Claude Opus models sit at the frontier of coding benchmarks. For a CTO, this is now a platform decision with security, cost, and workflow consequences, not a plugin choice.",
+      "Coding tools increasingly execute multistep work rather than only autocomplete lines. For a CTO, that makes the choice a platform and control decision with security, cost, quality, and workflow consequences—not merely an editor preference.",
       "Both vendors ship the same core promise: an agent that takes a task and returns reviewed, working code. The difference is how each gets there — and which one fits how your engineers already work.",
       "[[COMPARISON_TABLE]]",
-      "**OpenAI Codex (GPT-5.5): Parallel Autonomy and OS-Level Sandboxing**",
-      "Codex is built around parallelism. With built-in worktrees and cloud environments, it runs multiple tasks at once — drafting docs from a diff, refactoring a module, and running a test suite in three separate sandboxes while an engineer reviews and merges. GPT-5.5 carries a context window of roughly 1.05 million tokens and 128,000 tokens of output.",
-      "Its security model is the OS sandbox. Codex controls exactly which directories and network access the agent can use, with approve-once or approve-for-session permissions and full auditability. For teams that want autonomous agents running safely on real infrastructure, that sandbox is the headline feature. It is also part of why OpenAI landed in Gartner's Leaders quadrant. We train engineering teams to run it safely in our [ChatGPT Codex training and implementation](/chatgpt-codex-training).",
-      "**Claude Code (Opus 4.8): Deep Reasoning, 1M Context, and MCP**",
-      "Claude Code leads with reasoning and integration. Claude Opus 4.8, released in May 2026, supports a 1-million-token context window in Claude Code on paid plans, so the agent can hold an entire large repository in view while it works. Its Workflows primitive lets one agent plan a task, fan out into hundreds of parallel subagents, and merge the result inside a single session.",
+      "**OpenAI Codex: Parallel Work and Sandboxed Execution**",
+      "Codex supports agentic development across local, IDE, app, and cloud-oriented workflows. Depending on the surface and configuration, teams can isolate work, control directory and network access, and review changes before integration. Verify the current permission and audit behavior for the surface you intend to deploy. We cover those controls in [ChatGPT Codex training and implementation](/chatgpt-codex-training).",
+      "**Claude Code: Repository Work and MCP Connectivity**",
+      "Claude Code supports terminal- and IDE-centered agentic development and can connect to tools through MCP. Available models, context limits, parallelism, and workflow features vary over time and by plan, so benchmark the current configuration against the same task set used for Codex.",
       "Its integration advantage is the Model Context Protocol. Anthropic created MCP, the open standard that connects agents to tools, data, and services — and the wider industry, including OpenAI, has adopted it. For enterprises that want an agent wired into internal systems through a governed protocol, Claude Code's native MCP support is the draw. Our [Claude Cowork training](/claude-cowork-training) extends the same model to non-engineering teams.",
       "**Where They Actually Differ (and Where They Don't)**",
-      "Start with what is no longer a differentiator: context. Both agents now hold roughly a million tokens, enough for whole-repository work. The marketing battle over context length is effectively over. The real differences are structural.",
-      "Codex optimizes for parallel throughput and a hardened OS sandbox — many tasks, running safely at once. Claude Code optimizes for depth and connectivity — deep reasoning over a large context, wired into your systems through MCP. One is a fleet of sandboxed workers; the other is a deeply integrated senior engineer. Most enterprises benefit from both, matched to different jobs.",
-      "Pricing is close. GPT-5.5 runs $5 per million input tokens and $30 per million output; Claude Opus 4.8 runs $5 input and $25 output. At scale, the cost driver is not the rate — it is how much each agent thinks and retries, which governance controls.",
+      "Context-window size alone does not prove that an agent can understand or safely change a repository. The practical differences are how the products execute, request permission, connect tools, preserve evidence, recover from failure, and fit existing engineering controls.",
+      "Do not reduce the products to permanent personality labels. Run both against the same bounded tasks and repositories, with identical tool access and acceptance tests. A mixed environment may be appropriate, but it also increases policy, training, and support overhead.",
+      "Compare current subscription and API terms directly. At scale, measure cost per accepted change, including retries, review, failed tests, infrastructure, and engineer time—not only token rates.",
       "**How to Choose: An Enterprise Decision Framework**",
       "ITECS uses a four-step framework to match the agent to the organization, not the hype.",
       "**Step 1: Map the work.** Parallel, well-scoped tasks — refactors, tests, migrations — favor Codex. Deep, cross-system reasoning over a large codebase favors Claude Code.",
@@ -5924,17 +5925,17 @@ export const INSIGHTS: InsightItem[] = [
         question:
           "Is OpenAI Codex or Claude Code better for enterprise development?",
         answer:
-          "Neither is universally better. OpenAI Codex (GPT-5.5) leads on parallel task execution and OS-level sandboxing, and OpenAI was named a Leader in Gartner's 2026 Magic Quadrant for Enterprise AI Coding Agents. Claude Code (Opus 4.8) leads on deep reasoning over large context and native Model Context Protocol integration. The right choice depends on your workflows, security model, and existing stack.",
+          "Neither is universally better. Compare them on the same representative tasks, permissions, tools, tests, latency, review effort, reliability, and cost per accepted change. The right choice depends on your workflow, security model, deployment surface, and existing stack.",
       },
       {
-        question: "What is the context window for GPT-5.5 vs Claude Opus 4.8?",
+        question: "How should we compare context windows and models?",
         answer:
-          "Both are roughly a million tokens. GPT-5.5 has about a 1.05-million-token context window, and Claude Opus 4.8 supports a 1-million-token context window in Claude Code on paid plans. Both allow up to 128,000 output tokens, so context length is no longer a meaningful differentiator between them.",
+          "Verify current model and plan documentation, then test retrieval, reasoning, editing, and verification on the same repository tasks. A larger advertised context window does not guarantee better understanding or safer changes.",
       },
       {
         question: "How much do OpenAI Codex and Claude Code cost?",
         answer:
-          "By API tokens, GPT-5.5 is $5 per million input tokens and $30 per million output; Claude Opus 4.8 is $5 input and $25 output. Both are also available through subscription plans. At enterprise scale, total cost is driven more by governance and how much each agent reasons than by the per-token rate.",
+          "Both vendors offer commercial options that change over time. Compare current subscription and API terms, then measure total cost per accepted change, including retries, test infrastructure, review, and remediation.",
       },
       {
         question: "What is the Model Context Protocol and does it matter?",
@@ -5953,9 +5954,10 @@ export const INSIGHTS: InsightItem[] = [
     title:
       "How to Use 1Password With Claude Cowork, Codex, and Custom AI Agent CLIs",
     description:
-      "How to use the 1Password CLI to feed vault secrets to Claude Cowork, ChatGPT Codex, Copilot, and custom AI agents — never exposed to the LLM, gated by biometric approval.",
+      "How to use the 1Password CLI to reduce secret exposure in Claude, Codex, Copilot, and custom agent workflows with scoped runtime injection and approval.",
     href: "/insights/secure-ai-agents-1password-secrets",
     publishedDate: "2026-07-03",
+    modifiedDate: "2026-08-31",
     hubSlug: "custom-ai-agents",
     hubLabel: "Custom AI Agents",
     hubHref: "/custom-ai-agents",
@@ -5975,25 +5977,26 @@ export const INSIGHTS: InsightItem[] = [
     ],
     h1: "How to Use 1Password With Claude Cowork, Codex, and Custom AI Agent CLIs",
     content: [
-      "AI agents are only useful when they can do real work — call your APIs, query your systems, and act on your data. That requires secrets: API keys, tokens, and passwords. The dangerous shortcut is to paste those secrets into a config file, an environment variable, or worse, straight into a prompt. There is a better way. Configured correctly, **1Password** hands secrets to your agents, CLI, and IDE without the AI model ever seeing them — and gates every access behind your fingerprint. This is the architecture ITECS builds into every [custom AI agent](/custom-ai-agents) we deploy.",
-      "**With the 1Password CLI enabled, your AI agents, terminal, and IDE pull secrets from your vault at runtime using secret references — so the API key is injected into the tool, never printed into the LLM's prompt or context. Every access can require a biometric approval, and agents can write new secrets back into 1Password, keeping generated credentials governed instead of scattered in plaintext.**",
+      "**Updated August 31, 2026:** Secret references reduce plaintext exposure, but the final process can still read an injected secret and agents can cause tools to use it. The security boundary depends on process isolation, permissions, logs, approvals, and tool design—not 1Password alone.",
+      "Agents that call APIs or business systems need credentials. Pasting them into prompts, source files, or logs is dangerous. Properly configured, **1Password** can resolve secret references at runtime so raw values do not need to appear in agent instructions. ITECS uses this pattern as one control in [custom AI agent](/custom-ai-agents) deployments.",
+      "**With the 1Password CLI, configurations can store references while an authorized runtime receives the resolved value. Biometric approval may be used where the platform and workflow support it. Treat the destination process and every child process as trusted for that secret, and log metadata without logging the value.**",
       "**The Problem: AI Agents Need Secrets, but LLMs Should Never See Them**",
       "An AI coding agent that opens pull requests needs a Git token. An agent that checks your tickets needs your PSA's API key. An agent that reads a hypervisor needs its credentials. The moment those secrets live in a plaintext file, a shell history, or a prompt, they are one screenshot, one log line, or one leaked context window away from exposure.",
       "The specific risk with AI is the model itself. Language models are non-deterministic, their inputs get logged, and their context can be retained or leaked. 1Password states the principle plainly: secrets should not be exchanged over a channel driven by an AI model. The fix is to keep the secret out of that channel entirely.",
       "[[SECRETS_FLOW]]",
       "**How 1Password Injects Secrets Without the LLM Ever Seeing Them**",
       "The 1Password command-line tool, op, replaces stored secrets with references — short pointers that look like op://vault/item/field. Your config files hold the reference, not the secret. At runtime, op run confirms the CLI is authorized and swaps each reference for the real value, injecting it as an environment variable into the process that needs it.",
-      "That distinction is the whole point. The secret lands in the tool's process — the CLI command, the IDE task, the agent's API call — not in the model's prompt. Claude Code, ChatGPT Codex, GitHub Copilot, and VS Code all read secrets from the environment, so 1Password feeds them directly. The LLM decides what to do; 1Password supplies the credential to do it. The model never holds the key. This is the same discipline we teach in our [Claude Cowork](/claude-cowork-training) and [ChatGPT Codex training](/chatgpt-codex-training) programs.",
+      "The secret lands in the authorized process rather than being deliberately placed in the model prompt. That reduces exposure, but a process, plugin, tool, debug trace, crash dump, or agent-chosen command may still disclose an environment value. Use a dedicated least-privilege identity, restrict commands and network access, sanitize logs, and test the exact runtime. This is the discipline taught in our [Claude Cowork](/claude-cowork-training) and [ChatGPT Codex training](/chatgpt-codex-training) programs.",
       "**The Human-in-the-Loop: Biometric Approval on Every Access**",
       "Injecting a secret automatically is convenient, but not always safe. 1Password adds a human gate. With the desktop app integration turned on, the CLI authenticates with Touch ID on macOS or Windows Hello on Windows. When an agent reaches for a secret, you approve it with your fingerprint.",
-      "That approval is the difference between an agent that can silently use every credential you own and one that must ask permission each time it touches something sensitive. For an MSP or any regulated business, that human-in-the-loop step is not a nicety — it is the control that makes autonomous tooling auditable and safe.",
+      "Approval can reduce unattended access, but it does not prove that the requested operation is safe or that every access will prompt. Confirm session behavior, approval caching, headless workloads, and what the user can see before approval. Pair the prompt with task-scoped credentials and an auditable tool action.",
       "**The Reciprocal Pipeline: Agents That Write Secrets Back**",
       "The flow runs both directions. Agents do not just read secrets — they can create them. When an agent provisions a new service, generates an API key, or rotates a token, it can write that secret straight into 1Password using the CLI or the 1Password SDK.",
       "This closes the loop. Instead of a freshly generated key ending up pasted in a chat or a notes file, it is stored, encrypted, and governed the moment it exists. Every credential the agent produces lands in the same vault, under the same access controls and the same biometric gate. Secrets sprawl stops before it starts.",
       "**Case Study: How ITECS's Internal Documentation Agent Uses This**",
       "ITECS built an internal AI agent that gives our technicians an LLM interface to review, update, and create SOPs, knowledge-base articles, and documentation — the [self-hosted agent architecture we described here](/insights/self-hosted-ai-agents-seafile), extended to live operations.",
       "A technician can ask the agent what tickets are open, what a project's status is, or which licenses a client holds. To answer, the agent reaches into our real systems: our PSA for tickets and projects, our datacenter hypervisors for infrastructure, and PAX8 for license inquiries. Each of those calls needs an API secret.",
-      "Here is the part that matters. The agent never stores those secrets, and the LLM never sees them. When it calls a system, it pulls the credential from 1Password at runtime — and the technician must approve the access with 1Password biometrics before the call proceeds. Our documentation agent has full operational reach and zero standing access to raw credentials. That is the pattern we build for clients, too.",
+      "The design goal is to keep raw secrets out of prompts and repository files. The authorized tool runtime resolves the credential when needed, with approval where supported. Because the destination process can use the secret, access is scoped to the task, tool calls are logged, outputs are reviewed, and credentials remain revocable. That is the pattern ITECS evaluates for client workflows.",
       "**How ITECS Architects Secure AI Agent Workflows**",
       "We deploy this pattern as a repeatable engagement. The steps are consistent whether it is one developer's IDE or a fleet of production agents.",
       "**Step 1: Inventory the secrets.** We find every API key, token, and password your tools and agents use — including the ones already pasted in plaintext — and move them into 1Password.",
@@ -6012,7 +6015,7 @@ export const INSIGHTS: InsightItem[] = [
         question:
           "Can AI agents use my API keys without exposing them to the LLM?",
         answer:
-          "Yes. With the 1Password CLI enabled, secrets are stored as references like op://vault/item/field and resolved at runtime into the tool's process, not the model's prompt. The agent decides what to do and 1Password supplies the credential, so the LLM never sees the raw secret.",
+          "Secret references can keep raw values out of prompts and repository files by resolving them into an authorized process at runtime. The destination process and its children may still access or disclose the value, so use least privilege, process isolation, constrained tools, sanitized logs, and tests for the exact agent architecture.",
       },
       {
         question: "What is a 1Password secret reference?",
@@ -6022,7 +6025,7 @@ export const INSIGHTS: InsightItem[] = [
       {
         question: "How does biometric approval work for AI agents?",
         answer:
-          "When the 1Password desktop app integration is enabled, the CLI authenticates with Touch ID on macOS or Windows Hello on Windows. Each time an agent needs a secret, the user approves the access with their fingerprint, adding a human-in-the-loop checkpoint to autonomous tooling.",
+          "The desktop integration can use platform authentication such as Touch ID or Windows Hello. Prompt frequency and session behavior vary, so verify approval caching and unattended modes. A biometric prompt confirms user presence; it does not validate the safety of the downstream action.",
       },
       {
         question: "Can AI agents write new secrets back into 1Password?",
@@ -6222,6 +6225,7 @@ export const INSIGHTS: InsightItem[] = [
       "Claude plans compared for 2026 — Free, Pro, Max, Team, and Enterprise. See pricing, usage limits, Claude Code access, and which tier fits your business.",
     href: "/insights/claude-plan-comparison",
     publishedDate: "2026-06-17",
+    modifiedDate: "2026-08-31",
     hubSlug: "consulting",
     hubLabel: "AI Consulting",
     hubHref: "/consulting",
@@ -6239,34 +6243,35 @@ export const INSIGHTS: InsightItem[] = [
     ],
     h1: "Claude Plan Comparison: Free vs Pro vs Max vs Team vs Enterprise",
     content: [
-      "Anthropic offers five ways to pay for Claude: Free, Pro, Max, Team, and Enterprise. They range from a $0 trial to a negotiated enterprise contract, and the gap between them is not just price — it is usage limits, security controls, and who manages the account. Pick the wrong tier and you either waste money or throttle your team. This guide compares all five side by side and shows which one fits a growing business. For a tailored recommendation, ITECS offers [AI consulting and Claude plan selection](/consulting).",
-      "**Claude Free is $0 for light personal use. Pro is $20 per month for individual professionals. Max is $100 or $200 per month for heavy daily users and Claude Code. Team starts at $25 per seat with central billing and single sign-on. Enterprise adds SCIM, audit logs, HIPAA readiness, and a 500K context window for organizations that need control.**",
+      "**Updated August 31, 2026:** We rechecked this comparison against Anthropic's current pricing, Team, Enterprise, and BAA documentation. The original publication date is preserved below; current prices and features should still be confirmed before purchase because vendor terms change.",
+      "Anthropic offers Free, Pro, Max, Team, and Enterprise plans. The differences extend beyond price to usage, administration, identity, and feature-specific compliance eligibility. This guide compares the decision factors for a growing business. For a tailored recommendation, ITECS offers [AI consulting and Claude plan selection](/consulting).",
+      "**Free supports evaluation, Pro and Max serve individual users, Team adds shared administration for organizations with at least two members, and Enterprise adds contract-specific identity, audit, and security controls. HIPAA-ready use requires an eligible Enterprise configuration, an accepted Business Associate Agreement, and verification that every planned feature is covered.**",
       "**Claude's Five Plans at a Glance**",
       "Claude's lineup splits into two groups. The **individual plans** — Free, Pro, and Max — bill one person and scale by usage. The **business plans** — Team and Enterprise — bill by seat and add the admin, billing, and security controls a company needs. The table below compares every plan on the factors that actually drive the decision.",
-      "Two numbers change most often: price and usage limits. The figures here reflect Anthropic's published pricing as of June 2026. Always confirm current limits in your account before you commit a budget.",
+      "Prices, model access, and usage limits change often. The figures here reflect Anthropic's published information reviewed August 31, 2026. Confirm current limits, annual-versus-monthly terms, and feature eligibility in your account before committing a budget.",
       "[[COMPARISON_TABLE]]",
       "A quick read of the table: most solo users belong on Pro, most small companies on Team, and only organizations with compliance or identity requirements need Enterprise. The sections below explain each plan and who it fits.",
       "**Free: Try Claude With No Commitment**",
       "The Free plan costs nothing and runs on the web, desktop, and mobile apps. You get chat, web search, file analysis, code execution, extended thinking, and connections to Google Workspace, Slack, and remote MCP tools. It is enough to judge whether Claude helps your work.",
       "Two limits define Free. Usage is capped at a small daily allotment that resets on a rolling window, and you cannot use Claude Code, the terminal and IDE coding agent. Treat Free as a trial, not a workhorse.",
       "**Pro: The Default for Individual Professionals**",
-      "Pro costs $20 per month, or $17 per month billed annually. It lifts the usage limit well above Free and unlocks the tools most professionals want: Claude Code, Claude Cowork, Claude Design, unlimited projects, the Research feature, and a choice of models including Opus, Sonnet, and the newer Fable 5. It also adds Microsoft 365 and Outlook integration.",
+      "Pro is Anthropic's individual paid tier and is available with monthly or annual billing. It raises usage limits and provides access to paid-plan tools and models, subject to Anthropic's current plan documentation.",
       "For a single knowledge worker — a consultant, developer, analyst, or marketer — Pro is the right default. The one caveat is heavy automation. If you run long agentic sessions, Pro's limits arrive fast, which is exactly what Max solves. Our [guide to Claude Cowork for business](/insights/claude-cowork-for-small-business) shows the kind of workflows that push those limits.",
       "**Max: For Heavy Daily Users and Claude Code**",
-      "Max comes in two tiers. Max 5x costs $100 per month and gives five times Pro's usage per session. Max 20x costs $200 per month and gives twenty times Pro's usage. Both add higher output limits, priority access during peak traffic, and early access to new features.",
-      "Max exists for one reason: usage. Anthropic meters paid plans against a rolling five-hour window plus weekly caps, and the premium Fable 5 model burns through them quickly. A developer who lives in Claude Code, or an analyst running long document jobs, will hit Pro's ceiling daily. We break down that dynamic in our [analysis of Fable 5's usage limits](/insights/claude-fable-5-release).",
+      "Max offers higher usage allocations than Pro in two tiers. It is designed for individuals whose sustained coding or document work exceeds Pro limits. Compare the current monthly price, included usage, and any weekly caps in Anthropic's account documentation before upgrading.",
+      "Max primarily changes capacity, not governance. A developer running long Claude Code sessions or an analyst processing large document sets should benchmark completed work and throttling on Pro before paying for additional capacity.",
       "**Team: Shared Billing and Admin for Small Companies**",
-      "Team is Claude's first real business plan. It requires a minimum of five seats and offers two seat types: Standard at $25 per month and Premium at $125 per month, each cheaper billed annually. Premium seats carry far more usage and the full Claude Code, Cowork, and Design toolset. You can mix seat types across the team.",
+      "Team is Claude's shared business plan and currently requires at least two members. It offers Standard and Premium seats with monthly and annual billing options; current monthly list prices are shown in the table. Seat capabilities and usage differ, and organizations can assign the appropriate seat type to each user.",
       "Team adds what individuals do not need: central billing, an admin console, single sign-on, enterprise search across your workspace, and a default policy that your content does not train Anthropic's models. For a 10-to-50-person company standardizing on Claude, Team is usually the answer.",
       "**Enterprise: Security, SSO, and Compliance at Scale**",
-      "Enterprise is for organizations with security, identity, or compliance requirements. A self-serve option starts around $20 per seat plus usage-based costs; larger deployments use a negotiated contract. Enterprise adds role-based access control, SCIM provisioning, audit logs, IP allowlisting, spend controls, and an expanded context window up to 500K tokens on some models.",
-      "The deciding features are usually compliance and identity. Enterprise offers a HIPAA-ready configuration under a Business Associate Agreement, plus the Claude Security tooling regulated businesses need. If you must provision users through SCIM or sign a BAA, Enterprise is the only tier that qualifies.",
+      "Enterprise is for organizations with stronger identity, audit, security, or contractual requirements. Current usage-based plans combine seat access with metered usage, while larger deployments may use negotiated terms. Available controls can include role-based access, SCIM, audit logs, IP allowlisting, and spend management; confirm the purchased configuration.",
+      "HIPAA-ready is not a blanket property of every Enterprise feature. It requires an eligible Enterprise plan, an accepted BAA, appropriate customer configuration, and use only of covered features. Anthropic's current BAA guidance says Team is not eligible and Cowork is not covered, so regulated workflows need a feature-by-feature review.",
       "**How to Choose the Right Claude Plan**",
-      "Match the plan to the work, not the logo. Consider a 30-person Dallas accounting firm. Its partners want Claude for research and client memos, three analysts run heavy document review, and the firm handles regulated financial data. The right answer is not one plan — it is a mix.",
-      "We would put the partners and staff on Team Standard seats for shared billing and single sign-on, give the three heavy analysts Team Premium seats for the extra usage, and evaluate Enterprise only if a client contract requires a signed BAA or SCIM provisioning. That sizing keeps cost down while covering the real workloads. ITECS builds exactly this kind of plan, paired with [team AI training](/training) so people actually adopt it.",
+      "Match the plan to the work, not the logo. Inventory the users, workloads, expected usage, data classifications, identity requirements, and features first. Then pilot a small seat mix and measure capacity before expanding.",
+      "A typical evaluation might use Team Standard for governed general use, reserve Premium for measured high-usage roles, and evaluate Enterprise when identity, audit, or contractual requirements demand it. That is a planning example, not a universal prescription. ITECS pairs plan selection with [team AI training](/training) so the controls and workflows are understood.",
       "A simple rule covers most cases. One person: Pro, or Max if you live in Claude Code. A small company: Team, with Premium seats for power users. A regulated or identity-managed organization: Enterprise. When the choice is unclear, an [AI readiness and consulting engagement](/consulting) sizes it against your real usage.",
       "**Security, Data Privacy, and Compliance**",
-      "Plan choice is also a security decision. On the business plans, Anthropic does not train its models on your content by default, and Enterprise adds the controls auditors expect: SSO, SCIM, audit logs, and a HIPAA-ready option. Anthropic documents its certifications and data handling in the [Anthropic Trust Center](https://trust.anthropic.com). Before any business connects Claude to sensitive systems, confirm where your data flows and who can see it.",
+      "Plan choice is also a security decision. Anthropic states that business-plan content is not used for model training by default. Enterprise can add SSO, SCIM, audit logs, and other controls, but availability and compliance eligibility remain plan-, feature-, and configuration-specific. Anthropic documents its security posture in the [Anthropic Trust Center](https://trust.anthropic.com). Before connecting sensitive systems, confirm data flows, retention, sub-processors, permissions, and contract terms.",
       "The controls that matter most are the ones you operate. Scope which tools and data each seat can reach, require approval on actions that touch customer records, and classify your data before connecting it. ITECS runs a [data and AI readiness audit](/data-audit) to do exactly that, and applies the same governance behind its [custom AI agents](/custom-ai-agents) — the discipline of a cybersecurity practice ITECS has run since 2002. For teams worried about exposure, our guide to [keeping business data safe in AI tools](/insights/secure-business-data-chatgpt) is a useful starting point.",
       "**What It Costs to Roll Out Claude With ITECS**",
       "The license is only part of the cost. The rest is setup: choosing seats, configuring single sign-on and spend caps, connecting tools safely, and training people to use Claude well. Done wrong, companies overbuy Enterprise seats nobody needs or underbuy Team seats that throttle their best people.",
@@ -6276,7 +6281,7 @@ export const INSIGHTS: InsightItem[] = [
       {
         question: "How much does each Claude plan cost?",
         answer:
-          "Claude Free is $0. Pro is $20 per month, or $17 per month billed annually. Max is $100 per month for the 5x tier and $200 per month for the 20x tier. Team is $25 per month for a Standard seat and $125 for a Premium seat, with a five-seat minimum. Enterprise starts around $20 per seat plus usage, or a custom contract.",
+          "Anthropic currently lists Free, Pro, Max, Team, and Enterprise options. Team requires at least two members and offers Standard and Premium seats with monthly and annual terms. Enterprise pricing can combine seat access and metered usage or use a negotiated contract. Verify live pricing before purchase.",
       },
       {
         question: "What is the difference between Claude Pro and Max?",
@@ -6286,12 +6291,12 @@ export const INSIGHTS: InsightItem[] = [
       {
         question: "Which Claude plan is best for a small business?",
         answer:
-          "Most small companies should use the Team plan. It requires five seats, adds central billing, single sign-on, and an admin console, and keeps your content out of model training by default. Assign Premium seats to power users who need more usage and Standard seats to everyone else.",
+          "Team is a practical starting point for organizations with at least two members that need shared billing and administration. Pilot Standard seats first, assign Premium only where measured usage justifies it, and evaluate Enterprise when identity, audit, or contractual requirements exceed Team's controls.",
       },
       {
         question: "When does a business need Claude Enterprise instead of Team?",
         answer:
-          "Choose Enterprise when you need SCIM user provisioning, audit logs, a HIPAA Business Associate Agreement, IP allowlisting, or a context window beyond 200K tokens. Team covers billing, SSO, and admin for most small companies, but only Enterprise adds the compliance and identity controls regulated organizations require.",
+          "Evaluate Enterprise when you need controls such as SCIM, audit logs, IP allowlisting, or eligible BAA coverage. A BAA does not cover every feature: confirm the contracted plan, configuration, data flow, and feature list. Anthropic currently says Team is not BAA-eligible and Cowork is not covered.",
       },
       {
         question: "Does Claude train its AI on my business data?",
@@ -6305,9 +6310,10 @@ export const INSIGHTS: InsightItem[] = [
     title:
       "Self-Hosted AI Agents: How ITECS Shares Codex and Cowork Agents Across the Team",
     description:
-      "ITECS runs a self-hosted Seafile server to share Codex and Claude Cowork AI agents across the team — and keep every client's data inside our security boundary.",
+      "How ITECS uses self-hosted Seafile to distribute Codex and Claude Cowork agent files while separately governing model, tool, and client-data flows.",
     href: "/insights/self-hosted-ai-agents-seafile",
     publishedDate: "2026-06-15",
+    modifiedDate: "2026-08-31",
     hubSlug: "custom-ai-agents",
     hubLabel: "Custom AI Agents",
     hubHref: "/custom-ai-agents",
@@ -6323,16 +6329,17 @@ export const INSIGHTS: InsightItem[] = [
       "self-hosted ai for msp",
       "ai agent file sync windows macos",
     ],
-    h1: "Self-Hosted AI Agents: How ITECS Shares Codex and Cowork Agents Without Sending Client Data to the Cloud",
+    h1: "Self-Hosted AI Agents: How ITECS Governs Shared Codex and Cowork Files",
     content: [
-      "Most teams that want everyone using the same AI agent reach for a cloud drive — Dropbox, Google Drive, OneDrive — drop the agent files in a shared folder, and sync. It works, but it ships your prompts, your configurations, and often your clients' data through a third party you do not control. ITECS took a different path. We run our own file-sync server and use it to share the same [custom AI agents](/custom-ai-agents) with every employee, without a single client file leaving our security boundary.",
-      "**ITECS shares App-enabled AI agents — the kind that run natively inside Codex and Claude Cowork — by syncing them through a self-hosted Seafile server in our own datacenter. Every employee on Windows or macOS gets the same agents in their project folders automatically, and no client data ever touches a public cloud file service like Dropbox.**",
+      "**Updated August 31, 2026:** Self-hosting the file-sync layer controls where agent definitions are stored. It does not, by itself, control what Codex, Claude, a model provider, or a connected tool processes. Those data flows require separate review.",
+      "Teams can distribute common agent instructions, skills, and scripts through a managed file repository. ITECS uses a self-hosted sync server for its [custom AI agent](/custom-ai-agents) files so it can control that repository, its access, and its version history.",
+      "**ITECS syncs approved agent files through a self-hosted Seafile server to managed Windows and macOS endpoints. Client records are not automatically part of that library. When an agent needs client data, the model, connector, retention, permission, and processing boundaries are reviewed separately.**",
       "**The Problem With Sharing AI Agents Through a Cloud Drive**",
       "An AI agent is only useful to a company if everyone can use the same one. When one technician builds a strong documentation agent, the whole team should inherit it the next morning — not rebuild it from scratch. The obvious way to distribute it is a shared cloud folder. That convenience carries a quiet cost.",
-      "Consider a 60-person managed services firm that supports dozens of clients. An engineer builds an AI agent that reads a client's network documentation and drafts the missing runbooks. To share it, the team drops the agent — and the client documentation it reads — into a Dropbox folder. Now a third-party vendor stores network diagrams, admin procedures, and onboarding notes for every client. One misconfigured share link or vendor breach exposes data the firm contractually promised to protect.",
-      "That is the trade most teams never examine. The agent files are not the sensitive part — the client data they touch is. Sync that through a public cloud and you have moved your clients' information outside your control to save a few minutes of setup.",
+      "A planning scenario illustrates the boundary: an MSP may want to share an agent that drafts runbooks from authorized network documentation. The agent definition can live in one repository while client records remain in a separately permissioned source. Combining them in a broadly shared folder would enlarge the access and incident scope.",
+      "The correct design depends on the vendor contract, residency requirements, encryption, sharing controls, identity, logging, and recovery needs. Self-hosting offers custody of one layer; a governed cloud service may also be appropriate when its controls and contract meet the requirement.",
       "**What ITECS Built: One Shared Library of AI Agents**",
-      "ITECS solved this with infrastructure we own end to end. The core is [Seafile](https://www.seafile.com/en/home/), an open-source file-sync platform, running on a Linux server inside our Dallas datacenter. It does what Dropbox does — keep folders identical across many computers — except we host it, we hold the encryption keys, and the data stays on our hardware.",
+      "The distribution layer uses [Seafile](https://www.seafile.com/en/home/), an open-source file-sync platform running on ITECS-operated infrastructure. ITECS controls that server, storage, access, backups, and repository encryption. Model inference and external tool calls are separate systems with their own data paths.",
       "Three pieces work together. **Seafile** handles secure file sync and version history across the workforce. **Codex and Claude Cowork** are the AI tools our employees run locally; both support App-enabled agents, meaning an agent is defined by files — instructions, skills, and scripts — that live in a project folder. **The Seafile client** on each Windows and macOS machine keeps those project folders identical for everyone. If your team is new to these tools, start with our guide to [Claude Cowork for small business](/insights/claude-cowork-for-small-business).",
       "When an engineer improves an agent on their laptop, Seafile syncs the change to our server, then out to every other endpoint. The next time a colleague opens Codex or Cowork in that project folder, they run the updated agent — no install, no copying, no manual versioning. The whole company shares one evolving library of AI agents the same way a team shares a set of documents. We covered the broader pattern in [building a shared repository of agentic skills](/insights/enterprise-agentic-skills-repo).",
       "**Meet the Agent That Manages Client Documentation**",
@@ -6341,19 +6348,19 @@ export const INSIGHTS: InsightItem[] = [
       "In practice, a technician finishing a firewall replacement tells the agent what changed. The agent drafts the updated network runbook, adds the offboarding step for the old device, and checks whether the client's onboarding guide still references hardware that no longer exists. A human reviews and approves. The documentation that used to lag weeks behind the work now keeps pace with it. This internal pattern is related to the managed knowledge operations described on the [ITECS OpsMemory](/ai-knowledge-base) page, while each client implementation is scoped separately.",
       "**How the Shared-Agent System Works**",
       "Setting up shared, self-hosted AI agents follows four steps. ITECS runs the same playbook for clients who want their own private version.",
-      "**Step 1: Stand up a self-hosted sync server.** We install Seafile on a hardened Linux server inside the datacenter, behind the firewall, with encrypted storage and scheduled backups. Nothing depends on a third-party cloud.",
+      "**Step 1: Stand up a governed sync server.** Install Seafile on a hardened system with encrypted storage, identity controls, monitoring, backups, restore tests, and an assigned owner. Document every external dependency, including model and tool providers.",
       "**Step 2: Define agents as files in project folders.** Each AI agent — its instructions, skills, and scripts — lives in a versioned project folder. Because Codex and Claude Cowork read agents from the folder, the folder is the agent.",
       "**Step 3: Sync to every endpoint.** The Seafile client on each Windows and macOS machine keeps those folders identical. New hires get the full agent library on day one by signing in.",
       "**Step 4: Govern changes like code.** Edits sync with version history, so we can see who changed an agent and roll back a bad update. Sensitive actions still require human review before they run.",
       "**Why Seafile, and Why Self-Hosted**",
-      "We chose Seafile deliberately. It is **open-source**, so we can audit exactly how it handles our data instead of trusting a closed vendor black box. It is **self-hosted**, so the server, the storage, and the encryption keys are ours. And it keeps **client data inside our boundary**, which is the whole point for a firm that signs confidentiality agreements with every client.",
-      "Public cloud sync tools like Dropbox, Google Drive, and OneDrive are excellent products, but they place a third party between us and our clients' data. For a managed services provider, that is a contractual and security liability we choose not to carry. Self-hosting trades a little convenience for full custody of sensitive information.",
+      "ITECS chose Seafile because it is open-source and self-hosted, which provides direct custody of the sync server, storage, keys, and repository policy. Source availability supports review but does not eliminate implementation or operational risk.",
+      "Public cloud and self-hosted sync services have different operational and contractual tradeoffs. The decision should compare identity, sharing, encryption, residency, logging, backups, support, incident response, staffing, and total cost rather than assume one model is universally safer.",
       "**Security and Data Boundaries**",
       "Keeping data in-house is not automatically secure — it has to be operated that way. We treat the agent platform like any production system: scoped access per employee, encrypted storage, audited changes, network segmentation, and human approval gates on anything that touches client data. We align the controls to the [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework), the U.S. standard most enterprise auditors now use for AI accountability. Before any client's data feeds an agent, we run a [data and AI readiness audit](/data-audit) to confirm it is classified, access-controlled, and safe to use.",
-      "This is the same discipline behind ITECS' [custom AI agents](/custom-ai-agents) for clients — private environments, no third-party model training on your data, and the backing of a cybersecurity practice ITECS has run since 2002. For teams adopting these tools, [structured AI training](/training) makes sure people actually use the approval gates instead of working around them.",
+      "This is the same discipline behind ITECS' [custom AI agents](/custom-ai-agents): explicit data flows, approved providers, least privilege, retention rules, logging, and human approval. Provider training commitments and processing terms are verified for the selected product and contract. [Structured AI training](/training) helps employees understand the approval gates and escalation path.",
       "**What It Costs and the ROI of Shared Agents**",
       "The economics are straightforward. A self-hosted sync server runs on hardware most firms already own, plus the open-source Seafile software, which carries no per-seat license. The real return is operational: one engineer's best agent becomes every engineer's tool overnight, and documentation that used to be skipped gets done.",
-      "ITECS builds these systems on its standard model — hourly consulting or prepaid retainer hours with tracked usage, a 12-month expiry, plus a flat fee for scoped builds like a private agent platform or a custom [workflow automation](/automation). The ROI shows up as hours returned to billable work and as risk removed, because client data never leaves your control. When you want the same setup for your team, [talk to the ITECS team](/contact).",
+      "ITECS builds these systems through hourly consulting, prepaid retainer hours, or a scoped [workflow automation](/automation) project. Measure ROI through accepted documentation work, review time, update latency, recovery performance, and operating cost. Do not count risk reduction as guaranteed or assume the sync architecture contains every agent data flow. [Talk to the ITECS team](/contact) to scope the boundary.",
     ],
     faq: [
       {
@@ -6364,7 +6371,7 @@ export const INSIGHTS: InsightItem[] = [
       {
         question: "Why does ITECS use Seafile instead of Dropbox or Google Drive?",
         answer:
-          "Seafile is open-source and self-hosted, so ITECS owns the server, storage, and encryption keys and keeps client data inside its own security boundary. Public cloud sync tools like Dropbox or Google Drive place a third party between the firm and its clients' sensitive data, a liability a managed services provider chooses not to carry.",
+          "Seafile lets ITECS operate the sync server, storage, keys, access policy, and version history. That governs the agent-file repository; model inference, connectors, and client-data sources remain separate boundaries that must be reviewed. Cloud and self-hosted alternatives should be evaluated against the same requirements.",
       },
       {
         question: "What does ITECS's internal documentation agent do?",
@@ -6391,6 +6398,7 @@ export const INSIGHTS: InsightItem[] = [
       "Seeing “Fable is the most capable model and draws down usage 2× faster”? What Claude's warning means, how each plan's limits work, and the benchmarks behind the June 9, 2026 release.",
     href: "/insights/claude-fable-5-release",
     publishedDate: "2026-06-11",
+    modifiedDate: "2026-08-31",
     hubSlug: "consulting",
     hubLabel: "AI Consulting",
     hubHref: "/consulting",
@@ -6408,6 +6416,7 @@ export const INSIGHTS: InsightItem[] = [
     ],
     h1: "Claude Fable 5: What Business Leaders Should Know About Anthropic's Most Powerful Public Model",
     content: [
+      "**Updated August 31, 2026:** This launch-period analysis is historical. Verify the current model name, availability, safeguards, limits, and price in Anthropic's documentation before making a purchasing or routing decision.",
       "On June 9, 2026, Anthropic released Claude Fable 5 — the first \"Mythos-class\" model the public can use, and the company's own description calls it \"state-of-the-art on nearly all tested benchmarks.\" Fable 5 posts record coding and knowledge-work scores, runs autonomously across millions of tokens, and reads charts, tables, and diagrams nested inside PDFs. It is genuinely the strongest model most teams can buy today. It also burns through subscription usage limits roughly twice as fast as Claude Opus 4.8, and that has turned the launch week into a mix of awe and frustration.",
       "**For Dallas business leaders, the practical question is not whether Fable 5 is impressive — it is. The question is where it belongs in your stack, what it costs to run at scale, and how to govern it so a single agent session does not drain a month of usage in an afternoon.** That is the work ITECS does in an [AI consulting and readiness engagement](/consulting): match the right model to the right task, set cost guardrails, and give your team a clear adoption plan.",
       "**What Anthropic Actually Released On June 9, 2026**",
@@ -6423,19 +6432,19 @@ export const INSIGHTS: InsightItem[] = [
       "**Why The Usage Limits Disappear So Fast**",
       "Anthropic's subscription plans do not grant a fixed daily message count. Usage is metered against a rolling five-hour window that starts from your first message in a burst, plus a separate weekly cap. The two limits run independently — hitting one does not reset the other. Fable 5 consumes both faster for three structural reasons that compound during agentic work.",
       "First, the model produces longer, more thorough outputs than Opus, so each response costs more tokens. Second, its extended-thinking mode generates internal reasoning the user never sees but still pays for. Third, agentic runs in Claude Code spawn multiple concurrent model calls — a single task can fan out into four to six subagents, each billing against the same window. Stack those together and a model advertised at \"2x\" can empty a Max-plan window in minutes. After the window is exhausted, the system keeps working by drawing on usage credits, which auto-charge the card on file unless the user has set a hard cap. That is the mechanic behind the \"$100 in one session\" reports.",
-      "A 40-person Dallas software shop we advised this week shows how this bites. A developer pointed Fable 5 at a backlog of refactoring tickets in Claude Code, enabled maximum thinking, and let it run across the lunch hour. By the time anyone checked, the team's shared five-hour window was gone, two other engineers were blocked from the model, and the account had spent into usage credits. The model did excellent work — it just did it at a cost nobody had scoped, on a plan nobody had configured a ceiling on.",
+      "An illustrative failure scenario is an unattended refactoring run that consumes a shared usage window and begins drawing paid credits. Prevent it by benchmarking the task, setting a budget and stopping condition, isolating the run from shared capacity, and assigning an owner to review progress.",
       "**How To Decide Whether Fable 5 Belongs In Your Stack**",
       "Fable 5 is the right tool for some jobs and an expensive mistake for others. ITECS uses a four-step routing decision so businesses capture the capability without the runaway cost.",
       "**Step 1: Match the model to the task, not the hype.** Reserve Fable 5 for genuinely hard work — complex refactors, multi-document analysis, long-horizon agent runs. Route routine drafting, summaries, and chat to Opus 4.8 or a cheaper model. At $10 per million input tokens and $50 per million output tokens, Fable 5 costs about twice Opus 4.8, so paying for it on simple work is pure waste.",
       "**Step 2: Set hard spending caps before anyone runs an agent.** Configure usage-credit ceilings on every subscription and API key so an overnight agent run cannot charge the card without limit. This single control prevents the most common launch-week complaint.",
       "**Step 3: Govern agentic sessions like production jobs.** Long Claude Code runs with extended thinking are where budgets vanish. Scope them, run them on dedicated accounts rather than shared team windows, and require sign-off before a fan-out agent task goes unattended. This is the same discipline we cover in [moving agentic AI workflows from pilot to production](/insights/agentic-ai-workflows-enterprise-operations).",
-      "**Step 4: Plan around the June 22 cliff.** Until June 22, 2026, Fable 5 is free inside the subscription plans. After that, it bills against usage credits. Model your real post-promo cost now, decide which workloads justify it, and configure approvals before the price changes — not after the first surprise invoice.",
+      "**Step 4: Treat launch promotions as expired evidence.** The June 2026 inclusion period described at launch has passed. Confirm current entitlement and usage-credit behavior in the account, then model real cost and configure approvals before production use.",
       "**Safety, Security, And What The Safeguards Mean For You**",
       "Anthropic could release a Mythos-class model publicly only because Fable 5 ships with new classifier-based safeguards in three areas: cybersecurity, biology and chemistry, and model distillation. When a prompt trips one of these classifiers — for example, a request that looks like offensive cyber work or weaponizable biology — Fable 5 blocks the response and falls back to Claude Opus 4.8. Anthropic reports the safeguards trigger in fewer than five percent of sessions, so most business users will never notice them. Teams doing legitimate security research or scientific work should know the fallback exists, because it can quietly change which model answered.",
       "For any business, the deeper security question is not the model's guardrails but your own. A more capable model with broad tool and data access raises the stakes of a misconfiguration. The controls that matter are the ones you operate: scoped credentials per workflow, sandboxed agent runtimes, audit logs of every action, and human approval gates on anything that moves money or touches customer data. ITECS deploys AI against the [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework), the U.S. standard most enterprise auditors now use as the backbone for AI accountability. Anthropic's own [usage policies and model documentation](https://www.anthropic.com/legal/aup) describe the safeguard boundaries in detail. For businesses whose data is not yet ready to support this, a [data and AI readiness audit](/data-audit) comes before any high-capability model goes live, and [team AI training](/training) follows so people actually use the approval gates as designed.",
       "**Pricing And The ROI Of Using Fable 5 Deliberately**",
-      "Fable 5's API pricing is $10 per million input tokens and $50 per million output tokens — about double Claude Opus 4.8, and Anthropic positions it as the premium tier. On subscriptions, it is bundled into Pro, Max, Team, and Enterprise through June 22, 2026, then shifts to usage-credit billing — our [Claude plan comparison](/insights/claude-plan-comparison) breaks down what each tier costs and which one fits your team. The cost lever most businesses miss is not the per-token rate; it is routing. Sending every prompt to the most expensive model, with extended thinking always on, is where bills balloon.",
-      "ITECS prices its advisory and setup work transparently — hourly consulting or prepaid retainer hours with tracked usage, a 12-month expiry, plus a flat fee for scoped builds such as a [custom AI agent that routes work across models](/custom-ai-agents). The ROI of doing this deliberately is concrete: the right model on the right task, hard spending caps, and governed agent sessions typically cut a team's AI spend while increasing the work it produces. The Dallas software shop above kept Fable 5 for its hardest tickets, moved routine work to a cheaper model, capped its credits, and turned a runaway cost into a predictable line item. When you are ready to put Anthropic's newest model to work without the bill surprises, [talk to the ITECS team](/contact).",
+      "Launch pricing and subscription inclusion are historical and may no longer apply. Verify the current price and entitlement in Anthropic's official documentation. The cost lever to measure is routing: record cost per completed and accepted task, including retries and review, rather than assuming the premium model belongs on every prompt.",
+      "ITECS provides hourly consulting, prepaid retainer hours, and scoped builds such as a [custom AI agent that routes work across models](/custom-ai-agents). The business case must come from a controlled comparison of quality, latency, cost, and review effort. When you are ready to evaluate a high-capability model without unmanaged spending, [talk to the ITECS team](/contact).",
     ],
     faq: [
       {
@@ -6456,7 +6465,7 @@ export const INSIGHTS: InsightItem[] = [
       {
         question: "How much does Claude Fable 5 cost?",
         answer:
-          "Fable 5's API pricing is $10 per million input tokens and $50 per million output tokens — about twice Claude Opus 4.8. It is included free in the Pro, Max, Team, and Enterprise subscription plans through June 22, 2026, after which usage bills against pay-as-you-go usage credits.",
+          "The launch article documented June 2026 pricing and a temporary subscription inclusion period that has ended. Verify the current API price, plan entitlement, credit behavior, and spending controls in Anthropic's official documentation and your account.",
       },
       {
         question: "Should my business switch everything to Claude Fable 5?",
@@ -6478,7 +6487,7 @@ export const INSIGHTS: InsightItem[] = [
       "Four chainable CVEs, 245,000 exposed instances, ClawHavoc campaign IOCs — what the OpenClaw crisis teaches every business deploying AI agents in 2026.",
     href: "/insights/openclaw-security-crisis",
     publishedDate: "2026-05-28",
-    modifiedDate: "2026-07-13",
+    modifiedDate: "2026-08-31",
     hubSlug: "custom-ai-agents",
     hubLabel: "Custom AI Agents",
     hubHref: "/custom-ai-agents",
@@ -6497,6 +6506,7 @@ export const INSIGHTS: InsightItem[] = [
     ],
     h1: "The OpenClaw Security Crisis: What 245,000 Exposed AI Agents Reveal About Agentic AI Risk",
     content: [
+      "**Updated August 31, 2026:** The operational example below is explicitly illustrative, and governance value is presented as risk reduction to measure rather than a guaranteed financial return.",
       "OpenClaw is the open-source AI agent platform that ran away with 2026 — a viral GitHub repository that crossed 180,000 stars in January and is now at the center of the year's first major agentic-AI security crisis. Between January 27 and May 15, researchers disclosed five CVEs, identified more than 1,100 malicious marketplace skills, and counted roughly 245,000 OpenClaw instances exposed to the public internet across Shodan and ZoomEye. The lesson for every business deploying AI agents is not that OpenClaw is uniquely broken — it is that the entire category needs governance the open-source community has not yet built.",
       "**For Dallas businesses evaluating AI agents, the safer path is a [governed custom AI agent deployment](/custom-ai-agents) — sandboxed per workflow, identity-bound, audited, and run on the same operational discipline ITECS has applied to managed IT since 2002.** This article walks through what happened, why traditional defenses missed it, and the operating model that prevents your business from becoming the next case study.",
       "**The Timeline: From Viral Repository To Security Crisis In Four Months**",
@@ -6519,15 +6529,15 @@ export const INSIGHTS: InsightItem[] = [
       "Most AI agent platforms — open-source or commercial — share three architectural choices that the OpenClaw crisis exposed. First, they run with the human operator's full credentials across every connected system, which means a compromised agent inherits the operator's entire blast radius. Second, they trust plugin or skill marketplaces with no security review, because shipping fast matters more than shipping signed. Third, they ship default configurations that expose the agent to the local network or the public internet without authentication, on the assumption that a developer who installs it will harden it later. Many never do.",
       "Traditional endpoint and network monitoring also assume a human at the keyboard. When the agent reads a file, runs a shell command, and writes another file, the security stack sees three legitimate-looking actions. The Claw Chain attack succeeds precisely because each step is normal — only the sequence is malicious. Detecting that requires behavior-pattern monitoring built around how the agent is supposed to operate. Most businesses do not have it.",
       "**What This Means For Every Business Deploying AI Agents**",
-      "A 95-person Dallas third-party logistics company we recently advised illustrates the practical risk. The operations director had installed a self-hosted AI agent to scrape carrier portals, post status updates to the customer CRM, and prepare a daily exceptions report. The agent ran on a shared workstation, used the operator's stored credentials for the carrier portals, and pulled a community plugin from a public registry to handle PDF rate confirmations. None of that was on the IT roadmap. None of it had been audited. None of it had been logged.",
-      "The fix was not to ban the agent. It was to rebuild the same workflow on a governed footprint — a scoped service account per integration, a sandboxed agent runtime, an allowlist of approved skills, an audit log of every action the agent took, and an owner approval gate on anything that would touch a customer record or a carrier invoice. The agent kept its job. The business kept its blast radius small. The pattern is the same one we cover in our guide to [moving agentic AI workflows from pilot to production](/insights/agentic-ai-workflows-enterprise-operations) and our analysis of [why MCP requires managed governance](/insights/mcp-is-the-new-api).",
+      "An illustrative logistics workflow shows the practical risk: a self-hosted agent on a shared workstation uses an operator's credentials, reads a community plugin, updates a CRM, and handles rate-confirmation PDFs without inventory or logging. That combination creates excessive privilege, supply-chain, data, and accountability risk.",
+      "A safer redesign uses a scoped service identity per integration, an isolated runtime, approved and pinned skills, tool-call logs, and owner approval before customer-record or invoice changes. The pattern is the same one covered in our guide to [moving agentic AI workflows from pilot to production](/insights/agentic-ai-workflows-enterprise-operations) and our analysis of [MCP governance](/insights/mcp-is-the-new-api).",
       "**The Governance Pattern That Keeps Agents Safe**",
       "Kaspersky's public assessment of OpenClaw is blunt — for enterprise use, it remains \"at best unsafe, and at worst utterly reckless\" until the architectural problems are fixed. That posture is correct, and it generalizes. Any AI agent platform a business deploys needs to clear the same six controls before it touches production data.",
       "First, identity-bound credentials per workflow, never the operator's personal logins. Second, sandboxed runtime — file access, network access, and tool access scoped per agent purpose. Third, an allowlisted skill or plugin set with signed publishers and a documented review process. Fourth, an immutable audit log capturing every read, every write, every credential use, and every tool call. Fifth, an approval gate for any action that moves money, files with a regulator, or posts to a customer-facing channel. Sixth, a quarterly governance review of what the agent did and what it touched.",
       "ITECS deploys every AI agent against the [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework) — the standard most enterprise auditors and U.S. federal agencies now use as the policy backbone for AI accountability. The controls above map directly to its Govern, Map, Measure, and Manage functions. For businesses whose data is not yet ready to support this discipline, a [data and AI readiness audit](/data-audit) comes before any agent goes live, and team-level [AI training](/training) follows so that human reviewers actually use the approval gates the way they were designed.",
       "**Pricing And The ROI Of Doing This Right**",
       "ITECS prices AI security and consulting transparently — hourly engineering and consulting or prepaid retainer hours with tracked usage, a 12-month expiry. Scoped builds, including a governed [custom AI agent deployment](/custom-ai-agents), carry a flat fee. The entry point for most leadership teams is a fixed-fee [AI consulting and readiness engagement](/consulting) that audits current AI usage, prioritizes use cases by payback, and produces a board-ready security and governance roadmap.",
-      "The ROI of governance is asymmetric. A single avoided incident — one Atomic Stealer infection on a controller's workstation, one credential leak from a shared agent, one customer-data exposure from an unsanctioned plugin — pays for years of disciplined deployment. The 95-person logistics company above kept the productivity gains of its AI agent program and reduced its incident exposure to something the leadership team could actually defend. That is what a managed approach delivers. When you are ready to plan an agent deployment your auditor, your insurer, and your board can sign off on, [talk to the ITECS team](/contact).",
+      "Governance should be evaluated through reduced exposure, fewer policy exceptions, faster detection and revocation, tested recovery, and accepted work completed—not by assigning a guaranteed dollar value to an incident that did not occur. When you are ready to plan an agent deployment with evidence your auditor, insurer, and board can review, [talk to the ITECS team](/contact).",
     ],
     faq: [
       {
@@ -6580,6 +6590,7 @@ export const INSIGHTS: InsightItem[] = [
       "Claude for Small Business launched May 13, 2026. Enable it, connect your core apps, and replace ten manual operations tasks — safely and with owner sign-off.",
     href: "/insights/claude-cowork-for-small-business",
     publishedDate: "2026-05-26",
+    modifiedDate: "2026-08-31",
     hubSlug: "automation",
     hubLabel: "AI Workflow Automation",
     hubHref: "/automation",
@@ -6593,13 +6604,14 @@ export const INSIGHTS: InsightItem[] = [
       "claude dispatch schedule daily briefing",
       "small business ai automation 2026",
     ],
-    h1: "How to Set Up Claude Cowork for Your Small Business in One Afternoon",
+    h1: "How to Pilot Claude Cowork for Your Small Business",
     content: [
-      "Claude Cowork is Anthropic's collaborative workspace where Claude holds long projects, remembers context across sessions, and runs scheduled tasks. On May 13, 2026, Anthropic added a Small Business toggle inside Cowork with fifteen pre-built workflows for QuickBooks, PayPal, HubSpot, Canva, Docusign, Google Workspace, and Microsoft 365 — the same back-office stack most ten- to fifty-person companies already pay for. Setup takes one afternoon. The savings start the same week.",
+      "**Updated August 31, 2026:** This launch-period guide now treats setup time, connector availability, and savings as items to verify. Anthropic's current BAA guidance says Cowork is not covered, so do not use it for PHI under a BAA unless that documented scope changes.",
+      "Claude Cowork is a collaborative workspace for project context and agent-assisted tasks. Anthropic announced small-business workflows and connectors in May 2026. Confirm current availability, permissions, billing, and connector behavior in the purchased plan before rollout; there is no universal one-afternoon setup or first-week savings guarantee.",
       "**The fastest way to capture that value safely is to pair the Cowork rollout with a structured automation engagement.** ITECS configures [AI workflow automation for Dallas teams](/automation) — sandboxes, memory files, scheduled briefings, and approval gates wired together so the agent works for the owner instead of around them.",
       "**Why Many Operators Stop At The Chat Window**",
       "Anthropic's 2026 Work Trend Index reports that only sixteen percent of business users have moved beyond chatting with Claude to actually orchestrating agents. Most owners type a question, copy the answer into an email, and stop. The recurring, multi-step admin work — invoice chasing, weekly reports, Monday meeting prep — still happens by hand in QuickBooks, Outlook, HubSpot, and a stack of browser tabs. The result is that the highest-paid person in the building spends the first hour of every day on data scraping.",
-      "A twenty-eight person Dallas commercial cleaning company we recently helped illustrates the pattern. The owner spent forty minutes every morning pulling the prior day's revenue from QuickBooks, the cash position from PayPal, the new HubSpot deals, and three Outlook calendar checks to build a daily briefing for himself. Forty minutes by five days is more than three hours a week, every week, for the most expensive headcount in the company. That work belongs in Cowork — not in the owner's head. For operators earlier in their AI adoption, [our AI adoption guide](/insights/how-to-use-ai-small-business) is a useful prerequisite.",
+      "An illustrative candidate is an owner who manually gathers accounting, pipeline, and calendar information for a daily briefing. Before connecting those systems, measure the current effort, classify the data, confirm connector permissions, define the authoritative source, and require review of the generated briefing. For operators earlier in adoption, [our AI adoption guide](/insights/how-to-use-ai-small-business) is a useful prerequisite.",
       "**What Changed On May 13, 2026**",
       "Anthropic shipped Claude for Small Business as a toggle inside Cowork rather than a separate product. Switching it on exposes fifteen pre-built workflows tuned for ten- to fifty-person companies and adds curated connectors for QuickBooks, PayPal, HubSpot, Canva, Docusign, Google Workspace, and Microsoft 365. The toggle also tightens the default safety posture — Project Sandboxes are isolated by default, file access is scoped per Project, and Dispatch scheduled tasks now route through an approval gate before they pay an invoice or post anything customer-facing.",
       "For an owner, this changes the question. The old question was \"what can I ask Claude to do for me?\" The new question is \"which of these fifteen pre-built workflows should I turn on first, and what do I need to wire up around them?\" The remainder of this guide answers that question.",
@@ -6631,7 +6643,7 @@ export const INSIGHTS: InsightItem[] = [
       "**Govern Claude like an employee.** ITECS deploys Cowork against the controls in the [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework) — defined purpose per Project, identity-bound credentials, an immutable audit log of every action, a documented human approval path, and a quarterly review of what the agent did and what it touched. The same discipline ITECS has applied to managed IT for twenty-four years, applied now to an AI workspace. For owners who want to harden the data layer before automating, a [data and AI readiness audit](/data-audit) comes first.",
       "**Pricing And The ROI Of Cowork For A Growing Team**",
       "Claude for Small Business is part of Claude Cowork's standard subscription tier — pricing sits on Anthropic's plans page and tracks per user; our [Claude plan comparison](/insights/claude-plan-comparison) shows which tier fits a small team. There is no separate license fee for the Small Business toggle. ITECS prices the setup and operating layer transparently: hourly consulting or prepaid retainer hours for configuration and tuning, a 12-month expiry, and a flat fee for scoped builds such as a [custom AI agent extending one of the ten workflows](/custom-ai-agents).",
-      "Many growing teams recover the setup cost inside the first month. The Dallas cleaning company above reclaimed roughly three hours a week from the owner — at a fully loaded owner's hourly cost, that paid back the configuration retainer in under three weeks and now compounds across every additional workflow turned on. Owners who pair Cowork with [AI training for the rest of the team](/training) get the second multiplier — the work the owner used to do alone now runs as a managed system the whole company can lean on. Teams that want a designated internal expert can develop one through the [AI Champion Program](/services/ai-champion-program). When you are ready to walk through the setup with someone who has done it before, [talk to the ITECS team](/contact).",
+      "Measure the business case from the pre-pilot baseline: accepted work completed, owner and reviewer time, corrections, incidents, license and connector cost, and capacity actually redeployed. Additional workflows do not automatically preserve the first workflow's economics. [AI training](/training) and the [AI Champion Program](/services/ai-champion-program) can establish ownership and review habits. [Talk to ITECS](/contact) to scope a controlled pilot.",
     ],
     faq: [
       {
@@ -6662,12 +6674,12 @@ export const INSIGHTS: InsightItem[] = [
       {
         question: "How much time can Claude Cowork actually save a growing team?",
         answer:
-          "Many Dallas operators recover three to six hours of owner time per week from the daily briefing, weekly report, and invoice chase workflows alone. At a fully loaded owner's hourly cost, the configuration retainer typically pays back inside the first month and then compounds with every additional workflow turned on.",
+          "Savings vary by workflow and baseline. Measure accepted work completed, review time, corrections, incidents, and total operating cost during a bounded pilot; calculate payback only from realized capacity or cost that the organization can substantiate.",
       },
       {
         question: "Is Claude Cowork safe for finance and customer data?",
         answer:
-          "Yes, when it is set up against a recognized control framework. ITECS deploys Cowork against the NIST AI Risk Management Framework — defined purpose per Project, identity-bound credentials, immutable audit logs, a documented human approval path, and a quarterly governance review of what the agent did and what it touched.",
+          "Safety depends on the plan, contract, connector, data, permissions, retention, logging, approvals, and operating controls. Use the NIST AI Risk Management Framework as a voluntary governance reference, verify exact feature behavior, and keep sensitive finance and customer actions human-approved. Cowork is not currently covered by Anthropic's BAA guidance.",
       },
     ],
   },
@@ -6678,6 +6690,7 @@ export const INSIGHTS: InsightItem[] = [
       "How CEOs and CFOs measure AI ROI and scale what works in 2026 — a framework for moving from AI experiments to measurable efficiency, with metrics, governance, and payback math.",
     href: "/insights/ceo-guide-ai-roi",
     publishedDate: "2026-05-22",
+    modifiedDate: "2026-08-31",
     hubSlug: "consulting",
     hubLabel: "AI Consulting",
     hubHref: "/consulting",
@@ -6692,6 +6705,7 @@ export const INSIGHTS: InsightItem[] = [
     ],
     h1: "The CEO's Guide to AI ROI: How to Measure and Scale AI Impact",
     content: [
+      "**Updated August 31, 2026:** This guide removes universal payback claims and unsupported client outcomes. AI ROI must be calculated from the organization's own baseline, accepted output, total cost, and attribution rules.",
       "AI ROI is the return your business earns from artificial intelligence after subtracting what it costs to build, run, and govern. In 2026, the experimental phase is over — boards and CFOs now fund AI the way they fund any capital project: against measurable payback. The CEOs winning this shift track three things relentlessly — hours recovered, revenue influenced, and risk reduced — then scale only what clears the bar.",
       "**The fastest way to turn AI spend into defensible ROI is to start with a strategy partner who measures before they build.** ITECS runs an [AI consulting and readiness process](/consulting) that baselines your current costs, ranks use cases by payback, and instruments every deployment so savings show up in numbers a CFO will accept — not anecdotes.",
       "**Why AI ROI Is Suddenly The Only Question That Matters**",
@@ -6705,11 +6719,11 @@ export const INSIGHTS: InsightItem[] = [
       "ITECS uses a four-stage measurement framework that produces numbers a board will accept. Each stage has an owner and an artifact.",
       "**Stage 1: Baseline before you build.** Measure the current cost of the workflow you intend to improve — hours per week, error rate, cycle time, fully loaded labor cost. Without a baseline, you can never prove savings. This is the step most teams skip, and it is why most AI ROI claims collapse under CFO scrutiny.",
       "**Stage 2: Instrument the deployment.** Build measurement into the rollout, not after it. Track time-to-complete, exception rate, human-override rate, and volume handled. Compare against the Stage 1 baseline every week. A deployment you cannot measure is a deployment you cannot defend.",
-      "**Stage 3: Convert to financial language.** Translate operational metrics into the three ROI components — hard savings, soft savings, risk reduction. Express payback period, not just annual savings, because boards fund against payback. Most well-scoped workflows should clear payback inside 12 to 18 months.",
+      "**Stage 3: Convert to financial language.** Translate operational metrics into hard savings, capacity, revenue contribution, and risk indicators. Express a measured payback period and state the attribution assumptions. Do not impose a universal 12- or 18-month threshold; leadership should set the hurdle rate for the workflow's risk and alternatives.",
       "**Stage 4: Review and reallocate quarterly.** Treat AI like a portfolio. Every quarter, rank live deployments by realized ROI. Scale the winners, fix the marginal ones, and retire the losers without sentiment. The CEOs who scale AI successfully are disciplined about cutting what does not pay.",
       "**Where AI ROI Hides — And Where It Leaks**",
       "Return rarely shows up where the demo was most impressive. It shows up in the boring, high-volume workflows that quietly consume payroll.",
-      "A 90-person Dallas professional services firm assumed its AI win would be marketing content. The real return came from automating timesheet reconciliation and invoice preparation, which recovered roughly 600 billable hours a year that staff had spent on admin. At their billing rate, that one workflow paid for the entire AI program.",
+      "A useful planning example is timesheet reconciliation and invoice preparation. Baseline the hours, corrections, billing delay, write-offs, and review effort, then compare them with the pilot. Count only capacity that is actually redeployed or cost that is actually avoided; do not convert every saved minute into revenue automatically.",
       "ROI also leaks in predictable places. Unused licenses are the most common drain — seats bought in bulk and never adopted. Shadow AI is the second — employees pasting sensitive data into consumer tools, creating risk that erases efficiency gains. \"Pilot purgatory\" is the third — impressive demos that never reach production because no one owns the operational layer, a pattern we cover in our guide to [moving agentic AI workflows from pilot to production](/insights/agentic-ai-workflows-enterprise-operations).",
       "**How To Scale What Works**",
       "Scaling AI is not buying more licenses. It is taking a workflow that proved its ROI and extending the same discipline across more of the business. Scale by workflow, not by tool. A proven invoice-triage agent extends to expense reports, then to procurement approvals, on the same governance backbone.",
@@ -6719,7 +6733,7 @@ export const INSIGHTS: InsightItem[] = [
       "In practice, that means defined ownership for every deployment, logging that captures what the AI did and what it saved, access controls that keep sensitive data out of consumer tools, and a quarterly review tying realized savings back to the original business case. This is the same operational discipline ITECS has applied to managed IT for 24 years — applied now to AI investment. For businesses whose data is not yet ready to support clean measurement, a [data audit](/data-audit) comes before any ROI claim.",
       "**Pricing And The ROI Of Getting Help**",
       "ITECS prices AI strategy and consulting transparently: hourly consulting or prepaid retainer hours with tracked usage, a 12-month expiry. Scoped builds — [custom AI agents](/custom-ai-agents), automations, integrations — carry a flat fee. The entry point for most leadership teams is a fixed-fee [AI readiness assessment](/consulting) that baselines current costs, ranks use cases by payback, and produces a board-ready roadmap.",
-      "The ROI of the assessment itself is usually the cleanest in the program. It prevents the two most expensive mistakes — funding the wrong use case and skipping the baseline that lets you prove the right one. For most mid-market companies, one corrected investment decision pays for the engagement many times over. When you are ready to measure what AI is actually returning, [talk to the ITECS team](/contact) or start with a readiness assessment.",
+      "The assessment is intended to reduce two common errors: funding the wrong use case and skipping the baseline needed to evaluate it. Its value should be judged against the decisions it changes and the cost of the alternatives, not an assumed multiple. When you are ready to measure what AI is returning, [talk to the ITECS team](/contact) or start with a readiness assessment.",
     ],
     faq: [
       {
@@ -6740,7 +6754,7 @@ export const INSIGHTS: InsightItem[] = [
       {
         question: "What is a realistic payback period for an AI investment?",
         answer:
-          "Most well-scoped AI workflows clear payback inside 12 to 18 months, and high-volume operational workflows often pay back faster. The key is baselining the workflow before deployment so the savings can be proven rather than estimated.",
+          "There is no universal payback period. Set a hurdle rate based on risk, capital, alternatives, and strategic value; baseline the workflow; include build, run, governance, review, and switching costs; then calculate payback from realized results.",
       },
       {
         question: "How do you scale AI beyond a successful pilot?",
@@ -6766,7 +6780,7 @@ export const INSIGHTS: InsightItem[] = [
       "How to take agentic AI workflows from pilot to production in finance, procurement, and HR — a four-stage blueprint with governance, security, and ROI math for Dallas enterprises.",
     href: "/insights/agentic-ai-workflows-enterprise-operations",
     publishedDate: "2026-05-21",
-    modifiedDate: "2026-07-05",
+    modifiedDate: "2026-08-31",
     hubSlug: "custom-ai-agents",
     hubLabel: "Custom AI Agents",
     hubHref: "/custom-ai-agents",
@@ -6781,6 +6795,7 @@ export const INSIGHTS: InsightItem[] = [
     ],
     h1: "How to Implement Agentic AI Workflows in Your Enterprise Operations",
     content: [
+      "**Updated August 31, 2026:** Client-like scenarios in this guide are now explicitly illustrative, implementation schedules are dependency-based, and production controls are presented as requirements to verify rather than guaranteed outcomes.",
       "Agentic AI workflows are autonomous, multi-step systems that finish business work — invoicing exceptions, candidate screens, supplier risk reviews — without a human clicking through every step. Dallas enterprises are moving them from pilot to production this year because they handle the long-tail decisions chatbots cannot answer and the policy-bound exceptions that legacy automation rejects.",
       "**The fastest path from agentic pilot to durable production is to pair the build with a [Managed Intelligence Provider](/managed-intelligence-provider) that owns governance, observability, and rollout discipline.** Most pilots stall because no one owns the operational layer. ITECS has run that layer for traditional IT systems for 24 years and now applies the same discipline to enterprise agentic AI workflows.",
       "**What An Agentic AI Workflow Actually Is**",
@@ -6788,25 +6803,25 @@ export const INSIGHTS: InsightItem[] = [
       "The architecture has three layers. A planner model breaks a goal into steps. Tools connect to business systems through the [Model Context Protocol](/insights/mcp-is-the-new-api). A governance layer logs every decision and stops the agent when policy thresholds are crossed. Most enterprise builds use Claude, GPT-class models, or Azure OpenAI for the planner. Tools usually reach into HubSpot, Salesforce, NetSuite, Workday, ServiceNow, SAP Concur, DocuSign, Microsoft 365, Slack, Jira, and internal SQL databases.",
       "**The Pilot-To-Production Trap**",
       "Most enterprise agentic AI pilots stall at the same point. A small team builds an impressive demo in three weeks, leadership greenlights production, and everything stops. The integrations need credentials. The audit logs need a destination. The exceptions need a workflow. The risk team needs a control framework. The model needs version pinning. Nobody owns this gap, so the pilot dies in committee.",
-      "Consider a 180-person Dallas industrial distributor we advised. The pilot was an accounts-payable agent that read supplier invoices from email, matched them to purchase orders in NetSuite, flagged exceptions for human review, and posted clean invoices. It worked beautifully on 50 historical invoices. In production, it touched real money — and that triggered six new requirements no one had budgeted: SOX-compliant audit logs, dual approval for any payment above $5,000, vendor master hygiene, ACH file generation, a rollback procedure for misposted invoices, and a quarterly review by the controller. Production took 14 weeks instead of three because the team treated agentic AI like a chatbot launch instead of like a financial system deployment.",
+      "Consider an illustrative accounts-payable pilot that reads supplier invoices, matches them to purchase orders, and routes exceptions. Moving it to production can introduce requirements such as audit evidence, dual approval above a company-defined threshold, vendor-master controls, payment segregation, reversal procedures, and controller review. The schedule depends on those controls and integrations; a successful historical-data demo does not establish production readiness.",
       "**A Four-Stage Blueprint For Pilot To Production**",
       "ITECS uses a four-stage rollout that prevents the production trap. Each stage has an owner, a gate, and a deliverable.",
-      "**Stage 1: Foundation audit.** Before any agent code is written, audit the workflow you want to automate. Map every input, decision, output, and exception. Identify which systems the agent will read from and write to. Confirm credentials, rate limits, and audit log destinations. List the policies and thresholds the agent must respect. This stage produces a one-page workflow specification and a system access matrix. Most foundation audits take one to two weeks for a single workflow and feed directly into a formal [data audit](/data-audit) when underlying data hygiene is shaky.",
-      "**Stage 2: Sandbox pilot.** Build the agent in a sandboxed environment with read-only access to production data and write access only to a staging copy. Run the agent against 30 to 100 historical cases. Measure decision accuracy, exception rate, hallucination rate, and average decision time. Document where the agent gets confused. Tune the planner prompt, the tool descriptions, and the policy guardrails until the metrics clear the threshold leadership set in Stage 1. Pilots usually run three to six weeks.",
+      "**Stage 1: Foundation audit.** Before agent code is written, map every input, decision, output, and exception. Identify read and write systems, credentials, rate limits, audit destinations, policies, and thresholds. Produce a workflow specification and access matrix. The schedule depends on process complexity, data quality, and stakeholder availability and may feed into a formal [data audit](/data-audit).",
+      "**Stage 2: Sandbox pilot.** Use an isolated environment with approved read-only datasets and write access only to staging. Select enough representative normal, edge, and adversarial cases to support the release decision. Measure goal completion, correctness, exception rate, unsafe actions, latency, and cost. Tune until the predefined thresholds are met; do not commit to a duration before the test corpus and integrations are known.",
       "**Stage 3: Guardrails and governance.** Wire the agent into your existing identity provider, audit log pipeline, secrets manager, and approval channels. Set policy thresholds that route any decision above a defined dollar amount, risk score, or sensitivity classification to a human reviewer. Pin the model version. Define the rollback procedure. Document the human approval path for each exception class. This stage maps directly to the NIST AI Risk Management Framework and produces the control evidence your auditors will ask for.",
-      "**Stage 4: Production rollout and continuous tuning.** Launch the agent against a constrained slice of real work — one supplier, one region, one cost center — for two weeks. Compare results against parallel human handling. Expand the slice weekly. Hold a weekly review of agent decisions for the first quarter. After three months, transition to monthly governance reviews and prompt-version updates. Plan for a model upgrade every six months because frontier model capabilities shift faster than traditional software releases.",
+      "**Stage 4: Production rollout and continuous tuning.** Launch against a constrained slice of real work and compare it with the approved baseline or parallel human handling. Expand only when gates pass. Set review and model-change schedules according to risk, observed drift, vendor changes, and incident history rather than a universal calendar.",
       "**Where Agentic AI Pays Off Fastest In Enterprise Operations**",
       "Three operating functions tend to absorb agentic AI workflows first because they carry the highest ratio of repeatable judgment calls to original creative work.",
-      "**Finance and accounting.** Invoice processing, expense report review, journal entry preparation, dispute reconciliation, vendor risk monitoring, and month-end close support. A $35M Dallas professional services firm cut their AP team's invoice processing time by 62% by deploying an agent that triages supplier invoices, matches them to purchase orders, and routes anything above $10,000 or any new vendor to a controller for sign-off. The agent did not replace anyone — it absorbed the high-volume, low-judgment work that previously made the team a hiring bottleneck. Lenders and credit teams run the same playbook with our [AI agents for financial services](/financial-services) — field examinations, covenant monitoring, and AR collections.",
-      "**Procurement and supply chain.** Supplier intake, contract clause review, RFP response triage, purchase order generation, delivery exception handling, and supplier risk scoring against public data. A regional construction firm used an agent to monitor 240 active suppliers against OFAC, FCPA, and lien filings weekly — work that previously took a part-time analyst 12 hours per week and ran two weeks behind. The same agent now flags margin erosion patterns the controller used to catch only at month-end. For manufacturers, this exact pattern is productized in our [purchase price variance agent](/manufacturing/ppv-agent) and the broader [manufacturing AI agent portfolio](/manufacturing).",
-      "**Human resources and talent operations.** Candidate screening against structured rubrics, onboarding task orchestration, benefits inquiry triage, internal mobility matchmaking, and policy question answering. A 220-person regional law firm deployed an HR agent that resolves 78% of benefits and PTO questions instantly and routes the rest to a human within the same conversation. Their HR generalist now spends 15 hours per week on retention initiatives instead of repetitive Q&A. The work product also flows into an [AI knowledge base](/ai-knowledge-base) so future questions improve the answer set automatically.",
+      "**Finance and accounting.** Candidate tasks include invoice triage, expense review, journal-entry preparation, reconciliation support, vendor monitoring, and close support. Keep posting, payment, and exception authority with accountable finance owners until evidence supports a narrower delegation. Lenders and credit teams can apply the same control pattern to [AI agents for financial services](/financial-services).",
+      "**Procurement and supply chain.** Candidate tasks include supplier intake, clause extraction, RFP triage, purchase-order drafts, delivery exceptions, and supplier-risk research. Verify sanctions and legal findings against authoritative sources, preserve evidence, and require approval before supplier or payment changes. Manufacturers can apply this pattern through the [purchase price variance agent](/manufacturing/ppv-agent) and broader [manufacturing AI agent portfolio](/manufacturing).",
+      "**Human resources and talent operations.** Candidate tasks include rubric-based intake, onboarding orchestration, benefits-question retrieval, and policy assistance. Preserve employment-law review, accessibility, employee privacy, and human responsibility for consequential decisions. Approved answers can feed an [AI knowledge base](/ai-knowledge-base) through a correction and renewal process.",
       "**Security, Governance, And Compliance Discipline**",
-      "Agentic AI workflows touch real business systems with real consequences. Security cannot be an afterthought. ITECS deploys every production agent against the controls in the [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework) — the standard the U.S. government, Microsoft, and most enterprise auditors now use as the policy backbone for AI governance.",
+      "Agentic AI workflows touch real business systems with real consequences. ITECS uses the [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework) as a voluntary governance reference and maps additional legal, contractual, security, and industry requirements to the actual workload.",
       "Concretely, that means every agent has a documented purpose, a defined input and output schema, an identity-bound credential model, an immutable audit log, a model version pin, a human approval path for high-impact actions, a rollback procedure, and a quarterly governance review. Sensitive data flows through Azure OpenAI on a private endpoint or through an equivalent governed runtime — never through a consumer AI tool. For regulated industries, ITECS configures DLP policies that block PHI, PII, payment data, and privileged legal content from leaving the agent's permitted scope.",
       "The right way to think about agentic AI security is the way a 24-year-old Dallas managed IT firm thinks about user account management — least privilege, full logging, regular review, and clear ownership of every credential. Agents are simply another class of identity that needs governance.",
       "**Pricing And ROI For Enterprise Agentic AI Workflows**",
       `ITECS prices agentic AI workflow builds in governed phases, with discovery credited toward the build and production operations separate after launch. ${getAIPricingOffering("Agent Discovery & Technical Specification").name} is ${getAIPricingOffering("Agent Discovery & Technical Specification").price}; ${getAIPricingOffering("Proof of Concept / Prototype").name} is ${getAIPricingOffering("Proof of Concept / Prototype").price}; ${getAIPricingOffering("Single-Workflow Production Agent").name} is ${getAIPricingOffering("Single-Workflow Production Agent").price}; ${getAIPricingOffering("Integrated / Line-of-Business Agent").name} is ${getAIPricingOffering("Integrated / Line-of-Business Agent").price}; and ${getAIPricingOffering("Multi-Agent System / AI-Augmented Process Redesign").name} is ${getAIPricingOffering("Multi-Agent System / AI-Augmented Process Redesign").price}. Agent Operations is ${MANAGED_AI_AGENT_OPERATIONS.prices[0].price} for one production agent, ${MANAGED_AI_AGENT_OPERATIONS.prices[1].price} for two, and ${MANAGED_AI_AGENT_OPERATIONS.prices[2].price} for three; larger or more demanding footprints are custom-quoted. The full fee schedule is published on our [pricing page](/pricing).`,
-      "ROI math is more direct than most AI initiatives. The finance workflow above eliminated roughly 1,400 hours of manual processing in its first year — at a fully loaded cost of $65,000 — against a build cost in the same range. The agent paid for itself in eleven months and now compounds: every new supplier, region, or business unit added to the workflow extends the same payback ratio. Procurement and HR workflows tend to deliver softer ROI through risk reduction (avoided lien filings, reduced regulatory exposure, faster offer-to-accept cycles) but generally clear payback inside 18 months. Our [CEO guide to AI ROI](/insights/ceo-guide-ai-roi) works through this payback math function by function.",
+      "Calculate ROI from the measured baseline: accepted work completed, human review and correction, errors, cycle time, operating cost, incidents, and capacity actually redeployed. Do not assume that adding suppliers or business units preserves the same economics, or that risk reduction equals cash savings. Our [CEO guide to AI ROI](/insights/ceo-guide-ai-roi) explains the calculation.",
       "What governs the math is whether your business already carries the data, identity, and integration discipline to absorb an agent. Companies that do not should start with a structured [data and AI readiness audit](/data-audit) before scoping any agentic build. Companies that do can move directly to a [custom AI agent build](/custom-ai-agents), pair it with [workflow automation](/automation) for the surrounding routing work, and back it with [employee AI training](/training) so the workflow's human reviewers operate the agent confidently from day one.",
     ],
     faq: [
@@ -6833,7 +6848,7 @@ export const INSIGHTS: InsightItem[] = [
       {
         question: "How long does it take to move an agentic AI workflow from pilot to production?",
         answer:
-          "ITECS' four-stage blueprint — foundation audit, sandbox pilot, guardrails and governance, production rollout — typically runs eight to fourteen weeks for a first production workflow. Subsequent workflows that share the same governance backbone deploy substantially faster.",
+          "The schedule depends on data, integrations, permissions, controls, test evidence, and approvals. Define those dependencies during the foundation audit, then provide a gated delivery plan rather than relying on a universal duration.",
       },
       {
         question: "How does ITECS secure agentic AI workflows for regulated industries?",
@@ -6854,7 +6869,7 @@ export const INSIGHTS: InsightItem[] = [
       "A practical guide for Dallas operators on using AI to automate tasks, reduce costs, and grow without unnecessary hiring. From ChatGPT to workflow automation.",
     href: "/insights/how-to-use-ai-small-business",
     publishedDate: "2026-04-12",
-    modifiedDate: "2026-07-05",
+    modifiedDate: "2026-08-31",
     hubSlug: "consulting",
     hubLabel: "AI Consulting for Growing Organizations",
     hubHref: "/consulting",
@@ -6866,23 +6881,24 @@ export const INSIGHTS: InsightItem[] = [
     ],
     h1: "How Growing Businesses Use AI",
     content: [
-      "If you're running a Dallas business with 10–300 employees, AI is no longer optional. It's the difference between scaling efficiently and drowning in manual work that your competitors automated six months ago. The good news: you don't need a data science team or a six-figure budget to get started.",
-      "**The first step is working with an experienced [AI consulting partner](/consulting) who understands operating discipline.** At ITECS, we've helped Dallas businesses identify the manual tasks that cost them the most time — and automate them with practical AI tools that pay for themselves within weeks.",
+      "**Updated August 31, 2026:** This guide now treats product prices, implementation schedules, and outcomes as variables to verify rather than promises.",
+      "Growing organizations can use AI to reduce repetitive work, improve access to approved knowledge, and support employees. Adoption is a business decision, not an inevitability: the right starting point depends on the workflow, risk, data, and measurable value.",
+      "**The first step is selecting one recurring workflow and establishing a baseline.** An experienced [AI consulting partner](/consulting) can help identify the work, risks, owner, acceptance criteria, and measurement plan before tools or licenses are purchased.",
       "**Identify Your Biggest Time Drains First**",
-      "Many growing businesses waste 15–25 hours per week on tasks that AI handles in seconds. Data entry, customer follow-up emails, report generation, appointment scheduling, answering the same customer questions over and over. These are not complex AI problems. They are workflow problems that tools like Microsoft Copilot, ChatGPT, Zapier, and Make.com solve today.",
-      "Start by listing every task your team does more than three times per week. Rank them by hours consumed. The top three are your AI targets. A 25-person Dallas staffing agency we worked with found that their recruiters spent 12 hours per week copying candidate data between Indeed, their ATS, and a shared spreadsheet. One Zapier automation eliminated the spreadsheet entirely.",
+      "Good candidates include repetitive data entry, customer follow-up drafts, report preparation, appointment intake, and recurring internal questions. AI may help, but deterministic automation or a process change may be safer and cheaper. Measure the current time, error rate, queue delay, and exceptions before choosing the solution.",
+      "List recurring tasks, rank them by business impact and risk, and select one bounded candidate. Document which data it uses, who approves the output, how the team works when the tool is unavailable, and what result would justify expansion.",
       "**Choose the Right AI Tools for Your Size**",
       "Not every AI tool fits every business. Here is how the landscape breaks down for companies with 10–300 employees:",
-      "**Microsoft Copilot** works best if your team already runs on Microsoft 365. It drafts emails, summarizes Teams meetings, generates Excel formulas, and searches SharePoint documents using natural language. At $30 per user per month, it's the fastest way to add AI to daily workflows without changing tools.",
-      "**ChatGPT (Team or Enterprise)** gives your team a general-purpose AI assistant for writing, research, brainstorming, and code generation. The Team plan at $25 per user per month includes workspace features and a data privacy guarantee — conversations are not used for model training.",
-      "**Zapier and Make.com** connect your existing tools into automated workflows without code. When a lead fills out your website form, Zapier can create a CRM contact, send a follow-up email, notify your sales team on Slack, and log the interaction — all within 60 seconds. Plans start at $20 per month.",
+      "**Microsoft 365 Copilot** may fit teams already governed through Microsoft 365. Verify current licensing, tenant controls, connectors, and data boundaries before enabling it broadly.",
+      "**ChatGPT Business or Enterprise** can support general knowledge work in a managed workspace. OpenAI says business data is not used for model training by default, but retention, sharing, connectors, identity, and eligible compliance features still need configuration and review.",
+      "**Zapier and Make.com** connect existing tools into automated workflows. Before granting write access, verify authentication, field mappings, duplicate handling, retries, logging, and a manual recovery path. Check current vendor pricing rather than relying on an article snapshot.",
       "**Custom AI solutions** — like a [custom AI agent connected to your business data](/custom-ai-agents), an [AI receptionist that answers your phones 24/7](/ai-receptionist), or [AI-powered CRM automation](/crm-sales-ai) — require a managed AI partner like ITECS to build and maintain. Scoped builds are quoted after the workflow, data, and integration requirements are clear; flat-fee ranges for every service line are published on our [pricing page](/pricing).",
       "**Start Small, Measure Everything, Then Scale**",
-      "The businesses that succeed with AI don't try to automate everything at once. They pick one high-impact workflow, measure the before-and-after, and expand from there. A good [AI consultant](/consulting) will audit your workflows, estimate time savings per automation, and have your first solution running within 2–4 weeks. If you need the numbers to justify that first project to leadership, our [CEO guide to AI ROI](/insights/ceo-guide-ai-roi) breaks down the payback math.",
-      "A 40-person home services company in Plano started with one automation: routing inbound web leads to their sales team via text within 60 seconds instead of waiting for the office manager to check email. That single change increased their lead conversion rate by 35%. Within three months, they added [AI-powered appointment scheduling](/automation), an [AI knowledge base for internal SOPs](/ai-knowledge-base), and [employee AI training](/training) for their technicians.",
+      "Organizations should pick one high-impact workflow, measure the before-and-after, and expand only if the evidence supports it. An [AI consultant](/consulting) can estimate effort after reviewing data quality, integrations, approvals, and acceptance tests. Our [CEO guide to AI ROI](/insights/ceo-guide-ai-roi) explains the measurement model.",
+      "For example, a home-services team could pilot faster routing of inbound web leads. The success measure would be observed response time, qualified-contact rate, conversion, opt-out rate, and sales-team exceptions compared with the pre-pilot baseline—not an assumed percentage lift.",
       "**Protect Your Data from Day One**",
       "For Dallas businesses in healthcare, legal, or financial services, data safety is not optional. Public AI tools like the free version of ChatGPT should never be used for sensitive client data. Your employees are likely already pasting customer emails, financial reports, and internal documents into public AI tools — creating compliance risks you might not discover until an audit.",
-      "The solution is not banning AI. It's deploying private AI environments where your data stays under your control. [ITECS builds secure custom AI agents](/custom-ai-agents) that give your team AI productivity without data leakage. For businesses handling PHI, PCI, or privileged legal documents, we configure private endpoints and DLP policies that block sensitive data from ever reaching public AI services.",
+      "The response is an approved environment and enforceable data policy, supported by identity, least privilege, retention controls, DLP, logging, and training. [ITECS builds governed custom AI agents](/custom-ai-agents), but no control guarantees that leakage can never occur. Regulated and privileged data requires plan-, contract-, feature-, and workflow-specific review.",
       "**Train Your Team to Use AI Safely and Effectively**",
       "Buying AI tools without training is like buying a truck fleet and handing employees the keys without a driving test. Your team needs to know what AI can and cannot do, which data is safe to share, how to write effective prompts, and when to trust (or override) AI output.",
       "ITECS runs [hands-on AI training workshops](/training) for non-technical staff — sales reps, customer support agents, HR managers, accountants, and office admins. Workshops cover prompt engineering for business tasks, data safety rules for your specific industry, and practical exercises using the AI tools you've already deployed. Most teams go from skeptical to productive within a single half-day session.",
@@ -6891,7 +6907,7 @@ export const INSIGHTS: InsightItem[] = [
       {
         question: "What's the easiest way to start using AI in a growing business?",
         answer:
-          "Identify your team's top 3 most repetitive tasks, then evaluate whether existing tools like Microsoft Copilot or ChatGPT can automate them. For custom automation, a free AI assessment from ITECS identifies quick wins and estimates ROI in under an hour.",
+          "Identify recurring tasks, record the current time, errors, delays, and exceptions, then select one bounded workflow for evaluation. ITECS offers a no-cost intake conversation; a defensible ROI estimate follows discovery of the workflow, data, controls, and integration effort.",
       },
       {
         question: "How much does AI cost for a growing business?",
@@ -6905,12 +6921,12 @@ export const INSIGHTS: InsightItem[] = [
       {
         question: "Is AI safe to use with customer data?",
         answer:
-          "It depends on the tool. Public ChatGPT may use your conversations for training. For sensitive data, you need private AI deployments where your data never leaves your infrastructure. ITECS deploys Azure OpenAI with private endpoints for healthcare, legal, and financial services businesses.",
+          "It depends on the product, plan, settings, contract, data, connectors, and workflow. Sensitive data should be restricted to an approved architecture with least privilege, retention rules, logging, review, and any required agreement. A private endpoint is useful but does not establish compliance by itself.",
       },
       {
         question: "How long does it take to see results from AI?",
         answer:
-          "Most businesses see measurable time savings within 2–4 weeks. Simple automations like lead follow-up or data syncing deliver ROI within the first billing cycle. Custom AI agents typically need 3–4 weeks for training and deployment before going live.",
+          "There is no universal timeline. A bounded pilot can be scheduled after data, integration, security, testing, and approval dependencies are known. Measure results against the baseline and expand only after the workflow meets its acceptance criteria.",
       },
     ],
   },
@@ -6921,7 +6937,7 @@ export const INSIGHTS: InsightItem[] = [
       "Your employees are using ChatGPT at work. Here's how to protect sensitive company data, set up safe AI policies, and deploy private AI alternatives for your Dallas business.",
     href: "/insights/secure-business-data-chatgpt",
     publishedDate: "2026-04-12",
-    modifiedDate: "2026-05-06",
+    modifiedDate: "2026-08-31",
     hubSlug: "custom-ai-agents",
     hubLabel: "Custom AI Agents",
     hubHref: "/custom-ai-agents",
@@ -6933,18 +6949,19 @@ export const INSIGHTS: InsightItem[] = [
     ],
     h1: "How to Secure Your Business Data from ChatGPT",
     content: [
-      "Your employees are almost certainly using ChatGPT at work — even if you have not approved it. A 2025 Cisco survey found that 80% of employees use unsanctioned AI tools at work. Every time someone pastes a customer email, financial report, or internal document into public ChatGPT, that data potentially becomes training data for OpenAI's models.",
-      "**The safest approach is deploying a [private custom AI workflow](/custom-ai-agents) that keeps your business data completely under your control.** At ITECS, we build secure AI agents and approved workspaces for Dallas businesses that give your team the productivity benefits of tools like ChatGPT, Claude, Gemini, and Copilot without data leakage risks.",
+      "**Updated August 31, 2026:** This guide now distinguishes consumer and business data controls, and it narrows compliance claims to the purchased plan, enabled features, contract, and customer configuration.",
+      "Employees may use consumer AI tools before an organization has approved them. Pasting customer records, financial reports, legal material, credentials, or internal documents into an unapproved service can violate company policy or contractual and regulatory duties, even when model training is disabled.",
+      "**The practical response is an approved, governed AI workflow with documented data boundaries.** ITECS builds [custom AI workflows](/custom-ai-agents) and managed workspaces that combine plan selection, least-privilege access, retention settings, logging, and human review. No product name alone eliminates data-leakage risk.",
       "**The Real Risk: What Happens to Your Data in Public ChatGPT**",
-      "When your employees use the free version of ChatGPT (or any consumer AI tool), their conversations may be used to train future AI models. That means customer PII, financial projections, legal documents, trade secrets, and internal strategy discussions can end up in OpenAI's training corpus — accessible to anyone who asks the right question later.",
-      "For Dallas businesses in healthcare (HIPAA), finance (SOX/PCI-DSS), or legal services, this is not just a data hygiene issue. It is a compliance violation that can trigger audits, fines, and client lawsuits. A single employee pasting patient records into ChatGPT to draft a referral letter violates HIPAA. An accountant summarizing a client's financial statements violates SOX data handling requirements.",
+      "Consumer ChatGPT content may be used to improve models depending on the user's settings and product choices. OpenAI states that ChatGPT Business, Enterprise, and API business data is not used for training by default. Those training settings are only one control: retention, sharing, connectors, access, residency, incident response, and contractual terms still matter.",
+      "For healthcare, finance, and legal organizations, an upload may create a reportable policy, privacy, contractual, or regulatory issue depending on the data, purpose, authorization, safeguards, and applicable law. Treat suspected exposure as an incident to investigate; do not assume that every prompt is automatically a specific statutory violation.",
       "The scope of shadow AI use is larger than most business owners realize. Employees use ChatGPT to draft proposals, summarize meeting notes, write customer responses, debug spreadsheet formulas, and generate reports. Each of those activities can expose sensitive data if the tool is not configured for enterprise use.",
       "**Understanding ChatGPT's Data Tiers**",
       "Not all ChatGPT plans handle your data the same way. Here is how they compare:",
-      "**ChatGPT Free and Plus** — OpenAI may use your conversations to improve its models. You can opt out in settings, but there is no contractual guarantee. No BAA available. Not suitable for any business handling sensitive data.",
-      "**ChatGPT Team ($25/user/month)** — Conversations are not used for training. Workspace admin controls. No BAA. Suitable for general business use but not for regulated industries.",
-      "**ChatGPT Enterprise** — SOC 2 compliant. Conversations are not used for training. SSO integration. Admin controls. BAA available for HIPAA-covered entities. Data encrypted at rest (AES-256) and in transit (TLS 1.2+). Suitable for most regulated industries.",
-      "**Azure OpenAI Service** — Runs on your own Azure tenant. Your data never leaves your environment. Full compliance with HIPAA, SOC 2, PCI-DSS, FedRAMP. BAA included. DLP policies, private endpoints, and VNet integration available. This is what ITECS deploys for healthcare, legal, and financial services clients.",
+      "**ChatGPT Free and Plus** — Consumer data controls and model-improvement settings apply. Do not use them for sensitive business data unless the organization has completed a documented risk and policy review.",
+      "**ChatGPT Business** — OpenAI says workspace content is not used to train its models by default and provides workspace administration. Review retention, connector, sharing, and feature settings against your data policy.",
+      "**ChatGPT Enterprise** — Adds enterprise identity and administrative controls. BAA availability and HIPAA eligibility are limited to specific offerings, features, and configurations, so confirm the signed agreement and current eligible-feature list before processing PHI.",
+      "**Azure OpenAI in Microsoft Foundry** — Provides Azure deployment, networking, identity, and data-governance options. Prompts are not used to train foundation models without permission, but processing location, optional stored features, abuse monitoring, and compliance scope vary by deployment. Azure supports compliance programs; it does not make a workload compliant automatically.",
       "**How to Lock Down AI Use in Your Organization**",
       "The fix is not banning AI — your employees will use it anyway, and you lose the productivity gains. The fix is channeling AI use through secure, managed channels. Here is the playbook ITECS follows for Dallas businesses:",
       "**Step 1: Audit current AI usage.** Survey your team. Ask what AI tools they use, what data they share, and what tasks they use AI for. You will find shadow AI use in every department. This audit takes one day and reveals the full scope of your exposure.",
@@ -6953,21 +6970,21 @@ export const INSIGHTS: InsightItem[] = [
       "**Step 4: Set up an AI acceptable use policy.** Write a clear, one-page policy that tells employees: which AI tools are approved, what data categories are off-limits (PII, PHI, financial data, legal documents), and what the consequences are for violations. ITECS provides templates tailored to your industry.",
       "**Step 5: Train your team.** Run a 2-hour [AI training workshop](/training) covering safe AI use, approved tools, data classification basics, and practical prompt engineering for their daily tasks. Employees who understand why the rules exist follow them. Employees who get a policy PDF without context ignore it.",
       "**Build Custom AI That Knows Your Business**",
-      "The ultimate solution is not just securing ChatGPT — it is giving employees an approved AI workflow that fits the business. A [custom AI agent](/custom-ai-agents) grounded in your company's documents, SOPs, and knowledge base gives employees faster, more accurate answers than public AI tools can provide. It knows your product catalog. It knows your internal processes. It knows your client history. And it never shares that knowledge with anyone outside your organization.",
-      "A 35-person Dallas law firm we work with deployed a private AI agent trained on 8,000 case files and internal legal research. Associates now find relevant precedents in 15 seconds instead of 45 minutes. The managing partner estimates the tool saves the firm 60 billable hours per month — and not a single client document has ever touched a public AI service.",
-      "At ITECS, we deploy private AI environments and governed agent workflows for Dallas businesses. Your employees get an AI assistant that knows your business inside and out — and your data never leaves approved systems.",
+      "The goal is not merely to secure one chatbot. It is to give employees an approved workflow grounded in authorized documents, SOPs, and knowledge sources, with citations and permissions preserved. Retrieval can improve relevance, but answers still require testing, source review, and escalation when evidence is missing.",
+      "A sound pilot measures a real baseline: retrieval success, answer quality, review time, access-control failures, and corrected responses. Expand only after the organization can show that approved users receive attributable answers from records they are entitled to access.",
+      "ITECS deploys governed AI environments and agent workflows for Dallas businesses. Data must stay within the systems, regions, connectors, and processors approved for that workload; the architecture and contract—not the word private—determine the boundary.",
       "For organizations that also need the operational side — DLP rule tuning in Microsoft 365, email gateway controls, and incident response when shadow-AI exposure has already happened — the [ITECS email security and DLP team](https://itecsonline.com/cybersecurity/email-security-services) at our parent site itecsonline.com pairs naturally with the private AI workflow described above.",
     ],
     faq: [
       {
         question: "Does ChatGPT store my business data?",
         answer:
-          "The free and Plus versions of ChatGPT may use your conversations for model training. ChatGPT Enterprise and the API offer contractual data privacy guarantees. The safest option for sensitive data is a private deployment on Azure OpenAI, where your data stays in your own cloud environment.",
+          "Consumer ChatGPT content may be used to improve models depending on product settings. OpenAI says Business, Enterprise, and API business data is not used for training by default. Storage, retention, connectors, sharing, and processing still depend on the selected product and configuration.",
       },
       {
         question: "Can I use ChatGPT and still be HIPAA compliant?",
         answer:
-          "Not the public version. HIPAA compliance requires a private AI deployment with a signed BAA, PHI redaction, audit logging, encryption at rest, and proper access controls. Azure OpenAI with private endpoints is the most common solution ITECS deploys for Dallas healthcare businesses.",
+          "Only use PHI where the provider has accepted a BAA for the specific offering and every enabled feature is eligible. The covered entity or business associate must also configure access, retention, logging, minimum-necessary use, review, and incident response. A product or private endpoint does not create HIPAA compliance by itself.",
       },
       {
         question: "How do I stop employees from using public ChatGPT at work?",
@@ -6977,12 +6994,12 @@ export const INSIGHTS: InsightItem[] = [
       {
         question: "What is the difference between ChatGPT Enterprise and Azure OpenAI?",
         answer:
-          "ChatGPT Enterprise is a managed OpenAI product with workspace features and SOC 2 compliance. Azure OpenAI runs on your own Azure tenant with full network isolation, VNet integration, and support for HIPAA, PCI-DSS, and FedRAMP. Azure OpenAI gives you more control over data residency and security policies.",
+          "ChatGPT Enterprise is an OpenAI-managed workspace with enterprise administration. Azure OpenAI is deployed within an Azure subscription and can use Azure identity, network, and governance controls. Processing, residency, stored features, compliance scope, and contractual coverage must be evaluated for the exact architecture.",
       },
       {
         question: "How long does it take to deploy a private AI workspace or agent?",
         answer:
-          "A basic approved AI workspace can often be configured in 1–2 weeks. A custom AI agent or RAG workflow connected to company documents, SOPs, and business systems usually adds another 1–3 weeks depending on data volume, approvals, and integrations. ITECS handles deployment, training, and ongoing management.",
+          "Timing depends on data classification, identity, contracts, source quality, connectors, testing, and approvals. ITECS scopes those dependencies first and provides a schedule after the security and acceptance gates are known.",
       },
     ],
   },
@@ -6993,7 +7010,7 @@ export const INSIGHTS: InsightItem[] = [
       "Stop losing leads to slow follow-up. Learn how Dallas businesses automate lead response with AI — from instant email/text replies to smart lead qualification.",
     href: "/insights/automate-lead-follow-up",
     publishedDate: "2026-04-12",
-    modifiedDate: "2026-05-06",
+    modifiedDate: "2026-08-31",
     hubSlug: "automation",
     hubLabel: "AI Workflow Automation",
     hubHref: "/automation",
@@ -7005,11 +7022,12 @@ export const INSIGHTS: InsightItem[] = [
     ],
     h1: "How to Automate Lead Follow-Up with AI",
     content: [
-      "The average business takes over 24 hours to respond to a new lead. By that point, 78% of buyers have already gone with whoever responded first. If you are not following up within minutes, you are losing deals to competitors who are. The fix is simpler than you think — and the ROI is immediate.",
+      "**Updated August 31, 2026:** This guide replaces unsupported benchmark and client-outcome claims with a baseline-first measurement plan. Vendor prices and delivery times must be confirmed for the actual workflow.",
+      "Slow or inconsistent lead follow-up can create missed opportunities, but the impact varies by industry, source, buying cycle, and lead quality. Measure your current response time, contact rate, qualified-lead rate, conversion, and opt-outs before changing the workflow.",
       "**[AI-powered workflow automation](/automation) can follow up with new leads within seconds of form submission — via email, text, or both.** At ITECS, we build these automated lead follow-up systems for Dallas businesses using tools like Zapier, Make.com, HubSpot AI, and custom integrations.",
       "**Why Speed to Lead Is the Highest-ROI Metric You Are Ignoring**",
-      "Harvard Business Review research shows that companies contacting leads within 5 minutes are 100x more likely to connect than those waiting 30 minutes. InsideSales.com data shows that 50% of leads go to the vendor that responds first. Yet many growing teams still rely on an office manager to check email, then manually enter lead info into the CRM, then draft a follow-up — a process that takes hours on a good day.",
-      "Every hour that passes between form submission and first contact cuts your conversion probability in half. A 30-person roofing company in McKinney was spending $4,000 per month on Google Ads generating 80+ leads. Their average response time was 6 hours. When ITECS automated their follow-up to respond in under 60 seconds, their conversion rate jumped from 12% to 28% — without spending a dollar more on ads.",
+      "Historical Harvard Business Review research found that organizations responding within an hour were much more likely to qualify a lead than organizations waiting longer. Treat that as evidence that response time can matter, not as a guaranteed multiplier for every company or channel.",
+      "Start with your own funnel. Segment response time and conversion by lead source, service, day, and qualification status. The target is not merely the fastest automated message; it is a timely, accurate, consent-aware handoff that helps a person make the next decision.",
       "**The Anatomy of an AI-Powered Lead Follow-Up System**",
       "Here is how a complete automated lead follow-up pipeline works, step by step:",
       "**Trigger: Lead submits a form.** Your website contact form, landing page, or Google Ads form captures the lead. Zapier or Make.com detects the submission instantly.",
@@ -7021,15 +7039,15 @@ export const INSIGHTS: InsightItem[] = [
       "**Step 6: CRM logging and reporting.** Every touchpoint — emails sent, texts delivered, opens, clicks, calls made — is logged in the CRM automatically. Your sales manager gets a weekly report showing lead volume, response times, conversion rates, and pipeline value. No manual data entry required.",
       "**Which Tools Power the Automation**",
       "You do not need to replace your existing tech stack. The automation layer sits on top of whatever you already use:",
-      "**Zapier** is a widely used no-code automation platform. It connects 6,000+ apps with simple trigger-action workflows. Best for straightforward lead routing and CRM sync. Plans start at $20/month.",
-      "**Make.com** (formerly Integromat) handles more complex workflows with branching logic, loops, and data transformations. Better for multi-step sequences that involve conditional routing or AI qualification. Plans start at $9/month.",
-      "**HubSpot AI** adds native automation within your CRM. If you already use HubSpot, its built-in workflows handle lead scoring, email sequences, and task assignment without a third-party tool. Requires Marketing Hub Professional ($800/month) or higher.",
-      "**OpenAI API** adds intelligence to the pipeline. The AI reads the lead's form submission, scores it against your ideal customer profile, and generates personalized follow-up copy. Costs $0.01–$0.03 per lead processed.",
-      "**Twilio** sends SMS messages programmatically. At $0.0079 per text, a business following up with 200 leads per month spends under $2 on SMS delivery.",
+      "**Zapier** supports trigger-action workflows across many applications and may fit straightforward lead routing or CRM synchronization. Verify the current connector, task, retention, and pricing terms.",
+      "**Make.com** supports branching, loops, and data transformations for more complex workflows. Test failure handling, duplicate prevention, permissions, and observability before production.",
+      "**HubSpot workflows** can keep automation inside the CRM when the purchased edition supports the needed actions. Confirm current licensing, consent, and sequence behavior.",
+      "**An AI model API** can classify a lead or draft follow-up copy. Use structured inputs, confidence thresholds, restricted data, output validation, and human review for consequential routing or promises.",
+      "**An SMS provider** can deliver text messages programmatically. Confirm current fees and comply with consent, quiet-hour, opt-out, and recordkeeping requirements.",
       "**What Results to Expect**",
-      "Dallas clients who implement AI lead follow-up with ITECS see consistent results: 30–50% improvement in lead response time, 20–35% increase in conversion rates, and 15–20 hours per week saved on manual follow-up tasks. The automation runs 24/7 — nights, weekends, holidays — so you never miss a lead that submits a form at 11 PM on a Saturday.",
-      "A 50-person HVAC company in Richardson generated 120 leads per month from their website and Google Ads. Before automation, their two-person sales team manually followed up with each lead — averaging 8 hours of response time and losing 40% of leads to competitors who responded faster. ITECS deployed a Zapier + Twilio + HubSpot automation that now responds in under 45 seconds. Their monthly revenue from web leads increased 42% in the first 90 days.",
-      "The best part: you do not need to change your existing tools. We connect Zapier or Make.com to your website forms, CRM (HubSpot, Salesforce, Pipedrive), email platform, and SMS provider. Setup takes 1–2 weeks, and the system starts processing leads the day it goes live.",
+      "Measure results with a controlled comparison: median and 90th-percentile response time, delivery failures, qualified contacts, booked appointments, conversions, opt-outs, manual corrections, and cost per qualified lead. Automation can operate outside business hours, but it needs stopping rules, monitoring, and an on-call owner.",
+      "Pilot one source and one service line first. Verify field mapping, duplicate handling, routing, consent, brand language, and CRM records with test accounts before live traffic reaches the workflow.",
+      "The automation layer may integrate with existing forms, CRM, email, and SMS systems. Delivery time depends on data quality, connector access, consent requirements, exception handling, testing, and approvals; scope those dependencies before setting a launch date.",
     ],
     faq: [
       {
@@ -7040,12 +7058,12 @@ export const INSIGHTS: InsightItem[] = [
       {
         question: "How fast can AI follow up with a new lead?",
         answer:
-          "Under 60 seconds from form submission to personalized email and text message. Speed to lead is the single biggest factor in conversion rates — companies that respond within 5 minutes are 100x more likely to connect than those waiting 30 minutes.",
+          "A properly designed system can acknowledge many submissions quickly, but the safe target depends on validation, consent, routing, and system availability. Benchmark the current funnel, set a service-level target, and measure whether faster responses improve qualified outcomes.",
       },
       {
         question: "Will automated follow-up messages sound robotic?",
         answer:
-          "No. The OpenAI API generates personalized messages that reference the lead's specific inquiry, use their name, and match your brand voice. Recipients cannot tell the difference between AI-generated and human-written follow-up messages.",
+          "They can sound natural, but no system can guarantee that recipients will not recognize automation. Use approved templates, disclose automation where appropriate, prohibit unsupported claims, and route uncertain or sensitive messages to human review.",
       },
       {
         question: "Can I customize which leads get routed to which sales rep?",
@@ -7138,12 +7156,12 @@ export const INSIGHTS: InsightItem[] = [
   {
     slug: "mcp-is-the-new-api",
     title:
-      "MCP Is the New API: Why Anthropic's Model Context Protocol Will Reshape Business AI in 2026",
+      "MCP and Business AI: Govern Tool Connections Before Agents Act",
     description:
       "Anthropic donated MCP to the Linux Foundation in December 2025. Here is what the Model Context Protocol means for Dallas businesses adopting AI in 2026.",
     href: "/insights/mcp-is-the-new-api",
     publishedDate: "2026-05-19",
-    modifiedDate: "2026-05-19",
+    modifiedDate: "2026-08-31",
     hubSlug: "managed-intelligence-provider",
     hubLabel: "Managed Intelligence Provider",
     hubHref: "/managed-intelligence-provider",
@@ -7157,28 +7175,29 @@ export const INSIGHTS: InsightItem[] = [
       "AI agent governance Dallas",
       "managed intelligence provider",
     ],
-    h1: "MCP Is the New API: Why Anthropic's Model Context Protocol Will Reshape Business AI in 2026",
+    h1: "MCP and Business AI: Govern Tool Connections Before Agents Act",
     content: [
-      "On December 9, 2025, Anthropic donated the Model Context Protocol to the Linux Foundation's new Agentic AI Foundation. By the time the announcement crossed our desks, MCP had already passed 97 million monthly SDK downloads, more than 10,000 active public servers, and first-class support inside ChatGPT, Claude, Gemini, Microsoft Copilot, Cursor, and Visual Studio Code. In one year, a single open protocol became the standard way AI agents talk to your business systems.",
-      "**The short version for business leaders: MCP is becoming the USB-C port of enterprise AI — a single, neutral standard that lets any AI assistant securely use your tools, data, and workflows.** At [ITECS](/managed-intelligence-provider), we view MCP as the foundation of the next era of managed AI services, the same way TCP/IP became the foundation of managed networking in the 1990s.",
+      "**Updated August 31, 2026:** This guide removes adoption forecasts and universal compatibility claims. MCP is an increasingly adopted open protocol, but each client, server, transport, tool, schema, permission, and security boundary must be verified.",
+      "The Model Context Protocol defines a client-host-server architecture for exposing tools, resources, and prompts to AI applications. Linux Foundation governance and adoption by major platforms make it relevant to business architecture, but they do not guarantee that a connector is trustworthy, compatible, or appropriate for sensitive data.",
+      "**The short version for business leaders: MCP can reduce bespoke integration work, but it does not make tool access secure by default.** A governed program needs an approved registry, scoped identities, schema and metadata review, invocation logs, change control, human approval for high-impact actions, and a rapid revocation path.",
       "**What MCP Actually Is, In Plain English**",
       "Until MCP, every AI assistant needed a custom integration to talk to every business tool. Connecting ChatGPT to your HubSpot CRM required one piece of code. Connecting it to your QuickBooks ledger required another. Connecting Claude to the same systems required a third and a fourth. Multiply that across 30 SaaS tools, three AI vendors, and a moving target of model versions, and the integration bill grew faster than the AI savings.",
-      "MCP solves that by giving every AI client and every business tool the same open language. A SaaS vendor exposes an MCP server once. Any compliant AI assistant — Claude, ChatGPT, Microsoft Copilot, Gemini, or a custom agent — can use it. No bespoke integration. No vendor lock-in. No rewrites when models change.",
-      "That is why it is fair to call MCP the new API. It is not just another endpoint format. It is the connective tissue of how agentic AI reads, writes, and acts inside your business.",
+      "MCP provides a common interface that can reduce some client-to-tool integration work. Implementations still vary in supported protocol versions, transports, authentication, schemas, extensions, reliability, and side effects. Adapters, testing, upgrades, and provider-specific code may still be required.",
+      "MCP therefore belongs alongside APIs and identity systems in the architecture. It can standardize discovery and invocation without eliminating contracts, vendor dependencies, access design, or change management.",
       "**Why Anthropic Donated It, And Why That Matters**",
       "Anthropic created MCP in November 2024. In twelve months, it became one of the fastest-growing open-source projects in AI history. By donating it to the Linux Foundation's new Agentic AI Foundation, Anthropic took the protocol off its own balance sheet and placed it under neutral, vendor-independent governance.",
       "The Agentic AI Foundation was co-founded by Anthropic, Block, and OpenAI, with founding support from Google, Microsoft, AWS, Cloudflare, and Bloomberg. Block donated its Goose agent runtime. OpenAI donated the AGENTS.md specification. UiPath has since joined as a Gold Member.",
-      "For business leaders, the message is clear. The companies competing hardest in AI — including direct rivals like Anthropic and OpenAI — have agreed that the underlying protocols cannot be owned by any one of them. That removes a major risk from any 2026 AI roadmap: the fear that your AI investment will strand on a proprietary connector your vendor later removes, charges for, or quietly deprecates.",
-      "**Every SaaS Will Expose An MCP Server**",
-      "The fastest-moving part of the MCP story is on the supply side. Microsoft Copilot, Box, Asana, Linear, Notion, Salesforce, GitHub, HubSpot, Atlassian, Shopify, Stripe, Slack, and Google Workspace are each either shipping an MCP server, listing one in a partner catalog, or quietly building one. IBM has launched a watsonx governed agentic catalog of MCP-compliant servers. UiPath added MCP plug-in support to its Coded Agents. Anthropic's Claude directory alone now publishes more than 75 official MCP connectors.",
-      "What this means in practice is simple. By the end of 2026, almost every business application your team uses will speak MCP. The question is no longer whether your stack supports the protocol. The question is whether your business has a controlled way of plugging AI agents into it.",
+      "Neutral governance can reduce dependence on one vendor's specification, but it does not remove concentration or exit risk. Hosts, servers, models, authentication, hosting, and commercial terms may remain provider-specific. Preserve an inventory, exportable configuration, evaluated alternatives, and a manual operating path.",
+      "**Adoption Is Growing, but Coverage Must Be Verified**",
+      "Major AI and software vendors have announced or documented MCP support, and connector catalogs are expanding. Do not infer support from a brand name or third-party listing. Verify the publisher, exact server, version, authentication, data access, side effects, hosting model, maintenance status, and review date.",
+      "The operational question is whether the organization has a controlled way to approve, test, monitor, update, and revoke agent tool connections—not whether every application will adopt one protocol on a predicted schedule.",
       "**A Specific Scenario For Dallas Businesses**",
       "Consider a 60-person Dallas insurance brokerage. The leadership team has approved Microsoft Copilot for licensed agents, a private custom AI assistant for claims research, and a third-party AI receptionist that handles overflow calls. Each tool wants access to the agency management system, the document repository, the CRM, and the underwriting database.",
       "Without MCP, that is twelve custom integrations the IT team has to build, maintain, and secure. With MCP, each business system exposes one server, and each AI tool consumes the same standard. But now a new problem appears: who controls which AI can read what? Who logs the calls? Who revokes access when an employee leaves? Who tests upgrades when a vendor pushes a breaking change to a server schema?",
       "That governance gap is where most 2026 AI projects will succeed or stall.",
       "**The Sprawl Problem MCP Creates**",
-      "MCP makes connecting agents to systems trivial. It does not make managing them trivial.",
-      "In every business with more than a few approved AI tools, the same questions appear within ninety days of adoption. Which servers are running on which hosts? Are they patched? Are calls audited? Is data redacted before it leaves the perimeter? Are credentials rotated? Did the vendor publish a new server schema yesterday, and did anyone notice?",
+      "MCP can make some connections easier to configure. It does not make implementation or management trivial.",
+      "As approved tools grow, the same questions recur: Which servers run on which hosts? Who owns and patches them? Are calls audited? Is sensitive data minimized? Are credentials rotated? Did a publisher change the description or schema, and was the change reviewed?",
       "This is exactly the problem managed services were invented to solve. In the 1990s, businesses standardized on TCP/IP, then discovered they needed managed network providers to actually run the network. In the 2000s, businesses standardized on email and SaaS, then discovered they needed managed IT and security providers to actually govern access. In 2026, businesses are standardizing on MCP, and they will need a [Managed Intelligence Provider](/managed-intelligence-provider) to actually run the agent fabric.",
       "**Where The Managed MCP Gateway Comes In**",
       "A managed MCP gateway is the control plane that sits between your AI tools and your business systems. Industry analysts including Gartner now describe MCP and A2A as the foundational protocols of the agentic era, equivalent to the role TCP/IP played for the early commercial internet. That comparison is useful because TCP/IP did not eliminate the need for routers, firewalls, and managed networks — it required them.",
@@ -7186,14 +7205,14 @@ export const INSIGHTS: InsightItem[] = [
       "**MCP And A2A: The Two Protocols Powering Agentic AI**",
       "MCP handles agent-to-tool communication. A2A — Agent-to-Agent, originally proposed by Google and now also under the Agentic AI Foundation — handles agent-to-agent communication. Together, they form the foundation of multi-agent business systems.",
       "In practical terms, an MCP-enabled agent can read a customer record from your CRM, summarize the case, and draft a response. An A2A-enabled set of agents can hand work between specialists — a research agent, a compliance reviewer, a billing agent, and a human approver — without custom glue code. Most Dallas businesses will adopt MCP-only workflows first, and A2A workflows second as their AI maturity grows.",
-      "Gartner projects that 40% of enterprise applications will ship with built-in AI agents by the end of 2026, up from less than 5% in 2025. The protocols that make those agents portable, governed, and interoperable are MCP and A2A.",
+      "MCP and agent-to-agent protocols may support more portable workflows, but interoperability and governance are properties to test. Protocol conformance alone does not establish permission, accountability, semantic compatibility, or safe delegation.",
       "**Security Implications Business Leaders Should Understand**",
       "MCP is a transport. It is not, by itself, a security model. Every MCP server runs with the credentials it is given. Every MCP client trusts the responses it receives. Without governance, MCP can enlarge your attack surface as fast as it enlarges your AI capability.",
       "This is where the security discipline of a managed AI partner becomes the difference between an AI program and an AI incident. The [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework) provides the policy backbone. The implementation work — credential brokering, audit logging, PII redaction, server allowlisting, schema validation, and version pinning — is the day-to-day job of the MCP gateway and the team that runs it.",
       "At ITECS, MCP governance sits on top of the same security operations practice that has supported Dallas businesses since 2002. We treat AI agents the way we treat privileged users: documented, audited, scoped, and continuously reviewed.",
       "**What Business Leaders Should Do In 2026**",
       "You do not need to know how MCP works to make the right decisions about it. You need to know three things.",
-      "First, MCP is not optional. The protocol is now the default way major SaaS vendors, AI platforms, and operating systems expose their data to AI agents. If your 2026 AI roadmap still assumes proprietary connectors, that roadmap is already out of date.",
+      "First, evaluate MCP where supported, but do not adopt it by default. Compare it with existing APIs and integration platforms for the specific workflow, then choose the smallest governed interface that meets the requirement.",
       "Second, MCP without governance is shadow AI in a new uniform. Letting employees connect personal AI tools to business systems through unmanaged MCP servers carries the same compliance risk as letting them paste customer data into public ChatGPT.",
       "Third, the highest-leverage AI investment for most growing teams this year is not a custom agent. It is a managed AI operating model: which tools are approved, which MCP servers are allowed, how the gateway is configured, who reviews the logs, and how employees are trained to work alongside it.",
       "**How ITECS Approaches Managed MCP**",
@@ -7201,14 +7220,14 @@ export const INSIGHTS: InsightItem[] = [
       "We start with a discovery audit of every AI tool already in use across your business, including unsanctioned ones. We then design a managed MCP architecture that fits your existing stack — Microsoft 365, Google Workspace, HubSpot, Salesforce, QuickBooks, Slack, or whatever else runs your operation. We deploy a governed gateway with policy, logging, and observability. We train your team on what to use, what to avoid, and why.",
       "For more complex environments, the same discipline carries into [custom AI agents](/custom-ai-agents), [secure private AI workspaces](/custom-chatgpt), and [AI DevOps](/ai-devops) practices that turn AI work into a repeatable operating process rather than a permanent experiment. Smaller engagements look like consulting hours, structured workflow design, and employee [AI training](/training). Larger engagements look like a managed gateway, ongoing MCP server curation, and quarterly governance reviews. Both run on the same hourly or prepaid retainer model ITECS has used for traditional IT services for 24 years.",
       "**The Bottom Line**",
-      "The donation of MCP to the Linux Foundation is the kind of moment that looks small in the news cycle and large in hindsight. In five years, the businesses that thrive with AI will not be the ones that bought the most models. They will be the ones that built a governed, observable, vendor-neutral protocol layer between their AI agents and their business systems — and then trusted a managed partner to run it.",
-      "That is the work of the next decade of MSPs. It is also, increasingly, the work ITECS does every day.",
+      "MCP's governance and growing ecosystem make it worth evaluating. The durable advantage comes from a governed, observable tool layer with clear ownership, evidence, and an exit path—not from protocol adoption alone.",
+      "That operating discipline is part of the managed AI work ITECS provides today.",
     ],
     faq: [
       {
         question: "What is the Model Context Protocol (MCP) in plain English?",
         answer:
-          "MCP is an open standard that lets any AI assistant securely connect to your business tools and data through a common interface. Think of it as the USB-C port of enterprise AI — one protocol that replaces dozens of custom integrations.",
+          "MCP is an open protocol for connecting AI applications to tools, resources, and prompts through a common interface. It may reduce custom integration work, but security and compatibility depend on the host, server, transport, identity, permissions, schema, and operating controls.",
       },
       {
         question: "Why did Anthropic donate MCP to the Linux Foundation?",
@@ -7223,7 +7242,7 @@ export const INSIGHTS: InsightItem[] = [
       {
         question: "Does my Dallas business need a managed MCP gateway?",
         answer:
-          "If more than two AI tools are connected to business systems, yes. A managed MCP gateway centralizes policy, logging, credential brokering, and observability so leadership can govern AI access the same way they already govern user access.",
+          "The answer depends on the number and risk of connections, existing integration controls, identities, and audit requirements. A gateway may centralize policy, credential brokering, and observability, but it should be justified by the architecture rather than a fixed tool-count rule.",
       },
       {
         question: "Is MCP secure enough for sensitive business data?",
@@ -7233,7 +7252,7 @@ export const INSIGHTS: InsightItem[] = [
       {
         question: "Will every SaaS application support MCP?",
         answer:
-          "The major business platforms — Microsoft 365, Google Workspace, Salesforce, HubSpot, Box, Slack, GitHub, Atlassian, and many others — are already shipping or building MCP servers. By the end of 2026, MCP support will be the default expectation for any enterprise SaaS product.",
+          "Support is expanding, but no one can guarantee universal adoption or a date. Verify each platform's official documentation, exact connector, publisher, version, capabilities, and security model before relying on it.",
       },
       {
         question: "How does MCP fit alongside Microsoft Copilot or ChatGPT Enterprise?",

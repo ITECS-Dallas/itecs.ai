@@ -19,25 +19,19 @@ const sources: ArticleSource[] = [
     label: "OpenAI — Codex",
     href: "https://openai.com/codex/",
     description:
-      "OpenAI's Codex product page covering GPT-5.5, parallel worktrees, cloud environments, and the agent sandbox.",
+      "OpenAI's current Codex product page covering available surfaces, agent workflows, and product capabilities.",
   },
   {
-    label: "OpenAI Developers — GPT-5.5 model",
-    href: "https://developers.openai.com/api/docs/models/gpt-5.5",
+    label: "OpenAI Developers — Codex",
+    href: "https://developers.openai.com/codex/",
     description:
-      "Official GPT-5.5 specifications — ~1.05M-token context window, 128K max output, pricing, and tool support including MCP.",
+      "OpenAI's current developer documentation for Codex setup, permissions, environments, and supported workflows.",
   },
   {
-    label: "Anthropic — Introducing Claude Opus 4.8",
-    href: "https://www.anthropic.com/news/claude-opus-4-8",
+    label: "Anthropic — Claude Code overview",
+    href: "https://docs.anthropic.com/en/docs/claude-code/overview",
     description:
-      "Anthropic's announcement of Claude Opus 4.8 (May 2026), its 1M-token context window, and Claude Code capabilities.",
-  },
-  {
-    label: "OpenAI — Named a Leader in the 2026 Gartner Magic Quadrant for Enterprise AI Coding Agents",
-    href: "https://openai.com/index/gartner-2026-agentic-coding-leader/",
-    description:
-      "OpenAI's announcement of its Leader placement in Gartner's 2026 Magic Quadrant for Enterprise AI Coding Agents.",
+      "Anthropic's current Claude Code documentation covering supported development workflows and deployment surfaces.",
   },
   {
     label: "OWASP Top 10 for Large Language Model Applications",

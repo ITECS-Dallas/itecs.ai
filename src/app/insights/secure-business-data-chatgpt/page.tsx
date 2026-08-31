@@ -26,15 +26,27 @@ const sources: ArticleSource[] = [
   },
   {
     label: "OpenAI ChatGPT Business Data Privacy",
-    href: "https://help.openai.com/en/articles/8798634-managing-data-sharing-and-privacy-in-chatgpt-business",
+    href: "https://openai.com/business-data/",
     description:
-      "OpenAI Help Center guidance on ChatGPT Business workspace data handling, sharing, privacy, and security.",
+      "OpenAI's business-data commitments, including its statement that Business, Enterprise, and API content is not used to train models by default.",
+  },
+  {
+    label: "OpenAI — HIPAA eligible services and features",
+    href: "https://help.openai.com/en/articles/20001069",
+    description:
+      "OpenAI's current feature-level guidance for eligible healthcare offerings and configurations; a BAA does not cover every product feature.",
   },
   {
     label: "Azure OpenAI Data Privacy",
-    href: "https://learn.microsoft.com/en-us/legal/cognitive-services/openai/data-privacy",
+    href: "https://learn.microsoft.com/en-us/azure/foundry/responsible-ai/openai/data-privacy",
     description:
       "Microsoft documentation covering Azure OpenAI data privacy, processing, and abuse monitoring concepts.",
+  },
+  {
+    label: "Microsoft — Cloud services in compliance scope",
+    href: "https://learn.microsoft.com/en-us/azure/compliance/offerings/cloud-services-in-audit-scope",
+    description:
+      "Microsoft's service-level compliance scope; workload compliance still depends on architecture, configuration, contracts, and customer controls.",
   },
   {
     label: "Microsoft Purview DLP",

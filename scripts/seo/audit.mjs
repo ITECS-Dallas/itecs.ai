@@ -67,9 +67,11 @@ async function api(url, body, method) {
 const day = (offset) => new Date(Date.now() + offset * 86400000).toISOString().slice(0, 10);
 
 async function gscQuery(startDate, endDate, dimensions, rowLimit = 1000) {
+  const body = { startDate, endDate, rowLimit };
+  if (dimensions?.length) body.dimensions = dimensions;
   const data = await api(
     `https://www.googleapis.com/webmasters/v3/sites/${encodeURIComponent(GSC_SITE)}/searchAnalytics/query`,
-    { startDate, endDate, dimensions, rowLimit },
+    body,
   );
   return data.rows ?? [];
 }
@@ -101,6 +103,8 @@ async function main() {
     report.gscQueryPage,
     report.gscQueriesPrev,
     report.gscPagesPrev,
+    report.gscTotals,
+    report.gscTotalsPrev,
     report.gscTotalsByDate,
   ] = await Promise.all([
     gscQuery(start, end, ["query"]),
@@ -108,6 +112,8 @@ async function main() {
     gscQuery(start, end, ["query", "page"], 2500),
     gscQuery(prevStart, prevEnd, ["query"]),
     gscQuery(prevStart, prevEnd, ["page"]),
+    gscQuery(start, end),
+    gscQuery(prevStart, prevEnd),
     gscQuery(prevStart, end, ["date"]),
   ]);
 
@@ -129,10 +135,26 @@ async function main() {
       stringFilter: { value: "AI Assistant" },
     },
   };
-  [report.ga4OrganicLanding, report.ga4AiLanding, report.ga4KeyEvents, report.ga4Channels] =
+  [
+    report.ga4OrganicLanding,
+    report.ga4OrganicLandingPrev,
+    report.ga4AiLanding,
+    report.ga4AiLandingPrev,
+    report.ga4KeyEvents,
+    report.ga4KeyEventsPrev,
+    report.ga4Channels,
+    report.ga4ChannelsPrev,
+  ] =
     await Promise.all([
       ga4Report({
         dateRanges: [{ startDate: start, endDate: end }],
+        dimensions: [{ name: "landingPage" }],
+        metrics: [{ name: "sessions" }, { name: "keyEvents" }, { name: "engagementRate" }],
+        dimensionFilter: organicFilter,
+        limit: 200,
+      }),
+      ga4Report({
+        dateRanges: [{ startDate: prevStart, endDate: prevEnd }],
         dimensions: [{ name: "landingPage" }],
         metrics: [{ name: "sessions" }, { name: "keyEvents" }, { name: "engagementRate" }],
         dimensionFilter: organicFilter,
@@ -146,13 +168,31 @@ async function main() {
         limit: 100,
       }),
       ga4Report({
+        dateRanges: [{ startDate: prevStart, endDate: prevEnd }],
+        dimensions: [{ name: "landingPage" }],
+        metrics: [{ name: "sessions" }, { name: "keyEvents" }],
+        dimensionFilter: aiFilter,
+        limit: 100,
+      }),
+      ga4Report({
         dateRanges: [{ startDate: start, endDate: end }],
         dimensions: [{ name: "eventName" }],
         metrics: [{ name: "keyEvents" }],
         limit: 50,
       }),
       ga4Report({
+        dateRanges: [{ startDate: prevStart, endDate: prevEnd }],
+        dimensions: [{ name: "eventName" }],
+        metrics: [{ name: "keyEvents" }],
+        limit: 50,
+      }),
+      ga4Report({
         dateRanges: [{ startDate: start, endDate: end }],
+        dimensions: [{ name: "sessionDefaultChannelGroup" }],
+        metrics: [{ name: "sessions" }, { name: "totalUsers" }, { name: "keyEvents" }],
+      }),
+      ga4Report({
+        dateRanges: [{ startDate: prevStart, endDate: prevEnd }],
         dimensions: [{ name: "sessionDefaultChannelGroup" }],
         metrics: [{ name: "sessions" }, { name: "totalUsers" }, { name: "keyEvents" }],
       }),
@@ -197,8 +237,8 @@ async function main() {
       (a, r) => ({ clicks: a.clicks + r.clicks, impressions: a.impressions + r.impressions }),
       { clicks: 0, impressions: 0 },
     );
-  const cur = totals(report.gscQueries);
-  const prev = totals(report.gscQueriesPrev);
+  const cur = totals(report.gscTotals);
+  const prev = totals(report.gscTotalsPrev);
   console.log(`report: ${outPath}`);
   console.log(
     `GSC ${start}..${end}: ${cur.clicks} clicks / ${cur.impressions} impressions across ${report.gscQueries.length} queries, ${report.gscPages.length} pages`,
