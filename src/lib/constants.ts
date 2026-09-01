@@ -2500,6 +2500,123 @@ export const CODING_AGENT_COMPARISON: PlanComparison = {
 
 export const INSIGHTS: InsightItem[] = [
   {
+    slug: "how-to-make-ai-agents-talk",
+    title: "How to Make Two AI Agents Talk to Each Other",
+    description:
+      "Learn how two AI agents can hold a persistent consultation: draft, challenge, follow up, reconcile disagreements, preserve evidence, and then finalize.",
+    href: "/insights/how-to-make-ai-agents-talk",
+    publishedDate: "2026-09-01",
+    hubSlug: "custom-ai-agents",
+    hubLabel: "Custom AI Agents",
+    hubHref: "/custom-ai-agents",
+    keywords: [
+      "how to make two AI agents talk to each other",
+      "AI agent to AI agent communication",
+      "multi-agent collaboration workflow",
+      "connect Codex to another AI agent",
+      "AI agents collaborating on plans",
+      "one AI agent reviewing another",
+      "multi-model AI consultation",
+      "agent-to-agent messaging system",
+      "persistent AI agent conversation",
+      "Codex Fable 5 workflow",
+      "AI agent conversation ID",
+      "multi-agent architecture",
+    ],
+    h1: "How to Make Two AI Agents Talk to Each Other: A Persistent Consultation Workflow",
+    content: [
+      "If you are manually copying one model's answer into another tab, you do not yet have two AI agents collaborating. You have two isolated chats and a human acting as the message bus. A useful agent-to-agent system preserves one bounded conversation, identifies who said what, sends only the context the second agent needs, supports follow-up questions, and returns control to the agent responsible for the final answer.",
+      "**The practical pattern is simple: Agent A drafts or plans, sends a focused consultation to Agent B, waits for the response, asks bounded follow-up questions, reconciles disagreements against evidence, records what changed, and only then finalizes. Agent B challenges the work; Agent A remains accountable for it. Persistence, authorship, limits, and provenance are what turn that exchange from prompt copying into a repeatable multi-agent collaboration workflow.**",
+      "At ITECS, we describe that pattern as a Codex/Fable 5 consultation. Codex is the accountable owner of the plan, answer, architecture, or implementation. [Claude Fable 5](https://www.anthropic.com/news/claude-fable-5-mythos-5) is the consulting model asked to test assumptions or supply another line of reasoning. This is an orchestration pattern, not a claim that the two products natively discover each other or that the workflow conforms to A2A. The controller between them must provide the messaging, identity, state, policy, and evidence boundaries.",
+      "That boundary matters. OpenAI's [Codex SDK](https://developers.openai.com/codex/sdk/) can start, continue, and resume a Codex thread by ID, and OpenAI's agent documentation describes a manager pattern in which one agent retains the final answer while consulting other agents as tools. Those are useful building blocks. A production Codex-to-Fable relay, its authentication, and its retention behavior still need to be implemented and validated as their own integration rather than assumed from either model's capabilities.",
+      "**What It Means for Two AI Agents to Talk**",
+      "AI agent-to-agent communication is a controlled exchange of messages between independently identified agent runtimes. Each message belongs to a conversation, has a sender and intended recipient, carries a bounded task and selected context, and produces a response or explicit failure. A controller decides when another turn is allowed, persists the exchange, and returns the result to the agent that owns the larger job.",
+      "The second agent does not need access to the first agent's entire context window, tools, files, or permissions. It needs a consultation packet: the current draft or decision, the precise questions to challenge, the constraints that cannot change, the source references it may use, and the form of evidence Agent A needs back. Context selection is both a quality control and a security control.",
+      "This is also different from a one-way handoff. In a handoff, control may move to a specialist. In a consultation, Agent A keeps control, asks Agent B for a bounded contribution, and decides how that contribution changes the final work. OpenAI's [agent orchestration guidance](https://openai.github.io/openai-agents-js/guides/multi-agent/) calls this manager-style composition useful when one agent should combine specialist outputs and own the final response.",
+      "[[AGENT_CONSULTATION_FLOW]]",
+      "**The Seven-Step Agent Consultation Workflow**",
+      "**1. Agent A drafts before it consults.** Require the accountable agent to state the goal, proposed answer, assumptions, known constraints, unresolved questions, and evidence already checked. Without a concrete draft, Agent B is likely to produce another generic answer instead of finding defects in the first one.",
+      "**2. Agent A sends a focused consultation packet.** The request should say what Agent B is being asked to do: challenge a security boundary, find missing architecture constraints, compare alternatives, verify a claim, or identify contradictions. Include selected source or artifact references and explicit exclusions. Do not forward an entire repository, client workspace, or conversation merely because the transport permits it.",
+      "**3. The controller waits for a complete response or a declared failure.** Treat timeout, provider refusal, unavailable context, malformed output, and policy denial as distinct outcomes. Agent A should not interpret silence as agreement or quietly finalize as if the consultation succeeded.",
+      "**4. Agent A asks follow-up questions when they can change the decision.** A useful dialogue may need two or three turns: Which threat model makes that control necessary? What evidence supports the claimed incompatibility? Which alternative survives the latency limit? Follow-ups should narrow uncertainty, not restart the entire task.",
+      "**5. Agent A reconciles disagreement against evidence.** It should list the points of agreement, contested claims, sources or tests consulted, and the decision rule used. If the agents still disagree on a high-impact issue, route the issue to a human owner instead of inventing consensus.",
+      "**6. Agent A records what changed.** Preserve a compact reconciliation note: accepted finding, rejected suggestion, deferred question, reason, evidence reference, and resulting artifact change. This makes disagreement useful and gives a later reviewer a map of the decision rather than a transcript they must reverse-engineer.",
+      "**7. Agent A finalizes, then invokes formal review if required.** Consultation ends when the owner has a complete artifact and a documented rationale. A formal reviewer can then assess that fixed version against acceptance criteria without being entangled in the exploratory discussion that produced it.",
+      "**Consultative Chat Is Not a Formal Completed-Work Review**",
+      "A consultation happens before the work is final. Its purpose is exploration: expose blind spots, generate alternatives, challenge assumptions, and decide what evidence is still missing. Agent A may revise the draft between turns, reveal additional context, or reject advice with a reason. The conversation is allowed to be provisional.",
+      "A formal review starts with a completed, versioned artifact, defined scope, and acceptance criteria. The reviewer reports findings against that artifact; it should not silently become the author or change the object being reviewed. OpenAI's [Codex code-review documentation](https://developers.openai.com/codex/code-review/) reflects this separation: a dedicated reviewer reads a selected diff and reports prioritized findings without changing the working tree.",
+      "Use both when the risk justifies it. Let Codex consult Fable 5 while developing the plan, record the reconciliation, produce version 1, and then submit version 1 to an independent review gate. Calling every mid-draft question a review weakens independence. Treating a late formal review as the only time another perspective may enter wastes the chance to correct the architecture early.",
+      "**A Practical Message and State Architecture**",
+      "The minimum message envelope should include a conversation ID, unique message ID, parent message ID, correlation or trace ID, sender, recipient, role, timestamp, goal, focused questions, selected context references, constraints, expected response shape, deadline, and remaining turn budget. Record the agent, model, instruction, and tool versions separately so a later reader can identify the system that produced each turn.",
+      "Conversation identity and task identity should not be conflated. A conversation can hold several related questions; a task represents one stateful unit of work. The current [Agent2Agent specification](https://a2a-protocol.org/latest/specification/) uses a context identifier to group related tasks and messages and a task identifier for a stateful unit of work. Your internal controller can use a simpler schema, but it needs the same conceptual separation if follow-ups and parallel consultations may occur.",
+      "Assign roles explicitly. In this pattern, the human is the business owner, Codex is Agent A and final-output owner, Fable 5 is Agent B and consulting challenger, and the controller is not an agent with business discretion. The controller authenticates calls, enforces policy and limits, persists state, and delivers messages. It should not rewrite either agent's contribution in a way that erases authorship.",
+      "Persist the transcript and the reconciliation record according to a defined retention policy. Store protected references instead of duplicating sensitive documents into every message. Encrypt data in transit and at rest, separate tenant or client contexts, limit who can retrieve a conversation, and make deletion and legal-hold behavior explicit. A persistent conversation is useful only when persistence does not become uncontrolled data accumulation.",
+      "Set hard timeouts and turn limits. For example, a low-risk planning consultation might allow an initial challenge plus two follow-ups, then stop or escalate. The correct number depends on task value, latency, cost, and risk; the important control is that neither agent can keep the other in an unbounded loop. Retry transport failures separately from reasoning disagreements, and use idempotency keys so a retry does not create duplicate side effects.",
+      "Preserve observability without treating raw model reasoning as a required audit artifact. Record messages, tool and source references, policy decisions, timestamps, outcome, cost, and the final reconciliation. OpenAI's [tracing guidance](https://openai.github.io/openai-agents-js/guides/tracing/) notes that agent traces can cover model generations, tool calls, handoffs, guardrails, and custom events, while also warning that generation and tool spans may contain sensitive data. Design trace capture and redaction together.",
+      "**Illustrative Example: Reviewing a Software Architecture Before Build**",
+      "Suppose a team asks Codex to design a multi-tenant document-processing service. The requirements call for uploaded files, asynchronous extraction, a search index, client-specific access, and a 15-minute processing target. Codex drafts a queue-based architecture with object storage, workers, a vector index, and an API. Before finalizing, it sends Fable 5 the diagram, constraints, threat assumptions, and four questions: What fails under duplicate delivery? Where can tenant data cross boundaries? Which recovery path is missing? Which design choice is hard to reverse?",
+      "Fable 5 responds that the draft does not define idempotency, poison-message handling, per-tenant encryption boundaries, deletion propagation, or how the search index is rebuilt after corruption. It also challenges whether one shared queue can satisfy noisy-neighbor and regional requirements. These are candidate findings, not proof.",
+      "Codex asks a follow-up: does the shared queue remain acceptable if messages carry tenant-scoped claims, workers reauthorize every object read, per-tenant concurrency is enforced, and dead-letter queues are partitioned? Fable 5 says the approach may be workable but asks for load and isolation tests and flags the operational cost of many dead-letter queues. Codex checks the platform documentation, updates the design with idempotency keys, a quarantine path, explicit deletion events, index-rebuild tests, and per-tenant throttles, but rejects per-tenant primary queues until testing demonstrates the need.",
+      "The reconciliation note states what changed, what did not, and why. The final architecture links each accepted control to a requirement or test. Only then does the team run a formal architecture review against the completed version. This is the value of iterative agent consultation: the second model finds pressure points early, while the accountable agent and human owner still demand evidence before changing the design.",
+      "**Where Multi-Agent Consultation Adds Value**",
+      "Use it when a decision has plausible alternatives, hidden constraints, expensive rework, or a meaningful downside if the first answer is incomplete. Strong candidates include architecture and implementation design; debugging when several root causes fit the symptoms; security and edge-case challenge; fact-checking and contradiction discovery; proposals, documentation, and article review; and plans that cross technology, operational, legal, or financial boundaries.",
+      "It is also useful when the models have been evaluated as complementary on the task at hand. One may be better at repository navigation while another finds conceptual inconsistencies; one may be faster at generating options while another is better at narrowing them. Do not assign those strengths by reputation. Test both on representative work, preserve the version and settings used, and compare accepted findings, not eloquence.",
+      "The workflow removes a common human burden: copying prompts and responses between tools while trying to remember which context belongs where. It preserves a multi-turn consultation, creates a repeatable record, and forces Agent A to explain how disagreement affected the answer. Those are process benefits. They do not guarantee that either model is correct.",
+      "**When Two Agents Are Unnecessary**",
+      "Do not add a second agent to a deterministic lookup, formatting change, routine transformation, or low-risk task that already has a reliable test. If the second model has the same context, same instructions, same blind spot, and no distinct responsibility, the extra call may add latency and cost without adding information.",
+      "A rules engine, compiler, unit test, database constraint, source document, calculator, or human subject-matter expert is often a better verifier than another model. Use an agent to explore or interpret where judgment is useful; use deterministic evidence to decide what can be tested directly. Two model opinions are still two opinions, not independent proof.",
+      "Avoid consultation when the context cannot be shared safely, when the provider or contract does not support the required data handling, when the response deadline cannot absorb another turn, or when no owner is available to reconcile disagreement. In those cases, improve Agent A's prompt, retrieval, tools, or acceptance tests first.",
+      "**Failure Modes and Controls**",
+      "**Circular agreement.** Agent B may mirror Agent A's framing and confidently endorse it. Ask for disconfirming evidence, at least one viable alternative, the strongest objection, and conditions that would reverse the recommendation. Where possible, let Agent B form an initial critique before it sees Agent A's preferred conclusion.",
+      "**Conflicting answers.** Do not ask the models to vote. Require each disputed claim to point to a source, test, constraint, or assumption. Give the human owner a defined escalation threshold for unresolved high-impact disagreements, and record the final decision without pretending consensus occurred.",
+      "**Context leakage.** Minimize the consultation packet, classify referenced data, redact what is not needed, and enforce access at the storage and tool boundary. A prompt instruction such as 'do not reveal this' is not an authorization system. Trace exports, debugging logs, and retained transcripts need the same data review as the model call.",
+      "**Unbounded loops.** Cap total turns, elapsed time, tokens, retries, and spend. Stop when the last exchange adds no new evidence, the acceptance question is answered, the deadline arrives, or the remaining uncertainty requires a person. Never let one agent create a new consultation simply to avoid final responsibility.",
+      "**Latency and availability.** Make consultation conditional on task risk and value. Define a timeout and an explicit degraded outcome: pause, return a marked draft, or escalate. Do not silently substitute another model or claim review completed when Agent B was unavailable.",
+      "**False confidence from two answers.** Shared training data, copied context, correlated tool results, or the same incorrect source can make both agents wrong in the same way. Verify material facts with authoritative sources, execute tests where possible, and retain human approval for consequential decisions. NIST's [Generative AI Profile](https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence) provides a voluntary framework for governing, mapping, measuring, and managing generative-AI risks across the lifecycle.",
+      "**A Production Readiness Checklist**",
+      "Before connecting Codex to Fable 5 or any other consulting agent, define the final owner, consulting role, allowed task classes, context-selection rule, data classification, provider terms, authentication, authorization, conversation and message IDs, timeout, turn and retry caps, spend ceiling, persistence and deletion policy, provenance fields, disagreement rule, human escalation point, and separate formal-review trigger.",
+      "Then test the workflow as a system. Use normal cases, ambiguous requests, missing context, poisoned source material, contradictory sources, provider timeouts, duplicate delivery, malformed responses, sensitive-data attempts, repeated agreement, persistent disagreement, and unavailable reviewers. Measure accepted improvements, missed issues, false alarms, latency, tokens, cost, and human reconciliation time per completed task.",
+      "For teams that need this pattern in production, [custom AI agents](/custom-ai-agents) are the build surface, [AI agent delegation contracts](/insights/ai-agent-delegation-contracts-handoffs) define bounded authority, [agent evaluation](/insights/ai-agent-evaluation-score-tool-use-before-production) tests the full conversation, and [AI DevOps](/ai-devops) provides versioning, observability, release gates, incident response, and rollback. Start with one decision where a second perspective can be tested against real evidence.",
+    ],
+    faq: [
+      {
+        question: "How do I make two AI agents talk to each other?",
+        answer:
+          "Put a controller between them that preserves a conversation ID, identifies each sender and recipient, sends a focused task and selected context from Agent A to Agent B, waits for a response, allows bounded follow-ups, records reconciliation, and returns final control to Agent A. Add authentication, timeouts, turn limits, persistence, provenance, and human escalation before production use.",
+      },
+      {
+        question: "What is AI agent-to-agent communication?",
+        answer:
+          "AI agent-to-agent communication is a structured exchange of messages between independently identified agent runtimes. A useful system defines roles, task and conversation identity, selected context, response and error states, limits, persistence, provenance, and who owns the final decision.",
+      },
+      {
+        question: "Can Codex consult another AI agent such as Fable 5?",
+        answer:
+          "Yes, through an orchestration layer that calls each product through a supported interface and manages the conversation. The Codex SDK supports starting, continuing, and resuming Codex threads. A Codex-to-Fable integration still needs its own verified transport, authentication, provider access, data policy, limits, and audit controls; neither product should be assumed to discover or trust the other natively.",
+      },
+      {
+        question: "Does using two AI agents make an answer more accurate?",
+        answer:
+          "Not automatically. A second agent can surface alternatives, contradictions, and missing constraints, but both models can share the same wrong source or blind spot. Treat the consultation as a way to generate and challenge claims, then verify material conclusions with authoritative sources, deterministic tests, or a qualified human.",
+      },
+      {
+        question: "What is the difference between agent consultation and agent review?",
+        answer:
+          "Consultation is an exploratory, multi-turn exchange before Agent A finalizes its work. Formal review evaluates a completed, versioned artifact against defined criteria and should preserve reviewer independence. A high-risk workflow may use consultation during development and a separate review after the artifact is complete.",
+      },
+      {
+        question: "How do I stop AI agents from talking in an infinite loop?",
+        answer:
+          "Set a maximum number of turns, elapsed-time and token limits, retry caps, a spend ceiling, and explicit stop conditions. End the exchange when the decision question is answered, no new evidence appears, the deadline arrives, or unresolved risk must be escalated to a human owner.",
+      },
+      {
+        question: "Do I need A2A or MCP to connect two AI agents?",
+        answer:
+          "Not always. A small controlled workflow can use an application broker or an agent-as-tool pattern. A2A standardizes agent-to-agent messages, tasks, context, and discovery for interoperable systems; MCP primarily connects agents to tools and data. Choose a protocol only when its interoperability and lifecycle features solve a real requirement.",
+      },
+    ],
+  },
+  {
     slug: "ai-knowledge-management-capture-expertise",
     title: "AI Knowledge Management: Capture Expertise Before It Leaves",
     description:
