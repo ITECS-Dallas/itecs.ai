@@ -2498,7 +2498,122 @@ export const CODING_AGENT_COMPARISON: PlanComparison = {
   ],
 };
 
+export const ASTRA_ORDER_EXCEPTION_STEPS = [
+  {
+    title: "Define the assignment",
+    description:
+      "The agent may investigate one order and prepare options using approved ERP, inventory, supplier, and operating-procedure sources. It may not change an order, contact a customer, approve a substitute component, or commit spending. The operations manager owns the decision.",
+  },
+  {
+    title: "Gather and reconcile evidence",
+    description:
+      "The integration retrieves authorized records with source IDs and timestamps. Independent reads can run concurrently where supported. If the supplier's email conflicts with the inventory record, the agent identifies the conflict instead of silently choosing whichever supports its initial plan. Missing or outdated evidence becomes a question for the owner.",
+  },
+  {
+    title: "Present a decision packet",
+    description:
+      "Astra drafts options such as splitting delivery, asking procurement to confirm a substitute, or revising the schedule. Each option includes supporting records, constraints, unknowns, and required approvals. Prices, quantities, and totals are checked with deterministic calculations against the underlying records.",
+  },
+  {
+    title: "Approve the exact action",
+    description:
+      "The manager selects an option. If write access is later authorized, the application shows the specific fields, recipients, and amounts to be changed. It rechecks permissions and record versions immediately before execution, uses an idempotency key to prevent duplicate writes, and asks again if material facts have changed.",
+  },
+  {
+    title: "Verify and close",
+    description:
+      "The application reads back the resulting state and records the decision, approver, tool calls, evidence references, and outcome. A failed update is an exception requiring recovery, not a successful task because the agent produced a polished summary. A manual operating path remains available throughout.",
+  },
+] as const;
+
 export const INSIGHTS: InsightItem[] = [
+  {
+    slug: "gpt-6-astra-managed-intelligence-providers",
+    title: "GPT-6 Astra: A Managed Intelligence Provider Playbook",
+    description:
+      "How Managed Intelligence Providers can pilot GPT-6 Astra internally, build custom client agents, and govern access, data, approvals, quality, and cost.",
+    href: "/insights/gpt-6-astra-managed-intelligence-providers",
+    publishedDate: "2026-09-05",
+    hubSlug: "custom-ai-agents",
+    hubLabel: "Custom AI Agents",
+    hubHref: "/custom-ai-agents",
+    keywords: [
+      "GPT-6 Astra for business",
+      "GPT-6 Astra custom AI agents",
+      "Managed Intelligence Provider AI governance",
+      "ChatGPT Astra enterprise",
+      "Astra internal business workflows",
+      "managed AI operations",
+    ],
+    h1: "GPT-6 Astra: A Managed Intelligence Provider Playbook",
+    content: [
+      "A client does not need another impressive model demonstration. They need an order exception resolved, a service review prepared, or a software change tested—with the right evidence and someone accountable for the result. For a Managed Intelligence Provider, the useful question about OpenAI's new GPT-6 Astra is where its capabilities can support that work, and what must remain under business control.",
+      "**Start with one complex internal workflow, evaluate the completed work, and only then adapt the proven process for a client. Use Astra for the reasoning and tool-assisted work; keep access, spending, approvals, and acceptance rules in the surrounding system. A more capable model does not make an ungoverned workflow production-ready.**",
+      "OpenAI's [August 31–September 4 product update](https://learn.chatgpt.com/docs/whats-new) identifies the model as GPT-6 Astra and describes its use for demanding work in ChatGPT Work and Codex. This guide uses documentation checked on September 5, 2026. The operating recommendations are ITECS analysis, and the client example is illustrative—not a claim of measured Astra results.",
+      "**What Astra Changes for a Managed Intelligence Provider**",
+      "A [Managed Intelligence Provider](/managed-intelligence-provider) takes responsibility for how AI-enabled work is designed, operated, evaluated, and improved. In that model, selling access is only a small part of the service. The harder work is connecting approved business context, making exceptions visible, and ensuring a workflow remains dependable after its model, tools, or source documents change.",
+      "OpenAI documents [GPT-6 Astra](https://developers.openai.com/api/docs/models/gpt-6-astra) as a model for complex reasoning and agentic work. Its [implementation guidance](https://developers.openai.com/api/docs/guides/latest-model) covers capabilities such as asynchronous tool calling and mid-turn steering. These create useful design options for multi-step work, but they do not supply your client's integrations, permission boundaries, or acceptance tests.",
+      "The commercial opportunity is therefore specific: package a useful decision or deliverable with the controls needed to operate it. Examples include preparing an evidence-linked account review, investigating a recurring support problem, or assembling options for a supply-chain exception. Treat faster completion, fewer errors, and lower cost as pilot hypotheses to measure, not benefits to promise from the model announcement alone.",
+      "**Confirm Access Before Promising a Client Rollout**",
+      "Astra availability is not the same as buying a ChatGPT subscription. OpenAI's [workspace availability guidance](https://learn.chatgpt.com/docs/enterprise/workspace-model-availability) says initial Enterprise access depends on rollout eligibility through Daybreak and administrator enablement. It is off by default for the first two weeks after launch. Eligible administrators can control availability for users and groups, subject to the product's requirements.",
+      "Separate the deployment choices. ChatGPT Work can support an employee-led business task; Codex can support engineering work; a custom API application needs its own integration and operating controls. Enabling a model in a ChatGPT workspace does not grant API access: that follows the API organization and project. Verify the actual client account, intended product, permissions, region, and commercial terms before committing to a delivery date.",
+      "For an Astra agent that calls tools through the API, follow the current Responses API guidance. OpenAI documents Astra tool calling through Responses, not Chat Completions. Test the supported API, client version, model settings, and tool behavior together rather than treating a model-name substitution as a completed migration.",
+      "**Use Astra Internally Before You Productize the Workflow**",
+      "Choose work your own team can judge against an existing process. A service-review assistant might read an approved set of ticket summaries, asset records, and prior commitments, then produce a cited draft with unresolved questions. An account owner still checks the evidence and decides what the client receives. Measure preparation time including that review, not just generation time.",
+      "Engineering teams can pilot architecture critique, debugging consultation, test-case drafting, and implementation planning. Keep repository access scoped and require the normal tests and release review. If [a second agent challenges the plan](/insights/how-to-make-ai-agents-talk), require an evidence-based reconciliation; agreement between two models is not verification.",
+      "Other candidates include refreshing an [AI knowledge base](/ai-knowledge-base) against approved source material or preparing a proposal from documented requirements. The agent should flag missing evidence, conflicting guidance, and uncertain effort assumptions. It should not invent a commitment, turn an internal estimate into a client promise, or publish stale guidance without an owner approving it.",
+      "Do not use premium reasoning simply because it is available. A fixed lookup, deterministic calculation, or routine formatting step may be better served by ordinary software or a less expensive evaluated model. Reserve Astra for steps where interpretation, ambiguity, or several interacting constraints make a meaningful difference.",
+      "**Build the Custom Agent Around an Explicit Action Contract**",
+      "Before connecting tools, write down the task owner, allowed inputs, permitted actions, excluded data, time and spending limits, evidence requirements, and stopping conditions. Give each client workflow a dedicated identity with only the permissions required for that assignment. Enforce those permissions in the application and destination system, not solely in a prompt.",
+      "A practical architecture is: **business request → identity and policy check → approved context retrieval → Astra plan and tool requests → application-side authorization → evidence and human approval → permitted execution → outcome verification and audit record.** Read-only steps can repeat within a bounded run. A write action needs its own authorization even when it follows a successful read.",
+      "[Asynchronous tool calling](https://developers.openai.com/api/docs/guides/async-tool-calling) can let the model continue useful work while an independent tool job runs. The application still starts and supervises that job, tracks its identifier, and returns the result against the original tool-call ID. Define timeouts, cancellation, retries, and completion criteria; a dispatched job is not a completed business task.",
+      "[Mid-turn steering](https://developers.openai.com/api/docs/guides/steering) lets an application send updated instructions through a Responses WebSocket while work is underway. That may help when a client narrows the scope. An accepted steering request is not proof that the new instruction has been applied, and it cannot undo an action already taken. Check the final scope and reconcile pending actions after a disconnect before continuing.",
+      "**Illustrative Client Workflow: Resolve an Order Exception**",
+      "Consider a manufacturer whose operations manager must decide what to do when a component shortage threatens a customer order. This is a proposed design, not an ITECS client case study or a claim that Astra includes an ERP connector.",
+      "[[ASTRA_ORDER_EXCEPTION]]",
+      "**Make AI Governance Part of the Runtime**",
+      "Client isolation must extend beyond the chat window. Check authorization when retrieving a document, invoking a tool, exporting a report, and opening a stored result. Separate client credentials and restrict logs, indexes, attachments, and support access. A shared provider team should not become a shortcut around each client's permissions.",
+      "Treat retrieved files, websites, tool descriptions, and messages as potentially hostile input. Test whether embedded instructions can redirect the agent, expose another client's data, or trigger an unauthorized action. Review tools and skills when they change. OpenAI's [safety guidance](https://developers.openai.com/api/docs/guides/safety-best-practices) recommends adversarial testing and human review, especially for code and high-stakes outputs; model capability is not a substitute for either.",
+      "Keep a versioned registry of the workflow, model configuration, prompts, tools, owner, approved data domains, and review date. Require human approval for consequential disclosures, production changes, purchases, and other actions outside the agreed low-risk operating envelope. Capture the actual proposed action and its evidence so approval is meaningful rather than a blanket permission to continue.",
+      "OpenAI also documents [misalignment monitoring](https://developers.openai.com/api/docs/guides/safety-checks/misalignment-monitoring), but coverage depends on the API path and conversation state. Supported Responses configurations can automatically stop a conversation; some other Responses configurations provide alerts without automatic stopping. Chat Completions is not covered by this particular monitoring system. Monitoring is asynchronous, can miss problems or flag benign work, and does not reverse completed actions.",
+      "If that monitoring blocks a workflow, stop dispatching its tools, preserve the relevant identifiers and evidence, and escalate to the designated owner. Do not automatically retry the blocked activity through another model or endpoint. Provider safeguards complement your authorization and incident controls; they do not replace them.",
+      "**Separate Data Training, Retention, and Client Consent**",
+      "OpenAI's [API data documentation](https://developers.openai.com/api/docs/guides/your-data) says API data is not used for model training unless the customer explicitly opts in. That is not a promise of zero storage. Default abuse-monitoring logs can be retained for up to 30 days, with exceptions, while application state has endpoint-specific retention. Zero Data Retention requires approval and is subject to compatibility limits.",
+      "Review the terms for the actual ChatGPT workspace or API service being used, then examine the rest of the data path: connectors, retrieval stores, agent traces, exports, and the provider's own support tooling. Document client authorization, purpose, retention, deletion, residency requirements, and who can inspect evidence. Send only the context the task requires; a large context window is not a reason to upload an entire client environment.",
+      "**Evaluate Completed Work and Price the Whole Service**",
+      "Build a test set from approved representative tasks before changing an existing agent. Include missing records, contradictory sources, unauthorized requests, malicious tool output, slow dependencies, duplicate deliveries, and interrupted runs. Repeat tests because one successful run does not establish reliability. OpenAI's [agent evaluation guidance](https://developers.openai.com/api/docs/guides/agent-evals) supports evaluating traces and using repeatable datasets to investigate failures across a workflow.",
+      "Set acceptance thresholds with the business owner before the pilot. Track correct completion, evidence support, prohibited-action attempts, exception routing, human rework, elapsed time, and operating cost. Require access-control and approval tests to pass, and compare the new workflow against the current process. Sample accepted production work as well as failures so quiet errors are not invisible.",
+      "Use a full-service unit cost: **model usage + tools and infrastructure + human review + retries and recovery, divided by accepted tasks.** Compare Astra with the existing workflow, a less expensive model, and batch processing where delayed results are acceptable. A lower token bill is not a saving if review or rework consumes the difference.",
+      "Check the billing context. [ChatGPT Work and Codex share usage](https://learn.chatgpt.com/docs/pricing), while API-key usage follows API pricing. Workspace credits, contract terms, and API charges should not be treated as interchangeable. Set client-level budgets, alerts, and hard execution limits outside the model, and confirm rates before quoting a managed service.",
+      "**Turn the Pilot Into an Accountable B2B Service**",
+      "A useful client engagement should deliver more than a working prompt: a documented workflow, tested integrations, an evaluation set, an approval matrix, an operating runbook, and a named business owner. Agree on what counts as completed work, what requires escalation, how incidents are handled, and which service commitments the provider can actually support.",
+      "Define ownership and export rights for prompts, custom code, evaluation cases, business outputs, and operating records in the contract. Separate reusable provider components from client-specific material. Keep business logic and tool contracts sufficiently independent of the model interface to support an evaluated replacement or manual fallback when access, pricing, or availability changes.",
+      "Release in stages: read-only internal pilot, supervised client pilot, then narrowly authorized production actions. After release, [managed AI operations](/ai-devops) should cover trace review, cost and quality trends, incident response, and revalidation when models, tools, or source material change. Expand authority only when the evidence supports it.",
+      "Astra's business value will be demonstrated in accepted work, not in how broadly it is enabled. If you are deciding where to begin, [talk with ITECS](/contact) about one recurring workflow. We can scope the [custom AI agent](/custom-ai-agents), its approved context and actions, the tests it must pass, and the operating responsibilities needed before a client depends on it.",
+    ],
+    faq: [
+      {
+        question: "Is GPT-6 Astra available to every ChatGPT business user?",
+        answer:
+          "Do not assume universal access. As of September 5, 2026, OpenAI documents initial Enterprise rollout eligibility and administrator enablement. Availability also depends on the product and account. Enabling Astra in a ChatGPT workspace does not grant API access, which follows separate organization and project controls.",
+      },
+      {
+        question: "Can a Managed Intelligence Provider build custom agents with Astra?",
+        answer:
+          "Yes, where the provider or client has the required API access. Astra supports tool-assisted workflows through the Responses API, but the application must supply integrations, authorization, state management, approvals, evaluation, and operational controls. Model access alone does not create a production-ready agent.",
+      },
+      {
+        question: "Is client data automatically safe because API data is not used for training?",
+        answer:
+          "No. Training policy, retention, access control, and client authorization are separate questions. Review endpoint-specific storage, monitoring logs, connectors, retrieval stores, and traces, along with the client's requirements. OpenAI's Zero Data Retention option requires approval and has compatibility limits.",
+      },
+      {
+        question: "Should Astra replace every model in an existing AI workflow?",
+        answer:
+          "No. Evaluate it on steps involving meaningful ambiguity or complex reasoning. Keep deterministic software and less expensive evaluated models where they meet the need. Compare accepted-task quality, review effort, latency, and full operating cost before expanding its use.",
+      },
+    ],
+  },
   {
     slug: "how-to-make-ai-agents-talk",
     title: "How to Make Two AI Agents Talk to Each Other",
