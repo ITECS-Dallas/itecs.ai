@@ -6,6 +6,78 @@ import { SITE_CONFIG } from "./site-config";
 
 export { SITE_CONFIG } from "./site-config";
 
+// Decision support for the existing commercial hubs, not new service offerings.
+export const SERVICE_DECISION_GUIDES = {
+  training: {
+    id: "choose-ai-training",
+    eyebrow: "Choose Your Training Path",
+    title: "Which AI training fits your team's work?",
+    description:
+      "For Dallas–Fort Worth teams, start with the work employees need to complete and the business workspace you already approve. General ChatGPT and everyday AI adoption belong in this training program; the dedicated paths below focus on more specific implementation needs.",
+    options: [
+      {
+        title: "Microsoft 365 Copilot",
+        description:
+          "Consider this path when the training centers on Microsoft 365 work. Bring one recurring task, the affected roles, and an owner who can confirm licenses and access permissions before the session.",
+        href: "/copilot-training",
+        linkLabel: "Explore Copilot training",
+      },
+      {
+        title: "ChatGPT Codex for engineering",
+        description:
+          "Choose the engineering path when developers need a repeatable repository workflow. Define a bounded code task, test expectations, and who reviews changes. Everyday ChatGPT training does not require a coding project.",
+        href: "/chatgpt-codex-training",
+        linkLabel: "Explore ChatGPT Codex training",
+      },
+      {
+        title: "Claude Cowork",
+        description:
+          "Consider this path for a project-based workflow with instructions and approved reference files. Identify the project owner, the files that may be used, and what a human must check before reusing the result.",
+        href: "/claude-cowork-training",
+        linkLabel: "Explore Claude Cowork training",
+      },
+    ],
+    preparationTitle: "Bring a training brief, not your confidential files",
+    preparation:
+      "Outline the team's roles, current tools, one recurring task, and an example of an acceptable result. Use a sanitized example for the initial conversation. ITECS can then discuss the training scope, workspace prerequisites, and review responsibilities with you.",
+    cta: "Discuss your team's training",
+  },
+  automation: {
+    id: "scope-a-workflow",
+    eyebrow: "Dallas–Fort Worth Workflow Planning",
+    title: "Scope one workflow before choosing the technology",
+    description:
+      "Start with a repeatable handoff that has a clear owner and an observable result. A Dallas–Fort Worth business does not need an AI agent for every process: fixed rules, an agent build, and ongoing managed operations solve different parts of the problem.",
+    options: [
+      {
+        title: "A predictable handoff",
+        description:
+          "When the input, rule, and next action are known, start with conventional workflow automation. Map the trigger, connected systems, and exceptions first. If the process itself is unclear, use consulting to define it before selecting tools.",
+        href: "/consulting",
+        linkLabel: "Explore AI workflow consulting",
+      },
+      {
+        title: "A task that needs interpretation",
+        description:
+          "Consider a custom agent when the task needs to interpret variable documents or requests. Define approved inputs, test cases, and human approval points. Keep consequential actions outside its authority until the workflow has been validated.",
+        href: "/custom-ai-agents",
+        linkLabel: "Explore custom AI agent builds",
+      },
+      {
+        title: "An operation that needs ongoing ownership",
+        description:
+          "Once a workflow is in use, someone must own access, failures, changes, and service review. Discuss managed intelligence when that continuing operating responsibility is needed; building a workflow and operating it are separate scopes.",
+        href: "/managed-intelligence-provider",
+        linkLabel: "Explore managed intelligence",
+      },
+    ],
+    preparationTitle: "What to include in your first workflow outline",
+    preparation:
+      "Describe what starts the work, which systems it crosses, approximate volume, the person responsible, and the exceptions that require approval. Record the current completion time or error rate if you have it, so the pilot has a baseline. Share only a high-level outline initially—not credentials, client records, or production exports.",
+    cta: "Discuss a workflow scope",
+  },
+} as const;
+
 // ---------------------------------------------------------------------------
 // Navigation
 // ---------------------------------------------------------------------------

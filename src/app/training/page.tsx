@@ -17,6 +17,7 @@ import { SecurityGuarantee } from "@/components/sections/SecurityGuarantee";
 import { ServiceStats } from "@/components/sections/ServiceStats";
 import { FAQ } from "@/components/sections/FAQ";
 import { CTASection } from "@/components/sections/CTASection";
+import { ServiceDecisionGuide } from "@/components/sections/ServiceDecisionGuide";
 
 const service = SERVICES.find((s) => s.slug === "training")!;
 
@@ -44,6 +45,8 @@ export default function TrainingPage() {
       <ServiceHero service={service} />
 
       <AIAdoptionUnderstanding />
+
+      <ServiceDecisionGuide service="training" />
 
       {/* 2. Solution */}
       <ServiceFeatures
