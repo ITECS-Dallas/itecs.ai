@@ -12,6 +12,13 @@ export const SITE_CONFIG = {
   supportPhoneE164: "+1-877-483-2710",
   email: "sales-inquiry@itecsonline.com",
   foundingYear: 2002,
+  // Dallas office hours, not the separate daily operational availability.
+  officeHours: {
+    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    opens: "08:00",
+    closes: "17:00",
+    timeZone: "America/Chicago",
+  },
   address: {
     street: "17304 Preston Rd. Ste 460",
     city: "Dallas",

@@ -223,15 +223,9 @@ export function generateLocalBusinessSchema() {
     openingHoursSpecification: [
       {
         "@type": "OpeningHoursSpecification",
-        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        opens: "08:00",
-        closes: "18:00",
-      },
-      {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: ["Saturday"],
-        opens: "09:00",
-        closes: "17:00",
+        dayOfWeek: SITE_CONFIG.officeHours.dayOfWeek,
+        opens: SITE_CONFIG.officeHours.opens,
+        closes: SITE_CONFIG.officeHours.closes,
       },
     ],
     areaServed: [
