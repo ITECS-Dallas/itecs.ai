@@ -126,13 +126,14 @@ export function generateOrganizationSchema() {
     alternateName: ["ITECS", "iTecs"],
     url: SITE_CONFIG.url,
     logo: `${SITE_CONFIG.url}/images/logos/itecs-horizontal.svg`,
-    foundingDate: String(SITE_CONFIG.foundingYear),
     contactPoint: generateContactPoints(),
     parentOrganization: {
       "@type": "Organization",
       "@id": `${SITE_CONFIG.mainSiteUrl}/#organization`,
       name: "ITECS",
+      legalName: SITE_CONFIG.legalName,
       url: SITE_CONFIG.mainSiteUrl,
+      foundingDate: String(SITE_CONFIG.foundingYear),
     },
     sameAs: [
       SITE_CONFIG.mainSiteUrl,

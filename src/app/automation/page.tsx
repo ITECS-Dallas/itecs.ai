@@ -24,6 +24,7 @@ import { PricingROI } from "@/components/sections/PricingROI";
 import { ServiceStats } from "@/components/sections/ServiceStats";
 import { FAQ } from "@/components/sections/FAQ";
 import { CTASection } from "@/components/sections/CTASection";
+import { ServiceDecisionGuide } from "@/components/sections/ServiceDecisionGuide";
 
 const service = SERVICES.find((s) => s.slug === "automation")!;
 const guidedBuildSprint = getAIPricingOffering(
@@ -91,6 +92,8 @@ export default function AutomationPage() {
 
       {/* 5. Automation Workflow Diagram — multimedia visual */}
       <AutomationWorkflowDiagram />
+
+      <ServiceDecisionGuide service="automation" />
 
       {/* 6. Tool integrations */}
       <Integrations
