@@ -5,13 +5,16 @@ import { INSIGHTS } from "@/lib/constants";
 const insight = INSIGHTS.find((i) => i.slug === "openclaw-security-crisis")!;
 const heroImage = "/images/insights/openclaw-security-crisis-hero.png";
 
-export const metadata = generatePageMetadata({
-  title: insight.title,
-  description: insight.description,
-  path: insight.href,
-  keywords: insight.keywords,
-  ogImage: heroImage,
-});
+export const metadata = {
+  ...generatePageMetadata({
+    title: insight.title,
+    description: insight.description,
+    path: insight.href,
+    keywords: insight.keywords,
+    ogImage: heroImage,
+  }),
+  title: "OpenClaw Security Crisis: AI Agent Risks for Business",
+};
 
 const sources: ArticleSource[] = [
   {
