@@ -6,13 +6,16 @@ import { INSIGHTS } from "@/lib/constants";
 const insight = INSIGHTS.find((i) => i.slug === "openai-codex-vs-claude-code")!;
 const heroImage = "/images/insights/openai-codex-vs-claude-code-hero.png";
 
-export const metadata = generatePageMetadata({
-  title: "OpenAI Codex vs. Claude Code: Enterprise Coding Agents Compared",
-  description: insight.description,
-  path: insight.href,
-  keywords: insight.keywords,
-  ogImage: heroImage,
-});
+export const metadata = {
+  ...generatePageMetadata({
+    title: "OpenAI Codex vs. Claude Code: Enterprise Coding Agents Compared",
+    description: insight.description,
+    path: insight.href,
+    keywords: insight.keywords,
+    ogImage: heroImage,
+  }),
+  title: "OpenAI Codex vs. Claude Code: Enterprise Coding Agents",
+};
 
 const sources: ArticleSource[] = [
   {

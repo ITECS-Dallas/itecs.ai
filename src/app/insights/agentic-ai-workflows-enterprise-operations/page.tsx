@@ -5,13 +5,16 @@ import { INSIGHTS } from "@/lib/constants";
 const insight = INSIGHTS.find((i) => i.slug === "agentic-ai-workflows-enterprise-operations")!;
 const heroImage = "/images/insights/agentic-ai-workflows-enterprise-operations-hero.png";
 
-export const metadata = generatePageMetadata({
-  title: insight.title,
-  description: insight.description,
-  path: insight.href,
-  keywords: insight.keywords,
-  ogImage: heroImage,
-});
+export const metadata = {
+  ...generatePageMetadata({
+    title: insight.title,
+    description: insight.description,
+    path: insight.href,
+    keywords: insight.keywords,
+    ogImage: heroImage,
+  }),
+  title: "Agentic AI Workflows: Enterprise Operations Guide",
+};
 
 const sources: ArticleSource[] = [
   {
@@ -61,7 +64,7 @@ export default function AgenticAiWorkflowsEnterpriseOperationsPage() {
       sources={sources}
       ctaText="Ready to move your agentic AI workflow from pilot to production?"
       heroImage={heroImage}
-      heroImageAlt="Enterprise agentic AI workflow architecture diagram showing planner model, MCP tool layer connecting to finance, procurement, and HR systems, and governance layer for a Dallas business operations center"
+      heroImageAlt="Illustrated orchestration hub connecting finance, procurement, and HR workflows through branching tool paths."
       heroCaption="A production-grade enterprise agentic AI workflow always has three layers — a planner model, a governed tool layer reaching into finance, procurement, and HR systems, and a governance layer with audit logging and human review. Treating any layer as optional is what causes pilots to fail."
       publishedDate={insight.publishedDate}
       modifiedDate={insight.modifiedDate}

@@ -9,13 +9,16 @@ const insight = INSIGHTS.find(
 )!;
 const heroImage = "/images/insights/copilot-oncall-agent-hero.png";
 
-export const metadata = generatePageMetadata({
-  title: "ITECS Copilot Teams Agent for On-Call Scheduling: A Case Study",
-  description: insight.description,
-  path: insight.href,
-  keywords: insight.keywords,
-  ogImage: heroImage,
-});
+export const metadata = {
+  ...generatePageMetadata({
+    title: "ITECS Copilot Teams Agent for On-Call Scheduling: A Case Study",
+    description: insight.description,
+    path: insight.href,
+    keywords: insight.keywords,
+    ogImage: heroImage,
+  }),
+  title: "Copilot Teams On-Call Scheduling Agent: Case Study",
+};
 
 const sources: ArticleSource[] = [
   {

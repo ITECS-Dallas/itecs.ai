@@ -5,13 +5,16 @@ import { INSIGHTS } from "@/lib/constants";
 const insight = INSIGHTS.find((i) => i.slug === "ceo-guide-ai-roi")!;
 const heroImage = "/images/insights/ceo-guide-ai-roi-hero.png";
 
-export const metadata = generatePageMetadata({
-  title: insight.title,
-  description: insight.description,
-  path: insight.href,
-  keywords: insight.keywords,
-  ogImage: heroImage,
-});
+export const metadata = {
+  ...generatePageMetadata({
+    title: insight.title,
+    description: insight.description,
+    path: insight.href,
+    keywords: insight.keywords,
+    ogImage: heroImage,
+  }),
+  title: "CEO Guide to AI ROI: Measure and Scale Impact in 2026",
+};
 
 const sources: ArticleSource[] = [
   {

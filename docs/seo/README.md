@@ -6,6 +6,18 @@ can answer: which recommendation was implemented, in which deployed commit,
 with what expected signal, when it is fair to review it, and what actually
 happened.
 
+## Google-first SEO guidance
+
+Google SEO, accessibility, and people-first usefulness take precedence over Bing
+or other scanner warning counts. Follow [Google’s image guidance](https://developers.google.com/style/images):
+keep `alt=""` for decorative or redundant artwork, never omit the attribute, and
+describe informative images and image-link purposes accurately in context.
+Follow [Google’s title guidance](https://developers.google.com/search/docs/appearance/title-link):
+write descriptive, concise titles while preserving query intent, essential
+brand/location terms, and source-reported qualifiers. Google has no fixed title
+character limit; address length warnings through meaningful editing, not generic
+truncation or loss of meaning.
+
 ## Rules
 
 1. **Append-only.** Never edit or delete an existing line. Corrections are new

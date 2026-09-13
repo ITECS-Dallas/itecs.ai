@@ -4,12 +4,15 @@ import { ManufacturingSpokePage } from "@/components/sections/ManufacturingSpoke
 
 const page = getManufacturingSpokePage("/manufacturing/vendor-payment-anomaly-ai");
 
-export const metadata = generatePageMetadata({
-  title: page.title,
-  description: page.description,
-  path: page.href,
-  keywords: page.keywords,
-});
+export const metadata = {
+  ...generatePageMetadata({
+    title: page.title,
+    description: page.description,
+    path: page.href,
+    keywords: page.keywords,
+  }),
+  title: "Manufacturing Vendor Payment & Finance Anomaly Detection",
+};
 
 export default function VendorPaymentAnomalyPage() {
   return <ManufacturingSpokePage page={page} />;
