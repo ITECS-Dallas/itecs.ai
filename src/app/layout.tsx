@@ -43,6 +43,11 @@ const defaultOgImage = `${SITE_CONFIG.url}/images/og/itecs-og.png`;
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_CONFIG.url),
   applicationName: SITE_CONFIG.name,
+  verification: {
+    other: {
+      "msvalidate.01": "6B6C52FD6B99566CEE4ABC6BDD379C95",
+    },
+  },
   title: {
     template: "%s | ITECS AI",
     default: defaultTitle,
