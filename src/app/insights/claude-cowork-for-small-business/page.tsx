@@ -5,13 +5,16 @@ import { INSIGHTS } from "@/lib/constants";
 const insight = INSIGHTS.find((i) => i.slug === "claude-cowork-for-small-business")!;
 const heroImage = "/images/insights/claude-cowork-for-small-business-hero.png";
 
-export const metadata = generatePageMetadata({
-  title: insight.title,
-  description: insight.description,
-  path: insight.href,
-  keywords: insight.keywords,
-  ogImage: heroImage,
-});
+export const metadata = {
+  ...generatePageMetadata({
+    title: insight.title,
+    description: insight.description,
+    path: insight.href,
+    keywords: insight.keywords,
+    ogImage: heroImage,
+  }),
+  title: "Claude Cowork for Small Business: Setup and Workflows",
+};
 
 const sources: ArticleSource[] = [
   {
