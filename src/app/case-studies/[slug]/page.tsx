@@ -51,18 +51,25 @@ export async function generateMetadata({ params }: CaseStudyPageProps) {
     return {};
   }
 
-  return generatePageMetadata({
-    title: `${caseStudy.client} Case Study — ${caseStudy.outcome}`,
-    description: caseStudy.summary,
-    path: caseStudy.detailHref,
-    keywords: [
-      `${caseStudy.client} case study`,
-      "ITECS case study",
-      caseStudy.industry,
-      caseStudy.outcome,
-      "managed IT services Dallas",
-    ],
-  });
+  return {
+    ...generatePageMetadata({
+      title: `${caseStudy.client} Case Study — ${caseStudy.outcome}`,
+      description: caseStudy.summary,
+      path: caseStudy.detailHref,
+      keywords: [
+        `${caseStudy.client} case study`,
+        "ITECS case study",
+        caseStudy.industry,
+        caseStudy.outcome,
+        "managed IT services Dallas",
+      ],
+    }),
+    title: {
+      "opentext-dallas-onsite-support": "OpenText Dallas: Source-Reported On-Site IT Support",
+      "pepsico-subsidiary-it-transitions": "PepsiCo Subsidiaries: Source-Reported IT Transitions",
+      "pegasus-foods-zero-downtime-relocation": "Pegasus Foods: Source-Reported Zero-Downtime Relocation",
+    }[caseStudy.slug],
+  };
 }
 
 export default async function CaseStudyDetailPage({

@@ -5,13 +5,16 @@ import { INSIGHTS } from "@/lib/constants";
 const insight = INSIGHTS.find((i) => i.slug === "mcp-is-the-new-api")!;
 const heroImage = "/images/insights/mcp-is-the-new-api-hero.png";
 
-export const metadata = generatePageMetadata({
-  title: insight.title,
-  description: insight.description,
-  path: insight.href,
-  keywords: insight.keywords,
-  ogImage: heroImage,
-});
+export const metadata = {
+  ...generatePageMetadata({
+    title: insight.title,
+    description: insight.description,
+    path: insight.href,
+    keywords: insight.keywords,
+    ogImage: heroImage,
+  }),
+  title: "MCP for Business AI: Govern Agent Tool Connections",
+};
 
 const sources: ArticleSource[] = [
   {

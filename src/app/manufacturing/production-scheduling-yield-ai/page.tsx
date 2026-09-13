@@ -6,12 +6,15 @@ const page = getManufacturingSpokePage(
   "/manufacturing/production-scheduling-yield-ai"
 );
 
-export const metadata = generatePageMetadata({
-  title: page.title,
-  description: page.description,
-  path: page.href,
-  keywords: page.keywords,
-});
+export const metadata = {
+  ...generatePageMetadata({
+    title: page.title,
+    description: page.description,
+    path: page.href,
+    keywords: page.keywords,
+  }),
+  title: "Production Scheduling, Yield and Labor Planning AI",
+};
 
 export default function ProductionSchedulingYieldPage() {
   return <ManufacturingSpokePage page={page} />;

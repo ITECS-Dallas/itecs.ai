@@ -64,7 +64,7 @@ export default function SelfHostedAiAgentsSeafilePage() {
       sources={sources}
       ctaText="Want a private, self-hosted AI agent platform that keeps client data inside your walls?"
       heroImage={heroImage}
-      heroImageAlt="Diagram-style visualization of a self-hosted Seafile server in a Linux datacenter syncing AI agent project folders to Windows and macOS laptops, with client data contained inside a secure perimeter"
+      heroImageAlt="Conceptual server-to-laptop file-sync illustration with a perimeter labeled “Data containment”; external model and tool flows are not shown."
       heroCaption="ITECS syncs App-enabled Codex and Cowork agents from a self-hosted Seafile server to every employee's Windows and macOS endpoint — keeping client data inside the security boundary."
       publishedDate={insight.publishedDate}
       modifiedDate={insight.modifiedDate}

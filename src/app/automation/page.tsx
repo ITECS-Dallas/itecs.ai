@@ -36,12 +36,15 @@ const guidedBuildIntensive = getAIPricingOffering(
 const localAgentSprint = getAIPricingOffering("Local Agent Sprint");
 const agentOperationsOne = MANAGED_AI_AGENT_OPERATIONS.prices[0];
 
-export const metadata = generatePageMetadata({
-  title: "AI Automation Services in Dallas — Business Workflow Automation",
-  description: `AI automation services for Dallas businesses — co-build a bounded workflow from ${guidedBuildSprint.price} or have ITECS deliver a local agent with governed handoff.`,
-  path: service.href,
-  keywords: service.keywords,
-});
+export const metadata = {
+  ...generatePageMetadata({
+    title: "AI Automation Services in Dallas — Business Workflow Automation",
+    description: `AI automation services for Dallas businesses — co-build a bounded workflow from ${guidedBuildSprint.price} or have ITECS deliver a local agent with governed handoff.`,
+    path: service.href,
+    keywords: service.keywords,
+  }),
+  title: "AI Workflow Automation Services in Dallas",
+};
 
 export default function AutomationPage() {
   return (

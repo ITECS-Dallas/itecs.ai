@@ -9,13 +9,16 @@ const insight = INSIGHTS.find(
 )!;
 const heroImage = "/images/insights/eu-ai-act-transparency-hero.png";
 
-export const metadata = generatePageMetadata({
-  title: "EU AI Act Transparency Rules: Business Checklist (Article 50)",
-  description: insight.description,
-  path: insight.href,
-  keywords: insight.keywords,
-  ogImage: heroImage,
-});
+export const metadata = {
+  ...generatePageMetadata({
+    title: "EU AI Act Transparency Rules: Business Checklist (Article 50)",
+    description: insight.description,
+    path: insight.href,
+    keywords: insight.keywords,
+    ogImage: heroImage,
+  }),
+  title: "EU AI Act Article 50: Business Transparency Checklist",
+};
 
 const sources: ArticleSource[] = [
   {

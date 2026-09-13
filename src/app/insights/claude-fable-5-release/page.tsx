@@ -5,13 +5,16 @@ import { INSIGHTS } from "@/lib/constants";
 const insight = INSIGHTS.find((i) => i.slug === "claude-fable-5-release")!;
 const heroImage = "/images/insights/claude-fable-5-release-hero.png";
 
-export const metadata = generatePageMetadata({
-  title: insight.title,
-  description: insight.description,
-  path: insight.href,
-  keywords: insight.keywords,
-  ogImage: heroImage,
-});
+export const metadata = {
+  ...generatePageMetadata({
+    title: insight.title,
+    description: insight.description,
+    path: insight.href,
+    keywords: insight.keywords,
+    ogImage: heroImage,
+  }),
+  title: "Claude Fable 5 Usage Limits: Why Usage Drains 2× Faster",
+};
 
 const sources: ArticleSource[] = [
   {
@@ -61,7 +64,7 @@ export default function ClaudeFable5ReleasePage() {
       sources={sources}
       ctaText="Want Anthropic's newest model working for your business without the bill surprises?"
       heroImage={heroImage}
-      heroImageAlt="Abstract dark operations center visualization of Claude Fable 5 benchmark dominance — towering cyan and violet performance bars above shorter competitor bars beside a draining amber usage-limit ring"
+      heroImageAlt="Conceptual illustration of rising performance bars beside a partly depleted usage-limit ring."
       heroCaption="Fable 5 tops the field on coding and knowledge-work benchmarks (the tall cyan-violet bars) while consuming subscription usage limits about twice as fast as Opus 4.8 (the draining ring)."
       publishedDate={insight.publishedDate}
       modifiedDate={insight.modifiedDate}
