@@ -24,7 +24,7 @@ import { ConversionBand } from "@/components/sections/ConversionBand";
 export const metadata = generatePageMetadata({
   title: "Managed Intelligence & Secure AI Operations in Dallas | ITECS",
   description:
-    "ITECS helps organizations of 50-300 employees govern Copilot, Claude, and ChatGPT, train teams, and build AI agents — from personal desktop agents to enterprise hosted agents with human-in-the-loop review. 24 years of IT operations behind it.",
+    "AI consulting, governance, training, and custom agents for Dallas businesses. ITECS helps teams use Copilot, Claude, and ChatGPT securely and effectively.",
   path: "/",
   keywords: [
     "managed intelligence provider",
