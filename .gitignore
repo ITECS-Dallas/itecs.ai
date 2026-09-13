@@ -21,6 +21,9 @@
 # production
 /build
 
+# Generated ownership proof; the private runtime key lives outside the repo.
+/public/indexnow-key.txt
+
 # misc
 .DS_Store
 *.pem
