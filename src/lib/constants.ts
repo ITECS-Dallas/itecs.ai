@@ -2933,8 +2933,8 @@ export const INSIGHTS: InsightItem[] = [
   {
     slug: "ai-agent-evaluation-score-tool-use-before-production",
     image: {
-      src: "/images/insights/ai-agent-evaluation-score-tool-use-hero.png",
-      alt: "Abstract AI agent evaluation system with isolated baseline and candidate lanes, connected tool sequences, continuous traces, multiple scoring gates, human-review routing, failure containment, and a final production release boundary",
+      src: "/images/insights/ai-agent-evaluation-tool-path-hero.png",
+      alt: "Score the path, not just the answer: an illustrative lookup, approval, write and verify sequence, evaluated for the right tool, right values and right order.",
     },
     title: "AI Agent Evaluation: Score Tool Use Before Production",
     description:
