@@ -19,6 +19,9 @@ import { FAQ } from "@/components/sections/FAQ";
 import { CTASection } from "@/components/sections/CTASection";
 import { ArticleShareBar } from "./ArticleShareBar";
 
+// Keep the header, narrative and supporting article sections on one reading rail.
+const articleColumnClassName = "mx-auto max-w-3xl px-6 md:px-8";
+
 export interface ArticleSource {
   label: string;
   href: string;
@@ -151,8 +154,8 @@ export function InsightArticleLayout({
 
       <section className="relative overflow-hidden pb-14 pt-8">
         <GridBackground opacity={0.03} />
-        <div className="relative z-10 mx-auto max-w-5xl px-6 md:px-8">
-          <div className="max-w-3xl">
+        <div className={`${articleColumnClassName} relative z-10`}>
+          <div>
             <div className="mb-5 flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.12em] text-text-dim">
               <span className="chamfer-sm inline-flex items-center gap-2 border border-[var(--card-line)] bg-card px-3 py-1 text-brand-accent">
                 {insight.hubLabel}
@@ -188,7 +191,7 @@ export function InsightArticleLayout({
                   width={1600}
                   height={900}
                   priority
-                  sizes="(min-width: 1024px) 896px, calc(100vw - 48px)"
+                  sizes="(min-width: 768px) 704px, calc(100vw - 48px)"
                   className="aspect-video w-full object-cover"
                 />
               </div>
@@ -203,7 +206,7 @@ export function InsightArticleLayout({
       </section>
 
       <article className="pb-12">
-        <div className="mx-auto max-w-3xl space-y-8 px-6 md:px-8">
+        <div className={`${articleColumnClassName} space-y-8`}>
           <div className="space-y-6">
             {insight.content.map((paragraph, index) => (
               <ScrollReveal key={index} delay={index * 0.03}>
@@ -233,7 +236,7 @@ export function InsightArticleLayout({
       <FAQ items={insight.faq} heading={faqHeading} />
 
       <article className="pb-12 pt-12">
-        <div className="mx-auto max-w-3xl px-6 md:px-8">
+        <div className={articleColumnClassName}>
           <ScrollReveal>
             <div className="chamfer-md border-l-2 border-itecs-blue bg-brand-subtle p-6">
               <p className="font-medium leading-relaxed text-ink">
@@ -261,7 +264,7 @@ export function InsightArticleLayout({
       <CTASection />
 
       <article className="pb-24 pt-16">
-        <div className="mx-auto max-w-3xl space-y-8 px-6 md:px-8">
+        <div className={`${articleColumnClassName} space-y-8`}>
           <ScrollReveal>
             <ArticleShareBar title={insight.title} url={canonicalUrl} />
           </ScrollReveal>
