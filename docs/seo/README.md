@@ -1,10 +1,19 @@
 # SEO Action Ledger
 
 `docs/seo/action-ledger.jsonl` is the append-only, machine-readable record of
-every implemented SEO action for itecs.ai. It exists so the SearchOps program
-can answer: which recommendation was implemented, in which deployed commit,
+every implemented SEO action for itecs.ai. It preserves the history of
+which recommendation was implemented, in which deployed commit,
 with what expected signal, when it is fair to review it, and what actually
 happened.
+
+## Scheduled analyzer retired
+
+Brian retired the daily and weekly SearchOps workers on 2026-09-15. Their
+timers, phase services, runtime and installation hooks have been removed from
+webdev01. No automated collection, Codex SEO analysis or scheduled SEO Slack
+reporting remains. See [worker retirement](worker-retirement.md) for the exact
+deployment boundary, preserved data and recovery record. This does not remove
+manual SEO validation, website metadata, crawler policy or IndexNow notifications.
 
 ## Google-first SEO guidance
 
@@ -28,8 +37,8 @@ truncation or loss of meaning.
 3. **Record the action in the same commit** that implements a site change
    whenever possible, so `deployedCommit` can point at the parent that shipped
    it; for changes recorded after the fact, use the owning commit hash.
-4. After changing the ledger, run `scripts/sync-seo-action-ledger.sh` (needs
-   sudo) so the SearchOps collector can embed it in the weekly evidence.
+4. Keep the ledger in Git. There is no collector mirror to update: the retired
+   workflow's `scripts/sync-seo-action-ledger.sh` has been removed.
 
 ## Entry types
 
@@ -56,14 +65,13 @@ truncation or loss of meaning.
 | `outcome` | `improved`, `flat`, `declined`, `inconclusive` |
 | `notes` | the evidence, including confounders and shared attribution |
 
-## Runtime integration
+## Historical runtime integration
 
-`scripts/sync-seo-action-ledger.sh` validates the JSONL and installs it as a
-compact JSON array at `/etc/itecs-ai-seo/action-ledger.json` (root-owned,
-0644). From SearchOps v1.1.64 the collector embeds that file in the collection
-payload, so the weekly Codex analysis sees the full implemented-action history
-next to the provider evidence. The ledger contains no secrets and no client
-names beyond published site content.
+Until retirement, a sync script mirrored this ledger to
+`/etc/itecs-ai-seo/action-ledger.json` for the weekly collector. The old mirror
+and reports remain historical evidence only; they are not maintained or treated
+as current measurements. The Git ledger contains no secrets and no client names
+beyond published site content.
 
 ## History
 

@@ -16,8 +16,10 @@ brand presence inside model knowledge itself. The site's content is published
 marketing material with no proprietary value to withhold from training
 corpora. Declining training use would trade away future assistant-answer
 visibility for no commercial protection, which is the opposite of the
-program's goal. AI referral traffic is now measured by the SearchOps collector
-(v1.1.63 `aiReferrals` evidence), so the value of this policy is observable.
+program's goal. AI referral traffic was measured by the SearchOps collector
+(v1.1.63 `aiReferrals` evidence) until its retirement on 2026-09-15. Future
+measurement requires a separately requested manual review; historical reports
+are not current evidence. Worker retirement does not change crawler consent.
 
 ## Implementation
 
