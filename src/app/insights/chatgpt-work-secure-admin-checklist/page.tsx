@@ -7,14 +7,13 @@ import { INSIGHTS } from "@/lib/constants";
 const insight = INSIGHTS.find(
   (i) => i.slug === "chatgpt-work-secure-admin-checklist"
 )!;
-const heroImage = "/images/insights/chatgpt-work-admin-hero.png";
 
 export const metadata = generatePageMetadata({
   title: "ChatGPT Work for Business: Secure Admin Checklist",
   description: insight.description,
   path: insight.href,
   keywords: insight.keywords,
-  ogImage: heroImage,
+  ogImage: insight.image.src,
 });
 
 const sources: ArticleSource[] = [
@@ -64,8 +63,6 @@ export default function ChatGPTWorkAdminPage() {
       faqHeading="ChatGPT Work Admin FAQ"
       sources={sources}
       ctaText="Rolling out ChatGPT Work? Get the admin controls and pilot plan right first."
-      heroImage={heroImage}
-      heroImageAlt="Abstract dark visualization of a ChatGPT Work AI agent surrounded by admin control gates — connector permissions, write-action approvals, and publishing controls — governing its access to files, apps, and Sites, in violet and blue"
       heroCaption="ChatGPT Work can act across your files, apps, and Sites. Admin controls — connector scopes, write approvals, and publishing rules — decide how far its reach extends."
       blocks={{
         CAPABILITY_TABLE: <ChatGPTWorkControlTable />,

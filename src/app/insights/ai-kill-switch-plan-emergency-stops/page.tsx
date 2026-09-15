@@ -7,14 +7,13 @@ import { INSIGHTS } from "@/lib/constants";
 const insight = INSIGHTS.find(
   (i) => i.slug === "ai-kill-switch-plan-emergency-stops"
 )!;
-const heroImage = "/images/insights/ai-kill-switch-plan-hero.png";
 
 export const metadata = generatePageMetadata({
   title: "AI Kill Switch Plan: Emergency Stops for AI Agents",
   description: insight.description,
   path: insight.href,
   keywords: insight.keywords,
-  ogImage: heroImage,
+  ogImage: insight.image.src,
 });
 
 const sources: ArticleSource[] = [
@@ -64,8 +63,6 @@ export default function AIKillSwitchPlanPage() {
       faqHeading="AI Kill Switch Plan FAQ"
       sources={sources}
       ctaText="Running autonomous agents without an off switch? Let's build one before you need it."
-      heroImage={heroImage}
-      heroImageAlt="Abstract dark visualization of an AI agent emergency stop — a central autonomous agent core wired to a prominent kill switch, ringed by throttle, suspension, logging, and incident-owner controls that can halt it before it reaches money and data systems, in violet and blue"
       heroCaption="A federal kill switch targets frontier labs. Your agents need their own — throttle, suspension, logging, and owners you control."
       blocks={{
         CAPABILITY_TABLE: <KillSwitchCapabilityTable />,

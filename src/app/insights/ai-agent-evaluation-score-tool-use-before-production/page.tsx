@@ -9,15 +9,13 @@ import { INSIGHTS } from "@/lib/constants";
 const insight = INSIGHTS.find(
   (i) => i.slug === "ai-agent-evaluation-score-tool-use-before-production",
 )!;
-const heroImage =
-  "/images/insights/ai-agent-evaluation-score-tool-use-hero.png";
 
 export const metadata = generatePageMetadata({
   title: "AI Agent Evaluation: Score Tool Use Before Production",
   description: insight.description,
   path: insight.href,
   keywords: insight.keywords,
-  ogImage: heroImage,
+  ogImage: insight.image.src,
 });
 
 const sources: ArticleSource[] = [
@@ -85,8 +83,6 @@ export default function AIAgentEvaluationScoreToolUsePage() {
       faqHeading="AI Agent Evaluation FAQ"
       sources={sources}
       ctaText="Preparing an AI agent for production? ITECS can turn business tasks into a versioned evaluation suite, instrument the full tool trajectory, define risk-weighted release thresholds, build human-review routing, and connect quality evidence to production observability and rollback."
-      heroImage={heroImage}
-      heroImageAlt="Abstract AI agent evaluation system with isolated baseline and candidate lanes, connected tool sequences, continuous traces, multiple scoring gates, human-review routing, failure containment, and a final production release boundary"
       heroCaption="A production evaluation follows the whole task: business outcome, agent response, tool choice, parameters, sequence, safety, repeatability, operating cost, human judgment, and release evidence."
       blocks={{
         AGENT_EVALUATION_SCORECARD: <AIAgentEvaluationScorecard />,

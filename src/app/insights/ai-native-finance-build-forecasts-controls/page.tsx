@@ -12,14 +12,13 @@ import { INSIGHTS } from "@/lib/constants";
 const insight = INSIGHTS.find(
   (i) => i.slug === "ai-native-finance-build-forecasts-controls",
 )!;
-const heroImage = "/images/insights/ai-native-finance-controls-hero.png";
 
 export const metadata = generatePageMetadata({
   title: "AI-Native Finance: Build Forecasts With Controls",
   description: insight.description,
   path: insight.href,
   keywords: insight.keywords,
-  ogImage: heroImage,
+  ogImage: insight.image.src,
 });
 
 const sources: ArticleSource[] = [
@@ -69,8 +68,6 @@ export default function AINativeFinanceControlsPage() {
       faqHeading="AI-Native Finance FAQ"
       sources={sources}
       ctaText="Ready to turn one recurring finance decision into a controlled AI workflow?"
-      heroImage={heroImage}
-      heroImageAlt="Abstract AI-native finance system connecting approved ledger data through reconciliation controls, exception review, traceable approval gates, and continuously updating forecast scenarios"
       heroCaption="AI-native finance connects approved evidence to live forecasts while exceptions, baseline changes, and final decisions remain under accountable human control."
       blocks={{
         CONTROL_CHECKLIST: <FinanceControlChecklistTable />,

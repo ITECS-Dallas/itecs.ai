@@ -7,14 +7,13 @@ import { INSIGHTS } from "@/lib/constants";
 const insight = INSIGHTS.find(
   (i) => i.slug === "ai-platform-spend-controls-visibility"
 )!;
-const heroImage = "/images/insights/ai-platform-spend-controls-hero.png";
 
 export const metadata = generatePageMetadata({
   title: "AI Platform Spend Controls: Buy AI With Visibility",
   description: insight.description,
   path: insight.href,
   keywords: insight.keywords,
-  ogImage: heroImage,
+  ogImage: insight.image.src,
 });
 
 const sources: ArticleSource[] = [
@@ -64,8 +63,6 @@ export default function AIPlatformSpendControlsPage() {
       faqHeading="AI Platform Spend Controls FAQ"
       sources={sources}
       ctaText="Before your AI budget scales, get the visibility and guardrails in place."
-      heroImage={heroImage}
-      heroImageAlt="Abstract dark visualization of AI platform spend visibility — a central cost-governance dashboard with usage meters, spend-limit gauges, and model-routing lines, keeping a rising AI budget under control, in violet and blue"
       heroCaption="Usage-based AI turns every workflow into a variable cost. Visibility, spend limits, and cost-per-outcome measurement keep the budget under control."
       blocks={{
         CRITERIA_TABLE: <AISpendCriteriaTable />,

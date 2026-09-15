@@ -7,14 +7,13 @@ import { INSIGHTS } from "@/lib/constants";
 const insight = INSIGHTS.find(
   (i) => i.slug === "agentic-browsing-security-browser-controls-for-ai"
 )!;
-const heroImage = "/images/insights/agentic-browsing-security-hero.png";
 
 export const metadata = generatePageMetadata({
   title: "Agentic Browsing Security: Browser Controls for AI",
   description: insight.description,
   path: insight.href,
   keywords: insight.keywords,
-  ogImage: heroImage,
+  ogImage: insight.image.src,
 });
 
 const sources: ArticleSource[] = [
@@ -64,8 +63,6 @@ export default function AgenticBrowsingSecurityPage() {
       faqHeading="Agentic Browsing Security FAQ"
       sources={sources}
       ctaText="Employees running browser AI agents? Let's govern them before an attacker does."
-      heroImage={heroImage}
-      heroImageAlt="Abstract dark visualization of agentic browsing security — an AI agent core operating inside a browser window, reaching multiple SaaS app tabs and forms through an employee identity gate, ringed by DLP, site-scope, logging, and human-approval checkpoints, with a malicious hidden-instruction page being deflected, in violet and blue"
       heroCaption="The agent acts in the browser, with the employee's access. That makes the browser where you enforce identity, DLP, scope, logging, and approvals."
       blocks={{
         CONTROL_TABLE: <BrowserAgentControlTable />,

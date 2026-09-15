@@ -7,14 +7,13 @@ import { INSIGHTS } from "@/lib/constants";
 const insight = INSIGHTS.find(
   (i) => i.slug === "ai-agent-recovery-plan-protect-backups"
 )!;
-const heroImage = "/images/insights/ai-agent-recovery-plan-hero.png";
 
 export const metadata = generatePageMetadata({
   title: "AI Agent Recovery Plan: Protect Backups First",
   description: insight.description,
   path: insight.href,
   keywords: insight.keywords,
-  ogImage: heroImage,
+  ogImage: insight.image.src,
 });
 
 const sources: ArticleSource[] = [
@@ -64,8 +63,6 @@ export default function AIAgentRecoveryPlanPage() {
       faqHeading="AI Agent Recovery Plan FAQ"
       sources={sources}
       ctaText="Deploying AI agents? Harden your backups and agent governance before they touch production."
-      heroImage={heroImage}
-      heroImageAlt="Abstract dark visualization of protecting backups from an AI agent — a production data core and a separate, shielded immutable backup vault, with a destructive agent action blocked at an approval gate before it can reach the backups, in violet and blue"
       heroCaption="An AI agent can reach production and backups alike. Recovery survives only when backups sit outside the blast radius, immutable and gated."
       blocks={{
         RISK_TABLE: <AgentDRRiskTable />,

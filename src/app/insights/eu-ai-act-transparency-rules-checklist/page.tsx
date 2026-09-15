@@ -7,7 +7,6 @@ import { INSIGHTS } from "@/lib/constants";
 const insight = INSIGHTS.find(
   (i) => i.slug === "eu-ai-act-transparency-rules-checklist"
 )!;
-const heroImage = "/images/insights/eu-ai-act-transparency-hero.png";
 
 export const metadata = {
   ...generatePageMetadata({
@@ -15,7 +14,7 @@ export const metadata = {
     description: insight.description,
     path: insight.href,
     keywords: insight.keywords,
-    ogImage: heroImage,
+    ogImage: insight.image.src,
   }),
   title: "EU AI Act Article 50: Business Transparency Checklist",
 };
@@ -67,8 +66,6 @@ export default function EUAIActTransparencyPage() {
       faqHeading="EU AI Act Transparency Rules FAQ"
       sources={sources}
       ctaText="Need to be ready for the EU AI Act's August 2 transparency rules?"
-      heroImage={heroImage}
-      heroImageAlt="Abstract dark visualization of AI content transparency compliance — a stream of AI-generated media passing through a labeling and disclosure checkpoint marked with the EU circle of stars motif, in violet and blue"
       heroCaption="Under EU AI Act Article 50, AI-generated content must pass through disclosure and machine-readable marking before it reaches EU users."
       blocks={{
         USECASE_TABLE: <AIActObligationTable />,

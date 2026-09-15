@@ -10,14 +10,13 @@ import { generatePageMetadata } from "@/lib/metadata";
 import { INSIGHTS } from "@/lib/constants";
 
 const insight = INSIGHTS.find((i) => i.slug === "how-to-set-up-mcp-in-claude")!;
-const heroImage = "/images/insights/mcp-claude-setup-hero.png";
 
 export const metadata = generatePageMetadata({
   title: "How to Set Up Model Context Protocol (MCP) in Claude",
   description: insight.description,
   path: insight.href,
   keywords: insight.keywords,
-  ogImage: heroImage,
+  ogImage: insight.image.src,
 });
 
 const sources: ArticleSource[] = [
@@ -61,8 +60,6 @@ export default function HowToSetUpMCPPage() {
       faqHeading="MCP in Claude FAQ"
       sources={sources}
       ctaText="Rolling out MCP across your team? Let's set it up useful and contained."
-      heroImage={heroImage}
-      heroImageAlt="Abstract dark visualization of Model Context Protocol connecting Claude to tools — a central Claude client core linked by luminous channels to a local filesystem server, a code-terminal server, and a remote cloud connector, each passing through a permission gate, in violet and blue"
       heroCaption="MCP connects Claude to your tools three ways: a local config file, the Claude Code CLI, and remote connectors — each gated by your approval."
       blocks={{
         REQUIREMENTS_TABLE: <MCPRequirementsTable />,

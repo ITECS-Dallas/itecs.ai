@@ -9,14 +9,13 @@ import { INSIGHTS } from "@/lib/constants";
 const insight = INSIGHTS.find(
   (i) => i.slug === "adobe-in-chatgpt-govern-creative-ai-workflows"
 )!;
-const heroImage = "/images/insights/adobe-in-chatgpt-governance-hero.png";
 
 export const metadata = generatePageMetadata({
   title: "Adobe in ChatGPT: Govern Creative AI Workflows",
   description: insight.description,
   path: insight.href,
   keywords: insight.keywords,
-  ogImage: heroImage,
+  ogImage: insight.image.src,
 });
 
 const sources: ArticleSource[] = [
@@ -66,8 +65,6 @@ export default function AdobeInChatGPTGovernancePage() {
       faqHeading="Adobe in ChatGPT Governance FAQ"
       sources={sources}
       ctaText="Planning to enable Adobe in ChatGPT? Put the access, file, brand, and approval rules in place first."
-      heroImage={heroImage}
-      heroImageAlt="Abstract governed creative AI workflow with image, video, design, spreadsheet, and PDF assets moving through a conversational workspace, security checks, brand review, human approval, and approved output gates"
       heroCaption="Creative speed becomes a governed workflow when files, identity, brand review, human approval, and output ownership have explicit checkpoints."
       blocks={{
         GOVERNANCE_MATRIX: <AdobeChatGPTGovernanceTable />,

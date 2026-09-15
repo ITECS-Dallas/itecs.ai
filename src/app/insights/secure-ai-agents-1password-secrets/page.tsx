@@ -6,14 +6,13 @@ import { INSIGHTS } from "@/lib/constants";
 const insight = INSIGHTS.find(
   (i) => i.slug === "secure-ai-agents-1password-secrets"
 )!;
-const heroImage = "/images/insights/secure-ai-agents-1password-hero.png";
 
 export const metadata = generatePageMetadata({
   title: "How to Use 1Password With Cowork, Codex & AI Agent CLIs",
   description: insight.description,
   path: insight.href,
   keywords: insight.keywords,
-  ogImage: heroImage,
+  ogImage: insight.image.src,
 });
 
 const sources: ArticleSource[] = [
@@ -63,8 +62,6 @@ export default function SecureAIAgents1PasswordPage() {
       faqHeading="AI Agents & 1Password Secrets FAQ"
       sources={sources}
       ctaText="Want AI agents that reach your real systems without ever exposing a secret?"
-      heroImage={heroImage}
-      heroImageAlt="Abstract dark visualization of secure secret injection — a glowing vault and fingerprint approval gate feeding an encrypted credential into developer and AI agent tools, with the language model kept separate from the secret, in violet and blue"
       heroCaption="Secrets flow from 1Password through a biometric approval into the tools that need them — the AI model orchestrates the work but never receives the credential."
       blocks={{
         SECRETS_FLOW: <SecretsFlowDiagram />,

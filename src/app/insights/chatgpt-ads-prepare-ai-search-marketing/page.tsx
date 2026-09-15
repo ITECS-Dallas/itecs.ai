@@ -9,14 +9,13 @@ import { INSIGHTS } from "@/lib/constants";
 const insight = INSIGHTS.find(
   (i) => i.slug === "chatgpt-ads-prepare-ai-search-marketing"
 )!;
-const heroImage = "/images/insights/chatgpt-ads-ai-search-marketing-hero.png";
 
 export const metadata = generatePageMetadata({
   title: "ChatGPT Ads: Prepare for AI Search Marketing",
   description: insight.description,
   path: insight.href,
   keywords: insight.keywords,
-  ogImage: heroImage,
+  ogImage: insight.image.src,
 });
 
 const sources: ArticleSource[] = [
@@ -66,8 +65,6 @@ export default function ChatGPTAdsAISearchMarketingPage() {
       faqHeading="ChatGPT Ads And AI Search Marketing FAQ"
       sources={sources}
       ctaText="Evaluating ChatGPT ads? Build the measurement, privacy, brand-safety, and channel rules before moving meaningful search budget."
-      heroImage={heroImage}
-      heroImageAlt="Abstract AI search marketing system separating an organic conversational answer from a sponsored placement, then routing the paid path through privacy, brand safety, human review, attribution, and multichannel measurement controls"
       heroCaption="ChatGPT ads create a paid discovery lane beside the organic answer. Treat that lane as a measured channel with its own privacy, safety, and attribution controls."
       blocks={{
         EVALUATION_CHECKLIST: <ChatGPTAdsEvaluationTable />,

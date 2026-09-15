@@ -7,14 +7,13 @@ import { INSIGHTS } from "@/lib/constants";
 const insight = INSIGHTS.find(
   (i) => i.slug === "ai-bill-of-materials-inventory-agents"
 )!;
-const heroImage = "/images/insights/ai-bill-of-materials-hero.png";
 
 export const metadata = generatePageMetadata({
   title: "AI Bill of Materials: Inventory Agents Before Production",
   description: insight.description,
   path: insight.href,
   keywords: insight.keywords,
-  ogImage: heroImage,
+  ogImage: insight.image.src,
 });
 
 const sources: ArticleSource[] = [
@@ -64,8 +63,6 @@ export default function AIBillOfMaterialsPage() {
       faqHeading="AI Bill of Materials FAQ"
       sources={sources}
       ctaText="Moving AI agents to production? Inventory every model, agent, and dependency first."
-      heroImage={heroImage}
-      heroImageAlt="Abstract dark visualization of an AI Bill of Materials — a central inventory ledger connected to labeled component nodes for models, datasets, agent frameworks, vector databases, dependencies, and infrastructure, in violet and blue"
       heroCaption="An AI Bill of Materials inventories every component of an AI system — models, datasets, agents, vector databases, dependencies, and infrastructure — so it can be governed before production."
       blocks={{
         COMPONENT_TABLE: <AIBOMComponentTable />,

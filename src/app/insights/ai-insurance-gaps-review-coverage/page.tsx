@@ -7,14 +7,13 @@ import { INSIGHTS } from "@/lib/constants";
 const insight = INSIGHTS.find(
   (i) => i.slug === "ai-insurance-gaps-review-coverage"
 )!;
-const heroImage = "/images/insights/ai-insurance-gaps-hero.png";
 
 export const metadata = generatePageMetadata({
   title: "AI Insurance Gaps: Review Coverage Before Deploying Agents",
   description: insight.description,
   path: insight.href,
   keywords: insight.keywords,
-  ogImage: heroImage,
+  ogImage: insight.image.src,
 });
 
 const sources: ArticleSource[] = [
@@ -64,8 +63,6 @@ export default function AIInsuranceGapsPage() {
       faqHeading="AI Insurance Gaps FAQ"
       sources={sources}
       ctaText="Deploying AI agents? Build the inventory, permissions, and audit trail your insurer will ask for."
-      heroImage={heroImage}
-      heroImageAlt="Abstract dark visualization of insurance coverage gaps around AI agents — a protective shield made of policy panels with visible fractures where an autonomous agent's activity slips through, in violet and blue"
       heroCaption="Autonomous agents fall between policies. Cyber, tech E&O, crime, and general liability can each be implicated — and each can exclude the loss."
       blocks={{
         CLAIM_TABLE: <AIClaimMappingTable />,

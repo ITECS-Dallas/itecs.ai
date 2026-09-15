@@ -4,14 +4,13 @@ import { generatePageMetadata } from "@/lib/metadata";
 import { INSIGHTS } from "@/lib/constants";
 
 const insight = INSIGHTS.find((i) => i.slug === "claude-plan-comparison")!;
-const heroImage = "/images/insights/claude-plan-comparison-hero.png";
 
 export const metadata = generatePageMetadata({
   title: insight.title,
   description: insight.description,
   path: insight.href,
   keywords: insight.keywords,
-  ogImage: heroImage,
+  ogImage: insight.image.src,
 });
 
 const sources: ArticleSource[] = [
@@ -79,8 +78,6 @@ export default function ClaudePlanComparisonPage() {
       faqHeading="Claude Plan Comparison FAQ"
       sources={sources}
       ctaText="Not sure which Claude plan fits your team — or how to deploy it securely?"
-      heroImage={heroImage}
-      heroImageAlt="Abstract dark visualization comparing five Claude subscription tiers — Free, Pro, Max, Team, and Enterprise — as ascending illuminated columns in violet and blue, representing rising price, usage limits, and security controls"
       heroCaption="The five Claude plans rise in price, usage, and control — Free and Pro for individuals, Max for heavy users, Team and Enterprise for businesses that need admin and compliance."
       tableNode={<PlanComparisonTable />}
       publishedDate={insight.publishedDate}

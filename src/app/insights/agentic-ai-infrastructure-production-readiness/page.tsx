@@ -7,14 +7,13 @@ import { INSIGHTS } from "@/lib/constants";
 const insight = INSIGHTS.find(
   (i) => i.slug === "agentic-ai-infrastructure-production-readiness"
 )!;
-const heroImage = "/images/insights/agentic-ai-infrastructure-hero.png";
 
 export const metadata = generatePageMetadata({
   title: "Agentic AI Infrastructure: Production Readiness Checklist",
   description: insight.description,
   path: insight.href,
   keywords: insight.keywords,
-  ogImage: heroImage,
+  ogImage: insight.image.src,
 });
 
 const sources: ArticleSource[] = [
@@ -64,8 +63,6 @@ export default function AgenticAIInfrastructurePage() {
       faqHeading="Agentic AI Infrastructure FAQ"
       sources={sources}
       ctaText="Moving agents from pilot to production? Assess your infrastructure readiness first."
-      heroImage={heroImage}
-      heroImageAlt="Abstract dark visualization of agentic AI infrastructure under load — a central agent core drawing on elastic compute, data, and network layers, with cost and power gauges, as many parallel actions fan out, in violet and blue"
       heroCaption="A single agent can fan out into hundreds of parallel actions. Production readiness means compute, data, governance, and cost that hold under that load."
       blocks={{
         DIMENSION_TABLE: <AIInfraDimensionTable />,

@@ -7,14 +7,13 @@ import { INSIGHTS } from "@/lib/constants";
 const insight = INSIGHTS.find(
   (i) => i.slug === "ai-enabled-app-inventory-govern-software"
 )!;
-const heroImage = "/images/insights/ai-enabled-app-inventory-hero.png";
 
 export const metadata = generatePageMetadata({
   title: "AI-Enabled App Inventory: Govern Software That Acts",
   description: insight.description,
   path: insight.href,
   keywords: insight.keywords,
-  ogImage: heroImage,
+  ogImage: insight.image.src,
 });
 
 const sources: ArticleSource[] = [
@@ -64,8 +63,6 @@ export default function AIEnabledAppInventoryPage() {
       faqHeading="AI-Enabled App Inventory FAQ"
       sources={sources}
       ctaText="Do you know which of your approved apps can now act on their own? We can find out."
-      heroImage={heroImage}
-      heroImageAlt="Abstract dark visualization of an AI-enabled application inventory — a central governance registry connected to app, browser, plugin, and MCP-server nodes, with some nodes lighting up as they gain agentic action capabilities, in violet and blue"
       heroCaption="Approved software is quietly gaining the power to act. An AI-enabled app inventory shows which apps can now take actions — and keeps them governed."
       blocks={{
         CAPABILITY_TABLE: <AIEnabledAppTable />,

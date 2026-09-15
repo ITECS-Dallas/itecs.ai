@@ -7,14 +7,13 @@ import { INSIGHTS } from "@/lib/constants";
 const insight = INSIGHTS.find(
   (i) => i.slug === "ai-cyber-models-pick-right-model-security"
 )!;
-const heroImage = "/images/insights/ai-cyber-models-hero.png";
 
 export const metadata = generatePageMetadata({
   title: "AI Cyber Models: Pick the Right Model for Security",
   description: insight.description,
   path: insight.href,
   keywords: insight.keywords,
-  ogImage: heroImage,
+  ogImage: insight.image.src,
 });
 
 const sources: ArticleSource[] = [
@@ -64,8 +63,6 @@ export default function AICyberModelsPage() {
       faqHeading="AI Cyber Model Selection FAQ"
       sources={sources}
       ctaText="Buying security AI by the model? Let's pick the right one for each task."
-      heroImage={heroImage}
-      heroImageAlt="Abstract dark visualization of security AI model selection — a central routing hub directing code-scanning work to three model tiers, a small local model, a specialized frontier model, and a sandboxed agentic patching model, with a human-review checkpoint before any fix reaches production, in violet and blue"
       heroCaption="No single model wins. Route each security task to the right tier — small and local, frontier, or agentic — and sandbox anything that patches."
       blocks={{
         SELECTION_TABLE: <CyberModelSelectionTable />,

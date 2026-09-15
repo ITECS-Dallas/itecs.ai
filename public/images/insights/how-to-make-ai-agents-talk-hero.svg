@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Consult. Challenge. Reconcile.</title>
+  <desc id="desc">Agent A drafts and consults Agent B, receives a challenge and response, then reconciles evidence before finalizing; bounded follow-ups preserve the conversation trail.</desc>
+  <rect width="1600" height="900" fill="#0A1622"/>
+  <path d="M1130 0H1600V470Z" fill="#102B40"/>
+  <path d="M0 690V900H210Z" fill="#12384E"/>
+  <g fill="none" stroke="#3288B6" stroke-width="2" opacity=".3"><path d="M80 240H1520M80 690H1520"/></g>
+  <g font-family="Arial, sans-serif">
+    <text x="80" y="106" fill="#81C7EF" font-size="30" letter-spacing="5">ITECS / ILLUSTRATIVE WORKFLOW</text>
+    <text x="80" y="192" fill="#FFFFFF" font-size="58" font-weight="700">Consult. Challenge. Reconcile.</text>
+    <path d="M80 340h394l26 26v194h-420Z" fill="#112D42" stroke="#3288B6" stroke-width="3"/>
+    <text x="110" y="398" fill="#81C7EF" font-size="30">01</text>
+    <text x="110" y="467" fill="#FFFFFF" font-size="48" font-weight="700">Agent A</text>
+    <text x="110" y="520" fill="#CEE2EE" font-size="28">Draft · ask</text>
+    <path d="M570 340h394l26 26v194h-420Z" fill="#112D42" stroke="#3288B6" stroke-width="3"/>
+    <text x="600" y="398" fill="#81C7EF" font-size="30">02</text>
+    <text x="600" y="467" fill="#FFFFFF" font-size="48" font-weight="700">Agent B</text>
+    <text x="600" y="520" fill="#CEE2EE" font-size="28">Challenge · respond</text>
+    <path d="M1060 340h394l26 26v194h-420Z" fill="#112D42" stroke="#3288B6" stroke-width="3"/>
+    <text x="1090" y="398" fill="#81C7EF" font-size="30">03</text>
+    <text x="1090" y="467" fill="#FFFFFF" font-size="48" font-weight="700">Agent A</text>
+    <text x="1090" y="520" fill="#CEE2EE" font-size="28">Reconcile · finalize</text>
+    <g fill="#81C7EF"><path d="M518 431h30v-13l25 32-25 32v-13h-30Z"/><path d="M1008 431h30v-13l25 32-25 32v-13h-30Z"/></g>
+    <text x="80" y="770" fill="#FFFFFF" font-size="36">Bounded follow-ups · shared conversation trail</text>
+    <text x="80" y="830" fill="#A8C2D4" font-size="26">Conceptual guidance — not a product interface or performance claim</text>
+  </g>
+</svg>

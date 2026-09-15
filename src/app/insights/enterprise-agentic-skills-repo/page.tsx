@@ -3,14 +3,13 @@ import { generatePageMetadata } from "@/lib/metadata";
 import { INSIGHTS } from "@/lib/constants";
 
 const insight = INSIGHTS.find((i) => i.slug === "enterprise-agentic-skills-repo")!;
-const heroImage = "/images/insights/enterprise-agentic-skills-repo-hero.png";
 
 export const metadata = generatePageMetadata({
   title: insight.title,
   description: insight.description,
   path: insight.href,
   keywords: insight.keywords,
-  ogImage: heroImage,
+  ogImage: insight.image.src,
 });
 
 const sources: ArticleSource[] = [
@@ -54,8 +53,6 @@ export default function EnterpriseAgenticSkillsRepoPage() {
       faqHeading="Enterprise Agentic Skills FAQ"
       sources={sources}
       ctaText="Want a safer operating model for AI-assisted development?"
-      heroImage={heroImage}
-      heroImageAlt="Empty enterprise AI operations room with abstract secure workflow displays"
       publishedDate={insight.publishedDate}
       modifiedDate={insight.modifiedDate}
       readTime="7 min read"

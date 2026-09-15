@@ -9,14 +9,13 @@ import { INSIGHTS } from "@/lib/constants";
 const insight = INSIGHTS.find(
   (i) => i.slug === "ai-adoption-gap-assistants-to-agents",
 )!;
-const heroImage = "/images/insights/ai-adoption-gap-assistants-agents-hero.png";
 
 export const metadata = generatePageMetadata({
   title: "AI Adoption Gap: Move From Assistants to Agents",
   description: insight.description,
   path: insight.href,
   keywords: insight.keywords,
-  ogImage: heroImage,
+  ogImage: insight.image.src,
 });
 
 const sources: ArticleSource[] = [
@@ -66,8 +65,6 @@ export default function AIAdoptionGapAssistantsToAgentsPage() {
       faqHeading="AI Adoption Gap And Agentic Execution FAQ"
       sources={sources}
       ctaText="Ready to move beyond isolated prompting? Build the shared playbooks, permissions, evidence, and training loops that let teams delegate work safely."
-      heroImage={heroImage}
-      heroImageAlt="Abstract enterprise AI system showing isolated chat prompts crossing an adoption gap into a governed agent network with approved tools, permission gates, human review, completed business work, and a continuous training loop"
       heroCaption="The adoption gap widens when one group delegates complete work while the rest remain in isolated chats. Close it by turning proven workflows into governed team systems."
       blocks={{
         ADOPTION_CHECKLIST: <AIAdoptionGapChecklist />,

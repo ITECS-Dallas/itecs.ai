@@ -3,7 +3,6 @@ import { generatePageMetadata } from "@/lib/metadata";
 import { INSIGHTS } from "@/lib/constants";
 
 const insight = INSIGHTS.find((i) => i.slug === "self-hosted-ai-agents-seafile")!;
-const heroImage = "/images/insights/self-hosted-ai-agents-seafile-hero.png";
 
 export const metadata = {
   ...generatePageMetadata({
@@ -11,7 +10,7 @@ export const metadata = {
     description: insight.description,
     path: insight.href,
     keywords: insight.keywords,
-    ogImage: heroImage,
+    ogImage: insight.image.src,
   }),
   title: "Self-Hosted AI Agents: Shared Codex and Cowork Files",
 };
@@ -63,8 +62,6 @@ export default function SelfHostedAiAgentsSeafilePage() {
       faqHeading="Self-Hosted AI Agents FAQ"
       sources={sources}
       ctaText="Want a private, self-hosted AI agent platform that keeps client data inside your walls?"
-      heroImage={heroImage}
-      heroImageAlt="Conceptual server-to-laptop file-sync illustration with a perimeter labeled “Data containment”; external model and tool flows are not shown."
       heroCaption="ITECS syncs App-enabled Codex and Cowork agents from a self-hosted Seafile server to every employee's Windows and macOS endpoint — keeping client data inside the security boundary."
       publishedDate={insight.publishedDate}
       modifiedDate={insight.modifiedDate}

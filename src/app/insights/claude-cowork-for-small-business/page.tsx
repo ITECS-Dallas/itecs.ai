@@ -3,7 +3,6 @@ import { generatePageMetadata } from "@/lib/metadata";
 import { INSIGHTS } from "@/lib/constants";
 
 const insight = INSIGHTS.find((i) => i.slug === "claude-cowork-for-small-business")!;
-const heroImage = "/images/insights/claude-cowork-for-small-business-hero.png";
 
 export const metadata = {
   ...generatePageMetadata({
@@ -11,7 +10,7 @@ export const metadata = {
     description: insight.description,
     path: insight.href,
     keywords: insight.keywords,
-    ogImage: heroImage,
+    ogImage: insight.image.src,
   }),
   title: "Claude Cowork for Small Business: Setup and Workflows",
 };
@@ -63,8 +62,6 @@ export default function ClaudeCoworkForSmallBusinessPage() {
       faqHeading="Claude Cowork for Small Business FAQ"
       sources={sources}
       ctaText="Ready to turn Claude Cowork into ten production workflows for your team?"
-      heroImage={heroImage}
-      heroImageAlt="Abstract Claude Cowork Small Business workspace diagram showing isolated Project Sandboxes for Finance, Sales, Marketing, and Operations connected to QuickBooks, PayPal, HubSpot, Canva, Docusign, Google Workspace, and Microsoft 365 through approval gates"
       heroCaption="A correctly configured Claude Cowork deployment runs as four isolated Project Sandboxes — Finance, Sales, Marketing, and Operations — connected to the core operating apps through owner-approved gates."
       publishedDate={insight.publishedDate}
       modifiedDate={insight.modifiedDate}

@@ -7,14 +7,13 @@ import { INSIGHTS } from "@/lib/constants";
 const insight = INSIGHTS.find(
   (i) => i.slug === "ai-prompt-dlp-block-data-before-models"
 )!;
-const heroImage = "/images/insights/ai-prompt-dlp-hero.png";
 
 export const metadata = generatePageMetadata({
   title: "AI Prompt DLP: Block Data Before It Reaches Models",
   description: insight.description,
   path: insight.href,
   keywords: insight.keywords,
-  ogImage: heroImage,
+  ogImage: insight.image.src,
 });
 
 const sources: ArticleSource[] = [
@@ -64,8 +63,6 @@ export default function AIPromptDLPPage() {
       faqHeading="AI Prompt DLP FAQ"
       sources={sources}
       ctaText="Sensitive data reaching your AI models? Let's put a gate in front, not a log behind."
-      heroImage={heroImage}
-      heroImageAlt="Abstract dark visualization of pre-inference AI prompt DLP — an employee prompt passing through a security-server inspection gate that returns an allow or deny verdict before it reaches a model core, with denied prompts deflected and logged, in violet and blue"
       heroCaption="A prompt gate, not a log behind it. Sensitive content is inspected and allowed or denied before it ever reaches the model."
       blocks={{
         DECISION_TABLE: <PromptDLPDecisionTable />,
