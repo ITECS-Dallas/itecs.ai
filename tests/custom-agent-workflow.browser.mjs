@@ -32,9 +32,9 @@ for (const mode of ["normal", "reduced-motion", "no-javascript"]) {
       for (const label of labels) {
         const card = mobile.getByText(label, { exact: true }).locator("..");
         await card.scrollIntoViewIfNeeded();
-        // Allow existing reveal delays to finish; visibility must not depend on
-        // the desktop-only element ever intersecting the mobile viewport.
-        if (mode !== "no-javascript") await page.waitForTimeout(1200);
+        // Allow content-visibility paint and existing reveal delays to finish,
+        // including the browser's native rendering when page JS is disabled.
+        await page.waitForTimeout(1200);
         assert.equal(await card.evaluate((node) => {
           for (let parent = node; parent; parent = parent.parentElement) {
             const style = getComputedStyle(parent);
