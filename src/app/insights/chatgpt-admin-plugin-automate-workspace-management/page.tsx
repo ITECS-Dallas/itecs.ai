@@ -9,15 +9,13 @@ import { INSIGHTS } from "@/lib/constants";
 const insight = INSIGHTS.find(
   (i) => i.slug === "chatgpt-admin-plugin-automate-workspace-management",
 )!;
-const heroImage =
-  "/images/insights/chatgpt-admin-plugin-workspace-management-hero.png";
 
 export const metadata = generatePageMetadata({
   title: "ChatGPT Admin Plugin: Automate Workspace Management",
   description: insight.description,
   path: insight.href,
   keywords: insight.keywords,
-  ogImage: heroImage,
+  ogImage: insight.image.src,
 });
 
 const sources: ArticleSource[] = [
@@ -79,8 +77,6 @@ export default function ChatGPTAdminPluginWorkspaceManagementPage() {
       faqHeading="ChatGPT Admin Plugin Governance FAQ"
       sources={sources}
       ctaText="Planning an Admin plugin pilot? ITECS can inventory the actions, map roles and approvals, build nonproduction tests, define verification and rollback, and turn recurring administration into a controlled operating workflow."
-      heroImage={heroImage}
-      heroImageAlt="Abstract workspace administration workflow with read-only activity streams entering a conversational analysis core, proposed changes passing through a human approval gate, authoritative state verification, and a separate exception-review path"
       heroCaption="Conversational administration is safe only when read access, proposed changes, approval, authoritative-state verification, exceptions, and rollback remain distinct controls."
       blocks={{
         ADMIN_PLUGIN_ROLLOUT_TABLE: <ChatGPTAdminPluginRolloutTable />,

@@ -7,14 +7,13 @@ import { INSIGHTS } from "@/lib/constants";
 const insight = INSIGHTS.find(
   (i) => i.slug === "ai-payment-agents-control-money-movement"
 )!;
-const heroImage = "/images/insights/ai-payment-agents-hero.png";
 
 export const metadata = generatePageMetadata({
   title: "AI Payment Agents: Control Money Movement Before Launch",
   description: insight.description,
   path: insight.href,
   keywords: insight.keywords,
-  ogImage: heroImage,
+  ogImage: insight.image.src,
 });
 
 const sources: ArticleSource[] = [
@@ -64,8 +63,6 @@ export default function AIPaymentAgentsPage() {
       faqHeading="AI Payment Agent Controls FAQ"
       sources={sources}
       ctaText="Letting an AI agent move money? Let's build the controls before it does."
-      heroImage={heroImage}
-      heroImageAlt="Abstract dark visualization of controlled AI payment agents — a central agent core wired through scope-limit, identity-verification, approval-threshold, and separation-of-duties gates before its payment streams reach virtual card, supplier, ad-buy, and FX nodes, with an audit trail recording each transaction, in violet and blue"
       heroCaption="The rails now assume agents pay. Before launch, gate every agent by scope, identity, approval, and separation of duties — and audit every move."
       blocks={{
         CONTROL_TABLE: <PaymentControlTable />,

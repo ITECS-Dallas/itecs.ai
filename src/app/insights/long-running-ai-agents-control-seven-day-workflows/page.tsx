@@ -9,14 +9,13 @@ import { INSIGHTS } from "@/lib/constants";
 const insight = INSIGHTS.find(
   (i) => i.slug === "long-running-ai-agents-control-seven-day-workflows",
 )!;
-const heroImage = "/images/insights/long-running-ai-agents-hero.png";
 
 export const metadata = generatePageMetadata({
   title: "Long-Running AI Agents: Control Seven-Day Workflows",
   description: insight.description,
   path: insight.href,
   keywords: insight.keywords,
-  ogImage: heroImage,
+  ogImage: insight.image.src,
 });
 
 const sources: ArticleSource[] = [
@@ -78,8 +77,6 @@ export default function LongRunningAIAgentsPage() {
       faqHeading="Long-Running AI Agent Governance FAQ"
       sources={sources}
       ctaText="Planning a multi-day agent workflow? Define its run contract, identity, checkpoints, and acceptance gate before it reaches production."
-      heroImage={heroImage}
-      heroImageAlt="Abstract technical illustration of a long-running AI agent crossing monitored checkpoints, approval gates, protected state, a stop control, and final verification before reaching a downstream system"
       heroCaption="A durable runtime can keep an agent working for days. A run contract determines what it may do, when it must stop, and who accepts the result."
       blocks={{
         CONTROL_TABLE: <LongRunningAgentControlTable />,

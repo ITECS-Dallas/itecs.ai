@@ -3,7 +3,6 @@ import { generatePageMetadata } from "@/lib/metadata";
 import { INSIGHTS } from "@/lib/constants";
 
 const insight = INSIGHTS.find((i) => i.slug === "openclaw-security-crisis")!;
-const heroImage = "/images/insights/openclaw-security-crisis-hero.png";
 
 export const metadata = {
   ...generatePageMetadata({
@@ -11,7 +10,7 @@ export const metadata = {
     description: insight.description,
     path: insight.href,
     keywords: insight.keywords,
-    ogImage: heroImage,
+    ogImage: insight.image.src,
   }),
   title: "OpenClaw Security Crisis: AI Agent Risks for Business",
 };
@@ -69,8 +68,6 @@ export default function OpenClawSecurityCrisisPage() {
       faqHeading="OpenClaw Security Crisis FAQ"
       sources={sources}
       ctaText="Want a governed agent deployment your auditor will sign off on?"
-      heroImage={heroImage}
-      heroImageAlt="Abstract dimensional visualization of a compromised AI agent sandbox with cyan and violet circuit traces fracturing in a dark security operations center"
       heroCaption="The Claw Chain compromise pattern: an isolated agent sandbox cracked by chained TOCTOU and privilege flaws, then used to exfiltrate credentials and plant a backdoor."
       publishedDate={insight.publishedDate}
       modifiedDate={insight.modifiedDate}

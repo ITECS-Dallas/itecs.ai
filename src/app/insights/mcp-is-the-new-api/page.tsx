@@ -3,7 +3,6 @@ import { generatePageMetadata } from "@/lib/metadata";
 import { INSIGHTS } from "@/lib/constants";
 
 const insight = INSIGHTS.find((i) => i.slug === "mcp-is-the-new-api")!;
-const heroImage = "/images/insights/mcp-is-the-new-api-hero.png";
 
 export const metadata = {
   ...generatePageMetadata({
@@ -11,7 +10,7 @@ export const metadata = {
     description: insight.description,
     path: insight.href,
     keywords: insight.keywords,
-    ogImage: heroImage,
+    ogImage: insight.image.src,
   }),
   title: "MCP for Business AI: Govern Agent Tool Connections",
 };
@@ -63,8 +62,6 @@ export default function McpIsTheNewApiPage() {
       faqHeading="Model Context Protocol FAQ"
       sources={sources}
       ctaText="Need a governed way to plug AI agents into your business systems?"
-      heroImage={heroImage}
-      heroImageAlt="Abstract managed MCP gateway diagram brokering AI assistants and business systems for a Dallas business"
       publishedDate={insight.publishedDate}
       modifiedDate={insight.modifiedDate}
       readTime="9 min read"

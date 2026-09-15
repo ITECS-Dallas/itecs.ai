@@ -4,7 +4,6 @@ import { generatePageMetadata } from "@/lib/metadata";
 import { INSIGHTS } from "@/lib/constants";
 
 const insight = INSIGHTS.find((i) => i.slug === "openai-codex-vs-claude-code")!;
-const heroImage = "/images/insights/openai-codex-vs-claude-code-hero.png";
 
 export const metadata = {
   ...generatePageMetadata({
@@ -12,7 +11,7 @@ export const metadata = {
     description: insight.description,
     path: insight.href,
     keywords: insight.keywords,
-    ogImage: heroImage,
+    ogImage: insight.image.src,
   }),
   title: "OpenAI Codex vs. Claude Code: Enterprise Coding Agents",
 };
@@ -58,8 +57,6 @@ export default function OpenAICodexVsClaudeCodePage() {
       faqHeading="OpenAI Codex vs. Claude Code FAQ"
       sources={sources}
       ctaText="Choosing between OpenAI Codex and Claude Code for your engineering org?"
-      heroImage={heroImage}
-      heroImageAlt="Abstract dark split visualization comparing two enterprise AI coding agents — parallel sandboxed worktrees on one side and a deep large-context reasoning core on the other — in violet and blue"
       heroCaption="Two frontier coding agents, two architectures: Codex's parallel sandboxed worktrees versus Claude Code's deep, MCP-connected reasoning over a million-token context."
       tableNode={<CodingAgentComparisonTable />}
       publishedDate={insight.publishedDate}

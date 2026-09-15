@@ -7,14 +7,13 @@ import { INSIGHTS } from "@/lib/constants";
 const insight = INSIGHTS.find(
   (i) => i.slug === "open-weight-ai-models-business-risk-checklist"
 )!;
-const heroImage = "/images/insights/open-weight-ai-models-hero.png";
 
 export const metadata = generatePageMetadata({
   title: "Open-Weight AI Models: Business Risk Checklist",
   description: insight.description,
   path: insight.href,
   keywords: insight.keywords,
-  ogImage: heroImage,
+  ogImage: insight.image.src,
 });
 
 const sources: ArticleSource[] = [
@@ -64,8 +63,6 @@ export default function OpenWeightAIModelsPage() {
       faqHeading="Open-Weight AI Model FAQ"
       sources={sources}
       ctaText="Teams downloading open-weight models? Let's make it a governed decision."
-      heroImage={heroImage}
-      heroImageAlt="Abstract dark visualization of open-weight AI model governance — a downloadable model core passing through classify, test, private-host, and approval gates before it reaches a business workflow, with a license document and provenance chain recorded alongside, in violet and blue"
       heroCaption="Open weights are downloadable and cheap, but a released model can never be recalled. Classify, test, host, and approve before you deploy."
       blocks={{
         CHECKLIST_TABLE: <OpenWeightRiskTable />,

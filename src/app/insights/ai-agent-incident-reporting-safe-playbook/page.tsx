@@ -9,14 +9,13 @@ import { INSIGHTS } from "@/lib/constants";
 const insight = INSIGHTS.find(
   (i) => i.slug === "ai-agent-incident-reporting-safe-playbook",
 )!;
-const heroImage = "/images/insights/ai-agent-incident-reporting-hero.png";
 
 export const metadata = generatePageMetadata({
   title: "AI Agent Incident Reporting: Build a SAFE Playbook",
   description: insight.description,
   path: insight.href,
   keywords: insight.keywords,
-  ogImage: heroImage,
+  ogImage: insight.image.src,
 });
 
 const sources: ArticleSource[] = [
@@ -78,8 +77,6 @@ export default function AIAgentIncidentReportingPage() {
       faqHeading="AI Agent Incident Reporting FAQ"
       sources={sources}
       ctaText="Need an incident-ready AI agent program? ITECS can map identities, tools, evidence, stop controls, notification ownership, and recovery tests before production use."
-      heroImage={heroImage}
-      heroImageAlt="Abstract incident-response sequence showing unauthorized AI agent activity stopped at a containment barrier, preserved evidence, coordinated notifications, root-cause review, corrective controls, and verified recovery"
       heroCaption="An AI agent incident record must connect the action that occurred to the identity, instructions, tools, evidence, containment decision, and verified corrective control."
       blocks={{
         PLAYBOOK_TABLE: <AgentIncidentPlaybookTable />,

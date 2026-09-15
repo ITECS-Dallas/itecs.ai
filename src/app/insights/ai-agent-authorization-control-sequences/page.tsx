@@ -7,14 +7,13 @@ import { INSIGHTS } from "@/lib/constants";
 const insight = INSIGHTS.find(
   (i) => i.slug === "ai-agent-authorization-control-sequences"
 )!;
-const heroImage = "/images/insights/ai-agent-authorization-hero.png";
 
 export const metadata = generatePageMetadata({
   title: "AI Agent Authorization: Control Sequences, Not Actions",
   description: insight.description,
   path: insight.href,
   keywords: insight.keywords,
-  ogImage: heroImage,
+  ogImage: insight.image.src,
 });
 
 const sources: ArticleSource[] = [
@@ -58,8 +57,6 @@ export default function AIAgentAuthorizationPage() {
       faqHeading="AI Agent Authorization FAQ"
       sources={sources}
       ctaText="Running agents that chain tool calls? Let's authorize the sequence, not just the click."
-      heroImage={heroImage}
-      heroImageAlt="Abstract dark visualization of sequence-aware AI agent authorization — a chain of agent tool calls flowing through a gateway policy engine that checks each call against the session history, allowing the correct ordered sequence and denying an out-of-order or over-budget call, in violet and blue"
       heroCaption="The danger is the chain, not the click. A gateway policy judges each tool call against the whole sequence before it runs."
       blocks={{
         CONTROL_TABLE: <AgentAuthControlTable />,

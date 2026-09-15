@@ -9,6 +9,7 @@ export const metadata = generatePageMetadata({
   description: insight.description,
   path: insight.href,
   keywords: insight.keywords,
+  ogImage: insight.image.src,
 });
 
 const sources: ArticleSource[] = [

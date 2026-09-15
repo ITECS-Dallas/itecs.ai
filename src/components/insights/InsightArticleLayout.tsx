@@ -34,8 +34,6 @@ interface InsightArticleLayoutProps {
   faqHeading: string;
   sources: ArticleSource[];
   ctaText: string;
-  heroImage?: string;
-  heroImageAlt?: string;
   heroCaption?: string;
   publishedDate: string;
   modifiedDate?: string;
@@ -111,8 +109,6 @@ export function InsightArticleLayout({
   faqHeading,
   sources,
   ctaText,
-  heroImage,
-  heroImageAlt,
   heroCaption,
   publishedDate,
   modifiedDate,
@@ -121,11 +117,7 @@ export function InsightArticleLayout({
   blocks,
 }: InsightArticleLayoutProps) {
   const canonicalUrl = `${SITE_CONFIG.url}${insight.href}`;
-  const imageUrl = heroImage
-    ? heroImage.startsWith("http")
-      ? heroImage
-      : `${SITE_CONFIG.url}${heroImage}`
-    : undefined;
+  const imageUrl = `${SITE_CONFIG.url}${insight.image.src}`;
 
   const articleSchema = generateArticleSchema({
     headline: insight.h1,
@@ -178,30 +170,28 @@ export function InsightArticleLayout({
             </p>
           </div>
 
-          {heroImage && (
-            <figure
-              role="img"
-              aria-label={heroImageAlt ?? insight.h1}
-              className="mt-10"
-            >
-              <div className="overflow-hidden rounded-lg border border-[var(--border-subtle)] bg-bg-void">
-                <Image
-                  src={heroImage}
-                  alt={heroImageAlt ?? insight.h1}
-                  width={1600}
-                  height={900}
-                  priority
-                  sizes="(min-width: 768px) 704px, calc(100vw - 48px)"
-                  className="aspect-video w-full object-cover"
-                />
-              </div>
-              {heroCaption && (
-                <figcaption className="mt-3 text-sm leading-relaxed text-text-dim">
-                  {heroCaption}
-                </figcaption>
-              )}
-            </figure>
-          )}
+          <figure
+            role="img"
+            aria-label={insight.image.alt}
+            className="mt-10"
+          >
+            <div className="overflow-hidden rounded-lg border border-[var(--border-subtle)] bg-bg-void">
+              <Image
+                src={insight.image.src}
+                alt={insight.image.alt}
+                width={1600}
+                height={900}
+                priority
+                sizes="(min-width: 768px) 704px, calc(100vw - 48px)"
+                className="aspect-video w-full object-cover"
+              />
+            </div>
+            {heroCaption && (
+              <figcaption className="mt-3 text-sm leading-relaxed text-text-dim">
+                {heroCaption}
+              </figcaption>
+            )}
+          </figure>
         </div>
       </section>
 

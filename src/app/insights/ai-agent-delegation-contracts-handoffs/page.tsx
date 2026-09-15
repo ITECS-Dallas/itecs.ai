@@ -9,14 +9,13 @@ import { INSIGHTS } from "@/lib/constants";
 const insight = INSIGHTS.find(
   (i) => i.slug === "ai-agent-delegation-contracts-handoffs",
 )!;
-const heroImage = "/images/insights/ai-agent-delegation-contracts-hero.png";
 
 export const metadata = generatePageMetadata({
   title: "AI Agent Delegation: Define Contracts and Handoffs",
   description: insight.description,
   path: insight.href,
   keywords: insight.keywords,
-  ogImage: heroImage,
+  ogImage: insight.image.src,
 });
 
 const sources: ArticleSource[] = [
@@ -72,8 +71,6 @@ export default function AIAgentDelegationContractsPage() {
       faqHeading="AI Agent Delegation FAQ"
       sources={sources}
       ctaText="Need a production-ready delegation model? ITECS can decompose one workflow, define its contract and evidence envelope, implement task-scoped permissions, exercise failures, and establish the operating controls required before agents delegate autonomously."
-      heroImage={heroImage}
-      heroImageAlt="Abstract enterprise workflow showing an orchestrating AI assigning bounded tasks through contract envelopes to specialist agents and a human reviewer, with evidence gates, least-privilege keys, trace links, and a failed handoff routed to recovery controls"
       heroCaption="Reliable multi-agent work is not a chain of messages. It is a chain of bounded assignments, attenuated authority, verifiable evidence, and accountable acceptance decisions."
       blocks={{
         DELEGATION_CONTRACT_TABLE: <AIAgentDelegationContractTable />,

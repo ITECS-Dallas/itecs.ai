@@ -7,14 +7,13 @@ import { INSIGHTS } from "@/lib/constants";
 const insight = INSIGHTS.find(
   (i) => i.slug === "ai-customer-service-agents-guardrails"
 )!;
-const heroImage = "/images/insights/ai-customer-service-guardrails-hero.png";
 
 export const metadata = generatePageMetadata({
   title: "AI Customer Service Agents: Guardrails Before Launch",
   description: insight.description,
   path: insight.href,
   keywords: insight.keywords,
-  ogImage: heroImage,
+  ogImage: insight.image.src,
 });
 
 const sources: ArticleSource[] = [
@@ -64,8 +63,6 @@ export default function AICustomerServiceGuardrailsPage() {
       faqHeading="AI Customer Service Agent Guardrails FAQ"
       sources={sources}
       ctaText="Launching a customer-facing AI agent? Get the guardrails right before customers do."
-      heroImage={heroImage}
-      heroImageAlt="Abstract dark visualization of a customer-facing AI agent behind launch guardrails — a central conversational agent core ringed by policy, escalation, testing, and human-review checkpoints before it reaches customer channels, in violet and blue"
       heroCaption="A customer-facing AI agent should pass through scope, testing, escalation, and human-review guardrails before it ever reaches a live customer."
       blocks={{
         GUARDRAIL_TABLE: <CustomerAgentGuardrailTable />,

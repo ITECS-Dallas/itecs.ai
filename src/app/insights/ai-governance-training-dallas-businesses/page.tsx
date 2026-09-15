@@ -7,7 +7,6 @@ import { INSIGHTS } from "@/lib/constants";
 const insight = INSIGHTS.find(
   (i) => i.slug === "ai-governance-training-dallas-businesses"
 )!;
-const heroImage = "/images/insights/ai-governance-training-dallas-hero.png";
 
 export const metadata = generatePageMetadata({
   title:
@@ -15,7 +14,7 @@ export const metadata = generatePageMetadata({
   description: insight.description,
   path: insight.href,
   keywords: insight.keywords,
-  ogImage: heroImage,
+  ogImage: insight.image.src,
 });
 
 const sources: ArticleSource[] = [
@@ -65,8 +64,6 @@ export default function AIGovernanceTrainingPage() {
       faqHeading="AI Governance & Training FAQ"
       sources={sources}
       ctaText="Ready to turn ungoverned AI into a secure, high-ROI advantage for your Dallas business?"
-      heroImage={heroImage}
-      heroImageAlt="Abstract dark visualization of governed AI adoption — a central control hub with policy, security, and training safeguards routing multiple AI tools through approval gates in violet and blue"
       heroCaption="Governed AI adoption: ITECS routes every tool your team uses — Claude, ChatGPT, Copilot, and Gemini — through policy, security, and training so risk falls and ROI rises."
       blocks={{
         RISK_DIAGRAM: <AIRiskGovernedDiagram />,

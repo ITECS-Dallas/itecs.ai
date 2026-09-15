@@ -9,15 +9,13 @@ import { INSIGHTS } from "@/lib/constants";
 const insight = INSIGHTS.find(
   (i) => i.slug === "legal-ai-agents-protect-privilege-ethical-walls",
 )!;
-const heroImage =
-  "/images/insights/legal-ai-agents-privilege-ethical-walls-hero.png";
 
 export const metadata = generatePageMetadata({
   title: "Legal AI Agents: Protect Privilege and Ethical Walls",
   description: insight.description,
   path: insight.href,
   keywords: insight.keywords,
-  ogImage: heroImage,
+  ogImage: insight.image.src,
 });
 
 const sources: ArticleSource[] = [
@@ -97,8 +95,6 @@ export default function LegalAIAgentsPage() {
       faqHeading="Legal AI Agent Governance FAQ"
       sources={sources}
       ctaText="Need a defensible legal-agent pilot? ITECS can map matter permissions, preserve connector ACLs and ethical walls, define attorney approval gates, test citations and redactions, and build the release and incident evidence your legal, security, and privacy owners need."
-      heroImage={heroImage}
-      heroImageAlt="Abstract legal AI workflow with three isolated document vaults, a luminous ethical wall, permission gates, a controlled analysis core, and a final attorney approval checkpoint"
       heroCaption="A legal AI agent should inherit the matter boundary, not flatten it: authorized sources enter a controlled analysis path, restricted matters remain isolated, and a lawyer approves the exact final artifact."
       blocks={{
         LEGAL_AI_READINESS_TABLE: <LegalAIAgentReadinessTable />,

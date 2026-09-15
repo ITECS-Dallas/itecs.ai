@@ -7,14 +7,13 @@ import { INSIGHTS } from "@/lib/constants";
 const insight = INSIGHTS.find(
   (i) => i.slug === "sign-in-with-chatgpt-identity-risk-checklist"
 )!;
-const heroImage = "/images/insights/sign-in-with-chatgpt-hero.png";
 
 export const metadata = generatePageMetadata({
   title: "Sign in with ChatGPT: Identity Risk Checklist",
   description: insight.description,
   path: insight.href,
   keywords: insight.keywords,
-  ogImage: heroImage,
+  ogImage: insight.image.src,
 });
 
 const sources: ArticleSource[] = [
@@ -58,8 +57,6 @@ export default function SignInWithChatGPTPage() {
       faqHeading="Sign in with ChatGPT FAQ"
       sources={sources}
       ctaText="Adding Sign in with ChatGPT? Let's make it an identity decision, not a default."
-      heroImage={heroImage}
-      heroImageAlt="Abstract dark visualization of a Sign in with ChatGPT identity decision — a single sign-in credential passing through an identity gate that shares only basic profile fields, set apart from a separate, heavily gated data-connector path that can reach a database, with SSO, consent, and disconnect checkpoints, in violet and blue"
       heroCaption="Signing in is not the same as granting access. Keep authentication and data-connector authorization as two separate, governed decisions."
       blocks={{
         CHECKLIST_TABLE: <SignInChecklistTable />,

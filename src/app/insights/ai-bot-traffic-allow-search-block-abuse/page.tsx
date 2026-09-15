@@ -7,14 +7,13 @@ import { INSIGHTS } from "@/lib/constants";
 const insight = INSIGHTS.find(
   (i) => i.slug === "ai-bot-traffic-allow-search-block-abuse"
 )!;
-const heroImage = "/images/insights/ai-bot-traffic-policy-hero.png";
 
 export const metadata = generatePageMetadata({
   title: "AI Bot Traffic: Allow Search, Block Agent Abuse",
   description: insight.description,
   path: insight.href,
   keywords: insight.keywords,
-  ogImage: heroImage,
+  ogImage: insight.image.src,
 });
 
 const sources: ArticleSource[] = [
@@ -64,8 +63,6 @@ export default function AIBotTrafficPage() {
       faqHeading="AI Bot Traffic Policy FAQ"
       sources={sources}
       ctaText="Running allow-all or block-all for AI bots? We'll build you a policy that pays."
-      heroImage={heroImage}
-      heroImageAlt="Abstract dark visualization of an AI bot traffic policy — a central verification gateway sorting incoming bot streams into allowed search traffic and blocked training, scraping, and fraudulent agent traffic, protecting checkout and ad pages, in violet and blue"
       heroCaption="Not all bots are equal. A policy sorts search and helpful agents from training, scraping, and fraud — verified by identity, not a user-agent string."
       blocks={{
         TRAFFIC_TABLE: <BotTrafficTable />,

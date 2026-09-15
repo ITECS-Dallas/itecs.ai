@@ -9,14 +9,13 @@ import { INSIGHTS } from "@/lib/constants";
 const insight = INSIGHTS.find(
   (i) => i.slug === "ai-agent-tool-poisoning-secure-tool-supply-chain",
 )!;
-const heroImage = "/images/insights/ai-agent-tool-poisoning-hero.png";
 
 export const metadata = generatePageMetadata({
   title: "AI Agent Tool Poisoning: Secure the Tool Supply Chain",
   description: insight.description,
   path: insight.href,
   keywords: insight.keywords,
-  ogImage: heroImage,
+  ogImage: insight.image.src,
 });
 
 const sources: ArticleSource[] = [
@@ -72,8 +71,6 @@ export default function AIAgentToolPoisoningPage() {
       faqHeading="AI Agent Tool Supply-Chain FAQ"
       sources={sources}
       ctaText="Need a production-safe agent toolchain? ITECS can inventory tools and MCP servers, define admission and change gates, narrow identities and data access, build behavioral telemetry, and test a quarantine drill before agents receive broader authority."
-      heroImage={heroImage}
-      heroImageAlt="Abstract AI orchestration core verifying connected tool modules at a security gateway while a suspect module is diverted into an isolated quarantine chamber"
       heroCaption="An agent tool is more than executable code. Its publisher, package, description, schema, permissions, endpoint, dependencies, and update path form one governed trust object."
       blocks={{
         TOOL_SUPPLY_CHAIN_TABLE: <AIAgentToolSupplyChainTable />,

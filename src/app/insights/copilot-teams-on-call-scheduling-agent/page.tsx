@@ -7,7 +7,6 @@ import { INSIGHTS } from "@/lib/constants";
 const insight = INSIGHTS.find(
   (i) => i.slug === "copilot-teams-on-call-scheduling-agent"
 )!;
-const heroImage = "/images/insights/copilot-oncall-agent-hero.png";
 
 export const metadata = {
   ...generatePageMetadata({
@@ -15,7 +14,7 @@ export const metadata = {
     description: insight.description,
     path: insight.href,
     keywords: insight.keywords,
-    ogImage: heroImage,
+    ogImage: insight.image.src,
   }),
   title: "Copilot Teams On-Call Scheduling Agent: Case Study",
 };
@@ -67,8 +66,6 @@ export default function CopilotOnCallAgentPage() {
       faqHeading="Copilot On-Call Scheduling Agent FAQ"
       sources={sources}
       ctaText="Have a workflow that runs on manual coordination? We can turn it into a governed agent."
-      heroImage={heroImage}
-      heroImageAlt="Abstract dark visualization of a Microsoft Copilot on-call scheduling agent inside Microsoft Teams — a central agent core connected to a rotation calendar, technician availability, and a PSA ticket system, routing a coverage-swap approval, in violet and blue"
       heroCaption="An ITECS-built Copilot agent lives inside Microsoft Teams, connecting the on-call calendar, technician availability, and the PSA to automate coverage swaps."
       blocks={{
         CAPABILITY_TABLE: <CopilotAgentCapabilityTable />,

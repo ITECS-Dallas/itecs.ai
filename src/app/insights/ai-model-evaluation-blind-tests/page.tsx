@@ -7,14 +7,13 @@ import { INSIGHTS } from "@/lib/constants";
 const insight = INSIGHTS.find(
   (i) => i.slug === "ai-model-evaluation-blind-tests"
 )!;
-const heroImage = "/images/insights/ai-model-evaluation-hero.png";
 
 export const metadata = generatePageMetadata({
   title: "AI Model Evaluation: Blind Tests Before You Deploy",
   description: insight.description,
   path: insight.href,
   keywords: insight.keywords,
-  ogImage: heroImage,
+  ogImage: insight.image.src,
 });
 
 const sources: ArticleSource[] = [
@@ -64,8 +63,6 @@ export default function AIModelEvaluationPage() {
       faqHeading="AI Model Evaluation FAQ"
       sources={sources}
       ctaText="About to deploy a model on a leaderboard score? Let's blind-test it on your data first."
-      heroImage={heroImage}
-      heroImageAlt="Abstract dark visualization of blind AI model evaluation — several candidate model cores feeding into a sealed, sequestered testbed chamber that scores them against held-out domain data, producing a ranked result with uncertainty bars, while a public leaderboard panel is set aside, in violet and blue"
       heroCaption="A leaderboard measures a public test, not your job. Score every model on blind, held-out data from your own workflow before you deploy."
       blocks={{
         PRACTICE_TABLE: <EvaluationPracticeTable />,

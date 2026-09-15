@@ -3,7 +3,6 @@ import { generatePageMetadata } from "@/lib/metadata";
 import { INSIGHTS } from "@/lib/constants";
 
 const insight = INSIGHTS.find((i) => i.slug === "claude-fable-5-id-verification-return")!;
-const heroImage = "/images/insights/claude-fable-5-id-verification-return-hero.png";
 
 export const metadata = {
   ...generatePageMetadata({
@@ -11,7 +10,7 @@ export const metadata = {
     description: insight.description,
     path: insight.href,
     keywords: insight.keywords,
-    ogImage: heroImage,
+    ogImage: insight.image.src,
   }),
   title: "Claude Fable 5 and Mythos 5 Return: ID Verification",
 };
@@ -63,8 +62,6 @@ export default function ClaudeFable5IdVerificationReturnPage() {
       faqHeading="Claude Fable 5 and ID Verification FAQ"
       sources={sources}
       ctaText="Want frontier AI like Claude deployed with real identity governance, not personal accounts?"
-      heroImage={heroImage}
-      heroImageAlt="Abstract dark visualization of a powerful glowing AI core behind an identity verification checkpoint — a luminous gate with a verified-identity badge and scanning beams in violet and blue, representing controlled access to a frontier model"
       heroCaption="Identity verification is becoming the gate to frontier AI: a verified-identity checkpoint controls who reaches the most powerful model, the mechanism analysts believe could reopen Fable 5."
       publishedDate={insight.publishedDate}
       modifiedDate={insight.modifiedDate}

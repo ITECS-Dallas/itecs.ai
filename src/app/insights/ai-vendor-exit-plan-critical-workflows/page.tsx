@@ -9,14 +9,13 @@ import { INSIGHTS } from "@/lib/constants";
 const insight = INSIGHTS.find(
   (i) => i.slug === "ai-vendor-exit-plan-critical-workflows",
 )!;
-const heroImage = "/images/insights/ai-vendor-exit-plan-hero.png";
 
 export const metadata = generatePageMetadata({
   title: "AI Vendor Exit Plan: Keep Critical Workflows Running",
   description: insight.description,
   path: insight.href,
   keywords: insight.keywords,
-  ogImage: heroImage,
+  ogImage: insight.image.src,
 });
 
 const sources: ArticleSource[] = [
@@ -78,8 +77,6 @@ export default function AIVendorExitPlanPage() {
       faqHeading="AI Vendor Exit Planning FAQ"
       sources={sources}
       ctaText="Need an exit-ready AI operating model? ITECS can map provider dependencies, establish portable workflow boundaries, evaluate replacements, define recovery targets, and run a controlled failover exercise before a critical service is interrupted."
-      heroImage={heroImage}
-      heroImageAlt="Abstract enterprise AI workflow routing around a disabled provider gateway through evaluated replacement models and a manual operating path, then passing a recovery validation gate"
       heroCaption="An AI exit plan preserves the workflow, evidence, control boundary, and minimum business service—even when the preferred model or platform is no longer available."
       blocks={{
         EXIT_PLAN_TABLE: <AIVendorExitPlanTable />,

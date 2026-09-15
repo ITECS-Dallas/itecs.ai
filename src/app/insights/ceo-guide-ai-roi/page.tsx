@@ -3,7 +3,6 @@ import { generatePageMetadata } from "@/lib/metadata";
 import { INSIGHTS } from "@/lib/constants";
 
 const insight = INSIGHTS.find((i) => i.slug === "ceo-guide-ai-roi")!;
-const heroImage = "/images/insights/ceo-guide-ai-roi-hero.png";
 
 export const metadata = {
   ...generatePageMetadata({
@@ -11,7 +10,7 @@ export const metadata = {
     description: insight.description,
     path: insight.href,
     keywords: insight.keywords,
-    ogImage: heroImage,
+    ogImage: insight.image.src,
   }),
   title: "CEO Guide to AI ROI: Measure and Scale Impact in 2026",
 };
@@ -57,8 +56,6 @@ export default function CeoGuideAiRoiPage() {
       faqHeading="AI ROI for Executives FAQ"
       sources={sources}
       ctaText="Ready to prove and scale the ROI of your AI investment?"
-      heroImage={heroImage}
-      heroImageAlt="Empty executive boardroom at night with a glowing wall display showing an upward-climbing AI efficiency curve and dimensional financial growth bars, representing measurable AI ROI for a Dallas leadership team"
       heroCaption="In 2026, boards fund AI against measurable payback — hours recovered, revenue influenced, and risk reduced — not adoption metrics. The CEOs who scale AI are the ones who can prove the return."
       publishedDate={insight.publishedDate}
       modifiedDate={insight.modifiedDate}

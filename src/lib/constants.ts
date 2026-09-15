@@ -2386,6 +2386,7 @@ export const TRAINING_SERVICES: ServiceItem[] = [
 // ---------------------------------------------------------------------------
 
 export interface InsightItem {
+  image: { src: string; alt: string };
   slug: string;
   title: string;
   description: string;
@@ -2601,6 +2602,10 @@ export const ASTRA_ORDER_EXCEPTION_STEPS = [
 export const INSIGHTS: InsightItem[] = [
   {
     slug: "gpt-6-astra-managed-intelligence-providers",
+    image: {
+      src: "/images/insights/gpt-6-astra-managed-intelligence-providers-hero.png",
+      alt: "Illustrative managed AI rollout from an internal pilot through evidence-based evaluation to a scoped client workflow, with access, approval and cost controls.",
+    },
     title: "GPT-6 Astra: A Managed Intelligence Provider Playbook",
     description:
       "How Managed Intelligence Providers can pilot GPT-6 Astra internally, build custom client agents, and govern access, data, approvals, quality, and cost.",
@@ -2688,6 +2693,10 @@ export const INSIGHTS: InsightItem[] = [
   },
   {
     slug: "how-to-make-ai-agents-talk",
+    image: {
+      src: "/images/insights/how-to-make-ai-agents-talk-hero.png",
+      alt: "Agent A drafts and consults Agent B, receives a challenge and response, then reconciles evidence before finalizing; bounded follow-ups preserve the conversation trail.",
+    },
     title: "How to Make Two AI Agents Talk to Each Other",
     description:
       "Learn how two AI agents can hold a persistent consultation: draft, challenge, follow up, reconcile disagreements, preserve evidence, and then finalize.",
@@ -2805,6 +2814,10 @@ export const INSIGHTS: InsightItem[] = [
   },
   {
     slug: "ai-knowledge-management-capture-expertise",
+    image: {
+      src: "/images/insights/ai-knowledge-management-capture-expertise-hero.png",
+      alt: "Knowledge lifecycle from consented source capture to permission-aware, cited retrieval and owner-led review and renewal.",
+    },
     title: "AI Knowledge Management: Capture Expertise Before It Leaves",
     description:
       "Preserve institutional knowledge before experts leave with a governed AI workflow for consented capture, cited retrieval, access control, review, correction, and renewal.",
@@ -2919,6 +2932,10 @@ export const INSIGHTS: InsightItem[] = [
   },
   {
     slug: "ai-agent-evaluation-score-tool-use-before-production",
+    image: {
+      src: "/images/insights/ai-agent-evaluation-score-tool-use-hero.png",
+      alt: "Abstract AI agent evaluation system with isolated baseline and candidate lanes, connected tool sequences, continuous traces, multiple scoring gates, human-review routing, failure containment, and a final production release boundary",
+    },
     title: "AI Agent Evaluation: Score Tool Use Before Production",
     description:
       "Evaluate AI agents end to end with trace-based scores for outcomes, tool use, safety, reliability, latency, tokens, cost, and human review.",
@@ -3054,6 +3071,10 @@ export const INSIGHTS: InsightItem[] = [
   },
   {
     slug: "chatgpt-admin-plugin-automate-workspace-management",
+    image: {
+      src: "/images/insights/chatgpt-admin-plugin-workspace-management-hero.png",
+      alt: "Abstract workspace administration workflow with read-only activity streams entering a conversational analysis core, proposed changes passing through a human approval gate, authoritative state verification, and a separate exception-review path",
+    },
     title: "ChatGPT Admin Plugin: Automate Workspace Management",
     description:
       "Pilot the ChatGPT Admin plugin with scoped roles, approval-gated changes, result verification, exception routing, logging, rollback, and spend controls.",
@@ -3191,6 +3212,10 @@ export const INSIGHTS: InsightItem[] = [
   },
   {
     slug: "legal-ai-agents-protect-privilege-ethical-walls",
+    image: {
+      src: "/images/insights/legal-ai-agents-privilege-ethical-walls-hero.png",
+      alt: "Abstract legal AI workflow with three isolated document vaults, a luminous ethical wall, permission gates, a controlled analysis core, and a final attorney approval checkpoint",
+    },
     title: "Legal AI Agents: Protect Privilege and Ethical Walls",
     description:
       "Deploy legal AI agents without flattening matter permissions, ethical walls, confidentiality, privilege protections, or attorney review and accountability.",
@@ -3338,6 +3363,10 @@ export const INSIGHTS: InsightItem[] = [
   },
   {
     slug: "ai-agent-tool-poisoning-secure-tool-supply-chain",
+    image: {
+      src: "/images/insights/ai-agent-tool-poisoning-hero.png",
+      alt: "Abstract AI orchestration core verifying connected tool modules at a security gateway while a suspect module is diverted into an isolated quarantine chamber",
+    },
     title: "AI Agent Tool Poisoning: Secure the Tool Supply Chain",
     description:
       "Prevent poisoned AI tools, plugins, skills, and MCP servers with governed registries, pinned versions, scoped access, drift detection, and rapid quarantine.",
@@ -3467,6 +3496,10 @@ export const INSIGHTS: InsightItem[] = [
   },
   {
     slug: "ai-agent-delegation-contracts-handoffs",
+    image: {
+      src: "/images/insights/ai-agent-delegation-contracts-hero.png",
+      alt: "Abstract enterprise workflow showing an orchestrating AI assigning bounded tasks through contract envelopes to specialist agents and a human reviewer, with evidence gates, least-privilege keys, trace links, and a failed handoff routed to recovery controls",
+    },
     title: "AI Agent Delegation: Define Contracts and Handoffs",
     description:
       "Govern AI agent delegation with bounded task contracts, least-privilege access, evidence-bearing handoffs, accountable owners, and tested failure controls.",
@@ -3591,6 +3624,10 @@ export const INSIGHTS: InsightItem[] = [
   },
   {
     slug: "ai-vendor-exit-plan-critical-workflows",
+    image: {
+      src: "/images/insights/ai-vendor-exit-plan-hero.png",
+      alt: "Abstract enterprise AI workflow routing around a disabled provider gateway through evaluated replacement models and a manual operating path, then passing a recovery validation gate",
+    },
     title: "AI Vendor Exit Plan: Keep Critical Workflows Running",
     description:
       "Build an AI vendor exit plan for outages, model retirements, access changes, and contract shocks without losing critical workflows, data, or control.",
@@ -3713,6 +3750,10 @@ export const INSIGHTS: InsightItem[] = [
   },
   {
     slug: "ai-agent-incident-reporting-safe-playbook",
+    image: {
+      src: "/images/insights/ai-agent-incident-reporting-hero.png",
+      alt: "Abstract incident-response sequence showing unauthorized AI agent activity stopped at a containment barrier, preserved evidence, coordinated notifications, root-cause review, corrective controls, and verified recovery",
+    },
     title: "AI Agent Incident Reporting: Build a SAFE Playbook",
     description:
       "SAFE is still an RFC. Build an internal AI agent incident playbook for containment, evidence, notification, corrective controls, and tabletop testing.",
@@ -3833,6 +3874,10 @@ export const INSIGHTS: InsightItem[] = [
   },
   {
     slug: "long-running-ai-agents-control-seven-day-workflows",
+    image: {
+      src: "/images/insights/long-running-ai-agents-hero.png",
+      alt: "Abstract technical illustration of a long-running AI agent crossing monitored checkpoints, approval gates, protected state, a stop control, and final verification before reaching a downstream system",
+    },
     title: "Long-Running AI Agents: Control Seven-Day Workflows",
     description:
       "Long-running AI agents can work for days, but only inside a defined run contract. Control identity, state, cost, actions, recovery, and acceptance.",
@@ -3945,6 +3990,10 @@ export const INSIGHTS: InsightItem[] = [
   },
   {
     slug: "agentforce-coworker-prepare-auto-enablement",
+    image: {
+      src: "/images/insights/agentforce-coworker-prepare-auto-enablement-hero.png",
+      alt: "Illustrative rollout: confirm eligible users, scope CRM, Slack and Data 360 access, then test quality and cost under an accountable owner.",
+    },
     title: "Agentforce Coworker: Prepare for Auto-Enablement",
     description:
       "Agentforce Coworker is rolling out automatically for eligible Salesforce users. Use this readiness checklist to control access, data, quality, and cost.",
@@ -4044,6 +4093,10 @@ export const INSIGHTS: InsightItem[] = [
   },
   {
     slug: "ai-adoption-gap-assistants-to-agents",
+    image: {
+      src: "/images/insights/ai-adoption-gap-assistants-agents-hero.png",
+      alt: "Abstract enterprise AI system showing isolated chat prompts crossing an adoption gap into a governed agent network with approved tools, permission gates, human review, completed business work, and a continuous training loop",
+    },
     title: "AI Adoption Gap: Move From Assistants to Agents",
     description:
       "The AI adoption gap widens as leading teams delegate real work to agents. Use this checklist to scale shared, governed workflows beyond prompting.",
@@ -4151,6 +4204,10 @@ export const INSIGHTS: InsightItem[] = [
   },
   {
     slug: "chatgpt-ads-prepare-ai-search-marketing",
+    image: {
+      src: "/images/insights/chatgpt-ads-ai-search-marketing-hero.png",
+      alt: "Abstract AI search marketing system separating an organic conversational answer from a sponsored placement, then routing the paid path through privacy, brand safety, human review, attribution, and multichannel measurement controls",
+    },
     title: "ChatGPT Ads: Prepare for AI Search Marketing",
     description:
       "ChatGPT ads add paid discovery to conversational AI. Use this checklist to test intent, protect privacy, measure leads, and balance search spend.",
@@ -4255,6 +4312,10 @@ export const INSIGHTS: InsightItem[] = [
   },
   {
     slug: "ai-native-finance-build-forecasts-controls",
+    image: {
+      src: "/images/insights/ai-native-finance-controls-hero.png",
+      alt: "Abstract AI-native finance system connecting approved ledger data through reconciliation controls, exception review, traceable approval gates, and continuously updating forecast scenarios",
+    },
     title: "AI-Native Finance: Build Forecasts With Controls",
     description:
       "AI-native finance connects close, forecasting, and decisions. Use this practical control checklist before agents act across core finance workflows.",
@@ -4355,6 +4416,10 @@ export const INSIGHTS: InsightItem[] = [
   },
   {
     slug: "adobe-in-chatgpt-govern-creative-ai-workflows",
+    image: {
+      src: "/images/insights/adobe-in-chatgpt-governance-hero.png",
+      alt: "Abstract governed creative AI workflow with image, video, design, spreadsheet, and PDF assets moving through a conversational workspace, security checks, brand review, human approval, and approved output gates",
+    },
     title: "Adobe in ChatGPT: Govern Creative AI Workflows",
     description:
       "Adobe in ChatGPT unifies creative and document production. Use this governance checklist to protect client files, brands, approvals, and ownership.",
@@ -4460,6 +4525,10 @@ export const INSIGHTS: InsightItem[] = [
   },
   {
     slug: "ai-agent-authorization-control-sequences",
+    image: {
+      src: "/images/insights/ai-agent-authorization-hero.png",
+      alt: "Abstract dark visualization of sequence-aware AI agent authorization — a chain of agent tool calls flowing through a gateway policy engine that checks each call against the session history, allowing the correct ordered sequence and denying an out-of-order or over-budget call, in violet and blue",
+    },
     title: "AI Agent Authorization: Control Sequences, Not Actions",
     description:
       "AI agent authorization must judge sequences of tool calls, not each action alone. Learn the checklist, framed by AWS Bedrock AgentCore temporal policies and Dogwood.",
@@ -4541,6 +4610,10 @@ export const INSIGHTS: InsightItem[] = [
   },
   {
     slug: "ai-prompt-dlp-block-data-before-models",
+    image: {
+      src: "/images/insights/ai-prompt-dlp-hero.png",
+      alt: "Abstract dark visualization of pre-inference AI prompt DLP — an employee prompt passing through a security-server inspection gate that returns an allow or deny verdict before it reaches a model core, with denied prompts deflected and logged, in violet and blue",
+    },
     title: "AI Prompt DLP: Block Data Before It Reaches Models",
     description:
       "AI prompt DLP is moving from audit logs to inline allow-or-deny before a model sees the data. Learn the checklist, framed by Anthropic's new inference hooks.",
@@ -4623,6 +4696,10 @@ export const INSIGHTS: InsightItem[] = [
   },
   {
     slug: "how-to-set-up-mcp-in-claude",
+    image: {
+      src: "/images/insights/mcp-claude-setup-hero.png",
+      alt: "Abstract dark visualization of Model Context Protocol connecting Claude to tools — a central Claude client core linked by luminous channels to a local filesystem server, a code-terminal server, and a remote cloud connector, each passing through a permission gate, in violet and blue",
+    },
     title: "How to Set Up Model Context Protocol (MCP) in Claude",
     description:
       "A technical guide to setting up Model Context Protocol (MCP) in Claude — Desktop config, the Claude Code CLI, and remote connectors — with requirements and working examples.",
@@ -4711,6 +4788,10 @@ export const INSIGHTS: InsightItem[] = [
   },
   {
     slug: "agentic-browsing-security-browser-controls-for-ai",
+    image: {
+      src: "/images/insights/agentic-browsing-security-hero.png",
+      alt: "Abstract dark visualization of agentic browsing security — an AI agent core operating inside a browser window, reaching multiple SaaS app tabs and forms through an employee identity gate, ringed by DLP, site-scope, logging, and human-approval checkpoints, with a malicious hidden-instruction page being deflected, in violet and blue",
+    },
     title: "Agentic Browsing Security: Browser Controls for AI",
     description:
       "AI agents now navigate SaaS, tabs, and forms in the browser. Learn the browser controls — identity, DLP, scoping, approvals, and prompt-injection testing — to govern them.",
@@ -4792,6 +4873,10 @@ export const INSIGHTS: InsightItem[] = [
   },
   {
     slug: "open-weight-ai-models-business-risk-checklist",
+    image: {
+      src: "/images/insights/open-weight-ai-models-hero.png",
+      alt: "Abstract dark visualization of open-weight AI model governance — a downloadable model core passing through classify, test, private-host, and approval gates before it reaches a business workflow, with a license document and provenance chain recorded alongside, in violet and blue",
+    },
     title: "Open-Weight AI Models: Business Risk Checklist",
     description:
       "Open-weight AI models are now a procurement decision, not a dev preference. Use this checklist to weigh data control and cost against irreversible-release risk.",
@@ -4872,6 +4957,10 @@ export const INSIGHTS: InsightItem[] = [
   },
   {
     slug: "sign-in-with-chatgpt-identity-risk-checklist",
+    image: {
+      src: "/images/insights/sign-in-with-chatgpt-hero.png",
+      alt: "Abstract dark visualization of a Sign in with ChatGPT identity decision — a single sign-in credential passing through an identity gate that shares only basic profile fields, set apart from a separate, heavily gated data-connector path that can reach a database, with SSO, consent, and disconnect checkpoints, in violet and blue",
+    },
     title: "Sign in with ChatGPT: Identity Risk Checklist",
     description:
       "OpenAI's Sign in with ChatGPT beta is an identity decision, not a convenience toggle. Use this checklist to separate sign-in from data access before you enable it.",
@@ -4954,6 +5043,10 @@ export const INSIGHTS: InsightItem[] = [
   },
   {
     slug: "ai-model-evaluation-blind-tests",
+    image: {
+      src: "/images/insights/ai-model-evaluation-hero.png",
+      alt: "Abstract dark visualization of blind AI model evaluation — several candidate model cores feeding into a sealed, sequestered testbed chamber that scores them against held-out domain data, producing a ranked result with uncertainty bars, while a public leaderboard panel is set aside, in violet and blue",
+    },
     title: "AI Model Evaluation: Blind Tests Before You Deploy",
     description:
       "Public AI leaderboards can be contaminated. Learn to evaluate models with blind, task-specific tests on your own data before you deploy — the way NIST now does.",
@@ -5035,6 +5128,10 @@ export const INSIGHTS: InsightItem[] = [
   },
   {
     slug: "ai-payment-agents-control-money-movement",
+    image: {
+      src: "/images/insights/ai-payment-agents-hero.png",
+      alt: "Abstract dark visualization of controlled AI payment agents — a central agent core wired through scope-limit, identity-verification, approval-threshold, and separation-of-duties gates before its payment streams reach virtual card, supplier, ad-buy, and FX nodes, with an audit trail recording each transaction, in violet and blue",
+    },
     title: "AI Payment Agents: Control Money Movement Before Launch",
     description:
       "AI payment agents now initiate virtual cards, supplier payments, and FX. Learn to control money movement before launch — identity, scope, approvals, and audit trails.",
@@ -5116,6 +5213,10 @@ export const INSIGHTS: InsightItem[] = [
   },
   {
     slug: "ai-cyber-models-pick-right-model-security",
+    image: {
+      src: "/images/insights/ai-cyber-models-hero.png",
+      alt: "Abstract dark visualization of security AI model selection — a central routing hub directing code-scanning work to three model tiers, a small local model, a specialized frontier model, and a sandboxed agentic patching model, with a human-review checkpoint before any fix reaches production, in violet and blue",
+    },
     title: "AI Cyber Models: Pick the Right Model for Security",
     description:
       "Cybersecurity AI is splitting into small, frontier, and agentic models. Learn to pick the right one per task — by privacy, cost, sandboxing, and whether it patches.",
@@ -5198,6 +5299,10 @@ export const INSIGHTS: InsightItem[] = [
   },
   {
     slug: "ai-kill-switch-plan-emergency-stops",
+    image: {
+      src: "/images/insights/ai-kill-switch-plan-hero.png",
+      alt: "Abstract dark visualization of an AI agent emergency stop — a central autonomous agent core wired to a prominent kill switch, ringed by throttle, suspension, logging, and incident-owner controls that can halt it before it reaches money and data systems, in violet and blue",
+    },
     title: "AI Kill Switch Plan: Emergency Stops for Agents",
     description:
       "A federal AI kill switch bill targets frontier developers — but your own autonomous agents need an emergency stop. Here is the business checklist to build one.",
@@ -5279,6 +5384,10 @@ export const INSIGHTS: InsightItem[] = [
   },
   {
     slug: "ai-bot-traffic-allow-search-block-abuse",
+    image: {
+      src: "/images/insights/ai-bot-traffic-policy-hero.png",
+      alt: "Abstract dark visualization of an AI bot traffic policy — a central verification gateway sorting incoming bot streams into allowed search traffic and blocked training, scraping, and fraudulent agent traffic, protecting checkout and ad pages, in violet and blue",
+    },
     title: "AI Bot Traffic: Allow Search, Block Agent Abuse",
     description:
       "AI bot traffic needs a policy, not a blanket allow or block. Learn to separate Search, Agent, Training, and Transact traffic — and protect ad and checkout pages.",
@@ -5358,6 +5467,10 @@ export const INSIGHTS: InsightItem[] = [
   },
   {
     slug: "ai-customer-service-agents-guardrails",
+    image: {
+      src: "/images/insights/ai-customer-service-guardrails-hero.png",
+      alt: "Abstract dark visualization of a customer-facing AI agent behind launch guardrails — a central conversational agent core ringed by policy, escalation, testing, and human-review checkpoints before it reaches customer channels, in violet and blue",
+    },
     title: "AI Customer Service Agents: Guardrails Before Launch",
     description:
       "Customer-facing AI agents fail in public, on trust and compliance. Learn the guardrails — one job, limited access, escalation rules, testing — to set before launch.",
@@ -5439,6 +5552,10 @@ export const INSIGHTS: InsightItem[] = [
   },
   {
     slug: "ai-enabled-app-inventory-govern-software",
+    image: {
+      src: "/images/insights/ai-enabled-app-inventory-hero.png",
+      alt: "Abstract dark visualization of an AI-enabled application inventory — a central governance registry connected to app, browser, plugin, and MCP-server nodes, with some nodes lighting up as they gain agentic action capabilities, in violet and blue",
+    },
     title: "AI-Enabled App Inventory: Govern Software That Acts",
     description:
       "The apps you already approved are gaining agentic powers. Gartner says 40% of enterprise apps will have task-specific AI agents by end of 2026. Here is the governance checklist.",
@@ -5520,6 +5637,10 @@ export const INSIGHTS: InsightItem[] = [
   },
   {
     slug: "ai-platform-spend-controls-visibility",
+    image: {
+      src: "/images/insights/ai-platform-spend-controls-hero.png",
+      alt: "Abstract dark visualization of AI platform spend visibility — a central cost-governance dashboard with usage meters, spend-limit gauges, and model-routing lines, keeping a rising AI budget under control, in violet and blue",
+    },
     title: "AI Platform Spend Controls: Buy With Visibility",
     description:
       "AI platform spend is up 63% and moving to usage-based pricing. Learn how to compare platforms on visibility, spend limits, and cost per outcome before budgets scale.",
@@ -5595,6 +5716,10 @@ export const INSIGHTS: InsightItem[] = [
   },
   {
     slug: "copilot-teams-on-call-scheduling-agent",
+    image: {
+      src: "/images/insights/copilot-oncall-agent-hero.png",
+      alt: "Abstract dark visualization of a Microsoft Copilot on-call scheduling agent inside Microsoft Teams — a central agent core connected to a rotation calendar, technician availability, and a PSA ticket system, routing a coverage-swap approval, in violet and blue",
+    },
     title:
       "How ITECS Built a Copilot Agent for On-Call Scheduling in Teams",
     description:
@@ -5672,6 +5797,10 @@ export const INSIGHTS: InsightItem[] = [
   },
   {
     slug: "ai-agent-recovery-plan-protect-backups",
+    image: {
+      src: "/images/insights/ai-agent-recovery-plan-hero.png",
+      alt: "Abstract dark visualization of protecting backups from an AI agent — a production data core and a separate, shielded immutable backup vault, with a destructive agent action blocked at an approval gate before it can reach the backups, in violet and blue",
+    },
     title: "AI Agent Recovery Plan: Protect Backups First",
     description:
       "An AI agent can delete production data and its backups in seconds. Learn why AI changes disaster recovery, and the executive checklist to protect backups before agents act.",
@@ -5752,6 +5881,10 @@ export const INSIGHTS: InsightItem[] = [
   },
   {
     slug: "agentic-ai-infrastructure-production-readiness",
+    image: {
+      src: "/images/insights/agentic-ai-infrastructure-hero.png",
+      alt: "Abstract dark visualization of agentic AI infrastructure under load — a central agent core drawing on elastic compute, data, and network layers, with cost and power gauges, as many parallel actions fan out, in violet and blue",
+    },
     title: "Agentic AI Infrastructure: Production Readiness",
     description:
       "83% of organizations need infrastructure upgrades for production agentic AI. Assess your compute, agent permissions, data, edge, and cost visibility before agents go live.",
@@ -5833,6 +5966,10 @@ export const INSIGHTS: InsightItem[] = [
   },
   {
     slug: "ai-bill-of-materials-inventory-agents",
+    image: {
+      src: "/images/insights/ai-bill-of-materials-hero.png",
+      alt: "Abstract dark visualization of an AI Bill of Materials — a central inventory ledger connected to labeled component nodes for models, datasets, agent frameworks, vector databases, dependencies, and infrastructure, in violet and blue",
+    },
     title: "AI Bill of Materials: Inventory Agents Before Production",
     description:
       "AI Bills of Materials are the new inventory layer for moving AI agents to production. Google's k8s-aibom and the CISA/G7 minimum elements explained — with a leader's checklist.",
@@ -5915,6 +6052,10 @@ export const INSIGHTS: InsightItem[] = [
   },
   {
     slug: "ai-insurance-gaps-review-coverage",
+    image: {
+      src: "/images/insights/ai-insurance-gaps-hero.png",
+      alt: "Abstract dark visualization of insurance coverage gaps around AI agents — a protective shield made of policy panels with visible fractures where an autonomous agent's activity slips through, in violet and blue",
+    },
     title: "AI Insurance Gaps: Review Coverage Before Agents",
     description:
       "Silent AI coverage is ending. New exclusions hit 2026 renewals, and autonomous agents fall in the widest gap. Review cyber, E&O, D&O, and crime cover before you deploy.",
@@ -6002,6 +6143,10 @@ export const INSIGHTS: InsightItem[] = [
   },
   {
     slug: "chatgpt-work-secure-admin-checklist",
+    image: {
+      src: "/images/insights/chatgpt-work-admin-hero.png",
+      alt: "Abstract dark visualization of a ChatGPT Work AI agent surrounded by admin control gates — connector permissions, write-action approvals, and publishing controls — governing its access to files, apps, and Sites, in violet and blue",
+    },
     title: "ChatGPT Work for Business: Secure Admin Checklist",
     description:
       "OpenAI launched ChatGPT Work (GPT-5.6) on July 9, 2026. Before you let the agent touch your files and apps, work through this secure admin checklist and pilot plan.",
@@ -6087,6 +6232,10 @@ export const INSIGHTS: InsightItem[] = [
   },
   {
     slug: "eu-ai-act-transparency-rules-checklist",
+    image: {
+      src: "/images/insights/eu-ai-act-transparency-hero.png",
+      alt: "Abstract dark visualization of AI content transparency compliance — a stream of AI-generated media passing through a labeling and disclosure checkpoint marked with the EU circle of stars motif, in violet and blue",
+    },
     title: "EU AI Act Transparency Rules: Business Checklist",
     description:
       "EU AI Act Article 50 transparency rules apply August 2, 2026. What chatbots, deepfakes, and AI content must disclose — plus a practical business compliance checklist.",
@@ -6171,6 +6320,10 @@ export const INSIGHTS: InsightItem[] = [
   },
   {
     slug: "openai-codex-vs-claude-code",
+    image: {
+      src: "/images/insights/openai-codex-vs-claude-code-hero.png",
+      alt: "Abstract dark split visualization comparing two enterprise AI coding agents — parallel sandboxed worktrees on one side and a deep large-context reasoning core on the other — in violet and blue",
+    },
     title:
       "OpenAI Codex vs. Claude Code: Enterprise Coding Agents Compared",
     description:
@@ -6255,6 +6408,10 @@ export const INSIGHTS: InsightItem[] = [
   },
   {
     slug: "secure-ai-agents-1password-secrets",
+    image: {
+      src: "/images/insights/secure-ai-agents-1password-hero.png",
+      alt: "Abstract dark visualization of secure secret injection — a glowing vault and fingerprint approval gate feeding an encrypted credential into developer and AI agent tools, with the language model kept separate from the secret, in violet and blue",
+    },
     title:
       "How to Use 1Password With Claude Cowork, Codex, and Custom AI Agent CLIs",
     description:
@@ -6345,6 +6502,10 @@ export const INSIGHTS: InsightItem[] = [
   },
   {
     slug: "ai-governance-training-dallas-businesses",
+    image: {
+      src: "/images/insights/ai-governance-training-dallas-hero.png",
+      alt: "Abstract dark visualization of governed AI adoption — a central control hub with policy, security, and training safeguards routing multiple AI tools through approval gates in violet and blue",
+    },
     title:
       "AI Governance & Training for Dallas Businesses: Secure the Tools Your Team Already Uses",
     description:
@@ -6432,6 +6593,10 @@ export const INSIGHTS: InsightItem[] = [
   },
   {
     slug: "claude-fable-5-id-verification-return",
+    image: {
+      src: "/images/insights/claude-fable-5-id-verification-return-hero.png",
+      alt: "Abstract dark visualization of a powerful glowing AI core behind an identity verification checkpoint — a luminous gate with a verified-identity badge and scanning beams in violet and blue, representing controlled access to a frontier model",
+    },
     title:
       "Claude Fable 5 Is Back: Mythos 5 Reopens as ID Verification Lands",
     description:
@@ -6523,6 +6688,10 @@ export const INSIGHTS: InsightItem[] = [
   },
   {
     slug: "claude-plan-comparison",
+    image: {
+      src: "/images/insights/claude-plan-comparison-hero.png",
+      alt: "Abstract dark visualization comparing five Claude subscription tiers — Free, Pro, Max, Team, and Enterprise — as ascending illuminated columns in violet and blue, representing rising price, usage limits, and security controls",
+    },
     title:
       "Claude Plans Compared 2026: Pricing, Limits & Best Tier",
     description:
@@ -6611,6 +6780,10 @@ export const INSIGHTS: InsightItem[] = [
   },
   {
     slug: "self-hosted-ai-agents-seafile",
+    image: {
+      src: "/images/insights/self-hosted-ai-agents-seafile-hero.png",
+      alt: "Conceptual server-to-laptop file-sync illustration with a perimeter labeled “Data containment”; external model and tool flows are not shown.",
+    },
     title:
       "Self-Hosted AI Agents: How ITECS Shares Codex and Cowork Agents Across the Team",
     description:
@@ -6696,6 +6869,10 @@ export const INSIGHTS: InsightItem[] = [
   },
   {
     slug: "claude-fable-5-release",
+    image: {
+      src: "/images/insights/claude-fable-5-release-hero.png",
+      alt: "Conceptual illustration of rising performance bars beside a partly depleted usage-limit ring.",
+    },
     title:
       "Claude Fable 5 Usage Limits: Why Fable Draws Down Usage 2× Faster",
     description:
@@ -6785,6 +6962,10 @@ export const INSIGHTS: InsightItem[] = [
   },
   {
     slug: "openclaw-security-crisis",
+    image: {
+      src: "/images/insights/openclaw-security-crisis-hero.png",
+      alt: "Abstract dimensional visualization of a compromised AI agent sandbox with cyan and violet circuit traces fracturing in a dark security operations center",
+    },
     title:
       "The OpenClaw Security Crisis: What Every Business Should Learn Before Deploying an AI Agent",
     description:
@@ -6888,6 +7069,10 @@ export const INSIGHTS: InsightItem[] = [
   },
   {
     slug: "claude-cowork-for-small-business",
+    image: {
+      src: "/images/insights/claude-cowork-for-small-business-hero.png",
+      alt: "Abstract Claude Cowork Small Business workspace diagram showing isolated Project Sandboxes for Finance, Sales, Marketing, and Operations connected to QuickBooks, PayPal, HubSpot, Canva, Docusign, Google Workspace, and Microsoft 365 through approval gates",
+    },
     title:
       "How to Set Up Claude Cowork for Your Business: 10 Workflows That Replace Manual Operations Work",
     description:
@@ -6989,6 +7174,10 @@ export const INSIGHTS: InsightItem[] = [
   },
   {
     slug: "ceo-guide-ai-roi",
+    image: {
+      src: "/images/insights/ceo-guide-ai-roi-hero.png",
+      alt: "Empty executive boardroom at night with a glowing wall display showing an upward-climbing AI efficiency curve and dimensional financial growth bars, representing measurable AI ROI for a Dallas leadership team",
+    },
     title: "The CEO's Guide to AI ROI: Measure and Scale AI Impact in 2026",
     description:
       "How CEOs and CFOs measure AI ROI and scale what works in 2026 — a framework for moving from AI experiments to measurable efficiency, with metrics, governance, and payback math.",
@@ -7079,6 +7268,10 @@ export const INSIGHTS: InsightItem[] = [
   },
   {
     slug: "agentic-ai-workflows-enterprise-operations",
+    image: {
+      src: "/images/insights/agentic-ai-workflows-enterprise-operations-hero.png",
+      alt: "Illustrated orchestration hub connecting finance, procurement, and HR workflows through branching tool paths.",
+    },
     title: "Agentic AI Workflows: How to Implement Them in Enterprise Operations",
     description:
       "How to take agentic AI workflows from pilot to production in finance, procurement, and HR — a four-stage blueprint with governance, security, and ROI math for Dallas enterprises.",
@@ -7168,6 +7361,10 @@ export const INSIGHTS: InsightItem[] = [
   },
   {
     slug: "how-to-use-ai-small-business",
+    image: {
+      src: "/images/insights/how-to-use-ai-small-business-hero.png",
+      alt: "An AI adoption workflow: measure time and errors, run a bounded pilot using approved data, then review value and risk before scaling.",
+    },
     title: "How Growing Businesses Use AI (2026 Guide)",
     description:
       "A practical guide for Dallas operators on using AI to automate tasks, reduce costs, and grow without unnecessary hiring. From ChatGPT to workflow automation.",
@@ -7236,6 +7433,10 @@ export const INSIGHTS: InsightItem[] = [
   },
   {
     slug: "secure-business-data-chatgpt",
+    image: {
+      src: "/images/insights/secure-business-data-chatgpt-hero.png",
+      alt: "Business AI data controls: classify sensitivity and purpose, restrict access to an approved workspace, and review retention and logging with human ownership.",
+    },
     title: "How to Secure Your Business Data from ChatGPT",
     description:
       "Your employees are using ChatGPT at work. Here's how to protect sensitive company data, set up safe AI policies, and deploy private AI alternatives for your Dallas business.",
@@ -7309,6 +7510,10 @@ export const INSIGHTS: InsightItem[] = [
   },
   {
     slug: "automate-lead-follow-up",
+    image: {
+      src: "/images/insights/automate-lead-follow-up-hero.png",
+      alt: "Illustrative lead workflow: record a new lead and consent, qualify with approved questions, then route to the CRM and a human owner.",
+    },
     title: "How to Automate Lead Follow-Up with AI",
     description:
       "Stop losing leads to slow follow-up. Learn how Dallas businesses automate lead response with AI — from instant email/text replies to smart lead qualification.",
@@ -7382,6 +7587,10 @@ export const INSIGHTS: InsightItem[] = [
   },
   {
     slug: "enterprise-agentic-skills-repo",
+    image: {
+      src: "/images/insights/enterprise-agentic-skills-repo-hero.png",
+      alt: "Empty enterprise AI operations room with abstract secure workflow displays",
+    },
     title: "ITECS Releases Public Enterprise Agentic Skills Repo",
     description:
       "ITECS released its enterprise agentic skills repo to help teams standardize safer Codex, Claude, and AI coding agent workflows.",
@@ -7459,6 +7668,10 @@ export const INSIGHTS: InsightItem[] = [
   },
   {
     slug: "mcp-is-the-new-api",
+    image: {
+      src: "/images/insights/mcp-is-the-new-api-hero.png",
+      alt: "Abstract managed MCP gateway diagram brokering AI assistants and business systems for a Dallas business",
+    },
     title:
       "MCP and Business AI: Govern Tool Connections Before Agents Act",
     description:
