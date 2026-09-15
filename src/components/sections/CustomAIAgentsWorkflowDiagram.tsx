@@ -183,12 +183,8 @@ export function CustomAIAgentsWorkflowDiagram() {
           <div className="flex md:hidden flex-col items-center">
             {stages.map((stage, i) => (
               <div key={i} className="contents">
-                <motion.div
-                  className="flex flex-col items-center text-center"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={inView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ delay: 0.2 + i * 0.12, duration: 0.5 }}
-                >
+                {/* Keep mobile content visible independently of the hidden desktop observer. */}
+                <div className="flex flex-col items-center text-center">
                   <div className="flex items-center justify-center w-14 h-14 rounded-2xl border border-[var(--border-subtle)] bg-bg-surface/80">
                     <stage.icon
                       className="h-6 w-6"
@@ -200,7 +196,7 @@ export function CustomAIAgentsWorkflowDiagram() {
                     {stage.label}
                   </p>
                   <p className="mt-1 text-xs text-text-dim">{stage.detail}</p>
-                </motion.div>
+                </div>
                 {i < stages.length - 1 && (
                   <VerticalConnector delay={0.3 + i * 0.12} />
                 )}
